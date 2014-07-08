@@ -404,6 +404,7 @@
 				53DF290B196B9CF40058AA42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53DF290C196B9CF40058AA42 /* Build configuration list for PBXNativeTarget "CloudEmoticon2iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -412,6 +413,7 @@
 				53DF290E196B9CF40058AA42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
