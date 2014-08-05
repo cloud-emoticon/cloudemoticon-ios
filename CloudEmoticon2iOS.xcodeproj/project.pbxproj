@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5355FCB61990C0A800D70CA4 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCB51990C0A800D70CA4 /* LoadingView.swift */; };
+		5355FCB81990C0F600D70CA4 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5355FCB71990C0F600D70CA4 /* LoadingView.xib */; };
+		5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */; };
+		5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBC1990C21C00D70CA4 /* FileManager.swift */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
 		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
@@ -41,6 +45,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5355FCB51990C0A800D70CA4 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		5355FCB71990C0F600D70CA4 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDownload.swift; sourceTree = "<group>"; };
+		5355FCBC1990C21C00D70CA4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +94,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5355FCB91990C1D300D70CA4 /* 数据载入 */ = {
+			isa = PBXGroup;
+			children = (
+				5355FCB51990C0A800D70CA4 /* LoadingView.swift */,
+				5355FCB71990C0F600D70CA4 /* LoadingView.xib */,
+				5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */,
+				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
+			);
+			name = "数据载入";
+			sourceTree = "<group>";
+		};
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +132,7 @@
 				53DF28F6196B9CF40058AA42 /* Main.storyboard */,
 				53DF28F9196B9CF40058AA42 /* Images.xcassets */,
 				53DF28F0196B9CF40058AA42 /* Supporting Files */,
+				5355FCB91990C1D300D70CA4 /* 数据载入 */,
 			);
 			path = CloudEmoticon2iOS;
 			sourceTree = "<group>";
@@ -249,6 +269,7 @@
 				8BE31F62196D3FD1006C3B26 /* picture-vector@2x.png in Resources */,
 				8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */,
 				8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */,
+				5355FCB81990C0F600D70CA4 /* LoadingView.xib in Resources */,
 				8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */,
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
@@ -281,8 +302,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
 				53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
+				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
+				5355FCB61990C0A800D70CA4 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
