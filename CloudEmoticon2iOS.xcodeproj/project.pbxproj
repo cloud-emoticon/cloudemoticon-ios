@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53CDF2F4196E8EC10042F90B /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53CDF2F3196E8EC10042F90B /* CEViewController.swift */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
 		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
@@ -42,7 +41,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		53CDF2F3196E8EC10042F90B /* CEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEViewController.swift; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,35 +86,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		53CDF2EF196E8E4F0042F90B /* 雲顏文字 */ = {
-			isa = PBXGroup;
-			children = (
-				53CDF2F3196E8EC10042F90B /* CEViewController.swift */,
-			);
-			name = "雲顏文字";
-			sourceTree = "<group>";
-		};
-		53CDF2F0196E8E660042F90B /* 自訂表情 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "自訂表情";
-			sourceTree = "<group>";
-		};
-		53CDF2F1196E8E700042F90B /* 附加工具 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "附加工具";
-			sourceTree = "<group>";
-		};
-		53CDF2F2196E8E770042F90B /* 設置 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "設置";
-			sourceTree = "<group>";
-		};
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
@@ -138,10 +107,6 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
-				53CDF2F2196E8E770042F90B /* 設置 */,
-				53CDF2F1196E8E700042F90B /* 附加工具 */,
-				53CDF2F0196E8E660042F90B /* 自訂表情 */,
-				53CDF2EF196E8E4F0042F90B /* 雲顏文字 */,
 				8B98EE9A196D2DC0000D255E /* images */,
 				53DF28F2196B9CF40058AA42 /* AppDelegate.swift */,
 				53DF28F4196B9CF40058AA42 /* ViewController.swift */,
@@ -318,7 +283,6 @@
 			files = (
 				53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
-				53CDF2F4196E8EC10042F90B /* CEViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
