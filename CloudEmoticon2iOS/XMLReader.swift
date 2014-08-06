@@ -13,70 +13,54 @@ class XMLReader: NSObject { //,NSXMLParserDelegate
     
     func data2json(data:NSData) {
         
-        var 全部字符串:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)
-        var 字符串长度:Int = 全部字符串.length - 1
-        //验证
-        var 头部分检查:NSString = 全部字符串.substringWithRange(NSMakeRange(0, 7))
-        if (头部分检查.isEqualToString("<emoji>"))
-        {
-            var 当前句子:NSMutableString = ""
-            for i in 0...字符串长度
-            {
-                var 当前字符:NSString = 全部字符串.substringWithRange(NSMakeRange(i, 1))
-                当前句子.insertString(当前字符, atIndex: 当前句子.length)
-                
-                if (当前字符.isEqualToString(">"))
-                {
-                    for i2 in 0...(当前句子.length-1)
-                    {
-                        var 内容字符串:NSString = ""
-                        var 当前字符2a:NSString = 当前句子.substringWithRange(NSMakeRange(i2, 1))
-                        if (当前字符2.isEqualToString("<"))
-                        {
-                            
-                            var 当前字符2:NSString = 当前句子.substringWithRange(NSMakeRange(i2, 2))
-                            if (当前字符2.isEqualToString("</"))
-                            {
-                                
-                                //if (i2 + 1 < 当前句子.length)
-                                //{
-                                //    var 当前字符3:NSString = 当前句子.substringWithRange(NSMakeRange(i2+1, 1))
-                                //    if (当前字符3.isEqualToString("/"))
-                                //    {
-                                //        //结束关键字
-                                        内容字符串 = 当前句子.substringWithRange(NSMakeRange(0, i2-1))
-                                        println(内容字符串)
-                                //    }
-                                //}
-                                
-                                
-                                
-                            }
-                        }
-                        
-                    }
-                    当前句子 = ""
-                }
-            }
-            
-        } else {
-            //错误
-        }
+        var allstr:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)
+        /*
+        序列1 ＝＝＝＝＝
+        层级1：寻找<emoji>
+        序列2 ＝＝＝＝＝
+        层级2：--寻找<infoos>
+        层级3：----寻找<info>(可能存在)
+        序列3 ＝＝＝＝＝
+        层级2：--寻找<category>
+        层级3：----寻找<entry>
+        层级4：------寻找<note>(可能存在)
+        层级4：------寻找<string>
+        */
+        
+        //层级1：寻找<emoji>
+        var emoji_start:NSRange = allstr.rangeOfString("<emoji>")
+        var emoji_end:NSRange = allstr.rangeOfString("</emoji>")
+        //startrange = emoji_start.location
+        //length = emoji_end.location - emoji_start.location + 1
+        var emoji:NSString = allstr.substringWithRange(NSMakeRange(emoji_start.length, (emoji_end.location - emoji_start.length)))
+        //层级2：--寻找<infoos>
+        var infoos_start:NSRange = emoji.rangeOfString("<infoos>")
+        var infoos_end:NSRange = emoji.rangeOfString("</infoos>")
+        var infoos:NSString = emoji.substringWithRange(NSMakeRange(infoos_start.length, (infoos_end.location - infoos_start.length)))
+        
+        //层级2：--寻找<category>
+//        var category_i:NSRange = emoji.rangeOfString("<category>")
+        var tmpStr:NSMutableString = NSMutableString.stringWithString(emoji)
+        var categoryArr:NSMutableArray = NSMutableArray.array()
+        do {
+            var category_start:NSRange = tmpStr.rangeOfString("<category>")
+            var category_end:NSRange = tmpStr.rangeOfString("</category>")
+            var category:NSString = tmpStr.substringWithRange(NSMakeRange(category_start.length, (category_end.location - category_start.length)))
+            categoryArr.addObject(category)
+            println(category_start.location)
+            println(category_end.location + category_end.length - category_start.location)
+            tmpStr.deleteCharactersInRange(NSMakeRange(category_start.location, category_end.location + category_end.length - category_start.location))
+//            var category_start:NSRange = category_i
+//            var category_end:NSRange = emoji.rangeOfString("</category>")
+//            var category:NSString = emoji.substringWithRange(NSMakeRange(category_i.length ,(category_end.location - category_i.length)))
+//            category_i.location = category.length + category_i.length
+//            
+//            println(category)
+//            if (emoji_end.location - category_end.location < 21)
+//            {
+//                break
+//            }
+        } while (true)
         
     }
-    
-//    func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!)
-//    {
-//        NSLog("Name:%@",elementName);
-//    }
-//    
-//    func parser(parser: NSXMLParser!, foundCharacters string: String!)
-//    {
-//        NSLog("Value:%@",string);
-//    }
-//    
-//    func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
-//    {
-//        NSLog("Name:%@",elementName);
-//    }
 }
