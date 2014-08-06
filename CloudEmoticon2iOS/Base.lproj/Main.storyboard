@@ -110,10 +110,10 @@
             </objects>
             <point key="canvasLocation" x="2127" y="440"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MainTB View Controller-->
         <scene sceneID="raJ-ff-Qo2">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R37-0U-3Vo" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="R37-0U-3Vo" customClass="MainTBViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <keyCommands/>
                     <nil key="simulatedBottomBarMetrics"/>

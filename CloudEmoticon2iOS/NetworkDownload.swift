@@ -10,12 +10,12 @@ import UIKit
 import Foundation
 class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     
-    var connData: NSMutableData
+    var connData: NSMutableData!
     
-    init(connData: NSMutableData)
-    {
-        self.connData = NSMutableData.data();
-    }
+//    init(connData: NSMutableData)
+//    {
+//        self.connData = NSMutableData.data();
+//    }
     
     
     //开始连接
@@ -85,6 +85,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
             var str:NSString
             str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
             println(str)
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nil)
         } else {
             println("NULL!!!")
         }

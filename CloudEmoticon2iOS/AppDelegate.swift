@@ -12,17 +12,36 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
+    var statBar: CustomStatusBar!
 
 
+    
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
         //TEST
-        var newdwn = NetworkDownload.alloc()
-        newdwn.startAsyConnection()
+//        var newdwn = NetworkDownload.alloc()
+//        newdwn.startAsyConnection()
         //TEST
         
+        var statBarFrame = UIApplication.sharedApplication().statusBarFrame
+        self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf", name: "loadwebdata", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf", name: "loaddataok", object: nil)
         return true
+    }
+    
+    func loadwebdataf()
+    {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        var newdwn = NetworkDownload.alloc()
+        newdwn.startAsyConnection()
+        statBar.showMsg("正在下载源...")
+    }
+    func loadwebdataokf()
+    {
+        statBar.hideMsg()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
     }
 
     func applicationWillResignActive(application: UIApplication!) {
