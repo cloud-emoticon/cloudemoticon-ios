@@ -12,6 +12,7 @@
 		53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */; };
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A551991E7F5008B12E0 /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A541991E7F5008B12E0 /* XMLReader.swift */; };
+		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
 		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
@@ -51,6 +52,8 @@
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
 		53995A501991C434008B12E0 /* CustomStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStatusBar.swift; sourceTree = "<group>"; };
 		53995A541991E7F5008B12E0 /* XMLReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReader.swift; sourceTree = "<group>"; };
+		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
+		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +105,8 @@
 				5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */,
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
 				53995A541991E7F5008B12E0 /* XMLReader.swift */,
+				53995A561991E8B1008B12E0 /* JSONReader.swift */,
+				53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */,
 			);
 			name = "数据载入";
 			sourceTree = "<group>";
@@ -320,6 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
 				53995A551991E7F5008B12E0 /* XMLReader.swift in Sources */,
 				53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */,
@@ -444,12 +450,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudEmoticon2iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -458,12 +467,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CloudEmoticon2iOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -14,27 +14,20 @@ class CustomStatusBar: UIWindow {
 
     init(frame: CGRect) {
         super.init(frame: frame)
-        
-//        self.frame = UIApplication.sharedApplication().statusBarFrame
-//        self.backgroundColor = UIColor.blackColor()
-//        self.windowLevel = UIWindowLevelStatusBar + 1.0
-        
+        self.messageLabel = UILabel()
+        self.messageLabel.textAlignment = NSTextAlignment.Right
+        var rgb = 248.0/255.0
+        self.messageLabel.backgroundColor = UIColor(red: rgb, green: rgb, blue: rgb, alpha: 1)//(240,242,241)
+        self.messageLabel.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
+        self.messageLabel.font = UIFont.systemFontOfSize(13.0);
+        self.windowLevel = UIWindowLevelStatusBar + 1.0
+        self.backgroundColor = UIColor.clearColor()
+        self.addSubview(self.messageLabel)
     }
     
     func showMsg(message: NSString)
     {
-        if (self.messageLabel == nil)
-        {
-            self.messageLabel = UILabel()
-            self.messageLabel.textAlignment = NSTextAlignment.Right
-            var rgb = 248.0/255.0
-            self.messageLabel.backgroundColor = UIColor(red: rgb, green: rgb, blue: rgb, alpha: 1)//(240,242,241)
-            self.messageLabel.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
-            self.messageLabel.font = UIFont.systemFontOfSize(13.0);
-            self.windowLevel = UIWindowLevelStatusBar + 1.0
-            self.backgroundColor = UIColor.clearColor()
-            self.addSubview(self.messageLabel)
-        }
+//        if (self.messageLabel == nil) { }
         self.hidden = false
         self.alpha = 1.0
         messageLabel.text = message

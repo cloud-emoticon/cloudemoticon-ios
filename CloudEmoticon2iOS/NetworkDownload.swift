@@ -84,8 +84,10 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
         {
             var str:NSString
             str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
-            println(str)
+//            println(str)
             NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nil)
+            var xml = XMLReader()
+            xml.data2json(self.connData)
         } else {
             println("NULL!!!")
         }
