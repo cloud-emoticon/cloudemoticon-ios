@@ -1,0 +1,183 @@
+//
+//  XMLReader.swift
+//  CloudEmoticon2iOS
+//
+//Objective-C:
+//  Created by Troy on 9/18/10.
+//  Copyright 2010 Troy Brant. All rights reserved.
+//
+//Swift:
+//  Created by 神楽坂雅詩 on 14/8/6.
+//  Copyright (c) 2014年 Kagurazaka Yashi. All rights reserved.
+//
+
+
+import UIKit
+
+//protocol XMLReaderDelegate:NSObjectProtocol
+//{
+//    func initWithError(error:NSError) -> AnyObject
+//    func objectWithData(data:NSData) -> NSDictionary
+//}
+
+class XMLReader: NSObject,NSXMLParserDelegate { //,NSXMLParserDelegate
+    
+    var dictionaryStack:NSMutableArray! = NSMutableArray.array()
+    var textInProgress:NSMutableString! = NSMutableString()
+    var errorPointer:NSError = NSError()
+    let kXMLReaderTextNodeKey:NSString = "text";
+    
+    //公共方法 Public methods
+    func dictionaryForXMLData(data:NSData, errorPointer error:NSError) -> NSDictionary
+    {
+        errorPointer = error
+        var rootDictionary:NSDictionary = self.objectWithData(data)
+        return rootDictionary
+    }
+    func dictionaryForXMLString(string:NSString, errorPointer error:NSError) -> NSDictionary
+    {
+        var data:NSData = string.dataUsingEncoding(NSUTF8StringEncoding)
+        return self.dictionaryForXMLData(data, errorPointer: error)
+    }
+    init()
+    {
+        
+    }
+    //解析 Parsing
+    init(error:NSError)
+    {
+        errorPointer = error
+    }
+    func objectWithData(data:NSData) -> NSDictionary
+    {
+        //清除旧数据 Clear out any old data
+        dictionaryStack = NSMutableArray.array()
+        textInProgress = NSMutableString()
+        //用新的字典初始化堆栈 Initialize the stack with a fresh dictionary
+        dictionaryStack.addObject(NSMutableDictionary.dictionary())
+        //解析XML Parse the XML
+        var parser:NSXMLParser = NSXMLParser(data: data)
+        parser.delegate = self
+        var success:Bool = parser.parse()
+        //如果成功返回根字典 Return the stack's root dictionary on success
+        if (success)
+        {
+            var resultDict:NSDictionary = dictionaryStack.objectAtIndex(0) as NSDictionary
+            return resultDict
+        }
+        return NSDictionary.dictionary()
+    }
+    //NSXMLParserDelegate 代理
+    func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!)
+    {
+        //从堆栈中请求字典 Get the dictionary for the current level in the stack
+        var parentDict:NSMutableDictionary = dictionaryStack.lastObject as NSMutableDictionary
+        //创建新的子元素字典并初始化 Create the child dictionary for the new element, and initilaize it with the attributes
+        var childDict:NSMutableDictionary = NSMutableDictionary.dictionary()
+        childDict.addEntriesFromDictionary(attributeDict)
+        //只有一个对象的键要创建数组 If there's already an item for this key, it means we need to create an array
+        var existingValue:AnyObject? = parentDict.objectForKey(elementName)
+        if (existingValue)
+        {
+            var array:NSMutableArray = NSMutableArray.array()
+            if existingValue is NSMutableArray
+            {
+                //数组成立则使用它 The array exists, so use it
+                array = existingValue as NSMutableArray
+            } else {
+                //如果它不存在则创建一个数组 Create an array if it doesn't exist
+                array = NSMutableArray.array()
+                array.addObject(existingValue)
+                //覆盖字典中的子成员 Replace the child dictionary with an array of children dictionaries
+                parentDict.setObject(array, forKey: elementName)
+            }
+            //添加新的子字典到数组 Add the new child dictionary to the array
+            array.addObject(childDict)
+        }
+        else
+        {
+            //如果没有值，更新为字典 No existing value, so update the dictionary
+            parentDict.setObject(childDict, forKey: elementName)
+        }
+        //更新栈 Update the stack
+        dictionaryStack.addObject(childDict)
+    }
+    func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!)
+    {
+        //更新上一级文本信息 Update the parent dict with text info
+        var dictInProgress:NSMutableDictionary = dictionaryStack.lastObject as NSMutableDictionary
+        //设置文字 Set the text property
+        if (textInProgress.length > 0)
+        {
+            dictInProgress.setObject(textInProgress, forKey: kXMLReaderTextNodeKey)
+            //重置文本 Reset the text
+            textInProgress = NSMutableString()
+        }
+        //清除当前的字典 Pop the current dict
+        dictionaryStack.removeAllObjects()
+    }
+    func parser(parser: NSXMLParser!, foundCharacters string: String!)
+    {
+        textInProgress.appendString(string)
+    }
+    func parser(parser: NSXMLParser!, parseErrorOccurred parseError: NSError!)
+    {
+        errorPointer = parseError
+    }
+    
+    //old
+    func data2json(data:NSData) {
+        
+    }
+    
+    func old2json(data:NSData) {
+        var allstr:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)
+        /*
+        序列1 ＝＝＝＝＝
+        层级1：寻找<emoji>
+        序列2 ＝＝＝＝＝
+        层级2：--寻找<infoos>
+        层级3：----寻找<info>(可能存在)
+        序列3 ＝＝＝＝＝
+        层级2：--寻找<category>
+        层级3：----寻找<entry>
+        层级4：------寻找<note>(可能存在)
+        层级4：------寻找<string>
+        */
+        
+        //层级1：寻找<emoji>
+        var emoji_start:NSRange = allstr.rangeOfString("<emoji>")
+        var emoji_end:NSRange = allstr.rangeOfString("</emoji>")
+        //startrange = emoji_start.location
+        //length = emoji_end.location - emoji_start.location + 1
+        var emoji:NSString = allstr.substringWithRange(NSMakeRange(emoji_start.length, (emoji_end.location - emoji_start.length)))
+        //层级2：--寻找<infoos>
+        var infoos_start:NSRange = emoji.rangeOfString("<infoos>")
+        var infoos_end:NSRange = emoji.rangeOfString("</infoos>")
+        var infoos:NSString = emoji.substringWithRange(NSMakeRange(infoos_start.length, (infoos_end.location - infoos_start.length)))
+        
+        //层级2：--寻找<category>
+        //        var category_i:NSRange = emoji.rangeOfString("<category>")
+        var tmpStr:NSMutableString = NSMutableString.stringWithString(emoji)
+        var categoryArr:NSMutableArray = NSMutableArray.array()
+        do {
+            var category_start:NSRange = tmpStr.rangeOfString("<category>")
+            var category_end:NSRange = tmpStr.rangeOfString("</category>")
+            var category:NSString = tmpStr.substringWithRange(NSMakeRange(category_start.length, (category_end.location - category_start.length)))
+            categoryArr.addObject(category)
+            println(category_start.location)
+            println(category_end.location + category_end.length - category_start.location)
+            tmpStr.deleteCharactersInRange(NSMakeRange(category_start.location, category_end.location + category_end.length - category_start.location))
+            //            var category_start:NSRange = category_i
+            //            var category_end:NSRange = emoji.rangeOfString("</category>")
+            //            var category:NSString = emoji.substringWithRange(NSMakeRange(category_i.length ,(category_end.location - category_i.length)))
+            //            category_i.location = category.length + category_i.length
+            //
+            //            println(category)
+            //            if (emoji_end.location - category_end.location < 21)
+            //            {
+            //                break
+            //            }
+        } while (true)
+    }
+}

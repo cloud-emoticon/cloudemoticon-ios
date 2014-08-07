@@ -27,7 +27,9 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     func startAsyConnection()
     {
         var urla: NSURL
-        urla = NSURL.URLWithString("http://www.heartunlock.com/ce.xml")
+        urla = NSURL.URLWithString("https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json")
+        //http://www.heartunlock.com/ce.xml
+        //https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json
         var request: NSURLRequest
         request = NSURLRequest(URL:urla)
 //        request.URL = urla
@@ -86,8 +88,18 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
             str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
 //            println(str)
             NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nil)
-            var xml = XMLReader()
-            xml.data2json(self.connData)
+//            var err:NSError = NSError()
+            
+            var scoder:SwitchCoder = SwitchCoder()
+            var coder:SwitchCoder.Coder = scoder.scoder(self.connData)
+            
+//            var xml = XMLReader()
+//            xml.data2xml(self.connData)
+            
+            
+//            var reqdic:NSDictionary = xml.dictionaryForXMLData(self.connData, errorPointer: err)
+//            println(reqdic)
+            
         } else {
             println("NULL!!!")
         }
