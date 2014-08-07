@@ -9,18 +9,38 @@
 import UIKit
 
 class SwitchCoder: NSObject {
+    let className:NSString = "[源数据解析器]"
     
     enum Coder {
         case ERROR
-        case JSON
-        case XML
+        case XMLv1
+        case JSONv1
     }
     
-    func scoder(data:NSData) -> Coder
+    func startScoder(data:NSData)
     {
-        var str:NSString
-        str = NSString(data: data, encoding: NSUTF8StringEncoding)
-        println(str)
+        NSLog("%@将数据转换为文本...",className)
+        var cmode:Coder = scoder(NSString(data: data, encoding: NSUTF8StringEncoding))
+        
+        
+    }
+    
+    func scoder(dataStr:NSString) -> Coder
+    {
+        var isOK:Int = 2
+        let xmlv1Keys:NSArray = ["<emoji>","<infoos>","<category name=","<entry>","<string>"]
+        let jsonv1Keys:NSArray = ["information","categories","entries","emoticon"]
+        
+        NSLog("%@使用XML校验数据格式...",className)
+        for nowkeyobj in xmlv1Keys
+        {
+            var nowkey:NSString = nowkeyobj as NSString
+            if (dataStr.rangeOfString(nowkey).location == NSNotFound)
+            {
+                isOK--
+            }
+        }
+        
         return Coder.ERROR
     }
 }

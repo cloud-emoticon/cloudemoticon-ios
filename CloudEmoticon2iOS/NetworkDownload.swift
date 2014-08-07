@@ -91,7 +91,8 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
 //            var err:NSError = NSError()
             
             var scoder:SwitchCoder = SwitchCoder()
-            var coder:SwitchCoder.Coder = scoder.scoder(self.connData)
+            scoder.startScoder(self.connData)
+//            var coder:SwitchCoder.Coder = scoder.scoder(self.connData)
             
 //            var xml = XMLReader()
 //            xml.data2xml(self.connData)
