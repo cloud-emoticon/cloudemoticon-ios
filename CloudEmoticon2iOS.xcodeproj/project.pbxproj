@@ -44,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5346D9371993392C00CEFA4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
+			remoteInfo = CloudEmoticon2iOS;
+		};
 		53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
@@ -86,6 +93,8 @@
 		5346D92F1993181C00CEFA4B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		5346D9311993186500CEFA4B /* XMLReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReader.swift; sourceTree = "<group>"; };
 		5346D93419931C9200CEFA4B /* SwitchCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCoder.swift; sourceTree = "<group>"; };
+		5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudEmoticon2iOS.entitlements; sourceTree = "<group>"; };
+		5346D9391993393000CEFA4B /* CE2NCWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CE2NCWidget.entitlements; sourceTree = "<group>"; };
 		5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDownload.swift; sourceTree = "<group>"; };
 		5355FCBC1990C21C00D70CA4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +224,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */,
 				5346D93319931C6100CEFA4B /* 数据格式化 */,
 				8B98EE9A196D2DC0000D255E /* images */,
 				53DF28F2196B9CF40058AA42 /* AppDelegate.swift */,
@@ -288,6 +298,7 @@
 		8BF8ACF6199335D7001207FC /* CE2NCWidget */ = {
 			isa = PBXGroup;
 			children = (
+				5346D9391993393000CEFA4B /* CE2NCWidget.entitlements */,
 				8BF8ACF9199335D7001207FC /* TodayViewController.swift */,
 				8BF8ACFB199335D7001207FC /* MainInterface.storyboard */,
 				8BF8ACF7199335D7001207FC /* Supporting Files */,
@@ -338,6 +349,7 @@
 			);
 			dependencies = (
 				53DF2901196B9CF40058AA42 /* PBXTargetDependency */,
+				5346D9381993392C00CEFA4B /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOSTests;
 			productName = CloudEmoticon2iOSTests;
@@ -373,6 +385,11 @@
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					53DF28FE196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
@@ -381,6 +398,11 @@
 					8BF8ACF1199335D7001207FC = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -484,6 +506,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5346D9381993392C00CEFA4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
+			targetProxy = 5346D9371993392C00CEFA4B /* PBXContainerItemProxy */;
+		};
 		53DF2901196B9CF40058AA42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
@@ -598,6 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -620,6 +648,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
@@ -672,6 +701,7 @@
 		8BF8AD02199335D7001207FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CE2NCWidget/CE2NCWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -681,6 +711,7 @@
 				INFOPLIST_FILE = CE2NCWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -688,11 +719,13 @@
 		8BF8AD03199335D7001207FC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CE2NCWidget/CE2NCWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CE2NCWidget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -734,6 +767,7 @@
 				8BF8AD03199335D7001207FC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

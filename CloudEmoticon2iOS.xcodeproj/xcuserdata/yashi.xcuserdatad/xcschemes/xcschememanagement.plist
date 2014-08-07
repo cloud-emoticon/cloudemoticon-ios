@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>CE2NCWidget.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>CloudEmoticon2iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>53DF28FE196B9CF40058AA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BF8ACF1199335D7001207FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
