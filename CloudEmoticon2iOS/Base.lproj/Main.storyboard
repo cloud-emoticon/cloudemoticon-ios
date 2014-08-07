@@ -94,7 +94,7 @@
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="r3T-Er-Ll2">
-                            <rect key="frame" x="121" y="5" width="239" height="34"/>
+                            <rect key="frame" x="200" y="5" width="200" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="收藏"/>
@@ -108,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BF7-Zx-6Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2127" y="440"/>
+            <point key="canvasLocation" x="2108" y="439.5"/>
         </scene>
         <!--MainTB View Controller-->
         <scene sceneID="raJ-ff-Qo2">
@@ -362,8 +362,8 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="云颜文字" id="xMg-Fu-vKE">
-                                        <barButtonItem key="leftBarButtonItem" title="    分类" id="Jzx-AH-N02"/>
-                                        <barButtonItem key="rightBarButtonItem" title="搜索    " id="65m-N5-hX3"/>
+                                        <barButtonItem key="leftBarButtonItem" title="分类" id="Jzx-AH-N02"/>
+                                        <barButtonItem key="rightBarButtonItem" title="搜索" id="65m-N5-hX3"/>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

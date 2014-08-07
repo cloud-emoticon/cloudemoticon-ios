@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>270F49D8-2546-471C-BECA-AC0F8289B12A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>CloudEmoticon2iOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>473F8C66-9840-405C-BAE4-8C4601C4F61A</key>
+		<string>https://github.com/cxchope/CloudEmoticon2iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>CloudEmoticon2iOS.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>473F8C66-9840-405C-BAE4-8C4601C4F61A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/cxchope/CloudEmoticon2iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>473F8C66-9840-405C-BAE4-8C4601C4F61A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>473F8C66-9840-405C-BAE4-8C4601C4F61A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>CloudEmoticon2iOS</string>
+		</dict>
+	</array>
+</dict>
+</plist>

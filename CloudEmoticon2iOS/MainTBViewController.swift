@@ -18,9 +18,24 @@ class MainTBViewController: UITabBarController {
         
         NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
 //        self.view.addSubview(statBar)
 //        self.view.addSubview(load)
         
+    }
+    
+    func alertview(notification:NSNotification)
+    {
+        let altarr:NSArray = notification.object as NSArray
+        //数组：title，message，btn title
+        let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as NSString, style: .Default) {
+            [weak alert] action in
+//            print("OK Pressed")
+            alert!.dismissViewControllerAnimated(true, completion: nil)
+        }
+        alert.addAction(okAction)
+        presentViewController (alert, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
