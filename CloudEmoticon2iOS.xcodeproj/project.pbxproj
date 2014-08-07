@@ -37,6 +37,10 @@
 		8BE31F62196D3FD1006C3B26 /* picture-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F60196D3FD1006C3B26 /* picture-vector@2x.png */; };
 		8BE31F65196D443C006C3B26 /* info-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F63196D443C006C3B26 /* info-vector.png */; };
 		8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F64196D443C006C3B26 /* info-vector@2x.png */; };
+		8BF8ACF5199335D7001207FC /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF8ACF4199335D7001207FC /* NotificationCenter.framework */; };
+		8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8ACF9199335D7001207FC /* TodayViewController.swift */; };
+		8BF8ACFC199335D7001207FC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8ACFB199335D7001207FC /* MainInterface.storyboard */; };
+		8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +51,35 @@
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
 		};
+		8BF8ACFD199335D7001207FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BF8ACF1199335D7001207FC;
+			remoteInfo = CE2NCWidget;
+		};
+		8BF8AD00199335D7001207FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8BF8ACF1199335D7001207FC;
+			remoteInfo = CE2NCWidget;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8BF8AD05199335D7001207FC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5346D92E1993181C00CEFA4B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
@@ -86,6 +118,11 @@
 		8BE31F60196D3FD1006C3B26 /* picture-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-vector@2x.png"; sourceTree = "<group>"; };
 		8BE31F63196D443C006C3B26 /* info-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-vector.png"; sourceTree = "<group>"; };
 		8BE31F64196D443C006C3B26 /* info-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-vector@2x.png"; sourceTree = "<group>"; };
+		8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CE2NCWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		8BF8ACF4199335D7001207FC /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		8BF8ACF8199335D7001207FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8BF8ACF9199335D7001207FC /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		8BF8ACFB199335D7001207FC /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +138,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8BF8ACEF199335D7001207FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF8ACF5199335D7001207FC /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +196,8 @@
 				53995A92199245BE008B12E0 /* libxml2.2.dylib */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
+				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
+				8BF8ACF3199335D7001207FC /* Frameworks */,
 				53DF28EE196B9CF40058AA42 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -160,6 +207,7 @@
 			children = (
 				53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */,
 				53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */,
+				8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -229,6 +277,32 @@
 			path = images;
 			sourceTree = "<group>";
 		};
+		8BF8ACF3199335D7001207FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BF8ACF4199335D7001207FC /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BF8ACF6199335D7001207FC /* CE2NCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				8BF8ACF9199335D7001207FC /* TodayViewController.swift */,
+				8BF8ACFB199335D7001207FC /* MainInterface.storyboard */,
+				8BF8ACF7199335D7001207FC /* Supporting Files */,
+			);
+			path = CE2NCWidget;
+			sourceTree = "<group>";
+		};
+		8BF8ACF7199335D7001207FC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8BF8ACF8199335D7001207FC /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -239,10 +313,13 @@
 				53DF28E9196B9CF40058AA42 /* Sources */,
 				53DF28EA196B9CF40058AA42 /* Frameworks */,
 				53DF28EB196B9CF40058AA42 /* Resources */,
+				8BF8AD05199335D7001207FC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8BF8ACFE199335D7001207FC /* PBXTargetDependency */,
+				8BF8AD01199335D7001207FC /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -267,6 +344,23 @@
 			productReference = 53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		8BF8ACF1199335D7001207FC /* CE2NCWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BF8AD04199335D7001207FC /* Build configuration list for PBXNativeTarget "CE2NCWidget" */;
+			buildPhases = (
+				8BF8ACEE199335D7001207FC /* Sources */,
+				8BF8ACEF199335D7001207FC /* Frameworks */,
+				8BF8ACF0199335D7001207FC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CE2NCWidget;
+			productName = CE2NCWidget;
+			productReference = 8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -283,6 +377,10 @@
 					53DF28FE196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 53DF28EC196B9CF40058AA42;
+					};
+					8BF8ACF1199335D7001207FC = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = ZNVDEVDRX3;
 					};
 				};
 			};
@@ -301,6 +399,7 @@
 			targets = (
 				53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF28FE196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
+				8BF8ACF1199335D7001207FC /* CE2NCWidget */,
 			);
 		};
 /* End PBXProject section */
@@ -338,6 +437,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF8ACF0199335D7001207FC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF8ACFC199335D7001207FC /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -366,6 +473,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8BF8ACEE199335D7001207FC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -373,6 +488,16 @@
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */;
+		};
+		8BF8ACFE199335D7001207FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BF8ACF1199335D7001207FC /* CE2NCWidget */;
+			targetProxy = 8BF8ACFD199335D7001207FC /* PBXContainerItemProxy */;
+		};
+		8BF8AD01199335D7001207FC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8BF8ACF1199335D7001207FC /* CE2NCWidget */;
+			targetProxy = 8BF8AD00199335D7001207FC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -544,6 +669,34 @@
 			};
 			name = Release;
 		};
+		8BF8AD02199335D7001207FC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = CE2NCWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8BF8AD03199335D7001207FC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = CE2NCWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -573,6 +726,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		8BF8AD04199335D7001207FC /* Build configuration list for PBXNativeTarget "CE2NCWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8BF8AD02199335D7001207FC /* Debug */,
+				8BF8AD03199335D7001207FC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};

@@ -35,7 +35,8 @@ class SwitchCoder: NSObject {
         for nowkeyobj in xmlv1Keys
         {
             var nowkey:NSString = nowkeyobj as NSString
-            if (dataStr.rangeOfString(nowkey).location == NSNotFound)
+            var dl:Int = dataStr.rangeOfString(nowkey).location
+            if (dl == 0)
             {
                 isOK--
             }
