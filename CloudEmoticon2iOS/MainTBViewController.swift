@@ -16,7 +16,7 @@ class MainTBViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
+        //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
 //        self.view.addSubview(statBar)

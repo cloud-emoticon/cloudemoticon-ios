@@ -19,24 +19,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
         
-        //TEST
-//        var newdwn = NetworkDownload.alloc()
-//        newdwn.startAsyConnection()
-        //TEST
+        
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf", name: "loadwebdata", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf", name: "loaddataok", object: nil)
+        
+        //TEST
+        p_nowurl = "http://www.heartunlock.com/ce.xml"
+        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
+        //TEST
+        
+        
         return true
     }
     
     func loadwebdataf()
     {
+        statBar.showMsg("正在加载源...")
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        var newdwn = NetworkDownload.alloc()
-        newdwn.startAsyConnection()
-        statBar.showMsg("正在下载源...")
+        let filemgr:FileManager = FileManager()
+        let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        if (!alldata)
+        {
+            var newdwn = NetworkDownload.alloc()
+            newdwn.startAsyConnection()
+        } else {
+            p_emodata = alldata!
+        }
     }
     func loadwebdataokf()
     {

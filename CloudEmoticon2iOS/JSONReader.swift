@@ -57,6 +57,8 @@ class JSONReader: NSObject {
             }
             var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
             //解析完成，输出zfile:NSArray
+            let filemgr:FileManager = FileManager()
+            filemgr.SaveArrayToFile(zfile, smode: FileManager.saveMode.NETWORK)
         }
     }
 }

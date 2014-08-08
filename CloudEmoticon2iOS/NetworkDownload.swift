@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
-    
+    let className:NSString = "[网络操作器]"
     var connData: NSMutableData!
     
 //    init(connData: NSMutableData)
@@ -26,8 +26,10 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //开始异步连接
     func startAsyConnection()
     {
+        NSLog("%@开始准备下载...",className)
         var urla: NSURL
-        urla = NSURL.URLWithString("http://www.heartunlock.com/ce.xml")
+//        p_nowurl = "http://www.heartunlock.com/ce.xml"
+        urla = NSURL.URLWithString(p_nowurl)
         //http://www.heartunlock.com/ce.xml
         //https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json
         //https://dl.dropboxusercontent.com/u/73985358/Emoji/_KT_Current.xml
@@ -50,12 +52,12 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //服务器响应
     func connection(connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!)
     {
-        print("2")
+        NSLog("%@服务器已响应，正在下载...",className)
     }
     //接收数据
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!)
     {
-        print("3")
+        print("...")
         if (self.connData == nil)
         {
             self.connData = NSMutableData.data();
@@ -82,7 +84,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //成功接收
     func connectionDidFinishLoading(connection: NSURLConnection!)
     {
-        print("7")
+        NSLog("%@数据接收完毕。",className)
         if (self.connData != nil)
         {
             var str:NSString
@@ -110,6 +112,6 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //接受失败
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!)
     {
-        print("网络接收失败")
+        NSLog("%@网络接收失败！",className)
     }
 }

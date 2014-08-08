@@ -252,9 +252,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dGM-Ki-AAn" id="bYX-Os-bzH">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="n7H-89-ZXH" kind="show" id="j5w-vk-6iM"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="C6V-3A-kgv">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
@@ -277,9 +274,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="rfx-xH-A5h"/>
-                    <connections>
-                        <segue destination="3dd-TG-vCe" kind="show" id="Flo-4H-spu"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8e-dE-9Fn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -289,7 +283,7 @@
         <scene sceneID="2u7-iq-fwV">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cAI-tk-cpN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="设置" image="picture-vector.png" id="NG5-13-KMa"/>
+                    <tabBarItem key="tabBarItem" title="设置" image="settings-vector.png" id="NG5-13-KMa"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tLs-tS-miD">
@@ -304,29 +298,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lQB-8b-40R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1437" y="-1811"/>
-        </scene>
-        <!--关于-->
-        <scene sceneID="K0G-kk-w7e">
-            <objects>
-                <viewController id="n7H-89-ZXH" sceneMemberID="viewController">
-                    <toolbar key="view" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="FnD-Qd-Twd">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <items/>
-                    </toolbar>
-                    <navigationItem key="navigationItem" title="关于" id="UbB-fn-jN9"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qKr-EJ-DxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2773" y="-2175"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="hnx-Au-LTp">
-            <objects>
-                <viewController id="3dd-TG-vCe" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="DjN-BL-zrJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2773" y="-1617"/>
         </scene>
         <!--输入法-->
         <scene sceneID="b63-Ep-28I">
@@ -450,7 +421,7 @@
     <resources>
         <image name="edit-vector.png" width="30" height="30"/>
         <image name="idea-vector.png" width="30" height="30"/>
-        <image name="picture-vector.png" width="30" height="30"/>
+        <image name="settings-vector.png" width="30" height="30"/>
         <image name="shared-vector.png" width="30" height="30"/>
     </resources>
 </document>
