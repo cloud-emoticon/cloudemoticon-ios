@@ -37,12 +37,10 @@ class JSONReader: NSObject {
             {
 //                println(groupDic.allKeys) //[entries, name]
                 var entries:NSArray = groupDic.objectForKey("entries") as NSArray
-                var name:NSString = groupDic.objectForKey("Huge") as NSString
+                var name:NSString = groupDic.objectForKey("name") as NSString
                 println(entries)
                 println(name)
             }
         }
-        
     }
-    
 }
