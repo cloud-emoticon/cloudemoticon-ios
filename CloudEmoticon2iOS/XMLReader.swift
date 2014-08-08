@@ -17,8 +17,10 @@ class XMLReader: NSObject {
             var altarr:NSArray = ["XML源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
         } else {
-            var y_name:NSString = ""
-            var y_info:NSMutableString = ""
+            let y_ver:NSString = "iOSv2" //ok
+            var y_name:NSString = "" //ok
+            var y_info:NSMutableString = "" //ok
+            var y_emoarr:NSMutableArray = NSMutableArray.array() //ok
             
             var rootDic:NSDictionary = xmld.dictionaryWithData(data)
             //println(rootDic) //[__name, infoos, category]
@@ -41,7 +43,28 @@ class XMLReader: NSObject {
                 y_name = infoos2
             }
             var category:NSArray = rootDic.objectForKey("category") as NSArray
-            println(category) //输出字典数组，每个字典里的关键字 "_name":NSString，entry:NSArray
+//            println(category) //输出字典数组，每个字典里的关键字 "_name":NSString，entry:NSArray
+            for groupData in category
+            {
+                var groupDic:NSDictionary = groupData as NSDictionary
+                var g_groupname:NSString = groupDic.objectForKey("_name") as NSString
+                y_emoarr.addObject(g_groupname)
+                var entry:NSArray = groupDic.objectForKey("entry") as NSArray
+                for nowEmoobj in entry
+                {
+                    var nowEmoobjDic:NSDictionary = nowEmoobj as NSDictionary
+                    var g_emoobj:NSMutableArray = NSMutableArray.array()
+                    var e_emo:NSString = nowEmoobjDic.objectForKey("string") as NSString
+                    g_emoobj.addObject(e_emo)
+                    if (nowEmoobjDic.allKeys.count == 2) {
+                        var e_name:NSString = nowEmoobjDic.objectForKey("note") as NSString
+                        g_emoobj.addObject(e_name)
+                    }
+                    y_emoarr.addObject(g_emoobj)
+                }
+                var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
+                //解析完成，输出zfile:NSArray
+            }
         }
         
     }

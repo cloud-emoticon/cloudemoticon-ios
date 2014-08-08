@@ -17,18 +17,19 @@ class JSONReader: NSObject {
             var altarr:NSArray = ["JSON源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
         } else {
-            let y_ver:NSString = "iOSv2"
-            var y_name:NSString = ""
-            var y_info:NSMutableString = ""
-            var y_emoarr:NSMutableArray = NSMutableArray.array()
+            let y_ver:NSString = "iOSv2" //ok
+            var y_name:NSString = "" //ok
+            var y_info:NSMutableString = "" //ok
+            var y_emoarr:NSMutableArray = NSMutableArray.array() //ok
             
             var information:NSArray = jsondic.objectForKey("information") as NSArray
-            for informationStr in information
+            for informationData in information
             {
+                var informationStr:NSString = informationData as NSString
                 if (y_name.isEqualToString("")) {
-                    y_name = informationStr as NSString
+                    y_name = informationStr
                 } else {
-                    y_info.insertString(informationStr as NSString, atIndex: y_info.length)
+                    y_info.insertString(informationStr, atIndex: y_info.length)
                 }
             }
             var categories:NSArray = jsondic.objectForKey("categories") as NSArray
@@ -37,10 +38,25 @@ class JSONReader: NSObject {
             {
 //                println(groupDic.allKeys) //[entries, name]
                 var entries:NSArray = groupDic.objectForKey("entries") as NSArray
-                var name:NSString = groupDic.objectForKey("name") as NSString
-                println(entries)
-                println(name)
+                var groupname:NSString = groupDic.objectForKey("name") as NSString
+//                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
+                y_emoarr.addObject(groupname)
+                for entriesData in entries
+                {
+                    var entriesDataDic:NSDictionary = entriesData as NSDictionary
+                    var entriesDataDicKeys:NSArray = entriesDataDic.allKeys
+                    var g_emoobj:NSMutableArray = NSMutableArray.array()
+                    var e_emo:NSString = entriesDataDic.objectForKey("emoticon") as NSString
+                    g_emoobj.addObject(e_emo)
+                    if (entriesDataDicKeys.count == 2) {
+                        var e_name:NSString = entriesDataDic.objectForKey("description") as NSString
+                        g_emoobj.addObject(e_name)
+                    }
+                    y_emoarr.addObject(g_emoobj)
+                }
             }
+            var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
+            //解析完成，输出zfile:NSArray
         }
     }
 }

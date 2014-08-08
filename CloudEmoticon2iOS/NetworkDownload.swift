@@ -27,7 +27,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     func startAsyConnection()
     {
         var urla: NSURL
-        urla = NSURL.URLWithString("https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json")
+        urla = NSURL.URLWithString("http://www.heartunlock.com/ce.xml")
         //http://www.heartunlock.com/ce.xml
         //https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json
         //https://dl.dropboxusercontent.com/u/73985358/Emoji/_KT_Current.xml
