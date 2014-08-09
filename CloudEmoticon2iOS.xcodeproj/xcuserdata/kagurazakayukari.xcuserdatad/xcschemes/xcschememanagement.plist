@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>fm.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,16 @@
 			<true/>
 		</dict>
 		<key>53DF28FE196B9CF40058AA42</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BE06D0519967331004C3870</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8BE06D0F19967331004C3870</key>
 		<dict>
 			<key>primary</key>
 			<true/>

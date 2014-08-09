@@ -15,11 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var statBar: CustomStatusBar!
 
 
+    func application(application: UIApplication!, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
+        if url.scheme == "emostart" {
+            return true
+        }
+        return false
+    }
+    
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
-        
-        
+    
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))

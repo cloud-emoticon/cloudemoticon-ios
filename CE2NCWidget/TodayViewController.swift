@@ -2,7 +2,7 @@
 //  TodayViewController.swift
 //  CE2NCWidget
 //
-//  Created by 神楽坂紫 on 14/8/7.
+//  Created by 神楽坂紫喵 on 14/8/7.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import UIKit
 import NotificationCenter
 
 class TodayViewController: UIViewController {
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
@@ -30,14 +30,29 @@ class TodayViewController: UIViewController {
 
         completionHandler(NCUpdateResult.NewData)
     }
-    @IBOutlet weak var RunFamApp: UIButton!
+
+    @IBOutlet weak var AddtoCustom: UIButton!
+    @IBOutlet weak var emoText: UITextField!
     
-    func addTarget(target: AnyObject!, action: Selector, forControlEvents controlEvents: UIControlEvents) {
-    RunFamApp.addTarget(self,action:"tappedButton:",forControlEvents:.TouchUpInside);
-}
-    
-    func tappedButton(sender: UIButton!) {
-        var url:NSURL = NSURL.URLWithString("emostart://")
-        UIApplication.sharedApplication().openURL(url)
+    @IBAction func AddtoCustom(sender: UIButton) {
+        AddtoCustom.addTarget(self,action:"AddtoCustom:",forControlEvents:.TouchUpInside)
     }
+    func AddtoCustom(sender: UIButton!){
+
+
+    }
+    
+
+    @IBOutlet weak var RunFamApp: UIButton!
+
+    
+    @IBAction func RunFamApp(sender: UIButton) {
+        RunFamApp.addTarget(self,action:"emostart:",forControlEvents:.TouchUpInside)
+    }
+    
+    func emostart(sender: UIButton!) {
+        extensionContext.openURL(NSURL(string: "emostart://"), completionHandler: nil)
+    }
+    
+
 }
