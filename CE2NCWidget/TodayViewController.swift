@@ -30,5 +30,14 @@ class TodayViewController: UIViewController {
 
         completionHandler(NCUpdateResult.NewData)
     }
+    @IBOutlet weak var RunFamApp: UIButton!
     
+    func addTarget(target: AnyObject!, action: Selector, forControlEvents controlEvents: UIControlEvents) {
+    RunFamApp.addTarget(self,action:"tappedButton:",forControlEvents:.TouchUpInside);
+}
+    
+    func tappedButton(sender: UIButton!) {
+        var url:NSURL = NSURL.URLWithString("emostart://")
+        UIApplication.sharedApplication().openURL(url)
+    }
 }
