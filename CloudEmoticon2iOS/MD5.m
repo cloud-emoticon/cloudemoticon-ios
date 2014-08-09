@@ -1,8 +1,8 @@
 //
 //  MD5.m
 //
-//  Created by 陈霄驰 on 12-10-5.
-//  Copyright (c) 2012年 陈霄驰. All rights reserved.
+//  Created by 神楽坂雅詩 on 12-10-5.
+//  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
 #import "MD5.h"

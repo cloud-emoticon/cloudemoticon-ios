@@ -39,13 +39,11 @@
 		8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */; };
 		8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F5B196D3EF3006C3B26 /* globe-vector.png */; };
 		8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F5C196D3EF3006C3B26 /* globe-vector@2x.png */; };
-		8BE31F61196D3FD1006C3B26 /* picture-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F5F196D3FD1006C3B26 /* picture-vector.png */; };
-		8BE31F62196D3FD1006C3B26 /* picture-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F60196D3FD1006C3B26 /* picture-vector@2x.png */; };
 		8BE31F65196D443C006C3B26 /* info-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F63196D443C006C3B26 /* info-vector.png */; };
 		8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F64196D443C006C3B26 /* info-vector@2x.png */; };
+		8BEA2DEC199646E90029715E /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8ACFB199335D7001207FC /* MainInterface.storyboard */; };
 		8BF8ACF5199335D7001207FC /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF8ACF4199335D7001207FC /* NotificationCenter.framework */; };
 		8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8ACF9199335D7001207FC /* TodayViewController.swift */; };
-		8BF8ACFC199335D7001207FC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BF8ACFB199335D7001207FC /* MainInterface.storyboard */; };
 		8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */; };
 /* End PBXBuildFile section */
 
@@ -137,8 +135,6 @@
 		8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-vector@2x.png"; sourceTree = "<group>"; };
 		8BE31F5B196D3EF3006C3B26 /* globe-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe-vector.png"; sourceTree = "<group>"; };
 		8BE31F5C196D3EF3006C3B26 /* globe-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe-vector@2x.png"; sourceTree = "<group>"; };
-		8BE31F5F196D3FD1006C3B26 /* picture-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-vector.png"; sourceTree = "<group>"; };
-		8BE31F60196D3FD1006C3B26 /* picture-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "picture-vector@2x.png"; sourceTree = "<group>"; };
 		8BE31F63196D443C006C3B26 /* info-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-vector.png"; sourceTree = "<group>"; };
 		8BE31F64196D443C006C3B26 /* info-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info-vector@2x.png"; sourceTree = "<group>"; };
 		8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CE2NCWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,8 +303,6 @@
 				8B26E81E196E685900355F3B /* idea-vector@2x.png */,
 				8BE31F63196D443C006C3B26 /* info-vector.png */,
 				8BE31F64196D443C006C3B26 /* info-vector@2x.png */,
-				8BE31F5F196D3FD1006C3B26 /* picture-vector.png */,
-				8BE31F60196D3FD1006C3B26 /* picture-vector@2x.png */,
 				8BE31F5B196D3EF3006C3B26 /* globe-vector.png */,
 				8BE31F5C196D3EF3006C3B26 /* globe-vector@2x.png */,
 				8BE31F57196D38A7006C3B26 /* clock-vector.png */,
@@ -469,7 +463,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BE31F62196D3FD1006C3B26 /* picture-vector@2x.png in Resources */,
 				53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */,
 				8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */,
 				8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */,
@@ -485,7 +478,6 @@
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
 				8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */,
-				8BE31F61196D3FD1006C3B26 /* picture-vector.png in Resources */,
 				8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */,
 				8B98EEA1196D3258000D255E /* shared-vector.png in Resources */,
 				8BE31F59196D38A7006C3B26 /* clock-vector.png in Resources */,
@@ -504,7 +496,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BF8ACFC199335D7001207FC /* MainInterface.storyboard in Resources */,
+				8BEA2DEC199646E90029715E /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
