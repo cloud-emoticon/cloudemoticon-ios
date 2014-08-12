@@ -14,6 +14,7 @@ class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
+//        RunFamApp.addTarget(self,action:"emostart:",forControlEvents:.TouchUpInside)
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +48,7 @@ class TodayViewController: UIViewController {
 
     
     @IBAction func RunFamApp(sender: UIButton) {
-        RunFamApp.addTarget(self,action:"emostart:",forControlEvents:.TouchUpInside)
+        emostart(sender)
     }
     
     func emostart(sender: UIButton!) {

@@ -59,6 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
+        var err:NSError = NSError()
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")
+        
+//        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+//        let dicstr:NSString = NSString.localizedStringWithFormat("%@/",documentDirectoryAddress)
+//        containerURL = containerURL.URLByAppendingPathComponent(dicstr)
+//        let value:NSArray = p_emodata
+        
+        //http://www.cocoachina.com/applenews/devnews/2014/0627/8960.html
+        
     }
 
     func applicationWillResignActive(application: UIApplication!) {
@@ -69,6 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(application: UIApplication!) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        //p_emodata
+        
     }
 
     func applicationWillEnterForeground(application: UIApplication!) {
