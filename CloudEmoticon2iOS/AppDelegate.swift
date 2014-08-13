@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
-    
+        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+        NSLog("[核心]云颜文字启动，启动文件夹：%@", documentDirectoryAddress)
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
