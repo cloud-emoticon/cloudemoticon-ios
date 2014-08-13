@@ -539,6 +539,7 @@
         <!--View Controller-->
         <scene sceneID="PTY-Jw-BfC">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhg-Zs-zY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="Hay-Gx-TK6" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gQV-7r-hnk"/>
@@ -551,7 +552,6 @@
                     </view>
                     <toolbarItems/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhg-Zs-zY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
