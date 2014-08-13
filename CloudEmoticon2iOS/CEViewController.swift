@@ -74,17 +74,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 }
 
     @IBAction func sortBtn(sender: UIBarButtonItem) {
-        if (isCanAutoHideSortView()) {
-            var x:CGFloat = 0
-            if (ceTable.frame.origin.x < scrollEndWidth * 0.5) {
-                x = scrollEndWidth
-            }
-            self.view.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
-            UIView.animateWithDuration(0.25, animations: {
-                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
-                })
-        }
+//        if (isCanAutoHideSortView()) {
+//            var x:CGFloat = 0
+//            if (ceTable.frame.origin.x < scrollEndWidth * 0.5) {
+//                x = scrollEndWidth
+//            }
+//            self.view.layer.removeAllAnimations()
+//            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+//            UIView.animateWithDuration(0.25, animations: {
+//                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
+//                })
+//        }
+        println(sortView.frame)
+        println(sortTable.frame)
     }
     
     func openSortData(row:Int)
