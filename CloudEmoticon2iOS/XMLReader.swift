@@ -48,7 +48,9 @@ class XMLReader: NSObject {
             {
                 var groupDic:NSDictionary = groupData as NSDictionary
                 var g_groupname:NSString = groupDic.objectForKey("_name") as NSString
-                y_emoarr.addObject(g_groupname)
+//                y_emoarr.addObject(g_groupname)
+                var y_emoobj:NSMutableArray = NSMutableArray.array()
+                y_emoobj.addObject(g_groupname)
                 var entry:NSArray = groupDic.objectForKey("entry") as NSArray
                 for nowEmoobj in entry
                 {
@@ -60,8 +62,9 @@ class XMLReader: NSObject {
                         var e_name:NSString = nowEmoobjDic.objectForKey("note") as NSString
                         g_emoobj.addObject(e_name)
                     }
-                    y_emoarr.addObject(g_emoobj)
+                    y_emoobj.addObject(g_emoobj)
                 }
+                y_emoarr.addObject(y_emoobj)
             }
             
             var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]

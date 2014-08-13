@@ -40,7 +40,9 @@ class JSONReader: NSObject {
                 var entries:NSArray = groupDic.objectForKey("entries") as NSArray
                 var groupname:NSString = groupDic.objectForKey("name") as NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
-                y_emoarr.addObject(groupname)
+//                y_emoarr.addObject(groupname)
+                var y_emoobj:NSMutableArray = NSMutableArray.array()
+                y_emoobj.addObject(groupname)
                 for entriesData in entries
                 {
                     var entriesDataDic:NSDictionary = entriesData as NSDictionary
@@ -52,8 +54,9 @@ class JSONReader: NSObject {
                         var e_name:NSString = entriesDataDic.objectForKey("description") as NSString
                         g_emoobj.addObject(e_name)
                     }
-                    y_emoarr.addObject(g_emoobj)
+                    y_emoobj.addObject(g_emoobj)
                 }
+                y_emoarr.addObject(y_emoobj)
             }
             var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
             //解析完成，输出zfile:NSArray
