@@ -8,14 +8,22 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate { //, UIGestureRecognizerDelegate
     
 //    let className:NSString = "[CEViewController]"
 
-    @IBOutlet weak var sortView: UIView!
-    @IBOutlet weak var sortTable: UITableView!
+//    @IBOutlet weak var sortView: UIView!
+//    @IBOutlet weak var sortTable: UITableView!
     @IBOutlet weak var sortBtn: UIBarButtonItem!
-    @IBOutlet weak var ceTable: UITableView!
+//    @IBOutlet weak var ceTable: UITableView!
+    
+//    var sortView:UIView = UIView()
+    var sortTable:UITableView = UITableView()
+    var ceTable:UITableView = UITableView()
+    var userview:UIView = UIView()
+    var username:UILabel = UILabel()
+    
+    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")))
     
     var scrollEndWidth:CGFloat = 0
     var oldTapPointX:CGFloat = 0
@@ -24,19 +32,51 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var ceData:NSMutableArray = NSMutableArray.array()
     
     override func viewDidLoad() {
+        
         //Load UI
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
+        
+        sortTable.tag = 100
+        ceTable.tag = 101
+        
+        
+        sortTable.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
         if (isCanAutoHideSortView())
         {
             let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "edge:")
             self.view.addGestureRecognizer(panRecognizer)
             panRecognizer.maximumNumberOfTouches = 1
             panRecognizer.delegate = self
+            self.view.backgroundColor = UIColor.orangeColor()
             scrollEndWidth = self.view.frame.width * 0.6
-            sortView.frame = CGRectMake(0, 0, scrollEndWidth, self.view.frame.height)
-            ceTable.frame = CGRectMake(sortView.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+            sortTable.frame = CGRectMake(0, 0, scrollEndWidth, self.view.frame.size.height)
         }
-        sortTable.tag = 100
-        ceTable.tag = 101
+        
+        ceTable.frame = CGRectMake(sortTable.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+        
+        userview.frame = CGRectMake(0, 0, sortTable.frame.size.width, 120)
+        
+        userimg.frame = CGRectMake(10, 20, 80, 80)
+        userview.addSubview(userimg)
+        username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
+        username.text = "未登录"
+        username.font = UIFont.systemFontOfSize(13)
+        userview.addSubview(username)
+        
+        sortTable.tableHeaderView = userview
+        
+//        self.edgesForExtendedLayout = UIRectEdge.None
+        
+        self.automaticallyAdjustsScrollViewInsets = false
+        if (self.view.frame.width < self.view.frame.height) {
+            sortTable.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+        } else {
+            sortTable.contentInset = UIEdgeInsetsMake(0, 0, 48, 0)
+        }
+        
+        ceTable.contentInset = sortTable.contentInset
+        self.view.addSubview(sortTable)
+        self.view.addSubview(ceTable)
         
 //        else {
 //            sortView.frame = CGRectMake(0, 0, self.view.frame.width * 0.3, self.view.frame.height)
@@ -49,6 +89,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         sortTable.dataSource = self
         ceTable.delegate = self
         ceTable.dataSource = self
+        
         
 //        p_emodata
         if (p_emodata.count >= 3) {
@@ -72,21 +113,20 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             println("NODATA")
         }
 }
+    
 
     @IBAction func sortBtn(sender: UIBarButtonItem) {
-//        if (isCanAutoHideSortView()) {
-//            var x:CGFloat = 0
-//            if (ceTable.frame.origin.x < scrollEndWidth * 0.5) {
-//                x = scrollEndWidth
-//            }
-//            self.view.layer.removeAllAnimations()
-//            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
-//            UIView.animateWithDuration(0.25, animations: {
-//                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
-//                })
-//        }
-        println(sortView.frame)
-        println(sortTable.frame)
+        if (isCanAutoHideSortView()) {
+            var x:CGFloat = 0
+            if (ceTable.frame.origin.x < scrollEndWidth * 0.5) {
+                x = scrollEndWidth
+            }
+            self.view.layer.removeAllAnimations()
+            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
+            UIView.animateWithDuration(0.25, animations: {
+                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
+                })
+        }
     }
     
     func openSortData(row:Int)
@@ -199,10 +239,37 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
+//    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
+//    {
+////        if (tableView.tag == 100) {
+//        println("return userview")
+//            return userview
+////        } else {
+////            return UIView()
+////        }
+//    }
+    
+    func transition(notification:NSNotification)
+    {
+        println("收到屏幕旋转")
+        let newScreenSizeArr:NSArray = notification.object as NSArray
+        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
+        
+        sortTable.frame = CGRectMake(0, 0, scrollEndWidth, newScreenSize.height)
+        ceTable.frame = CGRectMake(sortTable.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
+        
+        if (newScreenSize.width < newScreenSize.height) {
+            sortTable.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+        } else {
+            sortTable.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
+        }
+        ceTable.contentInset = sortTable.contentInset
+    }
+    
 //    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
 //    {
 //        if (tableView.tag == 100) {
-//            
+//             、、
 //        } else {
 //            
 //        }

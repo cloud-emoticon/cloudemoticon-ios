@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--附加工具-->
@@ -93,7 +92,7 @@
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="r3T-Er-Ll2">
-                            <rect key="frame" x="200" y="3.5" width="200" height="37"/>
+                            <rect key="frame" x="200" y="4" width="200" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="收藏"/>
@@ -230,7 +229,7 @@
         <!--云颜文字-->
         <scene sceneID="Cbm-cD-eJE">
             <objects>
-                <viewController id="aTF-AC-6Tj" customClass="CEViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="overFullScreen" id="aTF-AC-6Tj" customClass="CEViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="isL-eo-p4e"/>
                         <viewControllerLayoutGuide type="bottom" id="9VY-5v-9Ot"/>
@@ -238,120 +237,8 @@
                     <view key="view" contentMode="scaleToFill" id="E3g-N5-2N6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RCd-wZ-eUf">
-                                <rect key="frame" x="0.0" y="0.0" width="220" height="547"/>
-                                <subviews>
-                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zsw-Vm-EKq">
-                                        <rect key="frame" x="0.0" y="94" width="220" height="116"/>
-                                        <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="nouserimg.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="HfK-a8-5JO">
-                                                <rect key="frame" x="10" y="8" width="100" height="100"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" secondItem="HfK-a8-5JO" secondAttribute="height" id="Y2K-0M-sMw"/>
-                                                </constraints>
-                                            </imageView>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="未登录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFd-Vs-SMC">
-                                                <rect key="frame" x="118" y="47" width="99" height="21"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="centerY" secondItem="BFd-Vs-SMC" secondAttribute="centerY" id="GAC-4b-Jtg"/>
-                                            <constraint firstItem="BFd-Vs-SMC" firstAttribute="leading" secondItem="HfK-a8-5JO" secondAttribute="trailing" constant="8" id="M4R-Lw-Ya7"/>
-                                        </constraints>
-                                        <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="72" width="220" height="116"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="0.0" y="72" width="220" height="116"/>
-                                        </variation>
-                                    </view>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="D1I-AF-rMR">
-                                        <rect key="frame" x="0.0" y="218" width="220" height="329"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <prototypes>
-                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9NQ-G6-9cL">
-                                                <autoresizingMask key="autoresizingMask"/>
-                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9NQ-G6-9cL" id="yf5-Mc-WUc">
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                </tableViewCellContentView>
-                                            </tableViewCell>
-                                        </prototypes>
-                                        <sections/>
-                                        <attributedString key="userComments">
-                                            <fragment content="ccc">
-                                                <attributes>
-                                                    <font key="NSFont" metaFont="toolTip"/>
-                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <variation key="heightClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="218" width="220" height="130"/>
-                                        </variation>
-                                        <variation key="widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="196" width="220" height="355"/>
-                                        </variation>
-                                        <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="196" width="220" height="153"/>
-                                        </variation>
-                                        <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                            <rect key="frame" x="0.0" y="196" width="220" height="555"/>
-                                        </variation>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="D1I-AF-rMR" firstAttribute="top" secondItem="zsw-Vm-EKq" secondAttribute="bottom" constant="8" id="5ha-1t-wOd"/>
-                                    <constraint firstAttribute="bottom" secondItem="D1I-AF-rMR" secondAttribute="bottom" constant="20" id="AnT-pb-H6P"/>
-                                </constraints>
-                                <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="350"/>
-                                </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="600"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="350"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="220" height="751"/>
-                                </variation>
-                            </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xrc-4d-0Oi">
-                                <rect key="frame" x="221" y="65" width="800" height="456"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <variation key="heightClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="65" width="380" height="284"/>
-                                </variation>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="65" width="400" height="484"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="65" width="400" height="284"/>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="65" width="579" height="284"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="221" y="65" width="399" height="684"/>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="1024"/>
-                                </variation>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="RCd-wZ-eUf" firstAttribute="top" secondItem="E3g-N5-2N6" secondAttribute="top" constant="-22" id="GNu-sT-zrH"/>
-                            <constraint firstItem="9VY-5v-9Ot" firstAttribute="top" secondItem="RCd-wZ-eUf" secondAttribute="bottom" id="onX-fW-gzL"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="云颜文字" id="qdQ-7g-h9v">
                         <barButtonItem key="leftBarButtonItem" title="分类" id="ytb-4S-Ajt">
@@ -365,16 +252,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <keyCommands/>
                     <connections>
-                        <outlet property="ceTable" destination="xrc-4d-0Oi" id="iIh-9O-Oc1"/>
                         <outlet property="sortBtn" destination="ytb-4S-Ajt" id="UrY-vv-QWv"/>
-                        <outlet property="sortTable" destination="D1I-AF-rMR" id="PG5-UB-79K"/>
-                        <outlet property="sortView" destination="RCd-wZ-eUf" id="9g5-8X-apB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CF8-Lv-XQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3102" y="234"/>
+            <point key="canvasLocation" x="3108" y="298"/>
         </scene>
         <!--设置-->
         <scene sceneID="4qq-ce-9kM">
@@ -601,7 +486,6 @@
     <resources>
         <image name="edit-vector.png" width="30" height="30"/>
         <image name="idea-vector.png" width="30" height="30"/>
-        <image name="nouserimg.jpg" width="100" height="100"/>
         <image name="settings-vector.png" width="30" height="30"/>
         <image name="shared-vector.png" width="30" height="30"/>
     </resources>

@@ -43,6 +43,17 @@ class MainTBViewController: UITabBarController {
         // Dispose of any resources that can be recreated.
     }
     
+//    override func shouldAutorotate() -> Bool
+//    {
+//        return true
+//    }
+    
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!)
+    {
+        let newScreenSize:NSArray = [size.width, size.height]
+        NSNotificationCenter.defaultCenter().postNotificationName("transition", object: newScreenSize)
+    }
+    
 
     /*
     // #pragma mark - Navigation

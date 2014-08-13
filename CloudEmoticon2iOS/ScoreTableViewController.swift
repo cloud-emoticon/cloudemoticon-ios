@@ -28,7 +28,7 @@ class ScoreTableViewController: UITableViewController { //, UITableViewDelegate,
             sfile.addObject("iOSv2")
             sfile.addObject(s_emoset0)
         } else {
-        
+            
         }
 
         // Uncomment the following line to preserve selection between presentations
