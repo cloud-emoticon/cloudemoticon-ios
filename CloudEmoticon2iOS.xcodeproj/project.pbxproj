@@ -253,17 +253,11 @@
 			children = (
 				53DF28F2196B9CF40058AA42 /* AppDelegate.swift */,
 				53DF28F4196B9CF40058AA42 /* ViewController.swift */,
+				53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */,
+				53E0E4B01994854C00C9D9FC /* PubVar.swift */,
 				53DF28F6196B9CF40058AA42 /* Main.storyboard */,
 			);
 			name = "核心";
-			sourceTree = "<group>";
-		};
-		53995A521991C43B008B12E0 /* 主窗体 */ = {
-			isa = PBXGroup;
-			children = (
-				53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */,
-			);
-			name = "主窗体";
 			sourceTree = "<group>";
 		};
 		53995A531991C447008B12E0 /* 自定义状态栏 */ = {
@@ -308,9 +302,7 @@
 				53DF28F9196B9CF40058AA42 /* Images.xcassets */,
 				53DF28F0196B9CF40058AA42 /* Supporting Files */,
 				5355FCB91990C1D300D70CA4 /* 数据载入 */,
-				53995A521991C43B008B12E0 /* 主窗体 */,
 				53995A531991C447008B12E0 /* 自定义状态栏 */,
-				53E0E4B71994A95A00C9D9FC /* 全局变量 */,
 				53E0E4B61994A95200C9D9FC /* 设置管理 */,
 			);
 			path = CloudEmoticon2iOS;
@@ -347,14 +339,6 @@
 				53E0E4B41994A8DD00C9D9FC /* Settings.bundle */,
 			);
 			name = "设置管理";
-			sourceTree = "<group>";
-		};
-		53E0E4B71994A95A00C9D9FC /* 全局变量 */ = {
-			isa = PBXGroup;
-			children = (
-				53E0E4B01994854C00C9D9FC /* PubVar.swift */,
-			);
-			name = "全局变量";
 			sourceTree = "<group>";
 		};
 		8B98EE9A196D2DC0000D255E /* images */ = {

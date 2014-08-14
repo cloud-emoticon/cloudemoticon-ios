@@ -10,18 +10,39 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
+    
                             
     var window: UIWindow?
     var statBar: CustomStatusBar!
-
+    var netto:NetDownloadTo = NetDownloadTo.NONE
+    let filemgr:FileManager = FileManager()
 
     func application(application: UIApplication!, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
         if url.scheme == "emostart" {
             return true
         }
+        if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
+            let urlStr:NSString = url.absoluteString
+            //println(urlStr) //cloudemoticon://cxchope.sites.my-card.in/ce.xml
+            let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
+            var schemeStr:NSString = "http:"
+            if (url.scheme == "cloudemoticons") {
+                schemeStr = "https:"
+            }
+            let address:NSString = urlarr.objectAtIndex(1) as NSString
+            let downloadURL:NSString = NSString(format: "%@%@", schemeStr, address)
+            let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
+            
+            let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
+            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+            
+            return true
+        }
+
         return false
     }
-    
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
@@ -31,34 +52,58 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf", name: "loadwebdata", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf", name: "loaddataok", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf:", name: "loadwebdata", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf:", name: "loaddataok", object: nil)
         
         //TEST
-        p_nowurl = "http://www.heartunlock.com/ce.xml"
-        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
+//        let nettoInt:Int = NetDownloadTo.CLOUDEMOTICON.toRaw()
+//        let downloadURL:NSString = "http://cxchope.sites.my-card.in/ce.xml"
+//        let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
+//        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
         //TEST
         
         
         return true
     }
     
-    func loadwebdataf()
+    func loadwebdataf(notification:NSNotification)
     {
         statBar.showMsg("正在加载源...")
+        let urlArr:NSArray = notification.object as NSArray
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        let filemgr:FileManager = FileManager()
+        
+        filemgr.nowURLarr = urlArr
+        
         let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+
         if (!alldata)
         {
             var newdwn = NetworkDownload.alloc()
-            newdwn.startAsyConnection()
+            newdwn.startAsyConnection(urlArr)
         } else {
             p_emodata = alldata!
         }
+//        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: urlArr)
+        statBar.hideMsg()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
     }
-    func loadwebdataokf()
+    func loadwebdataokf(notification:NSNotification)
     {
+        let urlArr:NSArray = notification.object as NSArray
+        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
+        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+        let downloadModeInt:Int = downloadModeIntNB.integerValue
+        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+        let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        if (alldata) {
+            if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
+                p_emodata = alldata!
+            } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+                println(alldata)
+            }
+        }
+        
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         

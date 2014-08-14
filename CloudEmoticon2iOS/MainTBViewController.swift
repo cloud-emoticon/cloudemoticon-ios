@@ -12,6 +12,7 @@ class MainTBViewController: UITabBarController {
     
 //    var load: LoadingView!
     
+    @IBOutlet weak var tab: UITabBar!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,10 +20,25 @@ class MainTBViewController: UITabBarController {
         //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
 //        self.view.addSubview(statBar)
 //        self.view.addSubview(load)
         
     }
+    
+//    func loadwebdataokf2(notification:NSNotification)
+//    {
+//        let urlArr:NSArray = notification.object as NSArray
+//        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
+//        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+//        let downloadModeInt:Int = downloadModeIntNB.integerValue
+//        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+//        if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+//            var svc:ScoreTableViewController = ScoreTableViewController.alloc()
+//            println(self.navigationController)
+//            self.navigationController.pushViewController(svc, animated: true)
+//        }
+//    }
     
     func alertview(notification:NSNotification)
     {

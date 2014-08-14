@@ -15,6 +15,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //    @IBOutlet weak var sortView: UIView!
 //    @IBOutlet weak var sortTable: UITableView!
     @IBOutlet weak var sortBtn: UIBarButtonItem!
+    @IBOutlet weak var scoreBtn: UIBarButtonItem!
+//    @IBOutlet weak var sourceBtn: UIBarButtonItem!
 //    @IBOutlet weak var ceTable: UITableView!
     
 //    var sortView:UIView = UIView()
@@ -35,6 +37,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //Load UI
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
         
         sortTable.tag = 100
         ceTable.tag = 101
@@ -92,11 +95,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         
 //        p_emodata
+        loadData()
+}
+    
+    func loadData()
+    {
         if (p_emodata.count >= 3) {
             var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
-//            let groupnames:NSMutableArray = NSMutableArray.array()
+            //            let groupnames:NSMutableArray = NSMutableArray.array()
             sortData.removeAllObjects()
-//            println(y_emoarr)
+            //            println(y_emoarr)
             for emogroup_o in y_emoarr
             {
                 var emogroup:NSArray = emogroup_o as NSArray
@@ -112,7 +120,25 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         } else {
             println("NODATA")
         }
-}
+    }
+    
+    func loadwebdataokf2(notification:NSNotification)
+    {
+        let urlArr:NSArray = notification.object as NSArray
+        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
+        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+        let downloadModeInt:Int = downloadModeIntNB.integerValue
+        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
+            loadData()
+        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+            if (p_storeIsOpen == false) {
+                let source:ScoreTableViewController = ScoreTableViewController(coder: nil)
+                self.navigationController.pushViewController(source, animated: true)
+                source.addSource(urlStr, isStore: true)
+            }
+        }
+    }
     
 
     @IBAction func sortBtn(sender: UIBarButtonItem) {
@@ -128,6 +154,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 })
         }
     }
+    
+//    @IBAction func sourceBtn(sender: UIBarButtonItem) {
+//        let source:ScoreTableViewController = ScoreTableViewController.alloc()
+//        self.navigationController.pushViewController(source, animated: true)
+//    }
     
     func openSortData(row:Int)
     {

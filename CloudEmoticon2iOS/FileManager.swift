@@ -12,10 +12,11 @@ class FileManager: NSObject {
     
     let fileMgr:NSFileManager = NSFileManager.defaultManager()
     let className:NSString = "[文件管理器]"
+    var nowURLarr:NSArray = []
     
-    enum saveMode
+    enum saveMode:Int
     {
-        case NETWORK
+        case NETWORK = 0
         case HISTORY
         case FAVORITE
         case CUSTOM
@@ -26,13 +27,12 @@ class FileManager: NSObject {
     func SaveArrayToFile(arr:NSArray, smode:saveMode)
     {
         let fileName:NSString = FileName(smode)
-        
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
             fileMgr.removeItemAtPath(fulladd, error: nil)
         }
-        println(DocumentDirectoryAddress())
+
         arr.writeToFile(fulladd, atomically: false)
     }
     
@@ -44,7 +44,7 @@ class FileManager: NSObject {
         if (isDop) {
             NSLog("%@从本地加载源...",className)
             let arr:NSArray = NSArray(contentsOfFile: fulladd)
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
             return arr
         }
         return nil
@@ -55,7 +55,11 @@ class FileManager: NSObject {
         switch (smode) {
         case saveMode.NETWORK:
             let md5coder:MD5 = MD5()
-            let md5vol:NSString = md5coder.md5(p_nowurl)
+            var md5vol:NSString = md5coder.md5(p_nowurl)
+            let nowURLstr:NSString = nowURLarr.objectAtIndex(0) as NSString
+            if (!nowURLstr.isEqualToString("")) {
+                md5vol = md5coder.md5(nowURLstr)
+            }
             return NSString.localizedStringWithFormat("%@.plist",md5vol)
         case saveMode.HISTORY:
             return NSString.localizedStringWithFormat("%@-history.plist",p_nowUserName)
@@ -98,6 +102,7 @@ class FileManager: NSObject {
     func loadSources() -> NSArray
     {
         let fulladd:NSString = FileNameToFullAddress("SourcesList.plist")
+        
         let isDup:Bool = ChkDupFile(fulladd)
         if (!isDup) {
             return NSArray()

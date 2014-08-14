@@ -10,7 +10,7 @@ import UIKit
 
 class JSONReader: NSObject {
     
-    func data2json(data:NSData) {
+    func data2json(data:NSData, URLarr:NSArray) {
         var error:NSError?
         var jsondic:NSDictionary = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.AllowFragments, error: &error) as NSDictionary
         if (error) {
@@ -61,6 +61,8 @@ class JSONReader: NSObject {
             var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
             //解析完成，输出zfile:NSArray
             let filemgr:FileManager = FileManager()
+            filemgr.nowURLarr = URLarr
+            p_tempString = y_name
             filemgr.SaveArrayToFile(zfile, smode: FileManager.saveMode.NETWORK)
         }
     }

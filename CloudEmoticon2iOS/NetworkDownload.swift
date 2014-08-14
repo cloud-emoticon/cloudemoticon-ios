@@ -11,6 +11,7 @@ import Foundation
 class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     let className:NSString = "[网络操作器]"
     var connData: NSMutableData!
+    var nowURLarr:NSArray = []
     
 //    init(connData: NSMutableData)
 //    {
@@ -24,12 +25,13 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
 //    }
     
     //开始异步连接
-    func startAsyConnection()
+    func startAsyConnection(urlarr:NSArray)
     {
         NSLog("%@开始准备下载...",className)
         var urla: NSURL
 //        p_nowurl = "http://www.heartunlock.com/ce.xml"
-        urla = NSURL.URLWithString(p_nowurl)
+        urla = NSURL.URLWithString(urlarr.objectAtIndex(0) as NSString)
+        nowURLarr = urlarr
         //http://www.heartunlock.com/ce.xml
         //https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json
         //https://dl.dropboxusercontent.com/u/73985358/Emoji/_KT_Current.xml
@@ -90,11 +92,11 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
             var str:NSString
             str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
 //            println(str)
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nil)
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
 //            var err:NSError = NSError()
             
             var scoder:SwitchCoder = SwitchCoder()
-            scoder.startScoder(self.connData)
+            scoder.startScoder(self.connData, URLarr: nowURLarr)
 //            var coder:SwitchCoder.Coder = scoder.scoder(self.connData)
             
 //            var xml = XMLReader()

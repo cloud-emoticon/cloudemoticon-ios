@@ -9,8 +9,14 @@
 import UIKit
 
 class XMLReader: NSObject {
-   
-    func data2xml(data:NSData) {
+    enum saveMode:Int
+    {
+        case NETWORK = 0
+        case HISTORY
+        case FAVORITE
+        case CUSTOM
+    }
+    func data2xml(data:NSData, URLarr:NSArray) {
         var xmld:XMLDictionaryParser = XMLDictionaryParser()
         var root:AnyObject? = xmld.dictionaryWithData(data)
         if (!root) {
@@ -70,6 +76,8 @@ class XMLReader: NSObject {
             var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
             //解析完成，输出zfile:NSArray
             let filemgr:FileManager = FileManager()
+            filemgr.nowURLarr = URLarr
+            p_tempString = y_name
             filemgr.SaveArrayToFile(zfile, smode: FileManager.saveMode.NETWORK)
         }
         

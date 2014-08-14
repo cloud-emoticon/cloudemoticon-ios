@@ -21,12 +21,13 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLName</key>
 			<string>com.CloudEmoticon2iOS.open</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>emoticon</string>
-				<string>widget</string>
+				<string>cloudemoticon</string>
 				<string>emostart</string>
 			</array>
 		</dict>

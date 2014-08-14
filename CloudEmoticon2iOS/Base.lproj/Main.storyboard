@@ -120,8 +120,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="SiS-yK-KFA" kind="relationship" relationship="viewControllers" id="Jax-pm-6Hq"/>
+                        <outlet property="tab" destination="9aj-TP-5IY" id="F7c-bF-34F"/>
                         <segue destination="fsF-6U-D9l" kind="relationship" relationship="viewControllers" id="BYj-EZ-WjK"/>
+                        <segue destination="SiS-yK-KFA" kind="relationship" relationship="viewControllers" id="Jax-pm-6Hq"/>
                         <segue destination="sN4-1W-Ual" kind="relationship" relationship="viewControllers" id="nOG-Qy-YTb"/>
                         <segue destination="cAI-tk-cpN" kind="relationship" relationship="viewControllers" id="5mn-Ip-ORu"/>
                     </connections>
@@ -197,36 +198,6 @@
             <point key="canvasLocation" x="3205" y="-754"/>
         </scene>
         <!--云颜文字-->
-        <scene sceneID="oco-GA-cvI">
-            <objects>
-                <tableViewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="HaI-pp-aYy" customClass="CETableViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5RY-nB-dfE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="yxJ-FC-xZF">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yxJ-FC-xZF" id="EON-KA-egh">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="HaI-pp-aYy" id="pBf-Yx-v9S"/>
-                            <outlet property="delegate" destination="HaI-pp-aYy" id="TlZ-i0-Hwy"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="云颜文字" id="CW2-qs-W7O">
-                        <barButtonItem key="leftBarButtonItem" title="fenlei" id="Zdd-fz-3ql"/>
-                        <barButtonItem key="rightBarButtonItem" title="源管理" id="dya-Hr-Ljp"/>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJr-mP-z4I" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2452" y="799"/>
-        </scene>
-        <!--云颜文字-->
         <scene sceneID="Cbm-cD-eJE">
             <objects>
                 <viewController modalPresentationStyle="overFullScreen" id="aTF-AC-6Tj" customClass="CEViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -248,18 +219,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="源管理" id="g6E-2a-mfU">
                             <connections>
-                                <segue destination="Zoo-uT-LpL" kind="show" id="2sF-Ye-fTw"/>
+                                <segue destination="UvY-ML-D5O" kind="show" id="AIm-w2-wuM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <keyCommands/>
                     <connections>
+                        <outlet property="scoreBtn" destination="g6E-2a-mfU" id="Mhp-Ol-wRk"/>
                         <outlet property="sortBtn" destination="ytb-4S-Ajt" id="UrY-vv-QWv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CF8-Lv-XQi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3108" y="298"/>
+            <point key="canvasLocation" x="2452" y="799"/>
         </scene>
         <!--设置-->
         <scene sceneID="4qq-ce-9kM">
@@ -291,9 +263,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Zoo-uT-LpL" kind="show" id="0y2-qJ-Rdm"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="nsl-y0-RRi" style="IBUITableViewCellStyleDefault" id="dGM-Ki-AAn">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
@@ -425,62 +394,11 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="源管理" id="dpP-EZ-6iP">
-                        <barButtonItem key="leftBarButtonItem" title="编辑" id="69W-Z9-j6M"/>
-                        <barButtonItem key="rightBarButtonItem" title="完成" id="P85-3b-Q1W"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="源管理" id="dpP-EZ-6iP"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KW1-w0-rJn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4029" y="1203"/>
-        </scene>
-        <!--Title-->
-        <scene sceneID="Ide-q9-x1j">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="V2Q-6k-2hy" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Title" id="fL1-ET-4A6"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HmL-o9-nsi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3739" y="376"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="lSU-ji-B3S">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Zoo-uT-LpL" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="Z0V-z5-CAy"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJj-e8-cXS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="UvY-ML-D5O" kind="relationship" relationship="rootViewController" id="fD0-Ke-hqa"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="abv-JS-Arq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3205" y="1203"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="PTY-Jw-BfC">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Hay-Gx-TK6" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="gQV-7r-hnk"/>
-                        <viewControllerLayoutGuide type="bottom" id="H52-hv-x23"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="pPQ-2p-vdi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uhg-Zs-zY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="3819" y="1169"/>
         </scene>
     </scenes>
     <resources>
@@ -489,7 +407,4 @@
         <image name="settings-vector.png" width="30" height="30"/>
         <image name="shared-vector.png" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="2sF-Ye-fTw"/>
-    </inferredMetricsTieBreakers>
 </document>

@@ -14,3 +14,12 @@
 var p_nowurl:NSString = ""
 var p_nowUserName:NSString = ""
 var p_emodata:NSArray = NSArray()
+var p_storeIsOpen:Bool = false
+
+enum NetDownloadTo:Int
+{
+    case NONE = 0
+    case CLOUDEMOTICON = 1
+    case SOURCEMANAGER = 2
+}
+var p_tempString:NSString = ""

@@ -10,6 +10,7 @@ import UIKit
 
 class SwitchCoder: NSObject {
     let className:NSString = "[源数据解析器]"
+//    var nowURLstr:NSString = ""
     
     enum Coder {
         case ERROR
@@ -17,18 +18,19 @@ class SwitchCoder: NSObject {
         case JSONv1
     }
     
-    func startScoder(data:NSData)
+    func startScoder(data:NSData, URLarr:NSArray)
     {
         NSLog("%@将数据转换为文本...",className)
+        
         var cmode:Coder = scoder(NSString(data: data, encoding: NSUTF8StringEncoding))
         switch (cmode) {
         case Coder.XMLv1:
             var reader:XMLReader = XMLReader()
-            reader.data2xml(data)
+            reader.data2xml(data, URLarr: URLarr)
             break;
         case Coder.JSONv1:
             var reader:JSONReader = JSONReader()
-            reader.data2json(data)
+            reader.data2json(data, URLarr: URLarr)
             break;
         default:
             var altarr:NSArray = ["源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
