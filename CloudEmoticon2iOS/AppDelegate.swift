@@ -86,8 +86,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: urlArr)
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-
     }
+    
     func loadwebdataokf(notification:NSNotification)
     {
         let urlArr:NSArray = notification.object as NSArray

@@ -44,10 +44,22 @@ class FileManager: NSObject {
         if (isDop) {
             NSLog("%@从本地加载源...",className)
             let arr:NSArray = NSArray(contentsOfFile: fulladd)
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
             return arr
         }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
         return nil
+    }
+    
+    func deleteFile(urlStr:NSString, smode:saveMode)
+    {
+        let md5coder:MD5 = MD5()
+        let fileName:NSString = NSString(format: "%@.plist", md5coder.md5(urlStr))
+        let fulladd:NSString = FileNameToFullAddress(fileName)
+        let isDop:Bool = ChkDupFile(fileName)
+        if (isDop) {
+            fileMgr.removeItemAtPath(fulladd, error: nil)
+        }
     }
     
     func FileName(smode:saveMode) -> NSString
@@ -103,7 +115,7 @@ class FileManager: NSObject {
     {
         let fulladd:NSString = FileNameToFullAddress("SourcesList.plist")
         
-        let isDup:Bool = ChkDupFile(fulladd)
+        let isDup:Bool = ChkDupFile("SourcesList.plist")
         if (!isDup) {
             return NSArray()
         }

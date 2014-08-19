@@ -11,7 +11,7 @@
 //}
 
 
-var p_nowurl:NSString = ""
+var p_nowurl:NSString = "localhost"
 var p_nowUserName:NSString = ""
 var p_emodata:NSArray = NSArray()
 var p_storeIsOpen:Bool = false
@@ -23,3 +23,7 @@ enum NetDownloadTo:Int
     case SOURCEMANAGER = 2
 }
 var p_tempString:NSString = ""
+
+/* 隐藏设置：
+nowurl 当前选中源
+*/

@@ -140,7 +140,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-
     @IBAction func sortBtn(sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
             var x:CGFloat = 0
