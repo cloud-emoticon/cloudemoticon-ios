@@ -92,7 +92,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
             var str:NSString
             str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
 //            println(str)
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
+//            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
 //            var err:NSError = NSError()
             
             var scoder:SwitchCoder = SwitchCoder()

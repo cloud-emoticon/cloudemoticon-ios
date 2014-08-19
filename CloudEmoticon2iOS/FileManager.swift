@@ -36,7 +36,7 @@ class FileManager: NSObject {
         arr.writeToFile(fulladd, atomically: false)
     }
     
-    func LoadArrayFromFile(smode:saveMode) -> NSArray?
+    func LoadArrayFromFile(smode:saveMode) -> NSArray
     {
         let fileName:NSString = FileName(smode)
         let fulladd:NSString = FileNameToFullAddress(fileName)
@@ -47,8 +47,8 @@ class FileManager: NSObject {
             return arr
         }
         
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
-        return nil
+//        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
+        return NSArray()
     }
     
     func deleteFile(urlStr:NSString, smode:saveMode)

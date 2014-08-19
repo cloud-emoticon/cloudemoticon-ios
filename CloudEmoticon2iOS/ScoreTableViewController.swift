@@ -117,7 +117,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let downloadURL:NSString = urlStr
         let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
         if (!isStore) {
-            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+            
         }
         //插入数据
         if (sfile.count > 0) {
@@ -219,6 +220,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             if (buttonIndex == 1) {
                 //添加
                 addSource(alertImport.text, isStore: false)
+                
             } else if (buttonIndex == 2) {
                 //源商店
                 UIApplication.sharedApplication().openURL(NSURL.URLWithString("http://emoticon.moe/?cat=2"))

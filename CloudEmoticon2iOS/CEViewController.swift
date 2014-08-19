@@ -37,7 +37,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //Load UI
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
+//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
         
         sortTable.tag = 100
         ceTable.tag = 101
@@ -122,23 +122,23 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func loadwebdataokf2(notification:NSNotification)
-    {
-        let urlArr:NSArray = notification.object as NSArray
-        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
-        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
-        let downloadModeInt:Int = downloadModeIntNB.integerValue
-        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
-        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
-            loadData()
-        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
-            if (p_storeIsOpen == false) {
-                let source:ScoreTableViewController = ScoreTableViewController(coder: nil)
-                self.navigationController.pushViewController(source, animated: true)
-                source.addSource(urlStr, isStore: true)
-            }
-        }
-    }
+//    func loadwebdataokf2(notification:NSNotification)
+//    {
+//        let urlArr:NSArray = notification.object as NSArray
+//        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
+//        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+//        let downloadModeInt:Int = downloadModeIntNB.integerValue
+//        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+//        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
+//            loadData()
+//        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+//            if (p_storeIsOpen == false) {
+//                let source:ScoreTableViewController = ScoreTableViewController(coder: nil)
+//                self.navigationController.pushViewController(source, animated: true)
+//                source.addSource(urlStr, isStore: true)
+//            }
+//        }
+//    }
     
     @IBAction func sortBtn(sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
