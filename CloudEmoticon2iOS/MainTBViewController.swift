@@ -13,6 +13,7 @@ class MainTBViewController: UITabBarController {
 //    var load: LoadingView!
     
     @IBOutlet weak var tab: UITabBar!
+    let 文件管理器:FileManager = FileManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,17 @@ class MainTBViewController: UITabBarController {
         var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
         self.view.addSubview(提示信息框)
         提示信息框.显示颜文字复制到剪贴板提示(要复制的文本)
+        
+        var 历史记录:NSMutableArray = NSMutableArray.array()
+        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
+        历史记录.addObject(要复制的文本)
+        if (文件中的数据 != nil) {
+            历史记录.addObjectsFromArray(文件中的数据!)
+        }
+        if (历史记录.count > 100) {
+            历史记录.removeLastObject()
+        }
+        文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的文本
     }

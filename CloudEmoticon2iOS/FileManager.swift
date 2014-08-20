@@ -35,7 +35,9 @@ class FileManager: NSObject {
         }
 
         arr.writeToFile(fulladd, atomically: false)
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
+        if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
+        }
     }
     
     func LoadArrayFromFile(smode:saveMode) -> NSArray?
@@ -48,8 +50,10 @@ class FileManager: NSObject {
             let arr:NSArray = NSArray(contentsOfFile: fulladd)
             return arr
         }
+        if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
+        }
         
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
         return nil
     }
     

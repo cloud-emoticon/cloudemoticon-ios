@@ -32,6 +32,7 @@
 		53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B41994A8DD00C9D9FC /* Settings.bundle */; };
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
+		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
@@ -151,6 +152,7 @@
 		53E0E4B41994A8DD00C9D9FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
+		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				53E1EB1B19A4976F002EB6A3 /* 自定表情 */,
 				53906A991999CAD0000020D1 /* 核心 */,
 				53906A981999CA7E000020D1 /* 云颜文字 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
@@ -342,6 +345,14 @@
 				53E0E4B41994A8DD00C9D9FC /* Settings.bundle */,
 			);
 			name = "设置管理";
+			sourceTree = "<group>";
+		};
+		53E1EB1B19A4976F002EB6A3 /* 自定表情 */ = {
+			isa = PBXGroup;
+			children = (
+				53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */,
+			);
+			name = "自定表情";
 			sourceTree = "<group>";
 		};
 		8B98EE9A196D2DC0000D255E /* images */ = {
@@ -578,6 +589,7 @@
 				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
+				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

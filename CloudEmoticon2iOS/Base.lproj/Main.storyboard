@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="2452" y="-754"/>
         </scene>
-        <!--View Controller-->
+        <!--My Emoticon View Controller-->
         <scene sceneID="vAh-C4-rgq">
             <objects>
-                <viewController id="FJr-7m-hgR" sceneMemberID="viewController">
+                <viewController id="FJr-7m-hgR" customClass="MyEmoticonViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TTM-fn-SvY"/>
                         <viewControllerLayoutGuide type="bottom" id="8NJ-vR-i1g"/>
@@ -99,10 +99,22 @@
                                 <segment title="历史记录"/>
                                 <segment title="自定义"/>
                             </segments>
+                            <connections>
+                                <action selector="内容选择菜单:" destination="FJr-7m-hgR" eventType="valueChanged" id="abQ-Sn-JcU"/>
+                            </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="oxs-UZ-dv7"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="oxs-UZ-dv7">
+                            <connections>
+                                <action selector="右上按钮:" destination="FJr-7m-hgR" id="Wy9-pH-csa"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="内容选择菜单" destination="r3T-Er-Ll2" id="5qb-ko-3te"/>
+                        <outlet property="右上按钮" destination="oxs-UZ-dv7" id="iXw-rZ-f50"/>
+                        <outlet property="表格" destination="HhX-Pz-5v7" id="1Ad-p0-O1k"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BF7-Zx-6Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,8 +133,8 @@
                     </tabBar>
                     <connections>
                         <outlet property="tab" destination="9aj-TP-5IY" id="F7c-bF-34F"/>
-                        <segue destination="fsF-6U-D9l" kind="relationship" relationship="viewControllers" id="BYj-EZ-WjK"/>
                         <segue destination="SiS-yK-KFA" kind="relationship" relationship="viewControllers" id="Jax-pm-6Hq"/>
+                        <segue destination="fsF-6U-D9l" kind="relationship" relationship="viewControllers" id="BYj-EZ-WjK"/>
                         <segue destination="sN4-1W-Ual" kind="relationship" relationship="viewControllers" id="nOG-Qy-YTb"/>
                         <segue destination="cAI-tk-cpN" kind="relationship" relationship="viewControllers" id="5mn-Ip-ORu"/>
                     </connections>
