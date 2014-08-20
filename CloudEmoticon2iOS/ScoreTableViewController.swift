@@ -140,7 +140,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         //插入数据
         if (sfile.count > 0) {
             let o_note:NSString = ""
-            println(p_tempString)
 //            let o_name:NSString = p_tempString
 //            p_tempString = ""
             let o_url:NSString = urlStr
@@ -327,10 +326,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 if (sfile.count == 1) {
                     addLocalSource()
                     tableView.reloadData()
-                    fileMgr.deleteFile(o_url, smode: FileManager.saveMode.NETWORK)
-                    //存储列表
-                    fileMgr.saveSources(sfile)
                 }
+                fileMgr.deleteFile(o_url, smode: FileManager.saveMode.NETWORK)
+                fileMgr.saveSources(sfile)
                 
             } else {
                 UIAlertView(title: "无法删除这个源", message: "这个源是系统源或者您不具备删除这个源的权限。", delegate: nil, cancelButtonTitle: "取消").show()

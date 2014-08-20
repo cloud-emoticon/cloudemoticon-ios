@@ -33,10 +33,10 @@ class JSONReader: NSObject {
                 }
             }
             var categories:NSArray = JSON解析后字典.objectForKey("categories") as NSArray
-//            println(categories) //输出字典数组
+
             for groupDic in categories
             {
-//                println(groupDic.allKeys) //[entries, name]
+
                 var entries:NSArray = groupDic.objectForKey("entries") as NSArray
                 var groupname:NSString = groupDic.objectForKey("name") as NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary

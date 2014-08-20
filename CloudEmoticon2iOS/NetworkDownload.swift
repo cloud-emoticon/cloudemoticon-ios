@@ -42,13 +42,13 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //接收数据
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!)
     {
-        print("...")
+        NSLog("%@数据接收中...",类名称)
         if (self.接收到的数据 == nil)
         {
             self.接收到的数据 = NSMutableData.data();
         }
         self.接收到的数据.appendData(data)
-        //println(data)
+
     }
 //    func connection(connection: NSURLConnection!, needNewBodyStream request: NSURLRequest!) -> NSInputStream!
 //    {

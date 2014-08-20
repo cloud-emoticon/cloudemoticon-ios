@@ -13,17 +13,22 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //    let className:NSString = "[CEViewController]"
 
 //    @IBOutlet weak var sortView: UIView!
-//    @IBOutlet weak var sortTable: UITableView!
+//    @IBOutlet weak var 分类表格: UITableView!
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
 //    @IBOutlet weak var sourceBtn: UIBarButtonItem!
-//    @IBOutlet weak var ceTable: UITableView!
+//    @IBOutlet weak var 颜文字表格: UITableView!
     
 //    var sortView:UIView = UIView()
-    var sortTable:UITableView = UITableView()
-    var ceTable:UITableView = UITableView()
+    var 分类表格:UITableView = UITableView()
+    var 颜文字表格:UITableView = UITableView()
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
+    var 下拉刷新提示:UILabel? = nil
+    var 表格初始滚动位置:CGFloat = 0
+    var 下拉刷新动作中:Bool = false
+//    var 分类表格下拉刷新提示:UILabel = UILabel()
+//    var 颜文字表格下拉刷新提示:UILabel = UILabel()
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")))
     
@@ -39,13 +44,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
         
-        sortTable.tag = 100
-        ceTable.tag = 101
+        分类表格.tag = 100
+        颜文字表格.tag = 101
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
         
         
-        sortTable.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
+        分类表格.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
         if (isCanAutoHideSortView())
         {
             let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "edge:")
@@ -54,12 +59,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             panRecognizer.delegate = self
             self.view.backgroundColor = UIColor.orangeColor()
             scrollEndWidth = self.view.frame.width * 0.6
-            sortTable.frame = CGRectMake(0, 0, scrollEndWidth, self.view.frame.size.height)
+            分类表格.frame = CGRectMake(0, 0, scrollEndWidth, self.view.frame.size.height)
         }
         
-        ceTable.frame = CGRectMake(sortTable.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+        颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
         
-        userview.frame = CGRectMake(0, 0, sortTable.frame.size.width, 120)
+        userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         
         userimg.frame = CGRectMake(10, 20, 80, 80)
         userview.addSubview(userimg)
@@ -68,43 +73,50 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         username.font = UIFont.systemFontOfSize(13)
         userview.addSubview(username)
         
-        sortTable.tableHeaderView = userview
+        分类表格.tableHeaderView = userview
         
 //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
         if (self.view.frame.width < self.view.frame.height) {
-            sortTable.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
-            sortTable.contentInset = UIEdgeInsetsMake(0, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsetsMake(0, 0, 48, 0)
         }
         
-        ceTable.contentInset = sortTable.contentInset
-        self.view.addSubview(sortTable)
-        self.view.addSubview(ceTable)
+        颜文字表格.contentInset = 分类表格.contentInset
+        
+        颜文字表格.layer.shadowColor = UIColor.grayColor().CGColor
+        颜文字表格.layer.shadowOffset = CGSizeMake(-5, 0)
+        颜文字表格.layer.shadowOpacity = 1.0
+        颜文字表格.layer.masksToBounds = false
+        
+        self.view.addSubview(分类表格)
+        self.view.addSubview(颜文字表格)
         
 //        else {
 //            sortView.frame = CGRectMake(0, 0, self.view.frame.width * 0.3, self.view.frame.height)
-//            ceTable.frame = CGRectMake(self.view.frame.width * 0.3, 0, self.view.frame.width * 0.7, self.view.frame.height)
+//            颜文字表格.frame = CGRectMake(self.view.frame.width * 0.3, 0, self.view.frame.width * 0.7, self.view.frame.height)
 //        }
-        
+//        颜文字表格下拉刷新提示.backgroundColor = UIColor.blueColor()
+//        颜文字表格下拉刷新提示.frame = CGRectMake(0, -128, 颜文字表格.frame.size.width, 128)
+//        颜文字表格.tableHeaderView = 颜文字表格下拉刷新提示
+//        颜文字表格.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
         
         //Load Data
-        sortTable.delegate = self
-        sortTable.dataSource = self
-        ceTable.delegate = self
-        ceTable.dataSource = self
-        
+        分类表格.delegate = self
+        分类表格.dataSource = self
+        颜文字表格.delegate = self
+        颜文字表格.dataSource = self
         
 //        p_emodata
-        载入数据()
+        载入数据(NetDownloadTo.CLOUDEMOTICON)
 }
-    func 载入数据() {
-        let 下载到位置序号:Int = NetDownloadTo.CLOUDEMOTICON.toRaw()
+    func 载入数据(downloadTo:NetDownloadTo) {
+        let 下载到位置序号:Int = downloadTo.toRaw()
         var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
-        println(当前下载网址)
-        if ((当前下载网址 != nil) && 当前下载网址!.isEqualToString("localhost")) {
+        if ((当前下载网址 != nil) && !当前下载网址!.isEqualToString("localhost")) {
             let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(integer: 下载到位置序号)]
             NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
         } else {
@@ -112,9 +124,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             p_emodata = NSArray(contentsOfFile: 内置源路径)
             载入本地数据()
         }
-//        let downloadURL:NSString = NSUserDefaults
-//        let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
-//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
     }
     
     func 载入本地数据()
@@ -123,16 +132,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
             //            let groupnames:NSMutableArray = NSMutableArray.array()
             sortData.removeAllObjects()
-            //            println(y_emoarr)
             for emogroup_o in y_emoarr
             {
                 var emogroup:NSArray = emogroup_o as NSArray
                 let groupname:NSString = emogroup.objectAtIndex(0) as NSString
                 sortData.addObject(groupname)
             }
-            sortTable.reloadData()
+            分类表格.reloadData()
             if (sortData.count > 0) {
-                sortTable.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.None)
+                分类表格.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.None)
                 openSortData(0)
             }
             
@@ -153,7 +161,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
         let downloadModeInt:Int = downloadModeIntNB.integerValue
         let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
-        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
+        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONONLINE) {
             载入本地数据()
         } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
             if (p_storeIsOpen == false) {
@@ -182,13 +190,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     @IBAction func sortBtn(sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
             var x:CGFloat = 0
-            if (ceTable.frame.origin.x < scrollEndWidth * 0.5) {
+            if (颜文字表格.frame.origin.x < scrollEndWidth * 0.5) {
                 x = scrollEndWidth
             }
             self.view.layer.removeAllAnimations()
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.25, animations: {
-                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
+                self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 })
         }
     }
@@ -205,7 +213,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let emogroup_o:NSArray = y_emoarr.objectAtIndex(row) as NSArray
         ceData.addObjectsFromArray(emogroup_o)
         ceData.removeObjectAtIndex(0)
-        ceTable.reloadData()
+        颜文字表格.reloadData()
     }
     
     func edge(recognizer:UITapGestureRecognizer)
@@ -214,21 +222,21 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var tapPoint:CGPoint = recognizer.locationInView(self.view)
             oldTapPointX = 0
             var x:CGFloat = 0
-            if (ceTable.frame.origin.x > scrollEndWidth * 0.5) {
+            if (颜文字表格.frame.origin.x > scrollEndWidth * 0.5) {
                 x = scrollEndWidth
             }
             touching = false
             self.view.layer.removeAllAnimations()
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
-            UIView.animateWithDuration(0.25, animations: {
-                self.ceTable.frame = CGRectMake(x, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
+            UIView.animateWithDuration(0.15, animations: {
+                self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 })
         } else {
             var tapPoint:CGPoint = recognizer.locationInView(self.view)
             var touchX:CGFloat = tapPoint.x
             if (isCanAutoHideSortView()) {
                 let add:CGFloat = oldTapPointX - touchX
-                var tableX:CGFloat = ceTable.frame.origin.x - add
+                var tableX:CGFloat = 颜文字表格.frame.origin.x - add
                 
                 self.view.layer.removeAllAnimations()
                 if (tableX > scrollEndWidth) {
@@ -238,7 +246,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
                 oldTapPointX = tapPoint.x
                 if (self.touching == true) {
-                    self.ceTable.frame = CGRectMake(tableX, self.ceTable.frame.origin.y, self.ceTable.frame.size.width, self.ceTable.frame.size.height)
+                    self.颜文字表格.frame = CGRectMake(tableX, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 }
             }
         }
@@ -278,7 +286,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = sortTable.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -304,14 +312,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             openSortData(indexPath.row)
             sortBtn(sortBtn)
         } else {
-            
+            let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
+            let emo:NSString = emoobj.objectAtIndex(0) as NSString
+            NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: emo, userInfo: nil)
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
 //    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
 //    {
 ////        if (tableView.tag == 100) {
-//        println("return userview")
+
 //            return userview
 ////        } else {
 ////            return UIView()
@@ -324,21 +335,84 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let newScreenSizeArr:NSArray = notification.object as NSArray
         let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
         
-        sortTable.frame = CGRectMake(0, 0, scrollEndWidth, newScreenSize.height)
-        ceTable.frame = CGRectMake(sortTable.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
+        分类表格.frame = CGRectMake(0, 0, scrollEndWidth, newScreenSize.height)
+        颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
         
         if (newScreenSize.width < newScreenSize.height) {
-            sortTable.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
-            sortTable.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
         }
-        ceTable.contentInset = sortTable.contentInset
+        颜文字表格.contentInset = 分类表格.contentInset
     }
     
     func 源管理页面代理：退出源管理页面时()
     {
-        载入数据()
+        载入数据(NetDownloadTo.CLOUDEMOTICON)
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView!)
+    {
+        let 表格滚动位置:CGPoint = scrollView.contentOffset
+        let 表格竖向滚动:CGFloat = 表格滚动位置.y
+        let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
+        if (下拉刷新提示 != nil) {
+            if (scrollView.frame.size.width == self.view.frame.size.width) {
+                下拉刷新提示!.frame = CGRectMake(颜文字表格.frame.origin.x, 表格初始滚动位置, 颜文字表格.frame.size.width, 表格滚动距离)
+            } else {
+                下拉刷新提示!.frame = CGRectMake(分类表格.frame.origin.x, 表格初始滚动位置, 分类表格.frame.size.width, 表格滚动距离)
+            }
+        }
+        if (下拉刷新动作中) {
+            if (表格竖向滚动 < -128.0) {
+                下拉刷新提示!.text = "ლ(╹◡╹ლ)松开手指刷新"
+            } else {
+                下拉刷新提示!.text = "(´・ω・｀) 下拉刷新"
+            }
+        }
+    }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView!)
+    {
+        下拉刷新动作中 = true
+        if (self.view.frame.size.width < self.view.frame.size.height) {
+            表格初始滚动位置 = 64
+        } else {
+            表格初始滚动位置 = 32
+        }
+//        表格初始滚动位置 = 0 - scrollView.contentOffset.y
+        if (下拉刷新提示 != nil) {
+            下拉刷新提示?.removeFromSuperview()
+            下拉刷新提示 = nil
+        }
+        if (scrollView.frame.size.width == self.view.frame.size.width) {
+            下拉刷新提示 = UILabel(frame: CGRectMake(颜文字表格.frame.origin.x, 表格初始滚动位置, 颜文字表格.frame.size.width, 0))
+        } else {
+            下拉刷新提示 = UILabel(frame: CGRectMake(分类表格.frame.origin.x, 表格初始滚动位置, 分类表格.frame.size.width, 0))
+        }
+//        下拉刷新提示!.backgroundColor = UIColor.blueColor()
+        下拉刷新提示!.layer.masksToBounds = true
+        下拉刷新提示!.textAlignment = NSTextAlignment.Center
+        下拉刷新提示!.textColor = UIColor.grayColor()
+        self.view.addSubview(下拉刷新提示!)
+    }
+    
+    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+        下拉刷新动作中 = false
+        let 表格滚动位置:CGPoint = scrollView.contentOffset
+        let 表格竖向滚动:CGFloat = 表格滚动位置.y
+        if (表格竖向滚动 < -128.0) {
+            下拉刷新提示!.text = "ㄟ(￣▽￣ㄟ)正在刷新..."
+            if (全局_网络繁忙 == false) {
+                载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
+            }
+        }
+    }
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+        下拉刷新提示?.removeFromSuperview()
+        下拉刷新提示 = nil
+    }
+    
     
 //    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
 //    {

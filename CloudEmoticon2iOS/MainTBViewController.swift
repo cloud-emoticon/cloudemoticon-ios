@@ -20,25 +20,23 @@ class MainTBViewController: UITabBarController {
         //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
-//        self.view.addSubview(statBar)
-//        self.view.addSubview(load)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
     }
     
-//    func loadwebdataokf2(notification:NSNotification)
-//    {
-//        let urlArr:NSArray = notification.object as NSArray
-//        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
-//        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
-//        let downloadModeInt:Int = downloadModeIntNB.integerValue
-//        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
-//        if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
-//            var svc:ScoreTableViewController = ScoreTableViewController.alloc()
-//            println(self.navigationController)
-//            self.navigationController.pushViewController(svc, animated: true)
-//        }
-//    }
+    func 复制到剪贴板方法(notification:NSNotification)
+    {
+        let 要复制的文本:NSString = notification.object as NSString
+        var 提示信息框Y坐标:CGFloat = 74
+        if (self.view.frame.size.width > self.view.frame.size.height) {
+            提示信息框Y坐标 = 42
+        }
+        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
+        self.view.addSubview(提示信息框)
+        提示信息框.显示颜文字复制到剪贴板提示(要复制的文本)
+        var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
+        剪贴板.string = 要复制的文本
+    }
+
     
     func alertview(notification:NSNotification)
     {

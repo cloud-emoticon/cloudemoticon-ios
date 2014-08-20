@@ -20,6 +20,7 @@ class FileManager: NSObject {
         case HISTORY
         case FAVORITE
         case CUSTOM
+        case ONLINE
     }
     
    
@@ -58,6 +59,7 @@ class FileManager: NSObject {
         let fileName:NSString = NSString(format: "%@.plist", md5coder.md5(urlStr))
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
+        println(fulladd)
         if (isDop) {
             fileMgr.removeItemAtPath(fulladd, error: nil)
         }
@@ -81,7 +83,7 @@ class FileManager: NSObject {
         case saveMode.CUSTOM:
             return NSString.localizedStringWithFormat("%@-custom.plist",p_nowUserName)
         default:
-            break;
+            return NSString.string()
         }
     }
     

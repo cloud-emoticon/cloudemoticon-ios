@@ -10,9 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    
-    
                             
     var window: UIWindow?
     var statBar: CustomStatusBar!
@@ -25,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
             let urlStr:NSString = url.absoluteString!
-            //println(urlStr) //cloudemoticon://cxchope.sites.my-card.in/ce.xml
             let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
             var schemeStr:NSString = "http:"
             if (url.scheme == "cloudemoticons") {
@@ -66,26 +62,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
+    
     func loadwebdataf(notification:NSNotification)
     {
         statBar.showMsg("正在加载源...")
-        let urlArr:NSArray = notification.object as NSArray
+        let 网址和目标位置序号数组:NSArray = notification.object as NSArray
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        
-        filemgr.nowURLarr = urlArr
-        
-        let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
-
-        if( (alldata != nil))
+        全局_网络繁忙 = true
+        filemgr.nowURLarr = 网址和目标位置序号数组
+        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as NSNumber
+        let 目标位置序号:Int = 目标位置序号对象.integerValue
+        let 当前下载模式:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
+        var alldata:NSArray? = nil
+        if (当前下载模式 != NetDownloadTo.CLOUDEMOTICONONLINE) {
+            alldata = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        }
+        if(alldata == nil)
         {
-            var newdwn = NetworkDownload.alloc()
-            newdwn.开始异步连接(urlArr)
+            var newdwn = NetworkDownload()
+            newdwn.开始异步连接(网址和目标位置序号数组)
         } else {
             p_emodata = alldata!
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: urlArr)
+        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: 网址和目标位置序号数组)
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        全局_网络繁忙 = false
     }
     
     func loadwebdataokf(notification:NSNotification)
@@ -96,16 +99,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let 目标位置序号:Int = 目标位置序号对象.integerValue
         let 当前下载目标位置:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
         let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
-        if ((请求的数据数组) != nil) {
-            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON) {
+        if (请求的数据数组 != nil) {
+            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONONLINE) {
                 p_emodata = 请求的数据数组!
             } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
-//                println(请求的数据数组)
+
             }
         }
         
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        全局_网络繁忙 = false
         
         var err:NSError = NSError()
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
