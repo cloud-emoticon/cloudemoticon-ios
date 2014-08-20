@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ScoreTableViewControllerDelegate { //, UIGestureRecognizerDelegate
     
 //    let className:NSString = "[CEViewController]"
 
@@ -37,10 +37,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //Load UI
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
         
         sortTable.tag = 100
         ceTable.tag = 101
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
         
         
         sortTable.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
@@ -95,10 +97,27 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         
 //        p_emodata
-        loadData()
+        载入数据()
 }
+    func 载入数据() {
+        let 下载到位置序号:Int = NetDownloadTo.CLOUDEMOTICON.toRaw()
+        var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        var 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
+        println(当前下载网址)
+        if (当前下载网址 && 当前下载网址?.isEqualToString("localhost")) {
+            let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(integer: 下载到位置序号)]
+            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
+        } else {
+            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")
+            p_emodata = NSArray(contentsOfFile: 内置源路径)
+            载入本地数据()
+        }
+//        let downloadURL:NSString = NSUserDefaults
+//        let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
+//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+    }
     
-    func loadData()
+    func 载入本地数据()
     {
         if (p_emodata.count >= 3) {
             var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
@@ -122,22 +141,42 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-//    func loadwebdataokf2(notification:NSNotification)
+    func time(notification:NSNotification)
+    {
+        载入本地数据()
+    }
+    
+    func loadwebdataokf2(notification:NSNotification)
+    {
+        let urlArr:NSArray = notification.object as NSArray
+        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
+        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+        let downloadModeInt:Int = downloadModeIntNB.integerValue
+        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
+            载入本地数据()
+        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+            if (p_storeIsOpen == false) {
+                切换到源管理页面(urlStr)
+            }
+        }
+    }
+    
+    @IBAction func scoreBtn(sender: UIBarButtonItem) {
+        切换到源管理页面(nil)
+    }
+    
+    func 切换到源管理页面(要添加的新源网址:NSString?) {
+        let 源管理页面:ScoreTableViewController = ScoreTableViewController(coder: nil)
+        源管理页面.代理 = self
+        self.navigationController.pushViewController(源管理页面, animated: true)
+        if (要添加的新源网址) {
+            源管理页面.addSource(要添加的新源网址!, isStore: true)
+        }
+    }
+//    override func viewDidAppear(animated: Bool)
 //    {
-//        let urlArr:NSArray = notification.object as NSArray
-//        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
-//        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
-//        let downloadModeInt:Int = downloadModeIntNB.integerValue
-//        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
-//        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON) {
-//            loadData()
-//        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
-//            if (p_storeIsOpen == false) {
-//                let source:ScoreTableViewController = ScoreTableViewController(coder: nil)
-//                self.navigationController.pushViewController(source, animated: true)
-//                source.addSource(urlStr, isStore: true)
-//            }
-//        }
+//        载入数据()
 //    }
     
     @IBAction func sortBtn(sender: UIBarButtonItem) {
@@ -294,6 +333,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             sortTable.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
         }
         ceTable.contentInset = sortTable.contentInset
+    }
+    
+    func 源管理页面代理：退出源管理页面时()
+    {
+        载入数据()
     }
     
 //    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat

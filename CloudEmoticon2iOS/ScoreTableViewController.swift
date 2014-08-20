@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol ScoreTableViewControllerDelegate:NSObjectProtocol{
+    func 源管理页面代理：退出源管理页面时()
+}
+
 class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //, UITableViewDelegate, UITableViewDataSource
     
     var fileMgr:FileManager = FileManager()
@@ -15,6 +19,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     var timer:NSTimer?
     var timerI:Int = 0
     var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var waitArr:NSMutableArray = NSMutableArray.array()
+    var 代理:ScoreTableViewControllerDelegate?
     
     // MARK: - 初始化
     init(coder aDecoder: NSCoder!)  {
@@ -46,12 +52,12 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             defaults.setValue(p_nowurl, forKey: "nowurl")
             defaults.synchronize()
         }
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
         
         p_storeIsOpen = true
         sfile.removeAllObjects()
         var loadArrays:NSArray = fileMgr.loadSources()
-        println(loadArrays)
+
         if (loadArrays.count == 0) {
             addLocalSource()
         } else {
@@ -117,8 +123,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let downloadURL:NSString = urlStr
         let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
         if (!isStore) {
-//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
         }
         //插入数据
         if (sfile.count > 0) {
@@ -143,11 +148,13 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             }
             if (!r) {
                 let o_delete:NSArray = ["user"]
-                var s_emosetX:NSMutableArray = [o_note,o_url,o_delete]
-                if (!timer) {
-                    timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "time:", userInfo: s_emosetX, repeats: true)
-                }
-                timer?.fire()
+//                var s_emosetX:NSMutableArray = [o_note,o_url,o_delete]
+//                time(s_emosetX)
+                waitArr = [o_note,o_url,o_delete]
+//                if (!timer) {
+//                    timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "time:", userInfo: s_emosetX, repeats: true)
+//                }
+//                timer?.fire()
             } else {
                 //已在列表中
             }
@@ -155,9 +162,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
     
     //定时执行的代码
-    func time(sender:NSTimer)
+    func time(notification:NSNotification)
     {
-        var s_emosetX:NSMutableArray = sender.userInfo as NSMutableArray
+        var s_emosetX:NSMutableArray = waitArr
+        waitArr = NSMutableArray.array()
+//        var s_emosetX:NSMutableArray = sender.userInfo as NSMutableArray
         if (!p_tempString.isEqualToString("")) {
             println("YES")
             s_emosetX.insertObject(p_tempString, atIndex: 1)
@@ -174,16 +183,16 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 }
             }
             fileMgr.saveSources(sfile)
-            timer?.invalidate()
-            timer = nil
+//            timer?.invalidate()
+//            timer = nil
         } else {
             println("NO")
-            self.timerI++
-            if (timerI >= 3) {
-                timerI = 0
-                timer?.invalidate()
-                timer = nil
-            }
+//            self.timerI++
+//            if (timerI >= 3) {
+//                timerI = 0
+//                timer?.invalidate()
+//                timer = nil
+//            }
         }
     }
     
@@ -202,12 +211,15 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
-            alertImport.text = "http://heartunlock.com/test1.xml"
+            alertImport.text = "http://192.168.1.123/test1.xml"
             alert.show()
         } else {
             p_storeIsOpen = false
             timer?.invalidate()
             timer = nil
+            if (代理) {
+                代理?.源管理页面代理：退出源管理页面时()
+            }
             self.navigationController.popViewControllerAnimated(true)
         }
     }
@@ -220,7 +232,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             if (buttonIndex == 1) {
                 //添加
                 addSource(alertImport.text, isStore: false)
-                
             } else if (buttonIndex == 2) {
                 //源商店
                 UIApplication.sharedApplication().openURL(NSURL.URLWithString("http://emoticon.moe/?cat=2"))
@@ -344,10 +355,19 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     // MARK: - 点击表格中的项目
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
+        
         let itemArr:NSArray = sfile.objectAtIndex(indexPath.row + 1) as NSArray
         let o_url:NSString = itemArr.objectAtIndex(2) as NSString
+        for i in 0...(sfile.count-2)
+        {
+            var index:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+            var nowCell2:UITableViewCell = tableView.cellForRowAtIndexPath(index)
+            nowCell2.accessoryType = UITableViewCellAccessoryType.None
+        }
         var nowCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)
         nowCell.accessoryType = UITableViewCellAccessoryType.Checkmark
+        
+//
         saveNowSource(o_url)
     }
     // MARK: - 保存源列表

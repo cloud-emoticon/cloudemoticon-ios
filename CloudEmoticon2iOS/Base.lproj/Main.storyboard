@@ -219,7 +219,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="源管理" id="g6E-2a-mfU">
                             <connections>
-                                <segue destination="UvY-ML-D5O" kind="show" id="AIm-w2-wuM"/>
+                                <action selector="scoreBtn:" destination="aTF-AC-6Tj" id="Nef-6Y-G7e"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

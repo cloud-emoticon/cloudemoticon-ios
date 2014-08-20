@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
             
             let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
-//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
             
             return true
         }
@@ -52,19 +52,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf:", name: "loadwebdata", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf:", name: "loaddataok", object: nil)
         
-        var sources:NSArray = filemgr.loadSources()
-        if (sources.count == 0) {
-            //载入默认源
-            //[[NSBundle mainBundle] pathForResource:@"1" ofType:@"jpeg"];
-            let defaultSourceAddress:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")
-            p_emodata = NSArray(contentsOfFile: defaultSourceAddress)
-        }
+        //TEST
+//        let nettoInt:Int = NetDownloadTo.CLOUDEMOTICON.toRaw()
+//        let downloadURL:NSString = "http://cxchope.sites.my-card.in/ce.xml"
+//        let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
+//        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+        //TEST
+        
         
         return true
     }
     
+    func loadwebdataf(notification:NSNotification)
+    {
+        statBar.showMsg("正在加载源...")
+        let urlArr:NSArray = notification.object as NSArray
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        
+        filemgr.nowURLarr = urlArr
+        
+        let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+
+        if (!alldata)
+        {
+            var newdwn = NetworkDownload.alloc()
+            newdwn.开始异步连接(urlArr)
+        } else {
+            p_emodata = alldata!
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: urlArr)
+        statBar.hideMsg()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
     
+    func loadwebdataokf(notification:NSNotification)
+    {
+        let 网址和目标位置序号数组:NSArray = notification.object as NSArray
+        let 网址:NSString = 网址和目标位置序号数组.objectAtIndex(0) as NSString
+        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as NSNumber
+        let 目标位置序号:Int = 目标位置序号对象.integerValue
+        let 当前下载目标位置:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
+        let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        if (请求的数据数组) {
+            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON) {
+                p_emodata = 请求的数据数组!
+            } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
+//                println(请求的数据数组)
+            }
+        }
+        
+        statBar.hideMsg()
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        
+        var err:NSError = NSError()
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")
+        
+//        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+//        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+//        let dicstr:NSString = NSString.localizedStringWithFormat("%@/",documentDirectoryAddress)
+//        containerURL = containerURL.URLByAppendingPathComponent(dicstr)
+//        let value:NSArray = p_emodata
+        
+        //http://www.cocoachina.com/applenews/devnews/2014/0627/8960.html
+        
+    }
 
     func applicationWillResignActive(application: UIApplication!) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

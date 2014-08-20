@@ -16,39 +16,39 @@ class XMLReader: NSObject {
         case FAVORITE
         case CUSTOM
     }
-    func data2xml(data:NSData, URLarr:NSArray) {
-        var xmld:XMLDictionaryParser = XMLDictionaryParser()
-        var root:AnyObject? = xmld.dictionaryWithData(data)
+    func 数据转换为XML(data:NSData, URL识别数组:NSArray) {
+        var XML解析类库:XMLDictionaryParser = XMLDictionaryParser()
+        var root:AnyObject? = XML解析类库.dictionaryWithData(data)
         if (!root) {
-            var altarr:NSArray = ["XML源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
-            NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
+            var 提示框内容数组:NSArray = ["XML源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
+            NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
         } else {
-            let y_ver:NSString = "iOSv2" //ok
-            var y_name:NSString = "" //ok
-            var y_info:NSMutableString = "" //ok
-            var y_emoarr:NSMutableArray = NSMutableArray.array() //ok
+            let 文件数据结构版本:NSString = "iOSv2" //ok
+            var 颜文字库名:NSString = "" //ok
+            var 颜文字库介绍:NSMutableString = "" //ok
+            var 颜文字存储数组:NSMutableArray = NSMutableArray.array() //ok
             
-            var rootDic:NSDictionary = xmld.dictionaryWithData(data)
+            var 根字典:NSDictionary = XML解析类库.dictionaryWithData(data)
             //println(rootDic) //[__name, infoos, category]
             //var name:NSString = rootDic.objectForKey("__name") as NSString
-            var infoos:AnyObject = rootDic.objectForKey("infoos")
+            var infoos:AnyObject = 根字典.objectForKey("infoos")
             if infoos is NSDictionary {
-                var infoos2:NSDictionary = infoos as NSDictionary
-                var infoos3:NSArray = infoos2.objectForKey("info") as NSArray
-                for nowstr in infoos3
+                var 子字典:NSDictionary = infoos as NSDictionary
+                var 标头信息:NSArray = 子字典.objectForKey("info") as NSArray
+                for 标头对象 in 标头信息
                 {
-                    if (y_name.isEqualToString("")) {
-                        y_name = nowstr as NSString
+                    if (颜文字库名.isEqualToString("")) {
+                        颜文字库名 = 标头对象 as NSString
                     } else {
-                        y_info.insertString(nowstr as NSString, atIndex: y_info.length)
+                        颜文字库介绍.insertString(标头对象 as NSString, atIndex: 颜文字库介绍.length)
                     }
                 }
             } else if infoos is NSString {
                 //未验证代码
                 var infoos2:NSString = infoos as NSString
-                y_name = infoos2
+                颜文字库名 = infoos2
             }
-            var category:NSArray = rootDic.objectForKey("category") as NSArray
+            var category:NSArray = 根字典.objectForKey("category") as NSArray
 //            println(category) //输出字典数组，每个字典里的关键字 "_name":NSString，entry:NSArray
             for groupData in category
             {
@@ -70,14 +70,14 @@ class XMLReader: NSObject {
                     }
                     y_emoobj.addObject(g_emoobj)
                 }
-                y_emoarr.addObject(y_emoobj)
+                颜文字存储数组.addObject(y_emoobj)
             }
             
-            var zfile:NSArray = [y_ver,y_name,y_info,y_emoarr]
+            var zfile:NSArray = [文件数据结构版本,颜文字库名,颜文字库介绍,颜文字存储数组]
             //解析完成，输出zfile:NSArray
             let filemgr:FileManager = FileManager()
-            filemgr.nowURLarr = URLarr
-            p_tempString = y_name
+            filemgr.nowURLarr = URL识别数组
+            p_tempString = 颜文字库名
             filemgr.SaveArrayToFile(zfile, smode: FileManager.saveMode.NETWORK)
         }
         

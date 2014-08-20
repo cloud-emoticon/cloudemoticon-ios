@@ -9,37 +9,20 @@
 import UIKit
 import Foundation
 class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
-    let className:NSString = "[网络操作器]"
-    var connData: NSMutableData!
-    var nowURLarr:NSArray = []
+    let 类名称:NSString = "[网络操作器]"
+    var 接收到的数据: NSMutableData!
+    var 当前URL识别数组:NSArray = []
     
-//    init(connData: NSMutableData)
-//    {
-//        self.connData = NSMutableData.data();
-//    }
-    
-    
-    //开始连接
-//    func startConnection()
-//    {
-//    }
-    
-    //开始异步连接
-    func startAsyConnection(urlarr:NSArray)
+    func 开始异步连接(URL识别数组:NSArray)
     {
-        NSLog("%@开始准备下载...",className)
-        var urla: NSURL
-//        p_nowurl = "http://www.heartunlock.com/ce.xml"
-        urla = NSURL.URLWithString(urlarr.objectAtIndex(0) as NSString)
-        nowURLarr = urlarr
-        //http://www.heartunlock.com/ce.xml
-        //https://gist.githubusercontent.com/KTachibanaM/f1700cbe613e3a9e7231/raw/f434b82f8185fbcea847eae6a6da689637be2d20/KT.json
-        //https://dl.dropboxusercontent.com/u/73985358/Emoji/_KT_Current.xml
-        var request: NSURLRequest
-        request = NSURLRequest(URL:urla)
+        NSLog("%@开始准备下载...",类名称)
+        var 当前请求网址:NSURL = NSURL.URLWithString(URL识别数组.objectAtIndex(0) as NSString)
+        当前URL识别数组 = URL识别数组
+        var URL请求: NSURLRequest
+        URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
 //        request.URL = urla
 //        request.HTTPMethod = "POST"
-        NSURLConnection.connectionWithRequest(request, delegate: self)
+        NSURLConnection.connectionWithRequest(URL请求, delegate: self)
     }
     
 //    func connection(connection: NSURLConnection!, willSendRequest request: NSURLRequest!, redirectResponse response: NSURLResponse!) -> NSURLRequest!
@@ -54,17 +37,17 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //服务器响应
     func connection(connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!)
     {
-        NSLog("%@服务器已响应，正在下载...",className)
+        NSLog("%@服务器已响应，正在下载...",类名称)
     }
     //接收数据
     func connection(connection: NSURLConnection!, didReceiveData data: NSData!)
     {
         print("...")
-        if (self.connData == nil)
+        if (self.接收到的数据 == nil)
         {
-            self.connData = NSMutableData.data();
+            self.接收到的数据 = NSMutableData.data();
         }
-        self.connData.appendData(data)
+        self.接收到的数据.appendData(data)
         //println(data)
     }
 //    func connection(connection: NSURLConnection!, needNewBodyStream request: NSURLRequest!) -> NSInputStream!
@@ -86,26 +69,12 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //成功接收
     func connectionDidFinishLoading(connection: NSURLConnection!)
     {
-        NSLog("%@数据接收完毕。",className)
-        if (self.connData != nil)
+        NSLog("%@数据接收完毕。",类名称)
+        if (self.接收到的数据 != nil)
         {
-            var str:NSString
-            str = NSString(data: self.connData, encoding: NSUTF8StringEncoding)
-//            println(str)
-//            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
-//            var err:NSError = NSError()
-            
-            var scoder:SwitchCoder = SwitchCoder()
-            scoder.startScoder(self.connData, URLarr: nowURLarr)
-//            var coder:SwitchCoder.Coder = scoder.scoder(self.connData)
-            
-//            var xml = XMLReader()
-//            xml.data2xml(self.connData)
-            
-            
-//            var reqdic:NSDictionary = xml.dictionaryForXMLData(self.connData, errorPointer: err)
-//            println(reqdic)
-            
+            var 数据:NSString = NSString(data: self.接收到的数据, encoding: NSUTF8StringEncoding)
+            var 解析选择:SwitchCoder = SwitchCoder()
+            解析选择.选择解析器(self.接收到的数据, URL识别数组: 当前URL识别数组)
         } else {
             println("NULL!!!")
         }
@@ -114,6 +83,6 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     //接受失败
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!)
     {
-        NSLog("%@网络接收失败！",className)
+        NSLog("%@网络接收失败！",类名称)
     }
 }
