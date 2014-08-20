@@ -104,11 +104,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
         println(当前下载网址)
-        if (当前下载网址 && 当前下载网址?.isEqualToString("localhost")) {
+        if ((当前下载网址 != nil) && 当前下载网址!.isEqualToString("localhost")) {
             let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(integer: 下载到位置序号)]
             NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
         } else {
-            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")
+            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
             p_emodata = NSArray(contentsOfFile: 内置源路径)
             载入本地数据()
         }
@@ -167,10 +167,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func 切换到源管理页面(要添加的新源网址:NSString?) {
-        let 源管理页面:ScoreTableViewController = ScoreTableViewController(coder: nil)
+        let 源管理页面:ScoreTableViewController = ScoreTableViewController(style: UITableViewStyle.Plain)
         源管理页面.代理 = self
         self.navigationController.pushViewController(源管理页面, animated: true)
-        if (要添加的新源网址) {
+        if ((要添加的新源网址) != nil) {
             源管理页面.addSource(要添加的新源网址!, isStore: true)
         }
     }

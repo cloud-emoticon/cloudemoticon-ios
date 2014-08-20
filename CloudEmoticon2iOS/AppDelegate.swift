@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
-            let urlStr:NSString = url.absoluteString
+            let urlStr:NSString = url.absoluteString!
             //println(urlStr) //cloudemoticon://cxchope.sites.my-card.in/ce.xml
             let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
             var schemeStr:NSString = "http:"
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let alldata:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
 
-        if (!alldata)
+        if( (alldata != nil))
         {
             var newdwn = NetworkDownload.alloc()
             newdwn.开始异步连接(urlArr)
@@ -96,7 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let 目标位置序号:Int = 目标位置序号对象.integerValue
         let 当前下载目标位置:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
         let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
-        if (请求的数据数组) {
+        if ((请求的数据数组) != nil) {
             if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON) {
                 p_emodata = 请求的数据数组!
             } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         
         var err:NSError = NSError()
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
         
 //        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 //        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString

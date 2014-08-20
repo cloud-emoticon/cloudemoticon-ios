@@ -19,7 +19,7 @@ class XMLReader: NSObject {
     func 数据转换为XML(data:NSData, URL识别数组:NSArray) {
         var XML解析类库:XMLDictionaryParser = XMLDictionaryParser()
         var root:AnyObject? = XML解析类库.dictionaryWithData(data)
-        if (!root) {
+        if ((root) != nil) {
             var 提示框内容数组:NSArray = ["XML源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
         } else {
@@ -31,7 +31,7 @@ class XMLReader: NSObject {
             var 根字典:NSDictionary = XML解析类库.dictionaryWithData(data)
             //println(rootDic) //[__name, infoos, category]
             //var name:NSString = rootDic.objectForKey("__name") as NSString
-            var infoos:AnyObject = 根字典.objectForKey("infoos")
+            var infoos:AnyObject = 根字典.objectForKey("infoos")!
             if infoos is NSDictionary {
                 var 子字典:NSDictionary = infoos as NSDictionary
                 var 标头信息:NSArray = 子字典.objectForKey("info") as NSArray

@@ -12,7 +12,7 @@ class CustomStatusBar: UIWindow {
     
     var messageLabel: UILabel!
 
-    init(frame: CGRect) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
         self.messageLabel = UILabel()
         self.messageLabel.textAlignment = NSTextAlignment.Right
@@ -22,6 +22,10 @@ class CustomStatusBar: UIWindow {
         self.windowLevel = UIWindowLevelStatusBar + 1.0
         self.backgroundColor = UIColor.clearColor()
         self.addSubview(self.messageLabel)
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func showMsg(message: NSString)

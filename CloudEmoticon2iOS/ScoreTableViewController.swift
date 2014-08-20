@@ -23,19 +23,31 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     var 代理:ScoreTableViewControllerDelegate?
     
     // MARK: - 初始化
-    init(coder aDecoder: NSCoder!)  {
+    required init(coder aDecoder: NSCoder)  {
         super.init(coder: aDecoder)
     }
     
-    // MARK: - 初始化属性
-    func initvar() {
-        if (fileMgr == nil) {
-            fileMgr = FileManager()
-        }
-        if (sfile == nil) {
-            sfile = NSMutableArray.array()
-        }
+    override init(style: UITableViewStyle) {
+        super.init(style: style)
     }
+    
+    override init() {
+        super.init()
+    }
+    
+    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    // MARK: - 初始化属性
+//    func initvar() {
+//        if (fileMgr == nil) {
+//            fileMgr = FileManager()
+//        }
+//        if (sfile == nil) {
+//            sfile = NSMutableArray.array()
+//        }
+//    }
 
     var editBtn: UIBarButtonItem!
     var backBtn: UIBarButtonItem!
@@ -46,8 +58,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
         
         var set_nowurl:NSString? = defaults.stringForKey("nowurl")
-        if (set_nowurl) {
-            p_nowurl = defaults.stringForKey("nowurl")
+        if ((set_nowurl) != nil) {
+            p_nowurl = defaults.stringForKey("nowurl")!
         } else {
             defaults.setValue(p_nowurl, forKey: "nowurl")
             defaults.synchronize()
@@ -217,7 +229,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             p_storeIsOpen = false
             timer?.invalidate()
             timer = nil
-            if (代理) {
+            if (代理 != nil) {
                 代理?.源管理页面代理：退出源管理页面时()
             }
             self.navigationController.popViewControllerAnimated(true)

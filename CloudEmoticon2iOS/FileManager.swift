@@ -87,7 +87,7 @@ class FileManager: NSObject {
     
     func ChkDupFile(filename:NSString) -> Bool
     {
-        let filelist:NSArray = fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress(), error: nil)
+        let filelist:NSArray = fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress(), error: nil)!
         for nowfilenameObj in filelist
         {
             let nowfilename:NSString = nowfilenameObj as NSString
