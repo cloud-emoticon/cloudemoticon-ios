@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ScoreTableViewControllerDelegate { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate { //, UIGestureRecognizerDelegate
     
 //    let className:NSString = "[CEViewController]"
 
@@ -27,14 +27,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 下拉刷新提示:UILabel? = nil
     var 表格初始滚动位置:CGFloat = 0
     var 下拉刷新动作中:Bool = false
+    var 菜单滑动中:Bool = false
 //    var 分类表格下拉刷新提示:UILabel = UILabel()
 //    var 颜文字表格下拉刷新提示:UILabel = UILabel()
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")))
     
-    var scrollEndWidth:CGFloat = 0
-    var oldTapPointX:CGFloat = 0
-    var touching:Bool = false
+    var 滑动最大X坐标:CGFloat = 0
+    var 手势起始位置X坐标:CGFloat = 0
+    var 手势中:Bool = false
     var sortData:NSMutableArray = NSMutableArray.array()
     var ceData:NSMutableArray = NSMutableArray.array()
     
@@ -53,13 +54,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         分类表格.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
         if (isCanAutoHideSortView())
         {
-            let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "edge:")
+            let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "手势执行:")
             self.view.addGestureRecognizer(panRecognizer)
             panRecognizer.maximumNumberOfTouches = 1
             panRecognizer.delegate = self
             self.view.backgroundColor = UIColor.orangeColor()
-            scrollEndWidth = self.view.frame.width * 0.6
-            分类表格.frame = CGRectMake(0, 0, scrollEndWidth, self.view.frame.size.height)
+            滑动最大X坐标 = self.view.frame.width * 0.6
+            分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
         }
         
         颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
@@ -170,6 +171,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
+    
+    
     @IBAction func scoreBtn(sender: UIBarButtonItem) {
         切换到源管理页面(nil)
     }
@@ -190,8 +193,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     @IBAction func sortBtn(sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
             var x:CGFloat = 0
-            if (颜文字表格.frame.origin.x < scrollEndWidth * 0.5) {
-                x = scrollEndWidth
+            if (颜文字表格.frame.origin.x < 滑动最大X坐标 * 0.5) {
+                x = 滑动最大X坐标
             }
             self.view.layer.removeAllAnimations()
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
@@ -216,48 +219,58 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.reloadData()
     }
     
-    func edge(recognizer:UITapGestureRecognizer)
+    func 手势执行(recognizer:UITapGestureRecognizer)
     {
+        var 手指当前坐标:CGPoint = recognizer.locationInView(self.view)
         if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
-            var tapPoint:CGPoint = recognizer.locationInView(self.view)
-            oldTapPointX = 0
+            手势起始位置X坐标 = 0
             var x:CGFloat = 0
-            if (颜文字表格.frame.origin.x > scrollEndWidth * 0.5) {
-                x = scrollEndWidth
+            if (颜文字表格.frame.origin.x > 滑动最大X坐标 * 0.5) {
+                x = 滑动最大X坐标
             }
-            touching = false
+            手势中 = false
             self.view.layer.removeAllAnimations()
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                })
+                }, completion: {
+                    (Bool completion) in
+                    if completion {
+                        self.菜单滑动中 = false
+                    }
+            })
         } else {
-            var tapPoint:CGPoint = recognizer.locationInView(self.view)
-            var touchX:CGFloat = tapPoint.x
+            var 手指当前X坐标:CGFloat = 手指当前坐标.x
             if (isCanAutoHideSortView()) {
-                let add:CGFloat = oldTapPointX - touchX
-                var tableX:CGFloat = 颜文字表格.frame.origin.x - add
+                let 手指移动距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
+                var 表格的新X坐标:CGFloat = 颜文字表格.frame.origin.x - 手指移动距离
                 
                 self.view.layer.removeAllAnimations()
-                if (tableX > scrollEndWidth) {
-                    tableX = scrollEndWidth
-                } else if (tableX < 0) {
-                    tableX = 0
+                if (表格的新X坐标 > 滑动最大X坐标) {
+                    表格的新X坐标 = 滑动最大X坐标
+                } else if (表格的新X坐标 < 0) {
+                    表格的新X坐标 = 0
                 }
-                oldTapPointX = tapPoint.x
-                if (self.touching == true) {
-                    self.颜文字表格.frame = CGRectMake(tableX, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
+                手势起始位置X坐标 = 手指当前坐标.x
+                if (self.手势中 == true) {
+                    self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 }
             }
         }
     }
     func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool
     {
-        touching = true
-        var tapPoint:CGPoint = gestureRecognizer.locationInView(self.view)
-        oldTapPointX = tapPoint.x
+        if (isCanAutoHideSortView()) {
+            if (颜文字表格.frame.origin.x != 0) {
+                菜单滑动中 = true
+            }
+        }
+        手势中 = true
+        var 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self.view)
+        手势起始位置X坐标 = 手指当前坐标.x
         return true
     }
+    
     
     
     func isCanAutoHideSortView() -> Bool
@@ -286,28 +299,33 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+            cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
+            cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
+            cell!.代理 = self
         }
+        cell!.单元格在表格中的位置 = indexPath
         if (tableView.tag == 100) {
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
             cell!.textLabel.text = groupname
         } else {
             let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
             let emo:NSString = emoobj.objectAtIndex(0) as NSString
-            cell!.textLabel.text = emo
+            cell!.主文字.text = emo
             if (emoobj.count > 1) {
                 let name:NSString = emoobj.objectAtIndex(1) as NSString
                 cell!.detailTextLabel.text = name
             }
         }
+        cell!.修正元素位置()
         return cell;
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
+        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
         if (tableView.tag == 100) {
             openSortData(indexPath.row)
             sortBtn(sortBtn)
@@ -318,6 +336,23 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
+//    func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
+//    {
+//        return "喵"
+//    }
+//    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
+//    {
+//        return UITableViewCellEditingStyle.Delete
+//    }
+    func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool
+    {
+        return false
+    }
+    
+//    func tableView(tableView: UITableView!, editActionsForRowAtIndexPath indexPath: NSIndexPath!) -> [AnyObject]!
+//    {
+//        
+//    }
     
 //    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
 //    {
@@ -335,7 +370,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let newScreenSizeArr:NSArray = notification.object as NSArray
         let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
         
-        分类表格.frame = CGRectMake(0, 0, scrollEndWidth, newScreenSize.height)
+        分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
         颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
         
         if (newScreenSize.width < newScreenSize.height) {
@@ -411,6 +446,31 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
         下拉刷新提示?.removeFromSuperview()
         下拉刷新提示 = nil
+    }
+    
+    func 单元格代理：点击滑出的按钮时(点击按钮的ID:Int, 单元格在表格中的位置:NSIndexPath)
+    {
+        let aaa:Int = 单元格在表格中的位置.row
+        if (点击按钮的ID == 1) { //收藏
+            
+        } else { //分享
+            
+        }
+        println(aaa)
+        println(点击按钮的ID)
+    }
+    
+    func 单元格代理：是否可以接收手势() -> Bool
+    {
+        if (isCanAutoHideSortView()) {
+
+            if (颜文字表格.frame.origin.x == 0 && 菜单滑动中 == false) {
+                return true
+            } else {
+                return false
+            }
+        }
+        return true
     }
     
     

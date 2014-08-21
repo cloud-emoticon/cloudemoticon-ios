@@ -389,6 +389,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             defaults.synchronize()
         }
     }
-    
+        override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
+        {
+            return "删掉喵"
+        }
 
 }

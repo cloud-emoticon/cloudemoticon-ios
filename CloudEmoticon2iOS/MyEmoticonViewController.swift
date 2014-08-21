@@ -153,6 +153,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 要复制的文本, userInfo: nil)
         载入历史记录数据()
     }
+    
+    
+    
+//    - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     /*
     // MARK: - Navigation
