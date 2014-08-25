@@ -28,6 +28,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 表格初始滚动位置:CGFloat = 0
     var 下拉刷新动作中:Bool = false
     var 菜单滑动中:Bool = false
+    var 当前滚动中表格标识:Int = 0
 //    var 分类表格下拉刷新提示:UILabel = UILabel()
 //    var 颜文字表格下拉刷新提示:UILabel = UILabel()
     
@@ -82,7 +83,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (self.view.frame.width < self.view.frame.height) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
-            分类表格.contentInset = UIEdgeInsetsMake(0, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
         }
         
         颜文字表格.contentInset = 分类表格.contentInset
@@ -195,6 +196,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var x:CGFloat = 0
             if (颜文字表格.frame.origin.x < 滑动最大X坐标 * 0.5) {
                 x = 滑动最大X坐标
+                NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
             }
             self.view.layer.removeAllAnimations()
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
@@ -223,10 +225,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     {
         var 手指当前坐标:CGPoint = recognizer.locationInView(self.view)
         if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
+            NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
             手势起始位置X坐标 = 0
             var x:CGFloat = 0
             if (颜文字表格.frame.origin.x > 滑动最大X坐标 * 0.5) {
                 x = 滑动最大X坐标
+                if (isCanAutoHideSortView()) {
+                    NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+                }
             }
             手势中 = false
             self.view.layer.removeAllAnimations()
@@ -299,18 +305,24 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
-        if (cell == nil) {
-            cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
-            cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
-            cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
-            cell!.代理 = self
-        }
-        cell!.单元格在表格中的位置 = indexPath
+        
         if (tableView.tag == 100) {
+            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+            if (cell == nil) {
+                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+            }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
             cell!.textLabel.text = groupname
+            return cell;
         } else {
+            var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
+            if (cell == nil) {
+                cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+                cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
+                cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
+                cell!.代理 = self
+            }
+            cell!.单元格在表格中的位置 = indexPath
             let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
             let emo:NSString = emoobj.objectAtIndex(0) as NSString
             cell!.主文字.text = emo
@@ -318,9 +330,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let name:NSString = emoobj.objectAtIndex(1) as NSString
                 cell!.detailTextLabel.text = name
             }
+            cell!.修正元素位置(self.颜文字表格.frame.size.width)
+            return cell;
         }
-        cell!.修正元素位置()
-        return cell;
     }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
@@ -330,9 +342,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             openSortData(indexPath.row)
             sortBtn(sortBtn)
         } else {
-            let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
-            let emo:NSString = emoobj.objectAtIndex(0) as NSString
-            NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: emo, userInfo: nil)
+            let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
+//            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
+//            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
+            NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
         }
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
@@ -367,11 +380,18 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func transition(notification:NSNotification)
     {
         println("收到屏幕旋转")
+        
         let newScreenSizeArr:NSArray = notification.object as NSArray
         let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
         
         分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
-        颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
+        
+        
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
+            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
+        } else {
+            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
+        }
         
         if (newScreenSize.width < newScreenSize.height) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
@@ -379,6 +399,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
         }
         颜文字表格.contentInset = 分类表格.contentInset
+        println(颜文字表格.frame.size.width)
+        let 新的宽度:CGFloat = 颜文字表格.frame.size.width
+        NSNotificationCenter.defaultCenter().postNotificationName("修正单元格尺寸通知", object: 新的宽度)
     }
     
     func 源管理页面代理：退出源管理页面时()
@@ -392,19 +415,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
         if (下拉刷新提示 != nil) {
-            if (scrollView.frame.size.width == self.view.frame.size.width) {
-                下拉刷新提示!.frame = CGRectMake(颜文字表格.frame.origin.x, 表格初始滚动位置, 颜文字表格.frame.size.width, 表格滚动距离)
-            } else {
-                下拉刷新提示!.frame = CGRectMake(分类表格.frame.origin.x, 表格初始滚动位置, 分类表格.frame.size.width, 表格滚动距离)
+            let 当前表格:UITableView = scrollView as UITableView
+            下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
+            if (下拉刷新动作中) {
+                if (表格竖向滚动 < -100.0) {
+                    下拉刷新提示!.text = "ლ(╹◡╹ლ)松开手指刷新"
+                } else {
+                    下拉刷新提示!.text = "(´・ω・｀) 下拉刷新"
+                }
             }
         }
-        if (下拉刷新动作中) {
-            if (表格竖向滚动 < -128.0) {
-                下拉刷新提示!.text = "ლ(╹◡╹ლ)松开手指刷新"
-            } else {
-                下拉刷新提示!.text = "(´・ω・｀) 下拉刷新"
-            }
-        }
+        
     }
     
     func scrollViewWillBeginDragging(scrollView: UIScrollView!)
@@ -436,12 +457,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         下拉刷新动作中 = false
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
-        if (表格竖向滚动 < -128.0) {
+        if (表格竖向滚动 < -100.0) {
             下拉刷新提示!.text = "ㄟ(￣▽￣ㄟ)正在刷新..."
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
             }
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
     }
     func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
         下拉刷新提示?.removeFromSuperview()
@@ -450,14 +472,47 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 单元格代理：点击滑出的按钮时(点击按钮的ID:Int, 单元格在表格中的位置:NSIndexPath)
     {
-        let aaa:Int = 单元格在表格中的位置.row
+        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+        let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as CETableViewCell
+        let 颜文字:NSString = 当前单元格.主文字.text
+        let 颜文字名称:NSString? = 当前单元格.副文字.text
         if (点击按钮的ID == 1) { //收藏
-            
-        } else { //分享
-            
+            let 文件管理器:FileManager = FileManager()
+            var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+            var 收藏中已经存在这个颜文字:Bool = false
+            if (文件中的数据 != nil) {
+                for 文件中的颜文字数组对象 in 文件中的数据! {
+                    let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as NSArray
+                    let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as NSString
+                    if (颜文字.isEqualToString(文件中的颜文字)) {
+                        收藏中已经存在这个颜文字 = true
+                    }
+                }
+            }
+            var 提示文字:NSString?
+            if (收藏中已经存在这个颜文字 == false) {
+                var 颜文字数组:NSMutableArray = [颜文字]
+                if (颜文字名称 != nil) {
+                    颜文字数组.addObject(颜文字名称!)
+                }
+                var 收藏:NSMutableArray = NSMutableArray.array()
+                收藏.addObject(颜文字数组)
+                if (文件中的数据 != nil) {
+                    收藏.addObjectsFromArray(文件中的数据!)
+                }
+                //            if (收藏.count > 100) {
+                //                收藏.removeLastObject()
+                //            }
+                文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.FAVORITE)
+                提示文字 = NSString(format: "“ %@ ” 添加到收藏夹成功", 颜文字)
+            } else {
+                提示文字 = NSString(format: "你已经收藏了 “ %@ ”", 颜文字)
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)
+        } else { //分享 颜文字
+            let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: nil)
+            self.presentViewController(分享视图, animated: true, completion: nil)
         }
-        println(aaa)
-        println(点击按钮的ID)
     }
     
     func 单元格代理：是否可以接收手势() -> Bool
@@ -472,8 +527,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         return true
     }
-    
-    
+
 //    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
 //    {
 //        if (tableView.tag == 100) {

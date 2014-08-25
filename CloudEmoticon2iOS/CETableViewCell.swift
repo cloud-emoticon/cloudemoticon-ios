@@ -27,9 +27,12 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     var 代理:CETableViewCellDelegate?
     var 覆盖视图:UIView = UIView()
     var 主文字:UILabel = UILabel()
+    var 副文字:UILabel = UILabel()
     var 手势中:Bool = false
+    var 允许手势:Bool = true
     var 手势:UIPanGestureRecognizer = UIPanGestureRecognizer()
     var 手势起始位置X坐标:CGFloat = 0.0
+    var 手势起始位置Y坐标:CGFloat = 0.0
 //    var 右侧距离:CGFloat = 0.0
 
     override func awakeFromNib() {
@@ -63,15 +66,30 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             覆盖视图.backgroundColor = UIColor.whiteColor()
             覆盖视图.addGestureRecognizer(手势)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "取消单元格左滑方法:", name: "取消单元格左滑通知", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "允许单元格接收手势方法:", name: "允许单元格接收手势通知", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: "修正单元格尺寸方法:", name: "修正单元格尺寸通知", object: nil)
+//            self.selectedBackgroundView = UIView(frame: CGRectMake(0, 0, self.frame.size.width, self.frame.size.height))
+//            self.selectedBackgroundView.backgroundColor = UIColor.lightGrayColor()
+//            self.selectedBackgroundView.sendSubviewToBack(滑出按钮B)
+            self.layer.masksToBounds = true
         }
     }
     
-    func 取消单元格左滑方法(notification:NSNotification)
+    func 修正单元格尺寸方法(notification:NSNotification)
     {
+        let 新的宽度:CGFloat = notification.object as CGFloat
+//        let 新的尺寸数组:NSArray = notification.object as NSArray
+//        let 新的尺寸:CGSize = CGSizeMake(新的尺寸数组.objectAtIndex(0) as CGFloat, 新的尺寸数组.objectAtIndex(1) as CGFloat)
+        修正元素位置(新的宽度)
+    }
+    
+    func 取消单元格左滑方法(notification:NSNotification) {
         let 通知传值对象:AnyObject? = notification.object
         if (通知传值对象 == nil) {
             UIView.animateWithDuration(0.15, animations: {
                 self.覆盖视图.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+                self.滑出按钮A.frame = CGRectMake(self.frame.size.width, 0, self.按钮宽度, self.frame.size.height)
+                self.滑出按钮B.frame = CGRectMake(self.frame.size.width + self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
             })
         } else {
             let 当前单元格在表格中的位置:NSIndexPath = 通知传值对象 as NSIndexPath
@@ -80,9 +98,16 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             if (当前单元格在表格中的行 != 单元格在表格中的行) {
                 UIView.animateWithDuration(0.15, animations: {
                     self.覆盖视图.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+                    self.滑出按钮A.frame = CGRectMake(self.frame.size.width, 0, self.按钮宽度, self.frame.size.height)
+                    self.滑出按钮B.frame = CGRectMake(self.frame.size.width + self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
                 })
             }
         }
+    }
+    
+    func 允许单元格接收手势方法(notification:NSNotification)
+    {
+        允许手势 = true
     }
     
     func 点击滑出按钮(sender:UIButton)
@@ -97,7 +122,9 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         let 滑动最大X坐标:CGFloat = 0 - (按钮宽度 * 2)
         if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
             手势起始位置X坐标 = 0
+            手势起始位置Y坐标 = 0
             var x:CGFloat = 0
+            
             if (覆盖视图.frame.origin.x < 滑动最大X坐标 * 0.5) {
                 x = 滑动最大X坐标
             }
@@ -106,18 +133,26 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.覆盖视图.frame = CGRectMake(x, 0, self.frame.size.width, self.frame.size.height)
+                self.滑出按钮A.frame = CGRectMake(self.frame.size.width - self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
+                self.滑出按钮B.frame = CGRectMake(self.frame.size.width - self.按钮宽度 * 2, 0, self.按钮宽度, self.frame.size.height)
                 }, completion: {
                     (Bool completion) in
                     if completion {
 //                        self.菜单滑动中 = false
-                    }
+                }
             })
+            
         } else if (代理 != nil) {
-            if (代理!.单元格代理：是否可以接收手势()) {
-                var 手指当前X坐标:CGFloat = 手指当前坐标.x
+            var 手指当前X坐标:CGFloat = 手指当前坐标.x
+            var 手指当前Y坐标:CGFloat = 手指当前坐标.y
+            let 手指移动X距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
+            let 手指移动Y距离:CGFloat = 手势起始位置Y坐标 - 手指当前Y坐标
+            if (abs(手指移动Y距离) > abs(手指移动X距离) && (abs(手指移动Y距离) > 10 || abs(手指移动X距离) > 10)) {
+                允许手势 = false
+            } else if (代理!.单元格代理：是否可以接收手势()) {
+                
                 //if (isCanAutoHideSortView())
-                let 手指移动距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
-                var 覆盖视图的新X坐标:CGFloat = 覆盖视图.frame.origin.x - 手指移动距离
+                var 覆盖视图的新X坐标:CGFloat = 覆盖视图.frame.origin.x - 手指移动X距离
                 self.layer.removeAllAnimations()
                 if (覆盖视图的新X坐标 < 滑动最大X坐标) {
                     覆盖视图的新X坐标 = 滑动最大X坐标
@@ -127,6 +162,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
                     self.覆盖视图.frame = CGRectMake(覆盖视图的新X坐标, 0, self.frame.size.width, self.frame.size.height)
+                    self.滑出按钮A.frame = CGRectMake(覆盖视图.frame.origin.x + 覆盖视图.frame.size.width + self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
+                    self.滑出按钮B.frame = CGRectMake(覆盖视图.frame.origin.x + 覆盖视图.frame.size.width, 0, self.按钮宽度, self.frame.size.height)
                 }
             }
         }
@@ -141,22 +178,28 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         手势中 = true
         var 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self)
         手势起始位置X坐标 = 手指当前坐标.x
-        return true
+        return 允许手势
     }
     
     override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool
     {
-        if (代理 != nil) {
-            return !代理!.单元格代理：是否可以接收手势()
-        }
-        return false
+//        if (代理 != nil) {
+//            return !代理!.单元格代理：是否可以接收手势()
+//        }
+        return 允许手势
     }
     
-    func 修正元素位置()
+    func 修正元素位置(新的宽度:CGFloat)
     {
+//        var x:CGFloat = 0
+//        let 滑动最大X坐标:CGFloat = 0 - (按钮宽度 * 2)
+//        if (覆盖视图.frame.origin.x < 滑动最大X坐标 * 0.5) {
+//            x = 滑动最大X坐标
+//        }
+        self.frame = CGRectMake(0, 0, 新的宽度, self.frame.size.height)
         覆盖视图.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
-        滑出按钮A.frame = CGRectMake(self.frame.size.width - 按钮宽度, 0, 按钮宽度, self.frame.size.height)
-        滑出按钮B.frame = CGRectMake(self.frame.size.width - 按钮宽度 * 2, 0, 按钮宽度, self.frame.size.height)
+        滑出按钮A.frame = CGRectMake(self.frame.size.width, 0, 按钮宽度, self.frame.size.height)
+        滑出按钮B.frame = CGRectMake(self.frame.size.width + 按钮宽度, 0, 按钮宽度, self.frame.size.height)
         主文字.frame = CGRectMake(20, 0, self.frame.size.width - 20, self.frame.size.height)
     }
 }

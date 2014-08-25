@@ -22,22 +22,19 @@ class MainTBViewController: UITabBarController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
     }
     
     func 复制到剪贴板方法(notification:NSNotification)
     {
-        let 要复制的文本:NSString = notification.object as NSString
-        var 提示信息框Y坐标:CGFloat = 74
-        if (self.view.frame.size.width > self.view.frame.size.height) {
-            提示信息框Y坐标 = 42
-        }
-        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
-        self.view.addSubview(提示信息框)
-        提示信息框.显示颜文字复制到剪贴板提示(要复制的文本)
+        let 要复制的颜文字数组:NSArray = notification.object as NSArray
+        let 要复制的颜文字:NSString = 要复制的颜文字数组.objectAtIndex(0) as NSString
+        
+        显示自动关闭的提示框(NSString(format: "“ %@ ” 已复制到剪贴板", 要复制的颜文字))
         
         var 历史记录:NSMutableArray = NSMutableArray.array()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        历史记录.addObject(要复制的文本)
+        历史记录.addObject(要复制的颜文字数组)
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据!)
         }
@@ -46,9 +43,26 @@ class MainTBViewController: UITabBarController {
         }
         文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
-        剪贴板.string = 要复制的文本
+        剪贴板.string = 要复制的颜文字
     }
-
+    
+    func 显示自动关闭的提示框方法(notification:NSNotification)
+    {
+        let 提示文字:NSString = notification.object as NSString
+        显示自动关闭的提示框(提示文字)
+    }
+    
+    
+    func 显示自动关闭的提示框(提示文字:NSString)
+    {
+        var 提示信息框Y坐标:CGFloat = 74
+        if (self.view.frame.size.width > self.view.frame.size.height) {
+            提示信息框Y坐标 = 42
+        }
+        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
+        self.view.addSubview(提示信息框)
+        提示信息框.显示提示(提示文字)
+    }
     
     func alertview(notification:NSNotification)
     {

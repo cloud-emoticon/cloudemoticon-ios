@@ -32,10 +32,30 @@ class NotificationView: UIView {
         self.addSubview(显示文本)
     }
     
-    func 显示颜文字复制到剪贴板提示(颜文字:NSString)
+    func 显示提示(提示文本:NSString)
     {
-        显示文本.text = NSString(format: "“ %@ ” 已复制到剪贴板", 颜文字)
-        
+        显示文本.text = 提示文本
+        执行动画()
+    }
+    
+//    func 显示颜文字复制到剪贴板提示(颜文字:NSString)
+//    {
+//        显示文本.text = NSString(format: "“ %@ ” 已复制到剪贴板", 颜文字)
+//        执行动画()
+//    }
+//    func 显示颜文字添加到收藏夹提示(颜文字:NSString)
+//    {
+//        显示文本.text = NSString(format: "“ %@ ” 添加到收藏夹成功", 颜文字)
+//        执行动画()
+//    }
+//    func 显示颜文字收藏已存在提示(颜文字:NSString)
+//    {
+//        显示文本.text = NSString(format: "你已经收藏了 “ %@ ”", 颜文字)
+//        执行动画()
+//    }
+    
+    func 执行动画()
+    {
         UIView.animateWithDuration(动画速度,
             animations:{
                 self.alpha = 1.0
