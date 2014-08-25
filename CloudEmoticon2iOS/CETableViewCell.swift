@@ -147,7 +147,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             var 手指当前Y坐标:CGFloat = 手指当前坐标.y
             let 手指移动X距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
             let 手指移动Y距离:CGFloat = 手势起始位置Y坐标 - 手指当前Y坐标
-            if (abs(手指移动Y距离) > abs(手指移动X距离) && (abs(手指移动Y距离) > 10 || abs(手指移动X距离) > 10)) {
+            if (abs(手指移动Y距离) > abs(手指移动X距离) && abs(手指移动Y距离) > 10 && 允许手势 == true) {
                 允许手势 = false
             } else if (代理!.单元格代理：是否可以接收手势()) {
                 

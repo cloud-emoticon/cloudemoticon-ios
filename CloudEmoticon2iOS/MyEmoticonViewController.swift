@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate{
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray.array()
@@ -24,21 +24,52 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         右上按钮.title = "编辑"
+        左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
     }
     
+    @IBOutlet weak var 左上按钮: UIBarButtonItem!
     @IBOutlet weak var 表格: UITableView!
     @IBOutlet weak var 右上按钮: UIBarButtonItem!
     @IBOutlet weak var 内容选择菜单: UISegmentedControl!
+    
+    @IBAction func 左上按钮(sender: UIBarButtonItem) {
+    
+        switch (内容选择菜单.selectedSegmentIndex) {
+        case 0:
+            break
+        case 1:
+            break
+        case 2:
+            表格.setEditing(!表格.editing, animated: true)
+            if(表格.editing){
+            左上按钮.title = "完成"
+            右上按钮.title = ""
+        } else {
+            左上按钮.title = "编辑"
+            右上按钮.title = "添加"
+            }
+        default:
+            break
+        }
+    }
+    
     
     @IBAction func 右上按钮(sender: UIBarButtonItem)
     {
         switch (内容选择菜单.selectedSegmentIndex) {
         case 0:
-            表格数据.removeAllObjects()
-            表格.reloadData()
-            保存收藏数据()
+            表格.setEditing(!表格.editing, animated: true)
+            if (表格.editing) {
+                左上按钮.title = ""
+                右上按钮.title = "完成"
+            } else {
+                左上按钮.title = ""
+                右上按钮.title = "编辑"
+            }
+                表格.reloadData()
+                保存收藏数据()
             break
         case 1:
             表格数据.removeAllObjects()
@@ -46,14 +77,57 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             保存历史记录数据()
             break
         case 2:
+            if (!表格.editing) {
+                右上按钮.title = "添加"
+                左上按钮.title = "编辑"
+                var alert:UIAlertView = UIAlertView(title: "添加颜文字", message: "", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "添加")
+                alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
+                var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
+                alert.tag = 300
+                alertImport.keyboardType = UIKeyboardType.URL
+                alertImport.text = ""
+                alert.show()
+            } else {
+                右上按钮.title = ""
+                左上按钮.title = "完成"
+            }
+            表格.reloadData()
+            保存自定义数据()
             break
         default:
             break
         }
     }
     
+    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
+    {
+        var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField
+        if (alertView.tag == 300) {
+            if (buttonIndex == 1) {
+                //添加
+                addemoticon(alertImport.text)
+                载入自定义数据()
+            }
+        }
+    }
+    
+    func addemoticon(emoticonstr:NSString)
+    {
+        let 颜文字名称:NSString = "自定义"
+        let 要添加的颜文字数组:NSArray = [emoticonstr]
+        var 自定义:NSMutableArray = NSMutableArray.array()
+        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+        自定义.addObject(要添加的颜文字数组)
+        if (文件中的数据 != nil) {
+            自定义.addObjectsFromArray(文件中的数据!)
+        }
+        文件管理器.SaveArrayToFile(自定义,smode: FileManager.saveMode.CUSTOM)
+        
+    }
+    
     @IBAction func 内容选择菜单(内容选择: UISegmentedControl)
     {
+        表格.setEditing(false, animated: true)
         changemode(内容选择.selectedSegmentIndex)
     }
     
@@ -73,13 +147,16 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         case 0:
             载入收藏数据()
             右上按钮.title = "编辑"
+            左上按钮.title = ""
             break
         case 1:
             载入历史记录数据()
+            左上按钮.title = ""
             右上按钮.title = "清空"
             break
         case 2:
             载入自定义数据()
+            左上按钮.title = "编辑"
             右上按钮.title = "添加"
             break
         default:
@@ -174,73 +251,80 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - 表格编辑范围
     func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
     {
-        switch (内容选择菜单.selectedSegmentIndex) {
-        case 0:
             return UITableViewCellEditingStyle.Delete
-        case 1:
-            return UITableViewCellEditingStyle.None
-        case 2:
-            return UITableViewCellEditingStyle.Insert
-        default:
-            return UITableViewCellEditingStyle.None
-        }
     }
     // MARK: - 表格是否可以移动项目
     func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool
     {
-        switch (内容选择菜单.selectedSegmentIndex) {
-        case 0:
-            return true
-        case 1:
-            return false
-        case 2:
-            return true
-        default:
-            return false
-        }
+        return true
     }
     // MARK: - 表格是否可以编辑
     func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool
     {
-        switch (内容选择菜单.selectedSegmentIndex) {
-        case 0:
-            return true
-        case 1:
-            return true
-        case 2:
-            return true
-        default:
-            return false
-        }
+        return true
     }
     
     // MARK: - 表格项目被移动
     func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!, toIndexPath destinationIndexPath: NSIndexPath!)
     {
-        switch (内容选择菜单.selectedSegmentIndex) {
+            var fromRow:NSInteger = sourceIndexPath.row
+            var toRow:NSInteger = destinationIndexPath.row
+            var object: AnyObject = 表格数据.objectAtIndex(fromRow)
+            表格数据.removeObjectAtIndex(fromRow)
+            表格数据.insertObject(object, atIndex: toRow)
+        switch(内容选择菜单.selectedSegmentIndex) {
         case 0:
+            文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.FAVORITE)
             break
         case 1:
             break
         case 2:
+            文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
             break
         default:
             break
         }
     }
     func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        if editingStyle == .Delete {
         switch (内容选择菜单.selectedSegmentIndex) {
         case 0:
+            var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+            var nowrow:NSInteger = indexPath.row
+            let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as NSArray
+            let nowemo:NSString = nowrowArr.objectAtIndex(0) as NSString
+            表格数据.removeObjectAtIndex(nowrow)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            if(文件中的数据 != nil){
+                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.FAVORITE)
+            } else {
+                let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.FAVORITE)
+                let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
+                文件管理器.deleteFile(fulladd, smode: FileManager.saveMode.FAVORITE)
+            }
             break
         case 1:
             break
         case 2:
+            var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+            var nowrow:NSInteger = indexPath.row
+            let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as NSArray
+            let nowemo:NSString = nowrowArr.objectAtIndex(0) as NSString
+            表格数据.removeObjectAtIndex(nowrow)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            if(文件中的数据 != nil){
+                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
+            } else {
+                let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.CUSTOM)
+                let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
+                文件管理器.deleteFile(fulladd, smode: FileManager.saveMode.CUSTOM)
+            }
             break
         default:
             break
         }
     }
-    
+    }
 //    - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     /*

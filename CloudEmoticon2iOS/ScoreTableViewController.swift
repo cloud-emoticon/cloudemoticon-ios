@@ -172,7 +172,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         }
     }
     
-    //定时执行的代码
     func time(notification:NSNotification)
     {
         var s_emosetX:NSMutableArray = waitArr
@@ -222,12 +221,12 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
-            alertImport.text = "http://192.168.1.123/test1.xml"
+            alertImport.text = "http://"
             alert.show()
         } else {
             p_storeIsOpen = false
-            timer?.invalidate()
-            timer = nil
+//            timer?.invalidate()
+//            timer = nil
             if (代理 != nil) {
                 代理?.源管理页面代理：退出源管理页面时()
             }

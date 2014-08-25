@@ -91,8 +91,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="SmB-nW-hFL">
+                            <connections>
+                                <action selector="左上按钮:" destination="FJr-7m-hgR" id="3Tk-M0-0cM"/>
+                            </connections>
+                        </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="r3T-Er-Ll2">
-                            <rect key="frame" x="200" y="4" width="200" height="37"/>
+                            <rect key="frame" x="200" y="3.5" width="200" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="收藏"/>
@@ -113,6 +118,7 @@
                     <connections>
                         <outlet property="内容选择菜单" destination="r3T-Er-Ll2" id="5qb-ko-3te"/>
                         <outlet property="右上按钮" destination="oxs-UZ-dv7" id="iXw-rZ-f50"/>
+                        <outlet property="左上按钮" destination="SmB-nW-hFL" id="3TH-T2-iTF"/>
                         <outlet property="表格" destination="HhX-Pz-5v7" id="1Ad-p0-O1k"/>
                     </connections>
                 </viewController>
