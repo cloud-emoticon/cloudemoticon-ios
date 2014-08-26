@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.11" systemVersion="14A314h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6190.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
@@ -12,18 +13,14 @@
                         <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
                         <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="74"/>
+                    <view key="view" contentMode="scaleAspectFit" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="此处粘贴颜文字" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-cP-SNS">
-                                <rect key="frame" x="20" y="4" width="197" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3RM-fO-Z0I">
-                                <rect key="frame" x="225" y="4" width="75" height="30"/>
+                                <rect key="frame" x="221" y="4" width="75" height="30"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="KKV-L2-i3d"/>
                                     <constraint firstAttribute="width" constant="75" id="iOu-xa-vgL"/>
                                 </constraints>
                                 <state key="normal">
@@ -40,8 +37,16 @@
                                     <action selector="AddtoCustom:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="FHI-Mb-b4f"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rt-Lu-EDI">
-                                <rect key="frame" x="92" y="40" width="136" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="此处粘贴颜文字" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-cP-SNS">
+                                <rect key="frame" x="20" y="4" width="191" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="flr-5K-dLo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7rt-Lu-EDI">
+                                <rect key="frame" x="115" y="38" width="90" height="30"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="启动云颜文字">
@@ -59,14 +64,14 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="h3e-cP-SNS" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="4" id="76Q-jW-qvb"/>
-                            <constraint firstItem="3RM-fO-Z0I" firstAttribute="top" secondItem="S3S-Oj-5AN" secondAttribute="top" constant="4" id="8ZN-XQ-PNc"/>
-                            <constraint firstAttribute="centerX" secondItem="7rt-Lu-EDI" secondAttribute="centerX" id="BYe-zO-nIr"/>
-                            <constraint firstItem="h3e-cP-SNS" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" constant="20" id="HIv-C3-fIz"/>
-                            <constraint firstItem="7rt-Lu-EDI" firstAttribute="top" secondItem="h3e-cP-SNS" secondAttribute="bottom" constant="6" id="OPA-nY-Wa8"/>
-                            <constraint firstAttribute="trailing" secondItem="3RM-fO-Z0I" secondAttribute="trailing" constant="20" id="Z24-Mk-xLb"/>
-                            <constraint firstItem="3RM-fO-Z0I" firstAttribute="leading" secondItem="h3e-cP-SNS" secondAttribute="trailing" constant="8" id="lsI-NE-t1u"/>
-                            <constraint firstItem="FKl-LY-JtV" firstAttribute="bottom" secondItem="7rt-Lu-EDI" secondAttribute="bottom" constant="4" id="tEN-Xl-7bl"/>
+                            <constraint firstAttribute="centerX" secondItem="7rt-Lu-EDI" secondAttribute="centerX" id="0h4-cy-v9L"/>
+                            <constraint firstItem="h3e-cP-SNS" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leadingMargin" constant="4" id="38b-Zx-QK8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3RM-fO-Z0I" secondAttribute="trailing" constant="8" id="FBt-ZI-Rz6"/>
+                            <constraint firstItem="3RM-fO-Z0I" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="4" id="ac7-RS-yVd"/>
+                            <constraint firstItem="FKl-LY-JtV" firstAttribute="top" secondItem="7rt-Lu-EDI" secondAttribute="bottom" constant="4" id="hyc-cm-Hby"/>
+                            <constraint firstItem="h3e-cP-SNS" firstAttribute="top" secondItem="Ft6-oW-KC0" secondAttribute="bottom" constant="4" id="suO-NK-xii"/>
+                            <constraint firstItem="7rt-Lu-EDI" firstAttribute="top" secondItem="h3e-cP-SNS" secondAttribute="bottom" constant="4" id="ubV-Nw-3sY"/>
+                            <constraint firstItem="3RM-fO-Z0I" firstAttribute="leading" secondItem="h3e-cP-SNS" secondAttribute="trailing" constant="10" id="uqE-fG-AK7"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
@@ -74,7 +79,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="74"/>
+                    <size key="freeformSize" width="320" height="72"/>
                     <connections>
                         <outlet property="AddtoCustom" destination="3RM-fO-Z0I" id="vHq-MW-aON"/>
                         <outlet property="RunFamApp" destination="7rt-Lu-EDI" id="1Xb-9Y-PGa"/>

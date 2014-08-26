@@ -116,8 +116,20 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         let 颜文字名称:NSString = "自定义"
         let 要添加的颜文字数组:NSArray = [emoticonstr]
         var 自定义:NSMutableArray = NSMutableArray.array()
+        var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as NSString
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+        var 自定义中已经存在这个颜文字 = false
+        for 文件中的颜文字数组对象 in 文件中的数据! {
+            let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as NSArray
+            let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as NSString
+            if ( 自定义颜文字.isEqualToString(文件中的颜文字)) {
+                自定义中已经存在这个颜文字 = true
+            }
+        }
+        if(!自定义中已经存在这个颜文字)
+        {
         自定义.addObject(要添加的颜文字数组)
+        }
         if (文件中的数据 != nil) {
             自定义.addObjectsFromArray(文件中的数据!)
         }
@@ -155,6 +167,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             右上按钮.title = "清空"
             break
         case 2:
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+            var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+            if(value != nil && value != "") {
+            addemoticon(value!)
+            }
+            value = ""
+            value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             载入自定义数据()
             左上按钮.title = "编辑"
             右上按钮.title = "添加"

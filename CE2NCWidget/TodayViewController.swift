@@ -31,16 +31,32 @@ class TodayViewController: UIViewController {
 
         completionHandler(NCUpdateResult.NewData)
     }
-
     @IBOutlet weak var AddtoCustom: UIButton!
     @IBOutlet weak var emoText: UITextField!
     
     @IBAction func AddtoCustom(sender: UIButton) {
-        AddtoCustom.addTarget(self,action:"AddtoCustom:",forControlEvents:.TouchUpInside)
-    }
-    func AddtoCustom(sender: UIButton!){
-
-
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+        var value:NSString = emoText.text
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//        println(containerURL)
+//        var emolist:NSMutableArray = [value]
+//        println(emolist)
+//        var container:NSMutableArray = NSMutableArray(contentsOfURL: containerURL)
+//        println(emolist)
+////        if(emolist == nil) {
+////            var valuearr:NSMutableArray = [value]
+////            emolist = valuearr
+////        } else {
+////        emolist?.addObject(value)
+////        }
+////        println(emolist)
+////        if(emolist != nil) {
+//        emolist.writeToURL(containerURL, atomically: true)
+////        }
+        value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        emoText.text = ""
+        emoText.placeholder = "添加成功"
+        
     }
     
 
