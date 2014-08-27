@@ -192,7 +192,19 @@
                     <view key="view" contentMode="scaleToFill" id="LxS-5k-5rI">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="要使用通知中心插件，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中" translatesAutoresizingMaskIntoConstraints="NO" id="pCp-wr-JT4">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="143"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="pCp-wr-JT4" secondAttribute="trailing" id="LLt-qZ-QxZ"/>
+                            <constraint firstItem="pCp-wr-JT4" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="mjk-6k-8uS"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="扩展功能" id="S4u-VB-AP9"/>
                 </viewController>
@@ -304,7 +316,6 @@
         <!--关于-->
         <scene sceneID="W5W-Z2-hgb">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bcr-Zb-MZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="About" id="w8k-tr-ohi" customClass="AboutViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ikn-QO-iCQ"/>
@@ -317,6 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="关于" id="cgh-fW-wV7"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bcr-Zb-MZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2847" y="2387"/>
         </scene>
@@ -331,9 +343,27 @@
                     <view key="view" contentMode="scaleToFill" id="b0Q-wG-JIX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Setting" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Z0-Vs-gZK">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="Settings" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" id="wWP-Iw-J06" customClass="SettingTableViewCell" customModule="CloudEmoticon2iOS" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wWP-Iw-J06" id="8Ku-el-GVN">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="RUS-cV-VHg"/>
+                    <connections>
+                        <outlet property="SettingTable" destination="2Z0-Vs-gZK" id="Vmr-uL-h0P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJl-rP-RQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
