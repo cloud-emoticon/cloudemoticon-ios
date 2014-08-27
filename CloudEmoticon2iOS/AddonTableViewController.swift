@@ -56,10 +56,12 @@ class AddonTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Shake") as UIViewController
+            push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break
         case 1:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Extension") as UIViewController
+            push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break
         default:

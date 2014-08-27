@@ -199,11 +199,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-ca-g0h">
+                                <rect key="frame" x="180" y="287" width="240" height="128"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr4-y8-ZzB">
+                                <rect key="frame" x="180" y="151" width="240" height="128"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="pCp-wr-JT4" secondAttribute="trailing" id="LLt-qZ-QxZ"/>
+                            <constraint firstAttribute="centerX" secondItem="31Z-ca-g0h" secondAttribute="centerX" id="gpD-0R-gze"/>
                             <constraint firstItem="pCp-wr-JT4" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="mjk-6k-8uS"/>
+                            <constraint firstAttribute="centerX" secondItem="dr4-y8-ZzB" secondAttribute="centerX" id="w8h-xF-ry8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="扩展功能" id="S4u-VB-AP9"/>
@@ -343,27 +351,9 @@
                     <view key="view" contentMode="scaleToFill" id="b0Q-wG-JIX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Setting" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="2Z0-Vs-gZK">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" restorationIdentifier="Settings" selectionStyle="none" indentationWidth="10" reuseIdentifier="SettingCell" id="wWP-Iw-J06" customClass="SettingTableViewCell" customModule="CloudEmoticon2iOS" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wWP-Iw-J06" id="8Ku-el-GVN">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="设置" id="RUS-cV-VHg"/>
-                    <connections>
-                        <outlet property="SettingTable" destination="2Z0-Vs-gZK" id="Vmr-uL-h0P"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJl-rP-RQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

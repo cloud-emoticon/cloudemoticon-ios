@@ -63,17 +63,21 @@ class SetTableViewController: UITableViewController {
         switch indexPath.row {
         case 0:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Color") as UIViewController
+            push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break
         case 1:
+            ScoreTableViewController().hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(ScoreTableViewController(), animated: true)
             break
         case 2:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Setting") as UIViewController
+            push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break
         case 3:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+            push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break
         default:
