@@ -12,7 +12,7 @@ class FileManager: NSObject {
     
     let fileMgr:NSFileManager = NSFileManager.defaultManager()
     let className:NSString = "[文件管理器]"
-    var nowURLarr:NSArray = []
+    var nowURLarr:NSArray = [""]
     
     enum saveMode:Int
     {

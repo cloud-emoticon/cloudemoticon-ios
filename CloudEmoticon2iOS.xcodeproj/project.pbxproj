@@ -37,6 +37,7 @@
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
+		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
 		8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */; };
 		8B98EEA1196D3258000D255E /* shared-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EE9F196D3258000D255E /* shared-vector.png */; };
 		8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA0196D3258000D255E /* shared-vector@2x.png */; };
@@ -166,6 +167,7 @@
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
+		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		8B98EE9F196D3258000D255E /* shared-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector.png"; sourceTree = "<group>"; };
 		8B98EEA0196D3258000D255E /* shared-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector@2x.png"; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */,
 				53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +428,7 @@
 		8BF8ACF3199335D7001207FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8B32C00519AF743F00F9AC50 /* CoreMotion.framework */,
 				538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */,
 				53995A92199245BE008B12E0 /* libxml2.2.dylib */,
 				8BF8ACF4199335D7001207FC /* NotificationCenter.framework */,
