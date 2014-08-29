@@ -2,7 +2,7 @@
 //  AddonTableViewController.swift
 //  CloudEmoticon2iOS
 //
-//  Created by 神楽坂紫 on 14/8/26.
+//  Created by 神楽坂紫喵 on 14/8/26.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
@@ -68,7 +68,6 @@ class AddonTableViewController: UITableViewController {
             break
             
         }
-        
     }
     
     /*

@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  CloudEmoticon2iOS
 //
-//  Created by 神楽坂紫 on 14/8/26.
+//  Created by 神楽坂紫喵 on 14/8/26.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
@@ -104,15 +104,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             switchview.addTarget(self, action: Selector(updateSwitchAtIndesPath(switchview)), forControlEvents: UIControlEvents.ValueChanged)
             cell!.contentView.addSubview(switchview)
         }
-                
-        
+                        
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         return cell
     }
     
     func updateSwitchAtIndesPath(sender:UISwitch){
         var switchview:UISwitch = sender
-//        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
               defaults.setBool(switchview.on, forKey: "exitaftercopy")
         defaults.synchronize()
 
@@ -120,7 +118,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func updateSliderAtIndesPath(sender:UISlider){
         var sliderview:UISlider = sender
-//         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         defaults.setObject(sliderview.value, forKey: "adfrequent")
         defaults.synchronize()
     }

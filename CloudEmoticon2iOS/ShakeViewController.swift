@@ -2,7 +2,7 @@
 //  ShakeViewController.swift
 //  CloudEmoticon2iOS
 //
-//  Created by 神楽坂紫 on 14/8/26.
+//  Created by 神楽坂紫喵 on 14/8/26.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
@@ -50,8 +50,6 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     func loaddata()
     {
-        let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-        var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径)
         var y_emoarr:NSArray = NSArray.array()
         var p_emoweb:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.NETWORK)
         if(p_emoweb != nil)
@@ -59,6 +57,8 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
             let p_emoary:NSArray = p_emoweb!
             y_emoarr = p_emoary.objectAtIndex(3) as NSArray
         } else {
+            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
+            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径)
             y_emoarr = p_emo.objectAtIndex(3) as NSArray
         }
         
@@ -81,13 +81,11 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         println(emolist.objectAtIndex(emonum))
         var alert:NSArray = ["发现了颜文字！",emolist.objectAtIndex(emonum),"添加到剪切板","取消"]
         NSNotificationCenter.defaultCenter().postNotificationName("alertviewShake", object: alert)
-        
     }
     
     func alertviewShake(notification:NSNotification)
     {
         let altarr:NSArray = notification.object as NSArray
-        //数组：title，message，btn title
         let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: altarr.objectAtIndex(3) as NSString, style: .Default) {
             [weak alert] action in
