@@ -45,6 +45,9 @@
 		8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA4196D3390000D255E /* star-vector@2x.png */; };
 		8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAB196D36A2000D255E /* edit-vector.png */; };
 		8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAC196D36A2000D255E /* edit-vector@2x.png */; };
+		8BA411A419B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.27.58.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA411A219B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.27.58.png */; };
+		8BA411A519B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.28.13.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA411A319B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.28.13.png */; };
+		8BA411A919B0C59F003AEBF2 /* a76e5877a008f511f69a936ca84e7d2d.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA411A819B0C59F003AEBF2 /* a76e5877a008f511f69a936ca84e7d2d.png */; };
 		8BA6683C19ACCA5B0080C47F /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6683B19ACCA5B0080C47F /* SetTableViewController.swift */; };
 		8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */; };
 		8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6683F19ACCD390080C47F /* AboutViewController.swift */; };
@@ -175,6 +178,9 @@
 		8B98EEA4196D3390000D255E /* star-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-vector@2x.png"; sourceTree = "<group>"; };
 		8B98EEAB196D36A2000D255E /* edit-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector.png"; sourceTree = "<group>"; };
 		8B98EEAC196D36A2000D255E /* edit-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector@2x.png"; sourceTree = "<group>"; };
+		8BA411A219B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.27.58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2014-08-29 下午8.27.58.png"; sourceTree = "<group>"; };
+		8BA411A319B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.28.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "屏幕快照 2014-08-29 下午8.28.13.png"; sourceTree = "<group>"; };
+		8BA411A819B0C59F003AEBF2 /* a76e5877a008f511f69a936ca84e7d2d.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = a76e5877a008f511f69a936ca84e7d2d.png; path = ../a76e5877a008f511f69a936ca84e7d2d.png; sourceTree = "<group>"; };
 		8BA6683B19ACCA5B0080C47F /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetTableViewController.swift; path = ../SetTableViewController.swift; sourceTree = "<group>"; };
 		8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
 		8BA6683F19ACCD390080C47F /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
@@ -382,6 +388,9 @@
 		8B98EE9A196D2DC0000D255E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8BA411A819B0C59F003AEBF2 /* a76e5877a008f511f69a936ca84e7d2d.png */,
+				8BA411A219B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.27.58.png */,
+				8BA411A319B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.28.13.png */,
 				5332F842199A2354006F76CA /* nouserimg.jpg */,
 				53E0E4B81994B2F800C9D9FC /* settings-vector.png */,
 				53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */,
@@ -576,6 +585,7 @@
 			files = (
 				53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */,
 				8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */,
+				8BA411A519B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.28.13.png in Resources */,
 				8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */,
 				8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */,
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
@@ -585,10 +595,12 @@
 				5357733C199B1584003FF9D3 /* default.plist in Resources */,
 				8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */,
 				8B98EEA5196D3390000D255E /* star-vector.png in Resources */,
+				8BA411A419B0A994003AEBF2 /* 屏幕快照 2014-08-29 下午8.27.58.png in Resources */,
 				8BE31F65196D443C006C3B26 /* info-vector.png in Resources */,
 				53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
+				8BA411A919B0C59F003AEBF2 /* a76e5877a008f511f69a936ca84e7d2d.png in Resources */,
 				8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */,
 				8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */,
 				8B98EEA1196D3258000D255E /* shared-vector.png in Resources */,

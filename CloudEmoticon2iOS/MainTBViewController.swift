@@ -17,6 +17,7 @@ class MainTBViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
@@ -24,6 +25,8 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
     }
+    
+
     
     func 复制到剪贴板方法(notification:NSNotification)
     {

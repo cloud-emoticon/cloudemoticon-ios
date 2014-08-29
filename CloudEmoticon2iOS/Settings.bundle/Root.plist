@@ -42,19 +42,18 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>使用通知中心插件
-要使用通知中心插件，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中</string>
+			<string>使用通知中心扩展
+要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中</string>
 		</dict>
-        <dict>
-            <key>Type</key>
-            <string>PSGroupSpecifier</string>
-            <key>Title</key>
-            <string>开发者：
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>开发者：
                 
 神楽坂雅詩
 神楽坂紫喵</string>
-
-        </dict>
+		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Root</string>

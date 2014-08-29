@@ -2,16 +2,18 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.8" systemVersion="14A329f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--附加工具-->
         <scene sceneID="zPq-oj-YYj">
             <objects>
                 <tableViewController id="fZy-yH-RHy" customClass="AddonTableViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="TUk-3k-sdZ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="TUk-3k-sdZ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Addon" id="mv1-AF-HCp">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -193,32 +195,268 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" text="要使用通知中心插件，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中" translatesAutoresizingMaskIntoConstraints="NO" id="pCp-wr-JT4">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="143"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="屏幕快照 2014-08-29 下午8.27.58.png" translatesAutoresizingMaskIntoConstraints="NO" id="dr4-y8-ZzB">
+                                <rect key="frame" x="100" y="172" width="400" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="5ia-2M-urm"/>
+                                    <constraint firstAttribute="width" constant="171" id="Mjc-rD-vzS"/>
+                                    <constraint firstAttribute="width" constant="400" id="RcE-6J-Ghj"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="168" id="WEc-yz-Nce"/>
+                                    <constraint firstAttribute="height" constant="250" id="eCm-Mw-FgD"/>
+                                    <constraint firstAttribute="width" constant="300" id="eKr-9P-hcD"/>
+                                    <constraint firstAttribute="height" constant="120" id="k0j-1i-r57"/>
+                                    <constraint firstAttribute="width" constant="350" id="mfC-Ge-gMJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="nLT-tE-XjO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5ia-2M-urm"/>
+                                        <exclude reference="Mjc-rD-vzS"/>
+                                        <exclude reference="RcE-6J-Ghj"/>
+                                        <exclude reference="WEc-yz-Nce"/>
+                                        <exclude reference="eCm-Mw-FgD"/>
+                                        <exclude reference="eKr-9P-hcD"/>
+                                        <exclude reference="k0j-1i-r57"/>
+                                        <exclude reference="mfC-Ge-gMJ"/>
+                                        <exclude reference="nLT-tE-XjO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="5ia-2M-urm"/>
+                                        <include reference="Mjc-rD-vzS"/>
+                                        <exclude reference="RcE-6J-Ghj"/>
+                                        <exclude reference="WEc-yz-Nce"/>
+                                        <include reference="nLT-tE-XjO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="eKr-9P-hcD"/>
+                                        <include reference="k0j-1i-r57"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="eCm-Mw-FgD"/>
+                                        <include reference="mfC-Ge-gMJ"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="I6Y-dP-QhZ">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="LJo-vq-hym"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="PIR-So-8us"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="LJo-vq-hym"/>
+                                        <exclude reference="PIR-So-8us"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="LJo-vq-hym"/>
+                                        <include reference="PIR-So-8us"/>
+                                    </mask>
+                                </variation>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-ca-g0h">
-                                <rect key="frame" x="180" y="287" width="240" height="128"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dr4-y8-ZzB">
-                                <rect key="frame" x="180" y="151" width="240" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="RTS-AF-fPC">
+                                <rect key="frame" x="89" y="5" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NVs-uh-HBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NVs-uh-HBD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="NVs-uh-HBD"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="yIc-Ti-66V">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Yio-pm-JIf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Yio-pm-JIf"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Yio-pm-JIf"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="屏幕快照 2014-08-29 下午8.28.13.png" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-ca-g0h">
+                                <rect key="frame" x="180" y="348" width="240" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="31Q-L6-vYx"/>
+                                    <constraint firstAttribute="width" constant="400" id="3Pu-Gb-3GY"/>
+                                    <constraint firstAttribute="height" constant="120" id="BLz-vs-xk6"/>
+                                    <constraint firstAttribute="width" constant="145" id="VnH-hW-gmU"/>
+                                    <constraint firstAttribute="height" constant="150" id="maw-RP-TWD"/>
+                                    <constraint firstAttribute="width" constant="240" id="zmR-lw-wT5"/>
+                                    <constraint firstAttribute="height" constant="280" id="zuO-HU-8Tz"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="31Q-L6-vYx"/>
+                                        <exclude reference="3Pu-Gb-3GY"/>
+                                        <exclude reference="BLz-vs-xk6"/>
+                                        <exclude reference="VnH-hW-gmU"/>
+                                        <exclude reference="maw-RP-TWD"/>
+                                        <exclude reference="zmR-lw-wT5"/>
+                                        <exclude reference="zuO-HU-8Tz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="31Q-L6-vYx"/>
+                                        <include reference="BLz-vs-xk6"/>
+                                        <include reference="VnH-hW-gmU"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="maw-RP-TWD"/>
+                                        <include reference="zmR-lw-wT5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="3Pu-Gb-3GY"/>
+                                        <include reference="zuO-HU-8Tz"/>
+                                    </mask>
+                                </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="pCp-wr-JT4" secondAttribute="trailing" id="LLt-qZ-QxZ"/>
-                            <constraint firstAttribute="centerX" secondItem="31Z-ca-g0h" secondAttribute="centerX" id="gpD-0R-gze"/>
-                            <constraint firstItem="pCp-wr-JT4" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="mjk-6k-8uS"/>
-                            <constraint firstAttribute="centerX" secondItem="dr4-y8-ZzB" secondAttribute="centerX" id="w8h-xF-ry8"/>
+                            <constraint firstAttribute="centerX" secondItem="dr4-y8-ZzB" secondAttribute="centerX" id="1Y7-kf-UMF"/>
+                            <constraint firstAttribute="trailing" secondItem="yIc-Ti-66V" secondAttribute="trailing" id="1wq-ne-mJH"/>
+                            <constraint firstAttribute="centerX" secondItem="31Z-ca-g0h" secondAttribute="centerX" id="2Ip-Ub-3ie"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="top" secondItem="dr4-y8-ZzB" secondAttribute="bottom" constant="8" id="5CR-af-zYL"/>
+                            <constraint firstItem="dr4-y8-ZzB" firstAttribute="top" secondItem="L0E-to-hGH" secondAttribute="bottom" constant="32" id="5ri-aP-cq9"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="top" secondItem="yIc-Ti-66V" secondAttribute="bottom" constant="12" id="E6i-Gd-6NX"/>
+                            <constraint firstItem="dr4-y8-ZzB" firstAttribute="top" secondItem="yIc-Ti-66V" secondAttribute="bottom" constant="12" id="Ezd-7t-EnI"/>
+                            <constraint firstAttribute="centerX" secondItem="dr4-y8-ZzB" secondAttribute="centerX" id="Gga-4b-Qc7"/>
+                            <constraint firstAttribute="centerX" secondItem="31Z-ca-g0h" secondAttribute="centerX" id="Kls-6U-gRP"/>
+                            <constraint firstItem="yIc-Ti-66V" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="Nsh-iK-mNF"/>
+                            <constraint firstAttribute="trailing" secondItem="I6Y-dP-QhZ" secondAttribute="trailing" id="Nzx-Es-GYg"/>
+                            <constraint firstItem="dr4-y8-ZzB" firstAttribute="top" secondItem="I6Y-dP-QhZ" secondAttribute="bottom" constant="20" id="QTK-SW-fOt"/>
+                            <constraint firstItem="I6Y-dP-QhZ" firstAttribute="top" secondItem="LxS-5k-5rI" secondAttribute="top" constant="64" id="SBG-Ub-LHW"/>
+                            <constraint firstAttribute="trailing" secondItem="RTS-AF-fPC" secondAttribute="trailing" id="U2i-lB-3z2"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="top" secondItem="dr4-y8-ZzB" secondAttribute="bottom" constant="8" id="VHY-tg-nye"/>
+                            <constraint firstItem="dr4-y8-ZzB" firstAttribute="top" secondItem="RTS-AF-fPC" secondAttribute="bottom" constant="8" id="ZCc-F6-iqR"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="leading" secondItem="dr4-y8-ZzB" secondAttribute="trailing" constant="18" id="axp-cG-Nz0"/>
+                            <constraint firstItem="dr4-y8-ZzB" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" constant="20" id="dy8-MT-Scu"/>
+                            <constraint firstItem="yIc-Ti-66V" firstAttribute="top" secondItem="LxS-5k-5rI" secondAttribute="top" id="eRv-VZ-12W"/>
+                            <constraint firstItem="I6Y-dP-QhZ" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="fQH-SJ-9Ok"/>
+                            <constraint firstItem="RTS-AF-fPC" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="gOK-Q7-gKZ"/>
+                            <constraint firstItem="RTS-AF-fPC" firstAttribute="top" secondItem="LxS-5k-5rI" secondAttribute="topMargin" constant="64" id="hop-xJ-ATy"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="top" secondItem="yIc-Ti-66V" secondAttribute="bottom" constant="12" id="isv-x6-hsH"/>
+                            <constraint firstItem="31Z-ca-g0h" firstAttribute="top" secondItem="dr4-y8-ZzB" secondAttribute="bottom" constant="20" id="x0J-Oe-qYu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="I6Y-dP-QhZ"/>
+                                <exclude reference="RTS-AF-fPC"/>
+                                <exclude reference="yIc-Ti-66V"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="U2i-lB-3z2"/>
+                                <exclude reference="gOK-Q7-gKZ"/>
+                                <exclude reference="hop-xJ-ATy"/>
+                                <exclude reference="1wq-ne-mJH"/>
+                                <exclude reference="Nsh-iK-mNF"/>
+                                <exclude reference="eRv-VZ-12W"/>
+                                <exclude reference="Nzx-Es-GYg"/>
+                                <exclude reference="SBG-Ub-LHW"/>
+                                <exclude reference="fQH-SJ-9Ok"/>
+                                <exclude reference="1Y7-kf-UMF"/>
+                                <exclude reference="5ri-aP-cq9"/>
+                                <exclude reference="Ezd-7t-EnI"/>
+                                <exclude reference="Gga-4b-Qc7"/>
+                                <exclude reference="QTK-SW-fOt"/>
+                                <exclude reference="ZCc-F6-iqR"/>
+                                <exclude reference="dy8-MT-Scu"/>
+                                <exclude reference="2Ip-Ub-3ie"/>
+                                <exclude reference="5CR-af-zYL"/>
+                                <exclude reference="E6i-Gd-6NX"/>
+                                <exclude reference="Kls-6U-gRP"/>
+                                <exclude reference="VHY-tg-nye"/>
+                                <exclude reference="axp-cG-Nz0"/>
+                                <exclude reference="isv-x6-hsH"/>
+                                <exclude reference="x0J-Oe-qYu"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="yIc-Ti-66V"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1wq-ne-mJH"/>
+                                <include reference="Nsh-iK-mNF"/>
+                                <include reference="eRv-VZ-12W"/>
+                                <exclude reference="5ri-aP-cq9"/>
+                                <include reference="Ezd-7t-EnI"/>
+                                <include reference="dy8-MT-Scu"/>
+                                <include reference="E6i-Gd-6NX"/>
+                                <exclude reference="VHY-tg-nye"/>
+                                <include reference="axp-cG-Nz0"/>
+                                <include reference="isv-x6-hsH"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="RTS-AF-fPC"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="U2i-lB-3z2"/>
+                                <include reference="gOK-Q7-gKZ"/>
+                                <include reference="hop-xJ-ATy"/>
+                                <include reference="1Y7-kf-UMF"/>
+                                <include reference="ZCc-F6-iqR"/>
+                                <include reference="5CR-af-zYL"/>
+                                <include reference="Kls-6U-gRP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="I6Y-dP-QhZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Nzx-Es-GYg"/>
+                                <include reference="SBG-Ub-LHW"/>
+                                <include reference="fQH-SJ-9Ok"/>
+                                <include reference="Gga-4b-Qc7"/>
+                                <include reference="QTK-SW-fOt"/>
+                                <include reference="2Ip-Ub-3ie"/>
+                                <include reference="x0J-Oe-qYu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="扩展功能" id="S4u-VB-AP9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFl-E6-3pW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3201" y="-1471"/>
+            <point key="canvasLocation" x="3201" y="-1471.5"/>
         </scene>
         <!--摇一摇-->
         <scene sceneID="Gwk-AC-ZGc">
@@ -231,13 +469,39 @@
                     <view key="view" contentMode="scaleToFill" id="GDf-HP-1Fq">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="a76e5877a008f511f69a936ca84e7d2d.png" translatesAutoresizingMaskIntoConstraints="NO" id="Tcx-xd-I1h">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" image="YES" notEnabled="YES"/>
+                                </accessibility>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Tcx-xd-I1h" firstAttribute="top" secondItem="GDf-HP-1Fq" secondAttribute="top" constant="64" id="91q-uv-U5z"/>
+                            <constraint firstItem="Tcx-xd-I1h" firstAttribute="top" secondItem="WfK-ue-OQw" secondAttribute="bottom" constant="32" id="DnJ-l3-wg1"/>
+                            <constraint firstItem="Tcx-xd-I1h" firstAttribute="leading" secondItem="GDf-HP-1Fq" secondAttribute="leading" id="QfK-Q0-wm9"/>
+                            <constraint firstItem="pqw-y3-1IY" firstAttribute="top" secondItem="Tcx-xd-I1h" secondAttribute="bottom" id="fkI-Gw-Z71"/>
+                            <constraint firstAttribute="trailing" secondItem="Tcx-xd-I1h" secondAttribute="trailing" id="r4k-Jp-miH"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="DnJ-l3-wg1"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <exclude reference="91q-uv-U5z"/>
+                                <include reference="DnJ-l3-wg1"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="摇一摇" id="rXF-PC-Jtm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4z-FQ-yFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3201" y="-754"/>
+            <point key="canvasLocation" x="3201" y="-754.5"/>
         </scene>
         <!--云颜文字-->
         <scene sceneID="Cbm-cD-eJE">
@@ -279,10 +543,10 @@
         <scene sceneID="rYB-JZ-QIB">
             <objects>
                 <tableViewController id="JhM-eU-jUI" customClass="SetTableViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="c22-Dg-wWJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="c22-Dg-wWJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="SetNav" id="8BG-Mj-c8g">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -404,9 +668,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="a76e5877a008f511f69a936ca84e7d2d.png" width="600" height="574"/>
         <image name="edit-vector.png" width="30" height="30"/>
         <image name="idea-vector.png" width="30" height="30"/>
         <image name="settings-vector.png" width="30" height="30"/>
         <image name="shared-vector.png" width="30" height="30"/>
+        <image name="屏幕快照 2014-08-29 下午8.27.58.png" width="638" height="454"/>
+        <image name="屏幕快照 2014-08-29 下午8.28.13.png" width="638" height="530"/>
     </resources>
 </document>

@@ -181,6 +181,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 切换到源管理页面(要添加的新源网址:NSString?) {
         let 源管理页面:ScoreTableViewController = ScoreTableViewController(style: UITableViewStyle.Plain)
         源管理页面.代理 = self
+        源管理页面.hidesBottomBarWhenPushed = true
         self.navigationController.pushViewController(源管理页面, animated: true)
         if ((要添加的新源网址) != nil) {
             源管理页面.addSource(要添加的新源网址!, isStore: true)
