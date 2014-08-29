@@ -20,13 +20,19 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
 //        自定义 = 2
 //    }
     //内容选择菜单.selectedSegmentIndex
+    @IBOutlet weak var bgpview: UIImageView!
 
     override func viewDidLoad() {
+
+        bgpview.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
+        
+        
         super.viewDidLoad()
         右上按钮.title = "编辑"
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
+        表格.alpha = 0.8
     }
     
     @IBOutlet weak var 左上按钮: UIBarButtonItem!

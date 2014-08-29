@@ -9,7 +9,8 @@
 import UIKit
 
 class SetTableViewController: UITableViewController {
-
+    
+    var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")))
     
     var list:NSMutableArray = NSMutableArray.array()
     
@@ -21,6 +22,11 @@ class SetTableViewController: UITableViewController {
         list.addObject("设置")
         list.addObject("关于")
 
+        bgpview.frame = CGRectMake(0, 240, self.view.frame.size.width, self.view.frame.size.height)
+        bgpview.sendSubviewToBack(self.view)
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+        bgpview.alpha = 0.3
+        self.view.addSubview(bgpview)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

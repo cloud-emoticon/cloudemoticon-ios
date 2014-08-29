@@ -22,6 +22,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //    var sortView:UIView = UIView()
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
+    var 颜文字表格背景:UIImageView = UIImageView()
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
@@ -40,17 +41,20 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var sortData:NSMutableArray = NSMutableArray.array()
     var ceData:NSMutableArray = NSMutableArray.array()
     
+    @IBOutlet weak var bgpview: UIImageView!
+    
     override func viewDidLoad() {
-        
+    
         //Load UI
+        bgpview.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
+        
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
         
         分类表格.tag = 100
         颜文字表格.tag = 101
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
-        
         
         分类表格.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
         if (isCanAutoHideSortView())
@@ -59,20 +63,23 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             self.view.addGestureRecognizer(panRecognizer)
             panRecognizer.maximumNumberOfTouches = 1
             panRecognizer.delegate = self
-            self.view.backgroundColor = UIColor.orangeColor()
             滑动最大X坐标 = self.view.frame.width * 0.6
             分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
         }
         
         颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+        颜文字表格背景.frame = 颜文字表格.frame
+        颜文字表格背景.image = bgpview.image
+        颜文字表格背景.backgroundColor = UIColor.whiteColor()
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
-        
         userimg.frame = CGRectMake(10, 20, 80, 80)
+
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
         username.text = "未登录"
         username.font = UIFont.systemFontOfSize(13)
+
         userview.addSubview(username)
         
         分类表格.tableHeaderView = userview
@@ -93,7 +100,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.layer.shadowOpacity = 1.0
         颜文字表格.layer.masksToBounds = false
         
+        分类表格.alpha = 0.8
+        颜文字表格.alpha = 0.8
+        
         self.view.addSubview(分类表格)
+        self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
         
 //        else {
@@ -132,7 +143,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     {
         if (p_emodata.count >= 3) {
             var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
-            //            let groupnames:NSMutableArray = NSMutableArray.array()
             sortData.removeAllObjects()
             for emogroup_o in y_emoarr
             {
@@ -203,6 +213,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.25, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
+                self.颜文字表格背景.frame = self.颜文字表格.frame
                 })
         }
     }
@@ -240,6 +251,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
+                self.颜文字表格背景.frame = self.颜文字表格.frame
                 }, completion: {
                     (Bool completion) in
                     if completion {
@@ -261,6 +273,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
                     self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
+                    self.颜文字表格背景.frame = self.颜文字表格.frame
                 }
             }
         }
@@ -390,8 +403,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
+            self.颜文字表格背景.frame = self.颜文字表格.frame
         } else {
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
+            self.颜文字表格背景.frame = self.颜文字表格.frame
         }
         
         if (newScreenSize.width < newScreenSize.height) {

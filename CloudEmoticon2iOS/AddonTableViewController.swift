@@ -8,6 +8,8 @@
 
 import UIKit
 
+var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")))
+
 class AddonTableViewController: UITableViewController {
 
     var list:NSMutableArray = NSMutableArray.array()
@@ -17,6 +19,12 @@ class AddonTableViewController: UITableViewController {
 
         list.addObject("摇一摇")
         list.addObject("扩展功能")
+        
+        bgpview.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height)
+        bgpview.sendSubviewToBack(self.view)
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+        bgpview.alpha = 0.3
+        self.view.addSubview(bgpview)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

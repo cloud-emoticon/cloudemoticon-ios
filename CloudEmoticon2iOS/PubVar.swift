@@ -17,6 +17,7 @@ var p_emodata:NSArray = NSArray()
 var p_storeIsOpen:Bool = false
 var 全局_网络繁忙:Bool = false
 
+
 enum NetDownloadTo:Int
 {
     case NONE = 0
