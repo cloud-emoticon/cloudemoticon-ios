@@ -266,13 +266,6 @@
 			name = "源管理";
 			sourceTree = "<group>";
 		};
-		53906A901999BDAE000020D1 /* 第三方类库 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "第三方类库";
-			sourceTree = "<group>";
-		};
 		53906A981999CA7E000020D1 /* 云颜文字 */ = {
 			isa = PBXGroup;
 			children = (
@@ -327,12 +320,11 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */,
 				53E1EB1B19A4976F002EB6A3 /* 自定表情 */,
 				53906A991999CAD0000020D1 /* 核心 */,
 				53906A981999CA7E000020D1 /* 云颜文字 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
-				53906A901999BDAE000020D1 /* 第三方类库 */,
-				5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */,
 				5346D93319931C6100CEFA4B /* 数据模型 */,
 				8B98EE9A196D2DC0000D255E /* images */,
 				53DF28F9196B9CF40058AA42 /* Images.xcassets */,

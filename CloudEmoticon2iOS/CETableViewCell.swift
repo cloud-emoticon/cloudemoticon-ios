@@ -51,8 +51,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         if (单元格样式 == cellMode.CEVIEWCONTROLLER) {
             滑出按钮A.tag = 101
             滑出按钮B.tag = 102
-            滑出按钮A.backgroundColor = UIColor.yellowColor()
-            滑出按钮B.backgroundColor = UIColor.blueColor()
+            滑出按钮A.backgroundColor = UIColor.orangeColor()
+            滑出按钮B.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.9, alpha: 1.0)
             滑出按钮A.setTitle("收藏", forState: UIControlState.Normal)
             滑出按钮B.setTitle("分享", forState: UIControlState.Normal)
             滑出按钮A.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -68,9 +68,6 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "取消单元格左滑方法:", name: "取消单元格左滑通知", object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "允许单元格接收手势方法:", name: "允许单元格接收手势通知", object: nil)
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "修正单元格尺寸方法:", name: "修正单元格尺寸通知", object: nil)
-//            self.selectedBackgroundView = UIView(frame: CGRectMake(0, 0, self.frame.size.width, self.frame.size.height))
-//            self.selectedBackgroundView.backgroundColor = UIColor.lightGrayColor()
-//            self.selectedBackgroundView.sendSubviewToBack(滑出按钮B)
             self.layer.masksToBounds = true
         }
     }
