@@ -64,15 +64,31 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="8NJ-vR-i1g" firstAttribute="top" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="AOO-ws-bCg"/>
                             <constraint firstAttribute="trailing" secondItem="4Xt-PR-K80" secondAttribute="trailing" id="Bwg-Cj-Tlw"/>
                             <constraint firstAttribute="bottom" secondItem="4Xt-PR-K80" secondAttribute="bottom" id="IUO-0x-TDG"/>
                             <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="A8w-i1-QtK" secondAttribute="top" id="MIl-be-4x5"/>
                             <constraint firstAttribute="trailing" secondItem="HhX-Pz-5v7" secondAttribute="trailing" id="Xi4-SU-H6n"/>
                             <constraint firstItem="4Xt-PR-K80" firstAttribute="top" secondItem="A8w-i1-QtK" secondAttribute="top" id="aAu-Wl-VEr"/>
                             <constraint firstItem="4Xt-PR-K80" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="mxu-H9-5Bj"/>
+                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="TTM-fn-SvY" secondAttribute="bottom" id="n8x-dJ-4mU"/>
                             <constraint firstAttribute="bottom" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="ogj-RS-xW2"/>
                             <constraint firstItem="HhX-Pz-5v7" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="yV6-gA-F1N"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="n8x-dJ-4mU"/>
+                                <exclude reference="AOO-ws-bCg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="constraints">
+                                <exclude reference="MIl-be-4x5"/>
+                                <include reference="n8x-dJ-4mU"/>
+                                <exclude reference="ogj-RS-xW2"/>
+                                <include reference="AOO-ws-bCg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
@@ -110,7 +126,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BF7-Zx-6Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2452" y="68"/>
+            <point key="canvasLocation" x="2451.75" y="67.5"/>
         </scene>
         <!--MainTB View Controller-->
         <scene sceneID="raJ-ff-Qo2">
@@ -388,15 +404,15 @@
                                 <exclude reference="yIc-Ti-66V"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="U2i-lB-3z2"/>
-                                <exclude reference="gOK-Q7-gKZ"/>
-                                <exclude reference="hop-xJ-ATy"/>
-                                <exclude reference="1wq-ne-mJH"/>
-                                <exclude reference="Nsh-iK-mNF"/>
-                                <exclude reference="eRv-VZ-12W"/>
                                 <exclude reference="Nzx-Es-GYg"/>
                                 <exclude reference="SBG-Ub-LHW"/>
                                 <exclude reference="fQH-SJ-9Ok"/>
+                                <exclude reference="1wq-ne-mJH"/>
+                                <exclude reference="Nsh-iK-mNF"/>
+                                <exclude reference="eRv-VZ-12W"/>
+                                <exclude reference="U2i-lB-3z2"/>
+                                <exclude reference="gOK-Q7-gKZ"/>
+                                <exclude reference="hop-xJ-ATy"/>
                                 <exclude reference="1Y7-kf-UMF"/>
                                 <exclude reference="5ri-aP-cq9"/>
                                 <exclude reference="Ezd-7t-EnI"/>

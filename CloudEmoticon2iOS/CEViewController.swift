@@ -65,12 +65,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             panRecognizer.delegate = self
             滑动最大X坐标 = self.view.frame.width * 0.6
             分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
+            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+        } else {
+            滑动最大X坐标 = self.view.frame.width * 0.3
+            分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
+            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
         }
         
-        颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
         颜文字表格背景.frame = 颜文字表格.frame
         颜文字表格背景.image = bgpview.image
         颜文字表格背景.backgroundColor = UIColor.whiteColor()
+        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
@@ -87,7 +92,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
-        if (self.view.frame.width < self.view.frame.height) {
+        if (self.view.frame.width < self.view.frame.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
@@ -409,7 +414,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             self.颜文字表格背景.frame = self.颜文字表格.frame
         }
         
-        if (newScreenSize.width < newScreenSize.height) {
+        if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)

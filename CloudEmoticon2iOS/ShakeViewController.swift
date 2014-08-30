@@ -16,8 +16,6 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        CEViewController().载入数据(NetDownloadTo.CLOUDEMOTICON)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "摇一摇复制到剪贴板方法:", name: "摇一摇复制到剪贴板通知", object: nil)
