@@ -21,9 +21,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       
-
-        
         SetTable.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         adflist.addObject("广告显示频率")
         adflist.addObject("")

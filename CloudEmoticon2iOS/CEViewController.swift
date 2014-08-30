@@ -37,7 +37,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
     
         //Load UI
-        bgpview.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
+        let bg:UIImage? = UIImage(contentsOfFile: NSString.localizedStringWithFormat("%@%@",documentDirectoryAddress, "bgimage.png"))
+        
+        if(bg != nil){
+            bgimage = bg!
+        }
+        bgpview.image = bgimage
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)

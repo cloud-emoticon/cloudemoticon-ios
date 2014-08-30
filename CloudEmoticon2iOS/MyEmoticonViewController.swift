@@ -12,6 +12,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray.array()
+
     
 //    enum 模式:Int
 //    {
@@ -23,11 +24,15 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var bgpview: UIImageView!
 
     override func viewDidLoad() {
-
-        bgpview.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
-        
         
         super.viewDidLoad()
+        let bg:UIImage? = UIImage(contentsOfFile: NSString.localizedStringWithFormat("%@%@",documentDirectoryAddress, "bgimage.png"))
+
+        if(bg != nil){
+            bgimage = bg!
+        }
+        bgpview.image = bgimage
+        
         右上按钮.title = "编辑"
         左上按钮.title = ""
         表格.delegate = self
