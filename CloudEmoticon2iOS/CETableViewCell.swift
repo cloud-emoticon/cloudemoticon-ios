@@ -51,8 +51,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         if (单元格样式 == cellMode.CEVIEWCONTROLLER) {
             滑出按钮A.tag = 101
             滑出按钮B.tag = 102
-            滑出按钮A.backgroundColor = UIColor.orangeColor()
-            滑出按钮B.backgroundColor = UIColor.redColor()
+            滑出按钮A.backgroundColor = UIColor.yellowColor()
+            滑出按钮B.backgroundColor = UIColor.blueColor()
             滑出按钮A.setTitle("收藏", forState: UIControlState.Normal)
             滑出按钮B.setTitle("分享", forState: UIControlState.Normal)
             滑出按钮A.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -196,10 +196,13 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
 //        if (覆盖视图.frame.origin.x < 滑动最大X坐标 * 0.5) {
 //            x = 滑动最大X坐标
 //        }
+        
         self.frame = CGRectMake(0, 0, 新的宽度, self.frame.size.height)
         覆盖视图.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
         滑出按钮A.frame = CGRectMake(self.frame.size.width, 0, 按钮宽度, self.frame.size.height)
         滑出按钮B.frame = CGRectMake(self.frame.size.width + 按钮宽度, 0, 按钮宽度, self.frame.size.height)
         主文字.frame = CGRectMake(20, 0, self.frame.size.width - 20, self.frame.size.height)
+        主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        主文字.numberOfLines = 0
     }
 }

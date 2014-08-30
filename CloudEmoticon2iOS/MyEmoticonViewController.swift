@@ -248,6 +248,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
         }
+        
         let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as NSArray
         let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as NSString
         var 颜文字名称:NSString?
@@ -260,8 +261,15 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         } else {
             cell?.detailTextLabel.text = ""
         }
-        return cell;
+        cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        cell?.textLabel.numberOfLines = 0
+        
+            return cell
     }
+    
+//    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+//        
+//    }
     
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {

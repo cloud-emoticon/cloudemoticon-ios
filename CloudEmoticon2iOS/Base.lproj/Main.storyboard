@@ -45,14 +45,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Xt-PR-K80">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basicbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="4Xt-PR-K80">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="800"/>
+                                </variation>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HhX-Pz-5v7">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="HVs-J8-e8U">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="0.0" id="HVs-J8-e8U">
                                         <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HVs-J8-e8U" id="nGC-bG-aas">
@@ -60,35 +63,18 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="64" width="800" height="687"/>
+                                </variation>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8NJ-vR-i1g" firstAttribute="top" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="AOO-ws-bCg"/>
-                            <constraint firstAttribute="trailing" secondItem="4Xt-PR-K80" secondAttribute="trailing" id="Bwg-Cj-Tlw"/>
-                            <constraint firstAttribute="bottom" secondItem="4Xt-PR-K80" secondAttribute="bottom" id="IUO-0x-TDG"/>
-                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="A8w-i1-QtK" secondAttribute="top" id="MIl-be-4x5"/>
-                            <constraint firstAttribute="trailing" secondItem="HhX-Pz-5v7" secondAttribute="trailing" id="Xi4-SU-H6n"/>
-                            <constraint firstItem="4Xt-PR-K80" firstAttribute="top" secondItem="A8w-i1-QtK" secondAttribute="top" id="aAu-Wl-VEr"/>
-                            <constraint firstItem="4Xt-PR-K80" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="mxu-H9-5Bj"/>
-                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="TTM-fn-SvY" secondAttribute="bottom" id="n8x-dJ-4mU"/>
-                            <constraint firstAttribute="bottom" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="ogj-RS-xW2"/>
-                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="yV6-gA-F1N"/>
+                            <constraint firstAttribute="trailing" secondItem="HhX-Pz-5v7" secondAttribute="trailing" id="LYJ-dS-Ab5"/>
+                            <constraint firstItem="8NJ-vR-i1g" firstAttribute="top" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="Q7k-hk-Vxf"/>
+                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="TTM-fn-SvY" secondAttribute="bottom" id="QHd-5t-FuT"/>
+                            <constraint firstItem="HhX-Pz-5v7" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="tix-al-i0K"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="n8x-dJ-4mU"/>
-                                <exclude reference="AOO-ws-bCg"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=regular">
-                            <mask key="constraints">
-                                <exclude reference="MIl-be-4x5"/>
-                                <include reference="n8x-dJ-4mU"/>
-                                <exclude reference="ogj-RS-xW2"/>
-                                <include reference="AOO-ws-bCg"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
@@ -126,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BF7-Zx-6Wi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2451.75" y="67.5"/>
+            <point key="canvasLocation" x="2451" y="67"/>
         </scene>
         <!--MainTB View Controller-->
         <scene sceneID="raJ-ff-Qo2">

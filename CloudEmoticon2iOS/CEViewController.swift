@@ -9,17 +9,10 @@
 import UIKit
 
 class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate { //, UIGestureRecognizerDelegate
-    
-//    let className:NSString = "[CEViewController]"
 
-//    @IBOutlet weak var sortView: UIView!
-//    @IBOutlet weak var 分类表格: UITableView!
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
-//    @IBOutlet weak var sourceBtn: UIBarButtonItem!
-//    @IBOutlet weak var 颜文字表格: UITableView!
-    
-//    var sortView:UIView = UIView()
+
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
     var 颜文字表格背景:UIImageView = UIImageView()
@@ -30,8 +23,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 下拉刷新动作中:Bool = false
     var 菜单滑动中:Bool = false
     var 当前滚动中表格标识:Int = 0
-//    var 分类表格下拉刷新提示:UILabel = UILabel()
-//    var 颜文字表格下拉刷新提示:UILabel = UILabel()
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")))
     
@@ -47,7 +38,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
         //Load UI
         bgpview.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
-        
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
@@ -67,6 +57,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
         } else {
+            sortBtn.title = ""
             滑动最大X坐标 = self.view.frame.width * 0.3
             分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
@@ -102,7 +93,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         颜文字表格.layer.shadowColor = UIColor.grayColor().CGColor
         颜文字表格.layer.shadowOffset = CGSizeMake(-5, 0)
-        颜文字表格.layer.shadowOpacity = 1.0
+        颜文字表格.layer.shadowOpacity = 0.9
         颜文字表格.layer.masksToBounds = false
         
         分类表格.alpha = 0.8
@@ -187,8 +178,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    
-    
     @IBAction func scoreBtn(sender: UIBarButtonItem) {
         切换到源管理页面(nil)
     }
@@ -222,11 +211,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 })
         }
     }
-    
-//    @IBAction func sourceBtn(sender: UIBarButtonItem) {
-//        let source:ScoreTableViewController = ScoreTableViewController.alloc()
-//        self.navigationController.pushViewController(source, animated: true)
-//    }
     
     func openSortData(row:Int)
     {
@@ -296,8 +280,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return true
     }
     
-    
-    
     func isCanAutoHideSortView() -> Bool
     {
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && self.view.frame.width < self.view.frame.height) {
@@ -349,11 +331,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let name:NSString = emoobj.objectAtIndex(1) as NSString
                 cell!.detailTextLabel.text = name
             }
+            cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
+            cell?.textLabel.numberOfLines = 0
+   
             cell!.修正元素位置(self.颜文字表格.frame.size.width)
+
             return cell;
         }
     }
-    
+
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
@@ -407,9 +393,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
+            sortBtn.title = "分类"
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
             self.颜文字表格背景.frame = self.颜文字表格.frame
         } else {
+            sortBtn.title = ""
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
             self.颜文字表格背景.frame = self.颜文字表格.frame
         }
@@ -549,12 +537,4 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return true
     }
 
-//    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
-//    {
-//        if (tableView.tag == 100) {
-//             、、
-//        } else {
-//            
-//        }
-//    }
 }
