@@ -26,7 +26,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let bg:UIImage? = UIImage(contentsOfFile: NSString.localizedStringWithFormat("%@%@",documentDirectoryAddress, "bgimage.png"))
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
 
         if(bg != nil){
             bgimage = bg!

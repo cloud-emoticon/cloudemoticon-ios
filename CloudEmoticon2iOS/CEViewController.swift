@@ -37,7 +37,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
     
         //Load UI
-        let bg:UIImage? = UIImage(contentsOfFile: NSString.localizedStringWithFormat("%@%@",documentDirectoryAddress, "bgimage.png"))
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil){
             bgimage = bg!

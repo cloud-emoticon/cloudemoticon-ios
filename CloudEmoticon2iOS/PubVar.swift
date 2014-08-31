@@ -19,6 +19,8 @@ var 全局_网络繁忙:Bool = false
 var bgimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png"))
 let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
+let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
 
 enum NetDownloadTo:Int
 {

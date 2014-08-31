@@ -10,13 +10,26 @@ import UIKit
 
 class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
+    @IBOutlet var restorebutton: UIView!
     @IBOutlet var selectbutton: UIView!
-    
+
+
+    @IBAction func restorebutton(sender: AnyObject) {
+        deletebgimage()
+    }
     @IBAction func selectbutton(sender: AnyObject) {
         selectimage()
     }
+    @IBOutlet weak var bgimageviewer: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
+        
+        if(bg != nil) {
+            bgimageviewer.image = bg
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -76,7 +89,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         if(picker.sourceType == UIImagePickerControllerSourceType.Camera){
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         }
-        saveImage(image, WithName: "bgimage.png")
+        saveImage(image, WithName: userbgimgname)
     }
     
     func saveImage(tempImage:UIImage, WithName imageName:NSString){
@@ -85,6 +98,15 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         imageData.writeToFile(fullpathttofile, atomically: false)
     }
     
+    func deletebgimage(){
+        let fullpathtofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(userbgimgname)
+        let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
+        if (isDup){
+            NSFileManager.defaultManager().removeItemAtPath(fullpathtofile, error: nil)
+        }
+        
+        
+    }
     
     /*
     // MARK: - Navigation

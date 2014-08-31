@@ -46,7 +46,7 @@ class FileManager: NSObject {
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
-            NSLog("%@从本地加载源...",className)
+            NSLog("%@本地加载中...",className)
             let arr:NSArray = NSArray(contentsOfFile: fulladd)
             return arr
         }
