@@ -28,7 +28,7 @@ class Language: NSObject {
     func 系统支持的所有语言() -> NSString
     {
         let 系统支持的语言t:NSArray = NSLocale.preferredLanguages()
-        return 系统支持的语言t.componentsJoinedByString(", ");
+        return 系统支持的语言t.componentsJoinedByString(", ")
     }
     
     func 载入语言(要载入的语言:NSString)

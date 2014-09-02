@@ -61,7 +61,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             self.addSubview(滑出按钮B)
             self.addSubview(覆盖视图)
             副文字.textColor = UIColor.grayColor()
-            副文字.font = UIFont.systemFontOfSize(12);
+            副文字.font = UIFont.systemFontOfSize(12)
             覆盖视图.addSubview(主文字)
             覆盖视图.addSubview(副文字)
             手势 = UIPanGestureRecognizer(target: self, action: "手势执行:")
@@ -151,7 +151,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
                     self.覆盖视图.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
                     self.滑出按钮A.frame = CGRectMake(self.frame.size.width, 0, self.按钮宽度, self.frame.size.height)
                     self.滑出按钮B.frame = CGRectMake(self.frame.size.width + self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
-                });
+                })
             }
     
         } else if (代理 != nil) {
@@ -228,10 +228,10 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
     {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0));
+        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
         detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value;
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max));
-        return deSize.height;
+        detailTextView.text = value
+        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
+        return deSize.height
     }
 }

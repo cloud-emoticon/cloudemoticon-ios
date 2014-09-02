@@ -82,7 +82,7 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="r3T-Er-Ll2">
-                            <rect key="frame" x="200" y="4" width="200" height="37"/>
+                            <rect key="frame" x="200" y="3.5" width="200" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="收藏"/>
@@ -369,8 +369,7 @@
                                         <exclude reference="q5r-XH-C2a"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="800" height="100"/>
+                                <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="LJo-vq-hym"/>
                                         <exclude reference="PIR-So-8us"/>
@@ -502,6 +501,9 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="扩展功能" id="S4u-VB-AP9"/>
+                    <connections>
+                        <outlet property="Exttips" destination="D9a-jS-AFM" id="Fep-rb-7pc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sFl-E6-3pW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -551,6 +553,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m4z-FQ-yFB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3201" y="-754.5"/>
+        </scene>
+        <!--颜文字输入法-->
+        <scene sceneID="no6-Go-bHc">
+            <objects>
+                <viewController storyboardIdentifier="Input" id="VmA-ne-0C2" customClass="InputViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="S78-6k-PtA"/>
+                        <viewControllerLayoutGuide type="bottom" id="6YJ-p1-Imv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EKt-Su-rCl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="颜文字输入法" id="TcY-Wh-mKM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wef-UK-r5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3201" y="68"/>
         </scene>
         <!--云颜文字-->
         <scene sceneID="Cbm-cD-eJE">
@@ -639,17 +660,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLL-IE-aOs">
-                                <rect key="frame" x="16" y="80" width="90" height="30"/>
-                                <state key="normal" title="修改背景图片">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLL-IE-aOs">
+                                <rect key="frame" x="16" y="20" width="568" height="30"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="修改背景图片"/>
                                 <connections>
                                     <action selector="selectbutton:" destination="jAL-DB-bBa" eventType="touchUpInside" id="gZn-NA-kEH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86C-dR-b6E">
-                                <rect key="frame" x="114" y="80" width="60" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86C-dR-b6E">
+                                <rect key="frame" x="16" y="54" width="568" height="30"/>
                                 <state key="normal" title="还原背景">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -657,28 +677,55 @@
                                     <action selector="restorebutton:" destination="jAL-DB-bBa" eventType="touchUpInside" id="1E2-M3-fDg"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="当前背景 :" translatesAutoresizingMaskIntoConstraints="NO" id="pao-iv-3y1">
-                                <rect key="frame" x="0.0" y="109" width="240" height="29"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="当前背景 :" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="pao-iv-3y1">
+                                <rect key="frame" x="16" y="88" width="568" height="29"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="568" id="NNx-hR-qjg"/>
+                                    <constraint firstAttribute="height" constant="29" id="n20-JN-Jgs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="NNx-hR-qjg"/>
+                                    </mask>
+                                </variation>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basicbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-SP-6sR">
-                                <rect key="frame" x="0.0" y="146" width="240" height="320"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Z9k-SP-6sR">
+                                <rect key="frame" x="180" y="125" width="240" height="320"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="Qrc-Dw-6Cu"/>
+                                    <constraint firstAttribute="width" constant="240" id="ufi-Wl-1PM"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="86C-dR-b6E" firstAttribute="trailing" secondItem="vDy-ts-31M" secondAttribute="trailingMargin" id="60i-Zm-cZz"/>
+                            <constraint firstItem="pao-iv-3y1" firstAttribute="leading" secondItem="vDy-ts-31M" secondAttribute="leadingMargin" id="CAG-MK-o2X"/>
+                            <constraint firstItem="oLL-IE-aOs" firstAttribute="top" secondItem="xwP-Ug-nJS" secondAttribute="bottom" id="EMd-qG-BNd"/>
+                            <constraint firstItem="86C-dR-b6E" firstAttribute="leading" secondItem="vDy-ts-31M" secondAttribute="leadingMargin" id="M28-AU-vyj"/>
+                            <constraint firstAttribute="centerX" secondItem="Z9k-SP-6sR" secondAttribute="centerX" id="N1V-sL-01Q"/>
+                            <constraint firstItem="pao-iv-3y1" firstAttribute="trailing" secondItem="vDy-ts-31M" secondAttribute="trailingMargin" id="P1o-Xy-8Nm"/>
+                            <constraint firstItem="oLL-IE-aOs" firstAttribute="leading" secondItem="vDy-ts-31M" secondAttribute="leadingMargin" id="RiR-pF-tmT"/>
+                            <constraint firstItem="oLL-IE-aOs" firstAttribute="trailing" secondItem="vDy-ts-31M" secondAttribute="trailingMargin" id="cbG-h8-EIq"/>
+                            <constraint firstItem="86C-dR-b6E" firstAttribute="top" secondItem="oLL-IE-aOs" secondAttribute="bottom" constant="4" id="gjZ-Ot-83c"/>
+                            <constraint firstItem="Z9k-SP-6sR" firstAttribute="top" secondItem="pao-iv-3y1" secondAttribute="bottom" constant="8" id="h6S-ua-Kpa"/>
+                            <constraint firstItem="pao-iv-3y1" firstAttribute="top" secondItem="86C-dR-b6E" secondAttribute="bottom" constant="4" id="hRM-mX-Bkh"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="个性化" id="4Kv-Y1-MdZ"/>
                     <connections>
                         <outlet property="bgimageviewer" destination="Z9k-SP-6sR" id="hgN-ln-0Nb"/>
-                        <outlet property="restorebutton" destination="vDy-ts-31M" id="n9N-eK-3Fb"/>
-                        <outlet property="selectbutton" destination="vDy-ts-31M" id="wHl-SQ-fnl"/>
+                        <outlet property="nowbgtext" destination="pao-iv-3y1" id="1K7-MN-owb"/>
+                        <outlet property="restorebutton" destination="86C-dR-b6E" id="zeJ-Jy-aq5"/>
+                        <outlet property="selectbutton" destination="oLL-IE-aOs" id="234-Yb-83n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2O7-B5-9H8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2069" y="2387"/>
+            <point key="canvasLocation" x="2068.5" y="2386.5"/>
         </scene>
         <!--关于-->
         <scene sceneID="W5W-Z2-hgb">

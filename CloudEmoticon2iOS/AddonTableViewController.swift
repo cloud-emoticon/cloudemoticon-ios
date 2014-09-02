@@ -19,6 +19,7 @@ class AddonTableViewController: UITableViewController {
 
         list.addObject(lang.uage("摇一摇"))
         list.addObject(lang.uage("扩展功能"))
+        list.addObject(lang.uage("输入法"))
         self.title = lang.uage("附加工具")
         
         bgpview.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height)
@@ -49,7 +50,7 @@ class AddonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 2
+        return 3
     }
 
     
@@ -70,6 +71,11 @@ class AddonTableViewController: UITableViewController {
             break
         case 1:
             let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Extension") as UIViewController
+            push.hidesBottomBarWhenPushed = true
+            self.navigationController.pushViewController(push, animated: true)
+            break
+        case 2:
+            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Input") as UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController.pushViewController(push, animated: true)
             break

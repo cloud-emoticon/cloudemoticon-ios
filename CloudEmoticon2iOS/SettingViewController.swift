@@ -23,7 +23,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var copyexit:Bool? = NSUserDefaults.standardUserDefaults().valueForKey("exitaftercopy") as? Bool
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = lang.uage("设置")
         SetTable.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         adflist.addObject(lang.uage("广告显示频率"))
         adflist.addObject("")
@@ -64,9 +64,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         if(section == 0)
         {
-            return "广告"
+            return lang.uage("广告")
         } else {
-            return "行为"
+            return lang.uage("行为")
         }
     }
     
@@ -118,14 +118,14 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             cell!.accessoryView = 设置广告显示频率
             设置广告显示频率.addTarget(self, action: Selector(updateSliderAtIndesPath(设置广告显示频率)), forControlEvents: UIControlEvents.TouchUpInside)
-            设置广告显示频率.tag = 1001;
+            设置广告显示频率.tag = 1001
             cell!.contentView.addSubview(设置广告显示频率)
         }
         
         if(indexPath.section == 1){
                 cell!.accessoryView = 设置复制后退出应用
             设置复制后退出应用.addTarget(self, action: Selector(updateSwitchAtIndesPath(设置复制后退出应用)), forControlEvents: UIControlEvents.ValueChanged)
-            设置复制后退出应用.tag = 1002;
+            设置复制后退出应用.tag = 1002
             cell!.contentView.addSubview(设置复制后退出应用)
             //slidhfodishgodsihg
         }

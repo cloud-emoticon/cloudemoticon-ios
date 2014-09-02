@@ -24,7 +24,6 @@
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DA36A419B5AF4100FD8D78 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DA36A319B5AF4100FD8D78 /* Language.swift */; };
-		53DA36A619B5BD1D00FD8D78 /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
 		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
@@ -69,6 +68,9 @@
 		8BF8ACF5199335D7001207FC /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BF8ACF4199335D7001207FC /* NotificationCenter.framework */; };
 		8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BF8ACF9199335D7001207FC /* TodayViewController.swift */; };
 		8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */; };
+		8BFDD92D19B60A5100673F5E /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFDD92B19B60A5100673F5E /* language-zh-Hans.plist */; };
+		8BFDD92E19B60A5100673F5E /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFDD92C19B60A5100673F5E /* language-zh-Hant.plist */; };
+		8BFDD93019B6147300673F5E /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFDD92F19B6147300673F5E /* InputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,7 +158,6 @@
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DA36A319B5AF4100FD8D78 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
-		53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hans.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +208,9 @@
 		8BF8ACF8199335D7001207FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BF8ACF9199335D7001207FC /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		8BF8ACFB199335D7001207FC /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		8BFDD92B19B60A5100673F5E /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hans.plist"; sourceTree = "<group>"; };
+		8BFDD92C19B60A5100673F5E /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hant.plist"; sourceTree = "<group>"; };
+		8BFDD92F19B6147300673F5E /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,9 +309,10 @@
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
 			isa = PBXGroup;
 			children = (
+				8BFDD92B19B60A5100673F5E /* language-zh-Hans.plist */,
+				8BFDD92C19B60A5100673F5E /* language-zh-Hant.plist */,
 				53DA36A019B5AE9900FD8D78 /* language-en.plist */,
 				53DA36A319B5AF4100FD8D78 /* Language.swift */,
-				53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */,
 			);
 			name = "多语言";
 			path = ..;
@@ -440,6 +445,7 @@
 		8BA6684319ACD41A0080C47F /* 附加工具 */ = {
 			isa = PBXGroup;
 			children = (
+				8BFDD92F19B6147300673F5E /* InputViewController.swift */,
 				8BA6684119ACD3F80080C47F /* AddonTableViewController.swift */,
 				8BA6684419ACDB830080C47F /* ShakeViewController.swift */,
 				8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */,
@@ -615,10 +621,11 @@
 				8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */,
 				53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
-				53DA36A619B5BD1D00FD8D78 /* language-zh-Hans.plist in Resources */,
+				8BFDD92D19B60A5100673F5E /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
 				8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */,
 				8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */,
+				8BFDD92E19B60A5100673F5E /* language-zh-Hant.plist in Resources */,
 				8B98EEA1196D3258000D255E /* shared-vector.png in Resources */,
 				5332F843199A2354006F76CA /* nouserimg.jpg in Resources */,
 				8BE31F59196D38A7006C3B26 /* clock-vector.png in Resources */,
@@ -656,6 +663,7 @@
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
 				53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */,
+				8BFDD93019B6147300673F5E /* InputViewController.swift in Sources */,
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,

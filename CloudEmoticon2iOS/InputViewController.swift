@@ -1,19 +1,18 @@
 //
-//  AboutViewController.swift
+//  InputViewController.swift
 //  CloudEmoticon2iOS
 //
-//  Created by 神楽坂紫喵 on 14/8/26.
+//  Created by 神楽坂紫 on 14/9/2.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
 import UIKit
 
-class AboutViewController: UIViewController {
+class InputViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = lang.uage("关于")
+
         // Do any additional setup after loading the view.
     }
 

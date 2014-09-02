@@ -25,18 +25,19 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
         
-//        self.language()
+        
+        self.language()
     }
     
-//    func language()
-//    {
-//        let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]
-//        let items:NSArray = self.tabBar.items
-//        for i in 0...items.count-1 {
-//            let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
-//            nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
-//        }
-//    }
+    func language()
+    {
+        let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]
+        let items:NSArray = self.tabBar.items
+        for i in 0...items.count - 1 {
+            let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
+            nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
+        }
+    }
     
     func 复制到剪贴板方法(notification:NSNotification)
     {
@@ -93,11 +94,11 @@ class MainTBViewController: UITabBarController {
     
     func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
     {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0));
+        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
         detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value;
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max));
-        return deSize.height;
+        detailTextView.text = value
+        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
+        return deSize.height
     }
     
     func alertview(notification:NSNotification)

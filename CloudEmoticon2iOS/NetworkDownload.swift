@@ -45,26 +45,11 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
         NSLog("%@数据接收中...",类名称)
         if (self.接收到的数据 == nil)
         {
-            self.接收到的数据 = NSMutableData.data();
+            self.接收到的数据 = NSMutableData.data()
         }
         self.接收到的数据.appendData(data)
 
     }
-//    func connection(connection: NSURLConnection!, needNewBodyStream request: NSURLRequest!) -> NSInputStream!
-//    {
-//        print("4")
-//        return NSInputStream.alloc();
-//    }
-//    func connection(connection: NSURLConnection!, didSendBodyData bytesWritten: Int, totalBytesWritten: Int, totalBytesExpectedToWrite: Int)
-//    {
-//        print("5")
-//    }
-//    //缓存
-//    func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: NSCachedURLResponse!) -> NSCachedURLResponse!
-//    {
-//        print("6")
-//        return NSCachedURLResponse.alloc()
-//    }
 
     //成功接收
     func connectionDidFinishLoading(connection: NSURLConnection!)

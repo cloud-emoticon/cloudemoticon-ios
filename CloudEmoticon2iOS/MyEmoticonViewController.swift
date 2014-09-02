@@ -250,7 +250,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     // MARK: - 表格数据
     func numberOfSectionsInTableView(tableView: UITableView!) -> Int
     {
-        return 1;
+        return 1
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int

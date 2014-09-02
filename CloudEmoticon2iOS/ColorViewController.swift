@@ -10,9 +10,9 @@ import UIKit
 
 class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
-    @IBOutlet var restorebutton: UIView!
-    @IBOutlet var selectbutton: UIView!
-
+    @IBOutlet weak var selectbutton: UIButton!
+    @IBOutlet weak var restorebutton: UIButton!
+    @IBOutlet weak var nowbgtext: UITextView!
 
     @IBAction func restorebutton(sender: AnyObject) {
         deletebgimage()
@@ -24,7 +24,12 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
+        selectbutton.setTitle(lang.uage("修改背景图片"), forState: UIControlState.Normal)
+        restorebutton.setTitle(lang.uage("还原背景"), forState: UIControlState.Normal)
+
+        nowbgtext.text = lang.uage("当前背景")
+        self.title = lang.uage("个性化")
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil) {
@@ -41,7 +46,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         // Dispose of any resources that can be recreated.
     }
     func selectimage() {
-        var actionsheet:UIActionSheet = UIActionSheet(title: "选择背景图片加载位置", delegate: self, cancelButtonTitle: "取消", destructiveButtonTitle: nil, otherButtonTitles:"拍照","相册","图片库")
+        var actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置"), delegate: self, cancelButtonTitle: lang.uage("取消"), destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照"),lang.uage("相册"),lang.uage("图片库"))
         actionsheet.actionSheetStyle = UIActionSheetStyle.Default
         actionsheet.showInView(self.view)
     }

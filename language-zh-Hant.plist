@@ -9,110 +9,110 @@
 
 </string>
     <key>输入法</key>
-    <string>颜文字输入法</string>
+    <string>顏文字輸入法</string>
 	<key>还原背景</key>
-	<string>还原背景</string>
+	<string>初始化背景圖</string>
 	<key>当前背景</key>
-	<string>当前背景：</string>
+	<string>當前背景圖：</string>
 	<key>修改背景图片</key>
-	<string>修改背景图片</string>
+	<string>變更背景圖</string>
 	<key>添加到剪切板</key>
-	<string>添加到剪切板</string>
+	<string>拷貝到剪切板</string>
 	<key>发现了颜文字</key>
-	<string>发现了颜文字！</string>
+	<string>獲得了顏文字！</string>
 	<key>行为</key>
-	<string>行为</string>
+	<string>行為</string>
 	<key>广告</key>
 	<string>广告</string>
 	<key>图片库</key>
-	<string>图片库</string>
+	<string>圖庫</string>
 	<key>相册</key>
-	<string>相册</string>
+	<string>相簿</string>
 	<key>选择背景图片加载位置</key>
-	<string>选择背景图片加载位置</string>
+	<string>選擇背景圖存放點</string>
 	<key>拍照</key>
-	<string>拍照</string>
+	<string>照相機</string>
 	<key>中止</key>
 	<string>中止</string>
 	<key>源可能有问题</key>
-	<string>因为源有问题或不兼容，无法添加这个源。</string>
+	<string>因為一些問題或兼容性錯誤，無法添加這個源。</string>
 	<key>源解析失败</key>
-	<string>源解析失败</string>
+	<string>源解析錯誤</string>
 	<key>复制后退出</key>
-	<string>复制后退出</string>
+	<string>拷貝后退出</string>
 	<key>广告显示频率</key>
-	<string>广告显示概率</string>
+	<string>廣告顯示概率</string>
 	<key>本地默认源</key>
-	<string>本地默认源</string>
+	<string>本地缺省源</string>
 	<key>不具备删除这个源的权限</key>
-	<string>这个源是系统源或您不具备删除这个源的权限。</string>
+	<string>這個源由系统所有或您沒有獲得移除此源的授權</string>
 	<key>无法删除这个源</key>
-	<string>无法删除这个源</string>
+	<string>無法移除這個源</string>
 	<key>返回</key>
 	<string>返回</string>
 	<key>从源商店添加</key>
-	<string>从源商店添加</string>
+	<string>從源商店添加</string>
 	<key>添加源</key>
 	<string>添加源</string>
 	<key>关于</key>
-	<string>关于</string>
+	<string>關於</string>
 	<key>个性化</key>
-	<string>个性化</string>
+	<string>自订背景</string>
 	<key>分享</key>
 	<string>分享</string>
 	<key>扩展功能</key>
-	<string>通知中心扩展</string>
+	<string>通知中心擴展</string>
 	<key>摇一摇</key>
-	<string>摇一摇</string>
+	<string>搖一搖</string>
 	<key>已复制到剪贴板</key>
-	<string>已复制到剪贴板</string>
+	<string>已拷貝到剪切板</string>
 	<key>正在加载源</key>
-	<string>正在加载源...</string>
+	<string>正在載入源...</string>
 	<key>你已经收藏了</key>
-	<string>你已经收藏了</string>
+	<string>你已經收藏了</string>
 	<key>添加到收藏夹成功</key>
-	<string>成功添加到收藏夹</string>
+	<string>已成功加入收藏夾</string>
 	<key>正在刷新</key>
 	<string>ㄟ(￣▽￣ㄟ)正在刷新...</string>
 	<key>下拉刷新</key>
-	<string>(´・ω・｀) 下拉刷新</string>
+	<string>(´・ω・｀) 下拉列表以刷新</string>
 	<key>松开手指刷新</key>
-	<string>ლ(╹◡╹ლ)松开手指刷新</string>
+	<string>ლ(╹◡╹ლ)放開手指以刷新</string>
 	<key>未登录</key>
-	<string>未登录</string>
+	<string>未登入</string>
 	<key>分类</key>
-	<string>分类</string>
+	<string>類別</string>
 	<key>源管理</key>
 	<string>源管理</string>
 	<key>设置</key>
-	<string>设置</string>
+	<string>設定</string>
 	<key>附加工具</key>
-	<string>附加工具</string>
+	<string>附加組件</string>
 	<key>云颜文字</key>
-	<string>云颜文字</string>
+	<string>云顏文字</string>
 	<key>自定表情</key>
-	<string>自定表情</string>
+	<string>我的顏文字</string>
 	<key>历史记录</key>
-	<string>历史记录</string>
+	<string>歷史記錄</string>
 	<key>收藏</key>
-	<string>收藏夹</string>
+	<string>收藏夾</string>
 	<key>清空</key>
 	<string>清空</string>
 	<key>自定义</key>
-	<string>自定义</string>
+	<string>自訂</string>
 	<key>取消</key>
 	<string>取消</string>
 	<key>添加颜文字</key>
-	<string>添加颜文字</string>
+	<string>加載颜文字</string>
 	<key>添加</key>
 	<string>添加</string>
 	<key>完成</key>
 	<string>完成</string>
 	<key>编辑</key>
-	<string>编辑</string>
+	<string>變更</string>
 	<key>语言包名称</key>
-	<string>简体中文 Simplified Chinese</string>
+	<string>繁体中文 Traditional Chinese</string>
 	<key>语言包作者</key>
-	<string>神楽坂雅诗</string>
+	<string>神楽坂紫</string>
 </dict>
 </plist>

@@ -27,15 +27,15 @@ class SwitchCoder: NSObject {
         case Coder.XMLv1:
             var XML解析器:XMLReader = XMLReader()
             XML解析器.数据转换为XML(源数据, URL识别数组: URL识别数组)
-            break;
+            break
         case Coder.JSONv1:
             var JSON解析器:JSONReader = JSONReader()
             JSON解析器.数据转换为JSON(源数据, URL识别数组: URL识别数组)
-            break;
+            break
         default:
             var altarr:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
-            break;
+            break
         }
     }
     

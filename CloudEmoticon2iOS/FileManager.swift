@@ -127,7 +127,7 @@ class FileManager: NSObject {
             return NSArray()
         }
         let sarr:NSArray = NSArray(contentsOfFile: fulladd)
-        return sarr;
+        return sarr
     }
     func saveSources(sarr:NSArray)
     {

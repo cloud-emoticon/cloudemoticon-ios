@@ -18,7 +18,7 @@ class CustomStatusBar: UIWindow {
         self.messageLabel.textAlignment = NSTextAlignment.Right
         self.messageLabel.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1)
         self.messageLabel.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
-        self.messageLabel.font = UIFont.systemFontOfSize(13.0);
+        self.messageLabel.font = UIFont.systemFontOfSize(13.0)
         self.windowLevel = UIWindowLevelStatusBar + 1.0
         self.backgroundColor = UIColor.clearColor()
         self.addSubview(self.messageLabel)

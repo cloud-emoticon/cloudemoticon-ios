@@ -18,7 +18,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = lang.uage("摇一摇")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
 
     loaddata()
@@ -97,7 +97,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     {
         let emocount:Float = Float(emolist.count)
         let emonum:Int = Int((Float(arc4random_uniform(100)) * emocount) * 0.01)
-        var alert:NSArray = ["发现了颜文字！",emolist.objectAtIndex(emonum),"添加到剪切板","取消",emoNamelist.objectAtIndex(emonum)]
+        var alert:NSArray = [lang.uage("发现了颜文字"),emolist.objectAtIndex(emonum),lang.uage("添加到剪切板"),lang.uage("取消"),emoNamelist.objectAtIndex(emonum)]
         self.alertviewShake(alert)
     }
     

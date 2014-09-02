@@ -19,7 +19,7 @@ class NotificationView: UIView {
         self.alpha = 0.0
         self.layer.shadowColor = UIColor.blackColor().CGColor
         self.layer.shadowOffset = CGSizeMake(0, 0)
-        self.layer.shadowOpacity = 1.0;
+        self.layer.shadowOpacity = 1.0
         
         let 子元素坐标:CGRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
         let 背景颜色:UIView = UIView(frame: 子元素坐标)

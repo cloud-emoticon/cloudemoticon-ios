@@ -17,7 +17,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 颜文字表格:UITableView = UITableView()
     var 颜文字表格背景:UIImageView = UIImageView()
 //    var 单元格高度:NSMutableArray = NSMutableArray.array()
-    var 当前单元格高度:CGFloat = 0;
+    var 当前单元格高度:CGFloat = 0
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
@@ -55,6 +55,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
     
         //Load UI
+        sortBtn.title = lang.uage("分类")
+        
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil){
@@ -319,7 +321,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     //表格数据
     func numberOfSectionsInTableView(tableView: UITableView!) -> Int
     {
-        return 1;
+        return 1
     }
     
     func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
@@ -342,7 +344,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
             cell!.textLabel.text = groupname
-            return cell;
+            return cell
         } else {
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
             if (cell == nil) {
@@ -379,17 +381,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             
             cell!.修正元素位置(self.颜文字表格.frame.size.width)
-            return cell;
+            return cell
         }
     }
     
     func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
     {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0));
+        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
         detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value;
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max));
-        return deSize.height;
+        detailTextView.text = value
+        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
+        return deSize.height
     }
 
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
