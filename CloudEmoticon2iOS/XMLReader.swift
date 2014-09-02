@@ -21,7 +21,7 @@ class XMLReader: NSObject {
         var XML解析类库:XMLDictionaryParser = XMLDictionaryParser()
         var root:AnyObject? = XML解析类库.dictionaryWithData(data)
         if (root == nil) {
-            var 提示框内容数组:NSArray = ["XML源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
+            var 提示框内容数组:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
         } else {
             let 文件数据结构版本:NSString = "iOSv2" //ok

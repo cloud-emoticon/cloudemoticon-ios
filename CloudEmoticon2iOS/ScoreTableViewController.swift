@@ -77,11 +77,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             sfile.addObjectsFromArray(loadArrays)
         }
 //        self.tableView.dataSource = self
-        editBtn = UIBarButtonItem(title: "返回", style: UIBarButtonItemStyle.Plain, target: self, action: "backBtn:")
+        editBtn = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "backBtn:")
         self.navigationItem.leftBarButtonItem = editBtn
-        backBtn = UIBarButtonItem(title: "编辑", style: UIBarButtonItemStyle.Plain, target: self, action: "editBtn:")
+        backBtn = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "editBtn:")
         self.navigationItem.rightBarButtonItem = backBtn
-        self.title = "源管理"
+        self.title = lang.uage("源管理")
         self.tableView.reloadData()
         
         
@@ -98,7 +98,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func addLocalSource()
     {
         let o_note:NSString = ""
-        let o_name:NSString = "本地默认源"
+        let o_name:NSString = lang.uage("本地默认源")
         let o_url:NSString = "localhost"
         let o_delete:NSArray = ["default","system"]
         let s_emoset0:NSArray = [o_note,o_name,o_url,o_delete]
@@ -216,7 +216,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func backBtn(sender: UIBarButtonItem) {
 //        defaults.synchronize()
         if (self.tableView.editing) {
-            var alert:UIAlertView = UIAlertView(title: "添加源", message: "", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "添加", "从源商店添加")
+            var alert:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
             alert.tag = 200
@@ -253,11 +253,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func editBtn(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem.title = "完成"
-            self.navigationItem.leftBarButtonItem.title = "添加"
+            self.navigationItem.rightBarButtonItem.title = lang.uage("完成")
+            self.navigationItem.leftBarButtonItem.title = lang.uage("添加")
         } else {
-            self.navigationItem.rightBarButtonItem.title = "编辑"
-            self.navigationItem.leftBarButtonItem.title = "返回"
+            self.navigationItem.rightBarButtonItem.title = lang.uage("编辑")
+            self.navigationItem.leftBarButtonItem.title = lang.uage("返回")
         }
         
     }
@@ -330,7 +330,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 fileMgr.saveSources(sfile)
                 
             } else {
-                UIAlertView(title: "无法删除这个源", message: "这个源是系统源或者您不具备删除这个源的权限。", delegate: nil, cancelButtonTitle: "取消").show()
+                UIAlertView(title: lang.uage("无法删除这个源"), message: lang.uage("不具备删除这个源的权限"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
             }
             
         } else if editingStyle == .Insert {

@@ -25,9 +25,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         SetTable.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
-        adflist.addObject("广告显示频率")
+        adflist.addObject(lang.uage("广告显示频率"))
         adflist.addObject("")
-        adflist.addObject("复制后退出")
+        adflist.addObject(lang.uage("复制后退出"))
         SetTable.delegate = self
         SetTable.dataSource = self
         view.addSubview(SetTable)

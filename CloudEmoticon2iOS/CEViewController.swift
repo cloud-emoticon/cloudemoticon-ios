@@ -36,6 +36,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     @IBOutlet weak var bgpview: UIImageView!
     
+    func language()
+    {
+        scoreBtn.title = lang.uage("源管理")
+        self.title = lang.uage("云颜文字")
+    }
+    
     override func viewDidAppear(animated: Bool) {
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
@@ -92,7 +98,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
-        username.text = "未登录"
+        username.text = lang.uage("未登录")
         username.font = UIFont.systemFontOfSize(13)
 
         userview.addSubview(username)
@@ -139,7 +145,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
 //        p_emodata
         载入数据(NetDownloadTo.CLOUDEMOTICON)
+        
+        self.language()
 }
+
     func 载入数据(downloadTo:NetDownloadTo) {
         let 下载到位置序号:Int = downloadTo.toRaw()
         var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -462,7 +471,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
-            sortBtn.title = "分类"
+            sortBtn.title = lang.uage("分类")
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
             self.颜文字表格背景.frame = self.颜文字表格.frame
         } else {
@@ -498,9 +507,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
             if (下拉刷新动作中) {
                 if (表格竖向滚动 < -100.0) {
-                    下拉刷新提示!.text = "ლ(╹◡╹ლ)松开手指刷新"
+                    下拉刷新提示!.text = lang.uage("松开手指刷新")
                 } else {
-                    下拉刷新提示!.text = "(´・ω・｀) 下拉刷新"
+                    下拉刷新提示!.text = lang.uage("下拉刷新")
                 }
             }
         }
@@ -537,7 +546,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         if (表格竖向滚动 < -100.0) {
-            下拉刷新提示!.text = "ㄟ(￣▽￣ㄟ)正在刷新..."
+            下拉刷新提示!.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
             }
@@ -583,9 +592,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 //                收藏.removeLastObject()
                 //            }
                 文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.FAVORITE)
-                提示文字 = NSString(format: "“ %@ ” 添加到收藏夹成功", 颜文字)
+                提示文字 = NSString(format: "“ %@ ” %@", 颜文字, lang.uage("添加到收藏夹成功"))
             } else {
-                提示文字 = NSString(format: "你已经收藏了 “ %@ ”", 颜文字)
+                提示文字 = NSString(format: "%@ “ %@ ”",lang.uage("你已经收藏了") ,颜文字)
             }
             NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)
         } else { //分享 颜文字

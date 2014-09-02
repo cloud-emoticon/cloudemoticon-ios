@@ -33,7 +33,7 @@ class SwitchCoder: NSObject {
             JSON解析器.数据转换为JSON(源数据, URL识别数组: URL识别数组)
             break;
         default:
-            var altarr:NSArray = ["源解析失败","因为源可能有问题或不兼容，无法使用这个源。","中止"]
+            var altarr:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
             break;
         }

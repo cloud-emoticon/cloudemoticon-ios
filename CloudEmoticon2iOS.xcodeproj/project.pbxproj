@@ -16,7 +16,6 @@
 		53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* ScoreTableViewController.swift */; };
 		5357733C199B1584003FF9D3 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5357733B199B1584003FF9D3 /* default.plist */; };
 		538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D3E9D199471F100F5692F /* Md5Coder.swift */; };
-		53906A891999AFEF000020D1 /* SettingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A881999AFEF000020D1 /* SettingManager.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
 		539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539405D319A58F3000CE90F2 /* CETableViewCell.swift */; };
 		53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */; };
@@ -148,7 +147,6 @@
 		5357733B199B1584003FF9D3 /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
 		538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		538D3E9D199471F100F5692F /* Md5Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Md5Coder.swift; sourceTree = "<group>"; };
-		53906A881999AFEF000020D1 /* SettingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingManager.swift; sourceTree = "<group>"; };
 		53906A9E1999D5E2000020D1 /* CEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEViewController.swift; sourceTree = "<group>"; };
 		539405D319A58F3000CE90F2 /* CETableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CETableViewCell.swift; sourceTree = "<group>"; };
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 				5346D9311993186500CEFA4B /* XMLReader.swift */,
 				5346D93419931C9200CEFA4B /* SwitchCoder.swift */,
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
-				53906A881999AFEF000020D1 /* SettingManager.swift */,
 			);
 			name = "数据模型";
 			sourceTree = "<group>";
@@ -670,7 +667,6 @@
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
-				53906A891999AFEF000020D1 /* SettingManager.swift in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,

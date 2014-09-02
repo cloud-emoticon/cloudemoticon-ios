@@ -22,20 +22,20 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
 //    }
     //内容选择菜单.selectedSegmentIndex
     @IBOutlet weak var bgpview: UIImageView!
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
-        
-        右上按钮.title = "编辑"
+        右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
         表格.alpha = 0.8
         self.tabBarController.tabBar.translucent = false
         self.navigationController.navigationBar.translucent = false
+        self.language()
     }
+    
     
     override func viewWillAppear(animated: Bool) {
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
@@ -52,6 +52,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     @IBOutlet weak var 右上按钮: UIBarButtonItem!
     @IBOutlet weak var 内容选择菜单: UISegmentedControl!
     
+    func language() {
+        内容选择菜单.setTitle(lang.uage("收藏"), forSegmentAtIndex: 0)
+        内容选择菜单.setTitle(lang.uage("历史记录"), forSegmentAtIndex: 1)
+        内容选择菜单.setTitle(lang.uage("自定义"), forSegmentAtIndex: 2)
+    }
+    
     @IBAction func 左上按钮(sender: UIBarButtonItem) {
     
         switch (内容选择菜单.selectedSegmentIndex) {
@@ -62,11 +68,11 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         case 2:
             表格.setEditing(!表格.editing, animated: true)
             if(表格.editing){
-            左上按钮.title = "完成"
+            左上按钮.title = lang.uage("完成")
             右上按钮.title = ""
         } else {
-            左上按钮.title = "编辑"
-            右上按钮.title = "添加"
+            左上按钮.title = lang.uage("编辑")
+            右上按钮.title = lang.uage("添加")
             }
         default:
             break
@@ -81,10 +87,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             表格.setEditing(!表格.editing, animated: true)
             if (表格.editing) {
                 左上按钮.title = ""
-                右上按钮.title = "完成"
+                右上按钮.title = lang.uage("完成")
             } else {
                 左上按钮.title = ""
-                右上按钮.title = "编辑"
+                右上按钮.title = lang.uage("编辑")
             }
                 表格.reloadData()
                 保存收藏数据()
@@ -96,9 +102,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             break
         case 2:
             if (!表格.editing) {
-                右上按钮.title = "添加"
-                左上按钮.title = "编辑"
-                var alert:UIAlertView = UIAlertView(title: "添加颜文字", message: "", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "添加")
+                右上按钮.title = lang.uage("添加")
+                左上按钮.title = lang.uage("编辑")
+                var alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
                 alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
                 var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
                 alert.tag = 300
@@ -107,7 +113,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
                 alert.show()
             } else {
                 右上按钮.title = ""
-                左上按钮.title = "完成"
+                左上按钮.title = lang.uage("完成")
             }
             表格.reloadData()
             保存自定义数据()
@@ -131,7 +137,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     
     func addemoticon(emoticonstr:NSString)
     {
-        let 颜文字名称:NSString = "自定义"
+        let 颜文字名称:NSString = lang.uage("自定义")
         let 要添加的颜文字数组:NSArray = [emoticonstr]
         var 自定义:NSMutableArray = NSMutableArray.array()
         var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as NSString
@@ -176,13 +182,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         switch (id) {
         case 0:
             载入收藏数据()
-            右上按钮.title = "编辑"
+            右上按钮.title = lang.uage("编辑")
             左上按钮.title = ""
             break
         case 1:
             载入历史记录数据()
             左上按钮.title = ""
-            右上按钮.title = "清空"
+            右上按钮.title = lang.uage("清空")
             break
         case 2:
             var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
@@ -194,8 +200,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             value = ""
             value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             载入自定义数据()
-            左上按钮.title = "编辑"
-            右上按钮.title = "添加"
+            左上按钮.title = lang.uage("编辑")
+            右上按钮.title = lang.uage("添加")
             break
         default:
             break

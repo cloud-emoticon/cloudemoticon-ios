@@ -24,16 +24,26 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
+        
+//        self.language()
     }
     
-
+//    func language()
+//    {
+//        let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]
+//        let items:NSArray = self.tabBar.items
+//        for i in 0...items.count-1 {
+//            let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
+//            nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
+//        }
+//    }
     
     func 复制到剪贴板方法(notification:NSNotification)
     {
         let 要复制的颜文字数组:NSArray = notification.object as NSArray
         let 要复制的颜文字:NSString = 要复制的颜文字数组.objectAtIndex(0) as NSString
         
-        显示自动关闭的提示框(NSString(format: "“ %@ ” 已复制到剪贴板", 要复制的颜文字))
+        显示自动关闭的提示框(NSString(format: "“ %@ ” %@", 要复制的颜文字, lang.uage("已复制到剪贴板")))
         
         var 历史记录:NSMutableArray = NSMutableArray.array()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)

@@ -17,10 +17,11 @@ class SetTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        list.addObject("个性化")
-        list.addObject("源管理")
-        list.addObject("设置")
-        list.addObject("关于")
+        list.addObject(lang.uage("个性化"))
+        list.addObject(lang.uage("源管理"))
+        list.addObject(lang.uage("设置"))
+        list.addObject(lang.uage("关于"))
+        self.title = lang.uage("设置")
 
         bgpview.frame = CGRectMake(0, 240, self.view.frame.size.width, self.view.frame.size.height)
         bgpview.sendSubviewToBack(self.view)

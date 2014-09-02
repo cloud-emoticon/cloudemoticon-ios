@@ -17,8 +17,9 @@ class AddonTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        list.addObject("摇一摇")
-        list.addObject("扩展功能")
+        list.addObject(lang.uage("摇一摇"))
+        list.addObject(lang.uage("扩展功能"))
+        self.title = lang.uage("附加工具")
         
         bgpview.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height)
         bgpview.sendSubviewToBack(self.view)

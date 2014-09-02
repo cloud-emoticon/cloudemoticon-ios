@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func loadwebdataf(notification:NSNotification)
     {
-        statBar.showMsg("正在加载源...")
+        statBar.showMsg(lang.uage("正在加载源"))
         let 网址和目标位置序号数组:NSArray = notification.object as NSArray
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         全局_网络繁忙 = true
