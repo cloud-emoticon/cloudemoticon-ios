@@ -16,6 +16,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
     var 颜文字表格背景:UIImageView = UIImageView()
+//    var 单元格高度:NSMutableArray = NSMutableArray.array()
+    var 当前单元格高度:CGFloat = 0;
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
@@ -34,6 +36,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     @IBOutlet weak var bgpview: UIImageView!
     
+    override func viewDidAppear(animated: Bool) {
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
+        
+        if(bg != nil){
+            bgimage = bg!
+        }
+        bgpview.image = bgimage
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+    }
+    
     override func viewDidLoad() {
     
         //Load UI
@@ -43,7 +55,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgimage = bg!
         }
         bgpview.image = bgimage
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
@@ -72,7 +84,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格背景.frame = 颜文字表格.frame
         颜文字表格背景.image = bgpview.image
         颜文字表格背景.backgroundColor = UIColor.whiteColor()
-        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
+        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        颜文字表格背景.layer.masksToBounds = true
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
@@ -333,17 +346,41 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
             let emo:NSString = emoobj.objectAtIndex(0) as NSString
             cell!.主文字.text = emo
+//            cell!.textLabel.text = emo
             if (emoobj.count > 1) {
                 let name:NSString = emoobj.objectAtIndex(1) as NSString
-                cell!.detailTextLabel.text = name
+                cell!.副文字.text = name
+            } else {
+                cell!.副文字.text = ""
             }
-            cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-            cell?.textLabel.numberOfLines = 0
-   
+            
+//            cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
+//            cell?.textLabel.numberOfLines = 0
+            cell?.主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
+            cell?.主文字.numberOfLines = 0
+            
+            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text, FontSize: 17, andWidth: cell!.frame.size.width) + 8
+            cell!.主文字.frame = CGRectMake(20, 0, cell!.frame.size.width - 20, 主文字框高度)
+            if (emoobj.count > 1) {
+                let 副文字框高度:CGFloat = heightForString(cell!.副文字.text, FontSize: 12, andWidth: cell!.frame.size.width) - 13
+                cell!.副文字.frame = CGRectMake(20, cell!.主文字.frame.size.height - 7, cell!.frame.size.width - 20, 副文字框高度)
+                当前单元格高度 = 主文字框高度 + 副文字框高度
+            } else {
+                当前单元格高度 = 主文字框高度
+            }
+            
             cell!.修正元素位置(self.颜文字表格.frame.size.width)
-
             return cell;
         }
+    }
+    
+    func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
+    {
+        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0));
+        detailTextView.font = UIFont.systemFontOfSize(fontSize)
+        detailTextView.text = value;
+        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max));
+        return deSize.height;
     }
 
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
@@ -354,6 +391,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             sortBtn(sortBtn)
         } else {
             let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
+            println(颜文字数组)
 //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
 //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
             NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
@@ -373,6 +411,27 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return false
     }
     
+    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
+    {
+        if (tableView.tag == 101) {
+            if (ceData.count > 0) {
+                let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
+                let 主文字内容:NSString = emoobj.objectAtIndex(0) as NSString
+                var 副文字内容:NSString = ""
+                let 主文字框高度:CGFloat = heightForString(主文字内容, FontSize: 17, andWidth: tableView.frame.width - 20) + 8
+                if (emoobj.count > 1) {
+                    副文字内容 = emoobj.objectAtIndex(1) as NSString
+                    let 副文字框高度:CGFloat = heightForString(副文字内容, FontSize: 12, andWidth: tableView.frame.width - 20) - 13
+                    return 主文字框高度 + 副文字框高度
+                } else {
+                    return 主文字框高度
+                }
+            }
+            return 当前单元格高度
+        }
+        return 44
+    }
+    
 //    func tableView(tableView: UITableView!, editActionsForRowAtIndexPath indexPath: NSIndexPath!) -> [AnyObject]!
 //    {
 //        
@@ -386,6 +445,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 ////        } else {
 ////            return UIView()
 ////        }
+//    }
+    
+//    override func viewDidAppear(animated: Bool) {
+//        颜文字表格.reloadData()
 //    }
     
     func transition(notification:NSNotification)
@@ -417,6 +480,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         println(颜文字表格.frame.size.width)
         let 新的宽度:CGFloat = 颜文字表格.frame.size.width
         NSNotificationCenter.defaultCenter().postNotificationName("修正单元格尺寸通知", object: 新的宽度)
+        颜文字表格.reloadData()
     }
     
     func 源管理页面代理：退出源管理页面时()
@@ -542,5 +606,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         return true
     }
+    
+    
 
 }

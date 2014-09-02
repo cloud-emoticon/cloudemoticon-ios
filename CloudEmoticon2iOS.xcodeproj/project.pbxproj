@@ -34,6 +34,7 @@
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
+		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
@@ -168,6 +169,7 @@
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
+		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
+				53EA46D319B5A18D0094C59C /* ArrayString.swift */,
 				53E0E4AB19947C2800C9D9FC /* MD5.h */,
 				53E0E4AC19947C2800C9D9FC /* MD5.m */,
 				538D3E9D199471F100F5692F /* Md5Coder.swift */,
@@ -638,6 +641,7 @@
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
+				53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
 				8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */,

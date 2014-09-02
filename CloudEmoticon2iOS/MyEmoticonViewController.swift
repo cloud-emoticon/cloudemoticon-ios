@@ -26,18 +26,23 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
-
-        if(bg != nil){
-            bgimage = bg!
-        }
-        bgpview.image = bgimage
+        
         
         右上按钮.title = "编辑"
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
         表格.alpha = 0.8
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
+        
+        if(bg != nil){
+            bgimage = bg!
+        }
+        bgpview.image = bgimage
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     @IBOutlet weak var 左上按钮: UIBarButtonItem!
@@ -257,7 +262,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as NSArray
         let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as NSString
         var 颜文字名称:NSString?
-        if (当前单元格数据.count > 1) {
+        if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
             颜文字名称! = 当前单元格数据.objectAtIndex(1) as NSString
         }
         cell?.textLabel.text = 颜文字

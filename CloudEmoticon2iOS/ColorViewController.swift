@@ -29,6 +29,8 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         
         if(bg != nil) {
             bgimageviewer.image = bg
+            bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
+            bgimageviewer.layer.masksToBounds = true
         }
 
         // Do any additional setup after loading the view.
@@ -96,6 +98,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         let imageData:NSData = UIImagePNGRepresentation(tempImage)
         let fullpathttofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(imageName)
         imageData.writeToFile(fullpathttofile, atomically: false)
+        bgimageviewer.image = tempImage
     }
     
     func deletebgimage(){

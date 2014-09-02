@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
         // Override point for customization after application launch.
-        
+        initSetting()
         NSLog("[核心]云颜文字启动，启动文件夹：%@", documentDirectoryAddress)
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
@@ -61,7 +61,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
+    func initSetting()
+    {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
+        if (!noFirstRun) {
+            defaults.setBool(false, forKey: "exitaftercopy")
+            defaults.setFloat(100, forKey: "adfrequent")
+            defaults.setBool(true, forKey: "noFirstRun")
+            defaults.synchronize()
+        }
+        
+    }
     
     func loadwebdataf(notification:NSNotification)
     {

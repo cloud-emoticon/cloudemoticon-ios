@@ -47,6 +47,19 @@ class MainTBViewController: UITabBarController {
         文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的颜文字
+        if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {
+            let window:UIWindow? = UIApplication.sharedApplication().delegate.window?
+            UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
+            UIView.animateWithDuration(0.35, animations: {
+                window?.alpha = 0
+                window?.frame = CGRectMake(window!.center.x, window!.center.x, 0, 0)
+                }, completion: {
+                    (Bool completion) in
+                    if completion {
+                        exit(0)
+                    }
+            })
+        }
     }
     
     func 显示自动关闭的提示框方法(notification:NSNotification)
@@ -62,9 +75,19 @@ class MainTBViewController: UITabBarController {
         if (self.view.frame.size.width > self.view.frame.size.height) {
             提示信息框Y坐标 = 42
         }
-        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
+        let 单元格高度:CGFloat = heightForString(提示文字, FontSize: 17, andWidth: self.view.frame.size.width - 20)
+        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 单元格高度))
         self.view.addSubview(提示信息框)
         提示信息框.显示提示(提示文字)
+    }
+    
+    func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
+    {
+        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0));
+        detailTextView.font = UIFont.systemFontOfSize(fontSize)
+        detailTextView.text = value;
+        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max));
+        return deSize.height;
     }
     
     func alertview(notification:NSNotification)

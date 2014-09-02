@@ -12,6 +12,7 @@ import CoreMotion
 class ShakeViewController: UIViewController, UIAlertViewDelegate {
 
     var emolist:NSMutableArray = NSMutableArray.array()
+    var emoNamelist:NSMutableArray = NSMutableArray.array()
     let 文件管理器:FileManager = FileManager()
     let className:NSString = "[摇一摇]"
     
@@ -19,8 +20,6 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         super.viewDidLoad()
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "摇一摇复制到剪贴板方法:", name: "摇一摇复制到剪贴板通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
 
     loaddata()
 
@@ -61,7 +60,6 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         }
         NSLog("%@加载默认源...",className)
         return nil
-
     }
     
     func loaddata()
@@ -85,6 +83,11 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
             {
                 if ((e_emo as? NSArray) != nil){
                     emolist.addObject(e_emo.objectAtIndex(0))
+                    if (e_emo.count > 1) {
+                        emoNamelist.addObject(e_emo.objectAtIndex(1))
+                    } else {
+                        emoNamelist.addObject("")
+                    }
                 }
             }
         }
@@ -94,14 +97,13 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     {
         let emocount:Float = Float(emolist.count)
         let emonum:Int = Int((Float(arc4random_uniform(100)) * emocount) * 0.01)
-        println(emolist.objectAtIndex(emonum))
-        var alert:NSArray = ["发现了颜文字！",emolist.objectAtIndex(emonum),"添加到剪切板","取消"]
-        NSNotificationCenter.defaultCenter().postNotificationName("alertviewShake", object: alert)
+        var alert:NSArray = ["发现了颜文字！",emolist.objectAtIndex(emonum),"添加到剪切板","取消",emoNamelist.objectAtIndex(emonum)]
+        self.alertviewShake(alert)
     }
     
-    func alertviewShake(notification:NSNotification)
+    func alertviewShake(altarr:NSArray)
     {
-        let altarr:NSArray = notification.object as NSArray
+//        let altarr:NSArray = notification.object as NSArray
         let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
         let cancelAction = UIAlertAction(title: altarr.objectAtIndex(3) as NSString, style: .Default) {
             [weak alert] action in
@@ -109,7 +111,9 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         }
         let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as NSString, style: .Default) {
             [weak alert] action in
-            NSNotificationCenter.defaultCenter().postNotificationName("摇一摇复制到剪贴板通知", object: [altarr.objectAtIndex(1)],userInfo: nil)
+            let 要复制的颜文字:NSString = altarr.objectAtIndex(1) as NSString
+            let 要复制的颜文字名称:NSString = altarr.objectAtIndex(4) as NSString
+            self.摇一摇复制到剪贴板方法(要复制的颜文字,颜文字名称:要复制的颜文字名称)
             alert!.dismissViewControllerAnimated(true, completion: nil)
         }
         alert.addAction(cancelAction)
@@ -117,54 +121,12 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         presentViewController (alert, animated: true, completion: nil)
     }
     
-    func 摇一摇复制到剪贴板方法(notification:NSNotification)
+    func 摇一摇复制到剪贴板方法(要复制的颜文字:NSString, 颜文字名称 要复制的颜文字名称:NSString)
     {
-        let 要复制的颜文字数组:NSArray = notification.object as NSArray
-        let 要复制的颜文字:NSString = 要复制的颜文字数组.objectAtIndex(0) as NSString
-        
-        显示自动关闭的提示框(NSString(format: "“ %@ ” 已复制到剪贴板", 要复制的颜文字))
-        
-        var 历史记录:NSMutableArray = NSMutableArray.array()
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        历史记录.addObject(要复制的颜文字数组)
-        if (文件中的数据 != nil) {
-            历史记录.addObjectsFromArray(文件中的数据!)
+        var 颜文字数组:NSMutableArray = [要复制的颜文字]
+        if (!要复制的颜文字名称.isEqualToString("")) {
+            颜文字数组.addObject(要复制的颜文字名称)
         }
-        if (历史记录.count > 100) {
-            历史记录.removeLastObject()
-        }
-        文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
-        var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
-        剪贴板.string = 要复制的颜文字
+        NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
     }
-    
-    func 显示自动关闭的提示框方法(notification:NSNotification)
-    {
-        let 提示文字:NSString = notification.object as NSString
-        显示自动关闭的提示框(提示文字)
-    }
-    
-    
-    func 显示自动关闭的提示框(提示文字:NSString)
-    {
-        var 提示信息框Y坐标:CGFloat = 74
-        if (self.view.frame.size.width > self.view.frame.size.height) {
-            提示信息框Y坐标 = 42
-        }
-        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 40))
-        self.view.addSubview(提示信息框)
-        提示信息框.显示提示(提示文字)
-    }
-
-
-     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

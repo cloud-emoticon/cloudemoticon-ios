@@ -14,6 +14,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var actlist:NSMutableArray = NSMutableArray.array()
     
     var SetTable:UITableView = UITableView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width), style: UITableViewStyle.Grouped)
+    
+    var 设置广告显示频率:UISlider = UISlider()
+    var 设置复制后退出应用:UISwitch = UISwitch()
 
     var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var adf:Float? = NSUserDefaults.standardUserDefaults().valueForKey("adfrequent") as? Float
@@ -28,8 +31,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         SetTable.delegate = self
         SetTable.dataSource = self
         view.addSubview(SetTable)
+        loadSetting()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        saveSetting()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,6 +70,18 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func loadSetting()
+    {
+        设置复制后退出应用.setOn(defaults.boolForKey("exitaftercopy"), animated: false)
+        设置广告显示频率.value = defaults.floatForKey("adfrequent")
+    }
+    func saveSetting()
+    {
+        defaults.setBool(设置复制后退出应用.on, forKey: "exitaftercopy")
+        defaults.setFloat(设置广告显示频率.value, forKey: "adfrequent")
+        defaults.synchronize()
+    }
+    
     func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
     {
         
@@ -71,12 +91,12 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(copyexit == nil){
         copyexit = false
         }
-        var sliderview:UISlider = UISlider(frame: CGRectMake(0, 0, self.view.frame.size.width - 36, 20))
-            sliderview.minimumValue = 0
-            sliderview.maximumValue = 100
-            sliderview.value = adf!
-        var switchview:UISwitch = UISwitch(frame: CGRectZero)
-            switchview.on = copyexit!
+        设置广告显示频率.frame = CGRectMake(0, 0, self.view.frame.size.width - 36, 20)
+        设置广告显示频率.minimumValue = 0
+        设置广告显示频率.maximumValue = 100
+        设置广告显示频率.value = adf!
+        设置复制后退出应用.frame = CGRectZero
+        设置复制后退出应用.on = copyexit!
 
         let CellIdentifier:NSString = "SettingCell"
         var cell:UITableViewCell? = SetTable.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
@@ -89,18 +109,25 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         } else {
         cell!.textLabel.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
         }
+        
+        if (cell!.contentView.subviews.count > 1) {
+            println("cell!.contentView.subviews.count > 1")
+        }
 
         if(indexPath.section == 0 && indexPath.row == 1){
             
-            cell!.accessoryView = sliderview
-            sliderview.addTarget(self, action: Selector(updateSliderAtIndesPath(sliderview)), forControlEvents: UIControlEvents.TouchUpInside)
-            cell!.contentView.addSubview(sliderview)
+            cell!.accessoryView = 设置广告显示频率
+            设置广告显示频率.addTarget(self, action: Selector(updateSliderAtIndesPath(设置广告显示频率)), forControlEvents: UIControlEvents.TouchUpInside)
+            设置广告显示频率.tag = 1001;
+            cell!.contentView.addSubview(设置广告显示频率)
         }
         
         if(indexPath.section == 1){
-                cell!.accessoryView = switchview
-            switchview.addTarget(self, action: Selector(updateSwitchAtIndesPath(switchview)), forControlEvents: UIControlEvents.ValueChanged)
-            cell!.contentView.addSubview(switchview)
+                cell!.accessoryView = 设置复制后退出应用
+            设置复制后退出应用.addTarget(self, action: Selector(updateSwitchAtIndesPath(设置复制后退出应用)), forControlEvents: UIControlEvents.ValueChanged)
+            设置复制后退出应用.tag = 1002;
+            cell!.contentView.addSubview(设置复制后退出应用)
+            //slidhfodishgodsihg
         }
                         
         cell!.selectionStyle = UITableViewCellSelectionStyle.None

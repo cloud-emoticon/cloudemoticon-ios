@@ -29,6 +29,8 @@ class NotificationView: UIView {
         显示文本.frame = 子元素坐标
         显示文本.textAlignment = NSTextAlignment.Center
         显示文本.textColor = UIColor.whiteColor()
+        显示文本.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        显示文本.numberOfLines = 0
         self.addSubview(显示文本)
     }
     
