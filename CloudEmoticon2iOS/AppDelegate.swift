@@ -50,14 +50,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf:", name: "loadwebdata", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf:", name: "loaddataok", object: nil)
         
-        //TEST
-//        let nettoInt:Int = NetDownloadTo.CLOUDEMOTICON.toRaw()
-//        let downloadURL:NSString = "http://cxchope.sites.my-card.in/ce.xml"
-//        let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
-//        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
-        //TEST
-        
-        
+        lang.载入语言(lang.当前系统语言())
+        println(lang.系统支持的所有语言())
+        println(lang.uage("语言包名称"))
+        println(lang.uage("语言包作者"))
         return true
     }
     
@@ -71,7 +67,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
         }
-        
     }
     
     func loadwebdataf(notification:NSNotification)

@@ -31,6 +31,8 @@ enum NetDownloadTo:Int
 }
 var p_tempString:NSString = ""
 
+var lang:Language = Language()
+
 /* 隐藏设置：
 nowurl 当前选中源
 */

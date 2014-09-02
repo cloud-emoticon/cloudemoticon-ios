@@ -33,6 +33,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         表格.delegate = self
         表格.dataSource = self
         表格.alpha = 0.8
+        self.tabBarController.tabBar.translucent = false
+        self.navigationController.navigationBar.translucent = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -368,7 +370,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
             break
         }
     }
-    }
+}
 //    - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{
 
     /*

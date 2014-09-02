@@ -203,6 +203,93 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="RTS-AF-fPC">
+                                <rect key="frame" x="89" y="5" width="240" height="128"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="NVs-uh-HBD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NVs-uh-HBD"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="NVs-uh-HBD"/>
+                                    </mask>
+                                </variation>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget2.png" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-ca-g0h">
+                                <rect key="frame" x="180" y="348" width="240" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="2n3-sU-66b"/>
+                                    <constraint firstAttribute="height" constant="180" id="31Q-L6-vYx"/>
+                                    <constraint firstAttribute="width" constant="400" id="3Pu-Gb-3GY"/>
+                                    <constraint firstAttribute="height" constant="120" id="BLz-vs-xk6"/>
+                                    <constraint firstAttribute="width" constant="145" id="VnH-hW-gmU"/>
+                                    <constraint firstAttribute="width" constant="240" id="ccc-OA-R2X"/>
+                                    <constraint firstAttribute="height" constant="150" id="maw-RP-TWD"/>
+                                    <constraint firstAttribute="height" constant="120" id="qiX-e8-fE6"/>
+                                    <constraint firstAttribute="width" constant="240" id="stS-XO-ZDc">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="144"/>
+                                    </constraint>
+                                    <constraint firstAttribute="width" constant="240" id="zmR-lw-wT5"/>
+                                    <constraint firstAttribute="height" constant="280" id="zuO-HU-8Tz">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="240"/>
+                                    </constraint>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="31Q-L6-vYx"/>
+                                        <exclude reference="3Pu-Gb-3GY"/>
+                                        <exclude reference="BLz-vs-xk6"/>
+                                        <exclude reference="VnH-hW-gmU"/>
+                                        <exclude reference="maw-RP-TWD"/>
+                                        <exclude reference="qiX-e8-fE6"/>
+                                        <exclude reference="stS-XO-ZDc"/>
+                                        <exclude reference="zmR-lw-wT5"/>
+                                        <exclude reference="zuO-HU-8Tz"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="2n3-sU-66b"/>
+                                        <exclude reference="31Q-L6-vYx"/>
+                                        <exclude reference="BLz-vs-xk6"/>
+                                        <exclude reference="VnH-hW-gmU"/>
+                                        <exclude reference="ccc-OA-R2X"/>
+                                        <include reference="qiX-e8-fE6"/>
+                                        <include reference="stS-XO-ZDc"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <exclude reference="2n3-sU-66b"/>
+                                        <exclude reference="ccc-OA-R2X"/>
+                                        <include reference="maw-RP-TWD"/>
+                                        <include reference="zmR-lw-wT5"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="constraints">
+                                        <exclude reference="2n3-sU-66b"/>
+                                        <exclude reference="3Pu-Gb-3GY"/>
+                                        <include reference="zuO-HU-8Tz"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="D9a-jS-AFM">
+                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="b8e-iW-v8Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget1.png" translatesAutoresizingMaskIntoConstraints="NO" id="dr4-y8-ZzB">
                                 <rect key="frame" x="100" y="172" width="400" height="168"/>
                                 <constraints>
@@ -250,14 +337,18 @@
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
+                                        <exclude reference="bWI-gg-aeK"/>
                                         <include reference="eKr-9P-hcD"/>
                                         <include reference="k0j-1i-r57"/>
+                                        <exclude reference="ljd-PV-x4t"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="225" y="172" width="350" height="250"/>
                                     <mask key="constraints">
+                                        <exclude reference="bWI-gg-aeK"/>
                                         <include reference="eCm-Mw-FgD"/>
-                                        <include reference="mfC-Ge-gMJ"/>
+                                        <exclude reference="mfC-Ge-gMJ"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -267,6 +358,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LJo-vq-hym"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="PIR-So-8us"/>
+                                    <constraint firstAttribute="height" constant="100" id="q5r-XH-C2a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -274,96 +366,17 @@
                                     <mask key="constraints">
                                         <exclude reference="LJo-vq-hym"/>
                                         <exclude reference="PIR-So-8us"/>
+                                        <exclude reference="q5r-XH-C2a"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
+                                <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="64" width="800" height="100"/>
                                     <mask key="constraints">
-                                        <include reference="LJo-vq-hym"/>
-                                        <include reference="PIR-So-8us"/>
+                                        <exclude reference="LJo-vq-hym"/>
+                                        <exclude reference="PIR-So-8us"/>
+                                        <exclude reference="q5r-XH-C2a"/>
                                     </mask>
                                 </variation>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="RTS-AF-fPC">
-                                <rect key="frame" x="89" y="5" width="240" height="128"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="NVs-uh-HBD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="NVs-uh-HBD"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="NVs-uh-HBD"/>
-                                    </mask>
-                                </variation>
-                            </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="widget2.png" translatesAutoresizingMaskIntoConstraints="NO" id="31Z-ca-g0h">
-                                <rect key="frame" x="180" y="348" width="240" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="2n3-sU-66b"/>
-                                    <constraint firstAttribute="height" constant="180" id="31Q-L6-vYx"/>
-                                    <constraint firstAttribute="width" constant="400" id="3Pu-Gb-3GY"/>
-                                    <constraint firstAttribute="height" constant="120" id="BLz-vs-xk6"/>
-                                    <constraint firstAttribute="width" constant="145" id="VnH-hW-gmU"/>
-                                    <constraint firstAttribute="width" constant="240" id="ccc-OA-R2X"/>
-                                    <constraint firstAttribute="height" constant="150" id="maw-RP-TWD"/>
-                                    <constraint firstAttribute="height" constant="120" id="qiX-e8-fE6"/>
-                                    <constraint firstAttribute="width" constant="240" id="stS-XO-ZDc">
-                                        <variation key="heightClass=compact-widthClass=compact" constant="144"/>
-                                    </constraint>
-                                    <constraint firstAttribute="width" constant="240" id="zmR-lw-wT5"/>
-                                    <constraint firstAttribute="height" constant="280" id="zuO-HU-8Tz"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="31Q-L6-vYx"/>
-                                        <exclude reference="3Pu-Gb-3GY"/>
-                                        <exclude reference="BLz-vs-xk6"/>
-                                        <exclude reference="VnH-hW-gmU"/>
-                                        <exclude reference="maw-RP-TWD"/>
-                                        <exclude reference="qiX-e8-fE6"/>
-                                        <exclude reference="stS-XO-ZDc"/>
-                                        <exclude reference="zmR-lw-wT5"/>
-                                        <exclude reference="zuO-HU-8Tz"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=compact-widthClass=compact">
-                                    <mask key="constraints">
-                                        <exclude reference="2n3-sU-66b"/>
-                                        <exclude reference="31Q-L6-vYx"/>
-                                        <exclude reference="BLz-vs-xk6"/>
-                                        <exclude reference="VnH-hW-gmU"/>
-                                        <exclude reference="ccc-OA-R2X"/>
-                                        <include reference="qiX-e8-fE6"/>
-                                        <include reference="stS-XO-ZDc"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="maw-RP-TWD"/>
-                                        <include reference="zmR-lw-wT5"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=regular">
-                                    <mask key="constraints">
-                                        <include reference="3Pu-Gb-3GY"/>
-                                        <include reference="zuO-HU-8Tz"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="D9a-jS-AFM">
-                                <rect key="frame" x="0.0" y="64" width="600" height="100"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="b8e-iW-v8Z"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -405,8 +418,8 @@
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="I6Y-dP-QhZ"/>
                                 <exclude reference="RTS-AF-fPC"/>
+                                <exclude reference="I6Y-dP-QhZ"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Nzx-Es-GYg"/>
@@ -483,6 +496,7 @@
                                 <include reference="Gga-4b-Qc7"/>
                                 <include reference="QTK-SW-fOt"/>
                                 <include reference="2Ip-Ub-3ie"/>
+                                <exclude reference="ePq-5G-l06"/>
                                 <include reference="x0J-Oe-qYu"/>
                             </mask>
                         </variation>

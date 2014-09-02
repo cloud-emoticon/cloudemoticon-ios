@@ -88,7 +88,6 @@ class SetTableViewController: UITableViewController {
             break
         default:
             break
-        
         }
     
     }

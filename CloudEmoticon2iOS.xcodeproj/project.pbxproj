@@ -23,6 +23,9 @@
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
+		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
+		53DA36A419B5AF4100FD8D78 /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DA36A319B5AF4100FD8D78 /* Language.swift */; };
+		53DA36A619B5BD1D00FD8D78 /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
 		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
@@ -153,6 +156,9 @@
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
 		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
+		53DA36A319B5AF4100FD8D78 /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hans.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -299,6 +305,17 @@
 			name = "自定义状态栏";
 			sourceTree = "<group>";
 		};
+		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
+			isa = PBXGroup;
+			children = (
+				53DA36A019B5AE9900FD8D78 /* language-en.plist */,
+				53DA36A319B5AF4100FD8D78 /* Language.swift */,
+				53DA36A519B5BD1D00FD8D78 /* language-zh-Hans.plist */,
+			);
+			name = "多语言";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
@@ -323,6 +340,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				53DA36A219B5AF1900FD8D78 /* 多语言 */,
 				5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */,
 				53E1EB1B19A4976F002EB6A3 /* 自定表情 */,
 				53906A991999CAD0000020D1 /* 核心 */,
@@ -590,6 +608,7 @@
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
 				8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */,
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
+				53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */,
 				5357733C199B1584003FF9D3 /* default.plist in Resources */,
 				8BA411AF19B0F046003AEBF2 /* shake.png in Resources */,
 				8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */,
@@ -599,6 +618,7 @@
 				8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */,
 				53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
+				53DA36A619B5BD1D00FD8D78 /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
 				8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */,
 				8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */,
@@ -634,6 +654,7 @@
 				53E0E4B11994854C00C9D9FC /* PubVar.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
+				53DA36A419B5AF4100FD8D78 /* Language.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
