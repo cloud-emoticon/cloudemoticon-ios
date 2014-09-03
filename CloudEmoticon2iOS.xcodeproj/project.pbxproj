@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
+		5328C7B119B70D0D00C425A8 /* EmoticonKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nouserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nouserimg.jpg */; };
 		5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5346D92F1993181C00CEFA4B /* XMLDictionary.m */; };
 		5346D9321993186500CEFA4B /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D9311993186500CEFA4B /* XMLReader.swift */; };
@@ -36,8 +38,6 @@
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
-		53ED2A4119B6AA6B00DB4B55 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */; };
-		53ED2A4419B6AA6B00DB4B55 /* EmoticonKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
@@ -72,10 +72,37 @@
 		8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */; };
 		8BFDD92D19B60A5100673F5E /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFDD92B19B60A5100673F5E /* language-zh-Hans.plist */; };
 		8BFDD92E19B60A5100673F5E /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8BFDD92C19B60A5100673F5E /* language-zh-Hant.plist */; };
-		8BFDD93019B6147300673F5E /* InputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BFDD92F19B6147300673F5E /* InputViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5328C7AF19B70D0D00C425A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5328C7A819B70D0D00C425A8;
+			remoteInfo = EmoticonKeyboard;
+		};
+		5328C7B219B70D0D00C425A8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5328C7A819B70D0D00C425A8;
+			remoteInfo = EmoticonKeyboard;
+		};
+		533E866319B7145E002DB43F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 533E865E19B7145D002DB43F /* InputTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 533E863C19B7145D002DB43F;
+			remoteInfo = InputTest;
+		};
+		533E866519B7145E002DB43F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 533E865E19B7145D002DB43F /* InputTest.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 533E864E19B7145D002DB43F;
+			remoteInfo = InputTestTests;
+		};
 		5346D9371993392C00CEFA4B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
@@ -89,20 +116,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
-		};
-		53ED2A4219B6AA6B00DB4B55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53ED2A3B19B6AA6B00DB4B55;
-			remoteInfo = EmoticonKeyboard;
-		};
-		53ED2A4519B6AA6B00DB4B55 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53ED2A3B19B6AA6B00DB4B55;
-			remoteInfo = EmoticonKeyboard;
 		};
 		8BEA2DEF199663470029715E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -145,7 +158,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */,
-				53ED2A4419B6AA6B00DB4B55 /* EmoticonKeyboard.appex in Embed App Extensions */,
+				5328C7B119B70D0D00C425A8 /* EmoticonKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -153,7 +166,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoticonKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5332F842199A2354006F76CA /* nouserimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nouserimg.jpg; sourceTree = "<group>"; };
+		533E865E19B7145D002DB43F /* InputTest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = InputTest.xcodeproj; path = InputTest/InputTest.xcodeproj; sourceTree = "<group>"; };
 		5346D92E1993181C00CEFA4B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		5346D92F1993181C00CEFA4B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		5346D9311993186500CEFA4B /* XMLReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReader.swift; sourceTree = "<group>"; };
@@ -192,9 +209,6 @@
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
 		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
-		53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoticonKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		53ED2A3F19B6AA6B00DB4B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
@@ -230,10 +244,16 @@
 		8BF8ACFB199335D7001207FC /* MainInterface.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		8BFDD92B19B60A5100673F5E /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hans.plist"; sourceTree = "<group>"; };
 		8BFDD92C19B60A5100673F5E /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "language-zh-Hant.plist"; sourceTree = "<group>"; };
-		8BFDD92F19B6147300673F5E /* InputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5328C7A619B70D0D00C425A8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53DF28EA196B9CF40058AA42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -244,13 +264,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		53DF28FC196B9CF40058AA42 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53ED2A3919B6AA6B00DB4B55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,6 +281,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */,
+				5328C7AB19B70D0D00C425A8 /* Supporting Files */,
+			);
+			path = EmoticonKeyboard;
+			sourceTree = "<group>";
+		};
+		5328C7AB19B70D0D00C425A8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5328C7AC19B70D0D00C425A8 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		533E865F19B7145D002DB43F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				533E866419B7145E002DB43F /* InputTest.app */,
+				533E866619B7145E002DB43F /* InputTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,10 +387,11 @@
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
+				533E865E19B7145D002DB43F /* InputTest.xcodeproj */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
-				53ED2A3D19B6AA6B00DB4B55 /* EmoticonKeyboard */,
+				5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */,
 				8BF8ACF3199335D7001207FC /* Frameworks */,
 				53DF28EE196B9CF40058AA42 /* Products */,
 			);
@@ -363,7 +403,7 @@
 				53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */,
 				53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */,
 				8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */,
-				53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */,
+				5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -431,23 +471,6 @@
 			name = "自定表情";
 			sourceTree = "<group>";
 		};
-		53ED2A3D19B6AA6B00DB4B55 /* EmoticonKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */,
-				53ED2A3E19B6AA6B00DB4B55 /* Supporting Files */,
-			);
-			path = EmoticonKeyboard;
-			sourceTree = "<group>";
-		};
-		53ED2A3E19B6AA6B00DB4B55 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				53ED2A3F19B6AA6B00DB4B55 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		8B98EE9A196D2DC0000D255E /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -491,7 +514,6 @@
 		8BA6684319ACD41A0080C47F /* 附加工具 */ = {
 			isa = PBXGroup;
 			children = (
-				8BFDD92F19B6147300673F5E /* InputViewController.swift */,
 				8BA6684119ACD3F80080C47F /* AddonTableViewController.swift */,
 				8BA6684419ACDB830080C47F /* ShakeViewController.swift */,
 				8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */,
@@ -532,6 +554,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5328C7A819B70D0D00C425A8 /* EmoticonKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5328C7B419B70D0D00C425A8 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */;
+			buildPhases = (
+				5328C7A519B70D0D00C425A8 /* Sources */,
+				5328C7A619B70D0D00C425A8 /* Frameworks */,
+				5328C7A719B70D0D00C425A8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmoticonKeyboard;
+			productName = EmoticonKeyboard;
+			productReference = 5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53DF2909196B9CF40058AA42 /* Build configuration list for PBXNativeTarget "CloudEmoticon2iOS" */;
@@ -547,8 +586,8 @@
 			dependencies = (
 				8BF8ACFE199335D7001207FC /* PBXTargetDependency */,
 				8BF8AD01199335D7001207FC /* PBXTargetDependency */,
-				53ED2A4319B6AA6B00DB4B55 /* PBXTargetDependency */,
-				53ED2A4619B6AA6B00DB4B55 /* PBXTargetDependency */,
+				5328C7B019B70D0D00C425A8 /* PBXTargetDependency */,
+				5328C7B319B70D0D00C425A8 /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -574,23 +613,6 @@
 			productName = CloudEmoticon2iOSTests;
 			productReference = 53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 53ED2A4919B6AA6B00DB4B55 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */;
-			buildPhases = (
-				53ED2A3819B6AA6B00DB4B55 /* Sources */,
-				53ED2A3919B6AA6B00DB4B55 /* Frameworks */,
-				53ED2A3A19B6AA6B00DB4B55 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = EmoticonKeyboard;
-			productName = EmoticonKeyboard;
-			productReference = 53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */;
-			productType = "com.apple.product-type.app-extension";
 		};
 		8BF8ACF1199335D7001207FC /* CE2NCWidget */ = {
 			isa = PBXNativeTarget;
@@ -618,6 +640,10 @@
 				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "神楽坂雅詩 & 神楽坂紫喵";
 				TargetAttributes = {
+					5328C7A819B70D0D00C425A8 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = ZNVDEVDRX3;
+					};
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
@@ -630,10 +656,6 @@
 					53DF28FE196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 53DF28EC196B9CF40058AA42;
-					};
-					53ED2A3B19B6AA6B00DB4B55 = {
-						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = ZNVDEVDRX3;
 					};
 					8BF8ACF1199335D7001207FC = {
 						CreatedOnToolsVersion = 6.0;
@@ -657,17 +679,47 @@
 			mainGroup = 53DF28E4196B9CF40058AA42;
 			productRefGroup = 53DF28EE196B9CF40058AA42 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 533E865F19B7145D002DB43F /* Products */;
+					ProjectRef = 533E865E19B7145D002DB43F /* InputTest.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF28FE196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF1199335D7001207FC /* CE2NCWidget */,
-				53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */,
+				5328C7A819B70D0D00C425A8 /* EmoticonKeyboard */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXReferenceProxy section */
+		533E866419B7145E002DB43F /* InputTest.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = InputTest.app;
+			remoteRef = 533E866319B7145E002DB43F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		533E866619B7145E002DB43F /* InputTestTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = InputTestTests.xctest;
+			remoteRef = 533E866519B7145E002DB43F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
 /* Begin PBXResourcesBuildPhase section */
+		5328C7A719B70D0D00C425A8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53DF28EB196B9CF40058AA42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -710,13 +762,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53ED2A3A19B6AA6B00DB4B55 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BF8ACF0199335D7001207FC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -728,6 +773,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5328C7A519B70D0D00C425A8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		53DF28E9196B9CF40058AA42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -740,7 +793,6 @@
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
 				53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */,
-				8BFDD93019B6147300673F5E /* InputViewController.swift in Sources */,
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
@@ -772,14 +824,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		53ED2A3819B6AA6B00DB4B55 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				53ED2A4119B6AA6B00DB4B55 /* KeyboardViewController.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BF8ACEE199335D7001207FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -791,6 +835,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5328C7B019B70D0D00C425A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5328C7A819B70D0D00C425A8 /* EmoticonKeyboard */;
+			targetProxy = 5328C7AF19B70D0D00C425A8 /* PBXContainerItemProxy */;
+		};
+		5328C7B319B70D0D00C425A8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5328C7A819B70D0D00C425A8 /* EmoticonKeyboard */;
+			targetProxy = 5328C7B219B70D0D00C425A8 /* PBXContainerItemProxy */;
+		};
 		5346D9381993392C00CEFA4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
@@ -800,16 +854,6 @@
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */;
-		};
-		53ED2A4319B6AA6B00DB4B55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */;
-			targetProxy = 53ED2A4219B6AA6B00DB4B55 /* PBXContainerItemProxy */;
-		};
-		53ED2A4619B6AA6B00DB4B55 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */;
-			targetProxy = 53ED2A4519B6AA6B00DB4B55 /* PBXContainerItemProxy */;
 		};
 		8BEA2DF0199663470029715E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -840,6 +884,34 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		5328C7B519B70D0D00C425A8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		5328C7B619B70D0D00C425A8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		53DF2907196B9CF40058AA42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -998,34 +1070,6 @@
 			};
 			name = Release;
 		};
-		53ED2A4719B6AA6B00DB4B55 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		53ED2A4819B6AA6B00DB4B55 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		8BF8AD02199335D7001207FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1069,6 +1113,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5328C7B419B70D0D00C425A8 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5328C7B519B70D0D00C425A8 /* Debug */,
+				5328C7B619B70D0D00C425A8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		53DF28E8196B9CF40058AA42 /* Build configuration list for PBXProject "CloudEmoticon2iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1095,14 +1148,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		53ED2A4919B6AA6B00DB4B55 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				53ED2A4719B6AA6B00DB4B55 /* Debug */,
-				53ED2A4819B6AA6B00DB4B55 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 		8BF8AD04199335D7001207FC /* Build configuration list for PBXNativeTarget "CE2NCWidget" */ = {
 			isa = XCConfigurationList;

@@ -10,17 +10,23 @@ import UIKit
 
 class InputViewController: UIViewController {
 
+    
+    @IBOutlet weak var textbox: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+
+        textbox.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+        
+    super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation
