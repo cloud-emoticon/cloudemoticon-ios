@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate { //, UIGestureRecognizerDelegate
 
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
@@ -26,7 +26,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 菜单滑动中:Bool = false
     var 当前滚动中表格标识:Int = 0
     
-    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")))
+    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")!))
     
     var 滑动最大X坐标:CGFloat = 0
     var 手势起始位置X坐标:CGFloat = 0
@@ -141,9 +141,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //Load Data
         分类表格.delegate = self
-        分类表格.dataSource = self
+    
         颜文字表格.delegate = self
-        颜文字表格.dataSource = self
         
 //        p_emodata
         载入数据(NetDownloadTo.CLOUDEMOTICON)
@@ -216,7 +215,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 源管理页面:ScoreTableViewController = ScoreTableViewController(style: UITableViewStyle.Plain)
         源管理页面.代理 = self
         源管理页面.hidesBottomBarWhenPushed = true
-        self.navigationController.pushViewController(源管理页面, animated: true)
+        self.navigationController?.pushViewController(源管理页面, animated: true)
         if ((要添加的新源网址) != nil) {
             源管理页面.addSource(要添加的新源网址!, isStore: true)
         }
@@ -343,7 +342,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
-            cell!.textLabel.text = groupname
+            cell!.textLabel?.text = groupname
             return cell
         } else {
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
@@ -370,10 +369,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             cell?.主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
             cell?.主文字.numberOfLines = 0
             
-            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text, FontSize: 17, andWidth: cell!.frame.size.width) + 8
+            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text!, FontSize: 17, andWidth: cell!.frame.size.width) + 8
             cell!.主文字.frame = CGRectMake(20, 0, cell!.frame.size.width - 20, 主文字框高度)
             if (emoobj.count > 1) {
-                let 副文字框高度:CGFloat = heightForString(cell!.副文字.text, FontSize: 12, andWidth: cell!.frame.size.width) - 13
+                let 副文字框高度:CGFloat = heightForString(cell!.副文字.text!, FontSize: 12, andWidth: cell!.frame.size.width) - 13
                 cell!.副文字.frame = CGRectMake(20, cell!.主文字.frame.size.height - 7, cell!.frame.size.width - 20, 副文字框高度)
                 当前单元格高度 = 主文字框高度 + 副文字框高度
             } else {
@@ -564,7 +563,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     {
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
         let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as CETableViewCell
-        let 颜文字:NSString = 当前单元格.主文字.text
+        let 颜文字:NSString = 当前单元格.主文字.text!
         let 颜文字名称:NSString? = 当前单元格.副文字.text
         if (点击按钮的ID == 1) { //收藏
             let 文件管理器:FileManager = FileManager()

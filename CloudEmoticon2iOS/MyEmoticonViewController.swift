@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate{
+class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertViewDelegate{
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray.array()
@@ -29,10 +29,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
         表格.delegate = self
-        表格.dataSource = self
+//        表格.dataSource = self
         表格.alpha = 0.8
-        self.tabBarController.tabBar.translucent = false
-        self.navigationController.navigationBar.translucent = false
+        self.tabBarController?.tabBar.translucent = false
+        self.navigationController?.navigationBar.translucent = false
         self.language()
     }
     
@@ -106,7 +106,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
                 左上按钮.title = lang.uage("编辑")
                 var alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
                 alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-                var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
+                var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
                 alert.tag = 300
                 alertImport.keyboardType = UIKeyboardType.URL
                 alertImport.text = ""
@@ -125,7 +125,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
     
     func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
     {
-        var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField
+        var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (alertView.tag == 300) {
             if (buttonIndex == 1) {
                 //添加
@@ -273,14 +273,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDataSource, UITable
         if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
             颜文字名称! = 当前单元格数据.objectAtIndex(1) as NSString
         }
-        cell?.textLabel.text = 颜文字
+        cell?.textLabel?.text = 颜文字
         if (颜文字名称 != nil) {
-            cell?.detailTextLabel.text = 颜文字名称!
+            cell?.detailTextLabel?.text = 颜文字名称!
         } else {
-            cell?.detailTextLabel.text = ""
+            cell?.detailTextLabel?.text = ""
         }
-        cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-        cell?.textLabel.numberOfLines = 0
+        cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        cell?.textLabel?.numberOfLines = 0
         
             return cell
     }

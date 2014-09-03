@@ -218,7 +218,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         if (self.tableView.editing) {
             var alert:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField
+            var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
             alertImport.text = "http://"
@@ -230,14 +230,15 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             if (代理 != nil) {
                 代理?.源管理页面代理：退出源管理页面时()
             }
-            self.navigationController.popViewControllerAnimated(true)
+            self.navigationController?.popViewControllerAnimated(true)
         }
     }
     
     // MARK: - 提示框被点击
     func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
     {
-        var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField
+        var alertImport:
+        UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (alertView.tag == 200) {
             if (buttonIndex == 1) {
                 //添加
@@ -253,11 +254,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func editBtn(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem.title = lang.uage("完成")
-            self.navigationItem.leftBarButtonItem.title = lang.uage("添加")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
         } else {
-            self.navigationItem.rightBarButtonItem.title = lang.uage("编辑")
-            self.navigationItem.leftBarButtonItem.title = lang.uage("返回")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
         }
         
     }
@@ -287,14 +288,14 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let o_name:NSString = itemArr.objectAtIndex(1) as NSString
         let o_url:NSString = itemArr.objectAtIndex(2) as NSString
         if (o_note.isEqualToString("")) {
-            cell!.textLabel.text = o_name
+            cell!.textLabel?.text = o_name
         } else {
-            cell!.textLabel.text = NSString(format: "%@(%@)", o_note, o_name)
+            cell!.textLabel?.text = NSString(format: "%@(%@)", o_note, o_name)
         }
         if (o_url.isEqualToString(p_nowurl)) {
             cell!.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
-        cell!.detailTextLabel.text = o_url
+        cell!.detailTextLabel?.text = o_url
 //        let object = objects[indexPath.row] as NSDate
 //        cell.textLabel.text = object.description
         return cell!
@@ -339,30 +340,30 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
     
     // MARK: - 表格编辑范围
-    override func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
         return UITableViewCellEditingStyle.Delete
     }
     // MARK: - 表格是否可以移动项目
-    override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool
+    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return false
     }
     // MARK: - 表格是否可以编辑
-    override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
         // Return false if you do not want the specified item to be editable.
     }
     // MARK: - 表格项目被移动
-    override func tableView(tableView: UITableView!, moveRowAtIndexPath sourceIndexPath: NSIndexPath!, toIndexPath destinationIndexPath: NSIndexPath!)
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
     {
         var fromRow:NSInteger = sourceIndexPath.row
         var toRow:NSInteger = destinationIndexPath.row
         
     }
     // MARK: - 点击表格中的项目
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         
         let itemArr:NSArray = sfile.objectAtIndex(indexPath.row + 1) as NSArray
@@ -370,10 +371,10 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         for i in 0...(sfile.count-2)
         {
             var index:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-            var nowCell2:UITableViewCell = tableView.cellForRowAtIndexPath(index)
+            var nowCell2:UITableViewCell = tableView.cellForRowAtIndexPath(index)!
             nowCell2.accessoryType = UITableViewCellAccessoryType.None
         }
-        var nowCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)
+        var nowCell:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
         nowCell.accessoryType = UITableViewCellAccessoryType.Checkmark
         
 //

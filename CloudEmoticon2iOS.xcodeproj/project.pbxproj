@@ -36,6 +36,8 @@
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
+		53ED2A4119B6AA6B00DB4B55 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */; };
+		53ED2A4419B6AA6B00DB4B55 /* EmoticonKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
@@ -88,6 +90,20 @@
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
 		};
+		53ED2A4219B6AA6B00DB4B55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53ED2A3B19B6AA6B00DB4B55;
+			remoteInfo = EmoticonKeyboard;
+		};
+		53ED2A4519B6AA6B00DB4B55 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53ED2A3B19B6AA6B00DB4B55;
+			remoteInfo = EmoticonKeyboard;
+		};
 		8BEA2DEF199663470029715E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
@@ -129,6 +145,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8BF8ACFF199335D7001207FC /* CE2NCWidget.appex in Embed App Extensions */,
+				53ED2A4419B6AA6B00DB4B55 /* EmoticonKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +192,9 @@
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
 		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
+		53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoticonKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		53ED2A3F19B6AA6B00DB4B55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
@@ -224,6 +244,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		53DF28FC196B9CF40058AA42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53ED2A3919B6AA6B00DB4B55 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -324,6 +351,7 @@
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
+				53ED2A3D19B6AA6B00DB4B55 /* EmoticonKeyboard */,
 				8BF8ACF3199335D7001207FC /* Frameworks */,
 				53DF28EE196B9CF40058AA42 /* Products */,
 			);
@@ -335,6 +363,7 @@
 				53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */,
 				53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */,
 				8BF8ACF2199335D7001207FC /* CE2NCWidget.appex */,
+				53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -400,6 +429,23 @@
 				53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */,
 			);
 			name = "自定表情";
+			sourceTree = "<group>";
+		};
+		53ED2A3D19B6AA6B00DB4B55 /* EmoticonKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				53ED2A4019B6AA6B00DB4B55 /* KeyboardViewController.swift */,
+				53ED2A3E19B6AA6B00DB4B55 /* Supporting Files */,
+			);
+			path = EmoticonKeyboard;
+			sourceTree = "<group>";
+		};
+		53ED2A3E19B6AA6B00DB4B55 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53ED2A3F19B6AA6B00DB4B55 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		8B98EE9A196D2DC0000D255E /* images */ = {
@@ -501,6 +547,8 @@
 			dependencies = (
 				8BF8ACFE199335D7001207FC /* PBXTargetDependency */,
 				8BF8AD01199335D7001207FC /* PBXTargetDependency */,
+				53ED2A4319B6AA6B00DB4B55 /* PBXTargetDependency */,
+				53ED2A4619B6AA6B00DB4B55 /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -526,6 +574,23 @@
 			productName = CloudEmoticon2iOSTests;
 			productReference = 53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53ED2A4919B6AA6B00DB4B55 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */;
+			buildPhases = (
+				53ED2A3819B6AA6B00DB4B55 /* Sources */,
+				53ED2A3919B6AA6B00DB4B55 /* Frameworks */,
+				53ED2A3A19B6AA6B00DB4B55 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EmoticonKeyboard;
+			productName = EmoticonKeyboard;
+			productReference = 53ED2A3C19B6AA6B00DB4B55 /* EmoticonKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		8BF8ACF1199335D7001207FC /* CE2NCWidget */ = {
 			isa = PBXNativeTarget;
@@ -566,6 +631,10 @@
 						CreatedOnToolsVersion = 6.0;
 						TestTargetID = 53DF28EC196B9CF40058AA42;
 					};
+					53ED2A3B19B6AA6B00DB4B55 = {
+						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = ZNVDEVDRX3;
+					};
 					8BF8ACF1199335D7001207FC = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
@@ -593,6 +662,7 @@
 				53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF28FE196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF1199335D7001207FC /* CE2NCWidget */,
+				53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -634,6 +704,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		53DF28FD196B9CF40058AA42 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53ED2A3A19B6AA6B00DB4B55 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -695,6 +772,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		53ED2A3819B6AA6B00DB4B55 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53ED2A4119B6AA6B00DB4B55 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8BF8ACEE199335D7001207FC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -715,6 +800,16 @@
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */;
+		};
+		53ED2A4319B6AA6B00DB4B55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */;
+			targetProxy = 53ED2A4219B6AA6B00DB4B55 /* PBXContainerItemProxy */;
+		};
+		53ED2A4619B6AA6B00DB4B55 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53ED2A3B19B6AA6B00DB4B55 /* EmoticonKeyboard */;
+			targetProxy = 53ED2A4519B6AA6B00DB4B55 /* PBXContainerItemProxy */;
 		};
 		8BEA2DF0199663470029715E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -903,6 +998,34 @@
 			};
 			name = Release;
 		};
+		53ED2A4719B6AA6B00DB4B55 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		53ED2A4819B6AA6B00DB4B55 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		8BF8AD02199335D7001207FC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -972,6 +1095,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		53ED2A4919B6AA6B00DB4B55 /* Build configuration list for PBXNativeTarget "EmoticonKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				53ED2A4719B6AA6B00DB4B55 /* Debug */,
+				53ED2A4819B6AA6B00DB4B55 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		8BF8AD04199335D7001207FC /* Build configuration list for PBXNativeTarget "CE2NCWidget" */ = {
 			isa = XCConfigurationList;

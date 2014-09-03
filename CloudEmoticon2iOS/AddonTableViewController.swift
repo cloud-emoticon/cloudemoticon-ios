@@ -8,7 +8,7 @@
 
 import UIKit
 
-var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")))
+var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!))
 
 class AddonTableViewController: UITableViewController {
 
@@ -22,7 +22,7 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("输入法"))
         self.title = lang.uage("附加工具")
         
-        bgpview.frame = CGRectMake(0, 170, self.view.frame.size.width, self.view.frame.size.height)
+        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)
         bgpview.sendSubviewToBack(self.view)
         bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         bgpview.alpha = 0.3
@@ -41,43 +41,43 @@ class AddonTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 3
     }
 
     
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Addon", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
+        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
         
         return cell
     }
     
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Shake") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Shake") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Extension") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Extension") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         case 2:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Input") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Input") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         default:
             break

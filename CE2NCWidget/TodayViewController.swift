@@ -68,7 +68,7 @@ class TodayViewController: UIViewController {
     }
     
     func emostart(sender: UIButton!) {
-        extensionContext.openURL(NSURL(string: "emostart://"), completionHandler: nil)
+        extensionContext?.openURL(NSURL(string: "emostart://"), completionHandler: nil)
     }
     
 

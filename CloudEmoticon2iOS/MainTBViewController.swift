@@ -32,7 +32,7 @@ class MainTBViewController: UITabBarController {
     func language()
     {
         let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]
-        let items:NSArray = self.tabBar.items
+        let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {
             let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
             nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
@@ -59,7 +59,7 @@ class MainTBViewController: UITabBarController {
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的颜文字
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {
-            let window:UIWindow? = UIApplication.sharedApplication().delegate.window?
+            let window:UIWindow? = UIApplication.sharedApplication().delegate?.window?
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
             UIView.animateWithDuration(0.35, animations: {
                 window?.alpha = 0
@@ -125,7 +125,7 @@ class MainTBViewController: UITabBarController {
 //        return true
 //    }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator!)
+    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
     {
         let newScreenSize:NSArray = [size.width, size.height]
         NSNotificationCenter.defaultCenter().postNotificationName("transition", object: newScreenSize)

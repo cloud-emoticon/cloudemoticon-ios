@@ -68,8 +68,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             手势.delegate = self
             覆盖视图.backgroundColor = UIColor.clearColor()
             覆盖视图.addGestureRecognizer(手势)
-            self.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-            self.textLabel.numberOfLines = 0
+            self.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+            self.textLabel?.numberOfLines = 0
 //            self.textLabel.textColor = UIColor.clearColor()
 //            self.主文字.textColor = UIColor.blackColor()
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "取消单元格左滑方法:", name: "取消单元格左滑通知", object: nil)
@@ -178,7 +178,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             }
         }
     }
-    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool
+    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
 //        if (覆盖视图.frame.origin.x != 0) {
 //            菜单滑动中 = true
@@ -191,7 +191,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         return 允许手势
     }
     
-    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer!, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer!) -> Bool
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool
     {
 //        if (代理 != nil) {
 //            return !代理!.单元格代理：是否可以接收手势()
@@ -211,11 +211,11 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         滑出按钮A.frame = CGRectMake(新的宽度, 0, 按钮宽度, self.frame.size.height)
         滑出按钮B.frame = CGRectMake(新的宽度 + 按钮宽度, 0, 按钮宽度, self.frame.size.height)
         
-        let 主文字框高度:CGFloat = heightForString(主文字.text, FontSize: 17, andWidth: self.frame.size.width) + 8
+        let 主文字框高度:CGFloat = heightForString(主文字.text!, FontSize: 17, andWidth: self.frame.size.width) + 8
         主文字.frame = CGRectMake(20, 0, 新的宽度 - 20, 主文字框高度)
-        let 副文字文字:NSString = 副文字.text
+        let 副文字文字:NSString = 副文字.text!
         if (!副文字文字.isEqualToString("")) {
-            let 副文字框高度:CGFloat = heightForString(副文字.text, FontSize: 12, andWidth: self.frame.size.width) - 13
+            let 副文字框高度:CGFloat = heightForString(副文字.text!, FontSize: 12, andWidth: self.frame.size.width) - 13
             副文字.frame = CGRectMake(20, 主文字.frame.size.height - 7, 新的宽度 - 20, 副文字框高度)
             self.frame = CGRectMake(0, 0, 新的宽度, 主文字框高度 + 副文字框高度)
         } else {

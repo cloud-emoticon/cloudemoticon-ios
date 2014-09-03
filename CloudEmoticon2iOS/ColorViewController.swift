@@ -84,8 +84,8 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         
         picker.modalPresentationStyle = .Popover
         let popover = picker.popoverPresentationController
-        popover.sourceRect = CGRectMake(0, 100, 0, 0)
-        popover.permittedArrowDirections = .Any
+        popover?.sourceRect = CGRectMake(0, 100, 0, 0)
+        popover?.permittedArrowDirections = .Any
         presentViewController(picker, animated: true, completion: nil)
     }
     

@@ -10,7 +10,7 @@ import UIKit
 
 class SetTableViewController: UITableViewController {
     
-    var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")))
+    var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!))
     
     var list:NSMutableArray = NSMutableArray.array()
     
@@ -43,49 +43,49 @@ class SetTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
 
-    override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return 4
     }
 
-    
-    override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SetNav", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
+        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
 
         return cell
     }
 
-    override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = self.storyboard
         
         switch indexPath.row {
         case 0:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Color") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
             ScoreTableViewController().hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(ScoreTableViewController(), animated: true)
+            self.navigationController?.pushViewController(ScoreTableViewController(), animated: true)
             break
         case 2:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("Setting") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         case 3:
-            let push:UIViewController = storyboard.instantiateViewControllerWithIdentifier("About") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("About") as UIViewController
             push.hidesBottomBarWhenPushed = true
-            self.navigationController.pushViewController(push, animated: true)
+            self.navigationController?.pushViewController(push, animated: true)
             break
         default:
             break

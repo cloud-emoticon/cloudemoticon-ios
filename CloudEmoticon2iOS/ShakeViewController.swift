@@ -42,7 +42,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         super.viewDidDisappear(true)
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent!) {
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if(motion == UIEventSubtype.MotionShake){
         shake()
         }

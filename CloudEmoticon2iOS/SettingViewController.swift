@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate {
 
     var adflist:NSMutableArray = NSMutableArray.array()
     var actlist:NSMutableArray = NSMutableArray.array()
@@ -29,7 +29,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         adflist.addObject("")
         adflist.addObject(lang.uage("复制后退出"))
         SetTable.delegate = self
-        SetTable.dataSource = self
         view.addSubview(SetTable)
         loadSetting()
         
@@ -105,9 +104,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if(indexPath.section == 0){
-        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as NSString
         } else {
-        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
         }
         
         if (cell!.contentView.subviews.count > 1) {
