@@ -45,7 +45,10 @@
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
+		8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B319BAC19B8D1AC002F3080 /* EmoKB.png */; };
+		8B319BBA19B8D52F002F3080 /* kb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B319BB919B8D52F002F3080 /* kb.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
+		8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */; };
 		8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */; };
 		8B98EEA1196D3258000D255E /* shared-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EE9F196D3258000D255E /* shared-vector.png */; };
 		8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA0196D3258000D255E /* shared-vector@2x.png */; };
@@ -218,7 +221,10 @@
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
+		8B319BAC19B8D1AC002F3080 /* EmoKB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmoKB.png; sourceTree = "<group>"; };
+		8B319BB919B8D52F002F3080 /* kb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kb.png; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmokbViewController.swift; sourceTree = "<group>"; };
 		8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		8B98EE9F196D3258000D255E /* shared-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector.png"; sourceTree = "<group>"; };
 		8B98EEA0196D3258000D255E /* shared-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector@2x.png"; sourceTree = "<group>"; };
@@ -479,6 +485,8 @@
 		8B98EE9A196D2DC0000D255E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				8B319BB919B8D52F002F3080 /* kb.png */,
+				8B319BAC19B8D1AC002F3080 /* EmoKB.png */,
 				8BA411AE19B0F046003AEBF2 /* shake.png */,
 				8BA411AC19B0E1E1003AEBF2 /* basicbg.png */,
 				8BA411A219B0A994003AEBF2 /* widget1.png */,
@@ -522,6 +530,7 @@
 				8BA6684119ACD3F80080C47F /* AddonTableViewController.swift */,
 				8BA6684419ACDB830080C47F /* ShakeViewController.swift */,
 				8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */,
+				8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */,
 			);
 			name = "附加工具";
 			sourceTree = "<group>";
@@ -742,7 +751,9 @@
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
 				8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */,
+				8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */,
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
+				8B319BBA19B8D52F002F3080 /* kb.png in Resources */,
 				53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */,
 				5357733C199B1584003FF9D3 /* default.plist in Resources */,
 				8BA411AF19B0F046003AEBF2 /* shake.png in Resources */,
@@ -821,6 +832,7 @@
 				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,
 				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
+				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
 				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
@@ -908,6 +920,7 @@
 				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -921,6 +934,7 @@
 				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;

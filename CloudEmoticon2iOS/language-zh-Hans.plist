@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>颜文字输入法</key>
+	<string>颜文字输入法提供一种输入方式使得用户不必进入主程序进行颜文字的获取。
+若颜文字输入法未出现在键盘中，请进入“设置”应用并按照底部图片次序进行操作。
+        
+    </string>
 	<key>删掉喵</key>
 	<string>删掉喵</string>
 	<key>通知中心扩展</key>
-	<string>通知中心扩展
-        
-要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”扩展添加至“包括”项目中
+	<string>通知中心扩展使用户不必进入主程序就能保存要保留的颜文字。
+要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”扩展添加至“包括”项目中。
 
 </string>
 	<key>输入法</key>

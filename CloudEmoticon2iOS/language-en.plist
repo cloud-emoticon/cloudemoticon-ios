@@ -2,10 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>颜文字输入法</key>
+    <string>Emoticon Keyboard is a way to get emoticon without running main application.To enable keyboard,press each buttons as follow:
+"settings","general","keyboard","keyboard(with number on the right)",and"Cloudemoticon2iOS"
+    </string>
+	<key>删掉喵</key>
+	<string>Delete</string>
 	<key>通知中心扩展</key>
-	<string>Today View Widget
-            
-To enable Notification Center Widget, click the &quot;edit&quot; button on &quot;Today&quot; view, then add &quot;Cloud Emoticon&quot; Widget to &quot;INCLUDE&quot; list
+	<string>Today View Widget accept users saving their personal emoticons without main application.
+To enable Today View Widget, click the "edit" button on "Today" view, then add "Cloud Emoticon" Widget to "INCLUDE" list
 
         </string>
 	<key>输入法</key>

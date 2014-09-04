@@ -10,10 +10,9 @@ import UIKit
 
 class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITableViewDataSource {
 
-//    var 按钮1: UIButton!
     var 表格视图: UITableView!
     var 当前数据数组:NSMutableArray = NSMutableArray.array()
-    let 按钮文字数组:NSArray = ["输入法","历史","收藏","自定义","删除","收起"]
+    let 按钮文字数组:NSArray = ["🌐","历史","收藏","自定义","退格","收起"]
     let 按钮命令数组:NSArray = ["advanceToNextInputMode","历史按钮:","收藏按钮:","自定义按钮:","删除按钮","dismissKeyboard"]
     var 全部收藏数组:NSMutableArray = NSMutableArray.array()
     var 全部自定数组:NSMutableArray = NSMutableArray.array()
@@ -34,20 +33,21 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 初始化画面()
     {
-        self.view.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1)
+        self.view.backgroundColor = UIColor(red: 209.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1)//172 179 190
         let 按钮数量:Int = 按钮文字数组.count
         表格视图 = UITableView() //frame: , style: UITableViewStyle.Plain
         表格视图.setTranslatesAutoresizingMaskIntoConstraints(false)
         表格视图.delegate = self
         表格视图.dataSource = self
         表格视图.backgroundColor = UIColor.whiteColor()
+        表格视图.showsVerticalScrollIndicator = false
         self.view.addSubview(表格视图)
         
         var 表格视图横向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 0.0)
-        var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 1)
-        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 179)
-        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 103)
+        var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -0.0)
+        var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 4)
+        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 165)
+        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 89)
         if(self.interfaceOrientation.isPortrait) {
             self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
         } else {
@@ -70,23 +70,29 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             按钮.sizeToFit()
             按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
             按钮.addTarget(self, action: Selector(按钮命令数组.objectAtIndex(i) as NSString), forControlEvents: .TouchUpInside)
-            按钮.backgroundColor = UIColor.whiteColor()
+            if (i == 0){
+                按钮.backgroundColor = UIColor(red: 178.0/255.0, green: 185.0/255.0, blue: 196.0/255.0, alpha: 1)
+            } else {
+                按钮.backgroundColor = UIColor(red: 236.0/255.0, green: 236.0/255.0, blue: 236.0/255.0, alpha: 1)
+            }
+            按钮.layer.cornerRadius = 4
             self.view.addSubview(按钮)
             按钮.titleLabel?.textAlignment = NSTextAlignment.Center
             按钮.tag = 100 + i
-            
+            var 按钮高度 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 35)
+            self.view.addConstraint(按钮高度)
             if (i == 0){
-                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 5.0)
-                var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 表格视图, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 2)
-                var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 20.7)
+                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 3.0)
+                var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 表格视图, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 6)
+                var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 18)
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             } else if (i == 按钮文字数组.count - 1) {
-                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -5.0)
+                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
                 var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0)
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             } else {
-                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 1.0)
+                var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: 5.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
                 var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0)
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
@@ -119,14 +125,18 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 按钮选择(sender:UIButton)
     {
-        for i in 0...按钮文字数组.count-1 {
+        for i in 0...按钮文字数组.count - 1 {
             let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
             if (当前按钮.tag == sender.tag) {
-                当前按钮.layer.borderWidth = 1
-                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
+                当前按钮.backgroundColor = UIColor.whiteColor()
+//                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
             } else {
-                当前按钮.layer.borderWidth = 0
-                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.0])
+                if (i == 0){
+                    当前按钮.backgroundColor = UIColor(red: 172.0/255.0, green: 179.0/255.0, blue: 190.0/255.0, alpha: 1)
+                } else {
+                当前按钮.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1)
+                }
+//                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.0])
             }
         }
         表格视图.reloadData()
@@ -176,7 +186,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             buttonColor = UIColor.blueColor()
         }
         
-        for i in 0...按钮文字数组.count-1 {
+        for i in 0...按钮文字数组.count - 1 {
             let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
             当前按钮.setTitleColor(buttonColor, forState: .Normal)
         }
@@ -217,11 +227,14 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             cell!.textLabel?.textAlignment = NSTextAlignment.Center
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
-            cell!.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.01)
         }
         cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 40
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
