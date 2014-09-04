@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>通知中心扩展</key>
-    <string>通知中心扩展
+	<string>通知中心扩展
         
 要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中
 
 </string>
-    <key>输入法</key>
-    <string>顏文字輸入法</string>
+	<key>输入法</key>
+	<string>顏文字键盘</string>
 	<key>还原背景</key>
 	<string>初始化背景圖</string>
 	<key>当前背景</key>
@@ -23,7 +23,7 @@
 	<key>行为</key>
 	<string>行為</string>
 	<key>广告</key>
-	<string>广告</string>
+	<string>廣告</string>
 	<key>图片库</key>
 	<string>圖庫</string>
 	<key>相册</key>
@@ -35,7 +35,7 @@
 	<key>中止</key>
 	<string>中止</string>
 	<key>源可能有问题</key>
-	<string>因為一些問題或兼容性錯誤，無法添加這個源。</string>
+	<string>因為一些問題或兼容性錯誤，無法加载目标源。</string>
 	<key>源解析失败</key>
 	<string>源解析錯誤</string>
 	<key>复制后退出</key>
