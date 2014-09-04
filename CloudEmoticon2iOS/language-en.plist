@@ -65,13 +65,16 @@ To enable Notification Center Widget, click the &quot;edit&quot; button on &quot
 	<key>摇一摇</key>
 	<string>Shake off</string>
 	<key>已复制到剪贴板</key>
-	<string>has been successfully copied to the clipboard</string>
+	<string>has been
+successfully copied to the clipboard</string>
 	<key>正在加载源</key>
 	<string>Loading source...</string>
 	<key>你已经收藏了</key>
-	<string>You have already added</string>
+	<string>You have already
+added</string>
 	<key>添加到收藏夹成功</key>
-	<string>has been added successfully to your favorites</string>
+	<string>has been added
+successfully to your favorites</string>
 	<key>正在刷新</key>
 	<string>ㄟ(￣▽￣ㄟ) Refreshing...</string>
 	<key>下拉刷新</key>
@@ -95,7 +98,7 @@ To enable Notification Center Widget, click the &quot;edit&quot; button on &quot
 	<key>历史记录</key>
 	<string>History</string>
 	<key>收藏</key>
-	<string>Favorite</string>
+	<string>Favor</string>
 	<key>清空</key>
 	<string>Clear</string>
 	<key>自定义</key>

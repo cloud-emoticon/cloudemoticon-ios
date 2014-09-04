@@ -215,7 +215,24 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 载入历史记录数据()
     {
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        将数据载入表格(文件中的数据)
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+        var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        if(value != nil && value != "") {
+            let 输入法中的数据:NSArray? = ArrayString().json2array(value!)
+            let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as NSArray
+            if ((输入法中的历史记录数据.count != 文件中的数据?.count) && (输入法中的历史记录数据.count != 0)) {
+                println("历史记录：输入法中的数据")
+                将数据载入表格(输入法中的历史记录数据)
+                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
+            } else {
+                println("历史记录：载入文件中的数据")
+                将数据载入表格(文件中的数据)
+            }
+        } else {
+            println("历史记录：输入法中没有数据，载入文件中的数据")
+            将数据载入表格(文件中的数据)
+        }
     }
     func 载入自定义数据()
     {
@@ -227,6 +244,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         表格数据.removeAllObjects()
         if (文件中的数据 != nil) {
             表格数据.addObjectsFromArray(文件中的数据!)
+            println(文件中的数据)
         }
         表格.reloadData()
     }
@@ -240,6 +258,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 保存历史记录数据()
     {
         文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
+        保存数据到输入法()
     }
     func 保存自定义数据()
     {

@@ -52,10 +52,15 @@ class MainTBViewController: UITabBarController {
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据!)
         }
-        if (历史记录.count > 100) {
-            历史记录.removeLastObject()
+        while (true) {
+            if (历史记录.count > 50) {
+                历史记录.removeLastObject()
+            } else {
+                break
+            }
         }
         文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
+        保存数据到输入法()
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的颜文字
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {

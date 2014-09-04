@@ -12,11 +12,13 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
 //    var 按钮1: UIButton!
     var 表格视图: UITableView!
-    var 当前数据数组:NSArray = NSArray.array()
+    var 当前数据数组:NSMutableArray = NSMutableArray.array()
     let 按钮文字数组:NSArray = ["输入法","历史","收藏","自定义","删除","收起"]
-    var 收藏夹数组:NSMutableArray = NSMutableArray.array()
-    var 自定义数组:NSMutableArray = NSMutableArray.array()
-    var 历史记录数组:NSMutableArray = NSMutableArray.array()
+    let 按钮命令数组:NSArray = ["advanceToNextInputMode","历史按钮:","收藏按钮:","自定义按钮:","删除按钮","dismissKeyboard"]
+    var 全部收藏数组:NSMutableArray = NSMutableArray.array()
+    var 全部自定数组:NSMutableArray = NSMutableArray.array()
+    var 全部历史数组:NSMutableArray = NSMutableArray.array()
+    
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -67,11 +69,9 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             按钮.setTitle(按钮文字数组.objectAtIndex(i) as NSString, forState: .Normal)
             按钮.sizeToFit()
             按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
-            //            按钮.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
+            按钮.addTarget(self, action: Selector(按钮命令数组.objectAtIndex(i) as NSString), forControlEvents: .TouchUpInside)
             按钮.backgroundColor = UIColor.whiteColor()
             self.view.addSubview(按钮)
-//            按钮.layer.borderWidth = 1
-//            按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
             按钮.titleLabel?.textAlignment = NSTextAlignment.Center
             按钮.tag = 100 + i
             
@@ -94,8 +94,46 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func 历史按钮() {
-        
+    func 历史按钮(sender:UIButton) {
+        当前数据数组.removeAllObjects()
+        for 颜文字数组 in 全部历史数组 {
+            当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+        }
+        按钮选择(sender)
+    }
+    
+    func 收藏按钮(sender:UIButton) {
+        当前数据数组.removeAllObjects()
+        for 颜文字数组 in 全部收藏数组 {
+            当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+        }
+        按钮选择(sender)
+    }
+    func 自定义按钮(sender:UIButton) {
+        当前数据数组.removeAllObjects()
+        for 颜文字数组 in 全部自定数组 {
+            当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+        }
+        按钮选择(sender)
+    }
+    
+    func 按钮选择(sender:UIButton)
+    {
+        for i in 0...按钮文字数组.count-1 {
+            let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
+            if (当前按钮.tag == sender.tag) {
+                当前按钮.layer.borderWidth = 1
+                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
+            } else {
+                当前按钮.layer.borderWidth = 0
+                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.0])
+            }
+        }
+        表格视图.reloadData()
+    }
+    
+    func 删除按钮() {
+        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).deleteBackward()
     }
     
     func 初始化数据()
@@ -105,25 +143,16 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(value != nil && value != "") {
             let 全部数据数组:NSArray = ArrayString().json2array(value!)
-            let 全部收藏数组:NSArray = 全部数据数组.objectAtIndex(0) as NSArray
-            for 颜文字数组 in 全部收藏数组 {
-                收藏夹数组.addObject(颜文字数组.objectAtIndex(0))
-            }
-            let 全部自定数组:NSArray = 全部数据数组.objectAtIndex(1) as NSArray
-            for 颜文字数组 in 全部自定数组 {
-                自定义数组.addObject(颜文字数组.objectAtIndex(0))
-            }
-            
-            当前数据数组 = 收藏夹数组
-            表格视图.reloadData()
+//            全部收藏数组.removeAllObjects()
+//            全部自定数组.removeAllObjects()
+//            全部历史数组.removeAllObjects()
+            全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as NSArray)
+            全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as NSArray)
+            全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as NSArray)
+            收藏按钮(self.view.viewWithTag(102) as UIButton)
         } else {
             println("没有数据")
         }
-    }
-    
-    func deleteBackword()
-    {
-        self.textDocumentProxy
     }
     
     override func didReceiveMemoryWarning() {
@@ -156,7 +185,27 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        
+        let 要复制的颜文字:NSString = 当前数据数组.objectAtIndex(indexPath.row) as NSString
+        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).insertText(要复制的颜文字)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        全部历史数组.insertObject([要复制的颜文字,""], atIndex: 0)
+        while (true) {
+            if (全部历史数组.count > 50) {
+                全部历史数组.removeLastObject()
+            } else {
+                break
+            }
+        }
+        保存数据到主程序()
+    }
+    
+    func 保存数据到主程序()
+    {
+        let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组]
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+        let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
+        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -170,7 +219,6 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             cell!.accessoryType = UITableViewCellAccessoryType.None
             cell!.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.01)
         }
-        println(当前数据数组)
         cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         
         return cell!
