@@ -33,6 +33,27 @@ var p_tempString:NSString = ""
 
 var lang:Language = Language()
 
+func 保存数据到输入法()
+{
+    var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+    containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+    var 收藏文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+    if (收藏文件中的数据 == nil) {
+        收藏文件中的数据 = NSArray.array()
+    }
+    var 自定文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+    if (自定文件中的数据 == nil) {
+        自定文件中的数据 = NSArray.array()
+    }
+    //var 历史文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.HISTORY)
+    //if (历史文件中的数据 == nil) {
+    //    历史文件中的数据 = NSArray.array()
+    //}
+    let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!]
+    let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
+    要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+}
+
 /* 隐藏设置：
 nowurl 当前选中源
 */

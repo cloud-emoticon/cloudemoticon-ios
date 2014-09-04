@@ -39,16 +39,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    // MARK: - 初始化属性
-//    func initvar() {
-//        if (fileMgr == nil) {
-//            fileMgr = FileManager()
-//        }
-//        if (sfile == nil) {
-//            sfile = NSMutableArray.array()
-//        }
-//    }
-
     var editBtn: UIBarButtonItem!
     var backBtn: UIBarButtonItem!
     
@@ -107,10 +97,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         sfile.addObject(s_emoset0)
     }
     
-//    @IBOutlet weak var editBtn: UIBarButtonItem!
-//    @IBAction func editBtn(sender: UIBarButtonItem) {
-//        sfile.insertObject("TEST", atIndex: sfile.count)
-//    }
     
     // MARK: - 接收完成通知（弃用）
     func loadwebdataokf2(notification:NSNotification)
@@ -159,13 +145,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             }
             if (!r) {
                 let o_delete:NSArray = ["user"]
-//                var s_emosetX:NSMutableArray = [o_note,o_url,o_delete]
-//                time(s_emosetX)
                 waitArr = [o_note,o_url,o_delete]
-//                if (!timer) {
-//                    timer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "time:", userInfo: s_emosetX, repeats: true)
-//                }
-//                timer?.fire()
             } else {
                 //已在列表中
             }
@@ -193,16 +173,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 }
             }
             fileMgr.saveSources(sfile)
-//            timer?.invalidate()
-//            timer = nil
         } else {
             println("NO")
-//            self.timerI++
-//            if (timerI >= 3) {
-//                timerI = 0
-//                timer?.invalidate()
-//                timer = nil
-//            }
         }
     }
     
@@ -389,9 +361,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             defaults.synchronize()
         }
     }
-//        override func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
-//        {
-//            return "删掉喵"
-//        }
+        override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
+        {
+            return lang.uage("删掉喵")
+        }
 
 }

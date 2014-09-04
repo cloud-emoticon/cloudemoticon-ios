@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+<<<<<<< HEAD
+<<<<<<< HEAD
+	<key>删掉喵</key>
+	<string>Delete</string>
+	<key>通知中心扩展</key>
+	<string>Today View Widget
+            
+To enable Today View Widget, click the &quot;edit&quot; &quot;button on &quot;Today&quot; view, then add &quot;Cloud Emoticon&quot; Widget to &quot;INCLUDE&quot; list.
+=======
+	<key>通知中心扩展</key>
+	<string>Today View Widget
+            
+To enable Notification Center Widget, click the &quot;edit&quot; button on &quot;Today&quot; view, then add &quot;Cloud Emoticon&quot; Widget to &quot;INCLUDE&quot; list
+>>>>>>> FETCH_HEAD
+=======
+	<key>通知中心扩展</key>
+	<string>Today View Widget
+            
+To enable Notification Center Widget, click the &quot;edit&quot; button on &quot;Today&quot; view, then add &quot;Cloud Emoticon&quot; Widget to &quot;INCLUDE&quot; list
+>>>>>>> FETCH_HEAD
+
+        </string>
+	<key>输入法</key>
+	<string>Emoticon Keyboard</string>
+	<key>还原背景</key>
+	<string>Restore background picture</string>
+	<key>当前背景</key>
+	<string>Current background:</string>
+	<key>修改背景图片</key>
+	<string>Change background picture</string>
+	<key>添加到剪切板</key>
+	<string>Add to clipboard</string>
+	<key>发现了颜文字</key>
+	<string>You found a Emoticon!</string>
+	<key>行为</key>
+	<string>Behavior</string>
+	<key>广告</key>
+	<string>Advertisement</string>
+	<key>图片库</key>
+	<string>Albums</string>
+	<key>相册</key>
+	<string>Photos</string>
+	<key>选择背景图片加载位置</key>
+	<string>Choose a picture from...</string>
+	<key>拍照</key>
+	<string>Camera</string>
+	<key>中止</key>
+	<string>Abort</string>
+	<key>源可能有问题</key>
+	<string>You can&apos;t add this source because of some issues.</string>
+	<key>源解析失败</key>
+	<string>Resolve failed</string>
+	<key>复制后退出</key>
+	<string>Exit after copied</string>
+	<key>广告显示频率</key>
+	<string>Advertisement display probability</string>
+	<key>本地默认源</key>
+	<string>default</string>
+	<key>不具备删除这个源的权限</key>
+	<string>You have no permission or this is a default source that you can&apos;t delete it.</string>
+	<key>无法删除这个源</key>
+	<string>Can&apos;t delete this source!</string>
+	<key>返回</key>
+	<string>Back</string>
+	<key>从源商店添加</key>
+	<string>Add from Source store</string>
+	<key>添加源</key>
+	<string>Add a Source</string>
+	<key>关于</key>
+	<string>About</string>
+	<key>个性化</key>
+	<string>Customize</string>
+	<key>分享</key>
+	<string>Share</string>
+	<key>扩展功能</key>
+	<string>Today View Widget</string>
+	<key>摇一摇</key>
+	<string>Shake off</string>
+	<key>已复制到剪贴板</key>
+	<string>has been successfully copied to the clipboard</string>
+	<key>正在加载源</key>
+	<string>Loading source...</string>
+	<key>你已经收藏了</key>
+	<string>You have already added</string>
+	<key>添加到收藏夹成功</key>
+	<string>has been added successfully to your favorites</string>
+	<key>正在刷新</key>
+	<string>ㄟ(￣▽￣ㄟ) Refreshing...</string>
+	<key>下拉刷新</key>
+	<string>(´・ω・｀) Pull down to refresh</string>
+	<key>松开手指刷新</key>
+	<string>ლ(╹◡╹ლ) Release to refresh</string>
+	<key>未登录</key>
+	<string>Not logged in</string>
+	<key>分类</key>
+	<string>Category</string>
+	<key>源管理</key>
+	<string>Source</string>
+	<key>设置</key>
+	<string>Settings</string>
+	<key>附加工具</key>
+	<string>Addons</string>
+	<key>云颜文字</key>
+	<string>Cloud Emoticon</string>
+	<key>自定表情</key>
+	<string>My Emoticon</string>
+	<key>历史记录</key>
+	<string>History</string>
+	<key>收藏</key>
+	<string>Favorite</string>
+	<key>清空</key>
+	<string>Clear</string>
+	<key>自定义</key>
+	<string>Custom</string>
+	<key>取消</key>
+	<string>Cancel</string>
+	<key>添加颜文字</key>
+	<string>Add a emoticon</string>
+	<key>添加</key>
+	<string>Add</string>
+	<key>完成</key>
+	<string>Done</string>
+	<key>编辑</key>
+	<string>Edit</string>
+	<key>语言包名称</key>
+	<string>English</string>
+	<key>语言包作者</key>
+	<string>Kagurazaka Yukari</string>
+</dict>
+</plist>

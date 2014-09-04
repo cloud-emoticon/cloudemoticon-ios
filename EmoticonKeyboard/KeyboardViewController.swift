@@ -12,8 +12,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
 //    var 按钮1: UIButton!
     var 表格视图: UITableView!
-    var 当前数据数组:NSMutableArray = NSMutableArray.array()
+    var 当前数据数组:NSArray = NSArray.array()
     let 按钮文字数组:NSArray = ["输入法","历史","收藏","自定义","删除","收起"]
+    var 收藏夹数组:NSMutableArray = NSMutableArray.array()
+    var 自定义数组:NSMutableArray = NSMutableArray.array()
+    var 历史记录数组:NSMutableArray = NSMutableArray.array()
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -23,7 +26,12 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        初始化画面()
+        初始化数据()
+    }
+    
+    func 初始化画面()
+    {
         self.view.backgroundColor = UIColor(red: 248.0/255.0, green: 248.0/255.0, blue: 248.0/255.0, alpha: 1)
         let 按钮数量:Int = 按钮文字数组.count
         表格视图 = UITableView() //frame: , style: UITableViewStyle.Plain
@@ -43,7 +51,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         } else {
             self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式3])
         }
-
+        
         for i in 0...按钮文字数组.count - 1
         {
             let 按钮:UIButton = UIButton.buttonWithType(.System) as UIButton
@@ -59,9 +67,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             按钮.setTitle(按钮文字数组.objectAtIndex(i) as NSString, forState: .Normal)
             按钮.sizeToFit()
             按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
-//            按钮.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
-            按钮.backgroundColor = UIColor.clearColor()
+            //            按钮.addTarget(self, action: "advanceToNextInputMode", forControlEvents: .TouchUpInside)
+            按钮.backgroundColor = UIColor.whiteColor()
             self.view.addSubview(按钮)
+//            按钮.layer.borderWidth = 1
+//            按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
             按钮.titleLabel?.textAlignment = NSTextAlignment.Center
             按钮.tag = 100 + i
             
@@ -82,15 +92,39 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             }
         }
-        for i in 1...30
-        {
-            当前数据数组.addObject("\(i)")
-        }
-//        表格视图.reloadData()
     }
     
- 
+    func 历史按钮() {
+        
+    }
     
+    func 初始化数据()
+    {
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+        var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        if(value != nil && value != "") {
+            let 全部数据数组:NSArray = ArrayString().json2array(value!)
+            let 全部收藏数组:NSArray = 全部数据数组.objectAtIndex(0) as NSArray
+            for 颜文字数组 in 全部收藏数组 {
+                收藏夹数组.addObject(颜文字数组.objectAtIndex(0))
+            }
+            let 全部自定数组:NSArray = 全部数据数组.objectAtIndex(1) as NSArray
+            for 颜文字数组 in 全部自定数组 {
+                自定义数组.addObject(颜文字数组.objectAtIndex(0))
+            }
+            
+            当前数据数组 = 收藏夹数组
+            表格视图.reloadData()
+        } else {
+            println("没有数据")
+        }
+    }
+    
+    func deleteBackword()
+    {
+        self.textDocumentProxy
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -136,6 +170,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             cell!.accessoryType = UITableViewCellAccessoryType.None
             cell!.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.01)
         }
+        println(当前数据数组)
         cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         
         return cell!

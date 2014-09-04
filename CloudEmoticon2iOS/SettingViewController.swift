@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITableViewDelegate {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var adflist:NSMutableArray = NSMutableArray.array()
     var actlist:NSMutableArray = NSMutableArray.array()
@@ -29,6 +29,7 @@ class SettingViewController: UIViewController, UITableViewDelegate {
         adflist.addObject("")
         adflist.addObject(lang.uage("复制后退出"))
         SetTable.delegate = self
+        SetTable.dataSource = self
         view.addSubview(SetTable)
         loadSetting()
         
@@ -44,12 +45,12 @@ class SettingViewController: UIViewController, UITableViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView!) -> Int
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 2
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if(section == 0)
         {
@@ -59,7 +60,7 @@ class SettingViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func  tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String!
+    func  tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String!
     {
         if(section == 0)
         {
@@ -81,7 +82,7 @@ class SettingViewController: UIViewController, UITableViewDelegate {
         defaults.synchronize()
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         
         if(adf == nil){
@@ -130,7 +131,7 @@ class SettingViewController: UIViewController, UITableViewDelegate {
         }
                         
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
-        return cell
+        return cell!
     }
     
     func updateSwitchAtIndesPath(sender:UISwitch){

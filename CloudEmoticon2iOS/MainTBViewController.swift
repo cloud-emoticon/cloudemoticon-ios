@@ -108,7 +108,7 @@ class MainTBViewController: UITabBarController {
         let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as NSString, style: .Default) {
             [weak alert] action in
-//            print("OK Pressed")
+            //print("OK Pressed")
             alert!.dismissViewControllerAnimated(true, completion: nil)
         }
         alert.addAction(okAction)

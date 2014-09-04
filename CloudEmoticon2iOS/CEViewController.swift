@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource { //, UIGestureRecognizerDelegate
 
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
@@ -141,9 +141,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //Load Data
         分类表格.delegate = self
-    
+        分类表格.dataSource = self
         颜文字表格.delegate = self
-        
+        颜文字表格.dataSource = self
 //        p_emodata
         载入数据(NetDownloadTo.CLOUDEMOTICON)
         
@@ -318,12 +318,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     //表格数据
-    func numberOfSectionsInTableView(tableView: UITableView!) -> Int
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (tableView.tag == 100) {
             return sortData.count
@@ -332,7 +332,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell!
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
         
@@ -343,7 +343,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
             cell!.textLabel?.text = groupname
-            return cell
+            return cell!
         } else {
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
             if (cell == nil) {
@@ -380,7 +380,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             
             cell!.修正元素位置(self.颜文字表格.frame.size.width)
-            return cell
+            return cell!
         }
     }
     
@@ -416,12 +416,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //    {
 //        return UITableViewCellEditingStyle.Delete
 //    }
-    func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return false
     }
     
-    func tableView(tableView: UITableView!, heightForRowAtIndexPath indexPath: NSIndexPath!) -> CGFloat
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
         if (tableView.tag == 101) {
             if (ceData.count > 0) {
@@ -593,6 +593,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 //                收藏.removeLastObject()
                 //            }
                 文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.FAVORITE)
+                保存数据到输入法()
                 提示文字 = NSString(format: "“ %@ ” %@", 颜文字, lang.uage("添加到收藏夹成功"))
             } else {
                 提示文字 = NSString(format: "%@ “ %@ ”",lang.uage("你已经收藏了") ,颜文字)
