@@ -43,6 +43,7 @@
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
+		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B319BAC19B8D1AC002F3080 /* EmoKB.png */; };
@@ -219,6 +220,7 @@
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
 		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B319BAC19B8D1AC002F3080 /* EmoKB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmoKB.png; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				8BA6683F19ACCD390080C47F /* AboutViewController.swift */,
 				8BA6684819ACDCB30080C47F /* SettingViewController.swift */,
 				8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */,
+				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 			);
 			name = "设置导航";
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
+				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,

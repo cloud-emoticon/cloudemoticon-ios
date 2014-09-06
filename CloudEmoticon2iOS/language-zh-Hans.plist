@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>从在线皮肤库添加</key>
+	<string>从在线皮肤库添加</string>
+	<key>下载皮肤</key>
+	<string>下载皮肤</string>
+	<key>皮肤管理</key>
+	<string>皮肤管理</string>
 	<key>颜文字输入法</key>
 	<string>颜文字输入法提供一种输入方式使得用户不必进入主程序进行颜文字的获取。
 若颜文字输入法未出现在键盘中，请进入“设置”应用并按照底部图片次序进行操作。

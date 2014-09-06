@@ -191,14 +191,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             右上按钮.title = lang.uage("清空")
             break
         case 2:
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
-            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-            var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
-            if(value != nil && value != "") {
-                addemoticon(value!)
+            var value:NSString? = nil
+            if (appgroup) {
+                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+                value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+                if(value != nil && value != "") {
+                    addemoticon(value!)
+                }
+                value = ""
+                value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             }
-            value = ""
-            value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             载入自定义数据()
             左上按钮.title = lang.uage("编辑")
             右上按钮.title = lang.uage("添加")
@@ -215,9 +218,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 载入历史记录数据()
     {
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
-        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        var value:NSString? = nil
+        if (appgroup) {
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+            value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        }
         if(value != nil && value != "") {
             let 输入法中的数据:NSArray? = ArrayString().json2array(value!)
             let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as NSArray
@@ -244,7 +250,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         表格数据.removeAllObjects()
         if (文件中的数据 != nil) {
             表格数据.addObjectsFromArray(文件中的数据!)
-            println(文件中的数据)
         }
         表格.reloadData()
     }

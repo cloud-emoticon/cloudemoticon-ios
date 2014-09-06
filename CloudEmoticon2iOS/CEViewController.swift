@@ -405,8 +405,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
 //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
             NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
 //    func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
 //    {

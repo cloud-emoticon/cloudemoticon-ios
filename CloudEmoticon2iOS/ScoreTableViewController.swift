@@ -16,8 +16,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     
     var fileMgr:FileManager = FileManager()
     var sfile:NSMutableArray = NSMutableArray.array()
-    var timer:NSTimer?
-    var timerI:Int = 0
+//    var timer:NSTimer?
+//    var timerI:Int = 0
     var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var waitArr:NSMutableArray = NSMutableArray.array()
     var 代理:ScoreTableViewControllerDelegate?
@@ -307,7 +307,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             }
             
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
     
@@ -325,7 +324,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
-        // Return false if you do not want the specified item to be editable.
     }
     // MARK: - 表格项目被移动
     override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)

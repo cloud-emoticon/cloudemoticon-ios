@@ -21,6 +21,7 @@ let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDir
 let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
+let appgroup:Bool = false //App-group总开关（未安装证书的情况下请关闭）
 
 enum NetDownloadTo:Int
 {
@@ -35,8 +36,6 @@ var lang:Language = Language()
 
 func 保存数据到输入法()
 {
-    var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
-    containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
     var 收藏文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.FAVORITE)
     if (收藏文件中的数据 == nil) {
         收藏文件中的数据 = NSArray.array()
@@ -51,7 +50,11 @@ func 保存数据到输入法()
     }
     let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!,历史文件中的数据!]
     let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
-    要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+    if (appgroup) {
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+    }
 }
 
 /* 隐藏设置：
