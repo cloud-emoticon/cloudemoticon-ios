@@ -99,6 +99,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             表格数据.removeAllObjects()
             表格.reloadData()
             保存历史记录数据()
+            if (appgroup) {
+                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+                let 要保存的数据文本:NSString = ""
+                要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+            }
             break
         case 2:
             if (!表格.editing) {
@@ -191,17 +197,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             右上按钮.title = lang.uage("清空")
             break
         case 2:
-            var value:NSString? = nil
-            if (appgroup) {
-                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
-                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-                value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
-                if(value != nil && value != "") {
-                    addemoticon(value!)
-                }
-                value = ""
-                value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-            }
+//            var value:NSString? = nil
+//            if (appgroup) {
+//                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+//                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//                value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//                if(value != nil && value != "") {
+//                    addemoticon(value!)
+//                }
+//                value = ""
+//                value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//            }
             载入自定义数据()
             左上按钮.title = lang.uage("编辑")
             右上按钮.title = lang.uage("添加")
@@ -244,6 +250,28 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     {
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         将数据载入表格(文件中的数据)
+        var value:NSString? = nil
+        if (appgroup) {
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+            value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        }
+        if(value != nil && value != "") {
+            let 通知扩展中的数据:NSArray? = ArrayString().json2array(value!)
+            let 通知扩展中的自定义数据:NSArray = 通知扩展中的数据?.objectAtIndex(0) as NSArray
+            if ((通知扩展中的自定义数据.count != 文件中的数据?.count) && (通知扩展中的自定义数据.count != 0)) {
+                println("自定义：载入通知扩展中的数据")
+                将数据载入表格(通知扩展中的自定义数据)
+                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
+            } else {
+                println("自定义：载入文件中的数据")
+                将数据载入表格(文件中的数据)
+            }
+        } else { 
+            println("自定义：通知中没有数据，载入文件中的数据")
+            将数据载入表格(文件中的数据)
+        }
+
     }
     func 将数据载入表格(文件中的数据:NSArray?)
     {

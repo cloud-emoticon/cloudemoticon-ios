@@ -69,11 +69,11 @@ class SetTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-//            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
-//            push.hidesBottomBarWhenPushed = true
+            let push = SkinTableViewController()
+            //            push.hidesBottomBarWhenPushed = true
 //            self.navigationController?.pushViewController(push, animated: true)
-            SkinTableViewController().hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(SkinTableViewController(), animated: true)
+            push.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
             ScoreTableViewController().hidesBottomBarWhenPushed = true

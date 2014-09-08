@@ -14,11 +14,6 @@ class Language: NSObject {
     var 当前设置的语言:NSString = ""
     var 翻译缓存:NSMutableDictionary = NSMutableDictionary.dictionary()
    
-//    override init()
-//    {
-//        super.init()
-//    }
-    
     func 当前系统语言() -> NSString
     {
         let languages:NSArray = NSLocale.preferredLanguages()

@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>从在线皮肤库添加</key>
-	<string>从在线皮肤库添加</string>
+	<string>从在线主题库添加</string>
 	<key>下载皮肤</key>
-	<string>下载皮肤</string>
+	<string>加载主题</string>
 	<key>皮肤管理</key>
-	<string>皮肤管理</string>
+	<string>主题管理</string>
 	<key>颜文字输入法</key>
 	<string>颜文字输入法提供一种输入方式使得用户不必进入主程序进行颜文字的获取。
 若颜文字输入法未出现在键盘中，请进入“设置”应用并按照底部图片次序进行操作。
@@ -69,7 +69,7 @@
 	<key>关于</key>
 	<string>关于</string>
 	<key>个性化</key>
-	<string>个性化</string>
+	<string>主题管理</string>
 	<key>分享</key>
 	<string>分享</string>
 	<key>扩展功能</key>

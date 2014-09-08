@@ -2,15 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>颜文字输入法</key>
-    <string>顏文字鍵盤提供一種鍵入方式使得使用者不必啟動主程式獲得自行指定的顏文字。
+	<key>从在线皮肤库添加</key>
+	<string>從線上主題庫添加</string>
+	<key>下载皮肤</key>
+	<string>加載主題</string>
+	<key>皮肤管理</key>
+	<string>主題管理</string>
+	<key>颜文字输入法</key>
+	<string>顏文字鍵盤提供一種鍵入方式使得使用者不必啟動主程式獲得自行指定的顏文字。
 若顏文字鍵盤並未出現在鍵盤中，請進入“設定”應用並按照底部圖片指示的內容進行操作。
         
     </string>
 	<key>删掉喵</key>
 	<string>移除喵</string>
 	<key>通知中心扩展</key>
-    <string>通知中心擴展使得使用者無需啟動主程式就可獲得自行設定之顏文字。
+	<string>通知中心擴展使得使用者無需啟動主程式就可獲得自行設定之顏文字。
 要使用通知中心擴展，在下拉通知欄的“今日”頁面下，點擊最下方的“編輯”按鈕，講“云顏文字”擴展添加至“包括”中。
 
 </string>
@@ -63,7 +69,7 @@
 	<key>关于</key>
 	<string>關於</string>
 	<key>个性化</key>
-	<string>自订背景</string>
+	<string>自订主題</string>
 	<key>分享</key>
 	<string>分享</string>
 	<key>扩展功能</key>

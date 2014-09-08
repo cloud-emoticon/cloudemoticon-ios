@@ -44,6 +44,7 @@
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
+		8B17640F19BDD98A003A6A3D /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17640E19BDD98A003A6A3D /* ArrayString.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B319BAC19B8D1AC002F3080 /* EmoKB.png */; };
@@ -221,6 +222,7 @@
 		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
+		8B17640E19BDD98A003A6A3D /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B319BAC19B8D1AC002F3080 /* EmoKB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EmoKB.png; sourceTree = "<group>"; };
@@ -298,7 +300,6 @@
 				533E537319B851F700DFD2CB /* EmoticonKeyboard.entitlements */,
 				5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */,
 				5328C7AB19B70D0D00C425A8 /* Supporting Files */,
-				533E537419B85D1800DFD2CB /* ArrayString.swift */,
 			);
 			path = EmoticonKeyboard;
 			sourceTree = "<group>";
@@ -306,6 +307,7 @@
 		5328C7AB19B70D0D00C425A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				533E537419B85D1800DFD2CB /* ArrayString.swift */,
 				5328C7AC19B70D0D00C425A8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -323,7 +325,6 @@
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
-				53EA46D319B5A18D0094C59C /* ArrayString.swift */,
 				53E0E4AB19947C2800C9D9FC /* MD5.h */,
 				53E0E4AC19947C2800C9D9FC /* MD5.m */,
 				538D3E9D199471F100F5692F /* Md5Coder.swift */,
@@ -331,6 +332,7 @@
 				5346D9311993186500CEFA4B /* XMLReader.swift */,
 				5346D93419931C9200CEFA4B /* SwitchCoder.swift */,
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
+				53EA46D319B5A18D0094C59C /* ArrayString.swift */,
 			);
 			name = "数据模型";
 			sourceTree = "<group>";
@@ -563,6 +565,7 @@
 		8BF8ACF7199335D7001207FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8B17640E19BDD98A003A6A3D /* ArrayString.swift */,
 				8BF8ACF8199335D7001207FC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -855,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B17640F19BDD98A003A6A3D /* ArrayString.swift in Sources */,
 				8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

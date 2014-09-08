@@ -21,7 +21,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     override init(style: UITableViewStyle) {
-        super.init(style: style)
+        super.init(style: .Plain)
     }
     
     override init() {

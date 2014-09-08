@@ -36,27 +36,22 @@ class TodayViewController: UIViewController {
     
     @IBAction func AddtoCustom(sender: UIButton) {
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
-        var value:NSString = emoText.text
+        var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //        println(containerURL)
-//        var emolist:NSMutableArray = [value]
-//        println(emolist)
-//        var container:NSMutableArray = NSMutableArray(contentsOfURL: containerURL)
-//        println(emolist)
-////        if(emolist == nil) {
-////            var valuearr:NSMutableArray = [value]
-////            emolist = valuearr
-////        } else {
-////        emolist?.addObject(value)
-////        }
-////        println(emolist)
-////        if(emolist != nil) {
-//        emolist.writeToURL(containerURL, atomically: true)
-////        }
+        var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        var container:NSMutableArray = NSMutableArray()
+        if(emolist != nil || emolist != "") {
+            container = [emoText.text]
+        } else {
+        container = ArrayString().json2array(emolist!)as NSMutableArray
+        container.addObject([emoText.text])
+        }
+        println(emolist)
+        value = ArrayString().array2json(container)
         value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         emoText.text = ""
         emoText.placeholder = "添加成功"
-        
     }
     
 
