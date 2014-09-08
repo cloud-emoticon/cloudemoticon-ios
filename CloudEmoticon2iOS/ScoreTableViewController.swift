@@ -45,8 +45,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     // MARK: - 进入画面
     override func viewDidLoad() {
         super.viewDidLoad()
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
-        
         var set_nowurl:NSString? = defaults.stringForKey("nowurl")
         if ((set_nowurl) != nil) {
             p_nowurl = defaults.stringForKey("nowurl")!
@@ -66,22 +64,12 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             
             sfile.addObjectsFromArray(loadArrays)
         }
-//        self.tableView.dataSource = self
         editBtn = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "backBtn:")
         self.navigationItem.leftBarButtonItem = editBtn
         backBtn = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "editBtn:")
         self.navigationItem.rightBarButtonItem = backBtn
         self.title = lang.uage("源管理")
         self.tableView.reloadData()
-        
-        
-//        self.navigationController.topViewController.navigationItem.leftBarButtonItem = ScoreTableViewController.displayModeButtonItem()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     // MARK: - 添加本地源

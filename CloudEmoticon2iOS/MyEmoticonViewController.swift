@@ -26,6 +26,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     override func viewDidLoad() {
         
         super.viewDidLoad()
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
         表格.delegate = self

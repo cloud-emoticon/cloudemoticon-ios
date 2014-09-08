@@ -55,6 +55,20 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
     
         //Load UI
+        载入视图()
+        
+        //Load Data
+        分类表格.delegate = self
+        分类表格.dataSource = self
+        颜文字表格.delegate = self
+        颜文字表格.dataSource = self
+        载入数据(NetDownloadTo.CLOUDEMOTICON)
+        
+        self.language()
+}
+    
+    func 载入视图() {
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
         
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
@@ -97,17 +111,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
-
+        
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
         username.text = lang.uage("未登录")
         username.font = UIFont.systemFontOfSize(13)
-
+        
         userview.addSubview(username)
         
         分类表格.tableHeaderView = userview
         
-//        self.edgesForExtendedLayout = UIRectEdge.None
+        //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
         if (self.view.frame.width < self.view.frame.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
@@ -129,26 +143,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.view.addSubview(分类表格)
         self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
-        
-//        else {
-//            sortView.frame = CGRectMake(0, 0, self.view.frame.width * 0.3, self.view.frame.height)
-//            颜文字表格.frame = CGRectMake(self.view.frame.width * 0.3, 0, self.view.frame.width * 0.7, self.view.frame.height)
-//        }
-//        颜文字表格下拉刷新提示.backgroundColor = UIColor.blueColor()
-//        颜文字表格下拉刷新提示.frame = CGRectMake(0, -128, 颜文字表格.frame.size.width, 128)
-//        颜文字表格.tableHeaderView = 颜文字表格下拉刷新提示
-//        颜文字表格.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: UITableViewScrollPosition.Top, animated: false)
-        
-        //Load Data
-        分类表格.delegate = self
-        分类表格.dataSource = self
-        颜文字表格.delegate = self
-        颜文字表格.dataSource = self
-//        p_emodata
-        载入数据(NetDownloadTo.CLOUDEMOTICON)
-        
-        self.language()
-}
+    }
 
     func 载入数据(downloadTo:NetDownloadTo) {
         let 下载到位置序号:Int = downloadTo.toRaw()
