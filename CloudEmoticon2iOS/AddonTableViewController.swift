@@ -16,7 +16,7 @@ class AddonTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         list.addObject(lang.uage("摇一摇"))
         list.addObject(lang.uage("扩展功能"))
         list.addObject(lang.uage("输入法"))

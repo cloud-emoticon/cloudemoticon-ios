@@ -32,6 +32,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         表格.delegate = self
         表格.dataSource = self
         表格.alpha = 0.8
+        self.title = lang.uage("自定表情")
         self.tabBarController?.tabBar.translucent = false
         self.navigationController?.navigationBar.translucent = false
         self.language()

@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>详细信息读取失败</key>
+	<string>詳細訊息讀入失敗，請檢查網路後重試。</string>
+	<key>软件全称</key>
+	<string>雲顔文字2 for iOS</string>
 	<key>从在线皮肤库添加</key>
 	<string>從線上主題庫添加</string>
 	<key>下载皮肤</key>

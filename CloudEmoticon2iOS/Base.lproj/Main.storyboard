@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6206.9" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints with attributes relative to the layout margin" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--附加工具-->
@@ -82,7 +82,7 @@
                             </connections>
                         </barButtonItem>
                         <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="r3T-Er-Ll2">
-                            <rect key="frame" x="200" y="3.5" width="200" height="37"/>
+                            <rect key="frame" x="200" y="4" width="200" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <segments>
                                 <segment title="收藏"/>
@@ -928,6 +928,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="NNx-hR-qjg"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=regular">
                                     <mask key="constraints">
                                         <exclude reference="NNx-hR-qjg"/>
@@ -980,9 +985,32 @@
                     <view key="view" contentMode="scaleToFill" id="UPp-5i-87U">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="3Ao-TJ-40q">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xb6-W1-o2m">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="xb6-W1-o2m" secondAttribute="trailing" id="Toe-ds-dTe"/>
+                            <constraint firstItem="R6E-0i-93l" firstAttribute="top" secondItem="xb6-W1-o2m" secondAttribute="bottom" id="ij2-f3-0aQ"/>
+                            <constraint firstAttribute="centerY" secondItem="3Ao-TJ-40q" secondAttribute="centerY" id="mlY-nS-paz"/>
+                            <constraint firstItem="xb6-W1-o2m" firstAttribute="top" secondItem="UPp-5i-87U" secondAttribute="top" id="o6g-T6-cXR"/>
+                            <constraint firstItem="xb6-W1-o2m" firstAttribute="leading" secondItem="UPp-5i-87U" secondAttribute="leading" id="t4d-mA-4nI"/>
+                            <constraint firstAttribute="centerX" secondItem="3Ao-TJ-40q" secondAttribute="centerX" id="ubU-yS-Bsk"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="关于" id="cgh-fW-wV7"/>
+                    <connections>
+                        <outlet property="内容" destination="xb6-W1-o2m" id="tab-CN-ecz"/>
+                        <outlet property="载入等待" destination="3Ao-TJ-40q" id="8be-ST-znJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcr-Zb-MZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

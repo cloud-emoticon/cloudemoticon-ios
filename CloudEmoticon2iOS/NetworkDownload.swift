@@ -57,9 +57,13 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
         NSLog("%@数据接收完毕。",类名称)
         if (self.接收到的数据 != nil)
         {
-            var 数据:NSString = NSString(data: self.接收到的数据, encoding: NSUTF8StringEncoding)
-            var 解析选择:SwitchCoder = SwitchCoder()
-            解析选择.选择解析器(self.接收到的数据, URL识别数组: 当前URL识别数组)
+//            var 数据:NSString? = NSString(data: self.接收到的数据, encoding: NSUTF8StringEncoding)
+//            if (数据 != nil) {
+                var 解析选择:SwitchCoder = SwitchCoder()
+                解析选择.选择解析器(self.接收到的数据, URL识别数组: 当前URL识别数组)
+//            } else {
+//                println("数据NULL!!!")
+//            }
         } else {
             println("NULL!!!")
         }

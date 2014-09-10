@@ -26,7 +26,7 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
         
         
-//        self.language()
+        self.language()
     }
     
     func 载入皮肤()
