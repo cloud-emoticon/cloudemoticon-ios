@@ -22,6 +22,7 @@ let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
+let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
 
 enum NetDownloadTo:Int
 {

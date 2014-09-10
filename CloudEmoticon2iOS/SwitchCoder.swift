@@ -85,6 +85,7 @@ class SwitchCoder: NSObject {
         if (isOK == 1)
         {
             NSLog("%@数据验证成功。",类名称)
+            
         } else {
             tmode = Coder.ERROR
             NSLog("%@数据验证失败。",类名称)

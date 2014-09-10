@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
             
             let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
-            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+//            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
+            NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
             
             return true
         }
@@ -117,7 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         全局_网络繁忙 = false
         
         var err:NSError = NSError()
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         
 //        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 //        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString

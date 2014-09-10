@@ -213,7 +213,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         源管理页面.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(源管理页面, animated: true)
         if ((要添加的新源网址) != nil) {
-            源管理页面.addSource(要添加的新源网址!, isStore: true)
+            
+                源管理页面.viewDidLoad()
+            
+            源管理页面.加入源(要添加的新源网址!, 来自源商店: true)
         }
     }
 //    override func viewDidAppear(animated: Bool)

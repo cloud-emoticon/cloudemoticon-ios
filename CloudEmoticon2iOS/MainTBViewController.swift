@@ -25,7 +25,7 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
         
         self.language()
     }
@@ -44,6 +44,17 @@ class MainTBViewController: UITabBarController {
             let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
             nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
         }
+    }
+    
+    func 切换到源商店方法(notification:NSNotification)
+    {
+        self.selectedIndex = 1
+        let vcs:NSArray? = self.viewControllers as NSArray?
+        let cen:UINavigationController = vcs?.objectAtIndex(1) as UINavigationController
+        let cea:NSArray? = cen.viewControllers as NSArray?
+        let cev:CEViewController = cea?.objectAtIndex(0) as CEViewController
+        let URL识别数组:NSArray = notification.object as NSArray
+        cev.切换到源管理页面(URL识别数组.objectAtIndex(0) as? NSString)
     }
     
     func 复制到剪贴板方法(notification:NSNotification)

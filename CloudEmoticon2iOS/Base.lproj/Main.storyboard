@@ -281,7 +281,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="D9a-jS-AFM">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="通知中心扩展  要要使用通知中心扩展，在下拉通知的“今天”页面下，点击最下方的“编辑”，将“云颜文字”插件添加至“包括”项目中 " translatesAutoresizingMaskIntoConstraints="NO" id="D9a-jS-AFM">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
@@ -569,7 +569,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="EmoKB.png" translatesAutoresizingMaskIntoConstraints="NO" id="eYX-rw-dqv">
                                 <rect key="frame" x="46" y="192" width="240" height="163"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="24a-1p-sfU"/>
+                                    <constraint firstAttribute="width" constant="240" id="24a-1p-sfU">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="200"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="160" id="D1o-y9-6wT"/>
                                     <constraint firstAttribute="width" constant="379" id="OjC-Om-4gc"/>
                                     <constraint firstAttribute="height" constant="214" id="RKM-xb-qOj"/>
@@ -578,7 +580,9 @@
                                     <constraint firstAttribute="height" constant="128" id="TIO-Fp-vUD"/>
                                     <constraint firstAttribute="width" constant="240" id="aZw-RU-Ras"/>
                                     <constraint firstAttribute="height" constant="106" id="dU2-OZ-yYX"/>
-                                    <constraint firstAttribute="height" constant="163" id="gdI-JO-vUJ"/>
+                                    <constraint firstAttribute="height" constant="163" id="gdI-JO-vUJ">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="140"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="319" id="nAf-A1-42X"/>
                                     <constraint firstAttribute="width" constant="179" id="pQI-Gu-OFA"/>
                                 </constraints>
@@ -661,8 +665,12 @@
                                     <constraint firstAttribute="height" constant="106" id="blk-Hj-kgf"/>
                                     <constraint firstAttribute="height" constant="184" id="jlZ-h3-u1e"/>
                                     <constraint firstAttribute="width" constant="179" id="nL3-fP-Mho"/>
-                                    <constraint firstAttribute="width" constant="209" id="oya-pD-cTl"/>
-                                    <constraint firstAttribute="height" constant="200" id="pim-aI-0AR"/>
+                                    <constraint firstAttribute="width" constant="209" id="oya-pD-cTl">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="150"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="200" id="pim-aI-0AR">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="160"/>
+                                    </constraint>
                                     <constraint firstAttribute="width" constant="310" id="rw9-Dr-kkt"/>
                                 </constraints>
                                 <variation key="default">

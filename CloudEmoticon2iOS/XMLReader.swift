@@ -76,13 +76,13 @@ class XMLReader: NSObject {
             
             var zfile:NSArray = [文件数据结构版本,颜文字库名,颜文字库介绍,颜文字存储数组]
             println(颜文字库介绍)
+            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 颜文字库介绍)
             //解析完成，输出zfile:NSArray
             let filemgr:FileManager = FileManager()
             filemgr.nowURLarr = URL识别数组
             p_tempString = 颜文字库名
             filemgr.SaveArrayToFile(zfile, smode: FileManager.saveMode.NETWORK)
         }
-        
     }
     
 }
