@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf:", name: "loaddataok", object: nil)
         
         lang.载入语言(lang.当前系统语言())
-        println(lang.系统支持的所有语言())
+//        println(lang.系统支持的所有语言())
         println(lang.uage("语言包名称"))
         println(lang.uage("语言包作者"))
         return true

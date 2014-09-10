@@ -4,7 +4,6 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.CE2NCWidget</string>
 		<string>group.CE2Keyboard</string>
 	</array>
 </dict>

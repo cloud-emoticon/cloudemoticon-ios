@@ -133,4 +133,17 @@ class FileManager: NSObject {
     {
         sarr.writeToFile(FileNameToFullAddress("SourcesList.plist"), atomically: false)
     }
+    
+    func 补充空白数据()
+    {
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        var value:NSString
+        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+        var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        if(emolist == nil || emolist == "") {
+            var 新建数据模型:NSArray = [NSArray.array(),NSArray.array(),NSArray.array()]
+            value = ArrayString().array2json(新建数据模型)
+            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        }
+    }
 }

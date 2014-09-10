@@ -379,15 +379,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             return cell!
         }
     }
-    
-    func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
-    {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
-        detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
-        return deSize.height
-    }
 
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
@@ -397,7 +388,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             sortBtn(sortBtn)
         } else {
             let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
-            println(颜文字数组)
 //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
 //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
             NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
@@ -428,9 +418,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (emoobj.count > 1) {
                     副文字内容 = emoobj.objectAtIndex(1) as NSString
                     let 副文字框高度:CGFloat = heightForString(副文字内容, FontSize: 12, andWidth: tableView.frame.width - 20) - 13
-                    return 主文字框高度 + 副文字框高度
+                    return 主文字框高度 + 副文字框高度 + 15
                 } else {
-                    return 主文字框高度
+                    return 主文字框高度 + 15
                 }
             }
             return 当前单元格高度
@@ -483,7 +473,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
         }
         颜文字表格.contentInset = 分类表格.contentInset
-        println(颜文字表格.frame.size.width)
         let 新的宽度:CGFloat = 颜文字表格.frame.size.width
         NSNotificationCenter.defaultCenter().postNotificationName("修正单元格尺寸通知", object: 新的宽度)
         颜文字表格.reloadData()

@@ -21,7 +21,7 @@ let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDir
 let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
-let appgroup:Bool = false //App-group总开关（未安装证书的情况下请关闭）
+let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
 
 enum NetDownloadTo:Int
 {
@@ -55,6 +55,18 @@ func 保存数据到输入法()
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
     }
+}
+
+func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
+{
+    var sizeTest:UILabel = UILabel(frame: CGRectMake(0, 0, width, 0))
+    sizeTest.font = UIFont.systemFontOfSize(fontSize)
+    sizeTest.text = NSString.stringWithString(value)
+    sizeTest.lineBreakMode = NSLineBreakMode.ByCharWrapping
+    sizeTest.numberOfLines = 0
+    var deSize:CGSize = sizeTest.sizeThatFits(CGSizeMake(width,CGFloat.max))
+    deSize.height = ceil(deSize.height)
+    return deSize.height
 }
 
 /* 隐藏设置：

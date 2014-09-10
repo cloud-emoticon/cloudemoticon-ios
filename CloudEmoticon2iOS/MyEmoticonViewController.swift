@@ -104,8 +104,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             if (appgroup) {
                 var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
                 containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-                let 要保存的数据文本:NSString = ""
-                要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+                var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+                var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
+                
+                var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray.array()]
+                var value:NSString = ArrayString().array2json(新建数据模型)
+                value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             }
             break
         case 2:
@@ -146,7 +150,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func addemoticon(emoticonstr:NSString)
     {
         let 颜文字名称:NSString = lang.uage("自定义")
-        let 要添加的颜文字数组:NSArray = [emoticonstr]
+        let 要添加的颜文字数组:NSArray = [emoticonstr,""]
         var 自定义:NSMutableArray = NSMutableArray.array()
         var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as NSString
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
@@ -154,6 +158,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         for 文件中的颜文字数组对象 in 文件中的数据! {
             let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as NSArray
             let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as NSString
+            
             if ( 自定义颜文字.isEqualToString(文件中的颜文字)) {
                 自定义中已经存在这个颜文字 = true
             }
@@ -166,7 +171,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             自定义.addObjectsFromArray(文件中的数据!)
         }
         文件管理器.SaveArrayToFile(自定义,smode: FileManager.saveMode.CUSTOM)
-        
+        保存数据到输入法()
     }
     
     @IBAction func 内容选择菜单(内容选择: UISegmentedControl)
@@ -221,6 +226,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 载入收藏数据()
     {
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+        
         将数据载入表格(文件中的数据)
     }
     func 载入历史记录数据()
@@ -254,13 +260,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         将数据载入表格(文件中的数据)
         var value:NSString? = nil
         if (appgroup) {
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
             containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
             value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
         }
         if(value != nil && value != "") {
             let 通知扩展中的数据:NSArray? = ArrayString().json2array(value!)
-            let 通知扩展中的自定义数据:NSArray = 通知扩展中的数据?.objectAtIndex(0) as NSArray
+            let 通知扩展中的自定义数据:NSArray =  通知扩展中的数据?.objectAtIndex(1) as NSArray
             if ((通知扩展中的自定义数据.count != 文件中的数据?.count) && (通知扩展中的自定义数据.count != 0)) {
                 println("自定义：载入通知扩展中的数据")
                 将数据载入表格(通知扩展中的自定义数据)

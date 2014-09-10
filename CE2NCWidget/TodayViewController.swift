@@ -35,23 +35,26 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var emoText: UITextField!
     
     @IBAction func AddtoCustom(sender: UIButton) {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2NCWidget")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-//        println(containerURL)
         var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        var container:NSMutableArray = NSMutableArray()
         if(emolist != nil || emolist != "") {
-            container = [emoText.text]
+            var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
+            var 自定义数据:NSMutableArray = NSMutableArray.array()
+            自定义数据.addObjectsFromArray(文件中的数据.objectAtIndex(1) as NSArray)
+            自定义数据.addObject([emoText.text,""])
+            var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
+            value = ArrayString().array2json(数据)
+            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         } else {
-        container = ArrayString().json2array(emolist!)as NSMutableArray
-        container.addObject([emoText.text])
+            var 新建数据模型:NSArray = [NSArray.array(),[[emoText.text,""]],NSArray.array()]
+            value = ArrayString().array2json(新建数据模型)
+            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         }
-        println(emolist)
-        value = ArrayString().array2json(container)
-        value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         emoText.text = ""
         emoText.placeholder = "添加成功"
+        println(emolist)
     }
     
 

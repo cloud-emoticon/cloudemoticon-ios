@@ -146,7 +146,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         waitArr = NSMutableArray.array()
 //        var s_emosetX:NSMutableArray = sender.userInfo as NSMutableArray
         if (!p_tempString.isEqualToString("")) {
-            println("YES")
             s_emosetX.insertObject(p_tempString, atIndex: 1)
             sfile.addObject(s_emosetX)
             let indexPath:NSIndexPath = NSIndexPath(forRow: sfile.count - 2, inSection: 0)
@@ -161,9 +160,10 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 }
             }
             fileMgr.saveSources(sfile)
-        } else {
-            println("NO")
         }
+//        else {
+//           NO
+//        }
     }
     
     // MARK: - 内存警告处理

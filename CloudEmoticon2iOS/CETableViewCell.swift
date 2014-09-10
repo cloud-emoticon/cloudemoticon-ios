@@ -212,11 +212,11 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         滑出按钮B.frame = CGRectMake(新的宽度 + 按钮宽度, 0, 按钮宽度, self.frame.size.height)
         
         let 主文字框高度:CGFloat = heightForString(主文字.text!, FontSize: 17, andWidth: self.frame.size.width) + 8
-        主文字.frame = CGRectMake(20, 0, 新的宽度 - 20, 主文字框高度)
+        主文字.frame = CGRectMake(20, 5, 新的宽度 - 20, 主文字框高度)
         let 副文字文字:NSString = 副文字.text!
         if (!副文字文字.isEqualToString("")) {
-            let 副文字框高度:CGFloat = heightForString(副文字.text!, FontSize: 12, andWidth: self.frame.size.width) - 13
-            副文字.frame = CGRectMake(20, 主文字.frame.size.height - 7, 新的宽度 - 20, 副文字框高度)
+            let 副文字框高度:CGFloat = heightForString(副文字.text!, FontSize: 12, andWidth: self.frame.size.width) - 1
+            副文字.frame = CGRectMake(20, 主文字.frame.size.height - 1, 新的宽度 - 20, 副文字框高度)
             self.frame = CGRectMake(0, 0, 新的宽度, 主文字框高度 + 副文字框高度)
         } else {
             self.frame = CGRectMake(0, 0, 新的宽度, 主文字框高度)
@@ -224,14 +224,5 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
         覆盖视图.frame = CGRectMake(0, 0, 新的宽度, self.frame.size.height)
         主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
         主文字.numberOfLines = 0
-    }
-    
-    func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
-    {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
-        detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
-        return deSize.height
     }
 }

@@ -19,6 +19,7 @@ class MainTBViewController: UITabBarController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         载入皮肤()
+        文件管理器.补充空白数据()
         //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
@@ -101,15 +102,6 @@ class MainTBViewController: UITabBarController {
         var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 单元格高度))
         self.view.addSubview(提示信息框)
         提示信息框.显示提示(提示文字)
-    }
-    
-    func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
-    {
-        var detailTextView:UITextView = UITextView(frame: CGRectMake(0, 0, width, 0))
-        detailTextView.font = UIFont.systemFontOfSize(fontSize)
-        detailTextView.text = value
-        var deSize:CGSize = detailTextView.sizeThatFits(CGSizeMake(width,CGFloat.max))
-        return deSize.height
     }
     
     func alertview(notification:NSNotification)

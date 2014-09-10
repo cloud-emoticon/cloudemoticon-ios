@@ -24,15 +24,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
 //        request.HTTPMethod = "POST"
         NSURLConnection.connectionWithRequest(URL请求, delegate: self)
     }
-    
-//    func connection(connection: NSURLConnection!, willSendRequest request: NSURLRequest!, redirectResponse response: NSURLResponse!) -> NSURLRequest!
-//    {
-//        print("1")
-//        return request
-//    }
-    
-    //成功序列：服务器响应、接收数据、缓存、成功接收
-    //失败序列：
+
     
     //服务器响应
     func connection(connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!)
