@@ -46,6 +46,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         if (已经载入 == false) {
             已经载入 = true
             载入数据()
+        } else {
+            文件清理()
         }
     }
     func 载入数据()
@@ -89,6 +91,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         源列表.removeAllObjects()
         源列表.addObject("iOSv2")
         源列表.addObject(当前颜文字库)
+        
     }
     
     
@@ -146,7 +149,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     {
         var 临时源列表数据:NSMutableArray = 临时数据
         临时数据 = NSMutableArray.array()
-        if (!p_tempString.isEqualToString("")) {
+        if (!p_tempString.isEqualToString("") && 临时源列表数据.count > 0) {
             临时源列表数据.insertObject(p_tempString, atIndex: 1)
             源列表.addObject(临时源列表数据)
             let indexPath:NSIndexPath = NSIndexPath(forRow: 源列表.count - 2, inSection: 0)
@@ -165,13 +168,26 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
 //        else {
 //           NO
 //        }
+        println("选择源")
+        println(源列表)
+        if (源列表.count == 2) {
+            
+            选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+        }
     }
     
     func 文件清理()
     {
         let 文档文件夹:NSString = 文件管理器.DocumentDirectoryAddress()
-        var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹, error: nil)
-        
+        var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹, error: nil)!
+        var 要删除的文件:NSMutableArray = NSMutableArray.array()
+        for 当前文件名对象 in 全部文件 {
+            let 当前文件名:NSString = 当前文件名对象 as NSString
+            let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
+            if (当前文件前缀.isEqualToString("cache-")) {
+                要删除的文件.addObject(当前文件名)
+            }
+        }
         
         var 第一遍循环:Bool = true
         for 当前颜文字对象 in 源列表 {
@@ -180,7 +196,25 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             } else {
                 let 当前颜文字数组:NSArray = 当前颜文字对象 as NSArray
                 let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as NSString
-                
+                let MD5加密:MD5 = MD5()
+                for (var i:Int = 0; i < 要删除的文件.count; i++) {
+                    let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as NSString
+                    let 当前文件名:NSString = NSString(format: "cache-%@.plist", MD5加密.md5(当前颜文字网址))
+                    if (要删除的文件名.isEqualToString(当前文件名)) {
+                        要删除的文件.removeObjectAtIndex(i)
+                        break;
+                    }
+                }
+                for 要删除的文件名对象 in 要删除的文件 {
+                    let 要删除的文件名:NSString = 要删除的文件名对象 as NSString
+                    let 要删除文件完整路径:NSString = NSString(format: "%@%@", 文档文件夹,要删除的文件名)
+                    println("[源管理]删除缓存 \(要删除文件完整路径)")
+                    var err:NSError? = nil
+                    全局_文件管理.removeItemAtPath(要删除文件完整路径, error: &err)
+                    if (err != nil) {
+                        println("[源管理]删除缓存失败。")
+                    }
+                }
             }
         }
     }
@@ -202,14 +236,16 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             添加源输入框.text = "http://"
             添加源对话框.show()
         } else {
-            p_storeIsOpen = false
-//            timer?.invalidate()
-//            timer = nil
-            if (代理 != nil) {
-                代理?.源管理页面代理：退出源管理页面时()
-            }
-            self.navigationController?.popViewControllerAnimated(true)
+            退出源管理()
         }
+    }
+    func 退出源管理()
+    {
+        p_storeIsOpen = false
+        if (代理 != nil) {
+            代理?.源管理页面代理：退出源管理页面时()
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - 提示框被点击
@@ -264,7 +300,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as NSString
         let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as NSString
         if (当前颜文字库记录名称.isEqualToString("")) {
-            单元格!.textLabel?.text = 当前颜文字库记录名称
+            单元格!.textLabel?.text = 当前颜文字库原始名称
         } else {
             单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
         }
@@ -303,7 +339,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 }
                 文件管理器.deleteFile(当前源对象网址, smode: FileManager.saveMode.NETWORK)
                 文件管理器.saveSources(源列表)
-                
+                选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
             } else {
                 UIAlertView(title: lang.uage("无法删除这个源"), message: lang.uage("不具备删除这个源的权限"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
             }
@@ -335,20 +371,25 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         
     }
     // MARK: - 点击表格中的项目
+    func 选择源(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if (源列表.count > 0) {
+            let 当前源对象:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as NSArray
+            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as NSString
+            for i in 0...(源列表.count-2)
+            {
+                var 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+                var 当前循环单元格:UITableViewCell = tableView.cellForRowAtIndexPath(表格中当前位置)!
+                当前循环单元格.accessoryType = UITableViewCellAccessoryType.None
+            }
+            var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+            当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
+            保存源列表(当前源对象网址)
+        }
+    }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        
-        let 当前源对象:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as NSArray
-        let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as NSString
-        for i in 0...(源列表.count-2)
-        {
-            var 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-            var 当前循环单元格:UITableViewCell = tableView.cellForRowAtIndexPath(表格中当前位置)!
-            当前循环单元格.accessoryType = UITableViewCellAccessoryType.None
-        }
-        var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
-        保存源列表(当前源对象网址)
+        选择源(tableView,didSelectRowAtIndexPath: indexPath)
     }
     func 保存源列表(o_url:NSString)
     {

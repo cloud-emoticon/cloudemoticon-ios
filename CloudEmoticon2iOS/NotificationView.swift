@@ -14,7 +14,7 @@ class NotificationView: UIView {
     let 动画速度:NSTimeInterval = 0.8
 
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: CGRectMake(frame.origin.x, frame.origin.y - 4, frame.size.width, frame.size.height + 8))
         self.backgroundColor = UIColor.clearColor()
         self.alpha = 0.0
         self.layer.shadowColor = UIColor.blackColor().CGColor

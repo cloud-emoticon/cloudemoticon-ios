@@ -25,6 +25,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 下拉刷新动作中:Bool = false
     var 菜单滑动中:Bool = false
     var 当前滚动中表格标识:Int = 0
+    var 源管理页面:ScoreTableViewController? = nil
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")!))
     
@@ -208,15 +209,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func 切换到源管理页面(要添加的新源网址:NSString?) {
-        let 源管理页面:ScoreTableViewController = ScoreTableViewController(style: UITableViewStyle.Plain)
-        源管理页面.代理 = self
-        源管理页面.hidesBottomBarWhenPushed = true
-        self.navigationController?.pushViewController(源管理页面, animated: true)
+        if (源管理页面 != nil) {
+            p_storeIsOpen = false
+            源管理页面?.代理 = nil
+            源管理页面?.navigationController?.popViewControllerAnimated(false)
+            源管理页面 = nil
+        }
+        源管理页面 = ScoreTableViewController(style: UITableViewStyle.Plain)
+        源管理页面?.代理 = self
+        源管理页面?.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(源管理页面!, animated: true)
         if ((要添加的新源网址) != nil) {
-            
-                源管理页面.viewDidLoad()
-            
-            源管理页面.加入源(要添加的新源网址!, 来自源商店: true)
+            源管理页面?.viewDidLoad()
+            源管理页面?.加入源(要添加的新源网址!, 来自源商店: true)
         }
     }
 //    override func viewDidAppear(animated: Bool)

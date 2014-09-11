@@ -65,5 +65,6 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     func connection(connection: NSURLConnection!, didFailWithError error: NSError!)
     {
         NSLog("%@网络接收失败！",类名称)
+        NSNotificationCenter.defaultCenter().postNotificationName("网络失败", object: 当前URL识别数组)
     }
 }
