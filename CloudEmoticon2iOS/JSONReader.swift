@@ -59,8 +59,8 @@ class JSONReader: NSObject {
                 颜文字存储数组.addObject(y_emoobj)
             }
             var zfile:NSArray = [文件数据结构版本,颜文字库名,颜文字库介绍,颜文字存储数组]
-            println(颜文字库介绍)
-            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 颜文字库介绍)
+            let 介绍文字:NSString = NSString(format: "%@\n%@", lang.uage("刷新完成"), 颜文字库介绍)
+            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 介绍文字)
             //解析完成，输出zfile:NSArray
             let filemgr:FileManager = FileManager()
             filemgr.nowURLarr = URL识别数组

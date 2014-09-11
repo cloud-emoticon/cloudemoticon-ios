@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5310750A19C19E9D0003866F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5310750919C19E9D0003866F /* Main.storyboard */; };
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* EmoticonKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nouserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nouserimg.jpg */; };
@@ -32,7 +33,6 @@
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28F5196B9CF40058AA42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F4196B9CF40058AA42 /* ViewController.swift */; };
-		53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F6196B9CF40058AA42 /* Main.storyboard */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
 		53DF2906196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */; };
 		53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E0E4AC19947C2800C9D9FC /* MD5.m */; };
@@ -41,6 +41,9 @@
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
+		53E9DF7619C183C600C61121 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF7519C183C600C61121 /* Info.plist */; };
+		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
+		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
@@ -172,6 +175,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* EmoticonKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = EmoticonKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -204,10 +208,8 @@
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		53DF28F1196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		53DF28F4196B9CF40058AA42 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		53DF28F7196B9CF40058AA42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		53DF28F9196B9CF40058AA42 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudEmoticon2iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF2904196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -219,6 +221,11 @@
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
+		53E9DF7519C183C600C61121 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		53E9DF7F19C1843E00C61121 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		53E9DF8119C1844B00C61121 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		53E9DF8219C1844C00C61121 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		53E9DF8319C189E600C61121 /* WaitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitView.swift; sourceTree = "<group>"; };
 		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
@@ -369,12 +376,13 @@
 		53906A991999CAD0000020D1 /* 核心 */ = {
 			isa = PBXGroup;
 			children = (
+				5310750919C19E9D0003866F /* Main.storyboard */,
 				53DF28F2196B9CF40058AA42 /* AppDelegate.swift */,
 				53DF28F4196B9CF40058AA42 /* ViewController.swift */,
 				53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */,
 				53E0E4B01994854C00C9D9FC /* PubVar.swift */,
-				53DF28F6196B9CF40058AA42 /* Main.storyboard */,
 				53ED64C419A48A74008CE9BD /* NotificationView.swift */,
+				53E9DF8319C189E600C61121 /* WaitView.swift */,
 			);
 			name = "核心";
 			sourceTree = "<group>";
@@ -448,7 +456,8 @@
 		53DF28F0196B9CF40058AA42 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				53DF28F1196B9CF40058AA42 /* Info.plist */,
+				53E9DF8019C1843E00C61121 /* InfoPlist.strings */,
+				53E9DF7519C183C600C61121 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -699,7 +708,8 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"zh-Hans",
+				"zh-Hant",
 			);
 			mainGroup = 53DF28E4196B9CF40058AA42;
 			productRefGroup = 53DF28EE196B9CF40058AA42 /* Products */;
@@ -750,6 +760,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */,
+				53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */,
 				8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */,
 				8BA411A519B0A994003AEBF2 /* widget2.png in Resources */,
 				8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */,
@@ -757,7 +768,9 @@
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
 				8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */,
+				53E9DF7619C183C600C61121 /* Info.plist in Resources */,
 				8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */,
+				5310750A19C19E9D0003866F /* Main.storyboard in Resources */,
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
 				8B319BBA19B8D52F002F3080 /* kb.png in Resources */,
 				53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */,
@@ -768,7 +781,6 @@
 				8BA411A419B0A994003AEBF2 /* widget1.png in Resources */,
 				8BE31F65196D443C006C3B26 /* info-vector.png in Resources */,
 				8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */,
-				53DF28F8196B9CF40058AA42 /* Main.storyboard in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
@@ -827,6 +839,7 @@
 				53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
+				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
 				8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
@@ -904,12 +917,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		53DF28F6196B9CF40058AA42 /* Main.storyboard */ = {
+		53E9DF8019C1843E00C61121 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				53DF28F7196B9CF40058AA42 /* Base */,
+				53E9DF7F19C1843E00C61121 /* en */,
+				53E9DF8119C1844B00C61121 /* zh-Hans */,
+				53E9DF8219C1844C00C61121 /* zh-Hant */,
 			);
-			name = Main.storyboard;
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

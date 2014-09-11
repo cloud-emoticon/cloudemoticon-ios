@@ -61,7 +61,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             用户设置.synchronize()
         }
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "数据载入完毕:", name: "loaddataok", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "网络失败时:", name: "网络失败", object: nil)
         p_storeIsOpen = true
         源列表.removeAllObjects()
         var 刚载入的源列表:NSArray = 文件管理器.loadSources()
@@ -110,13 +110,27 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         }
     }
     
+//    func 下载提示窗(开关:Bool)
+//    {
+//        if (开关) {
+//            let 下载中提示:UIAlertView = UIAlertView(title: "下载中", message: "", delegate: nil, cancelButtonTitle: nil)
+//            let 等待提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
+////            等待提示.center = CGPointMake(下载中提示.bounds.size.width/2.0, 下载中提示.bounds.size.height/2.0);
+//            等待提示.frame = CGRectMake(0, 0, 10, 10)
+//            等待提示.startAnimating()
+//            下载中提示.addSubview(等待提示)
+//            下载中提示.show()
+//        }
+//    }
+    
     func 加入源(网址:NSString, 来自源商店:Bool)
     {
         let 网络传输给:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
         let 下载网址:NSString = 网址
         let 网络请求数组:NSMutableArray = [下载网址,NSNumber(integer: 网络传输给)]
 //        if (!isStore) {
-            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网络请求数组)
+        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
+        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网络请求数组)
 //        }
         //插入数据
         if (源列表.count > 0) {
@@ -140,13 +154,16 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 let 删除权限:NSArray = ["user"]
                 临时数据 = [当前颜文字库记录名称,当前颜文字库网址,删除权限]
             } else {
-                //已在列表中
+                NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
+                let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了"), message: "", delegate: nil, cancelButtonTitle: lang.uage("确定"))
+                源已在列表中提示框.show()
             }
         }
     }
     
     func 数据载入完毕(notification:NSNotification)
     {
+        println("数据载入完毕")
         var 临时源列表数据:NSMutableArray = 临时数据
         临时数据 = NSMutableArray.array()
         if (!p_tempString.isEqualToString("") && 临时源列表数据.count > 0) {
@@ -174,6 +191,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             
             选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         }
+    }
+    
+    func 网络失败时(notification:NSNotification)
+    {
+        println("网络失败时")
     }
     
     func 文件清理()

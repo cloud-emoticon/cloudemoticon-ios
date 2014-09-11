@@ -2,10 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>确定</key>
+	<string>OK</string>
+	<key>刷新完成</key>
+	<string>Complete</string>
+	<key>你已经添加过这个源了</key>
+	<string>You have already added this source!</string>
+	<key>请检查网络后重试</key>
+	<string>Please check out your network environment.</string>
+	<key>下载失败</key>
+	<string>Loading failed</string>
+	<key>加载中</key>
+	<string>Loading</string>
 	<key>详细信息读取失败</key>
-	<string>详细信息读取失败，请检查网络后重试。</string>
+	<string>Contents loading failed. Please check out your network environment.</string>
 	<key>软件全称</key>
-	<string>云颜文字2 for iOS</string>
+	<string>Cloud Emoticon 2 for iOS</string>
 	<key>从在线皮肤库添加</key>
 	<string>Add from theme store</string>
 	<key>下载皮肤</key>

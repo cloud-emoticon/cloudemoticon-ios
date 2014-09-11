@@ -2,6 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>确定</key>
+	<string>好</string>
+	<key>刷新完成</key>
+	<string>重新載入完成</string>
+	<key>你已经添加过这个源了</key>
+	<string>你已經載入過這個源了</string>
+	<key>请检查网络后重试</key>
+	<string>請檢查網路後重試</string>
+	<key>下载失败</key>
+	<string>載入失敗</string>
+	<key>加载中</key>
+	<string>載入中</string>
 	<key>详细信息读取失败</key>
 	<string>詳細訊息讀入失敗，請檢查網路後重試。</string>
 	<key>软件全称</key>
@@ -51,7 +63,7 @@
 	<key>中止</key>
 	<string>中止</string>
 	<key>源可能有问题</key>
-	<string>因為一些問題或兼容性錯誤，無法加载目标源。</string>
+	<string>因為一些問題或兼容性錯誤，無法載入目标源。</string>
 	<key>源解析失败</key>
 	<string>源解析錯誤</string>
 	<key>复制后退出</key>
@@ -111,7 +123,7 @@
 	<key>历史记录</key>
 	<string>歷史記錄</string>
 	<key>收藏</key>
-	<string>收藏夾</string>
+	<string>收藏</string>
 	<key>清空</key>
 	<string>清空</string>
 	<key>自定义</key>
@@ -119,7 +131,7 @@
 	<key>取消</key>
 	<string>取消</string>
 	<key>添加颜文字</key>
-	<string>加載颜文字</string>
+	<string>載入颜文字</string>
 	<key>添加</key>
 	<string>添加</string>
 	<key>完成</key>

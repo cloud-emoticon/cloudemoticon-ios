@@ -14,6 +14,7 @@ class MainTBViewController: UITabBarController {
     
     @IBOutlet weak var tab: UITabBar!
     let 文件管理器:FileManager = FileManager()
+    var 等待提示框:UIView? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +27,7 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
         self.language()
     }
     
@@ -102,6 +103,24 @@ class MainTBViewController: UITabBarController {
         显示自动关闭的提示框(提示文字)
     }
     
+    func 显示等待提示框方法(notification:NSNotification)
+    {
+        let 参数:NSNumber = notification.object as NSNumber
+        let 开关:Bool = 参数.boolValue
+        if (开关 == true) {
+            if (等待提示框 == nil) {
+                等待提示框 = WaitView(frame: self.view.frame)
+                self.view.addSubview(等待提示框!)
+//                等待提示框.初始化()
+            }
+        } else {
+            if (等待提示框 != nil) {
+                等待提示框?.removeFromSuperview()
+                等待提示框 = nil
+            }
+        }
+        
+    }
     
     func 显示自动关闭的提示框(提示文字:NSString)
     {

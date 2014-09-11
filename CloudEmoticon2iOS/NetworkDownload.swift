@@ -66,5 +66,8 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     {
         NSLog("%@网络接收失败！",类名称)
         NSNotificationCenter.defaultCenter().postNotificationName("网络失败", object: 当前URL识别数组)
+        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
+        let 下载失败提示:UIAlertView = UIAlertView(title: lang.uage("下载失败"), message: lang.uage("请检查网络后重试"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+        下载失败提示.show()
     }
 }

@@ -437,5 +437,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             }
         }
     }
-    
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
+    {
+        return lang.uage("删掉喵")
+    }
 }
