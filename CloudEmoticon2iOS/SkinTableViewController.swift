@@ -2,7 +2,7 @@
 //  SkinTableViewController.swift
 //  CloudEmoticon2iOS
 //
-//  Created by 王 燚 on 14/9/6.
+//  Created by 神楽坂雅詩 on 14/9/6.
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
@@ -141,7 +141,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - 点击表格中的项目
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        for i in 0...(皮肤ID列表.count-1)
+        for i in 0...(皮肤ID列表.count - 1)
         {
             var 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
             var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!

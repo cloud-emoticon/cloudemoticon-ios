@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>背景</key>
+	<string>壁纸</string>
 	<key>确定</key>
 	<string>确定</string>
 	<key>刷新完成</key>
@@ -39,11 +41,11 @@
 	<key>输入法</key>
 	<string>颜文字输入法</string>
 	<key>还原背景</key>
-	<string>还原背景</string>
+	<string>还原壁纸</string>
 	<key>当前背景</key>
-	<string>当前背景：</string>
+	<string>当前壁纸：</string>
 	<key>修改背景图片</key>
-	<string>修改背景图片</string>
+	<string>修改壁纸图片</string>
 	<key>添加到剪切板</key>
 	<string>添加到剪切板</string>
 	<key>发现了颜文字</key>

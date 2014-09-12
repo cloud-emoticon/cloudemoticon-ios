@@ -17,13 +17,14 @@ class SetTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        list.addObject(lang.uage("背景"))
         list.addObject(lang.uage("个性化"))
         list.addObject(lang.uage("源管理"))
         list.addObject(lang.uage("设置"))
         list.addObject(lang.uage("关于"))
         self.title = lang.uage("设置")
 
-        bgpview.frame = CGRectMake(0, 240, self.view.frame.size.width, self.view.frame.size.height)
+        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
         bgpview.sendSubviewToBack(self.view)
         bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         bgpview.alpha = 0.3
@@ -52,7 +53,7 @@ class SetTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 4
+        return 5
     }
 
   
@@ -69,23 +70,26 @@ class SetTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-//            let push = SkinTableViewController()
             let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
-//            push.hidesBottomBarWhenPushed = true
-//            self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
+            let push = SkinTableViewController()
+//            let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
+            push.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(push, animated: true)
+            break
+        case 2:
             ScoreTableViewController().hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(ScoreTableViewController(), animated: true)
             break
-        case 2:
+        case 3:
             let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
-        case 3:
+        case 4:
             let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("About") as UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)

@@ -29,7 +29,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         restorebutton.setTitle(lang.uage("还原背景"), forState: UIControlState.Normal)
 
         nowbgtext.text = lang.uage("当前背景")
-        self.title = lang.uage("个性化")
+        self.title = lang.uage("背景")
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil) {
@@ -109,11 +109,9 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func deletebgimage(){
         let fullpathtofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(userbgimgname)
         let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
-        if (isDup){
-            NSFileManager.defaultManager().removeItemAtPath(fullpathtofile, error: nil)
-        }
-        
-        
+        NSFileManager.defaultManager().removeItemAtPath(fullpathtofile, error: nil)
+        bgimageviewer.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+        bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFit
     }
     
     /*

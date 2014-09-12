@@ -48,9 +48,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         if(bg != nil){
             bgimage = bg!
-        }
-        bgpview.image = bgimage
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            bgpview.image = bgimage
+            颜文字表格背景.image = bgimage
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        } else {
+            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            颜文字表格背景.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
+        }    
     }
     
     override func viewDidLoad() {
@@ -72,14 +79,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 载入视图() {
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
-        
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
-        
-        if(bg != nil){
-            bgimage = bg!
-        }
-        bgpview.image = bgimage
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
@@ -106,7 +105,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         
         颜文字表格背景.frame = 颜文字表格.frame
-        颜文字表格背景.image = bgpview.image
         颜文字表格背景.backgroundColor = UIColor.whiteColor()
         颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         颜文字表格背景.layer.masksToBounds = true
@@ -540,7 +538,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         if (表格竖向滚动 < -100.0) {
-            下拉刷新提示!.text = lang.uage("正在刷新")
+            下拉刷新提示?.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
             }

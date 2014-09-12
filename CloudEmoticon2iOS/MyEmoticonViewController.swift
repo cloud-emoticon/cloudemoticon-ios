@@ -36,17 +36,22 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         self.tabBarController?.tabBar.translucent = false
         self.navigationController?.navigationBar.translucent = false
         self.language()
-    }
+        
+        }
     
     
     override func viewWillAppear(animated: Bool) {
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
-        
+
         if(bg != nil){
             bgimage = bg!
+            bgpview.image = bgimage
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+        } else {
+            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgpview.image = bgimage
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
-        bgpview.image = bgimage
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     @IBOutlet weak var 左上按钮: UIBarButtonItem!
