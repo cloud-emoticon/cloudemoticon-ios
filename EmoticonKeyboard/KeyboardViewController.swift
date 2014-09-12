@@ -234,7 +234,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 40
+        return 44
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int

@@ -19,6 +19,7 @@ class MainTBViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        initSetting()
         载入皮肤()
         文件管理器.补充空白数据()
         //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
@@ -30,6 +31,18 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
         self.language()
     }
+    
+    func initSetting()
+    {
+        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
+        if (!noFirstRun) {
+            defaults.setBool(true, forKey: "noFirstRun")
+            defaults.synchronize()
+            self.selectedIndex = 1
+        }
+    }
+
     
     func 载入皮肤()
     {
@@ -119,7 +132,6 @@ class MainTBViewController: UITabBarController {
                 等待提示框 = nil
             }
         }
-        
     }
     
     func 显示自动关闭的提示框(提示文字:NSString)

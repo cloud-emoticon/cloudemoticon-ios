@@ -65,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (!noFirstRun) {
             defaults.setBool(false, forKey: "exitaftercopy")
             defaults.setFloat(100, forKey: "adfrequent")
-            defaults.setBool(true, forKey: "noFirstRun")
+//            defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
         }
     }

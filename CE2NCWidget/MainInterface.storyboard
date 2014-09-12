@@ -37,7 +37,7 @@
                                     <action selector="AddtoCustom:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="FHI-Mb-b4f"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="eeee" borderStyle="roundedRect" placeholder="此处粘贴颜文字" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-cP-SNS">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="此处粘贴颜文字" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h3e-cP-SNS">
                                 <rect key="frame" x="20" y="4" width="191" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="flr-5K-dLo"/>
