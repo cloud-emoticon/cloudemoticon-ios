@@ -30,6 +30,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 菜单滑动中:Bool = false
     var 当前分类:Int = 0
     var 源管理页面:ScoreTableViewController? = nil
+    var 调整搜索栏位置:Bool = true
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")!))
     
@@ -150,6 +151,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索颜文字.autocapitalizationType = UITextAutocapitalizationType.None
         搜索颜文字.sizeToFit()
         颜文字表格.tableHeaderView = 搜索颜文字
+        颜文字表格.setContentOffset(CGPointMake(0, -20), animated: true)
         
         分类表格.alpha = 0.8
         颜文字表格.alpha = 0.8
@@ -547,13 +549,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func transition(notification:NSNotification)
     {
-        println("收到屏幕旋转")
-        
+//        println("收到屏幕旋转")
         let newScreenSizeArr:NSArray = notification.object as NSArray
         let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
-        
+    
         分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
-        
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
             sortBtn.title = lang.uage("分类")
@@ -567,8 +567,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+            if(调整搜索栏位置){
+            颜文字表格.setContentOffset(CGPointMake(0, -20), animated: false)
+            }
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
+            if(调整搜索栏位置){
+            颜文字表格.setContentOffset(CGPointMake(0, 12), animated: false)
+            }
         }
         颜文字表格.contentInset = 分类表格.contentInset
         let 新的宽度:CGFloat = 颜文字表格.frame.size.width
@@ -598,6 +604,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                     下拉刷新提示!.text = lang.uage("下拉刷新")
                 }
             }
+        }
+        if((表格竖向滚动 > -22 && self.view.frame.size.width < self.view.frame.size.height) || (self.view.frame.size.width > self.view.frame.size.height && 表格竖向滚动 > 12)){
+            调整搜索栏位置 = false
+        } else {
+            调整搜索栏位置 = true
         }
         
     }
