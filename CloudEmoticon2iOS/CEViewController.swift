@@ -48,6 +48,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     override func viewDidAppear(animated: Bool) {
+        loaddata()
+        
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil){
@@ -76,7 +78,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
         载入数据(NetDownloadTo.CLOUDEMOTICON)
-        loaddata()
         
         self.language()
 }
