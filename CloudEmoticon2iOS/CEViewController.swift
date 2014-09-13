@@ -8,15 +8,19 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate { //, UIGestureRecognizerDelegate
 
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
 
+    let className = "[云颜文字]"
+    let 文件管理器 = FileManager()
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
     var 颜文字表格背景:UIImageView = UIImageView()
-//    var 单元格高度:NSMutableArray = NSMutableArray.array()
+    var 搜索颜文字:UISearchBar = UISearchBar()
+    var 搜索结果:NSMutableArray = NSMutableArray.array()
+    var 搜索结果的名称:NSMutableArray = NSMutableArray.array()
     var 当前单元格高度:CGFloat = 0
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
@@ -24,7 +28,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 表格初始滚动位置:CGFloat = 0
     var 下拉刷新动作中:Bool = false
     var 菜单滑动中:Bool = false
-    var 当前滚动中表格标识:Int = 0
+    var 当前分类:Int = 0
     var 源管理页面:ScoreTableViewController? = nil
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")!))
@@ -72,6 +76,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
         载入数据(NetDownloadTo.CLOUDEMOTICON)
+        loaddata()
         
         self.language()
 }
@@ -137,14 +142,100 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.layer.shadowOpacity = 0.9
         颜文字表格.layer.masksToBounds = false
         
+        搜索颜文字.delegate = self
+        搜索颜文字.autocapitalizationType = UITextAutocapitalizationType.None
+        搜索颜文字.sizeToFit()
+        颜文字表格.tableHeaderView = 搜索颜文字
+        
         分类表格.alpha = 0.8
         颜文字表格.alpha = 0.8
         
         self.view.addSubview(分类表格)
         self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
+        
     }
 
+//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+//        搜索颜文字.resignFirstResponder()
+//    }
+//    
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        搜索颜文字.resignFirstResponder()
+//    }
+//    
+    func loadarray() -> NSArray?
+    {
+        let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.NETWORK)
+        let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
+        let isDop:Bool = 文件管理器.ChkDupFile(fileName)
+        if (isDop) {
+            NSLog("%@加载正在使用的源...",className)
+            let arr:NSArray = NSArray(contentsOfFile: fulladd)
+            return arr
+        }
+        NSLog("%@加载默认源...",className)
+        return nil
+    }
+    
+    func loaddata()
+    {
+        var y_emoarr:NSArray = NSArray.array()
+        var p_emoweb:NSArray? = loadarray()
+        if(p_emoweb != nil)
+        {
+            let p_emoary:NSArray = p_emoweb!
+            y_emoarr = p_emoary.objectAtIndex(3) as NSArray
+        } else {
+            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
+            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径)
+            y_emoarr = p_emo.objectAtIndex(3) as NSArray
+        }
+        
+        for g_emoobj in y_emoarr
+        {
+            var g_emoarr:NSArray = g_emoobj as NSArray
+            for e_emo  in g_emoarr
+            {
+                if ((e_emo as? NSArray) != nil){
+                    搜索结果.addObject(e_emo.objectAtIndex(0))
+                    if (e_emo.count > 1) {
+                        搜索结果的名称.addObject(e_emo.objectAtIndex(1))
+                    } else {
+                        搜索结果的名称.addObject("")
+                    }
+                }
+            }
+        }
+    }
+    
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+        if (菜单滑动中 == true){
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        var str:NSString = searchText
+        if (str.isEqualToString("")) {
+        openSortData(当前分类)
+        } else {
+        var i = 0
+        ceData.removeAllObjects()
+        for 搜索结果颜文字 in 搜索结果 {
+            let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
+            if(匹配.length > 0){
+                ceData.addObjectsFromArray([[搜索结果颜文字,搜索结果的名称.objectAtIndex(i)]])
+            }
+            i++
+        }
+        颜文字表格.reloadData()
+        }
+    }
+    
     func 载入数据(downloadTo:NetDownloadTo) {
         let 下载到位置序号:Int = downloadTo.toRaw()
         var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
@@ -388,9 +479,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 
     func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
     {
+        搜索颜文字.resignFirstResponder()
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
         if (tableView.tag == 100) {
+            搜索颜文字.text = ""
             openSortData(indexPath.row)
+            当前分类 = indexPath.row
             sortBtn(sortBtn)
         } else {
             let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
@@ -417,6 +511,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     {
         if (tableView.tag == 101) {
             if (ceData.count > 0) {
+                var 文字高度:CGFloat = 44
                 let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
                 let 主文字内容:NSString = emoobj.objectAtIndex(0) as NSString
                 var 副文字内容:NSString = ""
@@ -424,9 +519,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (emoobj.count > 1) {
                     副文字内容 = emoobj.objectAtIndex(1) as NSString
                     let 副文字框高度:CGFloat = heightForString(副文字内容, FontSize: 12, andWidth: tableView.frame.width - 20) - 13
-                    return 主文字框高度 + 副文字框高度 + 15
+                    文字高度 = 主文字框高度 + 副文字框高度 + 15
                 } else {
-                    return 主文字框高度 + 15
+                    文字高度 = 主文字框高度 + 15
+                }
+                if (文字高度 < 44) {
+                 return 44
+                } else {
+                 return 文字高度
                 }
             }
             return 当前单元格高度
