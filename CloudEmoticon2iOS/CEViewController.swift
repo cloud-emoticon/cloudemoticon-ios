@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate { //, UIGestureRecognizerDelegate
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
 
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
@@ -156,32 +156,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
     }
 
-//    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//        搜索颜文字.resignFirstResponder()
-//    }
-//    
-//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-//        搜索颜文字.resignFirstResponder()
-//    }
-//    
-    func loadarray() -> NSArray?
-    {
-        let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.NETWORK)
-        let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
-        let isDop:Bool = 文件管理器.ChkDupFile(fileName)
-        if (isDop) {
-            NSLog("%@加载正在使用的源...",className)
-            let arr:NSArray = NSArray(contentsOfFile: fulladd)
-            return arr
-        }
-        NSLog("%@加载默认源...",className)
-        return nil
-    }
-    
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray.array()
-        var p_emoweb:NSArray? = loadarray()
+        var p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil)
         {
             let p_emoary:NSArray = p_emoweb!
@@ -221,18 +199,21 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         var str:NSString = searchText
         if (str.isEqualToString("")) {
-        openSortData(当前分类)
+            openSortData(当前分类)
         } else {
-        var i = 0
-        ceData.removeAllObjects()
-        for 搜索结果颜文字 in 搜索结果 {
-            let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
-            if(匹配.length > 0){
+            var i = 0
+            var j = 0
+            ceData.removeAllObjects()
+            for 搜索结果颜文字 in 搜索结果 {
+                let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                let 搜索的颜文字名称 = 搜索结果的名称.objectAtIndex(i) as NSString
+                let 匹配2:NSRange = 搜索的颜文字名称.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                if(匹配.length > 0 || 匹配2.length > 0){
                 ceData.addObjectsFromArray([[搜索结果颜文字,搜索结果的名称.objectAtIndex(i)]])
+                }
+                i++
             }
-            i++
-        }
-        颜文字表格.reloadData()
+            颜文字表格.reloadData()
         }
     }
     
@@ -587,6 +568,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 源管理页面代理：退出源管理页面时()
     {
         载入数据(NetDownloadTo.CLOUDEMOTICON)
+        loaddata()
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView!)
@@ -641,6 +623,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             下拉刷新提示?.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
+                loaddata()
             }
         }
         NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)

@@ -48,24 +48,11 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
-    func loadarray() -> NSArray?
-    {
-        let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.NETWORK)
-        let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
-        let isDop:Bool = 文件管理器.ChkDupFile(fileName)
-        if (isDop) {
-            NSLog("%@加载正在使用的源...",className)
-            let arr:NSArray = NSArray(contentsOfFile: fulladd)
-            return arr
-        }
-        NSLog("%@加载默认源...",className)
-        return nil
-    }
     
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray.array()
-        var p_emoweb:NSArray? = loadarray()
+        var p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil)
         {
             let p_emoary:NSArray = p_emoweb!

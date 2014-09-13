@@ -95,20 +95,20 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
     
     
-    // MARK: - 接收完成通知（弃用）
-    func loadwebdataokf2(notification:NSNotification)
-    {
-        let 网络请求数组:NSArray = notification.object as NSArray
-        let 网址:NSString = 网络请求数组.objectAtIndex(0) as NSString
-        let 网络请求方式序号对象:NSNumber = 网络请求数组.objectAtIndex(1) as NSNumber
-        let 网络请求方式序号:Int = 网络请求方式序号对象.integerValue
-        let 网络请求方式:NetDownloadTo = NetDownloadTo.fromRaw(网络请求方式序号)!
-        if (网络请求方式 == NetDownloadTo.SOURCEMANAGER) {
-//            if (p_storeIsOpen == false) {
-                加入源(网址, 来自源商店: true)
-//            }
-        }
-    }
+//    // MARK: - 接收完成通知（弃用）
+//    func loadwebdataokf2(notification:NSNotification)
+//    {
+//        let 网络请求数组:NSArray = notification.object as NSArray
+//        let 网址:NSString = 网络请求数组.objectAtIndex(0) as NSString
+//        let 网络请求方式序号对象:NSNumber = 网络请求数组.objectAtIndex(1) as NSNumber
+//        let 网络请求方式序号:Int = 网络请求方式序号对象.integerValue
+//        let 网络请求方式:NetDownloadTo = NetDownloadTo.fromRaw(网络请求方式序号)!
+//        if (网络请求方式 == NetDownloadTo.SOURCEMANAGER) {
+////            if (p_storeIsOpen == false) {
+//                加入源(网址, 来自源商店: true)
+////            }
+//        }
+//    }
     
 //    func 下载提示窗(开关:Bool)
 //    {
@@ -188,14 +188,14 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         println("选择源")
         println(源列表)
         if (源列表.count == 2) {
-            
+        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
             选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         }
     }
     
     func 网络失败时(notification:NSNotification)
     {
-        println("网络失败时")
+        println("网络失败")
     }
     
     func 文件清理()

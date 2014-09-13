@@ -63,7 +63,6 @@ class FileManager: NSObject {
         let fileName:NSString = NSString(format: "cache-%@.plist", md5coder.md5(urlStr))
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
-        println(fulladd)
         if (isDop) {
             fileMgr.removeItemAtPath(fulladd, error: nil)
         }

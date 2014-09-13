@@ -54,7 +54,6 @@ class TodayViewController: UIViewController {
         }
         emoText.text = ""
         emoText.placeholder = "添加成功"
-        println(emolist)
     }
     
 
