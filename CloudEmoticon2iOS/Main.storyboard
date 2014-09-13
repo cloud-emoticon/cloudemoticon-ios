@@ -836,14 +836,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basicbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="uE8-if-wj4">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="uE8-if-wj4" secondAttribute="bottom" id="9VM-e3-v3p"/>
-                            <constraint firstItem="uE8-if-wj4" firstAttribute="top" secondItem="E3g-N5-2N6" secondAttribute="top" id="f0U-t0-rxB"/>
+                            <constraint firstItem="uE8-if-wj4" firstAttribute="top" secondItem="isL-eo-p4e" secondAttribute="bottom" id="BvM-WM-5I8"/>
+                            <constraint firstItem="9VY-5v-9Ot" firstAttribute="top" secondItem="uE8-if-wj4" secondAttribute="bottom" id="ZA0-fY-2qT"/>
                             <constraint firstItem="uE8-if-wj4" firstAttribute="leading" secondItem="E3g-N5-2N6" secondAttribute="leading" id="jcy-fS-t4w"/>
                             <constraint firstAttribute="trailing" secondItem="uE8-if-wj4" secondAttribute="trailing" id="kmW-zW-rgk"/>
                         </constraints>

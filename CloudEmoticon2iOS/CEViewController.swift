@@ -47,9 +47,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.title = lang.uage("云颜文字")
     }
     
-    override func viewDidAppear(animated: Bool) {
-        loaddata()
-        
+    func loadbg(){
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
         
         if(bg != nil){
@@ -60,14 +58,21 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
             bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgpview.image = bgimage
             颜文字表格背景.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
             颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
-        }    
+        }
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        loaddata()
+        loadbg()
+        }
     
     override func viewDidLoad() {
     
+        loadbg()
         //Load UI
         self.title = lang.uage("云颜文字")
         载入视图()
