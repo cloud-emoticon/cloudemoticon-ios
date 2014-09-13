@@ -16,7 +16,5 @@ class Md5Coder: NSObject {
         var md5o:MD5 = MD5()
         var rstr:NSString = md5o.md5(str)
         return rstr
-        
     }
-    
 }

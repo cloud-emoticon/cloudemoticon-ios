@@ -211,7 +211,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             openSortData(当前分类)
         } else {
             var i = 0
-            var j = 0
             ceData.removeAllObjects()
             for 搜索结果颜文字 in 搜索结果 {
                 let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)

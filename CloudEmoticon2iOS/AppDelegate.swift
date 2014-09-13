@@ -34,10 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
 //            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
             NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
-            
             return true
         }
-
         return false
     }
     
@@ -108,8 +106,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (请求的数据数组 != nil) {
             if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONONLINE) {
                 p_emodata = 请求的数据数组!
-            } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
-
+//            } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
+//
             }
         }
         
@@ -117,8 +115,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         全局_网络繁忙 = false
         
-        var err:NSError = NSError()
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+//        var err:NSError = NSError()
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         
 //        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 //        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString

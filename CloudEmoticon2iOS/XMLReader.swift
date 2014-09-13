@@ -17,7 +17,6 @@ class XMLReader: NSObject {
         case CUSTOM
     }
     func 数据转换为XML(data:NSData, URL识别数组:NSArray) {
-        
         var XML解析类库:XMLDictionaryParser = XMLDictionaryParser()
         var root:AnyObject? = XML解析类库.dictionaryWithData(data)
         if (root == nil) {
@@ -45,7 +44,6 @@ class XMLReader: NSObject {
                     }
                 }
             } else if infoos is NSString {
-                //未验证代码
                 var infoos2:NSString = infoos as NSString
                 颜文字库名 = infoos2
             }

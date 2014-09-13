@@ -36,7 +36,6 @@ class JSONReader: NSObject {
 
             for groupDic in categories
             {
-
                 var entries:NSArray = groupDic.objectForKey("entries") as NSArray
                 var groupname:NSString = groupDic.objectForKey("name") as NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
