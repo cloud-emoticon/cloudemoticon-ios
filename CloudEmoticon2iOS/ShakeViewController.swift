@@ -20,9 +20,11 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         super.viewDidLoad()
         self.title = lang.uage("摇一摇")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
-
-    loaddata()
-
+        if(p_emodata.count < 3){
+            NSLog("%@没有数据，加载数据",className)
+            CEViewController().载入数据(NetDownloadTo.CLOUDEMOTICON)
+        }
+        loaddata()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,11 +50,24 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         }
     }
     
+    func loadarray() -> NSArray?
+    {
+        let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.NETWORK)
+        let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
+        let arr:NSArray? = p_emodata
+        if(arr != nil ){
+            NSLog("%@加载正在使用的源...",className)
+            return arr
+        } else {
+        NSLog("%@加载默认源...",className)
+        return nil
+        }
+    }
     
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray.array()
-        var p_emoweb:NSArray? = p_emodata
+        var p_emoweb:NSArray? = loadarray()
         if(p_emoweb != nil)
         {
             let p_emoary:NSArray = p_emoweb!
