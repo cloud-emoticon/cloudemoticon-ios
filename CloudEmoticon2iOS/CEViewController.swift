@@ -71,8 +71,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     
     override func viewDidLoad() {
-    
-        loadbg()
         //Load UI
         self.title = lang.uage("云颜文字")
         载入视图()
