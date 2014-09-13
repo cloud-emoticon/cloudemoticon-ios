@@ -189,11 +189,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-        if (菜单滑动中 == true){
+        if (颜文字表格.frame.origin.x > 0){
             return false
         } else {
             return true
         }
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        搜索颜文字.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        搜索颜文字.resignFirstResponder()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -574,6 +582,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func scrollViewDidScroll(scrollView: UIScrollView!)
     {
+        搜索颜文字.resignFirstResponder()
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
