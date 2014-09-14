@@ -68,10 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
         }
-        if(checkbgo == nil){
-            defaults.setFloat(20, forKey: "bgopacity")
+        if(noFirstRun && checkbgo == 0.0)
+        {
+            defaults.setFloat(0.0, forKey: "bgopacity")
             defaults.synchronize()
-            println("增加主题透明度设置")
         }
     }
     

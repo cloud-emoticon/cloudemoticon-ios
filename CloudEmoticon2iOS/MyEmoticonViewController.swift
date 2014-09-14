@@ -27,7 +27,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         self.tabBarController?.tabBar.translucent = false
         self.navigationController?.navigationBar.translucent = false
         self.language()
-        }
+    }
     
     override func viewWillAppear(animated: Bool) {
         var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
