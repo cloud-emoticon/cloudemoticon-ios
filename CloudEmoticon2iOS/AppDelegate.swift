@@ -60,11 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
+        let checkbgo:Float? = defaults.floatForKey("bgopacity")
         if (!noFirstRun) {
             defaults.setBool(false, forKey: "exitaftercopy")
             defaults.setFloat(100, forKey: "adfrequent")
+            defaults.setFloat(20, forKey: "bgopacity")
 //            defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
+        }
+        if(checkbgo == nil){
+            defaults.setFloat(20, forKey: "bgopacity")
+            defaults.synchronize()
+            println("增加主题透明度设置")
         }
     }
     

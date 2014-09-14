@@ -53,7 +53,6 @@
 		8B319BBA19B8D52F002F3080 /* kb.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B319BB919B8D52F002F3080 /* kb.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
 		8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */; };
-		8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */; };
 		8B98EEA1196D3258000D255E /* shared-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EE9F196D3258000D255E /* shared-vector.png */; };
 		8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA0196D3258000D255E /* shared-vector@2x.png */; };
 		8B98EEA5196D3390000D255E /* star-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA3196D3390000D255E /* star-vector.png */; };
@@ -234,7 +233,6 @@
 		8B319BB919B8D52F002F3080 /* kb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kb.png; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmokbViewController.swift; sourceTree = "<group>"; };
-		8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
 		8B98EE9F196D3258000D255E /* shared-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector.png"; sourceTree = "<group>"; };
 		8B98EEA0196D3258000D255E /* shared-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shared-vector@2x.png"; sourceTree = "<group>"; };
 		8B98EEA3196D3390000D255E /* star-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-vector.png"; sourceTree = "<group>"; };
@@ -529,7 +527,6 @@
 				8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */,
 				8BA6683F19ACCD390080C47F /* AboutViewController.swift */,
 				8BA6684819ACDCB30080C47F /* SettingViewController.swift */,
-				8B6A63FE19ADAB4100EFE8D8 /* SettingTableViewCell.swift */,
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 			);
 			name = "设置导航";
@@ -836,7 +833,6 @@
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
-				8B6A63FF19ADAB4100EFE8D8 /* SettingTableViewCell.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */,

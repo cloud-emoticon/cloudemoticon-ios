@@ -11,11 +11,13 @@ import UIKit
 class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var 背景管理: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
-    
     var list:NSMutableArray = NSMutableArray.array()
-
     var bgimageviewer: UIImageView = UIImageView()
+    var 设置背景不透明度:UISlider = UISlider()
     
+    var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as Float?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         
         list.addObject(lang.uage("修改背景图片"))
         list.addObject(lang.uage("还原背景"))
+        list.addObject(lang.uage("背景不透明度"))
 
         背景管理.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         背景管理.delegate = self
@@ -44,8 +47,11 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         bgimageviewer.frame = CGRectMake(self.view.frame.width / 4, 10, self.view.frame.width / 2, self.view.frame.height / 2)
 
         self.view.addSubview(背景管理)
-
-        // Do any additional setup after loading the view.
+        loadSetting()
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        saveSetting()
     }
 
     func transition(notification:NSNotification)
@@ -74,7 +80,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return 4
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -95,15 +101,35 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
         }
         if(indexPath.row == 2){
+            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+            cell?.selectionStyle = .None
+            设置背景不透明度.frame = CGRectMake(90, 13, self.view.frame.size.width - 100, 20)
+            设置背景不透明度.minimumValue = 0
+            设置背景不透明度.maximumValue = 100
+            设置背景不透明度.value = bgopacity!
+
+            cell?.addSubview(设置背景不透明度)
+        }
+        if(indexPath.row == 3){
             cell?.addSubview(bgimageviewer)
             cell?.selectionStyle = .None
         }
         return cell!
     }
     
+    func loadSetting()
+    {
+        设置背景不透明度.value = defaults.floatForKey("bgopacity")
+    }
+    func saveSetting()
+    {
+        defaults.setFloat(设置背景不透明度.value, forKey: "bgopacity")
+        defaults.synchronize()
+    }
+
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        if(indexPath.row == 2){
+        if(indexPath.row == 3){
             return (bgimageviewer.frame.height + 20)
         }
         return 44
@@ -183,6 +209,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         let fullpathttofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(imageName)
         imageData.writeToFile(fullpathttofile, atomically: false)
         bgimageviewer.image = tempImage
+        bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     func deletebgimage(){

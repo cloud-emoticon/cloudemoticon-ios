@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>背景不透明度</key>
+	<string>不透明度</string>
 	<key>背景</key>
 	<string>壁纸</string>
 	<key>确定</key>

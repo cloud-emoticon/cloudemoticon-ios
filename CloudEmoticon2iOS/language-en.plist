@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>背景不透明度</key>
+	<string>Opacity</string>
 	<key>背景</key>
 	<string>Background</string>
 	<key>确定</key>
@@ -40,11 +42,11 @@ To enable Today View Widget, click the &quot;edit&quot; button on &quot;Today&qu
 	<key>输入法</key>
 	<string>Emoticon Keyboard</string>
 	<key>还原背景</key>
-	<string>Restore background picture</string>
+	<string>Restore background image</string>
 	<key>当前背景</key>
-	<string>Current background:</string>
+	<string>Current</string>
 	<key>修改背景图片</key>
-	<string>Change background picture</string>
+	<string>Change background image</string>
 	<key>添加到剪切板</key>
 	<string>Add to clipboard</string>
 	<key>发现了颜文字</key>

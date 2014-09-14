@@ -21,7 +21,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 搜索颜文字:UISearchBar = UISearchBar()
     var 搜索结果:NSMutableArray = NSMutableArray.array()
     var 搜索结果的名称:NSMutableArray = NSMutableArray.array()
-    var 当前单元格高度:CGFloat = 0
+//    var 当前单元格高度:CGFloat = 44
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
@@ -69,10 +69,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidAppear(animated: Bool) {
         loaddata()
         loadbg()
+        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
+        var 背景透明度:CGFloat = CGFloat.convertFromIntegerLiteral((100 - Int(bgopacity!)) / 10)
+        分类表格.alpha = 背景透明度 / 10
+        颜文字表格.alpha = 背景透明度 / 10
         }
     
     override func viewDidLoad() {
         //Load UI
+        
         self.title = lang.uage("云颜文字")
         载入视图()
         
@@ -153,20 +158,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.tableHeaderView = 搜索颜文字
         颜文字表格.setContentOffset(CGPointMake(0, -20), animated: true)
         
-        分类表格.alpha = 0.8
-        颜文字表格.alpha = 0.8
-        
         self.view.addSubview(分类表格)
         self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
-        
     }
 
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray.array()
         var p_emoweb:NSArray? = p_emodata
-        if(p_emoweb != nil)
+        if(p_emoweb != nil && p_emodata.count >= 3)
         {
             let p_emoary:NSArray = p_emoweb!
             y_emoarr = p_emoary.objectAtIndex(3) as NSArray
@@ -194,7 +195,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
-        if (颜文字表格.frame.origin.x > 0){
+        if (颜文字表格.frame.origin.x >= self.view.frame.size.width * 0.3){
             return false
         } else {
             return true
@@ -307,10 +308,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             源管理页面?.加入源(要添加的新源网址!, 来自源商店: true)
         }
     }
-//    override func viewDidAppear(animated: Bool)
-//    {
-//        载入数据()
-//    }
     
     @IBAction func sortBtn(sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
@@ -324,7 +321,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.animateWithDuration(0.25, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 self.颜文字表格背景.frame = self.颜文字表格.frame
-                })
+            })
         }
     }
     
@@ -456,15 +453,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             cell?.主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
             cell?.主文字.numberOfLines = 0
             
-            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text!, FontSize: 17, andWidth: cell!.frame.size.width) + 8
-            cell!.主文字.frame = CGRectMake(20, 0, cell!.frame.size.width - 20, 主文字框高度)
-            if (emoobj.count > 1) {
-                let 副文字框高度:CGFloat = heightForString(cell!.副文字.text!, FontSize: 12, andWidth: cell!.frame.size.width) - 13
-                cell!.副文字.frame = CGRectMake(20, cell!.主文字.frame.size.height - 7, cell!.frame.size.width - 20, 副文字框高度)
-                当前单元格高度 = 主文字框高度 + 副文字框高度
-            } else {
-                当前单元格高度 = 主文字框高度
-            }
+//            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text!, FontSize: 17, andWidth: cell!.frame.size.width) + 8
+//            cell!.主文字.frame = CGRectMake(20, 0, cell!.frame.size.width - 20, 主文字框高度)
+//            if (emoobj.count > 1) {
+//                let 副文字框高度:CGFloat = heightForString(cell!.副文字.text!, FontSize: 12, andWidth: cell!.frame.size.width) - 13
+//                cell!.副文字.frame = CGRectMake(20, cell!.主文字.frame.size.height - 7, cell!.frame.size.width - 20, 副文字框高度)
+//                当前单元格高度 = 主文字框高度 + 副文字框高度
+//            } else {
+//                当前单元格高度 = 主文字框高度
+//            }
             
             cell!.修正元素位置(self.颜文字表格.frame.size.width)
             return cell!
@@ -523,7 +520,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                  return 文字高度
                 }
             }
-            return 当前单元格高度
+            return 44
         }
         return 44
     }
@@ -573,7 +570,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
             if(调整搜索栏位置){
-            颜文字表格.setContentOffset(CGPointMake(0, 12), animated: false)
+            颜文字表格.setContentOffset(CGPointMake(0, -12), animated: false)
             }
         }
         颜文字表格.contentInset = 分类表格.contentInset

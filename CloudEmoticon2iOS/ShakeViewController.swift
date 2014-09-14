@@ -55,7 +55,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.NETWORK)
         let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
         let arr:NSArray? = p_emodata
-        if(arr != nil ){
+        if(arr != nil && arr?.count >= 3){
             NSLog("%@加载正在使用的源...",className)
             return arr
         } else {

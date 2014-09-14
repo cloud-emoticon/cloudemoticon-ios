@@ -13,14 +13,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray.array()
     
-    
-    //    enum 模式:Int
-    //    {
-    //        收藏 = 0
-    //        历史记录 = 1
-    //        自定义 = 2
-    //    }
-    //内容选择菜单.selectedSegmentIndex
     @IBOutlet weak var bgpview: UIImageView!
     
     override func viewDidLoad() {
@@ -31,16 +23,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
-        表格.alpha = 0.8
         self.title = lang.uage("自定表情")
         self.tabBarController?.tabBar.translucent = false
         self.navigationController?.navigationBar.translucent = false
         self.language()
-        
         }
     
-    
     override func viewWillAppear(animated: Bool) {
+        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
+        var 背景透明度:CGFloat = CGFloat.convertFromIntegerLiteral((100 - Int(bgopacity!)) / 10)
+        表格.alpha = 背景透明度 / 10.0
+        
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
 
         if(bg != nil){
