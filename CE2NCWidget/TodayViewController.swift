@@ -13,8 +13,21 @@ class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view from its nib.
-//        RunFamApp.addTarget(self,action:"emostart:",forControlEvents:.TouchUpInside)
+        AddtoCustom.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Disabled)
+        self.preferredContentSize = CGSizeMake(0, 72)
+        AddtoCustom.layer.cornerRadius = 4
+        RunFamApp.layer.cornerRadius = 4
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        emoText.text = UIPasteboard.generalPasteboard().string
+        if(UIPasteboard.generalPasteboard().string == nil)
+        {
+            AddtoCustom.enabled = false
+            emoText.text = "剪贴板空"
+        } else {
+            AddtoCustom.enabled = true
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -31,35 +44,33 @@ class TodayViewController: UIViewController {
 
         completionHandler(NCUpdateResult.NewData)
     }
+
     @IBOutlet weak var AddtoCustom: UIButton!
-    @IBOutlet weak var emoText: UITextField!
+    @IBOutlet weak var emoText: UILabel!
     
-    @IBAction func AddtoCustom(sender: UIButton) {
+    @IBAction func AddtoCustom(sender: AnyObject) {
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        if(emolist != nil || emolist != "") {
-            var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
-            var 自定义数据:NSMutableArray = NSMutableArray.array()
-            自定义数据.addObjectsFromArray(文件中的数据.objectAtIndex(1) as NSArray)
-            自定义数据.addObject([emoText.text,""])
+        if(emolist != nil && emolist != "[[],[],[]]") {
+            let 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
+            var 自定义数据:NSMutableArray = NSMutableArray.alloc()
+            自定义数据.addObject(文件中的数据.objectAtIndex(1))
+            自定义数据.addObject([emoText.text!,""])
             var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
             value = ArrayString().array2json(数据)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         } else {
-            var 新建数据模型:NSArray = [NSArray.array(),[[emoText.text,""]],NSArray.array()]
+            var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
             value = ArrayString().array2json(新建数据模型)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         }
-        emoText.text = ""
-        emoText.placeholder = "添加成功"
+        emoText.text = "添加成功"
     }
-    
 
     @IBOutlet weak var RunFamApp: UIButton!
 
-    
     @IBAction func RunFamApp(sender: UIButton) {
         emostart(sender)
     }
