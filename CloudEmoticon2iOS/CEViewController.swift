@@ -19,8 +19,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 颜文字表格:UITableView = UITableView()
     var 颜文字表格背景:UIImageView = UIImageView()
     var 搜索颜文字:UISearchBar = UISearchBar()
-    var 搜索结果:NSMutableArray = NSMutableArray.array()
-    var 搜索结果的名称:NSMutableArray = NSMutableArray.array()
+    var 搜索结果:NSMutableArray = NSMutableArray()
+    var 搜索结果的名称:NSMutableArray = NSMutableArray()
 //    var 当前单元格高度:CGFloat = 44
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
@@ -37,8 +37,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 滑动最大X坐标:CGFloat = 0
     var 手势起始位置X坐标:CGFloat = 0
     var 手势中:Bool = false
-    var sortData:NSMutableArray = NSMutableArray.array()
-    var ceData:NSMutableArray = NSMutableArray.array()
+    var sortData:NSMutableArray = NSMutableArray()
+    var ceData:NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -58,7 +58,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgpview.contentMode = UIViewContentMode.ScaleAspectFill
             颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
             bgpview.image = bgimage
             颜文字表格背景.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
@@ -70,9 +70,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         loaddata()
         loadbg()
         var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-        var 背景透明度:CGFloat = CGFloat.convertFromIntegerLiteral((100 - Int(bgopacity!)) / 10)
-        分类表格.alpha = 背景透明度 / 10
-        颜文字表格.alpha = 背景透明度 / 10
+        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        分类表格.alpha = 背景透明度
+        分类表格.alpha = 背景透明度
+        颜文字表格.alpha = 背景透明度
         }
     
     override func viewDidLoad() {
@@ -165,7 +166,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 
     func loaddata()
     {
-        var y_emoarr:NSArray = NSArray.array()
+        var y_emoarr:NSArray = NSArray()
         var p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
@@ -232,7 +233,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func 载入数据(downloadTo:NetDownloadTo) {
-        let 下载到位置序号:Int = downloadTo.toRaw()
+        let 下载到位置序号:Int = downloadTo.rawValue
         var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         var 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
         if ((当前下载网址 != nil) && !当前下载网址!.isEqualToString("localhost")) {
@@ -240,7 +241,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            p_emodata = NSArray(contentsOfFile: 内置源路径)
+            p_emodata = NSArray(contentsOfFile: 内置源路径)!
             载入本地数据()
         }
     }
@@ -278,7 +279,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
         let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
         let downloadModeInt:Int = downloadModeIntNB.integerValue
-        let nowDownloadMode:NetDownloadTo = NetDownloadTo.fromRaw(downloadModeInt)!
+        let nowDownloadMode:NetDownloadTo = NetDownloadTo(rawValue: downloadModeInt)!
         if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONONLINE) {
             载入本地数据()
         } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
@@ -426,7 +427,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
-            cell!.textLabel?.text = groupname
+            cell!.textLabel.text = groupname
             return cell!
         } else {
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
@@ -678,7 +679,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (颜文字名称 != nil) {
                     颜文字数组.addObject(颜文字名称!)
                 }
-                var 收藏:NSMutableArray = NSMutableArray.array()
+                var 收藏:NSMutableArray = NSMutableArray()
                 收藏.addObject(颜文字数组)
                 if (文件中的数据 != nil) {
                     收藏.addObjectsFromArray(文件中的数据!)

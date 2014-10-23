@@ -12,7 +12,7 @@ var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.main
 
 class AddonTableViewController: UITableViewController {
 
-    var list:NSMutableArray = NSMutableArray.array()
+    var list:NSMutableArray = NSMutableArray()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class AddonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Addon", forIndexPath: indexPath) as UITableViewCell
 
-        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+        cell.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
         
         return cell
     }

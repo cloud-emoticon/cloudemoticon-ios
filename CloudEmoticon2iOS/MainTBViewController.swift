@@ -78,7 +78,7 @@ class MainTBViewController: UITabBarController {
         
         显示自动关闭的提示框(NSString(format: "“ %@ ” %@", 要复制的颜文字, lang.uage("已复制到剪贴板")))
         
-        var 历史记录:NSMutableArray = NSMutableArray.array()
+        var 历史记录:NSMutableArray = NSMutableArray()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         历史记录.addObject(要复制的颜文字数组)
         if (文件中的数据 != nil) {

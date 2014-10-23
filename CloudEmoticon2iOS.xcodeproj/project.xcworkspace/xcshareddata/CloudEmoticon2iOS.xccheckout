@@ -14,7 +14,7 @@
 		<string>https://github.com/cxchope/CloudEmoticon2iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CloudEmoticon2iOS.xcodeproj/project.xcworkspace</string>
+	<string>CloudEmoticon2iOS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B286D462F13F08B6F79FE367145C9A00DF281073</key>

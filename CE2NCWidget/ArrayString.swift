@@ -12,7 +12,7 @@ class ArrayString: NSObject {
     
     func array2json(inArray:NSArray) -> NSString
     {
-        return NSString(data: NSJSONSerialization.dataWithJSONObject(inArray, options: NSJSONWritingOptions(), error: nil)!, encoding: NSUTF8StringEncoding)
+        return NSString(data: NSJSONSerialization.dataWithJSONObject(inArray, options: NSJSONWritingOptions(), error: nil)!, encoding: NSUTF8StringEncoding)!
     }
     
     func json2array(inString:NSString) -> NSArray

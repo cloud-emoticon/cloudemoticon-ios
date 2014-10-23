@@ -12,7 +12,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     
     var 文件管理器:FileManager = FileManager()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var 皮肤ID列表:NSMutableArray = NSMutableArray.array()
+    var 皮肤ID列表:NSMutableArray = NSMutableArray()
     var 左上按钮: UIBarButtonItem!
     var 右上按钮: UIBarButtonItem!
     
@@ -85,7 +85,6 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
             self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
             self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
         }
-        
     }
 
     // MARK: - 表格分组数
@@ -106,10 +105,8 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识)
             单元格!.selectionStyle = UITableViewCellSelectionStyle.None
             单元格!.accessoryType = UITableViewCellAccessoryType.None
-            单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
+            单元格!.imageView.backgroundColor = UIColor.lightGrayColor()
         }
-        
-        
         
         return 单元格!
     }
@@ -118,9 +115,8 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     {
         if editingStyle == .Delete {
             
-            
-            
         } else if editingStyle == .Insert {
+            
         }
     }
     // MARK: - 表格编辑范围

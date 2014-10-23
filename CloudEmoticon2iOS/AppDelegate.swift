@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             let address:NSString = urlarr.objectAtIndex(1) as NSString
             let downloadURL:NSString = NSString(format: "%@%@", schemeStr, address)
-            let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
+            let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.rawValue
             
             let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
 //            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         filemgr.nowURLarr = 网址和目标位置序号数组
         let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as NSNumber
         let 目标位置序号:Int = 目标位置序号对象.integerValue
-        let 当前下载模式:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
+        let 当前下载模式:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
         var alldata:NSArray? = nil
         if (当前下载模式 != NetDownloadTo.CLOUDEMOTICONONLINE) {
             alldata = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
@@ -108,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let 网址:NSString = 网址和目标位置序号数组.objectAtIndex(0) as NSString
         let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as NSNumber
         let 目标位置序号:Int = 目标位置序号对象.integerValue
-        let 当前下载目标位置:NetDownloadTo = NetDownloadTo.fromRaw(目标位置序号)!
+        let 当前下载目标位置:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
         let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
         if (请求的数据数组 != nil) {
             if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONONLINE) {

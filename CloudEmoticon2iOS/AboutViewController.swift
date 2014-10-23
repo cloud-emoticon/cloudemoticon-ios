@@ -28,12 +28,12 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     func 开始异步连接()
     {
-        var 当前请求网址:NSURL = NSURL.URLWithString("http://uuu.moe/e/ceios2about.txt")
+        var 当前请求网址:NSURL = NSURL(string: "http://uuu.moe/e/ceios2about.txt")!
         var URL请求: NSURLRequest
         URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         //        request.URL = urla
         //        request.HTTPMethod = "POST"
-        NSURLConnection.connectionWithRequest(URL请求, delegate: self)
+        NSURLConnection(request: URL请求, delegate: self)
     }
     //服务器响应
     func connection(connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!)
@@ -45,7 +45,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     {
         if (self.接收到的数据 == nil)
         {
-            self.接收到的数据 = NSMutableData.data()
+            self.接收到的数据 = NSMutableData()
         }
         self.接收到的数据?.appendData(data)
     }

@@ -15,9 +15,9 @@ protocol ScoreTableViewControllerDelegate:NSObjectProtocol{
 class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //, UITableViewDelegate, UITableViewDataSource
     
     var 文件管理器:FileManager = FileManager()
-    var 源列表:NSMutableArray = NSMutableArray.array()
+    var 源列表:NSMutableArray = NSMutableArray()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var 临时数据:NSMutableArray = NSMutableArray.array()
+    var 临时数据:NSMutableArray = NSMutableArray()
     var 代理:ScoreTableViewControllerDelegate?
     var 已经载入:Bool = false
     
@@ -125,7 +125,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     
     func 加入源(网址:NSString, 来自源商店:Bool)
     {
-        let 网络传输给:Int = NetDownloadTo.SOURCEMANAGER.toRaw()
+        let 网络传输给:Int = NetDownloadTo.SOURCEMANAGER.rawValue
         let 下载网址:NSString = 网址
         let 网络请求数组:NSMutableArray = [下载网址,NSNumber(integer: 网络传输给)]
 //        if (!isStore) {
@@ -165,7 +165,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     {
         println("数据载入完毕")
         var 临时源列表数据:NSMutableArray = 临时数据
-        临时数据 = NSMutableArray.array()
+        临时数据 = NSMutableArray()
         if (!p_tempString.isEqualToString("") && 临时源列表数据.count > 0) {
             临时源列表数据.insertObject(p_tempString, atIndex: 1)
             源列表.addObject(临时源列表数据)
@@ -202,7 +202,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     {
         let 文档文件夹:NSString = 文件管理器.DocumentDirectoryAddress()
         var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹, error: nil)!
-        var 要删除的文件:NSMutableArray = NSMutableArray.array()
+        var 要删除的文件:NSMutableArray = NSMutableArray()
         for 当前文件名对象 in 全部文件 {
             let 当前文件名:NSString = 当前文件名对象 as NSString
             let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
@@ -281,7 +281,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 加入源(添加源输入框.text, 来自源商店: false)
             } else if (buttonIndex == 2) {
                 //源商店
-                UIApplication.sharedApplication().openURL(NSURL.URLWithString("http://emoticon.moe/?cat=2"))
+                UIApplication.sharedApplication().openURL(NSURL(string: "http://emoticon.moe/?cat=2")!)
             }
         }
     }
@@ -322,9 +322,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as NSString
         let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as NSString
         if (当前颜文字库记录名称.isEqualToString("")) {
-            单元格!.textLabel?.text = 当前颜文字库原始名称
+            单元格!.textLabel.text = 当前颜文字库原始名称
         } else {
-            单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
+            单元格!.textLabel.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
         }
         if (当前颜文字库来源网址.isEqualToString(p_nowurl)) {
             单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark

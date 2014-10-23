@@ -11,12 +11,12 @@ import UIKit
 class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITableViewDataSource {
 
     var 表格视图: UITableView!
-    var 当前数据数组:NSMutableArray = NSMutableArray.array()
+    var 当前数据数组:NSMutableArray = NSMutableArray()
     let 按钮文字数组:NSArray = ["🌐","历史","收藏","自定义","退格","收起"]
     let 按钮命令数组:NSArray = ["advanceToNextInputMode","历史按钮:","收藏按钮:","自定义按钮:","删除按钮","dismissKeyboard"]
-    var 全部收藏数组:NSMutableArray = NSMutableArray.array()
-    var 全部自定数组:NSMutableArray = NSMutableArray.array()
-    var 全部历史数组:NSMutableArray = NSMutableArray.array()
+    var 全部收藏数组:NSMutableArray = NSMutableArray()
+    var 全部自定数组:NSMutableArray = NSMutableArray()
+    var 全部历史数组:NSMutableArray = NSMutableArray()
     
 
     override func updateViewConstraints() {
@@ -150,12 +150,9 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     {
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var value:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        var value:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(value != nil && value != "") {
             let 全部数据数组:NSArray = ArrayString().json2array(value!)
-//            全部收藏数组.removeAllObjects()
-//            全部自定数组.removeAllObjects()
-//            全部历史数组.removeAllObjects()
             全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as NSArray)
             全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as NSArray)
             全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as NSArray)
@@ -224,11 +221,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
-            cell!.textLabel?.textAlignment = NSTextAlignment.Center
+            cell!.textLabel.textAlignment = NSTextAlignment.Center
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
-        cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         
         return cell!
     }

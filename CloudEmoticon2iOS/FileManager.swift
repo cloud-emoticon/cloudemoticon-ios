@@ -47,7 +47,7 @@ class FileManager: NSObject {
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
             NSLog("%@本地加载中...",className)
-            let arr:NSArray = NSArray(contentsOfFile: fulladd)
+            let arr:NSArray = NSArray(contentsOfFile: fulladd)!
             return arr
         }
         if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
@@ -86,7 +86,7 @@ class FileManager: NSObject {
         case saveMode.CUSTOM:
             return NSString.localizedStringWithFormat("%@-custom.plist",p_nowUserName)
         default:
-            return NSString.string()
+            return NSString()
         }
     }
     
@@ -125,7 +125,7 @@ class FileManager: NSObject {
         if (!isDup) {
             return NSArray()
         }
-        let sarr:NSArray = NSArray(contentsOfFile: fulladd)
+        let sarr:NSArray = NSArray(contentsOfFile: fulladd)!
         return sarr
     }
     func saveSources(sarr:NSArray)
@@ -138,9 +138,9 @@ class FileManager: NSObject {
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(emolist == nil || emolist == "") {
-            var 新建数据模型:NSArray = [NSArray.array(),NSArray.array(),NSArray.array()]
+            var 新建数据模型:NSArray = [NSArray(),NSArray(),NSArray()]
             value = ArrayString().array2json(新建数据模型)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         }

@@ -11,7 +11,7 @@ import UIKit
 class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource {
     
     let 文件管理器:FileManager = FileManager()
-    var 表格数据:NSMutableArray = NSMutableArray.array()
+    var 表格数据:NSMutableArray = NSMutableArray()
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -31,8 +31,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     override func viewWillAppear(animated: Bool) {
         var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-        var 背景透明度:CGFloat = CGFloat.convertFromIntegerLiteral((100 - Int(bgopacity!)) / 10)
-        表格.alpha = 背景透明度 / 10.0
+        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        表格.alpha = 背景透明度
         
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
 
@@ -41,7 +41,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
@@ -102,10 +102,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             if (appgroup) {
                 var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
                 containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-                var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+                var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
                 var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
-                
-                var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray.array()]
+                var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray()]
                 var value:NSString = ArrayString().array2json(新建数据模型)
                 value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
             }
@@ -149,7 +148,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     {
         let 颜文字名称:NSString = lang.uage("自定义")
         let 要添加的颜文字数组:NSArray = [emoticonstr,""]
-        var 自定义:NSMutableArray = NSMutableArray.array()
+        var 自定义:NSMutableArray = NSMutableArray()
         var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as NSString
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         var 自定义中已经存在这个颜文字 = false
@@ -234,7 +233,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (appgroup) {
             var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
             containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-            value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         }
         if(value != nil && value != "") {
             let 输入法中的数据:NSArray? = ArrayString().json2array(value!)
@@ -260,7 +259,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (appgroup) {
             var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
             containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-            value = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         }
         if(value != nil && value != "") {
             let 通知扩展中的数据:NSArray? = ArrayString().json2array(value!)
@@ -331,14 +330,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
             颜文字名称! = 当前单元格数据.objectAtIndex(1) as NSString
         }
-        cell?.textLabel?.text = 颜文字
+        cell?.textLabel.text = 颜文字
         if (颜文字名称 != nil) {
             cell?.detailTextLabel?.text = 颜文字名称!
         } else {
             cell?.detailTextLabel?.text = ""
         }
-        cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
-        cell?.textLabel?.numberOfLines = 0
+        cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        cell?.textLabel.numberOfLines = 0
         
         return cell!
     }

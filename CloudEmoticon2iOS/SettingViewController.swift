@@ -10,8 +10,8 @@ import UIKit
 
 class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    var adflist:NSMutableArray = NSMutableArray.array()
-    var actlist:NSMutableArray = NSMutableArray.array()
+    var adflist:NSMutableArray = NSMutableArray()
+    var actlist:NSMutableArray = NSMutableArray()
     
     var SetTable:UITableView = UITableView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.width), style: UITableViewStyle.Grouped)
     
@@ -32,8 +32,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         SetTable.dataSource = self
         view.addSubview(SetTable)
         loadSetting()
-        
-        // Do any additional setup after loading the view.
+
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -105,9 +104,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if(indexPath.section == 0){
-        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as NSString
+        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row) as NSString
         } else {
-        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
+        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
         }
         
         if (cell!.contentView.subviews.count > 1) {
@@ -115,7 +114,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
 
         if(indexPath.section == 0 && indexPath.row == 1){
-            
             cell!.accessoryView = 设置广告显示频率
             设置广告显示频率.addTarget(self, action: Selector(updateSliderAtIndesPath(设置广告显示频率)), forControlEvents: UIControlEvents.TouchUpInside)
             设置广告显示频率.tag = 1001
@@ -138,7 +136,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         var switchview:UISwitch = sender
               defaults.setBool(switchview.on, forKey: "exitaftercopy")
         defaults.synchronize()
-
     }
     
     func updateSliderAtIndesPath(sender:UISlider){

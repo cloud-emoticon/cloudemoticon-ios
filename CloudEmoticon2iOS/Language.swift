@@ -12,7 +12,7 @@ class Language: NSObject {
     
     let 系统支持的语言:NSArray = NSLocale.preferredLanguages()
     var 当前设置的语言:NSString = ""
-    var 翻译缓存:NSMutableDictionary = NSMutableDictionary.dictionary()
+    var 翻译缓存:NSMutableDictionary = NSMutableDictionary()
    
     func 当前系统语言() -> NSString
     {
@@ -43,7 +43,7 @@ class Language: NSObject {
                 let 文件名:NSString = NSString(format: "language-%@",载入语言)
                 let 文件路径:NSString? = NSBundle.mainBundle().pathForResource(文件名, ofType: "plist")
                 if (文件路径 != nil) {
-                    翻译缓存 = NSMutableDictionary(contentsOfFile: 文件路径!)
+                    翻译缓存 = NSMutableDictionary(contentsOfFile: 文件路径!)!
                     当前设置的语言 = 载入语言
                     println("[语言管理器]语言读取成功")
                     break

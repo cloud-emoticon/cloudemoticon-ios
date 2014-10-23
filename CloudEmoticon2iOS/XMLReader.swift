@@ -26,7 +26,7 @@ class XMLReader: NSObject {
             let 文件数据结构版本:NSString = "iOSv2" //ok
             var 颜文字库名:NSString = "" //ok
             var 颜文字库介绍:NSMutableString = "" //ok
-            var 颜文字存储数组:NSMutableArray = NSMutableArray.array() //ok
+            var 颜文字存储数组:NSMutableArray = NSMutableArray() //ok
             
             var 根字典:NSDictionary = XML解析类库.dictionaryWithData(data)
             //println(rootDic) //[__name, infoos, category]
@@ -54,13 +54,13 @@ class XMLReader: NSObject {
                 var groupDic:NSDictionary = groupData as NSDictionary
                 var g_groupname:NSString = groupDic.objectForKey("_name") as NSString
 //                y_emoarr.addObject(g_groupname)
-                var y_emoobj:NSMutableArray = NSMutableArray.array()
+                var y_emoobj:NSMutableArray = NSMutableArray()
                 y_emoobj.addObject(g_groupname)
                 var entry:NSArray = groupDic.objectForKey("entry") as NSArray
                 for nowEmoobj in entry
                 {
                     var nowEmoobjDic:NSDictionary = nowEmoobj as NSDictionary
-                    var g_emoobj:NSMutableArray = NSMutableArray.array()
+                    var g_emoobj:NSMutableArray = NSMutableArray()
                     var e_emo:NSString = nowEmoobjDic.objectForKey("string") as NSString
                     g_emoobj.addObject(e_emo)
                     if (nowEmoobjDic.allKeys.count == 2) {

@@ -16,13 +16,13 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     func 开始异步连接(URL识别数组:NSArray)
     {
         NSLog("%@开始准备下载...",类名称)
-        var 当前请求网址:NSURL = NSURL.URLWithString(URL识别数组.objectAtIndex(0) as NSString)
+        var 当前请求网址:NSURL = NSURL(string: URL识别数组.objectAtIndex(0) as NSString)!
         当前URL识别数组 = URL识别数组
         var URL请求: NSURLRequest
         URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
 //        request.URL = urla
 //        request.HTTPMethod = "POST"
-        NSURLConnection.connectionWithRequest(URL请求, delegate: self)
+        NSURLConnection(request: URL请求, delegate: self)
     }
 
     
@@ -37,7 +37,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
         NSLog("%@数据接收中...",类名称)
         if (self.接收到的数据 == nil)
         {
-            self.接收到的数据 = NSMutableData.data()
+            self.接收到的数据 = NSMutableData()
         }
         self.接收到的数据.appendData(data)
 
@@ -57,7 +57,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
 //                println("数据NULL!!!")
 //            }
         } else {
-            println("NULL!!!")
+            println("没有收到数据")
         }
     }
     

@@ -20,7 +20,7 @@ class JSONReader: NSObject {
             let 文件数据结构版本:NSString = "iOSv2" //ok
             var 颜文字库名:NSString = "" //ok
             var 颜文字库介绍:NSMutableString = "" //ok
-            var 颜文字存储数组:NSMutableArray = NSMutableArray.array() //ok
+            var 颜文字存储数组:NSMutableArray = NSMutableArray() //ok
             
             var 根信息:NSArray = JSON解析后字典.objectForKey("information") as NSArray
             for 根数据 in 根信息
@@ -40,13 +40,13 @@ class JSONReader: NSObject {
                 var groupname:NSString = groupDic.objectForKey("name") as NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
 //                y_emoarr.addObject(groupname)
-                var y_emoobj:NSMutableArray = NSMutableArray.array()
+                var y_emoobj:NSMutableArray = NSMutableArray()
                 y_emoobj.addObject(groupname)
                 for entriesData in entries
                 {
                     var entriesDataDic:NSDictionary = entriesData as NSDictionary
                     var entriesDataDicKeys:NSArray = entriesDataDic.allKeys
-                    var g_emoobj:NSMutableArray = NSMutableArray.array()
+                    var g_emoobj:NSMutableArray = NSMutableArray()
                     var e_emo:NSString = entriesDataDic.objectForKey("emoticon") as NSString
                     g_emoobj.addObject(e_emo)
                     if (entriesDataDicKeys.count == 2) {

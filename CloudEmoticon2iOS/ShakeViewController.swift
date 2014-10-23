@@ -11,8 +11,8 @@ import CoreMotion
 
 class ShakeViewController: UIViewController, UIAlertViewDelegate {
 
-    var emolist:NSMutableArray = NSMutableArray.array()
-    var emoNamelist:NSMutableArray = NSMutableArray.array()
+    var emolist:NSMutableArray = NSMutableArray()
+    var emoNamelist:NSMutableArray = NSMutableArray()
     let 文件管理器:FileManager = FileManager()
     let className:NSString = "[摇一摇]"
     
@@ -66,7 +66,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     func loaddata()
     {
-        var y_emoarr:NSArray = NSArray.array()
+        var y_emoarr:NSArray = NSArray()
         var p_emoweb:NSArray? = loadarray()
         if(p_emoweb != nil)
         {

@@ -22,7 +22,7 @@ class SwitchCoder: NSObject {
     {
         NSLog("%@将数据转换为文本...",类名称)
         
-        var 当前数据格式:Coder = scoder(NSString(data: 源数据, encoding: NSUTF8StringEncoding))
+        var 当前数据格式:Coder = scoder(NSString(data: 源数据, encoding: NSUTF8StringEncoding)!)
         switch (当前数据格式) {
         case Coder.XMLv1:
             var XML解析器:XMLReader = XMLReader()

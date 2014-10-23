@@ -52,7 +52,7 @@ class TodayViewController: UIViewController {
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var emolist:NSString? = NSString.stringWithContentsOfURL(containerURL, encoding: NSUTF8StringEncoding, error: nil)
+        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(emolist != nil && emolist != "[[],[],[]]") {
             let 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
             var 自定义数据:NSMutableArray = NSMutableArray.alloc()
@@ -76,7 +76,7 @@ class TodayViewController: UIViewController {
     }
     
     func emostart(sender: UIButton!) {
-        extensionContext?.openURL(NSURL(string: "emostart://"), completionHandler: nil)
+        extensionContext?.openURL(NSURL(string: "emostart://")!, completionHandler: nil)
     }
     
 

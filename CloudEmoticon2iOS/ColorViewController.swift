@@ -11,7 +11,7 @@ import UIKit
 class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     var 背景管理: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
-    var list:NSMutableArray = NSMutableArray.array()
+    var list:NSMutableArray = NSMutableArray()
     var bgimageviewer: UIImageView = UIImageView()
     var 设置背景不透明度:UISlider = UISlider()
     
@@ -38,7 +38,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             bgimageviewer.image = bg
             bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
+            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
             bgimageviewer.image = bgimage
             bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFit
         }
@@ -98,10 +98,10 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
         }
         if(indexPath.row <= 1) {
-        cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
         }
         if(indexPath.row == 2){
-            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+            cell?.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
             cell?.selectionStyle = .None
             设置背景不透明度.frame = CGRectMake(90, 13, self.view.frame.size.width - 100, 20)
             设置背景不透明度.minimumValue = 0
