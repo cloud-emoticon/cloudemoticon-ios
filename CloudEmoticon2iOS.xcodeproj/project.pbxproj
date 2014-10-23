@@ -40,7 +40,6 @@
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
-		53E9DF7619C183C600C61121 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF7519C183C600C61121 /* Info.plist */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
 		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
@@ -660,7 +659,7 @@
 		53DF28E5196B9CF40058AA42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "神楽坂雅詩 & 神楽坂紫喵";
 				TargetAttributes = {
 					5328C7A819B70D0D00C425A8 = {
@@ -762,7 +761,6 @@
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
 				8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */,
-				53E9DF7619C183C600C61121 /* Info.plist in Resources */,
 				8B319BB219B8D1AC002F3080 /* EmoKB.png in Resources */,
 				5310750A19C19E9D0003866F /* Main.storyboard in Resources */,
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
