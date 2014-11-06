@@ -10,7 +10,8 @@ import UIKit
 
 class EmokbViewController: UIViewController {
 
-    @IBOutlet weak var EmoKBText: UITextView!
+
+    @IBOutlet weak var EmoKBText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("输入法")

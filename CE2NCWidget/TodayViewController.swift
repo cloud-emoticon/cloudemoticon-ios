@@ -14,11 +14,12 @@ class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         AddtoCustom.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Disabled)
-        self.preferredContentSize = CGSizeMake(0, 72)
         AddtoCustom.layer.cornerRadius = 4
         RunFamApp.layer.cornerRadius = 4
+        emoEx.frame = CGRectMake(0, 0, self.view.frame.width, 36)
     }
     
+    @IBOutlet var emoEx: UIView!
     override func viewDidAppear(animated: Bool) {
         emoText.text = UIPasteboard.generalPasteboard().string
         if(UIPasteboard.generalPasteboard().string == nil)

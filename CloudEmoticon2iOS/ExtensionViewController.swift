@@ -10,11 +10,13 @@ import UIKit
 
 class ExtensionViewController: UIViewController {
 
-    @IBOutlet weak var Exttips: UITextView!
+    @IBOutlet weak var ExtTips: UILabel!
+    @IBOutlet weak var ExtImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("扩展功能")
-        Exttips.text = lang.uage("通知中心扩展")
+    ExtTips.text = lang.uage("通知中心扩展")
+    
         // Do any additional setup after loading the view.
     }
 

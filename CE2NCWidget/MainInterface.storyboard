@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -7,36 +7,21 @@
         <!--Today View Controller-->
         <scene sceneID="cwh-vc-ff4">
             <objects>
-                <viewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="CE2NCWidget" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="M4Y-Lb-cyx" customClass="TodayViewController" customModule="CE2NCWidget" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ft6-oW-KC0"/>
-                        <viewControllerLayoutGuide type="bottom" id="FKl-LY-JtV"/>
+                        <viewControllerLayoutGuide type="top" id="To8-uj-vIa"/>
+                        <viewControllerLayoutGuide type="bottom" id="IWt-R0-tlJ"/>
                     </layoutGuides>
                     <view key="view" autoresizesSubviews="NO" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
-                                <rect key="frame" x="250" y="20" width="64" height="32"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="GS9-ZR-HpF"/>
-                                    <constraint firstAttribute="width" constant="64" id="Tgk-fz-aS5"/>
-                                </constraints>
-                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="启动">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="RunFamApp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="3t0-zT-14j"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-TY-ZQg">
-                                <rect key="frame" x="180" y="20" width="64" height="32"/>
+                                <rect key="frame" x="180" y="4" width="64" height="32"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="9aR-bN-dIE"/>
-                                    <constraint firstAttribute="height" constant="32" id="FEP-je-KxE"/>
+                                    <constraint firstAttribute="width" constant="64" id="7Ah-z0-IAM"/>
+                                    <constraint firstAttribute="height" constant="32" id="ALV-Ng-TVz"/>
                                 </constraints>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="添加">
@@ -47,42 +32,57 @@
                                     <action selector="AddtoCustom:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="NKy-1Q-7FJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-ni-jGE">
-                                <rect key="frame" x="0.0" y="20" width="172" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-ni-jGE">
+                                <rect key="frame" x="3" y="4" width="173" height="32"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="ioe-y8-7U2"/>
+                                    <constraint firstAttribute="height" constant="32" id="loW-dR-xy4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
+                                <rect key="frame" x="252" y="4" width="64" height="32"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="V2R-My-AAj"/>
+                                    <constraint firstAttribute="width" constant="64" id="qoH-As-6bq"/>
+                                </constraints>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="启动">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="RunFamApp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="3t0-zT-14j"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="ffL-2i-yin" secondAttribute="trailing" constant="6" id="2rF-Xx-CId"/>
-                            <constraint firstAttribute="centerY" secondItem="M4f-TY-ZQg" secondAttribute="centerY" id="9Z8-kG-Ro3"/>
-                            <constraint firstAttribute="centerY" secondItem="4hl-ni-jGE" secondAttribute="centerY" id="Tkd-w4-9ti"/>
-                            <constraint firstItem="M4f-TY-ZQg" firstAttribute="leading" secondItem="4hl-ni-jGE" secondAttribute="trailing" constant="8" id="ZRV-9X-lgy"/>
-                            <constraint firstAttribute="centerY" secondItem="ffL-2i-yin" secondAttribute="centerY" id="cri-up-fQL"/>
-                            <constraint firstItem="4hl-ni-jGE" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="dfk-ah-YMg"/>
-                            <constraint firstItem="ffL-2i-yin" firstAttribute="leading" secondItem="M4f-TY-ZQg" secondAttribute="trailing" constant="6" id="lXY-VT-L9N"/>
+                            <constraint firstAttribute="trailing" secondItem="ffL-2i-yin" secondAttribute="trailing" constant="4" id="DNg-4i-55H"/>
+                            <constraint firstItem="ffL-2i-yin" firstAttribute="leading" secondItem="M4f-TY-ZQg" secondAttribute="trailing" constant="8" id="Jsd-ap-WcZ"/>
+                            <constraint firstItem="M4f-TY-ZQg" firstAttribute="leading" secondItem="4hl-ni-jGE" secondAttribute="trailing" constant="8" id="XMp-zS-xfH"/>
+                            <constraint firstItem="4hl-ni-jGE" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bPQ-q9-ksM"/>
+                            <constraint firstItem="4hl-ni-jGE" firstAttribute="top" secondItem="To8-uj-vIa" secondAttribute="bottom" constant="4" id="l9R-XF-7sd"/>
+                            <constraint firstItem="M4f-TY-ZQg" firstAttribute="top" secondItem="To8-uj-vIa" secondAttribute="bottom" constant="4" id="sYg-Df-wAm"/>
+                            <constraint firstItem="ffL-2i-yin" firstAttribute="top" secondItem="To8-uj-vIa" secondAttribute="bottom" constant="4" id="y6p-fJ-Qz6"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <value key="contentSizeForViewInPopover" type="size" width="320" height="72"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="320" height="72"/>
+                    <size key="freeformSize" width="320" height="40"/>
                     <connections>
                         <outlet property="AddtoCustom" destination="M4f-TY-ZQg" id="AhR-XN-cEm"/>
                         <outlet property="RunFamApp" destination="ffL-2i-yin" id="Dd9-Ka-dYh"/>
+                        <outlet property="emoEx" destination="S3S-Oj-5AN" id="U9s-Wf-rjT"/>
                         <outlet property="emoText" destination="4hl-ni-jGE" id="atK-nx-VCR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="516" y="284"/>
+            <point key="canvasLocation" x="329" y="344"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
