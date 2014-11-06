@@ -51,7 +51,7 @@ class FileManager: NSObject {
             return arr
         }
         if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: nowURLarr)
+            NSNotificationCenter.defaultCenter().postNotificationName("loaddataoks", object: nowURLarr)
         }
         
         return nil

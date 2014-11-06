@@ -21,7 +21,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 搜索颜文字:UISearchBar = UISearchBar()
     var 搜索结果:NSMutableArray = NSMutableArray()
     var 搜索结果的名称:NSMutableArray = NSMutableArray()
-//    var 当前单元格高度:CGFloat = 44
     var userview:UIView = UIView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
@@ -32,7 +31,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 源管理页面:ScoreTableViewController? = nil
     var 调整搜索栏位置:Bool = true
     
-    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nouserimg", ofType: "jpg")!))
+    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nowuserimg", ofType: "jpg")!))
     
     var 滑动最大X坐标:CGFloat = 0
     var 手势起始位置X坐标:CGFloat = 0
@@ -97,8 +96,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         sortBtn.title = lang.uage("分类")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf2:", name: "loaddataok2", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "time:", name: "loaddataok", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "load:", name: "loaddataok", object: nil)
         
         分类表格.tag = 100
         颜文字表格.tag = 101
@@ -268,19 +267,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func time(notification:NSNotification)
+    func load(notification:NSNotification)
     {
         载入本地数据()
     }
     
-    func loadwebdataokf2(notification:NSNotification)
+    func loadwebdataoks(notification:NSNotification)
     {
         let urlArr:NSArray = notification.object as NSArray
         let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
         let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
         let downloadModeInt:Int = downloadModeIntNB.integerValue
         let nowDownloadMode:NetDownloadTo = NetDownloadTo(rawValue: downloadModeInt)!
-        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONONLINE) {
+        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONREFRESH) {
             载入本地数据()
         } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
             if (p_storeIsOpen == false) {
@@ -525,26 +524,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         return 44
     }
-    
-//    func tableView(tableView: UITableView!, editActionsForRowAtIndexPath indexPath: NSIndexPath!) -> [AnyObject]!
-//    {
-//        
-//    }
-    
-//    func tableView(tableView: UITableView!, viewForHeaderInSection section: Int) -> UIView!
-//    {
-////        if (tableView.tag == 100) {
 
-//            return userview
-////        } else {
-////            return UIView()
-////        }
-//    }
-    
-//    override func viewDidAppear(animated: Bool) {
-//        颜文字表格.reloadData()
-//    }
-    
     func transition(notification:NSNotification)
     {
 //        println("收到屏幕旋转")
@@ -571,7 +551,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
             if(调整搜索栏位置){
-            颜文字表格.setContentOffset(CGPointMake(0, -12), animated: false)
+            颜文字表格.setContentOffset(CGPointMake(0, 12), animated: false)
             }
         }
         颜文字表格.contentInset = 分类表格.contentInset
@@ -643,7 +623,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (表格竖向滚动 < -100.0) {
             下拉刷新提示?.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
-                载入数据(NetDownloadTo.CLOUDEMOTICONONLINE)
+                载入数据(NetDownloadTo.CLOUDEMOTICONREFRESH)
                 loaddata()
             }
         }

@@ -22,8 +22,6 @@ class MainTBViewController: UITabBarController {
         initSetting()
         载入皮肤()
         文件管理器.补充空白数据()
-        //NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
@@ -98,7 +96,7 @@ class MainTBViewController: UITabBarController {
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {
             let window:UIWindow? = UIApplication.sharedApplication().delegate?.window?
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
-            UIView.animateWithDuration(0.35, animations: {
+            UIView.animateWithDuration(0.3, animations: {
                 window?.alpha = 0
                 window?.frame = CGRectMake(window!.center.x, window!.center.x, 0, 0)
                 }, completion: {

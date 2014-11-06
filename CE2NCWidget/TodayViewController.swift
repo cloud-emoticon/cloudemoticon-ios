@@ -53,7 +53,7 @@ class TodayViewController: UIViewController {
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        if(emolist != nil && emolist != "[[],[],[]]") {
+        if(emolist != nil && emolist != "[[],[],[]]" && emolist != "") {
             let 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
             var 自定义数据:NSMutableArray = NSMutableArray.alloc()
             自定义数据.addObject(文件中的数据.objectAtIndex(1))

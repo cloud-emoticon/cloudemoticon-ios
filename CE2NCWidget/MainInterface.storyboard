@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="M4Y-Lb-cyx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
     <scenes>
         <!--Today View Controller-->
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
                                 <rect key="frame" x="250" y="20" width="64" height="32"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
@@ -24,14 +24,14 @@
                                     <constraint firstAttribute="width" constant="64" id="Tgk-fz-aS5"/>
                                 </constraints>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="主程序">
+                                <state key="normal" title="启动">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="RunFamApp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="3t0-zT-14j"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-TY-ZQg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-TY-ZQg">
                                 <rect key="frame" x="180" y="20" width="64" height="32"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
@@ -47,7 +47,7 @@
                                     <action selector="AddtoCustom:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="NKy-1Q-7FJ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-ni-jGE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-ni-jGE">
                                 <rect key="frame" x="0.0" y="20" width="172" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="ioe-y8-7U2"/>
@@ -59,7 +59,10 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ffL-2i-yin" secondAttribute="trailing" constant="6" id="2rF-Xx-CId"/>
+                            <constraint firstAttribute="centerY" secondItem="M4f-TY-ZQg" secondAttribute="centerY" id="9Z8-kG-Ro3"/>
+                            <constraint firstAttribute="centerY" secondItem="4hl-ni-jGE" secondAttribute="centerY" id="Tkd-w4-9ti"/>
                             <constraint firstItem="M4f-TY-ZQg" firstAttribute="leading" secondItem="4hl-ni-jGE" secondAttribute="trailing" constant="8" id="ZRV-9X-lgy"/>
+                            <constraint firstAttribute="centerY" secondItem="ffL-2i-yin" secondAttribute="centerY" id="cri-up-fQL"/>
                             <constraint firstItem="4hl-ni-jGE" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="dfk-ah-YMg"/>
                             <constraint firstItem="ffL-2i-yin" firstAttribute="leading" secondItem="M4f-TY-ZQg" secondAttribute="trailing" constant="6" id="lXY-VT-L9N"/>
                         </constraints>

@@ -46,8 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataf:", name: "loadwebdata", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokf:", name: "loaddataok", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
         
         lang.载入语言(lang.当前系统语言())
 //        println(lang.系统支持的所有语言())
@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func loadwebdataf(notification:NSNotification)
+    func loadwebdatace(notification:NSNotification)
     {
         statBar.showMsg(lang.uage("正在加载源"))
         let 网址和目标位置序号数组:NSArray = notification.object as NSArray
@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let 目标位置序号:Int = 目标位置序号对象.integerValue
         let 当前下载模式:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
         var alldata:NSArray? = nil
-        if (当前下载模式 != NetDownloadTo.CLOUDEMOTICONONLINE) {
+        if (当前下载模式 != NetDownloadTo.CLOUDEMOTICONREFRESH) {
             alldata = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
         }
         if(alldata == nil)
@@ -96,13 +96,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             p_emodata = alldata!
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataok2", object: 网址和目标位置序号数组)
+        NSNotificationCenter.defaultCenter().postNotificationName("loaddataoks", object: 网址和目标位置序号数组)
         statBar.hideMsg()
         UIApplication.sharedApplication().networkActivityIndicatorVisible = false
         全局_网络繁忙 = false
     }
     
-    func loadwebdataokf(notification:NSNotification)
+    func loadwebdataokce(notification:NSNotification)
     {
         let 网址和目标位置序号数组:NSArray = notification.object as NSArray
         let 网址:NSString = 网址和目标位置序号数组.objectAtIndex(0) as NSString
@@ -111,10 +111,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let 当前下载目标位置:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
         let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
         if (请求的数据数组 != nil) {
-            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONONLINE) {
+            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONREFRESH) {
                 p_emodata = 请求的数据数组!
-//            } else if (当前下载目标位置 == NetDownloadTo.SOURCEMANAGER) {
-//
             }
         }
         

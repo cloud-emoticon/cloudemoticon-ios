@@ -25,7 +25,7 @@ enum NetDownloadTo:Int
     case NONE = 0
     case CLOUDEMOTICON = 1
     case SOURCEMANAGER = 2
-    case CLOUDEMOTICONONLINE = 3
+    case CLOUDEMOTICONREFRESH = 3
 }
 var p_tempString:NSString = ""
 

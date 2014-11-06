@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>InputTest.xcscheme</key>
+		<key>com.yukarimeow.Comtest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>3</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>533E863B19B7145D002DB43F</key>
+		<key>8B5DBD591A08B26C00C5C2BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>533E864D19B7145D002DB43F</key>
+		<key>8B5DBD6E1A08B26C00C5C2BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>

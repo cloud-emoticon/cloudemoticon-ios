@@ -1,15 +1,15 @@
 //
-//  InputTestTests.swift
-//  InputTestTests
+//  com_yukarimeow_ComtestTests.swift
+//  com.yukarimeow.ComtestTests
 //
-//  Created by 神楽坂雅詩 on 14/9/3.
-//  Copyright (c) 2014年 神楽坂雅詩. All rights reserved.
+//  Created by 神楽坂紫 on 14/11/4.
+//  Copyright (c) 2014年 神楽坂紫. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class InputTestTests: XCTestCase {
+class com_yukarimeow_ComtestTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

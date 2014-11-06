@@ -16,19 +16,19 @@ class NotificationView: UIView {
     override init(frame: CGRect) {
         super.init(frame: CGRectMake(frame.origin.x, frame.origin.y - 4, frame.size.width, frame.size.height + 8))
         self.backgroundColor = UIColor.clearColor()
-        self.alpha = 0.0
+        self.alpha = 0
         self.layer.shadowColor = UIColor.blackColor().CGColor
         self.layer.shadowOffset = CGSizeMake(0, 0)
         self.layer.shadowOpacity = 1.0
         
         let 子元素坐标:CGRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
         let 背景颜色:UIView = UIView(frame: 子元素坐标)
-        背景颜色.backgroundColor = UIColor.blackColor()
-        背景颜色.alpha = 0.7
+        背景颜色.backgroundColor = UIColor.whiteColor()
+        背景颜色.alpha = 1
         self.addSubview(背景颜色)
         显示文本.frame = 子元素坐标
         显示文本.textAlignment = NSTextAlignment.Center
-        显示文本.textColor = UIColor.whiteColor()
+        显示文本.textColor = UIColor.blackColor()
         显示文本.lineBreakMode = NSLineBreakMode.ByCharWrapping
         显示文本.numberOfLines = 0
         self.addSubview(显示文本)
