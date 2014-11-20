@@ -267,10 +267,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func load(notification:NSNotification)
-    {
-        载入本地数据()
-    }
+//    func load(notification:NSNotification)
+//    {
+//        载入本地数据()
+//    }
     
     func loadwebdataoks(notification:NSNotification)
     {
@@ -485,10 +485,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-//    func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
-//    {
-//        return "喵"
-//    }
+    func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
+    {
+        return lang.uage("删掉喵")
+    }
 //    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
 //    {
 //        return UITableViewCellEditingStyle.Delete

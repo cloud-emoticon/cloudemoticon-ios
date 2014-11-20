@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -203,7 +203,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noti29.png" translatesAutoresizingMaskIntoConstraints="NO" id="PMk-KK-dUm">
-                                <rect key="frame" x="200" y="172" width="200" height="360"/>
+                                <rect key="frame" x="185.5" y="172" width="229" height="412"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="PMk-KK-dUm" secondAttribute="height" multiplier="5:9" id="QEt-pE-rA9"/>
                                 </constraints>
@@ -221,9 +221,8 @@
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1Pr-ca-07z" secondAttribute="trailing" id="JGP-mc-3Xq"/>
-                            <constraint firstItem="J61-N2-PY7" firstAttribute="top" secondItem="PMk-KK-dUm" secondAttribute="bottom" constant="68" id="S8V-z8-xsr"/>
+                            <constraint firstItem="J61-N2-PY7" firstAttribute="top" secondItem="PMk-KK-dUm" secondAttribute="bottom" constant="16" id="S8V-z8-xsr"/>
                             <constraint firstAttribute="centerX" secondItem="PMk-KK-dUm" secondAttribute="centerX" id="aYR-kH-1Zc"/>
-                            <constraint firstItem="J61-N2-PY7" firstAttribute="top" secondItem="PMk-KK-dUm" secondAttribute="bottom" constant="68" id="kek-Df-jtE"/>
                             <constraint firstItem="1Pr-ca-07z" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="mGd-wJ-pxl"/>
                             <constraint firstItem="1Pr-ca-07z" firstAttribute="top" secondItem="LxS-5k-5rI" secondAttribute="top" constant="64" id="nYA-Ao-YsG"/>
                             <constraint firstItem="PMk-KK-dUm" firstAttribute="top" secondItem="1Pr-ca-07z" secondAttribute="bottom" constant="8" id="ndB-sJ-OXf"/>
@@ -296,12 +295,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="input70.png" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-TA-6Kq">
-                                <rect key="frame" x="201" y="192" width="198" height="356"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="CSA-TA-6Kq" secondAttribute="height" multiplier="5:9" id="lPy-3T-Tc6"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4t-m7-I6c">
                                 <rect key="frame" x="0.0" y="64" width="600" height="100"/>
                                 <constraints>
@@ -311,6 +304,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="input70.png" translatesAutoresizingMaskIntoConstraints="NO" id="CSA-TA-6Kq">
+                                <rect key="frame" x="185.5" y="172" width="229" height="412"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="CSA-TA-6Kq" secondAttribute="height" multiplier="5:9" id="lPy-3T-Tc6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -318,9 +317,8 @@
                             <constraint firstItem="CSA-TA-6Kq" firstAttribute="top" secondItem="V4t-m7-I6c" secondAttribute="bottom" constant="8" id="4ID-hw-TAO"/>
                             <constraint firstAttribute="centerX" secondItem="CSA-TA-6Kq" secondAttribute="centerX" id="D4r-ev-bcX"/>
                             <constraint firstItem="V4t-m7-I6c" firstAttribute="top" secondItem="EKt-Su-rCl" secondAttribute="top" constant="64" id="NBv-de-WS8"/>
-                            <constraint firstItem="6YJ-p1-Imv" firstAttribute="top" secondItem="CSA-TA-6Kq" secondAttribute="bottom" constant="52" id="Vgu-su-tTh"/>
+                            <constraint firstItem="6YJ-p1-Imv" firstAttribute="top" secondItem="CSA-TA-6Kq" secondAttribute="bottom" constant="16" id="WoU-e0-qw7"/>
                             <constraint firstItem="V4t-m7-I6c" firstAttribute="leading" secondItem="EKt-Su-rCl" secondAttribute="leading" id="cX3-Cf-aJx"/>
-                            <constraint firstItem="6YJ-p1-Imv" firstAttribute="top" secondItem="CSA-TA-6Kq" secondAttribute="bottom" constant="52" id="o2j-hL-9kM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="颜文字输入法" id="TcY-Wh-mKM"/>
@@ -330,7 +328,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wef-UK-r5g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3201" y="67"/>
+            <point key="canvasLocation" x="3188" y="67"/>
         </scene>
         <!--云颜文字-->
         <scene sceneID="Cbm-cD-eJE">
@@ -535,8 +533,8 @@
         <image name="basicbg.png" width="640" height="1136"/>
         <image name="edit-vector.png" width="30" height="30"/>
         <image name="idea-vector.png" width="30" height="30"/>
-        <image name="input70.png" width="280" height="497"/>
-        <image name="noti29.png" width="280" height="497"/>
+        <image name="input70.png" width="1088" height="1930"/>
+        <image name="noti29.png" width="1082" height="1930"/>
         <image name="settings-vector.png" width="30" height="30"/>
         <image name="shake.png" width="600" height="574"/>
         <image name="shared-vector.png" width="30" height="30"/>
