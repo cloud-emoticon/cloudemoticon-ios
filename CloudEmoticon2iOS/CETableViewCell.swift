@@ -68,8 +68,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             手势.delegate = self
             覆盖视图.backgroundColor = UIColor.clearColor()
             覆盖视图.addGestureRecognizer(手势)
-            self.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-            self.textLabel.numberOfLines = 0
+            self.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+            self.textLabel?.numberOfLines = 0
 //            self.textLabel.textColor = UIColor.clearColor()
 //            self.主文字.textColor = UIColor.blackColor()
             NSNotificationCenter.defaultCenter().addObserver(self, selector: "取消单元格左滑方法:", name: "取消单元格左滑通知", object: nil)

@@ -105,7 +105,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识)
             单元格!.selectionStyle = UITableViewCellSelectionStyle.None
             单元格!.accessoryType = UITableViewCellAccessoryType.None
-            单元格!.imageView.backgroundColor = UIColor.lightGrayColor()
+            单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
         }
         
         return 单元格!

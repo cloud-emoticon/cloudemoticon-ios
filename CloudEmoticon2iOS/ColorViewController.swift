@@ -98,10 +98,10 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
         }
         if(indexPath.row <= 1) {
-        cell?.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
         }
         if(indexPath.row == 2){
-            cell?.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
+            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
             cell?.selectionStyle = .None
             设置背景不透明度.frame = CGRectMake(90, 13, self.view.frame.size.width - 100, 20)
             设置背景不透明度.minimumValue = 0

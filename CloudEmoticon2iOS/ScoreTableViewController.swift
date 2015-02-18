@@ -322,9 +322,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as NSString
         let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as NSString
         if (当前颜文字库记录名称.isEqualToString("")) {
-            单元格!.textLabel.text = 当前颜文字库原始名称
+            单元格!.textLabel?.text = 当前颜文字库原始名称
         } else {
-            单元格!.textLabel.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
+            单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
         }
         if (当前颜文字库来源网址.isEqualToString(p_nowurl)) {
             单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark

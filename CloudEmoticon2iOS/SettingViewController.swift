@@ -104,9 +104,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if(indexPath.section == 0){
-        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as NSString
         } else {
-        cell!.textLabel.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
         }
         
         if (cell!.contentView.subviews.count > 1) {

@@ -426,7 +426,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
-            cell!.textLabel.text = groupname
+            cell!.textLabel?.text = groupname
             return cell!
         } else {
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell

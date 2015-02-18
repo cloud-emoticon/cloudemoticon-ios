@@ -60,7 +60,7 @@ class SetTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("SetNav", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel.text = list.objectAtIndex(indexPath.row) as NSString
+        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
 
         return cell
     }

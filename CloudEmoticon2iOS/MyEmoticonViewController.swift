@@ -330,14 +330,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
             颜文字名称! = 当前单元格数据.objectAtIndex(1) as NSString
         }
-        cell?.textLabel.text = 颜文字
+        cell?.textLabel?.text = 颜文字
         if (颜文字名称 != nil) {
             cell?.detailTextLabel?.text = 颜文字名称!
         } else {
             cell?.detailTextLabel?.text = ""
         }
-        cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
-        cell?.textLabel.numberOfLines = 0
+        cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        cell?.textLabel?.numberOfLines = 0
         
         return cell!
     }

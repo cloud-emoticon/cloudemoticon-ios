@@ -221,11 +221,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
-            cell!.textLabel.textAlignment = NSTextAlignment.Center
+            cell!.textLabel?.textAlignment = NSTextAlignment.Center
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
-        cell?.textLabel.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         
         return cell!
     }
