@@ -11,6 +11,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>CloudEmoticon2iOS WatchKit App.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>CloudEmoticon2iOS.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -25,6 +30,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>5328C7A819B70D0D00C425A8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53918E9A1AB7065C00CE7A68</key>
 		<dict>
 			<key>primary</key>
 			<true/>
