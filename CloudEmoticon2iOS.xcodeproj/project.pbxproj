@@ -1391,6 +1391,7 @@
 				53918EAD1AB7065C00CE7A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53918EB11AB7065C00CE7A68 /* Build configuration list for PBXNativeTarget "CloudEmoticon2iOS WatchKit Extension" */ = {
 			isa = XCConfigurationList;
@@ -1399,6 +1400,7 @@
 				53918EAB1AB7065C00CE7A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		53DF28E8196B9CF40058AA42 /* Build configuration list for PBXProject "CloudEmoticon2iOS" */ = {
 			isa = XCConfigurationList;
