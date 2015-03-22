@@ -1,0 +1,25 @@
+CloudEmoticon2 - iOS App Development
+CloudEmoticon2Kits - iOS App Development
+com.yukariyashi.cloudemoticon2.*
+
+group.CE2Keyboard
+group.CloudEmoticon
+
+CloudEmoticon2 - iOS App Development
+com.yukariyashi.cloudemoticon2
+
+CloudEmoticon2CE2NCWidget - iOS App Development
+com.yukariyashi.cloudemoticon2.CE2NCWidget
+com.yukariyashi.cloudemoticon2.cewidget
+
+CloudEmoticon2EmoticonKeyboard - iOS App Development
+com.yukariyashi.cloudemoticon2.EmoticonKeyboard
+com.yukariyashi.cloudemoticon2.cekeyboard
+
+CloudEmoticon2Watchkitextension - iOS App Development
+com.yukariyashi.cloudemoticon2.watchkitextension
+com.yukariyashi.cloudemoticon2.cewatchex
+
+CloudEmoticon2Watchkitapp - iOS App Development
+com.yukariyashi.cloudemoticon2.watchkitapp
+com.yukariyashi.cloudemoticon2.cewatchapp

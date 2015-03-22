@@ -100,7 +100,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             表格.reloadData()
             保存历史记录数据()
             if (appgroup) {
-                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
                 containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
                 var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
                 var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
@@ -231,7 +231,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         var value:NSString? = nil
         if (appgroup) {
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
             containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
             value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         }
@@ -257,7 +257,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         将数据载入表格(文件中的数据)
         var value:NSString? = nil
         if (appgroup) {
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
             containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
             value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         }

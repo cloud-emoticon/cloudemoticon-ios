@@ -135,7 +135,7 @@ class FileManager: NSObject {
     
     func 补充空白数据()
     {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)

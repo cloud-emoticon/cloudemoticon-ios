@@ -148,7 +148,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 初始化数据()
     {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         var value:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(value != nil && value != "") {
@@ -209,7 +209,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     func 保存数据到主程序()
     {
         let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组]
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
         要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)

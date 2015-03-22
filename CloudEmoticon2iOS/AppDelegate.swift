@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         全局_网络繁忙 = false
         
 //        var err:NSError = NSError()
-//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         
 //        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 //        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
@@ -142,7 +142,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         //p_emodata
-        
     }
 
     func applicationWillEnterForeground(application: UIApplication!) {

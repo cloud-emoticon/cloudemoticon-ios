@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-               BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-               BlueprintName = "CloudEmoticon2iOS WatchKit App"
+               BuildableName = "cewatchapp.app"
+               BlueprintName = "cewatchapp"
                ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -29,8 +29,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "53918E901AB7065C00CE7A68"
-               BuildableName = "CloudEmoticon2iOS WatchKit Extension.appex"
-               BlueprintName = "CloudEmoticon2iOS WatchKit Extension"
+               BuildableName = "cewatchex.appex"
+               BlueprintName = "cewatchex"
                ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -61,8 +61,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-            BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-            BlueprintName = "CloudEmoticon2iOS WatchKit App"
+            BuildableName = "cewatchapp.app"
+            BlueprintName = "cewatchapp"
             ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-            BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-            BlueprintName = "CloudEmoticon2iOS WatchKit App"
+            BuildableName = "cewatchapp.app"
+            BlueprintName = "cewatchapp"
             ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -92,8 +92,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-            BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-            BlueprintName = "CloudEmoticon2iOS WatchKit App"
+            BuildableName = "cewatchapp.app"
+            BlueprintName = "cewatchapp"
             ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -113,8 +113,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-            BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-            BlueprintName = "CloudEmoticon2iOS WatchKit App"
+            BuildableName = "cewatchapp.app"
+            BlueprintName = "cewatchapp"
             ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
          </BuildableReference>
       </RemoteRunnable>
@@ -122,8 +122,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "53918E9A1AB7065C00CE7A68"
-            BuildableName = "CloudEmoticon2iOS WatchKit App.app"
-            BlueprintName = "CloudEmoticon2iOS WatchKit App"
+            BuildableName = "cewatchapp.app"
+            BlueprintName = "cewatchapp"
             ReferencedContainer = "container:CloudEmoticon2iOS.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

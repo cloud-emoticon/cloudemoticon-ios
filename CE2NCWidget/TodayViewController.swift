@@ -50,7 +50,7 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var emoText: UILabel!
     
     @IBAction func AddtoCustom(sender: AnyObject) {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CE2Keyboard")!
+        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         var value:NSString
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
@@ -60,7 +60,7 @@ class TodayViewController: UIViewController {
             自定义数据.addObject(文件中的数据.objectAtIndex(1))
             自定义数据.addObject([emoText.text!,""])
             var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
-            value = ArrayString().array2json(数据)
+            value                                                                                                                                                                                   = ArrayString().array2json(数据)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
         } else {
             var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
