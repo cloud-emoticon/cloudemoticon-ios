@@ -24,11 +24,11 @@ class SetTableViewController: UITableViewController {
         list.addObject(lang.uage("关于"))
         self.title = lang.uage("设置")
 
-        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
-        bgpview.sendSubviewToBack(self.view)
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-        bgpview.alpha = 0.3
-        self.view.addSubview(bgpview)
+//        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
+//        bgpview.sendSubviewToBack(self.view)
+//        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+//        bgpview.alpha = 0.3
+//        self.view.addSubview(bgpview)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

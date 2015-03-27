@@ -22,11 +22,13 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("输入法"))
         self.title = lang.uage("附加工具")
         
-        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)
-        bgpview.sendSubviewToBack(self.view)
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-        bgpview.alpha = 0.3
-        self.view.addSubview(bgpview)
+//        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)
+//        bgpview.sendSubviewToBack(self.view)
+//        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+//        bgpview.alpha = 0.3
+//        self.view.addSubview(bgpview)
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
