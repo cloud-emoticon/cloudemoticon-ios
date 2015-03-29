@@ -12,12 +12,12 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
     var 表格视图: UITableView!
     var 当前数据数组:NSMutableArray = NSMutableArray()
-    let 按钮文字数组:NSArray = ["🌐","历史","收藏","自定义","退格","收起"]
+    let 按钮文字数组:NSArray = ["🌐","历史","收藏","自定义","◀️","⏬"]
     let 按钮命令数组:NSArray = ["advanceToNextInputMode","历史按钮:","收藏按钮:","自定义按钮:","删除按钮","dismissKeyboard"]
     var 全部收藏数组:NSMutableArray = NSMutableArray()
     var 全部自定数组:NSMutableArray = NSMutableArray()
     var 全部历史数组:NSMutableArray = NSMutableArray()
-    
+    var 功能按钮数组:NSMutableArray = NSMutableArray()
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
@@ -97,11 +97,25 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0)
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             }
+            功能按钮数组.addObject(按钮)
+        }
+        //切换按钮选中颜色(103)
+    }
+    
+    func 切换按钮选中颜色(当前按钮Tag:Int) {
+        for 当前按钮对象 in 功能按钮数组 {
+            var 当前按钮:UIButton = 当前按钮对象 as UIButton
+            if (当前按钮.tag != 当前按钮Tag) {
+                当前按钮.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            } else {
+                当前按钮.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+            }
         }
     }
     
     func 历史按钮(sender:UIButton) {
         当前数据数组.removeAllObjects()
+        切换按钮选中颜色(sender.tag)
         for 颜文字数组 in 全部历史数组 {
             当前数据数组.addObject(颜文字数组.objectAtIndex(0))
         }
@@ -110,6 +124,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 收藏按钮(sender:UIButton) {
         当前数据数组.removeAllObjects()
+        切换按钮选中颜色(sender.tag)
         for 颜文字数组 in 全部收藏数组 {
             当前数据数组.addObject(颜文字数组.objectAtIndex(0))
         }
@@ -117,6 +132,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     }
     func 自定义按钮(sender:UIButton) {
         当前数据数组.removeAllObjects()
+        切换按钮选中颜色(sender.tag)
         for 颜文字数组 in 全部自定数组 {
             当前数据数组.addObject(颜文字数组.objectAtIndex(0))
         }
@@ -172,21 +188,21 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     }
 
     override func textDidChange(textInput: UITextInput) {
-        var textColor: UIColor
-        var buttonColor: UIColor
-        var proxy = self.textDocumentProxy as UITextDocumentProxy
-        if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
-            textColor = UIColor.whiteColor()
-            buttonColor = UIColor.cyanColor()
-        } else {
-            textColor = UIColor.blackColor()
-            buttonColor = UIColor.blueColor()
-        }
-        
-        for i in 0...按钮文字数组.count - 1 {
-            let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
-            当前按钮.setTitleColor(buttonColor, forState: .Normal)
-        }
+//        var textColor: UIColor
+//        var buttonColor: UIColor
+//        var proxy = self.textDocumentProxy as UITextDocumentProxy
+//        if proxy.keyboardAppearance == UIKeyboardAppearance.Dark {
+//            textColor = UIColor.whiteColor()
+//            buttonColor = UIColor.cyanColor()
+//        } else {
+//            textColor = UIColor.blackColor()
+//            buttonColor = UIColor.blueColor()
+//        }
+//        
+//        for i in 0...按钮文字数组.count - 1 {
+//            let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
+//            当前按钮.setTitleColor(buttonColor, forState: .Normal)
+//        }
         
     }
     
@@ -195,6 +211,23 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         let 要复制的颜文字:NSString = 当前数据数组.objectAtIndex(indexPath.row) as NSString
         (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).insertText(要复制的颜文字)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        //for 当前历史条目对象 in 全部历史数组 {
+        for (var i:Int = 0; i < 全部历史数组.count; i++) {
+//            if (i >= 全部历史数组.count) {
+//                break
+//            }
+            let 当前历史条目对象:AnyObject = 全部历史数组.objectAtIndex(i)
+            let 当前历史条目数组:NSArray = 当前历史条目对象 as NSArray
+            let 当前历史条目:NSString = 当前历史条目数组.objectAtIndex(0) as NSString
+            //NSLog("当前历史条目=\(当前历史条目),要复制的颜文字=\(要复制的颜文字)")
+            if (当前历史条目.isEqualToString(要复制的颜文字)) {
+                //NSLog("【删除】\n")
+                全部历史数组.removeObjectAtIndex(i)
+                if (i > 0) {
+                    i--
+                }
+            }
+        }
         全部历史数组.insertObject([要复制的颜文字,""], atIndex: 0)
         while (true) {
             if (全部历史数组.count > 50) {

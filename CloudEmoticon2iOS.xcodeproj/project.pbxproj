@@ -16,6 +16,7 @@
 		533E537A19B861E700DFD2CB /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537719B861E700DFD2CB /* language-zh-Hant.plist */; };
 		533E537B19B861E700DFD2CB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537819B861E700DFD2CB /* Language.swift */; };
 		533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537C19B861FE00DFD2CB /* SetTableViewController.swift */; };
+		5343EEDC1AC82CB200FE1301 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5343EED81AC82AB600FE1301 /* CoreMedia.framework */; };
 		5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5346D92F1993181C00CEFA4B /* XMLDictionary.m */; };
 		5346D9321993186500CEFA4B /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D9311993186500CEFA4B /* XMLReader.swift */; };
 		5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D93419931C9200CEFA4B /* SwitchCoder.swift */; };
@@ -203,6 +204,7 @@
 		533E537719B861E700DFD2CB /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hant.plist"; path = "CloudEmoticon2iOS/language-zh-Hant.plist"; sourceTree = "<group>"; };
 		533E537819B861E700DFD2CB /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = CloudEmoticon2iOS/Language.swift; sourceTree = "<group>"; };
 		533E537C19B861FE00DFD2CB /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
+		5343EED81AC82AB600FE1301 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5346D92E1993181C00CEFA4B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		5346D92F1993181C00CEFA4B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
 		5346D9311993186500CEFA4B /* XMLReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XMLReader.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5343EEDC1AC82CB200FE1301 /* CoreMedia.framework in Frameworks */,
 				8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */,
 				53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */,
 			);
@@ -623,6 +626,7 @@
 		8BF8ACF3199335D7001207FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5343EED81AC82AB600FE1301 /* CoreMedia.framework */,
 				8B32C00519AF743F00F9AC50 /* CoreMotion.framework */,
 				538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */,
 				53995A92199245BE008B12E0 /* libxml2.2.dylib */,
