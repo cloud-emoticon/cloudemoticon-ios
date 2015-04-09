@@ -30,9 +30,6 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         super.init(style: style)
     }
     
-    override init() {
-        super.init()
-    }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -70,13 +67,13 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             添加本地源()
         } else {
             
-            源列表.addObjectsFromArray(刚载入的源列表)
+            源列表.addObjectsFromArray(刚载入的源列表 as [AnyObject])
         }
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
         self.navigationItem.rightBarButtonItem = 右上按钮
-        self.title = lang.uage("源管理")
+        self.title = lang.uage("源管理") as String
         self.tableView.reloadData()
     }
     
@@ -143,9 +140,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 if (第一遍循环) {
                     第一遍循环 = false
                 } else {
-                    let 当前颜文字数组:NSArray = 当前颜文字对象 as NSArray
-                    let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as NSString
-                    if (当前颜文字网址.isEqualToString(当前颜文字库网址)) {
+                    let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
+                    let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
+                    if (当前颜文字网址.isEqualToString(当前颜文字库网址 as String)) {
                         重复 = true
                     }
                 }
@@ -155,7 +152,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 临时数据 = [当前颜文字库记录名称,当前颜文字库网址,删除权限]
             } else {
                 NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
-                let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了"), message: "", delegate: nil, cancelButtonTitle: lang.uage("确定"))
+                let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了") as String, message: "", delegate: nil, cancelButtonTitle: lang.uage("确定") as String)
                 源已在列表中提示框.show()
             }
         }
@@ -172,8 +169,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             let indexPath:NSIndexPath = NSIndexPath(forRow: 源列表.count - 2, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             if (源列表.count > 2) {
-                var 源列表已有数据:NSArray = 源列表.objectAtIndex(1) as NSArray
-                var 当前网址:NSString = 源列表已有数据.objectAtIndex(2) as NSString
+                var 源列表已有数据:NSArray = 源列表.objectAtIndex(1) as! NSArray
+                var 当前网址:NSString = 源列表已有数据.objectAtIndex(2) as! NSString
                 if (当前网址.isEqualToString("localhost")) {
                     源列表.removeObjectAtIndex(1)
                     let 要删除的行:NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -201,10 +198,10 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 文件清理()
     {
         let 文档文件夹:NSString = 文件管理器.DocumentDirectoryAddress()
-        var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹, error: nil)!
+        var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹 as String, error: nil)!
         var 要删除的文件:NSMutableArray = NSMutableArray()
         for 当前文件名对象 in 全部文件 {
-            let 当前文件名:NSString = 当前文件名对象 as NSString
+            let 当前文件名:NSString = 当前文件名对象 as! NSString
             let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
             if (当前文件前缀.isEqualToString("cache-")) {
                 要删除的文件.addObject(当前文件名)
@@ -216,23 +213,23 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             if (第一遍循环) {
                 第一遍循环 = false
             } else {
-                let 当前颜文字数组:NSArray = 当前颜文字对象 as NSArray
-                let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as NSString
+                let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
+                let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
                 let MD5加密:MD5 = MD5()
                 for (var i:Int = 0; i < 要删除的文件.count; i++) {
-                    let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as NSString
-                    let 当前文件名:NSString = NSString(format: "cache-%@.plist", MD5加密.md5(当前颜文字网址))
-                    if (要删除的文件名.isEqualToString(当前文件名)) {
+                    let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as! NSString
+                    let 当前文件名:NSString = NSString(format: "cache-%@.plist", MD5加密.md5(当前颜文字网址 as String) as String)
+                    if (要删除的文件名.isEqualToString(当前文件名 as String)) {
                         要删除的文件.removeObjectAtIndex(i)
                         break;
                     }
                 }
                 for 要删除的文件名对象 in 要删除的文件 {
-                    let 要删除的文件名:NSString = 要删除的文件名对象 as NSString
+                    let 要删除的文件名:NSString = 要删除的文件名对象 as! NSString
                     let 要删除文件完整路径:NSString = NSString(format: "%@%@", 文档文件夹,要删除的文件名)
                     println("[源管理]删除缓存 \(要删除文件完整路径)")
                     var err:NSError? = nil
-                    全局_文件管理.removeItemAtPath(要删除文件完整路径, error: &err)
+                    全局_文件管理.removeItemAtPath(要删除文件完整路径 as String, error: &err)
                     if (err != nil) {
                         println("[源管理]删除缓存失败。")
                     }
@@ -250,7 +247,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 左上按钮点击(sender: UIBarButtonItem) {
 //        用户设置.synchronize()
         if (self.tableView.editing) {
-            var 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
+            var 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源") as String, message: "", delegate: self, cancelButtonTitle: lang.uage("取消") as String, otherButtonTitles: lang.uage("添加") as String, lang.uage("从源商店添加") as String)
             添加源对话框.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
             添加源对话框.tag = 200
@@ -271,7 +268,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
     
     // MARK: - 提示框被点击
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
         var 添加源输入框:
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
@@ -289,11 +286,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 右上按钮点击(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成") as String
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加") as String
         } else {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑") as String
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回") as String
         }
         
     }
@@ -311,25 +308,25 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     // MARK: - 表格内容
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let 单元格标识:NSString = "Cell"
-        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识) as? UITableViewCell
+        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
         if (单元格 == nil) {
-            单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识)
+            单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
             单元格!.selectionStyle = UITableViewCellSelectionStyle.None
             单元格!.accessoryType = UITableViewCellAccessoryType.None
         }
-        let 当前颜文字库:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as NSArray
-        let 当前颜文字库记录名称:NSString = 当前颜文字库.objectAtIndex(0) as NSString
-        let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as NSString
-        let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as NSString
+        let 当前颜文字库:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as! NSArray
+        let 当前颜文字库记录名称:NSString = 当前颜文字库.objectAtIndex(0) as! NSString
+        let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as! NSString
+        let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as! NSString
         if (当前颜文字库记录名称.isEqualToString("")) {
-            单元格!.textLabel?.text = 当前颜文字库原始名称
+            单元格!.textLabel?.text = 当前颜文字库原始名称 as String
         } else {
-            单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称, 当前颜文字库原始名称)
+            单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称 as String, 当前颜文字库原始名称 as String) as String
         }
-        if (当前颜文字库来源网址.isEqualToString(p_nowurl)) {
+        if (当前颜文字库来源网址.isEqualToString(p_nowurl as String)) {
             单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
         }
-        单元格!.detailTextLabel?.text = 当前颜文字库来源网址
+        单元格!.detailTextLabel?.text = 当前颜文字库来源网址 as String
         return 单元格!
     }
     
@@ -340,14 +337,14 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
 //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             // MARK: - 删除源
             var 当前行:NSInteger = indexPath.row + 1
-            let 当前源对象:NSArray = 源列表.objectAtIndex(当前行) as NSArray
-            let 当前源对象权限:NSArray = 当前源对象.objectAtIndex(3) as NSArray
-            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as NSString
+            let 当前源对象:NSArray = 源列表.objectAtIndex(当前行) as! NSArray
+            let 当前源对象权限:NSArray = 当前源对象.objectAtIndex(3) as! NSArray
+            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
             var 当前源对象是否可删除:Bool = false
             for 当前权限用户名对象 in 当前源对象权限
             {
-                let 当前权限用户名:NSString = 当前权限用户名对象 as NSString
-                if (当前权限用户名.isEqualToString("user") || 当前权限用户名.isEqualToString(p_nowUserName)) {
+                let 当前权限用户名:NSString = 当前权限用户名对象 as! NSString
+                if (当前权限用户名.isEqualToString("user") || 当前权限用户名.isEqualToString(p_nowUserName as String)) {
                     当前源对象是否可删除 = true
                     break
                 }
@@ -363,7 +360,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 文件管理器.saveSources(源列表)
                 选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
             } else {
-                UIAlertView(title: lang.uage("无法删除这个源"), message: lang.uage("不具备删除这个源的权限"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
+                UIAlertView(title: lang.uage("无法删除这个源") as String, message: lang.uage("不具备删除这个源的权限") as String, delegate: nil, cancelButtonTitle: lang.uage("取消") as String).show()
             }
             
         } else if editingStyle == .Insert {
@@ -396,8 +393,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 选择源(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         if (源列表.count > 0) {
-            let 当前源对象:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as NSArray
-            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as NSString
+            let 当前源对象:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as! NSArray
+            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
             for i in 0...(源列表.count-2)
             {
                 var 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
@@ -415,7 +412,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
     func 保存源列表(o_url:NSString)
     {
-        if (!o_url.isEqualToString(p_nowurl)) {
+        if (!o_url.isEqualToString(p_nowurl as String)) {
             p_nowurl = o_url
             用户设置.setValue(p_nowurl, forKey: "nowurl")
             用户设置.synchronize()
@@ -423,7 +420,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
         override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
         {
-            return lang.uage("删掉喵")
+            return lang.uage("删掉喵") as String
         }
 
 }

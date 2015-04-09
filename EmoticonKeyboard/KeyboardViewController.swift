@@ -56,8 +56,8 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         
         for i in 0...按钮文字数组.count - 1
         {
-            let 按钮:UIButton = UIButton.buttonWithType(.System) as UIButton
-            let 模板按钮:UIButton = UIButton.buttonWithType(.System) as UIButton
+            let 按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
+            let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
             模板按钮.frame = CGRectMake(0, 0, 0, 0)
             模板按钮.sizeToFit()
             模板按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -66,10 +66,10 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             if (i > 0) {
                 上一个按钮 = self.view.viewWithTag(100 + i - 1)!
             }
-            按钮.setTitle(按钮文字数组.objectAtIndex(i) as NSString, forState: .Normal)
+            按钮.setTitle(按钮文字数组.objectAtIndex(i) as? String, forState: .Normal)
             按钮.sizeToFit()
             按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
-            按钮.addTarget(self, action: Selector(按钮命令数组.objectAtIndex(i) as NSString), forControlEvents: .TouchUpInside)
+            按钮.addTarget(self, action: Selector(按钮命令数组.objectAtIndex(i) as! String), forControlEvents: .TouchUpInside)
             if (i == 0){
                 按钮.backgroundColor = UIColor(red: 178.0/255.0, green: 185.0/255.0, blue: 196.0/255.0, alpha: 1)
             } else {
@@ -104,7 +104,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 切换按钮选中颜色(当前按钮Tag:Int) {
         for 当前按钮对象 in 功能按钮数组 {
-            var 当前按钮:UIButton = 当前按钮对象 as UIButton
+            var 当前按钮:UIButton = 当前按钮对象 as! UIButton
             if (当前按钮.tag != 当前按钮Tag) {
                 当前按钮.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             } else {
@@ -142,7 +142,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     func 按钮选择(sender:UIButton)
     {
         for i in 0...按钮文字数组.count - 1 {
-            let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as UIButton
+            let 当前按钮:UIButton = self.view.viewWithTag(100 + i) as! UIButton
             if (当前按钮.tag == sender.tag) {
                 当前按钮.backgroundColor = UIColor.whiteColor()
 //                当前按钮.layer.borderColor = CGColorCreate(CGColorSpaceCreateDeviceRGB(), [0,0,0,0.3])
@@ -159,7 +159,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     }
     
     func 删除按钮() {
-        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).deleteBackward()
+        (self.textDocumentProxy as! UITextDocumentProxy as UIKeyInput).deleteBackward()
     }
     
     func 初始化数据()
@@ -169,10 +169,10 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var value:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
         if(value != nil && value != "") {
             let 全部数据数组:NSArray = ArrayString().json2array(value!)
-            全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as NSArray)
-            全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as NSArray)
-            全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as NSArray)
-            收藏按钮(self.view.viewWithTag(102) as UIButton)
+            全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as! [AnyObject])
+            全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as! [AnyObject])
+            全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as! [AnyObject])
+            收藏按钮(self.view.viewWithTag(102) as! UIButton)
         } else {
             println("没有数据")
         }
@@ -208,8 +208,8 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let 要复制的颜文字:NSString = 当前数据数组.objectAtIndex(indexPath.row) as NSString
-        (self.textDocumentProxy as UITextDocumentProxy as UIKeyInput).insertText(要复制的颜文字)
+        let 要复制的颜文字:NSString = 当前数据数组.objectAtIndex(indexPath.row) as! NSString
+        (self.textDocumentProxy as! UITextDocumentProxy as UIKeyInput).insertText(要复制的颜文字 as String)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         //for 当前历史条目对象 in 全部历史数组 {
         for (var i:Int = 0; i < 全部历史数组.count; i++) {
@@ -217,10 +217,10 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 //                break
 //            }
             let 当前历史条目对象:AnyObject = 全部历史数组.objectAtIndex(i)
-            let 当前历史条目数组:NSArray = 当前历史条目对象 as NSArray
-            let 当前历史条目:NSString = 当前历史条目数组.objectAtIndex(0) as NSString
+            let 当前历史条目数组:NSArray = 当前历史条目对象 as! NSArray
+            let 当前历史条目:NSString = 当前历史条目数组.objectAtIndex(0) as! NSString
             //NSLog("当前历史条目=\(当前历史条目),要复制的颜文字=\(要复制的颜文字)")
-            if (当前历史条目.isEqualToString(要复制的颜文字)) {
+            if (当前历史条目.isEqualToString(要复制的颜文字 as String)) {
                 //NSLog("【删除】\n")
                 全部历史数组.removeObjectAtIndex(i)
                 if (i > 0) {
@@ -251,14 +251,14 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.textLabel?.textAlignment = NSTextAlignment.Center
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
-        cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as? String
         
         return cell!
     }

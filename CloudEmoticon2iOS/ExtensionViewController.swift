@@ -14,8 +14,8 @@ class ExtensionViewController: UIViewController {
     @IBOutlet weak var ExtImage: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("扩展功能")
-    ExtTips.text = lang.uage("通知中心扩展")
+        self.title = lang.uage("扩展功能") as String
+    ExtTips.text = lang.uage("通知中心扩展") as String
     
         // Do any additional setup after loading the view.
     }

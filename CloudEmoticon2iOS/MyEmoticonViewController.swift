@@ -19,11 +19,11 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
         super.viewDidLoad()
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
-        右上按钮.title = lang.uage("编辑")
+        右上按钮.title = lang.uage("编辑") as String
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
-        self.title = lang.uage("自定表情")
+        self.title = lang.uage("自定表情")as String
         self.tabBarController?.tabBar.translucent = false
         self.navigationController?.navigationBar.translucent = false
         self.language()
@@ -34,7 +34,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
         表格.alpha = 背景透明度
         
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
 
         if(bg != nil){
             bgimage = bg!
@@ -53,9 +53,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     @IBOutlet weak var 内容选择菜单: UISegmentedControl!
     
     func language() {
-        内容选择菜单.setTitle(lang.uage("收藏"), forSegmentAtIndex: 0)
-        内容选择菜单.setTitle(lang.uage("历史记录"), forSegmentAtIndex: 1)
-        内容选择菜单.setTitle(lang.uage("自定义"), forSegmentAtIndex: 2)
+        内容选择菜单.setTitle(lang.uage("收藏") as String, forSegmentAtIndex: 0)
+        内容选择菜单.setTitle(lang.uage("历史记录") as String, forSegmentAtIndex: 1)
+        内容选择菜单.setTitle(lang.uage("自定义") as String, forSegmentAtIndex: 2)
     }
     
     @IBAction func 左上按钮(sender: UIBarButtonItem) {
@@ -68,11 +68,11 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         case 2:
             表格.setEditing(!表格.editing, animated: true)
             if(表格.editing){
-                左上按钮.title = lang.uage("完成")
+                左上按钮.title = lang.uage("完成") as String
                 右上按钮.title = ""
             } else {
-                左上按钮.title = lang.uage("编辑")
-                右上按钮.title = lang.uage("添加")
+                左上按钮.title = lang.uage("编辑") as String
+                右上按钮.title = lang.uage("添加") as String
             }
         default:
             break
@@ -87,10 +87,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             表格.setEditing(!表格.editing, animated: true)
             if (表格.editing) {
                 左上按钮.title = ""
-                右上按钮.title = lang.uage("完成")
+                右上按钮.title = lang.uage("完成") as String
             } else {
                 左上按钮.title = ""
-                右上按钮.title = lang.uage("编辑")
+                右上按钮.title = lang.uage("编辑") as String
             }
             表格.reloadData()
             保存收藏数据()
@@ -111,9 +111,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             break
         case 2:
             if (!表格.editing) {
-                右上按钮.title = lang.uage("添加")
-                左上按钮.title = lang.uage("编辑")
-                var alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
+                右上按钮.title = lang.uage("添加") as String
+                左上按钮.title = lang.uage("编辑") as String
+                var alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字") as String, message: "", delegate: self, cancelButtonTitle: lang.uage("取消") as String, otherButtonTitles: lang.uage("添加") as String)
                 alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
                 var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
                 alert.tag = 300
@@ -122,7 +122,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 alert.show()
             } else {
                 右上按钮.title = ""
-                左上按钮.title = lang.uage("完成")
+                左上按钮.title = lang.uage("完成") as String
             }
             表格.reloadData()
             保存自定义数据()
@@ -132,7 +132,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
     }
     
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
         var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (alertView.tag == 300) {
@@ -149,14 +149,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         let 颜文字名称:NSString = lang.uage("自定义")
         let 要添加的颜文字数组:NSArray = [emoticonstr,""]
         var 自定义:NSMutableArray = NSMutableArray()
-        var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as NSString
+        var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as! NSString
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         var 自定义中已经存在这个颜文字 = false
         for 文件中的颜文字数组对象 in 文件中的数据! {
-            let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as NSArray
-            let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as NSString
+            let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as! NSArray
+            let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as! NSString
             
-            if ( 自定义颜文字.isEqualToString(文件中的颜文字)) {
+            if ( 自定义颜文字.isEqualToString(文件中的颜文字 as String)) {
                 自定义中已经存在这个颜文字 = true
             }
         }
@@ -165,7 +165,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             自定义.addObject(要添加的颜文字数组)
         }
         if (文件中的数据 != nil) {
-            自定义.addObjectsFromArray(文件中的数据!)
+            自定义.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
         文件管理器.SaveArrayToFile(自定义,smode: FileManager.saveMode.CUSTOM)
         保存数据到输入法()
@@ -192,13 +192,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         switch (id) {
         case 0:
             载入收藏数据()
-            右上按钮.title = lang.uage("编辑")
+            右上按钮.title = lang.uage("编辑") as String
             左上按钮.title = ""
             break
         case 1:
             载入历史记录数据()
             左上按钮.title = ""
-            右上按钮.title = lang.uage("清空")
+            右上按钮.title = lang.uage("清空") as String
             break
         case 2:
 //            var value:NSString? = nil
@@ -213,8 +213,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //            }
             载入自定义数据()
-            左上按钮.title = lang.uage("编辑")
-            右上按钮.title = lang.uage("添加")
+            左上按钮.title = lang.uage("编辑") as String
+            右上按钮.title = lang.uage("添加") as String
             break
         default:
             break
@@ -237,7 +237,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
         if(value != nil && value != "") {
             let 输入法中的数据:NSArray? = ArrayString().json2array(value!)
-            let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as NSArray
+            let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as! NSArray
             if ((输入法中的历史记录数据.count != 文件中的数据?.count) && (输入法中的历史记录数据.count != 0)) {
                 println("历史记录：输入法中的数据")
                 将数据载入表格(输入法中的历史记录数据)
@@ -263,7 +263,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
         if(value != nil && value != "") {
             let 通知扩展中的数据:NSArray? = ArrayString().json2array(value!)
-            let 通知扩展中的自定义数据:NSArray =  通知扩展中的数据?.objectAtIndex(1) as NSArray
+            let 通知扩展中的自定义数据:NSArray =  通知扩展中的数据?.objectAtIndex(1) as! NSArray
             if ((通知扩展中的自定义数据.count != 文件中的数据?.count) && (通知扩展中的自定义数据.count != 0)) {
                 println("自定义：载入通知扩展中的数据")
                 将数据载入表格(通知扩展中的自定义数据)
@@ -282,7 +282,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     {
         表格数据.removeAllObjects()
         if (文件中的数据 != nil) {
-            表格数据.addObjectsFromArray(文件中的数据!)
+            表格数据.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
         表格.reloadData()
     }
@@ -318,21 +318,21 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
         }
         
-        let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as NSArray
-        let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as NSString
+        let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
+        let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as! NSString
         var 颜文字名称:NSString?
         if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
-            颜文字名称! = 当前单元格数据.objectAtIndex(1) as NSString
+            颜文字名称! = 当前单元格数据.objectAtIndex(1) as! NSString
         }
-        cell?.textLabel?.text = 颜文字
+        cell?.textLabel?.text = 颜文字 as String
         if (颜文字名称 != nil) {
-            cell?.detailTextLabel?.text = 颜文字名称!
+            cell?.detailTextLabel?.text = 颜文字名称! as String
         } else {
             cell?.detailTextLabel?.text = ""
         }
@@ -348,7 +348,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        let 要复制的文本数组:NSArray = 表格数据.objectAtIndex(indexPath.row) as NSArray
+        let 要复制的文本数组:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
         NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 要复制的文本数组, userInfo: nil)
         if (内容选择菜单.selectedSegmentIndex == 1) {
             载入历史记录数据()
@@ -400,8 +400,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             case 0:
                 var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
                 var nowrow:NSInteger = indexPath.row
-                let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as NSArray
-                let nowemo:NSString = nowrowArr.objectAtIndex(0) as NSString
+                let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
+                let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
                 表格数据.removeObjectAtIndex(nowrow)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 if(文件中的数据 != nil){
@@ -417,8 +417,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             case 2:
                 var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
                 var nowrow:NSInteger = indexPath.row
-                let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as NSArray
-                let nowemo:NSString = nowrowArr.objectAtIndex(0) as NSString
+                let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
+                let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
                 表格数据.removeObjectAtIndex(nowrow)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 if(文件中的数据 != nil){
@@ -436,6 +436,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
     {
-        return lang.uage("删掉喵")
+        return lang.uage("删掉喵") as String
     }
 }

@@ -14,7 +14,7 @@ var p_storeIsOpen:Bool = false
 var 全局_网络繁忙:Bool = false
 var bgimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
 let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+let documentDirectoryAddress:NSString = documentDirectory[0] as! NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
@@ -58,7 +58,7 @@ func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:
 {
     var sizeTest:UILabel = UILabel(frame: CGRectMake(0, 0, width, 0))
     sizeTest.font = UIFont.systemFontOfSize(fontSize)
-    sizeTest.text = NSString(string: value)
+    sizeTest.text = NSString(string: value) as String
     sizeTest.lineBreakMode = NSLineBreakMode.ByCharWrapping
     sizeTest.numberOfLines = 0
     var deSize:CGSize = sizeTest.sizeThatFits(CGSizeMake(width,CGFloat.max))

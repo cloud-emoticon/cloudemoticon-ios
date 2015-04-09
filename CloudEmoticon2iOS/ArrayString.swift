@@ -17,6 +17,6 @@ class ArrayString: NSObject {
     
     func json2array(inString:NSString) -> NSArray
     {
-        return NSJSONSerialization.JSONObjectWithData(inString.dataUsingEncoding(NSUTF8StringEncoding)!, options: NSJSONReadingOptions(), error: nil) as NSArray
+        return NSJSONSerialization.JSONObjectWithData(inString.dataUsingEncoding(NSUTF8StringEncoding)!, options: NSJSONReadingOptions(), error: nil) as! NSArray
     }
 }

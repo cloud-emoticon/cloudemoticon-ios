@@ -16,7 +16,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("关于")
+        self.title = lang.uage("关于") as String
         载入等待.startAnimating()
         开始异步连接()
     }
@@ -55,7 +55,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
         if (self.接收到的数据 != nil) {
             var 数据:NSString? = NSString(data: self.接收到的数据!, encoding: NSUTF8StringEncoding)
             if (数据 != nil) {
-                内容.text = 数据
+                内容.text = 数据 as? String
             } else {
                 接收失败()
             }
@@ -65,13 +65,13 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
         载入等待.stopAnimating()
     }
     //接受失败
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!)
+    func connection(connection: NSURLConnection, didFailWithError error: NSError)
     {
         接收失败()
     }
     func 接收失败()
     {
-        内容.text = NSString(format: "%@\n\n%@", lang.uage("软件全称"),lang.uage("详细信息读取失败"))
+        内容.text = NSString(format: "%@\n\n%@", lang.uage("软件全称"),lang.uage("详细信息读取失败")) as String
         载入等待.stopAnimating()
     }
 }

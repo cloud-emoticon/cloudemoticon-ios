@@ -24,9 +24,6 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
         super.init(style: .Plain)
     }
     
-    override init() {
-        super.init()
-    }
     
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -34,10 +31,10 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("皮肤管理")
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮:")
+        self.title = lang.uage("皮肤管理") as String
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮:")
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
         self.navigationItem.rightBarButtonItem = 右上按钮
     }
 
@@ -49,7 +46,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     // MARK: - 返回按钮
     func 右上按钮(sender: UIBarButtonItem) {
         if (self.tableView.editing) {
-            var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
+            var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤") as String, message: "", delegate: self, cancelButtonTitle: lang.uage("取消") as String, otherButtonTitles: lang.uage("添加") as String, lang.uage("从在线皮肤库添加") as String)
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
@@ -62,7 +59,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     }
     
     // MARK: - 提示框被点击
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int)
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
         var 提示框输入框:
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
@@ -79,11 +76,11 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     func 左上按钮(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成") as String
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加") as String
         } else {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑") as String
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回") as String
         }
     }
 
@@ -100,9 +97,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let 单元格标识:NSString = "Cell"
-        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识) as? UITableViewCell
+        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
         if (单元格 == nil) {
-            单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识)
+            单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
             单元格!.selectionStyle = UITableViewCellSelectionStyle.None
             单元格!.accessoryType = UITableViewCellAccessoryType.None
             单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()

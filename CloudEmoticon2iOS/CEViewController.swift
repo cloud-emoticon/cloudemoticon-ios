@@ -43,13 +43,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func language()
     {
-        scoreBtn.title = lang.uage("源管理")
-        self.title = lang.uage("云颜文字")
+        scoreBtn.title = lang.uage("源管理") as String
+        self.title = lang.uage("云颜文字") as String
     }
     
     func loadbg(){
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
-        
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
         if(bg != nil){
             bgimage = bg!
             bgpview.image = bgimage
@@ -78,7 +77,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
         //Load UI
         
-        self.title = lang.uage("云颜文字")
+        self.title = lang.uage("云颜文字")as String
         载入视图()
         
         //Load Data
@@ -93,7 +92,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 载入视图() {
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
-        sortBtn.title = lang.uage("分类")
+        sortBtn.title = lang.uage("分类") as String
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
@@ -129,7 +128,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
-        username.text = lang.uage("未登录")
+        username.text = lang.uage("未登录") as String
         username.font = UIFont.systemFontOfSize(13)
         
         userview.addSubview(username)
@@ -170,16 +169,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
             let p_emoary:NSArray = p_emoweb!
-            y_emoarr = p_emoary.objectAtIndex(3) as NSArray
+            y_emoarr = p_emoary.objectAtIndex(3) as! NSArray
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径)
-            y_emoarr = p_emo.objectAtIndex(3) as NSArray
+            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
+            y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
         
         for g_emoobj in y_emoarr
         {
-            var g_emoarr:NSArray = g_emoobj as NSArray
+            var g_emoarr:NSArray = g_emoobj as! NSArray
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
@@ -219,9 +218,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var i = 0
             ceData.removeAllObjects()
             for 搜索结果颜文字 in 搜索结果 {
-                let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                let 搜索的颜文字名称 = 搜索结果的名称.objectAtIndex(i) as NSString
-                let 匹配2:NSRange = 搜索的颜文字名称.rangeOfString(str, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str as String, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                let 搜索的颜文字名称 = 搜索结果的名称.objectAtIndex(i) as! NSString
+                let 匹配2:NSRange = 搜索的颜文字名称.rangeOfString(str as String, options: NSStringCompareOptions.CaseInsensitiveSearch)
                 if(匹配.length > 0 || 匹配2.length > 0){
                 ceData.addObjectsFromArray([[搜索结果颜文字,搜索结果的名称.objectAtIndex(i)]])
                 }
@@ -240,7 +239,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            p_emodata = NSArray(contentsOfFile: 内置源路径)!
+            p_emodata = NSArray(contentsOfFile: 内置源路径 as String)!
             载入本地数据()
         }
     }
@@ -248,12 +247,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 载入本地数据()
     {
         if (p_emodata.count >= 3) {
-            var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
+            var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
             sortData.removeAllObjects()
             for emogroup_o in y_emoarr
             {
-                var emogroup:NSArray = emogroup_o as NSArray
-                let groupname:NSString = emogroup.objectAtIndex(0) as NSString
+                var emogroup:NSArray = emogroup_o as! NSArray
+                let groupname:NSString = emogroup.objectAtIndex(0) as! NSString
                 sortData.addObject(groupname)
             }
             分类表格.reloadData()
@@ -274,9 +273,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func loadwebdataoks(notification:NSNotification)
     {
-        let urlArr:NSArray = notification.object as NSArray
-        let urlStr:NSString = urlArr.objectAtIndex(0) as NSString
-        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as NSNumber
+        let urlArr:NSArray = notification.object as! NSArray
+        let urlStr:NSString = urlArr.objectAtIndex(0) as! NSString
+        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as! NSNumber
         let downloadModeInt:Int = downloadModeIntNB.integerValue
         let nowDownloadMode:NetDownloadTo = NetDownloadTo(rawValue: downloadModeInt)!
         if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONREFRESH) {
@@ -328,9 +327,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func openSortData(row:Int)
     {
         ceData.removeAllObjects()
-        var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as NSArray
-        let emogroup_o:NSArray = y_emoarr.objectAtIndex(row) as NSArray
-        ceData.addObjectsFromArray(emogroup_o)
+        var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
+        let emogroup_o:NSArray = y_emoarr.objectAtIndex(row) as! NSArray
+        ceData.addObjectsFromArray(emogroup_o  as [AnyObject])
         ceData.removeObjectAtIndex(0)
         颜文字表格.reloadData()
     }
@@ -380,7 +379,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
         }
     }
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer!) -> Bool
+    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
     {
         if (isCanAutoHideSortView()) {
             if (颜文字表格.frame.origin.x != 0) {
@@ -421,29 +420,29 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let CellIdentifier:NSString = "Cell"
         
         if (tableView.tag == 100) {
-            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
             if (cell == nil) {
-                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             }
-            let groupname:NSString = sortData.objectAtIndex(indexPath.row) as NSString
-            cell!.textLabel?.text = groupname
+            let groupname:NSString = sortData.objectAtIndex(indexPath.row) as! NSString
+            cell!.textLabel?.text  = groupname as String
             return cell!
         } else {
-            var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier) as? CETableViewCell
+            var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? CETableViewCell
             if (cell == nil) {
-                cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier)
+                cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
                 cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
                 cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
                 cell!.代理 = self
             }
             cell!.单元格在表格中的位置 = indexPath
-            let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
-            let emo:NSString = emoobj.objectAtIndex(0) as NSString
-            cell!.主文字.text = emo
+            let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
+            let emo:NSString = emoobj.objectAtIndex(0) as! NSString
+            cell!.主文字.text = emo as String
 //            cell!.textLabel.text = emo
             if (emoobj.count > 1) {
-                let name:NSString = emoobj.objectAtIndex(1) as NSString
-                cell!.副文字.text = name
+                let name:NSString = emoobj.objectAtIndex(1) as! NSString
+                cell!.副文字.text = name as String
             } else {
                 cell!.副文字.text = ""
             }
@@ -468,7 +467,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
 
-    func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         搜索颜文字.resignFirstResponder()
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
@@ -478,16 +477,16 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             当前分类 = indexPath.row
             sortBtn(sortBtn)
         } else {
-            let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
+            let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
 //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
 //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
             NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-    func tableView(tableView: UITableView!, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath!) -> String!
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
     {
-        return lang.uage("删掉喵")
+        return lang.uage("删掉喵") as String
     }
 //    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
 //    {
@@ -503,12 +502,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (tableView.tag == 101) {
             if (ceData.count > 0) {
                 var 文字高度:CGFloat = 44
-                let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as NSArray
-                let 主文字内容:NSString = emoobj.objectAtIndex(0) as NSString
+                let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
+                let 主文字内容:NSString = emoobj.objectAtIndex(0) as! NSString
                 var 副文字内容:NSString = ""
                 let 主文字框高度:CGFloat = heightForString(主文字内容, FontSize: 17, andWidth: tableView.frame.width - 20) + 8
                 if (emoobj.count > 1) {
-                    副文字内容 = emoobj.objectAtIndex(1) as NSString
+                    副文字内容 = emoobj.objectAtIndex(1) as! NSString
                     let 副文字框高度:CGFloat = heightForString(副文字内容, FontSize: 12, andWidth: tableView.frame.width - 20) - 13
                     文字高度 = 主文字框高度 + 副文字框高度 + 15
                 } else {
@@ -528,13 +527,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func transition(notification:NSNotification)
     {
 //        println("收到屏幕旋转")
-        let newScreenSizeArr:NSArray = notification.object as NSArray
-        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
+        let newScreenSizeArr:NSArray = notification.object as! NSArray
+        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as! CGFloat, newScreenSizeArr.objectAtIndex(1) as! CGFloat)
     
         分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
-            sortBtn.title = lang.uage("分类")
+            sortBtn.title = lang.uage("分类") as String
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
             self.颜文字表格背景.frame = self.颜文字表格.frame
         } else {
@@ -566,20 +565,20 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         loaddata()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView!)
+    func scrollViewDidScroll(scrollView: UIScrollView)
     {
         搜索颜文字.resignFirstResponder()
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
         if (下拉刷新提示 != nil) {
-            let 当前表格:UITableView = scrollView as UITableView
+            let 当前表格:UITableView = scrollView as! UITableView
             下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
             if (下拉刷新动作中) {
                 if (表格竖向滚动 < -100.0) {
-                    下拉刷新提示!.text = lang.uage("松开手指刷新")
+                    下拉刷新提示!.text = lang.uage("松开手指刷新") as String
                 } else {
-                    下拉刷新提示!.text = lang.uage("下拉刷新")
+                    下拉刷新提示!.text = lang.uage("下拉刷新") as String
                 }
             }
         }
@@ -591,7 +590,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView!)
+    func scrollViewWillBeginDragging(scrollView: UIScrollView)
     {
         下拉刷新动作中 = true
         if (self.view.frame.size.width < self.view.frame.size.height) {
@@ -616,12 +615,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.view.addSubview(下拉刷新提示!)
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView!, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         下拉刷新动作中 = false
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         if (表格竖向滚动 < -100.0) {
-            下拉刷新提示?.text = lang.uage("正在刷新")
+            下拉刷新提示?.text = lang.uage("正在刷新") as String
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONREFRESH)
                 loaddata()
@@ -629,7 +628,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
     }
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView!) {
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         下拉刷新提示?.removeFromSuperview()
         下拉刷新提示 = nil
     }
@@ -637,7 +636,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 单元格代理：点击滑出的按钮时(点击按钮的ID:Int, 单元格在表格中的位置:NSIndexPath)
     {
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
-        let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as CETableViewCell
+        let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as! CETableViewCell
         let 颜文字:NSString = 当前单元格.主文字.text!
         let 颜文字名称:NSString? = 当前单元格.副文字.text
         if (点击按钮的ID == 1) { //收藏
@@ -646,9 +645,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var 收藏中已经存在这个颜文字:Bool = false
             if (文件中的数据 != nil) {
                 for 文件中的颜文字数组对象 in 文件中的数据! {
-                    let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as NSArray
-                    let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as NSString
-                    if (颜文字.isEqualToString(文件中的颜文字)) {
+                    let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as! NSArray
+                    let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as! NSString
+                    if (颜文字.isEqualToString(文件中的颜文字 as String)) {
                         收藏中已经存在这个颜文字 = true
                     }
                 }
@@ -662,7 +661,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 var 收藏:NSMutableArray = NSMutableArray()
                 收藏.addObject(颜文字数组)
                 if (文件中的数据 != nil) {
-                    收藏.addObjectsFromArray(文件中的数据!)
+                    收藏.addObjectsFromArray(文件中的数据! as [AnyObject])
                 }
                 //            if (收藏.count > 100) {
                 //                收藏.removeLastObject()

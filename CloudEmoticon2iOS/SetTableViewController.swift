@@ -22,7 +22,7 @@ class SetTableViewController: UITableViewController {
         list.addObject(lang.uage("源管理"))
         list.addObject(lang.uage("设置"))
         list.addObject(lang.uage("关于"))
-        self.title = lang.uage("设置")
+        self.title = lang.uage("设置") as String
 
 //        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
 //        bgpview.sendSubviewToBack(self.view)
@@ -59,8 +59,8 @@ class SetTableViewController: UITableViewController {
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("SetNav", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+        let cell = tableView.dequeueReusableCellWithIdentifier("SetNav", forIndexPath: indexPath) as! UITableViewCell
+        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
 
         return cell
     }
@@ -70,7 +70,7 @@ class SetTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
+            let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as! UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
@@ -85,12 +85,12 @@ class SetTableViewController: UITableViewController {
             self.navigationController?.pushViewController(ScoreTableViewController(), animated: true)
             break
         case 3:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as! UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 4:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("About") as UIViewController
+            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("About") as! UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break

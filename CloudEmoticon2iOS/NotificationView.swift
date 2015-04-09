@@ -36,7 +36,7 @@ class NotificationView: UIView {
     
     func 显示提示(提示文本:NSString)
     {
-        显示文本.text = 提示文本
+        显示文本.text = 提示文本 as String
         执行动画()
     }
     

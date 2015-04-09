@@ -17,7 +17,7 @@ class Language: NSObject {
     func 当前系统语言() -> NSString
     {
         let languages:NSArray = NSLocale.preferredLanguages()
-        return languages.objectAtIndex(0) as NSString
+        return languages.objectAtIndex(0) as! NSString
     }
     
     func 系统支持的所有语言() -> NSString
@@ -30,8 +30,8 @@ class Language: NSObject {
     {
         var 当前语言存在:Bool = false
         for 当前语言对象 in 系统支持的语言 {
-            let 当前语言:NSString = 当前语言对象 as NSString
-            if (当前语言.isEqualToString(要载入的语言)) {
+            let 当前语言:NSString = 当前语言对象 as! NSString
+            if (当前语言.isEqualToString(要载入的语言 as String)) {
                 当前语言存在 = true
                 break
             }
@@ -41,9 +41,9 @@ class Language: NSObject {
             for i in 0...2 {
                 let 文件管理:NSFileManager = NSFileManager.defaultManager()
                 let 文件名:NSString = NSString(format: "language-%@",载入语言)
-                let 文件路径:NSString? = NSBundle.mainBundle().pathForResource(文件名, ofType: "plist")
+                let 文件路径:NSString? = NSBundle.mainBundle().pathForResource(文件名 as String, ofType: "plist")
                 if (文件路径 != nil) {
-                    翻译缓存 = NSMutableDictionary(contentsOfFile: 文件路径!)!
+                    翻译缓存 = NSMutableDictionary(contentsOfFile: 文件路径! as String)!
                     当前设置的语言 = 载入语言
                     println("[语言管理器]语言读取成功")
                     break
@@ -70,14 +70,14 @@ class Language: NSObject {
         let 可翻译的文字:NSArray = 翻译缓存.allKeys as NSArray
         var 可翻译:Bool = false
         for 当前可翻译文字对象 in 可翻译的文字 {
-            let 当前可翻译文字:NSString = 当前可翻译文字对象 as NSString
-            if (当前可翻译文字.isEqualToString(要翻译的文字)) {
+            let 当前可翻译文字:NSString = 当前可翻译文字对象 as! NSString
+            if (当前可翻译文字.isEqualToString(要翻译的文字 as String)) {
                 可翻译 = true
                 break
             }
         }
         if (可翻译) {
-            return 翻译缓存.objectForKey(要翻译的文字) as NSString
+            return 翻译缓存.objectForKey(要翻译的文字) as! NSString
         } else {
             println("无法翻译这个条目：\(要翻译的文字)")
         }

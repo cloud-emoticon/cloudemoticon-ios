@@ -31,10 +31,10 @@ class FileManager: NSObject {
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
-            fileMgr.removeItemAtPath(fulladd, error: nil)
+            fileMgr.removeItemAtPath(fulladd as String, error: nil)
         }
 
-        arr.writeToFile(fulladd, atomically: false)
+        arr.writeToFile(fulladd as String, atomically: false)
         if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
             NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
         }
@@ -47,7 +47,7 @@ class FileManager: NSObject {
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
             NSLog("%@本地加载中...",className)
-            let arr:NSArray = NSArray(contentsOfFile: fulladd)!
+            let arr:NSArray = NSArray(contentsOfFile: fulladd  as String)!
             return arr
         }
         if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
@@ -60,11 +60,11 @@ class FileManager: NSObject {
     func deleteFile(urlStr:NSString, smode:saveMode)
     {
         let md5coder:MD5 = MD5()
-        let fileName:NSString = NSString(format: "cache-%@.plist", md5coder.md5(urlStr))
+        let fileName:NSString = NSString(format: "cache-%@.plist", md5coder.md5(urlStr as String))
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
-            fileMgr.removeItemAtPath(fulladd, error: nil)
+            fileMgr.removeItemAtPath(fulladd as String, error: nil)
         }
     }
     
@@ -73,10 +73,10 @@ class FileManager: NSObject {
         switch (smode) {
         case saveMode.NETWORK:
             let md5coder:MD5 = MD5()
-            var md5vol:NSString = md5coder.md5(p_nowurl)
-            let nowURLstr:NSString = nowURLarr.objectAtIndex(0) as NSString
+            var md5vol:NSString = md5coder.md5(p_nowurl as String)
+            let nowURLstr:NSString = nowURLarr.objectAtIndex(0) as! NSString
             if (!nowURLstr.isEqualToString("")) {
-                md5vol = md5coder.md5(nowURLstr)
+                md5vol = md5coder.md5(nowURLstr as String)
             }
             return NSString.localizedStringWithFormat("cache-%@.plist",md5vol)
         case saveMode.HISTORY:
@@ -92,11 +92,11 @@ class FileManager: NSObject {
     
     func ChkDupFile(filename:NSString) -> Bool
     {
-        let filelist:NSArray = fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress(), error: nil)!
+        let filelist:NSArray = fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress() as String, error: nil)!
         for nowfilenameObj in filelist
         {
-            let nowfilename:NSString = nowfilenameObj as NSString
-            if (filename.isEqualToString(nowfilename))
+            let nowfilename:NSString = nowfilenameObj as! NSString
+            if (filename.isEqualToString(nowfilename as String))
             {
                 return true
             }
@@ -107,7 +107,7 @@ class FileManager: NSObject {
     func DocumentDirectoryAddress() -> NSString
     {
         let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let documentDirectoryAddress:NSString = documentDirectory[0] as NSString
+        let documentDirectoryAddress:NSString = documentDirectory[0] as! NSString
         return NSString.localizedStringWithFormat("%@/",documentDirectoryAddress)
     }
     
@@ -125,12 +125,12 @@ class FileManager: NSObject {
         if (!isDup) {
             return NSArray()
         }
-        let sarr:NSArray = NSArray(contentsOfFile: fulladd)!
+        let sarr:NSArray = NSArray(contentsOfFile: fulladd as String)!
         return sarr
     }
     func saveSources(sarr:NSArray)
     {
-        sarr.writeToFile(FileNameToFullAddress("SourcesList.plist"), atomically: false)
+        sarr.writeToFile(FileNameToFullAddress("SourcesList.plist") as String, atomically: false)
     }
     
     func 补充空白数据()

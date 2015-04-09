@@ -53,8 +53,8 @@ class MainTBViewController: UITabBarController {
         let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]
         let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {
-            let nowVC:UITabBarItem = items.objectAtIndex(i) as UITabBarItem
-            nowVC.title = tbitemtitle.objectAtIndex(i) as NSString
+            let nowVC:UITabBarItem = items.objectAtIndex(i) as! UITabBarItem
+            nowVC.title = tbitemtitle.objectAtIndex(i) as? String
         }
     }
     
@@ -62,17 +62,17 @@ class MainTBViewController: UITabBarController {
     {
         self.selectedIndex = 1
         let vcs:NSArray? = self.viewControllers as NSArray?
-        let cen:UINavigationController = vcs?.objectAtIndex(1) as UINavigationController
+        let cen:UINavigationController = vcs?.objectAtIndex(1) as! UINavigationController
         let cea:NSArray? = cen.viewControllers as NSArray?
-        let cev:CEViewController = cea?.objectAtIndex(0) as CEViewController
-        let URL识别数组:NSArray = notification.object as NSArray
+        let cev:CEViewController = cea?.objectAtIndex(0) as! CEViewController
+        let URL识别数组:NSArray = notification.object as! NSArray
         cev.切换到源管理页面(URL识别数组.objectAtIndex(0) as? NSString)
     }
     
     func 复制到剪贴板方法(notification:NSNotification)
     {
-        let 要复制的颜文字数组:NSArray = notification.object as NSArray
-        let 要复制的颜文字:NSString = 要复制的颜文字数组.objectAtIndex(0) as NSString
+        let 要复制的颜文字数组:NSArray = notification.object as! NSArray
+        let 要复制的颜文字:NSString = 要复制的颜文字数组.objectAtIndex(0)as! NSString
         
         显示自动关闭的提示框(NSString(format: "“ %@ ” %@", 要复制的颜文字, lang.uage("已复制到剪贴板")))
         
@@ -80,7 +80,7 @@ class MainTBViewController: UITabBarController {
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         历史记录.addObject(要复制的颜文字数组)
         if (文件中的数据 != nil) {
-            历史记录.addObjectsFromArray(文件中的数据!)
+            历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
         while (true) {
             if (历史记录.count > 50) {
@@ -92,9 +92,9 @@ class MainTBViewController: UITabBarController {
         文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
         保存数据到输入法()
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
-        剪贴板.string = 要复制的颜文字
+        剪贴板.string = 要复制的颜文字 as String
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {
-            let window:UIWindow? = UIApplication.sharedApplication().delegate?.window?
+            let window:UIWindow? = UIApplication.sharedApplication().delegate?.window!
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)
             UIView.animateWithDuration(0.3, animations: {
                 window?.alpha = 0
@@ -110,13 +110,13 @@ class MainTBViewController: UITabBarController {
     
     func 显示自动关闭的提示框方法(notification:NSNotification)
     {
-        let 提示文字:NSString = notification.object as NSString
+        let 提示文字:NSString = notification.object as! NSString
         显示自动关闭的提示框(提示文字)
     }
     
     func 显示等待提示框方法(notification:NSNotification)
     {
-        let 参数:NSNumber = notification.object as NSNumber
+        let 参数:NSNumber = notification.object as! NSNumber
         let 开关:Bool = 参数.boolValue
         if (开关 == true) {
             if (等待提示框 == nil) {
@@ -146,10 +146,10 @@ class MainTBViewController: UITabBarController {
     
     func alertview(notification:NSNotification)
     {
-        let altarr:NSArray = notification.object as NSArray
+        let altarr:NSArray = notification.object as! NSArray
         //数组：title，message，btn title
-        let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as NSString, style: .Default) {
+        let alert = UIAlertController(title: altarr.objectAtIndex(0) as! NSString as String, message: altarr.objectAtIndex(1) as! NSString as String, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as! NSString as String, style: .Default) {
             [weak alert] action in
             //print("OK Pressed")
             alert!.dismissViewControllerAnimated(true, completion: nil)

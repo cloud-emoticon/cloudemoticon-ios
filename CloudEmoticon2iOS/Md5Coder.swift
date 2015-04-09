@@ -14,7 +14,7 @@ class Md5Coder: NSObject {
     func md5(str:NSString) -> NSString
     {
         var md5o:MD5 = MD5()
-        var rstr:NSString = md5o.md5(str)
+        var rstr:NSString = md5o.md5(str as String)
         return rstr
     }
 }

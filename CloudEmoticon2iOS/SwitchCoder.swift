@@ -49,8 +49,8 @@ class SwitchCoder: NSObject {
         NSLog("%@使用XML校验数据格式...",类名称)
         for nowkeyobj in xmlv1Keys
         {
-            var nowkey:NSString = nowkeyobj as NSString
-            var dl:Int = dataStr.rangeOfString(nowkey).location
+            var nowkey:NSString = nowkeyobj as! NSString
+            var dl:Int = dataStr.rangeOfString(nowkey as String).location
             if (dl == Int.max)
             {
                 NSLog("%@使用XML校验数据格式失败。",类名称)
@@ -67,8 +67,8 @@ class SwitchCoder: NSObject {
         NSLog("%@使用JSON校验数据格式...",类名称)
         for nowkeyobj in jsonv1Keys
         {
-            var nowkey:NSString = nowkeyobj as NSString
-            var dl:Int = dataStr.rangeOfString(nowkey).location
+            var nowkey:NSString = nowkeyobj as! NSString
+            var dl:Int = dataStr.rangeOfString(nowkey as String).location
             if (dl == Int.max)
             {
                 NSLog("%@使用JSON校验数据格式失败。",类名称)

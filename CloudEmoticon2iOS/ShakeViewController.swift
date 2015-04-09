@@ -18,7 +18,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("摇一摇")
+        self.title = lang.uage("摇一摇") as String
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
         if(p_emodata.count < 3){
             NSLog("%@没有数据，加载数据",className)
@@ -71,16 +71,16 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         if(p_emoweb != nil)
         {
             let p_emoary:NSArray = p_emoweb!
-            y_emoarr = p_emoary.objectAtIndex(3) as NSArray
+            y_emoarr = p_emoary.objectAtIndex(3) as! NSArray
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径)
-            y_emoarr = p_emo.objectAtIndex(3) as NSArray
+            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
+            y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
         
         for g_emoobj in y_emoarr
         {
-            var g_emoarr:NSArray = g_emoobj as NSArray
+            var g_emoarr:NSArray = g_emoobj as! NSArray
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
@@ -106,15 +106,15 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     func alertviewShake(altarr:NSArray)
     {
 //        let altarr:NSArray = notification.object as NSArray
-        let alert = UIAlertController(title: altarr.objectAtIndex(0) as NSString, message: altarr.objectAtIndex(1) as NSString, preferredStyle: .Alert)
-        let cancelAction = UIAlertAction(title: altarr.objectAtIndex(3) as NSString, style: .Default) {
+        let alert = UIAlertController(title: altarr.objectAtIndex(0) as? String, message: altarr.objectAtIndex(1) as? String, preferredStyle: .Alert)
+        let cancelAction = UIAlertAction(title: (altarr.objectAtIndex(3) as? String)!, style: .Default) {
             [weak alert] action in
             alert!.dismissViewControllerAnimated(true, completion: nil)
         }
-        let okAction = UIAlertAction(title: altarr.objectAtIndex(2) as NSString, style: .Default) {
+        let okAction = UIAlertAction(title: altarr.objectAtIndex(2)as! String, style: .Default) {
             [weak alert] action in
-            let 要复制的颜文字:NSString = altarr.objectAtIndex(1) as NSString
-            let 要复制的颜文字名称:NSString = altarr.objectAtIndex(4) as NSString
+            let 要复制的颜文字:NSString = altarr.objectAtIndex(1) as! NSString
+            let 要复制的颜文字名称:NSString = altarr.objectAtIndex(4) as! NSString
             self.摇一摇复制到剪贴板方法(要复制的颜文字,颜文字名称:要复制的颜文字名称)
             alert!.dismissViewControllerAnimated(true, completion: nil)
         }

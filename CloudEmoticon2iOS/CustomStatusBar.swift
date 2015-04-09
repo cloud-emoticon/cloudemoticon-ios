@@ -33,7 +33,7 @@ class CustomStatusBar: UIWindow {
 //        if (self.messageLabel == nil) { }
         self.hidden = false
         self.alpha = 1.0
-        messageLabel.text = message
+        messageLabel.text = message as String
     }
     
     func hideMsg()

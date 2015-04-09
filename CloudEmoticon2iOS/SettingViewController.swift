@@ -23,7 +23,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var copyexit:Bool? = NSUserDefaults.standardUserDefaults().valueForKey("exitaftercopy") as? Bool
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("设置")
+        self.title = lang.uage("设置") as String
         SetTable.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         adflist.addObject(lang.uage("广告显示频率"))
         adflist.addObject("")
@@ -59,13 +59,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
-    func  tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String!
+    func  tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
         if(section == 0)
         {
-            return lang.uage("广告")
+            return lang.uage("广告") as String
         } else {
-            return lang.uage("行为")
+            return lang.uage("行为") as String
         }
     }
     
@@ -98,15 +98,15 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         设置复制后退出应用.on = copyexit!
 
         let CellIdentifier:NSString = "SettingCell"
-        var cell:UITableViewCell? = SetTable.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:UITableViewCell? = SetTable.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
         }
         
         if(indexPath.section == 0){
-        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as? String
         } else {
-        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as NSString
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as? String
         }
         
         if (cell!.contentView.subviews.count > 1) {

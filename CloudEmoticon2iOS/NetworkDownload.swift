@@ -16,7 +16,7 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     func 开始异步连接(URL识别数组:NSArray)
     {
         NSLog("%@开始准备下载...",类名称)
-        var 当前请求网址:NSURL = NSURL(string: URL识别数组.objectAtIndex(0) as NSString)!
+        var 当前请求网址:NSURL = NSURL(string: URL识别数组.objectAtIndex(0) as! String)!
         当前URL识别数组 = URL识别数组
         var URL请求: NSURLRequest
         URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
@@ -62,12 +62,12 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
     }
     
     //接受失败
-    func connection(connection: NSURLConnection!, didFailWithError error: NSError!)
+    func connection(connection: NSURLConnection, didFailWithError error: NSError)
     {
         NSLog("%@网络接收失败！",类名称)
         NSNotificationCenter.defaultCenter().postNotificationName("网络失败", object: 当前URL识别数组)
         NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
-        let 下载失败提示:UIAlertView = UIAlertView(title: lang.uage("下载失败"), message: lang.uage("请检查网络后重试"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+        let 下载失败提示:UIAlertView = UIAlertView(title: lang.uage("下载失败") as String, message: lang.uage("请检查网络后重试") as String, delegate: nil, cancelButtonTitle: lang.uage("取消") as String)
         下载失败提示.show()
     }
 }

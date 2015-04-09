@@ -33,38 +33,38 @@ class XMLReader: NSObject {
             //var name:NSString = rootDic.objectForKey("__name") as NSString
             var infoos:AnyObject = 根字典.objectForKey("infoos")!
             if infoos is NSDictionary {
-                var 子字典:NSDictionary = infoos as NSDictionary
-                var 标头信息:NSArray = 子字典.objectForKey("info") as NSArray
+                var 子字典:NSDictionary = infoos as! NSDictionary
+                var 标头信息:NSArray = 子字典.objectForKey("info") as! NSArray
                 for 标头对象 in 标头信息
                 {
                     if (颜文字库名.isEqualToString("")) {
-                        颜文字库名 = 标头对象 as NSString
+                        颜文字库名 = 标头对象 as! NSString
                     } else {
-                        颜文字库介绍.insertString(标头对象 as NSString, atIndex: 颜文字库介绍.length)
+                        颜文字库介绍.insertString(标头对象 as! String, atIndex: 颜文字库介绍.length)
                     }
                 }
             } else if infoos is NSString {
-                var infoos2:NSString = infoos as NSString
+                var infoos2:NSString = infoos as! NSString
                 颜文字库名 = infoos2
             }
-            var category:NSArray = 根字典.objectForKey("category") as NSArray
+            var category:NSArray = 根字典.objectForKey("category") as! NSArray
 //            println(category) //输出字典数组，每个字典里的关键字 "_name":NSString，entry:NSArray
             for groupData in category
             {
-                var groupDic:NSDictionary = groupData as NSDictionary
-                var g_groupname:NSString = groupDic.objectForKey("_name") as NSString
+                var groupDic:NSDictionary = groupData as! NSDictionary
+                var g_groupname:NSString = groupDic.objectForKey("_name") as! NSString
 //                y_emoarr.addObject(g_groupname)
                 var y_emoobj:NSMutableArray = NSMutableArray()
                 y_emoobj.addObject(g_groupname)
-                var entry:NSArray = groupDic.objectForKey("entry") as NSArray
+                var entry:NSArray = groupDic.objectForKey("entry") as! NSArray
                 for nowEmoobj in entry
                 {
-                    var nowEmoobjDic:NSDictionary = nowEmoobj as NSDictionary
+                    var nowEmoobjDic:NSDictionary = nowEmoobj as! NSDictionary
                     var g_emoobj:NSMutableArray = NSMutableArray()
-                    var e_emo:NSString = nowEmoobjDic.objectForKey("string") as NSString
+                    var e_emo:NSString = nowEmoobjDic.objectForKey("string") as! NSString
                     g_emoobj.addObject(e_emo)
                     if (nowEmoobjDic.allKeys.count == 2) {
-                        var e_name:NSString = nowEmoobjDic.objectForKey("note") as NSString
+                        var e_name:NSString = nowEmoobjDic.objectForKey("note") as! NSString
                         g_emoobj.addObject(e_name)
                     }
                     y_emoobj.addObject(g_emoobj)

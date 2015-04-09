@@ -53,8 +53,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             滑出按钮B.tag = 102
             滑出按钮A.backgroundColor = UIColor.orangeColor()
             滑出按钮B.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.9, alpha: 1.0)
-            滑出按钮A.setTitle(lang.uage("收藏"), forState: UIControlState.Normal)
-            滑出按钮B.setTitle(lang.uage("分享"), forState: UIControlState.Normal)
+            滑出按钮A.setTitle(lang.uage("收藏") as String, forState: UIControlState.Normal)
+            滑出按钮B.setTitle(lang.uage("分享") as String, forState: UIControlState.Normal)
             滑出按钮A.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
             滑出按钮B.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(滑出按钮A)
@@ -81,7 +81,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     func 修正单元格尺寸方法(notification:NSNotification)
     {
-        let 新的宽度:CGFloat = notification.object as CGFloat
+        let 新的宽度:CGFloat = notification.object as! CGFloat
 //        let 新的尺寸数组:NSArray = notification.object as NSArray
 //        let 新的尺寸:CGSize = CGSizeMake(新的尺寸数组.objectAtIndex(0) as CGFloat, 新的尺寸数组.objectAtIndex(1) as CGFloat)
         修正元素位置(新的宽度)
@@ -96,7 +96,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
                 self.滑出按钮B.frame = CGRectMake(self.frame.size.width + self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
             })
         } else {
-            let 当前单元格在表格中的位置:NSIndexPath = 通知传值对象 as NSIndexPath
+            let 当前单元格在表格中的位置:NSIndexPath = 通知传值对象 as! NSIndexPath
             let 当前单元格在表格中的行:Int = 当前单元格在表格中的位置.row
             let 单元格在表格中的行:Int = 单元格在表格中的位置.row
             if (当前单元格在表格中的行 != 单元格在表格中的行) {

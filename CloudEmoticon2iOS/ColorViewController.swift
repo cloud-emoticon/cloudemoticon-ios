@@ -16,7 +16,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     var 设置背景不透明度:UISlider = UISlider()
     
     var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as Float?
+    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as! Float?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +31,9 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         背景管理.delegate = self
         背景管理.dataSource = self
         
-        self.title = lang.uage("背景")
+        self.title = lang.uage("背景") as String
         
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath)
+        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
         if(bg != nil) {
             bgimageviewer.image = bg
             bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
@@ -56,8 +56,8 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
 
     func transition(notification:NSNotification)
     {
-        let newScreenSizeArr:NSArray = notification.object as NSArray
-        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as CGFloat, newScreenSizeArr.objectAtIndex(1) as CGFloat)
+        let newScreenSizeArr:NSArray = notification.object as! NSArray
+        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as! CGFloat, newScreenSizeArr.objectAtIndex(1) as! CGFloat)
         
         背景管理.frame = CGRectMake(0, 0, newScreenSize.width, newScreenSize.height)
         
@@ -85,7 +85,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
-        return lang.uage("背景")
+        return lang.uage("背景") as String
         }
         return ""
     }
@@ -93,15 +93,15 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 背景管理.dequeueReusableCellWithIdentifier(CellIdentifier) as? UITableViewCell
+        var cell:UITableViewCell? = 背景管理.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier)
+            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
         }
         if(indexPath.row <= 1) {
-        cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+        cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
         }
         if(indexPath.row == 2){
-            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as NSString
+            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
             cell?.selectionStyle = .None
             设置背景不透明度.frame = CGRectMake(90, 13, self.view.frame.size.width - 100, 20)
             设置背景不透明度.minimumValue = 0
@@ -151,12 +151,12 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func selectimage() {
-        var actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置"), delegate: self, cancelButtonTitle: lang.uage("取消"), destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照"),lang.uage("相册"),lang.uage("图片库"))
+        var actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置") as String, delegate: self, cancelButtonTitle: lang.uage("取消") as String, destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照") as String,lang.uage("相册") as String,lang.uage("图片库") as String)
         actionsheet.actionSheetStyle = UIActionSheetStyle.Default
         actionsheet.showInView(self.view)
     }
     
-    func actionSheet(actionSheet: UIActionSheet!, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         var picker:UIImagePickerController = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -194,26 +194,26 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         presentViewController(picker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController!,
-    didFinishPickingMediaWithInfo info: NSDictionary!) {
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
         picker.dismissViewControllerAnimated(true, completion: nil)
-        let image:UIImage = info.objectForKey(UIImagePickerControllerEditedImage) as UIImage
+        let image:UIImage = (editingInfo.indexForKey(UIImagePickerControllerEditedImage) as? UIImage)!
         if(picker.sourceType == UIImagePickerControllerSourceType.Camera){
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+
         }
         saveImage(image, WithName: userbgimgname)
     }
     
     func saveImage(tempImage:UIImage, WithName imageName:NSString){
         let imageData:NSData = UIImagePNGRepresentation(tempImage)
-        let fullpathttofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(imageName)
-        imageData.writeToFile(fullpathttofile, atomically: false)
+        let fullpathttofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(imageName as String)
+        imageData.writeToFile(fullpathttofile as String, atomically: false)
         bgimageviewer.image = tempImage
         bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     func deletebgimage(){
-        let fullpathtofile:NSString = documentDirectoryAddress.stringByAppendingPathComponent(userbgimgname)
+        let fullpathtofile:String = documentDirectoryAddress.stringByAppendingPathComponent(userbgimgname as String)
         let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
         NSFileManager.defaultManager().removeItemAtPath(fullpathtofile, error: nil)
         bgimageviewer.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)

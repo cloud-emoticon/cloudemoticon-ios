@@ -12,7 +12,7 @@ class JSONReader: NSObject {
     
     func 数据转换为JSON(源数据:NSData, URL识别数组:NSArray) {
         var 错误记录:NSError?
-        var JSON解析后字典:NSDictionary = NSJSONSerialization.JSONObjectWithData(源数据, options: NSJSONReadingOptions.AllowFragments, error: &错误记录) as NSDictionary
+        var JSON解析后字典:NSDictionary = NSJSONSerialization.JSONObjectWithData(源数据, options: NSJSONReadingOptions.AllowFragments, error: &错误记录) as! NSDictionary
         if ((错误记录) != nil) {
             var 提示框内容数组:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
@@ -22,35 +22,35 @@ class JSONReader: NSObject {
             var 颜文字库介绍:NSMutableString = "" //ok
             var 颜文字存储数组:NSMutableArray = NSMutableArray() //ok
             
-            var 根信息:NSArray = JSON解析后字典.objectForKey("information") as NSArray
+            var 根信息:NSArray = JSON解析后字典.objectForKey("information") as! NSArray
             for 根数据 in 根信息
             {
-                var 根字符:NSString = 根数据 as NSString
+                var 根字符:NSString = 根数据 as! NSString
                 if (颜文字库名.isEqualToString("")) {
                     颜文字库名 = 根字符
                 } else {
-                    颜文字库介绍.insertString(根字符, atIndex: 颜文字库介绍.length)
+                    颜文字库介绍.insertString(根字符 as String, atIndex: 颜文字库介绍.length)
                 }
             }
-            var categories:NSArray = JSON解析后字典.objectForKey("categories") as NSArray
+            var categories:NSArray = JSON解析后字典.objectForKey("categories") as! NSArray
 
             for groupDic in categories
             {
-                var entries:NSArray = groupDic.objectForKey("entries") as NSArray
-                var groupname:NSString = groupDic.objectForKey("name") as NSString
+                var entries:NSArray = groupDic.objectForKey("entries") as! NSArray
+                var groupname:NSString = groupDic.objectForKey("name") as! NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
 //                y_emoarr.addObject(groupname)
                 var y_emoobj:NSMutableArray = NSMutableArray()
                 y_emoobj.addObject(groupname)
                 for entriesData in entries
                 {
-                    var entriesDataDic:NSDictionary = entriesData as NSDictionary
+                    var entriesDataDic:NSDictionary = entriesData as! NSDictionary
                     var entriesDataDicKeys:NSArray = entriesDataDic.allKeys
                     var g_emoobj:NSMutableArray = NSMutableArray()
-                    var e_emo:NSString = entriesDataDic.objectForKey("emoticon") as NSString
+                    var e_emo:NSString = entriesDataDic.objectForKey("emoticon") as! NSString
                     g_emoobj.addObject(e_emo)
                     if (entriesDataDicKeys.count == 2) {
-                        var e_name:NSString = entriesDataDic.objectForKey("description") as NSString
+                        var e_name:NSString = entriesDataDic.objectForKey("description") as! NSString
                         g_emoobj.addObject(e_name)
                     }
                     y_emoobj.addObject(g_emoobj)
