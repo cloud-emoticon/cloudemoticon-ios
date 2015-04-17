@@ -51,6 +51,7 @@ func 保存数据到输入法()
         var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
         containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
         要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        NSLog("Group写入操作")
     }
 }
 

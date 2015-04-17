@@ -143,6 +143,7 @@ class FileManager: NSObject {
             var 新建数据模型:NSArray = [NSArray(),NSArray(),NSArray()]
             value = ArrayString().array2json(新建数据模型)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+            NSLog("Group写入操作")
         }
     }
 }

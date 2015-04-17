@@ -62,10 +62,12 @@ class TodayViewController: UIViewController {
             var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
             value                                                                                                                                                                                   = ArrayString().array2json(数据)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+            NSLog("Group写入操作")
         } else {
             var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
             value = ArrayString().array2json(新建数据模型)
             value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+            NSLog("Group写入操作")
         }
         emoText.text = "添加成功"
     }

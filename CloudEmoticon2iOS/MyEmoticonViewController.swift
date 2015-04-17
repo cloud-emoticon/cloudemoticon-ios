@@ -107,6 +107,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray()]
                 var value:NSString = ArrayString().array2json(新建数据模型)
                 value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+                NSLog("Group写入操作")
             }
             break
         case 2:
@@ -211,6 +212,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                }
 //                value = ""
 //                value?.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//            NSLog("Group写入操作")
 //            }
             载入自定义数据()
             左上按钮.title = lang.uage("编辑") as String
