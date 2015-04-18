@@ -24,7 +24,6 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
         super.init(style: .Plain)
     }
     
-    
     override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }

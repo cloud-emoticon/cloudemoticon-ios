@@ -64,6 +64,13 @@ class SetTableViewController: UITableViewController {
 
         return cell
     }
+    
+    func 前往主题管理() {
+        let push = SkinTableViewController()
+        //let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
+        push.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(push, animated: true)
+    }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let storyboard = self.storyboard
@@ -75,10 +82,7 @@ class SetTableViewController: UITableViewController {
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
-            let push = SkinTableViewController()
-//            let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
-            push.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(push, animated: true)
+            前往主题管理()
             break
         case 2:
             ScoreTableViewController().hidesBottomBarWhenPushed = true

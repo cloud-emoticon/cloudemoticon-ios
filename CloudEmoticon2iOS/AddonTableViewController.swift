@@ -22,6 +22,7 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("输入法"))
         self.title = lang.uage("附加工具") as String
         
+        
 //        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)
 //        bgpview.sendSubviewToBack(self.view)
 //        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
@@ -52,7 +53,7 @@ class AddonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 3
+        return list.count
     }
 
     

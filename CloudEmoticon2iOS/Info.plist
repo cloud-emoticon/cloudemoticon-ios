@@ -29,8 +29,10 @@
 			<string>com.CloudEmoticon2iOS.open</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>cloudemoticon</string>
+				<string>cloudemoticonskin</string>
 				<string>emostart</string>
+				<string>cloudemoticon</string>
+				<string>cloudemoticons</string>
 			</array>
 		</dict>
 	</array>

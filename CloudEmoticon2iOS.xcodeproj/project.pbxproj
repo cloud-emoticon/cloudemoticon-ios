@@ -36,6 +36,7 @@
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
+		53A796F01AE2787400755592 /* themedemo.ini in Resources */ = {isa = PBXBuildFile; fileRef = 53A796EF1AE2787400755592 /* themedemo.ini */; };
 		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
@@ -248,6 +249,7 @@
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
 		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		53A796EF1AE2787400755592 /* themedemo.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = themedemo.ini; sourceTree = "<group>"; };
 		53AB49751AE239A90090D955 /* AppGroupIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupIO.swift; sourceTree = "<group>"; };
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
@@ -466,6 +468,32 @@
 			name = "自定义状态栏";
 			sourceTree = "<group>";
 		};
+		53A796EE1AE2784C00755592 /* 不参与编译 */ = {
+			isa = PBXGroup;
+			children = (
+				5330ED5F1ABD81AB0026C4B7 /* notepad.txt */,
+				53A796EF1AE2787400755592 /* themedemo.ini */,
+			);
+			name = "不参与编译";
+			sourceTree = "<group>";
+		};
+		53AB49801AE23FF10090D955 /* 共享代码 */ = {
+			isa = PBXGroup;
+			children = (
+				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
+				53AB49761AE239A90090D955 /* ArrayString.swift */,
+			);
+			name = "共享代码";
+			sourceTree = "<group>";
+		};
+		53AB49831AE260660090D955 /* 主题管理 */ = {
+			isa = PBXGroup;
+			children = (
+				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
+			);
+			name = "主题管理";
+			sourceTree = "<group>";
+		};
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,12 +509,11 @@
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
-				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
-				53AB49761AE239A90090D955 /* ArrayString.swift */,
+				53AB49801AE23FF10090D955 /* 共享代码 */,
 				53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */,
 				53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */,
 				53818FE21ABDAAA700D62C5F /* cewidget.entitlements */,
-				5330ED5F1ABD81AB0026C4B7 /* notepad.txt */,
+				53A796EE1AE2784C00755592 /* 不参与编译 */,
 				8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
@@ -515,6 +542,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				53AB49831AE260660090D955 /* 主题管理 */,
 				53DA36A219B5AF1900FD8D78 /* 多语言 */,
 				5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */,
 				53E1EB1B19A4976F002EB6A3 /* 自定表情 */,
@@ -620,7 +648,6 @@
 				8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */,
 				8BA6683F19ACCD390080C47F /* AboutViewController.swift */,
 				8BA6684819ACDCB30080C47F /* SettingViewController.swift */,
-				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 			);
 			name = "设置导航";
 			sourceTree = "<group>";
@@ -934,6 +961,7 @@
 				8B98EEA5196D3390000D255E /* star-vector.png in Resources */,
 				8BE31F65196D443C006C3B26 /* info-vector.png in Resources */,
 				8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */,
+				53A796F01AE2787400755592 /* themedemo.ini in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,

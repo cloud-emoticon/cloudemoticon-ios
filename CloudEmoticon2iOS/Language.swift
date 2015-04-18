@@ -49,19 +49,19 @@ class Language: NSObject {
                     break
                 } else {
                     if (i == 0) {
-                        println("[语言管理器错误]当前语言的文件不存在，尝试 en ...")
+                        println("[语言管理器]当前语言的文件不存在，尝试 en ...")
                         载入语言 = "en"
                     } else if (i == 1) {
-                        println("[语言管理器错误]当前语言的文件不存在，尝试 zh-Hans ...")
+                        println("[语言管理器]当前语言的文件不存在，尝试 zh-Hans ...")
                         载入语言 = "zh-Hans"
                     } else if (i == 2) {
-                        println("[语言管理器错误]当前语言的文件不存在！")
+                        println("[语言管理器]当前语言的文件不存在！")
                     }
                 }
             }
             
         } else {
-            println("[语言管理器错误]当前语言不受系统支持")
+            println("[语言管理器]当前语言不受系统支持")
         }
     }
     
@@ -79,8 +79,8 @@ class Language: NSObject {
         if (可翻译) {
             return 翻译缓存.objectForKey(要翻译的文字) as! NSString
         } else {
-            println("无法翻译这个条目：\(要翻译的文字)")
+            println("[语言管理器]无法翻译这个条目：\(要翻译的文字)")
         }
-        return ""
+        return 要翻译的文字
     }
 }

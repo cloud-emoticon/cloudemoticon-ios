@@ -17,10 +17,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let filemgr:FileManager = FileManager()
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        if url.scheme == "emostart" {
+        if (url.scheme == "emostart") {
             return true
-        }
-        if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
+        } else if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
             let urlStr:NSString = url.absoluteString!
             let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
             var schemeStr:NSString = "http:"
@@ -35,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
             NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
             return true
+        } else if (url.scheme == "cloudemoticonskin") {
+            
         }
         return false
     }
