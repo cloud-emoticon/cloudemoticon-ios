@@ -100,14 +100,20 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             表格.reloadData()
             保存历史记录数据()
             if (appgroup) {
-                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-                var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-                var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
-                var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray()]
-                var value:NSString = ArrayString().array2json(新建数据模型)
-                value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-                NSLog("Group写入操作")
+//                var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//                containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//                var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//                var 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
+//                var 新建数据模型:NSArray = [文件中的数据.objectAtIndex(0),文件中的数据.objectAtIndex(1),NSArray()]
+//                var value:NSString = ArrayString().array2json(新建数据模型)
+//                value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//                NSLog("Group写入操作")
+                let 组数据读写:AppGroupIO = AppGroupIO()
+                var 组数据:NSArray? = 组数据读写.读取数据UD模式()
+                if (组数据 != nil) {
+                    var 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray()]
+                    组数据读写.写入数据UD模式(新建数据模型)
+                }
             }
             break
         case 2:
@@ -230,52 +236,54 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     func 载入历史记录数据()
     {
+        let 组数据读写:AppGroupIO = AppGroupIO()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        var value:NSString? = nil
+        var 输入法中的数据:NSArray? = nil
         if (appgroup) {
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+            输入法中的数据 = 组数据读写.读取数据UD模式()
         }
-        if(value != nil && value != "") {
-            let 输入法中的数据:NSArray? = ArrayString().json2array(value!)
+        if(输入法中的数据 != nil) {
             let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as! NSArray
             if ((输入法中的历史记录数据.count != 文件中的数据?.count) && (输入法中的历史记录数据.count != 0)) {
-                println("历史记录：输入法中的数据")
+                NSLog("历史记录：输入法中的数据")
                 将数据载入表格(输入法中的历史记录数据)
                 文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
             } else {
-                println("历史记录：载入文件中的数据")
+                NSLog("历史记录：载入文件中的数据")
                 将数据载入表格(文件中的数据)
             }
         } else {
-            println("历史记录：输入法中没有数据，载入文件中的数据")
+            NSLog("历史记录：输入法中没有数据，载入文件中的数据")
             将数据载入表格(文件中的数据)
         }
     }
     func 载入自定义数据()
     {
+        let 组数据读写:AppGroupIO = AppGroupIO()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         将数据载入表格(文件中的数据)
-        var value:NSString? = nil
+        var 输入法中的数据:NSArray? = nil
         if (appgroup) {
-            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+            输入法中的数据 = 组数据读写.读取数据UD模式()
         }
-        if(value != nil && value != "") {
-            let 通知扩展中的数据:NSArray? = ArrayString().json2array(value!)
-            let 通知扩展中的自定义数据:NSArray =  通知扩展中的数据?.objectAtIndex(1) as! NSArray
+        if(输入法中的数据 != nil) {
+            let 通知扩展中的自定义数据:NSArray =  输入法中的数据?.objectAtIndex(1) as! NSArray
             if ((通知扩展中的自定义数据.count != 文件中的数据?.count) && (通知扩展中的自定义数据.count != 0)) {
-                println("自定义：载入通知扩展中的数据")
+                NSLog("自定义：载入通知扩展中的数据")
                 将数据载入表格(通知扩展中的自定义数据)
                 文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
             } else {
-                println("自定义：载入文件中的数据")
+                NSLog("自定义：载入文件中的数据")
                 将数据载入表格(文件中的数据)
             }
         } else { 
-            println("自定义：通知中没有数据，载入文件中的数据")
+            NSLog("自定义：通知中没有数据，载入文件中的数据")
             将数据载入表格(文件中的数据)
         }
 

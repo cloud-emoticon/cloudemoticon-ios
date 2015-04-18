@@ -50,24 +50,36 @@ class TodayViewController: UIViewController {
     @IBOutlet weak var emoText: UILabel!
     
     @IBAction func AddtoCustom(sender: AnyObject) {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-        var value:NSString
-        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        if(emolist != nil && emolist != "[[],[],[]]" && emolist != "") {
-            let 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
-            var 自定义数据:NSMutableArray = NSMutableArray.alloc()
-            自定义数据.addObject(文件中的数据.objectAtIndex(1))
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//        var value:NSString
+//        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//        if(emolist != nil && emolist != "[[],[],[]]" && emolist != "") {
+//            let 文件中的数据:NSArray = ArrayString().json2array(emolist!) as NSArray
+//            var 自定义数据:NSMutableArray = NSMutableArray()
+//            自定义数据.addObject(文件中的数据.objectAtIndex(1))
+//            自定义数据.addObject([emoText.text!,""])
+//            var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
+//            value                                                                                                                                                                                   = ArrayString().array2json(数据)
+//            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//            NSLog("Group写入操作")
+//        } else {
+//            var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
+//            value = ArrayString().array2json(新建数据模型)
+//            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//            NSLog("Group写入操作")
+//        }
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        var 数据数组:NSArray? = 组数据读写.读取数据UD模式()
+        if (数据数组 != nil) {
+            var 自定义数据:NSMutableArray = NSMutableArray()
+            自定义数据.addObject(数据数组!.objectAtIndex(1))
             自定义数据.addObject([emoText.text!,""])
-            var 数据:NSArray = [文件中的数据.objectAtIndex(0),自定义数据,文件中的数据.objectAtIndex(2)]
-            value                                                                                                                                                                                   = ArrayString().array2json(数据)
-            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-            NSLog("Group写入操作")
+            var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数据,数据数组!.objectAtIndex(2)]
+            组数据读写.写入数据UD模式(新数据数组)
         } else {
             var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
-            value = ArrayString().array2json(新建数据模型)
-            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-            NSLog("Group写入操作")
+            组数据读写.写入数据UD模式(新建数据模型)
         }
         emoText.text = "添加成功"
     }

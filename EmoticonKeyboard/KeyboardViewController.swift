@@ -164,17 +164,27 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 初始化数据()
     {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var value:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        if(value != nil && value != "" && value != "[[],[],[]]") {
-            let 全部数据数组:NSArray = ArrayString().json2array(value!)
-            全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as! [AnyObject])
-            全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as! [AnyObject])
-            全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as! [AnyObject])
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//        var value:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//        if(value != nil && value != "" && value != "[[],[],[]]") {
+//            let 全部数据数组:NSArray = ArrayString().json2array(value!)
+//            全部收藏数组.addObjectsFromArray(全部数据数组.objectAtIndex(0) as! [AnyObject])
+//            全部自定数组.addObjectsFromArray(全部数据数组.objectAtIndex(1) as! [AnyObject])
+//            全部历史数组.addObjectsFromArray(全部数据数组.objectAtIndex(2) as! [AnyObject])
+//            收藏按钮(self.view.viewWithTag(102) as! UIButton)
+//        } else {
+//            NSLog("键盘没有数据：\(value)。")
+//        }
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        var 数据数组:NSArray? = 组数据读写.读取数据UD模式()
+        if (数据数组 != nil) {
+            全部收藏数组.addObjectsFromArray(数据数组!.objectAtIndex(0) as! [AnyObject])
+            全部自定数组.addObjectsFromArray(数据数组!.objectAtIndex(1) as! [AnyObject])
+            全部历史数组.addObjectsFromArray(数据数组!.objectAtIndex(2) as! [AnyObject])
             收藏按钮(self.view.viewWithTag(102) as! UIButton)
         } else {
-            NSLog("键盘没有数据：\(value)。")
+            NSLog("键盘没有数据：\(数据数组)。")
         }
     }
     
@@ -247,11 +257,13 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     func 保存数据到主程序()
     {
         let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组]
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
-        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        NSLog("Group写入操作")
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//        let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
+//        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//        NSLog("Group写入操作")
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        组数据读写.写入数据UD模式(要保存的数据)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

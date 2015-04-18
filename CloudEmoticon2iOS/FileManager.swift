@@ -135,15 +135,19 @@ class FileManager: NSObject {
     
     func 补充空白数据()
     {
-        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-        var value:NSString
-        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-        if(emolist == nil || emolist == "") {
-            var 新建数据模型:NSArray = [NSArray(),NSArray(),NSArray()]
-            value = ArrayString().array2json(新建数据模型)
-            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-            NSLog("Group写入操作")
+//        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
+//        var value:NSString
+//        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
+//        var emolist:NSString? = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
+//        if(emolist == nil || emolist == "") {
+//            var 新建数据模型:NSArray = [NSArray(),NSArray(),NSArray()]
+//            value = ArrayString().array2json(新建数据模型)
+//            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+//            NSLog("Group写入操作")
+//        }
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        if (组数据读写.读取数据UD模式() == nil) {
+            组数据读写.写入数据UD模式(组数据读写.新建数据())
         }
     }
 }

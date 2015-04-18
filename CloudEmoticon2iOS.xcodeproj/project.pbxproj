@@ -11,7 +11,6 @@
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nowuserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nowuserimg.jpg */; };
-		533E537519B85D1800DFD2CB /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537419B85D1800DFD2CB /* ArrayString.swift */; };
 		533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537619B861E700DFD2CB /* language-zh-Hans.plist */; };
 		533E537A19B861E700DFD2CB /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537719B861E700DFD2CB /* language-zh-Hant.plist */; };
 		533E537B19B861E700DFD2CB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537819B861E700DFD2CB /* Language.swift */; };
@@ -37,6 +36,14 @@
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
+		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
+		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
+		53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
+		53AB497A1AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
+		53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
+		53AB497C1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
+		53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
+		53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
@@ -51,10 +58,8 @@
 		53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
-		53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53EA46D319B5A18D0094C59C /* ArrayString.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
-		8B17640F19BDD98A003A6A3D /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B17640E19BDD98A003A6A3D /* ArrayString.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
@@ -208,7 +213,6 @@
 		5330ED5F1ABD81AB0026C4B7 /* notepad.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notepad.txt; sourceTree = "<group>"; };
 		5332F842199A2354006F76CA /* nowuserimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nowuserimg.jpg; sourceTree = "<group>"; };
 		533E537319B851F700DFD2CB /* EmoticonKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EmoticonKeyboard.entitlements; sourceTree = "<group>"; };
-		533E537419B85D1800DFD2CB /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		533E537619B861E700DFD2CB /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hans.plist"; path = "CloudEmoticon2iOS/language-zh-Hans.plist"; sourceTree = "<group>"; };
 		533E537719B861E700DFD2CB /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hant.plist"; path = "CloudEmoticon2iOS/language-zh-Hant.plist"; sourceTree = "<group>"; };
 		533E537819B861E700DFD2CB /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = CloudEmoticon2iOS/Language.swift; sourceTree = "<group>"; };
@@ -244,6 +248,8 @@
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
 		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		53AB49751AE239A90090D955 /* AppGroupIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupIO.swift; sourceTree = "<group>"; };
+		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -263,10 +269,8 @@
 		53E9DF8119C1844B00C61121 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		53E9DF8219C1844C00C61121 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		53E9DF8319C189E600C61121 /* WaitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitView.swift; sourceTree = "<group>"; };
-		53EA46D319B5A18D0094C59C /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
-		8B17640E19BDD98A003A6A3D /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -357,7 +361,6 @@
 		5328C7AB19B70D0D00C425A8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				533E537419B85D1800DFD2CB /* ArrayString.swift */,
 				5328C7AC19B70D0D00C425A8 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -373,7 +376,6 @@
 				5346D9311993186500CEFA4B /* XMLReader.swift */,
 				5346D93419931C9200CEFA4B /* SwitchCoder.swift */,
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
-				53EA46D319B5A18D0094C59C /* ArrayString.swift */,
 			);
 			name = "数据模型";
 			sourceTree = "<group>";
@@ -479,6 +481,8 @@
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
+				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
+				53AB49761AE239A90090D955 /* ArrayString.swift */,
 				53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */,
 				53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */,
 				53818FE21ABDAAA700D62C5F /* cewidget.entitlements */,
@@ -658,7 +662,6 @@
 		8BF8ACF7199335D7001207FC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				8B17640E19BDD98A003A6A3D /* ArrayString.swift */,
 				8BF8ACF8199335D7001207FC /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -968,8 +971,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				533E537519B85D1800DFD2CB /* ArrayString.swift in Sources */,
 				5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */,
+				53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */,
+				53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -978,6 +982,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */,
+				53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */,
+				53AB497A1AE239A90090D955 /* AppGroupIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -993,9 +999,9 @@
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
+				53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
 				533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */,
-				53EA46D419B5A18D0094C59C /* ArrayString.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
@@ -1007,6 +1013,7 @@
 				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
+				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,
 				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
@@ -1029,8 +1036,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B17640F19BDD98A003A6A3D /* ArrayString.swift in Sources */,
 				8BF8ACFA199335D7001207FC /* TodayViewController.swift in Sources */,
+				53AB497C1AE239A90090D955 /* ArrayString.swift in Sources */,
+				53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,6 +1190,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1191,8 +1200,10 @@
 				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = 4;
 				"TARGETED_DEVICE_FAMILY[sdk=iphonesimulator*]" = "1,4";
 			};
@@ -1202,12 +1213,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 4;
