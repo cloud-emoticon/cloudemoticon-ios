@@ -23,8 +23,13 @@ class SetTableViewController: UITableViewController {
         list.addObject(lang.uage("设置"))
         list.addObject(lang.uage("关于"))
         self.title = lang.uage("设置")
+        
+//MARK - 主题
+        
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
 
-//        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
+//包括下面这里
+//        bgpview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
 //        bgpview.sendSubviewToBack(self.view)
 //        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
 //        bgpview.alpha = 0.3

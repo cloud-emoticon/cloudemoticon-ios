@@ -20,7 +20,7 @@ class MainTBViewController: UITabBarController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         initSetting()
-        载入皮肤()
+        载入背景()
         文件管理器.补充空白数据()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
@@ -42,15 +42,18 @@ class MainTBViewController: UITabBarController {
     }
 
     
-    func 载入皮肤()
+    func 载入背景()
     {
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
 //        self.tabBar.backgroundImage = UIImage(named: "widget2.png")
     }
     
 //MARK - 主题
-    func 切换Tabbar主题()
+    func 切换主题()
     {
+        self.tabBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        
         let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {
             let nowVC:UITabBarItem = items.objectAtIndex(i) as! UITabBarItem
@@ -67,6 +70,8 @@ class MainTBViewController: UITabBarController {
                 nowVC.image = UIImage(named: "settings-vector.png") //设置
             }
         }
+
+        
         //紫喵留：背景图就写入到Color的相应位置就好了喵
     }
     

@@ -38,6 +38,8 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     var 左上按钮: UIBarButtonItem!
     var 右上按钮: UIBarButtonItem!
     
+
+    
     // MARK: - 进入画面
     override func viewDidLoad() {
         if (已经载入 == false) {
@@ -47,6 +49,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             文件清理()
         }
     }
+    
+    //MARK: - 主题
+    
     func 载入数据()
     {
         super.viewDidLoad()

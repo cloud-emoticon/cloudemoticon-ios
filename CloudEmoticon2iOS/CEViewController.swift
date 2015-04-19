@@ -48,6 +48,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         scoreBtn.title = lang.uage("源管理")
         self.title = lang.uage("云颜文字")
     }
+
+//MARK - 主题
     
     func loadbg(){
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)

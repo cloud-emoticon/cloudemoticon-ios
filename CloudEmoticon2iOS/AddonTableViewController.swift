@@ -22,8 +22,12 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("输入法"))
         self.title = lang.uage("附加工具")
         
+//MARK - 主题
         
-//        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)
+        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        
+//包括下面这里
+//        bgpview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
 //        bgpview.sendSubviewToBack(self.view)
 //        bgpview.contentMode = UIViewContentMode.ScaleAspectFit
 //        bgpview.alpha = 0.3
