@@ -31,7 +31,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         背景管理.delegate = self
         背景管理.dataSource = self
         
-        self.title = lang.uage("背景") as String
+        self.title = lang.uage("背景")
         
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
         if(bg != nil) {
@@ -85,7 +85,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
-        return lang.uage("背景") as String
+        return lang.uage("背景")
         }
         return ""
     }
@@ -151,7 +151,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func selectimage() {
-        var actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置") as String, delegate: self, cancelButtonTitle: lang.uage("取消") as String, destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照") as String,lang.uage("相册") as String,lang.uage("图片库") as String)
+        var actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置"), delegate: self, cancelButtonTitle: lang.uage("取消"), destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照"),lang.uage("相册"),lang.uage("图片库"))
         actionsheet.actionSheetStyle = UIActionSheetStyle.Default
         actionsheet.showInView(self.view)
     }

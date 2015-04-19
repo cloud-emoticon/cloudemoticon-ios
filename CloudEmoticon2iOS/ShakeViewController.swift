@@ -18,7 +18,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("摇一摇") as String
+        self.title = lang.uage("摇一摇")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
         if(p_emodata.count < 3){
             NSLog("%@没有数据，加载数据",className)

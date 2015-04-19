@@ -8,13 +8,14 @@
 
 import UIKit
 
-class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
+class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinInstallerDelegate {
     
     var 文件管理器:FileManager = FileManager()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var 皮肤ID列表:NSMutableArray = NSMutableArray()
     var 左上按钮: UIBarButtonItem!
     var 右上按钮: UIBarButtonItem!
+    var 安装提示框:UIAlertView?
     
     required init(coder aDecoder: NSCoder)  {
         super.init(coder: aDecoder)
@@ -30,10 +31,10 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("皮肤管理") as String
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮:")
+        self.title = lang.uage("皮肤管理")
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮:")
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
         self.navigationItem.rightBarButtonItem = 右上按钮
     }
 
@@ -42,15 +43,39 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?) {
+        if (显示) {
+            let 标题字符串:String = 标题 as String
+            let 内容字符串:String = 内容 as String
+            var 按钮字符串:String? = nil
+            if (按钮 != nil) {
+                按钮字符串 = 按钮 as? String
+            }
+            if (安装提示框 == nil) {
+                安装提示框 = UIAlertView(title: 标题字符串, message: 内容字符串, delegate: nil, cancelButtonTitle: 按钮字符串)
+                安装提示框?.show()
+            }
+            if (安装提示框?.title != 标题字符串) {
+                安装提示框?.title = 标题字符串
+            }
+            if (安装提示框?.message != 内容字符串) {
+                安装提示框?.message = 内容字符串
+            }
+        } else {
+            安装提示框?.removeFromSuperview()
+            安装提示框 = nil
+        }
+    }
+    
     // MARK: - 返回按钮
     func 右上按钮(sender: UIBarButtonItem) {
         if (self.tableView.editing) {
-            var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤") as String, message: "", delegate: self, cancelButtonTitle: lang.uage("取消") as String, otherButtonTitles: lang.uage("添加") as String, lang.uage("从在线皮肤库添加") as String)
+            var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
-            alertImport.text = "http://"
+            alertImport.text = "http://192.168.1.123/skin.zip"
             alert.show()
         } else {
             self.navigationController?.popViewControllerAnimated(true)
@@ -64,7 +89,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (buttonIndex == 1) {
             //添加
-            //addSource(alertImport.text, isStore: false)
+            let 皮肤安装器:SkinInstaller = SkinInstaller()
+            皮肤安装器.代理 = self
+            皮肤安装器.启动安装任务(提示框输入框.text)
         } else if (buttonIndex == 2) {
             //源商店
 //            UIApplication.sharedApplication().openURL(NSURL.URLWithString("http://emoticon.moe/?cat=2"))
@@ -75,11 +102,11 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate {
     func 左上按钮(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成") as String
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加") as String
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
         } else {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑") as String
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回") as String
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
         }
     }
 

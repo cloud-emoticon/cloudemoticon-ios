@@ -14,8 +14,8 @@ class EmokbViewController: UIViewController {
     @IBOutlet weak var EmoKBText: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("输入法") as String
-        EmoKBText.text = lang.uage("颜文字输入法") as String
+        self.title = lang.uage("输入法")
+        EmoKBText.text = lang.uage("颜文字输入法")
         // Do any additional setup after loading the view.
     }
 

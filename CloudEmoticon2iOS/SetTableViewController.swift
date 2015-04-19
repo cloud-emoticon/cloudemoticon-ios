@@ -22,7 +22,7 @@ class SetTableViewController: UITableViewController {
         list.addObject(lang.uage("源管理"))
         list.addObject(lang.uage("设置"))
         list.addObject(lang.uage("关于"))
-        self.title = lang.uage("设置") as String
+        self.title = lang.uage("设置")
 
 //        bgpview.frame = CGRectMake(0, 270, self.view.frame.size.width, self.view.frame.size.height)
 //        bgpview.sendSubviewToBack(self.view)

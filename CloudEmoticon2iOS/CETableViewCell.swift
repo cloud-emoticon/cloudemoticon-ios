@@ -53,8 +53,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             滑出按钮B.tag = 102
             滑出按钮A.backgroundColor = UIColor.orangeColor()
             滑出按钮B.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.9, alpha: 1.0)
-            滑出按钮A.setTitle(lang.uage("收藏") as String, forState: UIControlState.Normal)
-            滑出按钮B.setTitle(lang.uage("分享") as String, forState: UIControlState.Normal)
+            滑出按钮A.setTitle(lang.uage("收藏"), forState: UIControlState.Normal)
+            滑出按钮B.setTitle(lang.uage("分享"), forState: UIControlState.Normal)
             滑出按钮A.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
             滑出按钮B.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(滑出按钮A)

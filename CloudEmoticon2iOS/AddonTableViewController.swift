@@ -20,7 +20,7 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("摇一摇"))
         list.addObject(lang.uage("扩展功能"))
         list.addObject(lang.uage("输入法"))
-        self.title = lang.uage("附加工具") as String
+        self.title = lang.uage("附加工具")
         
         
 //        bgpview.frame = CGRectMake(0, 190, self.view.frame.size.width, self.view.frame.size.height)

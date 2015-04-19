@@ -69,11 +69,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             
             源列表.addObjectsFromArray(刚载入的源列表 as [AnyObject])
         }
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑") as String, style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
         self.navigationItem.rightBarButtonItem = 右上按钮
-        self.title = lang.uage("源管理") as String
+        self.title = lang.uage("源管理")
         self.tableView.reloadData()
     }
     
@@ -152,7 +152,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 临时数据 = [当前颜文字库记录名称,当前颜文字库网址,删除权限]
             } else {
                 NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
-                let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了") as String, message: "", delegate: nil, cancelButtonTitle: lang.uage("确定") as String)
+                let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了"), message: "", delegate: nil, cancelButtonTitle: lang.uage("确定"))
                 源已在列表中提示框.show()
             }
         }
@@ -247,7 +247,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 左上按钮点击(sender: UIBarButtonItem) {
 //        用户设置.synchronize()
         if (self.tableView.editing) {
-            var 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源") as String, message: "", delegate: self, cancelButtonTitle: lang.uage("取消") as String, otherButtonTitles: lang.uage("添加") as String, lang.uage("从源商店添加") as String)
+            var 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
             添加源对话框.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
             添加源对话框.tag = 200
@@ -286,11 +286,11 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     func 右上按钮点击(sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.editing, animated: true)
         if (self.tableView.editing) {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成") as String
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加") as String
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
         } else {
-            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑") as String
-            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回") as String
+            self.navigationItem.rightBarButtonItem?.title = lang.uage("编辑")
+            self.navigationItem.leftBarButtonItem?.title = lang.uage("返回")
         }
         
     }
@@ -360,7 +360,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
                 文件管理器.saveSources(源列表)
                 选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
             } else {
-                UIAlertView(title: lang.uage("无法删除这个源") as String, message: lang.uage("不具备删除这个源的权限") as String, delegate: nil, cancelButtonTitle: lang.uage("取消") as String).show()
+                UIAlertView(title: lang.uage("无法删除这个源"), message: lang.uage("不具备删除这个源的权限"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
             }
             
         } else if editingStyle == .Insert {
@@ -420,7 +420,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
     }
         override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
         {
-            return lang.uage("删掉喵") as String
+            return lang.uage("删掉喵")
         }
 
 }

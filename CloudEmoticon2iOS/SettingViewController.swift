@@ -23,7 +23,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var copyexit:Bool? = NSUserDefaults.standardUserDefaults().valueForKey("exitaftercopy") as? Bool
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("设置") as String
+        self.title = lang.uage("设置")
         SetTable.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)
         adflist.addObject(lang.uage("广告显示频率"))
         adflist.addObject("")
@@ -63,9 +63,9 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     {
         if(section == 0)
         {
-            return lang.uage("广告") as String
+            return lang.uage("广告")
         } else {
-            return lang.uage("行为") as String
+            return lang.uage("行为")
         }
     }
     

@@ -65,7 +65,7 @@ class Language: NSObject {
         }
     }
     
-    func uage(要翻译的文字:NSString) -> NSString
+    func uage(要翻译的文字:NSString) -> String
     {
         let 可翻译的文字:NSArray = 翻译缓存.allKeys as NSArray
         var 可翻译:Bool = false
@@ -76,11 +76,13 @@ class Language: NSObject {
                 break
             }
         }
+        var 翻译后的文字:String = 要翻译的文字 as String
         if (可翻译) {
-            return 翻译缓存.objectForKey(要翻译的文字) as! NSString
+            let 翻译后的字符串:NSString = 翻译缓存.objectForKey(要翻译的文字) as! NSString
+            翻译后的文字 = 翻译后的字符串 as String
         } else {
             println("[语言管理器]无法翻译这个条目：\(要翻译的文字)")
         }
-        return 要翻译的文字
+        return 翻译后的文字
     }
 }

@@ -24,7 +24,7 @@ class WaitView: UIView {
         let 提示文字:UILabel = UILabel(frame: CGRectMake(0,12, 提示框窗口.frame.size.width, 30))
         提示文字.textAlignment = NSTextAlignment.Center
         提示文字.font = UIFont(name: "STHeitiSC-Medium", size: 18)
-        提示文字.text = lang.uage("加载中") as String
+        提示文字.text = lang.uage("加载中")
         提示框窗口.addSubview(提示文字)
         let 等待提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
         等待提示.center = CGPointMake(提示框窗口.bounds.size.width/2.0, 提示框窗口.bounds.size.height/2.0+20);

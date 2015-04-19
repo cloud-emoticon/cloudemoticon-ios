@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5310750A19C19E9D0003866F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5310750919C19E9D0003866F /* Main.storyboard */; };
+		53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */; };
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nowuserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nowuserimg.jpg */; };
@@ -208,6 +209,7 @@
 
 /* Begin PBXFileReference section */
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 			isa = PBXGroup;
 			children = (
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
+				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */,
 				53E0E4B11994854C00C9D9FC /* PubVar.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,

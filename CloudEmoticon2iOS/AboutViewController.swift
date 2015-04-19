@@ -16,7 +16,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = lang.uage("关于") as String
+        self.title = lang.uage("关于")
         载入等待.startAnimating()
         开始异步连接()
     }

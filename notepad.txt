@@ -23,3 +23,7 @@ com.yukariyashi.cloudemoticon2.cewatchex
 CloudEmoticon2Watchkitapp - iOS App Development
 com.yukariyashi.cloudemoticon2.watchkitapp
 com.yukariyashi.cloudemoticon2.cewatchapp
+
+尚未翻译：
+主题安装失败
+下载路径不正确

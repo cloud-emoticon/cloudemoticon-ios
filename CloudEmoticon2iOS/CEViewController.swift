@@ -43,8 +43,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func language()
     {
-        scoreBtn.title = lang.uage("源管理") as String
-        self.title = lang.uage("云颜文字") as String
+        scoreBtn.title = lang.uage("源管理")
+        self.title = lang.uage("云颜文字")
     }
     
     func loadbg(){
@@ -92,7 +92,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 载入视图() {
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
-        sortBtn.title = lang.uage("分类") as String
+        sortBtn.title = lang.uage("分类")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
@@ -128,7 +128,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
-        username.text = lang.uage("未登录") as String
+        username.text = lang.uage("未登录")
         username.font = UIFont.systemFontOfSize(13)
         
         userview.addSubview(username)
@@ -486,7 +486,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
     {
-        return lang.uage("删掉喵") as String
+        return lang.uage("删掉喵")
     }
 //    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle
 //    {
@@ -533,7 +533,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
         
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
-            sortBtn.title = lang.uage("分类") as String
+            sortBtn.title = lang.uage("分类")
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
             self.颜文字表格背景.frame = self.颜文字表格.frame
         } else {
@@ -576,9 +576,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
             if (下拉刷新动作中) {
                 if (表格竖向滚动 < -100.0) {
-                    下拉刷新提示!.text = lang.uage("松开手指刷新") as String
+                    下拉刷新提示!.text = lang.uage("松开手指刷新")
                 } else {
-                    下拉刷新提示!.text = lang.uage("下拉刷新") as String
+                    下拉刷新提示!.text = lang.uage("下拉刷新")
                 }
             }
         }
@@ -620,7 +620,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         if (表格竖向滚动 < -100.0) {
-            下拉刷新提示?.text = lang.uage("正在刷新") as String
+            下拉刷新提示?.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
                 载入数据(NetDownloadTo.CLOUDEMOTICONREFRESH)
                 loaddata()
