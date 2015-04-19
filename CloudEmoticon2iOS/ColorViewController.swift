@@ -195,13 +195,13 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        let image:UIImage = (editingInfo.indexForKey(UIImagePickerControllerEditedImage) as? UIImage)!
+//        let image:UIImage = (editingInfo.indexForKey(UIImagePickerControllerEditedImage) as? UIImage)!
         if(picker.sourceType == UIImagePickerControllerSourceType.Camera){
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
 
         }
         saveImage(image, WithName: userbgimgname)
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func saveImage(tempImage:UIImage, WithName imageName:NSString){

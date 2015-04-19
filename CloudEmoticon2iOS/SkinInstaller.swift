@@ -23,6 +23,10 @@ class SkinInstaller: NSObject {
         }
     }
     
+    func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?) {
+        self.代理?.显示安装提示框(显示, 标题: 标题, 内容: 内容, 按钮: 按钮)
+    }
+    
     func 预先校验下载路径(下载文件路径:NSString) -> Bool {
         if (下载文件路径.length > 11) {
             let 后缀:NSString = 下载文件路径.substringFromIndex(下载文件路径.length-4)

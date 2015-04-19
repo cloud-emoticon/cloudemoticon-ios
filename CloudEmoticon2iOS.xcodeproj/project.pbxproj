@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		5310750A19C19E9D0003866F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5310750919C19E9D0003866F /* Main.storyboard */; };
 		53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */; };
+		53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E611AE36D920076CC08 /* SkinDownload.swift */; };
+		53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E651AE370890076CC08 /* YashiNetworkDownload.swift */; };
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nowuserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nowuserimg.jpg */; };
@@ -210,6 +212,8 @@
 /* Begin PBXFileReference section */
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
+		53117E611AE36D920076CC08 /* SkinDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDownload.swift; sourceTree = "<group>"; };
+		53117E651AE370890076CC08 /* YashiNetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiNetworkDownload.swift; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -493,6 +497,8 @@
 			children = (
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
+				53117E611AE36D920076CC08 /* SkinDownload.swift */,
+				53117E651AE370890076CC08 /* YashiNetworkDownload.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
@@ -1044,10 +1050,12 @@
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
 				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
+				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,
 				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
+				53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
