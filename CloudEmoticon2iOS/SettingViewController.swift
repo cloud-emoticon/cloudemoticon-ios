@@ -103,9 +103,11 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
         }
         
-        if(indexPath.section == 0){
+        if(indexPath.section == 0) {
         cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as? String
-        } else {
+        }
+        
+        if(indexPath.section == 1) {
         cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as? String
         }
         
@@ -125,7 +127,6 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             设置复制后退出应用.addTarget(self, action: Selector(updateSwitchAtIndesPath(设置复制后退出应用)), forControlEvents: UIControlEvents.ValueChanged)
             设置复制后退出应用.tag = 1002
             cell!.contentView.addSubview(设置复制后退出应用)
-            //slidhfodishgodsihg
         }
                         
         cell!.selectionStyle = UITableViewCellSelectionStyle.None

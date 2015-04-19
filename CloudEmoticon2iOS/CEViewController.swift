@@ -12,6 +12,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
+    
+    
 
     let className = "[云颜文字]"
     let 文件管理器 = FileManager()
@@ -138,7 +140,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
-        if (self.view.frame.width < self.view.frame.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+        if (UIDevice.currentDevice().orientation.isPortrait || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
@@ -394,7 +396,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func isCanAutoHideSortView() -> Bool
     {
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && self.view.frame.width < self.view.frame.height) {
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIDevice.currentDevice().orientation.isPortrait) {
             return true
         }
         return false

@@ -48,6 +48,28 @@ class MainTBViewController: UITabBarController {
 //        self.tabBar.backgroundImage = UIImage(named: "widget2.png")
     }
     
+//MARK - 主题
+    func 切换Tabbar主题()
+    {
+        let items:NSArray = self.tabBar.items!
+        for i in 0...items.count - 1 {
+            let nowVC:UITabBarItem = items.objectAtIndex(i) as! UITabBarItem
+            if(i == 0){
+                nowVC.image = UIImage(named: "edit-vector.png") //自定表情
+            }
+            if(i == 1){
+                nowVC.image = UIImage(named: "shared-vector.png") //云颜文字
+            }
+            if(i == 2){
+                nowVC.image = UIImage(named: "idea-vector.png") //附加功能
+            }
+            if(i == 3){
+                nowVC.image = UIImage(named: "settings-vector.png") //设置
+            }
+        }
+        //紫喵留：背景图就写入到Color的相应位置就好了喵
+    }
+    
     func language()
     {
         let tbitemtitle:NSArray = [lang.uage("自定表情"),lang.uage("云颜文字"),lang.uage("附加工具"),lang.uage("设置")]

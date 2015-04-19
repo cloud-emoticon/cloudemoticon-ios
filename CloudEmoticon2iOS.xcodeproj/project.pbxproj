@@ -212,7 +212,7 @@
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
 		53117E611AE36D920076CC08 /* SkinDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDownload.swift; sourceTree = "<group>"; };
-		53117E651AE370890076CC08 /* YashiNetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiNetworkDownload.swift; sourceTree = "<group>"; };
+		53117E651AE370890076CC08 /* YashiNetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YashiNetworkDownload.swift; path = CloudEmoticon2iOS/YashiNetworkDownload.swift; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
@@ -485,6 +485,7 @@
 		53AB49801AE23FF10090D955 /* 共享代码 */ = {
 			isa = PBXGroup;
 			children = (
+				53117E651AE370890076CC08 /* YashiNetworkDownload.swift */,
 				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
 				53AB49761AE239A90090D955 /* ArrayString.swift */,
 			);
@@ -497,7 +498,6 @@
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
 				53117E611AE36D920076CC08 /* SkinDownload.swift */,
-				53117E651AE370890076CC08 /* YashiNetworkDownload.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
