@@ -159,7 +159,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
         var picker:UIImagePickerController = UIImagePickerController()
         picker.delegate = self
-        picker.allowsEditing = true
+        picker.allowsEditing = false
         
         switch(buttonIndex)
         {

@@ -58,7 +58,6 @@
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
-		53E9CD721AE144400043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
@@ -518,6 +517,7 @@
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
+				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				53AB49801AE23FF10090D955 /* 共享代码 */,
 				53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */,
 				53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */,
@@ -525,7 +525,6 @@
 				53A796EE1AE2784C00755592 /* 不参与编译 */,
 				8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
-				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
 				5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */,
 				53918E921AB7065C00CE7A68 /* CloudEmoticon2iOS WatchKit Extension */,
@@ -824,7 +823,7 @@
 		53DF28E5196B9CF40058AA42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "神楽坂雅詩 & 神楽坂紫喵";
 				TargetAttributes = {
 					5328C7A819B70D0D00C425A8 = {
@@ -974,7 +973,6 @@
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
-				53E9CD721AE144400043A9FD /* cewatchapp.app in Resources */,
 				8BE31F66196D443C006C3B26 /* info-vector@2x.png in Resources */,
 				8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */,
 				533E537A19B861E700DFD2CB /* language-zh-Hant.plist in Resources */,

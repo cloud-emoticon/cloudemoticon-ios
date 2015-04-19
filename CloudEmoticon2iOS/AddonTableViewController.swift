@@ -60,7 +60,7 @@ class AddonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Addon", forIndexPath: indexPath) as! UITableViewCell
 
-        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as! String
+        cell.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
         
         return cell
     }
