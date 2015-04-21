@@ -109,10 +109,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //                NSLog("Group写入操作")
                 let 组数据读写:AppGroupIO = AppGroupIO()
-                var 组数据:NSArray? = 组数据读写.读取数据UD模式()
+                var 组数据:NSArray? = 组数据读写.读取设置UD模式()
                 if (组数据 != nil) {
                     var 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray()]
-                    组数据读写.写入数据UD模式(新建数据模型)
+                    组数据读写.写入设置UD模式(新建数据模型)
                 }
             }
             break
@@ -243,7 +243,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-            输入法中的数据 = 组数据读写.读取数据UD模式()
+            输入法中的数据 = 组数据读写.读取设置UD模式()
         }
         if(输入法中的数据 != nil) {
             let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as! NSArray
@@ -270,7 +270,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-            输入法中的数据 = 组数据读写.读取数据UD模式()
+            输入法中的数据 = 组数据读写.读取设置UD模式()
         }
         if(输入法中的数据 != nil) {
             let 通知扩展中的自定义数据:NSArray =  输入法中的数据?.objectAtIndex(1) as! NSArray

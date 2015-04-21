@@ -53,7 +53,7 @@ func 保存数据到输入法()
 //        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //        NSLog("Group写入操作")
         let 组数据读写:AppGroupIO = AppGroupIO()
-        组数据读写.写入数据UD模式(要保存的数据)
+        组数据读写.写入设置UD模式(要保存的数据)
     }
 }
 

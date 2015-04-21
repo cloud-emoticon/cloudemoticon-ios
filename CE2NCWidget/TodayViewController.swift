@@ -70,16 +70,16 @@ class TodayViewController: UIViewController {
 //            NSLog("Group写入操作")
 //        }
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 数据数组:NSArray? = 组数据读写.读取数据UD模式()
+        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
         if (数据数组 != nil) {
             var 自定义数据:NSMutableArray = NSMutableArray()
             自定义数据.addObject(数据数组!.objectAtIndex(1))
             自定义数据.addObject([emoText.text!,""])
             var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数据,数据数组!.objectAtIndex(2)]
-            组数据读写.写入数据UD模式(新数据数组)
+            组数据读写.写入设置UD模式(新数据数组)
         } else {
             var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
-            组数据读写.写入数据UD模式(新建数据模型)
+            组数据读写.写入设置UD模式(新建数据模型)
         }
         emoText.text = "添加成功"
     }

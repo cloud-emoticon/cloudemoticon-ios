@@ -177,7 +177,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 //            NSLog("键盘没有数据：\(value)。")
 //        }
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 数据数组:NSArray? = 组数据读写.读取数据UD模式()
+        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
         if (数据数组 != nil) {
             全部收藏数组.addObjectsFromArray(数据数组!.objectAtIndex(0) as! [AnyObject])
             全部自定数组.addObjectsFromArray(数据数组!.objectAtIndex(1) as! [AnyObject])
@@ -263,7 +263,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 //        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //        NSLog("Group写入操作")
         let 组数据读写:AppGroupIO = AppGroupIO()
-        组数据读写.写入数据UD模式(要保存的数据)
+        组数据读写.写入设置UD模式(要保存的数据)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell

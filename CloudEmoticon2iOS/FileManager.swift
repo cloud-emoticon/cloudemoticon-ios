@@ -146,8 +146,8 @@ class FileManager: NSObject {
 //            NSLog("Group写入操作")
 //        }
         let 组数据读写:AppGroupIO = AppGroupIO()
-        if (组数据读写.读取数据UD模式() == nil) {
-            组数据读写.写入数据UD模式(组数据读写.新建数据())
+        if (组数据读写.读取设置UD模式() == nil) {
+            组数据读写.写入设置UD模式(组数据读写.新建设置())
         }
     }
 }
