@@ -257,7 +257,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             var 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
             添加源对话框.tag = 200
             添加源输入框.keyboardType = UIKeyboardType.URL
-            添加源输入框.text = "http://"
+            添加源输入框.text = "http://yoooooooooo.com/ce.xml"
             添加源对话框.show()
         } else {
             退出源管理()

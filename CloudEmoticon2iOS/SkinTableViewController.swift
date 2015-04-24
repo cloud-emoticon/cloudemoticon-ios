@@ -75,7 +75,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
-            alertImport.text = "http://192.168.1.123/skin.zip"
+            alertImport.text = "http://192.168.1.123/skin/skin.zip"
             alert.show()
         } else {
             self.navigationController?.popViewControllerAnimated(true)

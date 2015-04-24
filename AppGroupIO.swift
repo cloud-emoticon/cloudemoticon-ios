@@ -1,5 +1,5 @@
 //
-//  AppGroupIO.swift
+//  YashiAppGroupIO.swift
 //  雅诗独立类库：AppGroup共享设置读写工具 v2.0 Swift中文版 (Xcode6.3) | beta
 //
 //  封装AppGroup的读写方法，支持对AppGroup的增删改查，URL和NSUserDefaults两种调用方式，JsonString和对象两种存储方式。
@@ -15,16 +15,16 @@
 import UIKit
 
 class AppGroupIO: NSObject {
-    
+
     let 程序组名称:String = "group.CloudEmoticon" //AppGroup的名称
     let 程序组设置路径:String = "Library/caches/CE2" //URL方式读写路径
     let 程序组设置名称:String = "s" //字符串类型值存储Key
     let 程序组对象名称:String = "o" //对象类型值存储Key
-    let 空白设置模型:String = "[[],[],[]]" //用于校验的空白Json模型
+    let 空白设置模型:String = "[[],[],[],[]]" //用于校验的空白Json模型
     
     //新的数据模型生成方法（根据需要修改）
     func 新建设置() -> NSArray {
-        let 新建设置模型:NSArray = [NSArray(),NSArray(),NSArray()]
+        let 新建设置模型:NSArray = [NSArray(),NSArray(),NSArray(),NSArray()]
         return 新建设置模型
     }
     
