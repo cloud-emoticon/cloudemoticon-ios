@@ -24,7 +24,11 @@ class AddonTableViewController: UITableViewController {
         
 //MARK - 主题
         
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255)
+         self.navigationController?.navigationBar.tintColor = UIColor.blueColor()
+        let titlecolor = NSDictionary(object: UIColor.blackColor(),
+            forKey:NSForegroundColorAttributeName)
+        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject]
         
 //包括下面这里
 //        bgpview.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)

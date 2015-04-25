@@ -48,6 +48,19 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     {
         self.view.backgroundColor = UIColor(red: 209.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1)//172 179 190
         let 按钮数量:Int = 按钮文字数组.count
+        
+        let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
+        模板按钮.frame = CGRectMake(0, 0, 0, 0)
+        模板按钮.sizeToFit()
+        模板按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
+        self.view.addSubview(模板按钮)
+
+        
+//        if(UIDevice.currentDevice().orientation.isPortrait) {
+//            表格视图 = UITableView(frame: CGRectMake(0, 0, 320, 165), style: .Plain)
+//        } else {
+//            表格视图 = UITableView(frame: CGRectMake(0, 0, 320, 89), style: .Plain)
+//        }
         表格视图 = UITableView() //frame: , style: UITableViewStyle.Plain
         表格视图.setTranslatesAutoresizingMaskIntoConstraints(false)
         表格视图.delegate = self
@@ -59,22 +72,23 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var 表格视图横向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
         var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -0.0)
         var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 4)
-        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 165)
-        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 89)
+        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 134)
+        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 83)
+        
+        
+        //这里喵 姐姐需要让他识别屏幕方向⬇️
+        
+        
         if(UIDevice.currentDevice().orientation.isPortrait) {
-            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
-        } else {
             self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式3])
+        }
+        if(UIDevice.currentDevice().orientation.isLandscape) {
+            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
         }
         
         for i in 0...按钮文字数组.count - 1
         {
             let 按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
-            let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
-            模板按钮.frame = CGRectMake(0, 0, 0, 0)
-            模板按钮.sizeToFit()
-            模板按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
-            self.view.addSubview(模板按钮)
             var 上一个按钮:UIView = UIView()
             if (i > 0) {
                 上一个按钮 = self.view.viewWithTag(100 + i - 1)!
@@ -94,11 +108,20 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             按钮.tag = 100 + i
             var 按钮高度 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 35)
             self.view.addConstraint(按钮高度)
+            
             if (i == 0){
                 var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 表格视图, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 6)
-                var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 18)
-                self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
+                
+                if (表格视图.contentSize.height > 100){
+                    var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 18)
+                    self.view.addConstraints([按钮宽度适应])
+                } else {
+                    var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 59.6)
+                    self.view.addConstraints([按钮宽度适应])
+
+                }
+                self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式])
             } else if (i == 按钮文字数组.count - 1) {
                 var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)

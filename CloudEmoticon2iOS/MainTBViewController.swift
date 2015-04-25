@@ -51,8 +51,12 @@ class MainTBViewController: UITabBarController {
 //MARK - 主题
     func 切换主题()
     {
-        self.tabBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
-        self.navigationController?.navigationBar.tintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        self.tabBar.tintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //TabBar颜色
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //NavBar颜色
+        self.navigationController?.navigationBar.tintColor = UIColor.blueColor() //NavBar按钮颜色
+        let titlecolor = NSDictionary(object: UIColor.blackColor(),
+            forKey:NSForegroundColorAttributeName)
+        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject] //NavBar标题颜色
         
         let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {

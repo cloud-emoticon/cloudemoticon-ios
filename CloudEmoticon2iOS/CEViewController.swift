@@ -81,6 +81,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewDidLoad() {
         //Load UI
         
+        //MARK - 主题
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 255, green: 255, blue: 255, alpha: 255)
+        let titlecolor = NSDictionary(object: UIColor.blackColor(),
+            forKey:NSForegroundColorAttributeName)
+        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.blueColor()
+        
         self.title = lang.uage("云颜文字")as String
         载入视图()
         
