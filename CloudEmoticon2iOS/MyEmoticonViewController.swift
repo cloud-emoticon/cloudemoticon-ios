@@ -239,7 +239,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         let 组数据读写:AppGroupIO = AppGroupIO()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         var 输入法中的数据:NSArray? = nil
-        if (appgroup) {
+        if (appgroup && 组数据读写.检查设置UD模式()) {
 //            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)

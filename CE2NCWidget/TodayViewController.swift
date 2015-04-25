@@ -17,6 +17,8 @@ class TodayViewController: UIViewController {
         AddtoCustom.layer.cornerRadius = 4
         RunFamApp.layer.cornerRadius = 4
         emoEx.frame = CGRectMake(0, 0, self.view.frame.width, 36)
+        self.view.frame = CGRectMake(0, 0, self.view.frame.width, 36)
+        NSLog("%fx%f", self.view.frame.width,self.view.frame.height)
     }
     
     @IBOutlet var emoEx: UIView!
@@ -69,19 +71,43 @@ class TodayViewController: UIViewController {
 //            value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //            NSLog("Group写入操作")
 //        }
+        let 要添加的记录:NSArray = [emoText.text!,""]
         let 组数据读写:AppGroupIO = AppGroupIO()
         var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
-        if (数据数组 != nil) {
-            var 自定义数据:NSMutableArray = NSMutableArray()
-            自定义数据.addObject(数据数组!.objectAtIndex(1))
-            自定义数据.addObject([emoText.text!,""])
-            var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数据,数据数组!.objectAtIndex(2)]
-            组数据读写.写入设置UD模式(新数据数组)
-        } else {
-            var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
-            组数据读写.写入设置UD模式(新建数据模型)
+        if (数据数组 == nil) {
+            数据数组 = 组数据读写.新建设置()
         }
+        var 自定义数组源:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
+        var 自定义数组:NSMutableArray = NSMutableArray(array: 自定义数组源)
+        if (自定义数组.count > 0) {
+            for (var i:Int = 0; i < 自定义数组.count; i++) {
+                let 当前自定义条目对象:AnyObject = 自定义数组.objectAtIndex(i)
+                let 当前自定义条目数组:NSArray = 当前自定义条目对象 as! NSArray
+                let 当前自定义条目:NSString = 当前自定义条目数组.objectAtIndex(0) as! NSString
+                if (当前自定义条目.isEqualToString(emoText.text!)) {
+                    自定义数组.removeObjectAtIndex(i)
+                    if (i > 0) {
+                        i--
+                    }
+                }
+            }
+        }
+        自定义数组.insertObject(要添加的记录, atIndex: 0)
+        自定义数组源 = 自定义数组 as NSArray
+        var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数组源,数据数组!.objectAtIndex(2),数据数组!.objectAtIndex(3)]
+        组数据读写.写入设置UD模式(新数据数组)
         emoText.text = "添加成功"
+//        if (数据数组 != nil) {
+//            var 自定义数据:NSMutableArray = NSMutableArray()
+//            自定义数据.addObject(数据数组!.objectAtIndex(1))
+//            自定义数据.addObject([emoText.text!,""])
+//            var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数据,数据数组!.objectAtIndex(2)]
+//            组数据读写.写入设置UD模式(新数据数组)
+//        } else {
+//            var 新建数据模型:NSArray = [[],[[emoText.text!,""]],[]]
+//            组数据读写.写入设置UD模式(新建数据模型)
+//        }
+//        emoText.text = "添加成功"
     }
 
     @IBOutlet weak var RunFamApp: UIButton!

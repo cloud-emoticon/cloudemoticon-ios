@@ -21,6 +21,7 @@ class FileManager: NSObject {
         case FAVORITE
         case CUSTOM
         case ONLINE
+        case SKIN
     }
     
    
@@ -53,7 +54,6 @@ class FileManager: NSObject {
         if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
             NSNotificationCenter.defaultCenter().postNotificationName("loaddataoks", object: nowURLarr)
         }
-        
         return nil
     }
     
@@ -85,6 +85,8 @@ class FileManager: NSObject {
             return NSString.localizedStringWithFormat("%@-favorite.plist",p_nowUserName)
         case saveMode.CUSTOM:
             return NSString.localizedStringWithFormat("%@-custom.plist",p_nowUserName)
+        case saveMode.SKIN:
+            return NSString.localizedStringWithFormat("%@-skin.plist",p_nowUserName)
         default:
             return NSString()
         }

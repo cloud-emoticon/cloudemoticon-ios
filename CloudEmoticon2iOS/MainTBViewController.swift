@@ -105,7 +105,6 @@ class MainTBViewController: UITabBarController {
         
         var 历史记录:NSMutableArray = NSMutableArray()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-        历史记录.addObject(要复制的颜文字数组)
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
@@ -125,6 +124,8 @@ class MainTBViewController: UITabBarController {
                 }
             }
         }
+        历史记录.insertObject(要复制的颜文字数组, atIndex: 0)
+        
         while (true) {
             if (历史记录.count > 50) {
                 历史记录.removeLastObject()

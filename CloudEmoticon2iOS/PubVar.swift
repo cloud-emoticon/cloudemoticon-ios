@@ -45,14 +45,25 @@ func 保存数据到输入法()
     if (历史文件中的数据 == nil) {
         历史文件中的数据 = NSArray()
     }
-    let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!,历史文件中的数据!]
+//    var 主题文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.SKIN)
+//    if (主题文件中的数据 == nil) {
+//        主题文件中的数据 = NSArray()
+//    }
+    let 组数据读写:AppGroupIO = AppGroupIO()
+    var 当前主题数据:NSArray = NSArray()
+    var 组数据:NSArray?
+    if (组数据读写.检查设置UD模式()) {
+        组数据 = 组数据读写.读取设置UD模式()!
+        var 当前主题数据:NSArray = 组数据!.objectAtIndex(3) as! NSArray
+    }
+    let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!,历史文件中的数据!,当前主题数据]
 //    let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
     if (appgroup) {
 //        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //        要保存的数据文本.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //        NSLog("Group写入操作")
-        let 组数据读写:AppGroupIO = AppGroupIO()
+        
         组数据读写.写入设置UD模式(要保存的数据)
     }
 }
