@@ -270,10 +270,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-//    func load(notification:NSNotification)
-//    {
-//        载入本地数据()
-//    }
+    func load(notification:NSNotification)
+    {
+        载入本地数据()
+    }
     
     func loadwebdataoks(notification:NSNotification)
     {
