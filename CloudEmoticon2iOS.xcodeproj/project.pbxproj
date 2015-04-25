@@ -26,6 +26,7 @@
 		5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBC1990C21C00D70CA4 /* FileManager.swift */; };
 		53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* ScoreTableViewController.swift */; };
 		5357733C199B1584003FF9D3 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5357733B199B1584003FF9D3 /* default.plist */; };
+		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
 		538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D3E9D199471F100F5692F /* Md5Coder.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
 		53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53918E951AB7065C00CE7A68 /* InterfaceController.swift */; };
@@ -237,6 +238,7 @@
 		53818FE21ABDAAA700D62C5F /* cewidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewidget.entitlements; sourceTree = "<group>"; };
 		53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cekeyboard.entitlements; sourceTree = "<group>"; };
 		53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchex.entitlements; sourceTree = "<group>"; };
+		5389F5941AEB85FF009A1552 /* ResetSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		538D3E9D199471F100F5692F /* Md5Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Md5Coder.swift; sourceTree = "<group>"; };
 		53906A9E1999D5E2000020D1 /* CEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEViewController.swift; sourceTree = "<group>"; };
@@ -656,6 +658,7 @@
 				8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */,
 				8BA6683F19ACCD390080C47F /* AboutViewController.swift */,
 				8BA6684819ACDCB30080C47F /* SettingViewController.swift */,
+				5389F5941AEB85FF009A1552 /* ResetSetting.swift */,
 			);
 			name = "设置导航";
 			sourceTree = "<group>";
@@ -1030,6 +1033,7 @@
 				53E0E4B11994854C00C9D9FC /* PubVar.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
+				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,

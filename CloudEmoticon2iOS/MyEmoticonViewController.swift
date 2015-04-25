@@ -335,17 +335,22 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
         
         let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
-        let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as! NSString
-        var 颜文字名称:NSString?
-        if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
-            颜文字名称! = 当前单元格数据.objectAtIndex(1) as! NSString
-        }
-        cell?.textLabel?.text = 颜文字 as String
-        if (颜文字名称 != nil) {
-            cell?.detailTextLabel?.text = 颜文字名称! as String
+        if (当前单元格数据.count < 1) {
+            cell?.textLabel?.text = "<错误数据>"
         } else {
-            cell?.detailTextLabel?.text = ""
+            let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as! NSString
+            var 颜文字名称:NSString?
+            if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
+                颜文字名称! = 当前单元格数据.objectAtIndex(1) as! NSString
+            }
+            cell?.textLabel?.text = 颜文字 as String
+            if (颜文字名称 != nil) {
+                cell?.detailTextLabel?.text = 颜文字名称! as String
+            } else {
+                cell?.detailTextLabel?.text = ""
+            }
         }
+        
         cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
         cell?.textLabel?.numberOfLines = 0
         

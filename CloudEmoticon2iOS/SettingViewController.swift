@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class SettingViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate {
 
     var adflist:NSMutableArray = NSMutableArray()
     var actlist:NSMutableArray = NSMutableArray()
@@ -28,6 +28,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         adflist.addObject(lang.uage("广告显示频率"))
         adflist.addObject("")
         adflist.addObject(lang.uage("复制后退出"))
+        adflist.addObject(lang.uage("抹掉所有内容和设置"))
         SetTable.delegate = self
         SetTable.dataSource = self
         view.addSubview(SetTable)
@@ -46,7 +47,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
-        return 2
+        return 3
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -54,6 +55,8 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(section == 0)
         {
             return 2
+        } else if(section == 1) {
+            return 1
         } else {
             return 1
         }
@@ -64,8 +67,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         if(section == 0)
         {
             return lang.uage("广告")
-        } else {
+        } else if(section == 1) {
             return lang.uage("行为")
+        } else {
+            return lang.uage("还原")
         }
     }
     
@@ -107,30 +112,58 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row) as? String
         }
         
-        if(indexPath.section == 1) {
-        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as? String
-        }
-        
         if (cell!.contentView.subviews.count > 1) {
             println("cell!.contentView.subviews.count > 1")
         }
-
+        
+        if(indexPath.section == 1) {
+        cell!.textLabel?.text = adflist.objectAtIndex(indexPath.row + 2) as? String
+        }
         if(indexPath.section == 0 && indexPath.row == 1){
             cell!.accessoryView = 设置广告显示频率
             设置广告显示频率.addTarget(self, action: Selector(updateSliderAtIndesPath(设置广告显示频率)), forControlEvents: UIControlEvents.TouchUpInside)
             设置广告显示频率.tag = 1001
             cell!.contentView.addSubview(设置广告显示频率)
-        }
-        
-        if(indexPath.section == 1){
+        } else if(indexPath.section == 1 && indexPath.row == 0){
                 cell!.accessoryView = 设置复制后退出应用
             设置复制后退出应用.addTarget(self, action: Selector(updateSwitchAtIndesPath(设置复制后退出应用)), forControlEvents: UIControlEvents.ValueChanged)
             设置复制后退出应用.tag = 1002
             cell!.contentView.addSubview(设置复制后退出应用)
+        } else if(indexPath.section == 2 && indexPath.row == 0) {
+            cell!.textLabel?.text = adflist.objectAtIndex(3) as? String
+            cell!.textLabel?.textColor = UIColor.redColor()
         }
-                        
+        
         cell!.selectionStyle = UITableViewCellSelectionStyle.None
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if(indexPath.section == 2 && indexPath.row == 0) {
+            //抹掉所有内容和设置
+            let 重置提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("将要清除所有程序设置以及输入法等插件设置，并清除所有自定义、历史记录、收藏夹。你的帐户将被登出但不影响云端的设置。"), delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("抹掉这些内容"))
+            重置提示框.tag = 10086
+            重置提示框.show()
+        }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if (alertView.tag == 10086 && buttonIndex == 1) {
+            NSLog("执行重置")
+            let 内容重置:ResetSetting = ResetSetting()
+            内容重置.清除Document文件夹()
+            内容重置.清除应用设置()
+            内容重置.清除AppGroup设置()
+            let 屏蔽画面:UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+            屏蔽画面.backgroundColor = UIColor.blackColor()
+            self.view.addSubview(屏蔽画面)
+            let 重置完毕提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("抹掉成功，重新打开软件后生效。"), delegate: self, cancelButtonTitle: lang.uage("退出云颜文字2"))
+            重置完毕提示框.tag = 10087
+            重置完毕提示框.show()
+        } else if (alertView.tag == 10087) {
+            NSLog("执行重置完毕，退出")
+            exit(0)
+        }
     }
     
     func updateSwitchAtIndesPath(sender:UISwitch){

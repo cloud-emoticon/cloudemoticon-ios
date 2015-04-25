@@ -94,7 +94,7 @@ class SetTableViewController: UITableViewController {
             self.navigationController?.pushViewController(ScoreTableViewController(), animated: true)
             break
         case 3:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as! UIViewController
+            let push:SettingViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as! SettingViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break

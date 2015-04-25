@@ -18,15 +18,28 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     var 全部自定数组:NSMutableArray = NSMutableArray()
     var 全部历史数组:NSMutableArray = NSMutableArray()
     var 功能按钮数组:NSMutableArray = NSMutableArray()
+//    var 初始化提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
-    
+        NSLog("云颜文字键盘初始化1...")
         // Add custom view sizing constraints here
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NSLog("云颜文字键盘初始化2...")
+//        初始化提示.frame = CGRectMake(0, 0, 30, 30)
+//        self.view.addSubview(初始化提示)
+//        var 初始化提示对齐方式1 = NSLayoutConstraint(item: 初始化提示, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
+//        var 初始化提示对齐方式2 = NSLayoutConstraint(item: 初始化提示, attribute: .Bottom, relatedBy: .Equal, toItem: self.view, attribute: .Bottom, multiplier: 1.0, constant: 0.0)
+//        self.view.addConstraints([初始化提示对齐方式1, 初始化提示对齐方式2])
+//        let 初始化计时器:NSTimer = NSTimer(timeInterval: 0.5, target: self, selector: "初始化()", userInfo: nil, repeats: false)
+//        初始化计时器.fire()
+        初始化()
+    }
+    
+    func 初始化() {
         初始化画面()
         初始化数据()
     }
@@ -276,8 +289,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
-        cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as? String
-        
+        if (当前数据数组.count < 1) {
+            cell?.textLabel?.text = "<错误数据>"
+        } else {
+            cell?.textLabel?.text = 当前数据数组.objectAtIndex(indexPath.row) as? String
+        }
         return cell!
     }
     

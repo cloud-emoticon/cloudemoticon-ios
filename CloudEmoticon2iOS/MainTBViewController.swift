@@ -109,6 +109,22 @@ class MainTBViewController: UITabBarController {
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
+        for (var i:Int = 0; i < 历史记录.count; i++) {
+            //            if (i >= 全部历史数组.count) {
+            //                break
+            //            }
+            let 当前历史条目对象:AnyObject = 历史记录.objectAtIndex(i)
+            let 当前历史条目数组:NSArray = 当前历史条目对象 as! NSArray
+            let 当前历史条目:NSString = 当前历史条目数组.objectAtIndex(0) as! NSString
+            //NSLog("当前历史条目=\(当前历史条目),要复制的颜文字=\(要复制的颜文字)")
+            if (当前历史条目.isEqualToString(要复制的颜文字 as String)) {
+                //NSLog("【删除】\n")
+                历史记录.removeObjectAtIndex(i)
+                if (i > 0) {
+                    i--
+                }
+            }
+        }
         while (true) {
             if (历史记录.count > 50) {
                 历史记录.removeLastObject()

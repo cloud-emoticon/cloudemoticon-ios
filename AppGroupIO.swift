@@ -203,4 +203,21 @@ class AppGroupIO: NSObject {
         }
         return nil
     }
+    
+    //清除标准程序设置
+    func 清除标准程序设置() {
+        let 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let 应用ID:String? = NSBundle.mainBundle().bundleIdentifier
+        if (应用ID != nil) {
+            设置存储.removePersistentDomainForName(应用ID! as String)
+        }
+        let 设置字典:NSDictionary = 设置存储.dictionaryRepresentation() as NSDictionary!
+        let 设置字典设置项:NSArray = 设置字典.allKeys as NSArray
+        for 当前设置项 in 设置字典设置项 {
+            let 当前设置项字符串:String = 当前设置项 as! String
+            设置存储.removeObjectForKey(当前设置项字符串)
+        }
+        NSLog("Group-UD清除操作")
+        设置存储.synchronize()
+    }
 }
