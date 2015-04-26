@@ -17,6 +17,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("关于")
+        内容.text = "Loading..."
         载入等待.startAnimating()
         开始异步连接()
     }
@@ -28,7 +29,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     func 开始异步连接()
     {
-        var 当前请求网址:NSURL = NSURL(string: "http://uuu.moe/e/ceios2about.txt")!
+        var 当前请求网址:NSURL = NSURL(string: "http://yoooooooooo.com/e/CloudEmoticon2-Copyright.txt")!
         var URL请求: NSURLRequest
         URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         //        request.URL = urla

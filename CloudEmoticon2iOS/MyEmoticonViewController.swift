@@ -322,7 +322,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 表格数据.count
+        if (表格数据.count > 0) {
+            tableView.userInteractionEnabled = true
+            return 表格数据.count
+        }
+        tableView.userInteractionEnabled = false
+        return 1
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -333,24 +338,39 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
         }
-        
-        let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
-        if (当前单元格数据.count < 1) {
-            cell?.textLabel?.text = "<错误数据>"
-        } else {
-            let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as! NSString
-            var 颜文字名称:NSString?
-            if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
-                颜文字名称! = 当前单元格数据.objectAtIndex(1) as! NSString
-            }
-            cell?.textLabel?.text = 颜文字 as String
-            if (颜文字名称 != nil) {
-                cell?.detailTextLabel?.text = 颜文字名称! as String
+        if (表格数据.count > 0) {
+            let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
+            if (当前单元格数据.count < 1) {
+                cell?.textLabel?.text = "<错误数据>"
             } else {
-                cell?.detailTextLabel?.text = ""
+                let 颜文字:NSString = 当前单元格数据.objectAtIndex(0) as! NSString
+                var 颜文字名称:NSString?
+                if (当前单元格数据.count > 1 && 颜文字名称 != nil) {
+                    颜文字名称! = 当前单元格数据.objectAtIndex(1) as! NSString
+                }
+                cell?.textLabel?.text = 颜文字 as String
+                if (颜文字名称 != nil) {
+                    cell?.detailTextLabel?.text = 颜文字名称! as String
+                } else {
+                    cell?.detailTextLabel?.text = ""
+                }
             }
+        } else {
+            switch (内容选择菜单.selectedSegmentIndex) {
+            case 0:
+                cell?.textLabel?.text = lang.uage("（还没有收藏的颜文字喵）")
+                break
+            case 1:
+                cell?.textLabel?.text = lang.uage("（还没有历史记录呢喵）")
+                break
+            case 2:
+                cell?.textLabel?.text = lang.uage("（还没有添加自定义颜文字呢喵）")
+                break
+            default:
+                break
+            }
+            cell?.detailTextLabel?.text = ""
         }
-        
         cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
         cell?.textLabel?.numberOfLines = 0
         
@@ -375,9 +395,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     // MARK: - 表格编辑范围
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
-        if (内容选择菜单.selectedSegmentIndex == 1) {
-            return UITableViewCellEditingStyle.None
-        }
+//        if (内容选择菜单.selectedSegmentIndex == 1) {
+//            return UITableViewCellEditingStyle.None
+//        }
         return UITableViewCellEditingStyle.Delete
     }
     // MARK: - 表格是否可以移动项目
@@ -404,6 +424,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.FAVORITE)
             break
         case 1:
+            文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
             break
         case 2:
             文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
