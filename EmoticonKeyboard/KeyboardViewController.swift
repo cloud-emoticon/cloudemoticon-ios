@@ -17,18 +17,20 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     var 全部收藏数组:NSMutableArray = NSMutableArray()
     var 全部自定数组:NSMutableArray = NSMutableArray()
     var 全部历史数组:NSMutableArray = NSMutableArray()
+    var 全部皮肤数组:NSMutableArray = NSMutableArray()
     var 功能按钮数组:NSMutableArray = NSMutableArray()
+    let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
 //    var 初始化提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        NSLog("云颜文字键盘初始化1...")
+//        NSLog("云颜文字键盘初始化1...")
         // Add custom view sizing constraints here
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSLog("云颜文字键盘初始化2...")
+//        NSLog("云颜文字键盘初始化2...")
 //        初始化提示.frame = CGRectMake(0, 0, 30, 30)
 //        self.view.addSubview(初始化提示)
 //        var 初始化提示对齐方式1 = NSLayoutConstraint(item: 初始化提示, attribute: .Left, relatedBy: .Equal, toItem: self.view, attribute: .Left, multiplier: 1.0, constant: 0.0)
@@ -49,7 +51,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         self.view.backgroundColor = UIColor(red: 209.0/255.0, green: 213.0/255.0, blue: 219.0/255.0, alpha: 1)//172 179 190
         let 按钮数量:Int = 按钮文字数组.count
         
-        let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
+        //let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
         模板按钮.frame = CGRectMake(0, 0, 0, 0)
         模板按钮.sizeToFit()
         模板按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
@@ -68,23 +70,6 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         表格视图.backgroundColor = UIColor.whiteColor()
         表格视图.showsVerticalScrollIndicator = false
         self.view.addSubview(表格视图)
-        
-        var 表格视图横向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
-        var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -0.0)
-        var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 4)
-        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 134)
-        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 83)
-        
-        
-        //这里喵 姐姐需要让他识别屏幕方向⬇️
-        
-        
-        if(UIDevice.currentDevice().orientation.isPortrait) {
-            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式3])
-        }
-        if(UIDevice.currentDevice().orientation.isLandscape) {
-            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
-        }
         
         for i in 0...按钮文字数组.count - 1
         {
@@ -106,9 +91,43 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             self.view.addSubview(按钮)
             按钮.titleLabel?.textAlignment = NSTextAlignment.Center
             按钮.tag = 100 + i
+            功能按钮数组.addObject(按钮)
+        }
+        //切换按钮选中颜色(103)
+        屏幕旋转通知()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转通知", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+    }
+    
+    func 修改方向(是竖屏:Bool) {
+        let 布局器数组:[AnyObject] = self.view.constraints()
+        self.view.removeConstraints(布局器数组)
+//        let 全部控件:NSArray = NSArray(array: self.view.subviews)
+//        for 控件 in self.view.subviews {
+//            var 当前控件:UIView = 控件 as! UIView
+//            当前控件.removeFromSuperview()
+//        }
+        
+        var 表格视图横向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
+        var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -0.0)
+        var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 4)
+        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 134)
+        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 83)
+        
+        if (是竖屏) {
+            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式3])
+        } else {
+            self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
+        }
+    
+        for i in 0...按钮文字数组.count - 1 {
+            let 当前按钮对象:AnyObject = 功能按钮数组.objectAtIndex(i)
+            var 上一个按钮:UIView = UIView()
+            if (i > 0) {
+                上一个按钮 = self.view.viewWithTag(100 + i - 1)!
+            }
+            var 按钮:UIButton = 当前按钮对象 as! UIButton
             var 按钮高度 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 35)
             self.view.addConstraint(按钮高度)
-            
             if (i == 0){
                 var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 表格视图, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 6)
@@ -119,7 +138,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 } else {
                     var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 59.6)
                     self.view.addConstraints([按钮宽度适应])
-
+                    
                 }
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式])
             } else if (i == 按钮文字数组.count - 1) {
@@ -133,9 +152,60 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 0)
                 self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             }
-            功能按钮数组.addObject(按钮)
         }
-        //切换按钮选中颜色(103)
+        
+//        for 控件 in 全部控件 {
+//            var 当前控件:UIView = 控件 as! UIView
+//            self.view.addSubview(当前控件)
+//        }
+    }
+    
+    override func dismissKeyboard() {
+        NSLog("收起键盘")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        super.dismissKeyboard()
+    }
+    
+    func 屏幕旋转通知() { //(通知信息:NSNotification) -> Int {
+        //方法1：(╯‵□′)╯︵┻━┻
+//        let 屏幕方向:UIInterfaceOrientation = UIApplication().statusBarOrientation
+//        if (屏幕方向 == UIInterfaceOrientation.LandscapeLeft || 屏幕方向 == UIInterfaceOrientation.LandscapeRight) {
+//            NSLog("横屏")
+//        } else if (屏幕方向 == UIInterfaceOrientation.Portrait || 屏幕方向 == UIInterfaceOrientation.PortraitUpsideDown) {
+//            NSLog("竖屏")
+//        } else {
+//            NSLog("错误")
+//        }
+        
+        //方法2：(╯‵□′)╯︵┻━┻
+//        if(UIDevice.currentDevice().orientation.isLandscape) {
+//            NSLog("横屏")
+//        } else if (UIDevice.currentDevice().orientation.isPortrait) {
+//            NSLog("竖屏")
+//        } else {
+//            NSLog("错误")
+//        }
+        
+        //方法3：(╯‵□′)╯︵┻━┻
+//        if (self.view.frame.size.height < self.view.frame.size.width) {
+//            NSLog("横屏")
+//        } else {
+//            NSLog("竖屏")
+//        }
+        
+        //方法4：( っ*'ω'*c)
+        let 屏幕尺寸:CGSize = UIScreen.mainScreen().bounds.size
+        let 屏幕宽:CGFloat = 屏幕尺寸.width
+        let 键盘宽:CGFloat = self.view.frame.size.width
+        if (屏幕宽 == 键盘宽) {
+            NSLog("横屏")
+            修改方向(false)
+        } else {
+            NSLog("竖屏")
+            修改方向(true)
+        }
+        
+        //return 0
     }
     
     func 切换按钮选中颜色(当前按钮Tag:Int) {
@@ -218,6 +288,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             全部收藏数组.addObjectsFromArray(数据数组!.objectAtIndex(0) as! [AnyObject])
             全部自定数组.addObjectsFromArray(数据数组!.objectAtIndex(1) as! [AnyObject])
             全部历史数组.addObjectsFromArray(数据数组!.objectAtIndex(2) as! [AnyObject])
+            全部皮肤数组.addObjectsFromArray(数据数组!.objectAtIndex(3) as! [AnyObject])
             收藏按钮(self.view.viewWithTag(102) as! UIButton)
         } else {
             NSLog("键盘没有数据：\(数据数组)。")
@@ -292,7 +363,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     
     func 保存数据到主程序()
     {
-        let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组]
+        let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组,全部皮肤数组]
 //        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
 //        let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
