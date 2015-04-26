@@ -431,6 +431,19 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 }
                 break
             case 1:
+                var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
+                var nowrow:NSInteger = indexPath.row
+                let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
+                let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
+                表格数据.removeObjectAtIndex(nowrow)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                if(文件中的数据 != nil){
+                    文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
+                } else {
+                    let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.HISTORY)
+                    let fulladd:NSString = 文件管理器.FileNameToFullAddress(fileName)
+                    文件管理器.deleteFile(fulladd, smode: FileManager.saveMode.HISTORY)
+                }
                 break
             case 2:
                 var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
