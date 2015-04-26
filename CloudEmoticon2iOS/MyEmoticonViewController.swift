@@ -375,6 +375,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     // MARK: - 表格编辑范围
     func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
+        if (内容选择菜单.selectedSegmentIndex == 1) {
+            return UITableViewCellEditingStyle.None
+        }
         return UITableViewCellEditingStyle.Delete
     }
     // MARK: - 表格是否可以移动项目
