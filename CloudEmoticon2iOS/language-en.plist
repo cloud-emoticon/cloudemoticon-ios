@@ -76,13 +76,13 @@ To enable Today View Widget, click the &quot;edit&quot; button on &quot;Today&qu
 	<key>本地默认源</key>
 	<string>default</string>
 	<key>不具备删除这个源的权限</key>
-	<string>You have no permission or this is a default source that you can&apos;t delete it.</string>
+	<string>You have no permission or this is a default source, you can&apos;t delete it.</string>
 	<key>无法删除这个源</key>
 	<string>Can&apos;t delete this source!</string>
 	<key>返回</key>
 	<string>Back</string>
 	<key>从源商店添加</key>
-	<string>Add from Source store</string>
+	<string>Add from Emoticon store</string>
 	<key>添加源</key>
 	<string>Add a Source</string>
 	<key>关于</key>
@@ -148,5 +148,17 @@ successfully to your favorites</string>
 	<string>English</string>
 	<key>语言包作者</key>
 	<string>Kagurazaka Yukari</string>
+	<key>还原</key>
+	<string>Restore</string>
+	<key>抹掉所有内容和设置</key>
+	<string>Reset Cloud Emoticon 2</string>
+	<key>将要清除</key>
+	<string>CE2 will delete all data, including your settings，custom emotion, history, Favorites or Emoticon Sources. Your account will be logout.</string>
+	<key>抹掉这些内容</key>
+	<string>Comfirm</string>
+	<key>退出云颜文字2</key>
+	<string>Exit Cloud Emoticon 2</string>
+	<key>抹掉成功</key>
+	<string>Reset Complete.Will be apply after open CE2 again.</string>
 </dict>
 </plist>

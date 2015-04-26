@@ -141,7 +141,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if(indexPath.section == 2 && indexPath.row == 0) {
             //抹掉所有内容和设置
-            let 重置提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("将要清除所有程序设置以及输入法等插件设置，并清除所有自定义、历史记录、收藏夹。你的帐户将被登出但不影响云端的设置。"), delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("抹掉这些内容"))
+            let 重置提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("将要清除"), delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("抹掉这些内容"))
             重置提示框.tag = 10086
             重置提示框.show()
         }
@@ -157,7 +157,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             let 屏蔽画面:UIView = UIView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
             屏蔽画面.backgroundColor = UIColor.blackColor()
             self.view.addSubview(屏蔽画面)
-            let 重置完毕提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("抹掉成功，重新打开软件后生效。"), delegate: self, cancelButtonTitle: lang.uage("退出云颜文字2"))
+            let 重置完毕提示框:UIAlertView = UIAlertView(title: lang.uage("还原"), message: lang.uage("抹掉成功"), delegate: self, cancelButtonTitle: lang.uage("退出云颜文字2"))
             重置完毕提示框.tag = 10087
             重置完毕提示框.show()
         } else if (alertView.tag == 10087) {

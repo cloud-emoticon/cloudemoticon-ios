@@ -30,7 +30,7 @@
 	<string>主题管理</string>
 	<key>颜文字输入法</key>
 	<string>颜文字输入法提供一种输入方式使得用户不必进入主程序进行颜文字的获取。
-若颜文字输入法未出现在键盘中，请进入“设置” ->“通用” －>“键盘” ->“键盘” 并添加 “云颜文字2”。
+若颜文字输入法未出现在键盘中，请进入“设置” -&gt;“通用” －&gt;“键盘” -&gt;“键盘” 并添加 “云颜文字2”。
         
     </string>
 	<key>删掉喵</key>
@@ -146,5 +146,17 @@
 	<string>简体中文 Simplified Chinese</string>
 	<key>语言包作者</key>
 	<string>神楽坂雅诗</string>
+	<key>还原</key>
+	<string>恢复</string>
+	<key>抹掉所有内容和设置</key>
+	<string>抹掉所有内容和设置</string>
+	<key>将要清除</key>
+	<string>将会清除所有程序以及插件设置，并清除所有自定义、历史记录、收藏夹、颜文字源等内容。你的帐户将被登出。</string>
+	<key>抹掉这些内容</key>
+	<string>抹掉这些内容</string>
+	<key>退出云颜文字2</key>
+	<string>退出云颜文字2</string>
+	<key>抹掉成功</key>
+	<string>抹掉成功，重新开启后生效</string>
 </dict>
 </plist>

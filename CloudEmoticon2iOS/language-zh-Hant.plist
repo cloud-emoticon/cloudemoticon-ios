@@ -30,7 +30,7 @@
 	<string>主題管理</string>
 	<key>颜文字输入法</key>
 	<string>顏文字鍵盤提供一種鍵入方式使得使用者不必啟動主程式獲得自行指定的顏文字。
-若顏文字鍵盤並未出現在鍵盤中，請進入“設定” ->“一般” ->“鍵盤”-> “鍵盤” 並添加 “雲顏文字2”
+若顏文字鍵盤並未出現在鍵盤中，請進入“設定” -&gt;“一般” -&gt;“鍵盤”-&gt; “鍵盤” 並添加 “雲顏文字2”
         
     </string>
 	<key>删掉喵</key>
@@ -146,5 +146,17 @@
 	<string>繁体中文 Traditional Chinese</string>
 	<key>语言包作者</key>
 	<string>神楽坂紫,神楽坂雅詩</string>
+	<key>还原</key>
+	<string>恢復</string>
+	<key>抹掉所有内容和设置</key>
+	<string>抹掉所有內容和設定</string>
+	<key>将要清除</key>
+	<string>將會抹掉程式以及擴展程式設定，并抹掉所有自訂表情、歷史記錄、收藏、颜文字源等內容。您的賬戶將被登出。</string>
+	<key>抹掉这些内容</key>
+	<string>抹掉這些內容</string>
+	<key>退出云颜文字2</key>
+	<string>退出云顏文字2</string>
+	<key>抹掉成功</key>
+	<string>抹掉成功，再啟動時生效</string>
 </dict>
 </plist>
