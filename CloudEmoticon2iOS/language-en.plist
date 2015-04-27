@@ -5,7 +5,7 @@
 	<key>背景不透明度</key>
 	<string>Opacity</string>
 	<key>背景</key>
-	<string>Background</string>
+	<string>Background Image</string>
 	<key>确定</key>
 	<string>OK</string>
 	<key>刷新完成</key>
@@ -15,27 +15,27 @@
 	<key>请检查网络后重试</key>
 	<string>Please check out your network environment.</string>
 	<key>下载失败</key>
-	<string>Loading failed</string>
+	<string>Download failed</string>
 	<key>加载中</key>
-	<string>Loading</string>
+	<string>Loading...</string>
 	<key>详细信息读取失败</key>
 	<string>Contents loading failed. Please check out your network environment.</string>
 	<key>软件全称</key>
 	<string>Cloud Emoticon 2 for iOS</string>
 	<key>从在线皮肤库添加</key>
-	<string>Add from theme store</string>
+	<string>Add from Theme Store</string>
 	<key>下载皮肤</key>
 	<string>Add Theme</string>
 	<key>皮肤管理</key>
 	<string>Themes</string>
 	<key>颜文字输入法</key>
-	<string>Emoticon Keyboard is a way to get emoticon without running main application.To enable keyboard,press each buttons as follow:
+	<string>Emoticon Keyboard is a way to get emoticon without open Cloud Emoticon 2.To enable keyboard,press each buttons as follow:
 &quot;settings&quot;,&quot;general&quot;,&quot;keyboard&quot;,&quot;keyboard&quot;,and&quot;Cloudemoticon2iOS&quot;
     </string>
 	<key>删掉喵</key>
 	<string>Delete</string>
 	<key>通知中心扩展</key>
-	<string>Today View Widget accept users saving their personal emoticons without main application.
+	<string>Today View Widget allow users saving their custom emoticons without open Cloud Emoticon 2.
 To enable Today View Widget, click the &quot;edit&quot; button on &quot;Today&quot; view, then add &quot;Cloud Emoticon&quot; Widget to &quot;INCLUDE&quot; list
 
         </string>
@@ -153,13 +153,13 @@ successfully to your favorites</string>
 	<key>抹掉所有内容和设置</key>
 	<string>Reset Cloud Emoticon 2</string>
 	<key>将要清除</key>
-	<string>CE2 will be reset all data, including your settings，custom emotion, history, Favorites or Emoticon Sources. Your account will logout.</string>
+	<string>CE2 will be reset, your settings，custom emotion, history, Favorites or Emoticon Sources will be deleted. Your account will be logout.</string>
 	<key>抹掉这些内容</key>
 	<string>Comfirm</string>
 	<key>退出云颜文字2</key>
-	<string>Exit Cloud Emoticon 2</string>
+	<string>Exit </string>
 	<key>抹掉成功</key>
-	<string>Reset Complete.CE2 needs to opening again.Press Exit button to exit.</string>
+	<string>Reset Complete. CE2 needs to restart. Press Exit button to exit.</string>
 	<key>还没有收藏的颜文字喵</key>
 	<string>（Not Add Favorite Yet）</string>
 	<key>还没有历史记录呢喵</key>

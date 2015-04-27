@@ -29,14 +29,14 @@
 	<key>皮肤管理</key>
 	<string>主題管理</string>
 	<key>颜文字输入法</key>
-	<string>顏文字鍵盤提供一種鍵入方式使得使用者不必啟動主程式獲得自行指定的顏文字。
+	<string>顏文字鍵盤提供一種鍵入方式使得使用者不必啟動主程式就能獲得自訂顏文字。
 若顏文字鍵盤並未出現在鍵盤中，請進入“設定” -&gt;“一般” -&gt;“鍵盤”-&gt; “鍵盤” 並添加 “雲顏文字2”
         
     </string>
 	<key>删掉喵</key>
 	<string>移除喵</string>
 	<key>通知中心扩展</key>
-	<string>通知中心擴展使得使用者無需啟動主程式就可獲得自行設定之顏文字。
+	<string>通知中心擴展使得使用者無需啟動主程式就可儲存自行設定之顏文字。
 要使用通知中心擴展，在下拉通知欄的“今日”頁面下，點擊最下方的“編輯”按鈕，講“云顏文字”擴展添加至“包括”中。
 
 </string>
@@ -51,7 +51,7 @@
 	<key>添加到剪切板</key>
 	<string>拷貝到剪切板</string>
 	<key>发现了颜文字</key>
-	<string>獲得了顏文字！</string>
+	<string>發現了顏文字！</string>
 	<key>行为</key>
 	<string>行為</string>
 	<key>广告</key>
@@ -89,7 +89,7 @@
 	<key>关于</key>
 	<string>關於</string>
 	<key>个性化</key>
-	<string>自订主題</string>
+	<string>自訂主題</string>
 	<key>分享</key>
 	<string>分享</string>
 	<key>扩展功能</key>
@@ -153,11 +153,11 @@
 	<key>将要清除</key>
 	<string>將會抹掉程式以及擴展程式設定，并抹掉所有自訂表情、歷史記錄、收藏、颜文字源等內容。您的賬戶將被登出。</string>
 	<key>抹掉这些内容</key>
-	<string>抹掉這些內容</string>
+	<string>确认</string>
 	<key>退出云颜文字2</key>
 	<string>退出云顏文字2</string>
 	<key>抹掉成功</key>
-	<string>抹掉成功，需要重啟以生效所做的更改</string>
+	<string>抹掉成功，重啟來將所做的更改生效</string>
 	<key>还没有收藏的颜文字喵</key>
 	<string>（尚未收藏顏文字呢喵）</string>
 	<key>还没有历史记录呢喵</key>
