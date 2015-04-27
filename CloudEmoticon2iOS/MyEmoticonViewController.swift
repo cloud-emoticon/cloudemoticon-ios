@@ -24,7 +24,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         表格.delegate = self
         表格.dataSource = self
         self.title = lang.uage("自定表情")
-        self.tabBarController?.tabBar.translucent = false
+//        self.tabBarController?.tabBar.translucent = false
 //        self.navigationController?.navigationBar.translucent = false
         self.language()
         
@@ -36,9 +36,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)//tabbar选中文字颜色
         let tbitemcolor = NSDictionary(object: UIColor.blackColor(),
             forKey:NSForegroundColorAttributeName)
-
-        self.tabBarController?.tabBarItem.setTitleTextAttributes(tbitemcolor as [NSObject : AnyObject], forState: .Normal)//未选中颜色 未生效
-
     }
     
     override func viewWillAppear(animated: Bool) {

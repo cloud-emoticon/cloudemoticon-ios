@@ -164,5 +164,9 @@
 	<string>（尚無歷史記錄呢喵）</string>
 	<key>还没有添加自定义颜文字呢喵</key>
 	<string>（尚未添加自訂表情呢喵）</string>
+	<key>当前源</key>
+	<string>目前的源</string>
+	<key>本地内置源</key>
+	<string>本地內嵌源</string>
 </dict>
 </plist>

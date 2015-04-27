@@ -160,11 +160,15 @@ successfully to your favorites</string>
 	<string>Exit Cloud Emoticon 2</string>
 	<key>抹掉成功</key>
 	<string>Reset Complete.CE2 needs to opening again.Press Exit button to exit.</string>
-    <key>还没有收藏的颜文字喵</key>
-    <string>（Not Add Favorite Yet）</string>
-    <key>还没有历史记录呢喵</key>
-    <string>（Not Add History Yet）</string>
-    <key>还没有添加自定义颜文字呢喵</key>
-    <string>（Not Add Custom Yet）</string>
+	<key>还没有收藏的颜文字喵</key>
+	<string>（Not Add Favorite Yet）</string>
+	<key>还没有历史记录呢喵</key>
+	<string>（No History Yet）</string>
+	<key>还没有添加自定义颜文字呢喵</key>
+	<string>（Not Add Custom Yet）</string>
+	<key>当前源</key>
+	<string>Source</string>
+	<key>本地内置源</key>
+	<string>default</string>
 </dict>
 </plist>

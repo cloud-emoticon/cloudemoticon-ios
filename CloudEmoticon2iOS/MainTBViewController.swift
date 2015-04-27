@@ -15,7 +15,7 @@ class MainTBViewController: UITabBarController {
     @IBOutlet weak var tab: UITabBar!
     let 文件管理器:FileManager = FileManager()
     var 等待提示框:UIView? = nil
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -23,6 +23,7 @@ class MainTBViewController: UITabBarController {
         initSetting()
         载入背景()
         文件管理器.补充空白数据()
+       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)

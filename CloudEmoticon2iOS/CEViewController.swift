@@ -32,6 +32,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 当前分类:Int = 0
     var 源管理页面:ScoreTableViewController? = nil
     var 调整搜索栏位置:Bool = true
+    var 当前源:NSString = NSString()
+    var 当前源文字框:UILabel = UILabel()
     
     var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nowuserimg", ofType: "jpg")!))
     
@@ -76,7 +78,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         分类表格.alpha = 背景透明度
         分类表格.alpha = 背景透明度
         颜文字表格.alpha = 背景透明度
+        
+        var y_emoarr:NSArray = NSArray()
+        var p_emoweb:NSArray? = p_emodata
+        if(p_emoweb != nil && p_emodata.count >= 3)
+        {
+            当前源 = NSString(format: "%@:%@",lang.uage("当前源"),p_emodata.objectAtIndex(1) as! NSString)
+            NSLog("%@!",当前源)
+        } else {
+            当前源 = NSString(format: "%@:%@",lang.uage("当前源"),lang.uage("本地内置源"))
         }
+    }
     
     override func viewDidLoad() {
         //Load UI
@@ -89,7 +101,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             forKey:NSForegroundColorAttributeName)
         self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject]
         
-        self.title = lang.uage("云颜文字")as String
+        self.title = lang.uage("云颜文字") as String
         载入视图()
         
         //Load Data
@@ -130,20 +142,26 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
         }
         
-        颜文字表格背景.frame = 颜文字表格.frame
+        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
         颜文字表格背景.backgroundColor = UIColor.whiteColor()
         颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         颜文字表格背景.layer.masksToBounds = true
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
+        当前源文字框.frame = CGRectMake(10, 100, 分类表格.frame.size.width - 10, 20)
         
         userview.addSubview(userimg)
         username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
         username.text = lang.uage("未登录")
         username.font = UIFont.systemFontOfSize(13)
+        当前源文字框.text = 当前源 as String
+        当前源文字框.font = UIFont.systemFontOfSize(13)
+        当前源文字框.textColor = UIColor.grayColor()
+        NSLog("%@!!", 当前源文字框.text!)
         
         userview.addSubview(username)
+//        userview.addSubview(当前源文字框)
         
         分类表格.tableHeaderView = userview
         
@@ -331,7 +349,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.25, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = self.颜文字表格.frame
+                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
             })
         }
     }
@@ -364,7 +382,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = self.颜文字表格.frame
+                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }, completion: {
                     (Bool completion) in
                     if completion {
@@ -386,7 +404,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
                     self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                    self.颜文字表格背景.frame = self.颜文字表格.frame
+                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }
             }
         }
@@ -547,11 +565,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
             sortBtn.title = lang.uage("分类")
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
-            self.颜文字表格背景.frame = self.颜文字表格.frame
+            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
         } else {
             sortBtn.title = ""
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
-            self.颜文字表格背景.frame = self.颜文字表格.frame
+            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
         }
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
