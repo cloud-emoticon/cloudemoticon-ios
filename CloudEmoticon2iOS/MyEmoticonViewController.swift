@@ -18,15 +18,27 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
+
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
         self.title = lang.uage("自定表情")
         self.tabBarController?.tabBar.translucent = false
-        self.navigationController?.navigationBar.translucent = false
+//        self.navigationController?.navigationBar.translucent = false
         self.language()
+        
+         //MARK - 主题
+
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        
+        self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)//tabbar选中文字颜色
+        let tbitemcolor = NSDictionary(object: UIColor.blackColor(),
+            forKey:NSForegroundColorAttributeName)
+
+        self.tabBarController?.tabBarItem.setTitleTextAttributes(tbitemcolor as [NSObject : AnyObject], forState: .Normal)//未选中颜色 未生效
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -358,13 +370,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         } else {
             switch (内容选择菜单.selectedSegmentIndex) {
             case 0:
-                cell?.textLabel?.text = lang.uage("（还没有收藏的颜文字喵）")
+                cell?.textLabel?.text = lang.uage("还没有收藏的颜文字喵")
                 break
             case 1:
-                cell?.textLabel?.text = lang.uage("（还没有历史记录呢喵）")
+                cell?.textLabel?.text = lang.uage("还没有历史记录呢喵")
                 break
             case 2:
-                cell?.textLabel?.text = lang.uage("（还没有添加自定义颜文字呢喵）")
+                cell?.textLabel?.text = lang.uage("还没有添加自定义颜文字呢喵")
                 break
             default:
                 break

@@ -17,6 +17,7 @@ class MainTBViewController: UITabBarController {
     var 等待提示框:UIView? = nil
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
         initSetting()

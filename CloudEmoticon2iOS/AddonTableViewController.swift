@@ -23,10 +23,9 @@ class AddonTableViewController: UITableViewController {
         self.title = lang.uage("附加工具")
         
 //MARK - 主题
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255)
-         self.navigationController?.navigationBar.tintColor = UIColor.blueColor()
-        let titlecolor = NSDictionary(object: UIColor.blackColor(),
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        let titlecolor = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
         self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject]
         

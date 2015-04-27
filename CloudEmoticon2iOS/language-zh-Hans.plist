@@ -158,5 +158,11 @@
 	<string>退出云颜文字2</string>
 	<key>抹掉成功</key>
 	<string>抹掉成功，重新开启后生效</string>
+    <key>还没有收藏的颜文字喵</key>
+    <string>（还没有收藏的颜文字喵）</string>
+    <key>还没有历史记录呢喵</key>
+    <string>（还没有历史记录呢喵）</string>
+    <key>还没有添加自定义颜文字呢喵</key>
+    <string>（还没有添加自定义颜文字呢喵）</string>
 </dict>
 </plist>

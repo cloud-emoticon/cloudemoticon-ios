@@ -46,6 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         initSetting()
         NSLog("[核心]云颜文字启动，启动文件夹：%@", documentDirectoryAddress)
         
+        //MARK - 主题
+        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent //通知栏文字颜色
+        
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)

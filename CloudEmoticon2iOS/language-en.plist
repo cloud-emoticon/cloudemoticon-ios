@@ -147,18 +147,24 @@ successfully to your favorites</string>
 	<key>语言包名称</key>
 	<string>English</string>
 	<key>语言包作者</key>
-	<string>Kagurazaka Yukari</string>
+	<string>Kagurazaka Yukari(神楽坂紫)</string>
 	<key>还原</key>
 	<string>Restore</string>
 	<key>抹掉所有内容和设置</key>
 	<string>Reset Cloud Emoticon 2</string>
 	<key>将要清除</key>
-	<string>CE2 will delete all data, including your settings，custom emotion, history, Favorites or Emoticon Sources. Your account will be logout.</string>
+	<string>CE2 will be reset all data, including your settings，custom emotion, history, Favorites or Emoticon Sources. Your account will logout.</string>
 	<key>抹掉这些内容</key>
 	<string>Comfirm</string>
 	<key>退出云颜文字2</key>
 	<string>Exit Cloud Emoticon 2</string>
 	<key>抹掉成功</key>
-	<string>Reset Complete.Will be apply after open CE2 again.</string>
+	<string>Reset Complete.CE2 needs to opening again.Press Exit button to exit.</string>
+    <key>还没有收藏的颜文字喵</key>
+    <string>（Not Add Favorite Yet）</string>
+    <key>还没有历史记录呢喵</key>
+    <string>（Not Add History Yet）</string>
+    <key>还没有添加自定义颜文字呢喵</key>
+    <string>（Not Add Custom Yet）</string>
 </dict>
 </plist>

@@ -157,6 +157,12 @@
 	<key>退出云颜文字2</key>
 	<string>退出云顏文字2</string>
 	<key>抹掉成功</key>
-	<string>抹掉成功，再啟動時生效</string>
+	<string>抹掉成功，需要重啟以生效所做的更改</string>
+	<key>还没有收藏的颜文字喵</key>
+	<string>（尚未收藏顏文字呢喵）</string>
+	<key>还没有历史记录呢喵</key>
+	<string>（尚無歷史記錄呢喵）</string>
+	<key>还没有添加自定义颜文字呢喵</key>
+	<string>（尚未添加自訂表情呢喵）</string>
 </dict>
 </plist>
