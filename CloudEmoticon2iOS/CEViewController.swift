@@ -206,7 +206,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
             y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
-        
+        搜索结果.removeAllObjects()
+        搜索结果的名称.removeAllObjects()
         for g_emoobj in y_emoarr
         {
             var g_emoarr:NSArray = g_emoobj as! NSArray
@@ -257,7 +258,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let 搜索的颜文字名称 = 搜索结果的名称.objectAtIndex(i) as! NSString
                 let 匹配2:NSRange = 搜索的颜文字名称.rangeOfString(str as String, options: NSStringCompareOptions.CaseInsensitiveSearch)
                 if(匹配.length > 0 || 匹配2.length > 0){
-                ceData.addObjectsFromArray([[搜索结果颜文字,搜索结果的名称.objectAtIndex(i)]])
+                ceData.addObjectsFromArray([[搜索结果颜文字,搜索的颜文字名称]])
                 }
                 i++
             }
@@ -430,8 +431,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func isCanAutoHideSortView() -> Bool
     {
-        NSLog(UIDevice.currentDevice().model)
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIDevice.currentDevice().orientation.isPortrait ) {
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && self.view.frame.width < self.view.frame.height ) {
             return true
         }
         return false

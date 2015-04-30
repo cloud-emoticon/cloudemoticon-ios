@@ -271,31 +271,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     func 载入自定义数据()
     {
-        let 组数据读写:AppGroupIO = AppGroupIO()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         将数据载入表格(文件中的数据)
-        var 输入法中的数据:NSArray? = nil
-        if (appgroup) {
-//            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-//            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-//            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
-            输入法中的数据 = 组数据读写.读取设置UD模式()
-        }
-        if(输入法中的数据 != nil) {
-            let 通知扩展中的自定义数据:NSArray =  输入法中的数据?.objectAtIndex(1) as! NSArray
-            if ((通知扩展中的自定义数据.count != 文件中的数据?.count) && (通知扩展中的自定义数据.count != 0)) {
-                NSLog("自定义：载入通知扩展中的数据")
-                将数据载入表格(通知扩展中的自定义数据)
-                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
-            } else {
-                NSLog("自定义：载入文件中的数据")
-                将数据载入表格(文件中的数据)
-            }
-        } else { 
-            NSLog("自定义：通知中没有数据，载入文件中的数据")
-            将数据载入表格(文件中的数据)
-        }
-
+        
     }
     func 将数据载入表格(文件中的数据:NSArray?)
     {
@@ -364,7 +342,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     cell?.detailTextLabel?.text = ""
                 }
             }
-        } else {
+        }
+        else {
             switch (内容选择菜单.selectedSegmentIndex) {
             case 0:
                 cell?.textLabel?.text = lang.uage("还没有收藏的颜文字喵")
@@ -443,6 +422,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
     }
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+
         if editingStyle == .Delete {
             switch (内容选择菜单.selectedSegmentIndex) {
             case 0:
@@ -453,6 +433,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 表格数据.removeObjectAtIndex(nowrow)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 if(文件中的数据 != nil){
+                    
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.FAVORITE)
                 } else {
                     let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.FAVORITE)
@@ -468,6 +449,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 表格数据.removeObjectAtIndex(nowrow)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 if(文件中的数据 != nil){
+                    
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
                 } else {
                     let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.HISTORY)
@@ -483,6 +465,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 表格数据.removeObjectAtIndex(nowrow)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
                 if(文件中的数据 != nil){
+                    
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
                 } else {
                     let fileName:NSString = 文件管理器.FileName(FileManager.saveMode.CUSTOM)

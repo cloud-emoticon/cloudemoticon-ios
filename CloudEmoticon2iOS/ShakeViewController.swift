@@ -77,7 +77,8 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
             var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
             y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
-        
+        emolist.removeAllObjects()
+        emoNamelist.removeAllObjects()
         for g_emoobj in y_emoarr
         {
             var g_emoarr:NSArray = g_emoobj as! NSArray
