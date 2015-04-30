@@ -22,6 +22,7 @@ class XMLReader: NSObject {
         if (root == nil) {
             var 提示框内容数组:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
+            NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
         } else {
             let 文件数据结构版本:NSString = "iOSv2" //ok
             var 颜文字库名:NSString = "" //ok

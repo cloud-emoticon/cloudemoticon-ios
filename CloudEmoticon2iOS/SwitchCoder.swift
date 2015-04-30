@@ -35,6 +35,7 @@ class SwitchCoder: NSObject {
         default:
             var altarr:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: altarr)
+            NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
             break
         }
     }
