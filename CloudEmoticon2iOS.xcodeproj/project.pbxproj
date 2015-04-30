@@ -268,7 +268,7 @@
 		53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudEmoticon2iOSTests.swift; sourceTree = "<group>"; };
 		53E0E4AB19947C2800C9D9FC /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
 		53E0E4AC19947C2800C9D9FC /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
-		53E0E4B01994854C00C9D9FC /* PubVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PubVar.swift; sourceTree = "<group>"; };
+		53E0E4B01994854C00C9D9FC /* PubVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubVar.swift; path = CloudEmoticon2iOS/PubVar.swift; sourceTree = "<group>"; };
 		53E0E4B41994A8DD00C9D9FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
@@ -424,7 +424,6 @@
 				5310750919C19E9D0003866F /* Main.storyboard */,
 				53DF28F2196B9CF40058AA42 /* AppDelegate.swift */,
 				53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */,
-				53E0E4B01994854C00C9D9FC /* PubVar.swift */,
 				53ED64C419A48A74008CE9BD /* NotificationView.swift */,
 				53E9DF8319C189E600C61121 /* WaitView.swift */,
 			);
@@ -490,6 +489,7 @@
 				53117E651AE370890076CC08 /* YashiNetworkDownload.swift */,
 				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
 				53AB49761AE239A90090D955 /* ArrayString.swift */,
+				53E0E4B01994854C00C9D9FC /* PubVar.swift */,
 			);
 			name = "共享代码";
 			sourceTree = "<group>";
