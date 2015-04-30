@@ -49,6 +49,20 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        if (!self.tableView.editing) {
+            左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+            self.navigationItem.leftBarButtonItem = 左上按钮
+            右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+            self.navigationItem.rightBarButtonItem = 右上按钮
+        } else {
+            左上按钮 = UIBarButtonItem(title: lang.uage("添加"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+            self.navigationItem.leftBarButtonItem = 左上按钮
+            右上按钮 = UIBarButtonItem(title: lang.uage("完成"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+            self.navigationItem.rightBarButtonItem = 右上按钮
+        }
+    }
+    
     //MARK: - 主题
     
     func 载入数据()
@@ -256,7 +270,7 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             var 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
             添加源对话框.tag = 200
             添加源输入框.keyboardType = UIKeyboardType.URL
-            添加源输入框.text = "http://yoooooooooo.com/ce.xml"
+            添加源输入框.text = "http://emoticon.moe/emoticon/yashi.xml"
             添加源对话框.show()
         } else {
             退出源管理()

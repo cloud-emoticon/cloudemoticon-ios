@@ -70,7 +70,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
+    
+    override func viewWillAppear(animated: Bool) {
         loaddata()
         loadbg()
         var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
@@ -84,7 +85,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
             当前源 = NSString(format: "%@:%@",lang.uage("当前源"),p_emodata.objectAtIndex(1) as! NSString)
-            NSLog("%@!",当前源)
+            NSLog("%@",当前源)
         } else {
             当前源 = NSString(format: "%@:%@",lang.uage("当前源"),lang.uage("本地内置源"))
         }
@@ -158,7 +159,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         当前源文字框.text = 当前源 as String
         当前源文字框.font = UIFont.systemFontOfSize(13)
         当前源文字框.textColor = UIColor.grayColor()
-        NSLog("%@!!", 当前源文字框.text!)
+        NSLog("当前文字框内容为[%@]", 当前源文字框.text!)
         
         userview.addSubview(username)
 //        userview.addSubview(当前源文字框)
@@ -237,6 +238,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         搜索颜文字.resignFirstResponder()
+    }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        loaddata()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -375,6 +380,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 x = 滑动最大X坐标
                 if (isCanAutoHideSortView()) {
                     NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+                    搜索颜文字.resignFirstResponder()
                 }
             }
             手势中 = false
@@ -424,7 +430,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func isCanAutoHideSortView() -> Bool
     {
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIDevice.currentDevice().orientation.isPortrait) {
+        NSLog(UIDevice.currentDevice().model)
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && UIDevice.currentDevice().orientation.isPortrait ) {
             return true
         }
         return false
