@@ -15,9 +15,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray()
-    var 背景:UIView = UIView()
-    var 无颜文字:UIImageView = UIImageView()
-    var 无颜文字文字:UILabel = UILabel()
+
+    @IBOutlet weak var 背景: UIView!
+    @IBOutlet weak var 无颜文字: UIImageView!
+    @IBOutlet weak var 无颜文字文字: UILabel!
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -60,9 +61,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 生成无颜文字遮罩(){
         
-        let 遮罩高度 = self.navigationController?.navigationBar.frame.height
-        无颜文字 = UIImageView(frame: CGRectMake(0, 遮罩高度!, self.view.frame.width, self.view.frame.height - 遮罩高度! - 49))
-        背景 = UIView(frame: 无颜文字.frame)
         背景.backgroundColor = UIColor.whiteColor()
         
         let bg:CIImage? = CIImage(image: loadbg())
@@ -81,14 +79,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         无颜文字.image = 模糊图像
         无颜文字.contentMode = bgpview.contentMode
         
-        self.view.addSubview(背景)
-        self.view.addSubview(无颜文字)
         显示文字()
     }
     
     func 显示文字()
     {
-        无颜文字文字 = UILabel(frame: CGRectMake(0, self.view.center.y - 100, self.view.frame.width, 200))
+        
                         switch (内容选择菜单.selectedSegmentIndex) {
                 case 0:
                     无颜文字文字.text = lang.uage("还没有收藏的颜文字喵")
@@ -121,7 +117,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
         无颜文字文字.shadowOffset = CGSizeMake(1, 1)
         无颜文字文字.alpha = 0.8
-        self.view.addSubview(无颜文字文字)
+        
+        背景.hidden = false
     }
     
     @IBOutlet weak var 左上按钮: UIBarButtonItem!
@@ -274,9 +271,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     // MARK: - 载入数据
     func changemode(id:Int)
     {
-        背景.removeFromSuperview()
-        无颜文字.removeFromSuperview()
-        无颜文字文字.removeFromSuperview()
+        背景.hidden = true
         switch (id) {
         case 0:
             载入收藏数据()

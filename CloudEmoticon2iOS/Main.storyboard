@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14E7f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14E11f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="R37-0U-3Vo">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -60,14 +60,42 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cZ8-4K-hfI">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZrD-FQ-WR0">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjS-4p-cOs">
+                                        <rect key="frame" x="0.0" y="230" width="600" height="27"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="IjS-4p-cOs" secondAttribute="trailing" id="2aT-Xp-ciw"/>
+                                    <constraint firstAttribute="centerY" secondItem="IjS-4p-cOs" secondAttribute="centerY" id="5SE-Re-U61"/>
+                                    <constraint firstItem="ZrD-FQ-WR0" firstAttribute="top" secondItem="cZ8-4K-hfI" secondAttribute="top" id="Mte-5Q-RG1"/>
+                                    <constraint firstAttribute="trailing" secondItem="ZrD-FQ-WR0" secondAttribute="trailing" id="eoX-Rc-EFr"/>
+                                    <constraint firstItem="IjS-4p-cOs" firstAttribute="leading" secondItem="cZ8-4K-hfI" secondAttribute="leading" id="flH-5L-chy"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZrD-FQ-WR0" secondAttribute="bottom" id="qpY-ch-45p"/>
+                                    <constraint firstItem="ZrD-FQ-WR0" firstAttribute="leading" secondItem="cZ8-4K-hfI" secondAttribute="leading" id="y5U-eD-OLU"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="cZ8-4K-hfI" firstAttribute="top" secondItem="TTM-fn-SvY" secondAttribute="bottom" id="0cg-4C-GPG"/>
+                            <constraint firstItem="8NJ-vR-i1g" firstAttribute="top" secondItem="cZ8-4K-hfI" secondAttribute="bottom" id="82V-ZQ-RRR"/>
+                            <constraint firstItem="cZ8-4K-hfI" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="8ah-c2-oMO"/>
                             <constraint firstItem="4Xt-PR-K80" firstAttribute="top" secondItem="A8w-i1-QtK" secondAttribute="top" constant="64" id="916-9b-HsJ"/>
                             <constraint firstAttribute="bottom" secondItem="4Xt-PR-K80" secondAttribute="bottom" constant="49" id="AvC-OV-sWo"/>
                             <constraint firstAttribute="trailing" secondItem="HhX-Pz-5v7" secondAttribute="trailing" id="LYJ-dS-Ab5"/>
                             <constraint firstItem="8NJ-vR-i1g" firstAttribute="top" secondItem="HhX-Pz-5v7" secondAttribute="bottom" id="Q7k-hk-Vxf"/>
                             <constraint firstItem="HhX-Pz-5v7" firstAttribute="top" secondItem="TTM-fn-SvY" secondAttribute="bottom" id="QHd-5t-FuT"/>
+                            <constraint firstAttribute="trailing" secondItem="cZ8-4K-hfI" secondAttribute="trailing" id="dWb-z2-YcI"/>
                             <constraint firstItem="HhX-Pz-5v7" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="tix-al-i0K"/>
                             <constraint firstItem="4Xt-PR-K80" firstAttribute="leading" secondItem="A8w-i1-QtK" secondAttribute="leading" id="vrm-o5-eqy"/>
                             <constraint firstAttribute="trailing" secondItem="4Xt-PR-K80" secondAttribute="trailing" id="vw8-tO-4D8"/>
@@ -104,6 +132,9 @@
                         <outlet property="内容选择菜单" destination="r3T-Er-Ll2" id="5qb-ko-3te"/>
                         <outlet property="右上按钮" destination="oxs-UZ-dv7" id="iXw-rZ-f50"/>
                         <outlet property="左上按钮" destination="SmB-nW-hFL" id="3TH-T2-iTF"/>
+                        <outlet property="无颜文字" destination="ZrD-FQ-WR0" id="GKm-uY-y34"/>
+                        <outlet property="无颜文字文字" destination="IjS-4p-cOs" id="lc9-wD-XsK"/>
+                        <outlet property="背景" destination="cZ8-4K-hfI" id="YZH-O0-RIr"/>
                         <outlet property="表格" destination="HhX-Pz-5v7" id="1Ad-p0-O1k"/>
                     </connections>
                 </viewController>
