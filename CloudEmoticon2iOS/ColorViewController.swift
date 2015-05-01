@@ -202,6 +202,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         }
         saveImage(image, WithName: userbgimgname)
         picker.dismissViewControllerAnimated(true, completion: nil)
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
     }
     
     func saveImage(tempImage:UIImage, WithName imageName:NSString){
