@@ -69,7 +69,7 @@
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IjS-4p-cOs">
                                         <rect key="frame" x="0.0" y="230" width="600" height="27"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -103,7 +103,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="YWc-ZH-ucV">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="SmB-nW-hFL">
+                        <barButtonItem key="leftBarButtonItem" id="SmB-nW-hFL">
                             <connections>
                                 <action selector="左上按钮:" destination="FJr-7m-hgR" id="3Tk-M0-0cM"/>
                             </connections>
@@ -120,7 +120,7 @@
                                 <action selector="内容选择菜单:" destination="FJr-7m-hgR" eventType="valueChanged" id="abQ-Sn-JcU"/>
                             </connections>
                         </segmentedControl>
-                        <barButtonItem key="rightBarButtonItem" title="Item" id="oxs-UZ-dv7">
+                        <barButtonItem key="rightBarButtonItem" id="oxs-UZ-dv7">
                             <connections>
                                 <action selector="右上按钮:" destination="FJr-7m-hgR" id="Wy9-pH-csa"/>
                             </connections>

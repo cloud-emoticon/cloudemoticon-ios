@@ -18,7 +18,7 @@ class TodayViewController: UIViewController {
         RunFamApp.layer.cornerRadius = 4
         emoEx.frame = CGRectMake(0, 0, self.view.frame.width, 36)
         self.view.frame = CGRectMake(0, 0, self.view.frame.width, 36)
-        NSLog("%fx%f", self.view.frame.width,self.view.frame.height)
+//        NSLog("%fx%f", self.view.frame.width,self.view.frame.height)
     }
     
     @IBOutlet var emoEx: UIView!
