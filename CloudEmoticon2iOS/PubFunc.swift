@@ -82,6 +82,13 @@ func loadbg() -> UIImage {
     return bgimage
 }
 
+func loadopc() -> CGFloat
+{
+    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
+    return NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+
+}
+
 func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
 {
     var sizeTest:UILabel = UILabel(frame: CGRectMake(0, 0, width, 0))

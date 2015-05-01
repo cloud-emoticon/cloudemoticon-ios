@@ -45,8 +45,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     
     override func viewWillAppear(animated: Bool) {
-        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        let 背景透明度:CGFloat = loadopc()
         表格.alpha = 背景透明度
         
         let bg:UIImage? = loadbg()
@@ -76,12 +75,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent(), fromRect: bg!.extent())
         let 模糊图像 = UIImage(CGImage: cgImage)
         
-        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        let 背景透明度:CGFloat = (1 - loadopc()) * 0.7 + 0.3
+        无颜文字.alpha = 背景透明度
         
         无颜文字.image = 模糊图像
         无颜文字.contentMode = bgpview.contentMode
-        无颜文字.alpha = 背景透明度
+        
         self.view.addSubview(背景)
         self.view.addSubview(无颜文字)
         显示文字()
@@ -103,13 +102,25 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 default:
                     break
                 }
+        let 背景透明度:CGFloat = 1 - loadopc()
+        
+        if(背景透明度 < 0.35){
+            无颜文字文字.textColor = UIColor.grayColor()
+            无颜文字文字.shadowColor = UIColor.whiteColor()
+        } else if(背景透明度 >= 0.35 && 背景透明度 < 0.65){
+            无颜文字文字.textColor = UIColor.whiteColor()
+            无颜文字文字.shadowColor = UIColor.blackColor()
+        } else {
+            无颜文字文字.textColor = UIColor.whiteColor()
+            无颜文字文字.shadowColor = UIColor.grayColor()
+        }
+        
         无颜文字文字.backgroundColor = UIColor.clearColor()
         无颜文字文字.font = UIFont.boldSystemFontOfSize(22)
         无颜文字文字.textAlignment = NSTextAlignment.Center
-        无颜文字文字.textColor = UIColor.grayColor()
-        无颜文字文字.shadowColor = UIColor.whiteColor()
+        
         无颜文字文字.shadowOffset = CGSizeMake(1, 1)
-        无颜文字文字.alpha = 0.7
+        无颜文字文字.alpha = 0.8
         self.view.addSubview(无颜文字文字)
     }
     

@@ -70,8 +70,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     override func viewWillAppear(animated: Bool) {
         loaddata()
         loadbgi()
-        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        let 背景透明度:CGFloat = loadopc()
         分类表格.alpha = 背景透明度
         分类表格.alpha = 背景透明度
         颜文字表格.alpha = 背景透明度
