@@ -164,7 +164,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
-        if (UIDevice.currentDevice().orientation.isPortrait || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+        if (self.view.frame.height > self.view.frame.width || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
@@ -571,7 +571,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         } else {
             sortBtn.title = ""
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
-            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
         }
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
@@ -602,6 +602,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索颜文字.resignFirstResponder()
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
+        println(表格竖向滚动)
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
         if (下拉刷新提示 != nil) {
             let 当前表格:UITableView = scrollView as! UITableView
@@ -614,7 +615,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
         }
-        if((表格竖向滚动 > -22 && self.view.frame.size.width < self.view.frame.size.height) || (self.view.frame.size.width > self.view.frame.size.height && 表格竖向滚动 > 12)){
+//        if((表格竖向滚动 > -20 && self.view.frame.size.width < self.view.frame.size.height) || (self.view.frame.size.width > self.view.frame.size.height && 表格竖向滚动 > 12 )){
+//            调整搜索栏位置 = false
+//        } else {
+//            调整搜索栏位置 = true
+//        }
+        if(表格竖向滚动 > -20 && self.view.frame.width < self.view.frame.height){
+            调整搜索栏位置 = false
+        } else if(表格竖向滚动 > 12 && self.view.frame.width > self.view.frame.height && UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
             调整搜索栏位置 = false
         } else {
             调整搜索栏位置 = true
