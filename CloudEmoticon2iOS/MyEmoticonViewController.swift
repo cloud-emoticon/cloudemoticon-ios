@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import CoreImage
+import GLKit
+import OpenGLES
 
 class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertViewDelegate, UITableViewDataSource {
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray()
+    var 背景:UIView = UIView()
+    var 无颜文字:UIImageView = UIImageView()
+    var 无颜文字文字:UILabel = UILabel()
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -43,17 +49,68 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
         表格.alpha = 背景透明度
         
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
-
-        if(bg != nil){
-            bgimage = bg!
+        let bg:UIImage? = loadbg()
+        if(bg != defaultimage){
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
+    }
+    
+    func 生成无颜文字遮罩(){
+        
+        let 遮罩高度 = self.navigationController?.navigationBar.frame.height
+        无颜文字 = UIImageView(frame: CGRectMake(0, 遮罩高度!, self.view.frame.width, self.view.frame.height - 遮罩高度! - 49))
+        背景 = UIView(frame: 无颜文字.frame)
+        背景.backgroundColor = UIColor.whiteColor()
+        
+        let bg:CIImage? = CIImage(image: loadbg())
+        let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
+        模糊过滤器.setValue(35, forKey: "InputRadius")
+        模糊过滤器.setValue(bg, forKey: "InputImage")
+     
+        let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式
+        let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent())
+        ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent(), fromRect: bg!.extent())
+        let 模糊图像 = UIImage(CGImage: cgImage)
+        
+        var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
+        var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
+        
+        无颜文字.image = 模糊图像
+        无颜文字.contentMode = bgpview.contentMode
+        无颜文字.alpha = 背景透明度
+        self.view.addSubview(背景)
+        self.view.addSubview(无颜文字)
+        显示文字()
+    }
+    
+    func 显示文字()
+    {
+        无颜文字文字 = UILabel(frame: CGRectMake(0, self.view.center.y - 100, self.view.frame.width, 200))
+                        switch (内容选择菜单.selectedSegmentIndex) {
+                case 0:
+                    无颜文字文字.text = lang.uage("还没有收藏的颜文字喵")
+                    break
+                case 1:
+                    无颜文字文字.text = lang.uage("还没有历史记录呢喵")
+                    break
+                case 2:
+                    无颜文字文字.text = lang.uage("还没有添加自定义颜文字呢喵")
+                    break
+                default:
+                    break
+                }
+        无颜文字文字.backgroundColor = UIColor.clearColor()
+        无颜文字文字.font = UIFont.boldSystemFontOfSize(22)
+        无颜文字文字.textAlignment = NSTextAlignment.Center
+        无颜文字文字.textColor = UIColor.grayColor()
+        无颜文字文字.shadowColor = UIColor.whiteColor()
+        无颜文字文字.shadowOffset = CGSizeMake(1, 1)
+        无颜文字文字.alpha = 0.7
+        self.view.addSubview(无颜文字文字)
     }
     
     @IBOutlet weak var 左上按钮: UIBarButtonItem!
@@ -160,6 +217,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
     }
     
+    
     func addemoticon(emoticonstr:NSString)
     {
         let 颜文字名称:NSString = lang.uage("自定义")
@@ -205,6 +263,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     // MARK: - 载入数据
     func changemode(id:Int)
     {
+        背景.removeFromSuperview()
+        无颜文字.removeFromSuperview()
+        无颜文字文字.removeFromSuperview()
         switch (id) {
         case 0:
             载入收藏数据()
@@ -344,19 +405,21 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             }
         }
         else {
-            switch (内容选择菜单.selectedSegmentIndex) {
-            case 0:
-                cell?.textLabel?.text = lang.uage("还没有收藏的颜文字喵")
-                break
-            case 1:
-                cell?.textLabel?.text = lang.uage("还没有历史记录呢喵")
-                break
-            case 2:
-                cell?.textLabel?.text = lang.uage("还没有添加自定义颜文字呢喵")
-                break
-            default:
-                break
-            }
+           //            switch (内容选择菜单.selectedSegmentIndex) {
+//            case 0:
+//                cell?.textLabel?.text = lang.uage("还没有收藏的颜文字喵")
+//                break
+//            case 1:
+//                cell?.textLabel?.text = lang.uage("还没有历史记录呢喵")
+//                break
+//            case 2:
+//                cell?.textLabel?.text = lang.uage("还没有添加自定义颜文字呢喵")
+//                break
+//            default:
+//                break
+//            } 
+            生成无颜文字遮罩()
+            cell?.textLabel?.text = ""
             cell?.detailTextLabel?.text = ""
         }
         cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping

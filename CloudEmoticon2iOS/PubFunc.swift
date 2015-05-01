@@ -13,12 +13,16 @@ var p_emodata:NSArray = NSArray()
 var p_storeIsOpen:Bool = false
 var 全局_网络繁忙:Bool = false
 var bgimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
+let defaultimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
+
 let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 let documentDirectoryAddress:NSString = documentDirectory[0] as! NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
 let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
+
+
 
 enum NetDownloadTo:Int
 {
@@ -66,6 +70,16 @@ func 保存数据到输入法()
         
         组数据读写.写入设置UD模式(要保存的数据)
     }
+}
+
+func loadbg() -> UIImage {
+    let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
+    if(bg != nil){
+        bgimage = bg!
+        } else {
+        bgimage = defaultimage
+    }
+    return bgimage
 }
 
 func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat

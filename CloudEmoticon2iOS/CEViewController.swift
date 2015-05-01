@@ -53,27 +53,23 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 
 //MARK - 主题
     
-    func loadbg(){
-        let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
-        if(bg != nil){
-            bgimage = bg!
+    func loadbgi(){
+        let bg:UIImage? = loadbg()
+        if(bg != defaultimage){
             bgpview.image = bgimage
-            颜文字表格背景.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
             bgpview.image = bgimage
-            颜文字表格背景.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
         }
+        颜文字表格背景.image = bgimage
+        颜文字表格背景.contentMode = bgpview.contentMode
     }
     
     
     override func viewWillAppear(animated: Bool) {
         loaddata()
-        loadbg()
+        loadbgi()
         var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
         var 背景透明度:CGFloat = NSNumber(float: (100 - bgopacity!) / 100) as CGFloat
         分类表格.alpha = 背景透明度
