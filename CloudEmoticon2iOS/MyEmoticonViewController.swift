@@ -57,6 +57,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
+        自动遮罩()
     }
     
     func 生成无颜文字遮罩(){
@@ -189,6 +190,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     组数据读写.写入设置UD模式(新建数据模型)
                 }
             }
+            自动遮罩()
             break
         case 2:
             if (!表格.editing) {
@@ -221,6 +223,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 //添加
                 addemoticon(alertImport.text)
                 载入自定义数据()
+                自动遮罩()
             }
         }
     }
@@ -358,6 +361,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             背景.hidden = true
         }
         表格.reloadData()
+    }
+    
+    func 自动遮罩() {
+        if (表格数据.count == 0) {
+            生成无颜文字遮罩()
+        } else {
+            背景.hidden = true
+        }
     }
     
     // MARK: - 保存数据
@@ -554,6 +565,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             default:
                 break
             }
+            自动遮罩()
         }
     }
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
