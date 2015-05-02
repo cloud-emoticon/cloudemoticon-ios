@@ -58,6 +58,9 @@ func 保存数据到输入法()
     var 组数据:NSArray?
     if (组数据读写.检查设置UD模式()) {
         组数据 = 组数据读写.读取设置UD模式()!
+        if (组数据?.count != 4) {
+            NSLog("[致命错误]数据模型被损坏，崩崩崩！")
+        }
         var 当前主题数据:NSArray = 组数据!.objectAtIndex(3) as! NSArray
     }
     let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!,历史文件中的数据!,当前主题数据]
