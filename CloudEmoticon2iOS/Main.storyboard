@@ -252,7 +252,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="1Pr-ca-07z" secondAttribute="trailing" id="JGP-mc-3Xq"/>
-                            <constraint firstItem="J61-N2-PY7" firstAttribute="top" secondItem="PMk-KK-dUm" secondAttribute="bottom" constant="16" id="S8V-z8-xsr"/>
+                            <constraint firstItem="J61-N2-PY7" firstAttribute="bottom" secondItem="PMk-KK-dUm" secondAttribute="bottom" constant="16" id="S8V-z8-xsr"/>
                             <constraint firstAttribute="centerX" secondItem="PMk-KK-dUm" secondAttribute="centerX" id="aYR-kH-1Zc"/>
                             <constraint firstItem="1Pr-ca-07z" firstAttribute="leading" secondItem="LxS-5k-5rI" secondAttribute="leading" id="mGd-wJ-pxl"/>
                             <constraint firstItem="1Pr-ca-07z" firstAttribute="top" secondItem="LxS-5k-5rI" secondAttribute="top" constant="64" id="nYA-Ao-YsG"/>
@@ -293,7 +293,7 @@
                             <constraint firstItem="Tcx-xd-I1h" firstAttribute="top" secondItem="GDf-HP-1Fq" secondAttribute="top" constant="64" id="91q-uv-U5z"/>
                             <constraint firstItem="Tcx-xd-I1h" firstAttribute="top" secondItem="WfK-ue-OQw" secondAttribute="bottom" constant="32" id="DnJ-l3-wg1"/>
                             <constraint firstItem="Tcx-xd-I1h" firstAttribute="leading" secondItem="GDf-HP-1Fq" secondAttribute="leading" id="QfK-Q0-wm9"/>
-                            <constraint firstItem="pqw-y3-1IY" firstAttribute="top" secondItem="Tcx-xd-I1h" secondAttribute="bottom" id="fkI-Gw-Z71"/>
+                            <constraint firstItem="pqw-y3-1IY" firstAttribute="bottom" secondItem="Tcx-xd-I1h" secondAttribute="bottom" id="fkI-Gw-Z71"/>
                             <constraint firstAttribute="trailing" secondItem="Tcx-xd-I1h" secondAttribute="trailing" id="r4k-Jp-miH"/>
                         </constraints>
                         <variation key="default">
@@ -340,6 +340,9 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="CSA-TA-6Kq" secondAttribute="height" multiplier="5:9" id="lPy-3T-Tc6"/>
                                 </constraints>
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="31" y="172" width="340" height="612"/>
+                                </variation>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
@@ -348,7 +351,7 @@
                             <constraint firstItem="CSA-TA-6Kq" firstAttribute="top" secondItem="V4t-m7-I6c" secondAttribute="bottom" constant="8" id="4ID-hw-TAO"/>
                             <constraint firstAttribute="centerX" secondItem="CSA-TA-6Kq" secondAttribute="centerX" id="D4r-ev-bcX"/>
                             <constraint firstItem="V4t-m7-I6c" firstAttribute="top" secondItem="EKt-Su-rCl" secondAttribute="top" constant="64" id="NBv-de-WS8"/>
-                            <constraint firstItem="6YJ-p1-Imv" firstAttribute="top" secondItem="CSA-TA-6Kq" secondAttribute="bottom" constant="16" id="WoU-e0-qw7"/>
+                            <constraint firstItem="6YJ-p1-Imv" firstAttribute="bottom" secondItem="CSA-TA-6Kq" secondAttribute="bottom" constant="16" id="WoU-e0-qw7"/>
                             <constraint firstItem="V4t-m7-I6c" firstAttribute="leading" secondItem="EKt-Su-rCl" secondAttribute="leading" id="cX3-Cf-aJx"/>
                         </constraints>
                     </view>
