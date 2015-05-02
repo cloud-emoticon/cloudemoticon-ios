@@ -345,8 +345,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 将数据载入表格(文件中的数据:NSArray?)
     {
         表格数据.removeAllObjects()
+        var 表格内容为空:Bool = true
         if (文件中的数据 != nil) {
             表格数据.addObjectsFromArray(文件中的数据! as [AnyObject])
+            if (表格数据.count > 0) {
+                表格内容为空 = false
+            }
+        }
+        if (表格内容为空) {
+            生成无颜文字遮罩()
+        } else {
+            背景.hidden = true
         }
         表格.reloadData()
     }
@@ -381,7 +390,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             return 表格数据.count
         }
         tableView.userInteractionEnabled = false
-        return 1
+        return 表格数据.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -424,7 +433,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //            default:
 //                break
 //            } 
-            生成无颜文字遮罩()
+//            生成无颜文字遮罩()
             cell?.textLabel?.text = ""
             cell?.detailTextLabel?.text = ""
         }
