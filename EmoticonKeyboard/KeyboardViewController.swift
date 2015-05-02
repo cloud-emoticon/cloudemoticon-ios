@@ -24,6 +24,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
+        屏幕旋转通知()
 //        NSLog("云颜文字键盘初始化1...")
         // Add custom view sizing constraints here
     }
@@ -193,17 +194,27 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 //            NSLog("竖屏")
 //        }
         
-        //方法4：( っ*'ω'*c)
-        let 屏幕尺寸:CGSize = UIScreen.mainScreen().bounds.size
-        let 屏幕宽:CGFloat = 屏幕尺寸.width
-        let 键盘宽:CGFloat = self.view.frame.size.width
-        if (屏幕宽 == 键盘宽) {
-            NSLog("横屏")
-            修改方向(false)
-        } else {
-            NSLog("竖屏")
+//        //方法4：( っ*'ω'*c)  QAQ
+//        let 屏幕尺寸:CGSize = UIScreen.mainScreen().bounds.size
+//        let 屏幕宽:CGFloat = 屏幕尺寸.width
+//        let 键盘宽:CGFloat = self.view.frame.size.width
+//        if (屏幕宽 == 键盘宽) {
+//            NSLog("横屏")
+//            修改方向(false)
+//        } else {
+//            NSLog("竖屏")
+//            修改方向(true)
+//        }
+        //方法5： ( っ*'ω'*c)
+        if(UIScreen.mainScreen().bounds.size.width < UIScreen.mainScreen().bounds.size.height){
+            //Keyboard is in Portrait
             修改方向(true)
         }
+        else{
+            //Keyboard is in Landscape
+            修改方向(false)
+        }
+        
         
         //return 0
     }
