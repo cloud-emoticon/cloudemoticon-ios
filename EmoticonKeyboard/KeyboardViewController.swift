@@ -24,7 +24,6 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
-        屏幕旋转通知()
 //        NSLog("云颜文字键盘初始化1...")
         // Add custom view sizing constraints here
     }
@@ -82,11 +81,12 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             按钮.setTitle(按钮文字数组.objectAtIndex(i) as? String, forState: .Normal)
             按钮.sizeToFit()
             按钮.setTranslatesAutoresizingMaskIntoConstraints(false)
+            按钮.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             按钮.addTarget(self, action: Selector(按钮命令数组.objectAtIndex(i) as! String), forControlEvents: .TouchUpInside)
             if (i == 0){
-                按钮.backgroundColor = UIColor(red: 178.0/255.0, green: 185.0/255.0, blue: 196.0/255.0, alpha: 1)
+                按钮.backgroundColor = UIColor(red: 172.0/255.0, green: 179.0/255.0, blue: 190.0/255.0, alpha: 1)
             } else {
-                按钮.backgroundColor = UIColor(red: 236.0/255.0, green: 236.0/255.0, blue: 236.0/255.0, alpha: 1)
+                按钮.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 1)
             }
             按钮.layer.cornerRadius = 4
             self.view.addSubview(按钮)
@@ -111,9 +111,8 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         var 表格视图横向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 0.0)
         var 表格视图横向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -0.0)
         var 表格视图纵向对齐方式 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem:self.view, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 4)
-        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 134)
-        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 83)
-        
+        var 表格视图纵向对齐方式2 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 168)
+        var 表格视图纵向对齐方式3 = NSLayoutConstraint(item: 表格视图, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 112)
         if (是竖屏) {
             self.view.addConstraints([表格视图横向对齐方式,表格视图纵向对齐方式,表格视图横向对齐方式2,表格视图纵向对齐方式2])
         } else {
@@ -127,21 +126,14 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 上一个按钮 = self.view.viewWithTag(100 + i - 1)!
             }
             var 按钮:UIButton = 当前按钮对象 as! UIButton
-            var 按钮高度 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 35)
+            var 按钮高度 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Height, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: 36)
             self.view.addConstraint(按钮高度)
             if (i == 0){
                 var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Left, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Left, multiplier: 1.0, constant: 3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 表格视图, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 6)
                 
-                if (是竖屏){
-                    var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 18)
-                    self.view.addConstraints([按钮宽度适应])
-                } else {
-                    var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: 模板按钮, attribute: NSLayoutAttribute.Width, multiplier: 1.0, constant: 59.6)
-                    self.view.addConstraints([按钮宽度适应])
-                    
-                }
-                self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式])
+                var 按钮宽度适应 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute: NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: (UIScreen.mainScreen().bounds.size.width - 31) / 6)
+                self.view.addConstraints([按钮横向对齐方式, 按钮纵向对齐方式, 按钮宽度适应])
             } else if (i == 按钮文字数组.count - 1) {
                 var 按钮横向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Right, relatedBy: NSLayoutRelation.Equal, toItem: self.view, attribute: NSLayoutAttribute.Right, multiplier: 1.0, constant: -3.0)
                 var 按钮纵向对齐方式 = NSLayoutConstraint(item: 按钮, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: 上一个按钮, attribute: NSLayoutAttribute.Top, multiplier: 1.0, constant: 0)
@@ -225,7 +217,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             if (当前按钮.tag != 当前按钮Tag) {
                 当前按钮.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             } else {
-                当前按钮.setTitleColor(UIColor.redColor(), forState: UIControlState.Normal)
+                当前按钮.setTitleColor(UIColor.redColor() , forState: UIControlState.Normal)
             }
         }
     }
