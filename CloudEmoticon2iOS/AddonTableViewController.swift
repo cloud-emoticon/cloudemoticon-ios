@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 var bgpview:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!))
 
 class AddonTableViewController: UITableViewController {

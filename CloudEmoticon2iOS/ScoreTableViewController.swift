@@ -233,10 +233,9 @@ class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //,
             } else {
                 let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
                 let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
-                let MD5加密:MD5 = MD5()
                 for (var i:Int = 0; i < 要删除的文件.count; i++) {
                     let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as! NSString
-                    let 当前文件名:NSString = NSString(format: "cache-%@.plist", MD5加密.md5(当前颜文字网址 as String) as String)
+                    let 当前文件名:NSString = NSString(format: "cache-%@.plist", md5(当前颜文字网址 as String) as String)
                     if (要删除的文件名.isEqualToString(当前文件名 as String)) {
                         要删除的文件.removeObjectAtIndex(i)
                         break;

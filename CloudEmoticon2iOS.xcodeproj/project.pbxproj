@@ -27,7 +27,6 @@
 		53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* ScoreTableViewController.swift */; };
 		5357733C199B1584003FF9D3 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5357733B199B1584003FF9D3 /* default.plist */; };
 		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
-		538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538D3E9D199471F100F5692F /* Md5Coder.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
 		53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53918E951AB7065C00CE7A68 /* InterfaceController.swift */; };
 		53918E981AB7065C00CE7A68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53918E971AB7065C00CE7A68 /* Images.xcassets */; };
@@ -53,7 +52,6 @@
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
 		53DF2906196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */; };
-		53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E0E4AC19947C2800C9D9FC /* MD5.m */; };
 		53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0E4B01994854C00C9D9FC /* PubFunc.swift */; };
 		53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B41994A8DD00C9D9FC /* Settings.bundle */; };
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
@@ -64,6 +62,7 @@
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
+		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
@@ -241,7 +240,6 @@
 		53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchex.entitlements; sourceTree = "<group>"; };
 		5389F5941AEB85FF009A1552 /* ResetSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
-		538D3E9D199471F100F5692F /* Md5Coder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Md5Coder.swift; sourceTree = "<group>"; };
 		53906A9E1999D5E2000020D1 /* CEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEViewController.swift; sourceTree = "<group>"; };
 		53918E911AB7065C00CE7A68 /* cewatchex.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cewatchex.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		53918E941AB7065C00CE7A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -267,8 +265,6 @@
 		53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudEmoticon2iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF2904196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudEmoticon2iOSTests.swift; sourceTree = "<group>"; };
-		53E0E4AB19947C2800C9D9FC /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
-		53E0E4AC19947C2800C9D9FC /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
 		53E0E4B01994854C00C9D9FC /* PubFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubFunc.swift; path = CloudEmoticon2iOS/PubFunc.swift; sourceTree = "<group>"; };
 		53E0E4B41994A8DD00C9D9FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
@@ -281,6 +277,7 @@
 		53E9DF8319C189E600C61121 /* WaitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitView.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
+		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -382,13 +379,11 @@
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
-				53E0E4AB19947C2800C9D9FC /* MD5.h */,
-				53E0E4AC19947C2800C9D9FC /* MD5.m */,
-				538D3E9D199471F100F5692F /* Md5Coder.swift */,
 				53995A561991E8B1008B12E0 /* JSONReader.swift */,
 				5346D9311993186500CEFA4B /* XMLReader.swift */,
 				5346D93419931C9200CEFA4B /* SwitchCoder.swift */,
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
+				8B1418081AF49A1000C278B9 /* MD5.swift */,
 			);
 			name = "数据模型";
 			sourceTree = "<group>";
@@ -1053,15 +1048,14 @@
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
-				53E0E4AD19947C2800C9D9FC /* MD5.m in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
+				8B1418091AF49A1000C278B9 /* MD5.swift in Sources */,
 				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
-				538D3E9E199471F100F5692F /* Md5Coder.swift in Sources */,
 				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
 				53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,

@@ -8,8 +8,10 @@
 
 import UIKit
 
+
 class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
     
@@ -602,7 +604,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索颜文字.resignFirstResponder()
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
-        println(表格竖向滚动)
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
         if (下拉刷新提示 != nil) {
             let 当前表格:UITableView = scrollView as! UITableView

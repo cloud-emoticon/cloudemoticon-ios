@@ -59,8 +59,7 @@ class FileManager: NSObject {
     
     func deleteFile(urlStr:NSString, smode:saveMode)
     {
-        let md5coder:MD5 = MD5()
-        let fileName:NSString = NSString(format: "cache-%@.plist", md5coder.md5(urlStr as String))
+        let fileName:NSString = NSString(format: "cache-%@.plist", md5(urlStr as String))
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
@@ -72,11 +71,10 @@ class FileManager: NSObject {
     {
         switch (smode) {
         case saveMode.NETWORK:
-            let md5coder:MD5 = MD5()
-            var md5vol:NSString = md5coder.md5(p_nowurl as String)
+            var md5vol:NSString = md5(p_nowurl as String)
             let nowURLstr:NSString = nowURLarr.objectAtIndex(0) as! NSString
             if (!nowURLstr.isEqualToString("")) {
-                md5vol = md5coder.md5(nowURLstr as String)
+                md5vol = md5(nowURLstr as String)
             }
             return NSString.localizedStringWithFormat("cache-%@.plist",md5vol)
         case saveMode.HISTORY:

@@ -276,8 +276,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     }
     
     func 从网址生成临时文件路径和名称(网址:String,文件扩展名:NSString) -> NSString {
-        let md5运算器:MD5 = MD5()
-        let 临时文件路径:NSString = "\(获得缓存文件夹路径())/\(md5运算器.md5(网址)).\(文件扩展名)"
+        let 临时文件路径:NSString = "\(获得缓存文件夹路径())/\(md5(网址)).\(文件扩展名)"
         return 临时文件路径
     }
     
