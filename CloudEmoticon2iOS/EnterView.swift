@@ -9,26 +9,20 @@
 import UIKit
 
 class EnterView: UIView {
-
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-        // Drawing code
-    }
-    */
     
     override init(frame: CGRect) {
-        super.init(frame: frame)
+        super.init(frame: UIScreen.mainScreen().bounds)
+        
         let 背景渐变起始色:UIColor = UIColor(red: 1.00, green: 0.75, blue: 0.84, alpha: 1.0)
         let 背景渐变结束色:UIColor = UIColor(red: 0.99, green: 0.55, blue: 0.71, alpha: 1.0)
         self.backgroundColor = 背景渐变起始色
         var 渐变层:CAGradientLayer = CAGradientLayer()
-        渐变层.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        let 屏幕长:CGFloat = (self.frame.width > self.frame.height) ? self.frame.width : self.frame.height
+        渐变层.frame = CGRectMake(0, 0, 屏幕长, 屏幕长)
         渐变层.colors = [背景渐变起始色.CGColor,背景渐变结束色.CGColor]
         self.layer.insertSublayer(渐变层, atIndex: 1)
         
-        //QAQ
+        //这是一次失败的尝试
 //        var context:CGContextRef = UIGraphicsGetCurrentContext();
 //        // 创建色彩空间对象
 //        var colorSpaceRef:CGColorSpaceRef = CGColorSpaceCreateDeviceRGB()
@@ -41,6 +35,44 @@ class EnterView: UIView {
 //        // 创建渐变对象
 //        var gradientRef:CGGradientRef = CGGradientCreateWithColors(colorSpaceRef, [beginColor,endColor], [0.0,1.0])
         
+        let 剪影图片路径:String = NSBundle.mainBundle().pathForResource("cestart", ofType: "png")!
+        let 剪影图片:UIImage = UIImage(contentsOfFile: 剪影图片路径)!
+        
+        //这里仅仅用于记录遮罩使用方法
+//        var 遮罩层:CALayer = CALayer()
+//        遮罩层.frame = frame
+//        遮罩层.contents = 遮罩图片.CGImage
+//        self.layer.mask = 遮罩层
+        
+        let 剪影图片视图:UIImageView = UIImageView(image: 剪影图片)
+        let 剪影图片尺寸:CGFloat = frame.size.width * 0.5
+        剪影图片视图.frame = CGRectMake(self.frame.size.width * 0.5 - 剪影图片尺寸 * 0.5, self.frame.size.height * 0.5 - 剪影图片尺寸 * 0.5, 剪影图片尺寸, 剪影图片尺寸)
+        剪影图片视图.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
+        self.addSubview(剪影图片视图)
+        
+        //等待后面的UI渲染
+        NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
+//        NSTimer(timeInterval: 5.0, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
+        
+    }
+    
+    func 开始动画(sender:NSTimer) {
+        self.frame = UIScreen.mainScreen().bounds
+        let 剪影图片视图:UIImageView = sender.userInfo as! UIImageView
+        let 剪影图片尺寸:CGFloat = frame.size.width * 0.5
+        剪影图片视图.frame = CGRectMake(self.frame.size.width * 0.5 - 剪影图片尺寸 * 0.5, self.frame.size.height * 0.5 - 剪影图片尺寸 * 0.5, 剪影图片尺寸, 剪影图片尺寸)
+        剪影图片视图.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
+        self.addSubview(剪影图片视图)
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            剪影图片视图.transform = CGAffineTransformMakeScale(0.5, 0.5)
+            }) { (动画完成:Bool) -> Void in
+                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                    剪影图片视图.transform = CGAffineTransformMakeScale(20, 20)
+                    self.alpha = 0
+                    }) { (动画完成:Bool) -> Void in
+                        self.removeFromSuperview()
+                }
+        }
     }
 
     required init(coder aDecoder: NSCoder) {

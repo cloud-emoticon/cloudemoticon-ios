@@ -49,6 +49,7 @@
 		53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6EEEA1AF6338400ACAA6A /* EnterView.swift */; };
+		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
@@ -260,6 +261,7 @@
 		53AB49751AE239A90090D955 /* AppGroupIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupIO.swift; sourceTree = "<group>"; };
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53B6EEEA1AF6338400ACAA6A /* EnterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
+		53B6EEF01AF66FA000ACAA6A /* cestart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cestart.png; sourceTree = "<group>"; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -636,6 +638,7 @@
 		8B98EE9A196D2DC0000D255E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				53B6EEF01AF66FA000ACAA6A /* cestart.png */,
 				8B5251511A15A6360081CAA3 /* noti29.png */,
 				8B5251521A15A6360081CAA3 /* input70.png */,
 				8BA411AE19B0F046003AEBF2 /* shake.png */,
@@ -985,6 +988,7 @@
 				8BE31F65196D443C006C3B26 /* info-vector.png in Resources */,
 				8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */,
 				53A796F01AE2787400755592 /* themedemo.ini in Resources */,
+				53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */,
 				53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */,
 				533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */,
 				8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */,
