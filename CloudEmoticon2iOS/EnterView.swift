@@ -45,13 +45,14 @@ class EnterView: UIView {
 //        self.layer.mask = 遮罩层
         
         let 剪影图片视图:UIImageView = UIImageView(image: 剪影图片)
-        let 剪影图片尺寸:CGFloat = frame.size.width * 0.5
+        let 屏幕短:CGFloat = (self.frame.width < self.frame.height) ? self.frame.width : self.frame.height
+        let 剪影图片尺寸:CGFloat = 屏幕短 * 0.5
         剪影图片视图.frame = CGRectMake(self.frame.size.width * 0.5 - 剪影图片尺寸 * 0.5, self.frame.size.height * 0.5 - 剪影图片尺寸 * 0.5, 剪影图片尺寸, 剪影图片尺寸)
         剪影图片视图.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
         self.addSubview(剪影图片视图)
         
         //等待后面的UI渲染
-        NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
 //        NSTimer(timeInterval: 5.0, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
         
     }
@@ -59,7 +60,8 @@ class EnterView: UIView {
     func 开始动画(sender:NSTimer) {
         self.frame = UIScreen.mainScreen().bounds
         let 剪影图片视图:UIImageView = sender.userInfo as! UIImageView
-        let 剪影图片尺寸:CGFloat = frame.size.width * 0.5
+        let 屏幕短:CGFloat = (self.frame.width < self.frame.height) ? self.frame.width : self.frame.height
+        let 剪影图片尺寸:CGFloat = 屏幕短 * 0.5
         剪影图片视图.frame = CGRectMake(self.frame.size.width * 0.5 - 剪影图片尺寸 * 0.5, self.frame.size.height * 0.5 - 剪影图片尺寸 * 0.5, 剪影图片尺寸, 剪影图片尺寸)
         剪影图片视图.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
         self.addSubview(剪影图片视图)
