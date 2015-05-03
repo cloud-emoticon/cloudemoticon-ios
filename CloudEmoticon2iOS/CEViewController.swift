@@ -539,10 +539,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
                 let 主文字内容:NSString = emoobj.objectAtIndex(0) as! NSString
                 var 副文字内容:NSString = ""
-                let 主文字框高度:CGFloat = heightForString(主文字内容, FontSize: 17, andWidth: tableView.frame.width - 20) + 8
+                let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 17, tableView.frame.width - 20) + 8
                 if (emoobj.count > 1) {
                     副文字内容 = emoobj.objectAtIndex(1) as! NSString
-                    let 副文字框高度:CGFloat = heightForString(副文字内容, FontSize: 12, andWidth: tableView.frame.width - 20) - 13
+                    let 副文字框高度:CGFloat = 计算单元格高度(副文字内容, 12, tableView.frame.width - 20) - 13
                     文字高度 = 主文字框高度 + 副文字框高度 + 15
                 } else {
                     文字高度 = 主文字框高度 + 15

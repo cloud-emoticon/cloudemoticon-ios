@@ -568,8 +568,45 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             自动遮罩()
         }
     }
+    
     func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
     {
         return lang.uage("删掉喵")
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        if (表格数据.count > 0) {
+            var 文字高度:CGFloat = 44
+            let emoobj:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
+            let 主文字内容:NSString = emoobj.objectAtIndex(0) as! NSString
+            var 副文字内容:NSString = ""
+            let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 字体大小: 17, 单元格宽度: tableView.frame.width - 20) + 8
+            if (emoobj.count > 1) {
+                副文字内容 = emoobj.objectAtIndex(1) as! NSString
+                let 副文字框高度:CGFloat = 计算单元格高度(副文字内容, 字体大小: 12, 单元格宽度: tableView.frame.width - 20) - 13
+                文字高度 = 主文字框高度 + 副文字框高度 + 15
+            } else {
+                文字高度 = 主文字框高度 + 15
+            }
+            if (文字高度 < 44) {
+                return 44
+            } else {
+                return 文字高度
+            }
+        }
+        return 44
+    }
+    
+    func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
+    {
+        var 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
+        高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
+        高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
+        高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        高度测试虚拟标签.numberOfLines = 0
+        var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSizeMake(单元格宽度,CGFloat.max))
+        计算后尺寸.height = ceil(计算后尺寸.height)
+        return 计算后尺寸.height
     }
 }

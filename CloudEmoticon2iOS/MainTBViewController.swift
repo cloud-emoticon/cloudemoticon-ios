@@ -188,7 +188,7 @@ class MainTBViewController: UITabBarController {
         if (self.view.frame.size.width > self.view.frame.size.height) {
             提示信息框Y坐标 = 42
         }
-        let 单元格高度:CGFloat = heightForString(提示文字, FontSize: 17, andWidth: self.view.frame.size.width - 20)
+        let 单元格高度:CGFloat = 计算单元格高度(提示文字, 17, self.view.frame.size.width - 20)
         var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 单元格高度))
         self.view.addSubview(提示信息框)
         提示信息框.显示提示(提示文字)

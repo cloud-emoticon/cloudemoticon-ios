@@ -92,16 +92,16 @@ func loadopc() -> CGFloat
 
 }
 
-func heightForString(value: NSString, FontSize fontSize:CGFloat, andWidth width:CGFloat) -> CGFloat
+func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
 {
-    var sizeTest:UILabel = UILabel(frame: CGRectMake(0, 0, width, 0))
-    sizeTest.font = UIFont.systemFontOfSize(fontSize)
-    sizeTest.text = NSString(string: value) as String
-    sizeTest.lineBreakMode = NSLineBreakMode.ByCharWrapping
-    sizeTest.numberOfLines = 0
-    var deSize:CGSize = sizeTest.sizeThatFits(CGSizeMake(width,CGFloat.max))
-    deSize.height = ceil(deSize.height)
-    return deSize.height
+    var 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
+    高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
+    高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
+    高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping
+    高度测试虚拟标签.numberOfLines = 0
+    var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSizeMake(单元格宽度,CGFloat.max))
+    计算后尺寸.height = ceil(计算后尺寸.height)
+    return 计算后尺寸.height
 }
 
 /* 隐藏设置：
