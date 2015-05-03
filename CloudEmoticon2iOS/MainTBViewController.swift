@@ -20,6 +20,8 @@ class MainTBViewController: UITabBarController {
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        let 进入视图:EnterView = EnterView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        self.view.addSubview(进入视图)
         initSetting()
         载入背景()
         文件管理器.补充空白数据()
