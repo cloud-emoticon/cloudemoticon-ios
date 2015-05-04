@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if (!noFirstRun) {
             defaults.setBool(false, forKey: "exitaftercopy")
             defaults.setFloat(100, forKey: "adfrequent")
-            defaults.setFloat(20, forKey: "bgopacity")
+            defaults.setFloat(40, forKey: "bgopacity")
 //            defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
         }
