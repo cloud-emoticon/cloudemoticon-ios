@@ -104,13 +104,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if(背景透明度 < 0.35){
             无颜文字文字.textColor = UIColor.grayColor()
             无颜文字文字.shadowColor = UIColor.whiteColor()
-        } else if(背景透明度 >= 0.35 && 背景透明度 < 0.65){
-            无颜文字文字.textColor = UIColor.whiteColor()
-            无颜文字文字.shadowColor = UIColor.blackColor()
         } else {
-            无颜文字文字.textColor = UIColor.whiteColor()
-            无颜文字文字.shadowColor = UIColor.grayColor()
-        }
+            无颜文字文字.textColor = UIColor(red: 0.7, green: 0.7, blue: 0.7, alpha: 1)
+            无颜文字文字.shadowColor = UIColor.whiteColor()
+        } //else {
+//            无颜文字文字.textColor = UIColor.whiteColor()
+//            无颜文字文字.shadowColor = UIColor.grayColor()
+//        }
         
         无颜文字文字.backgroundColor = UIColor.clearColor()
         无颜文字文字.font = UIFont.boldSystemFontOfSize(22)
