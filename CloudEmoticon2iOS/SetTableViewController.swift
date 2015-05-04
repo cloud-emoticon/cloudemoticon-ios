@@ -94,8 +94,8 @@ class SetTableViewController: UITableViewController {
             前往主题管理()
             break
         case 2:
-            ScoreTableViewController().hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(ScoreTableViewController(), animated: true)
+            SourceTableViewController().hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(SourceTableViewController(), animated: true)
             break
         case 3:
             let push:SettingViewController = storyboard?.instantiateViewControllerWithIdentifier("Setting") as! SettingViewController

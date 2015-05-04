@@ -65,10 +65,10 @@ class EnterView: UIView {
         剪影图片视图.frame = CGRectMake(self.frame.size.width * 0.5 - 剪影图片尺寸 * 0.5, self.frame.size.height * 0.5 - 剪影图片尺寸 * 0.5, 剪影图片尺寸, 剪影图片尺寸)
         剪影图片视图.center = CGPointMake(self.frame.size.width * 0.5, self.frame.size.height * 0.5)
         self.addSubview(剪影图片视图)
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            剪影图片视图.transform = CGAffineTransformMakeScale(0.5, 0.5)
+        UIView.animateWithDuration(0.7, animations: { () -> Void in
+            剪影图片视图.transform = CGAffineTransformMakeScale(0.7, 0.7)
             }) { (动画完成:Bool) -> Void in
-                UIView.animateWithDuration(0.5, animations: { () -> Void in
+                UIView.animateWithDuration(0.45, animations: { () -> Void in
                     剪影图片视图.transform = CGAffineTransformMakeScale(20, 20)
                     self.alpha = 0
                     }) { (动画完成:Bool) -> Void in

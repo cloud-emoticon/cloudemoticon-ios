@@ -8,17 +8,17 @@
 
 import UIKit
 
-protocol ScoreTableViewControllerDelegate:NSObjectProtocol{
+protocol SourceTableViewControllerDelegate:NSObjectProtocol{
     func 源管理页面代理：退出源管理页面时()
 }
 
-class ScoreTableViewController: UITableViewController, UIAlertViewDelegate { //, UITableViewDelegate, UITableViewDataSource
+class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //, UITableViewDelegate, UITableViewDataSource
     
     var 文件管理器:FileManager = FileManager()
     var 源列表:NSMutableArray = NSMutableArray()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var 临时数据:NSMutableArray = NSMutableArray()
-    var 代理:ScoreTableViewControllerDelegate?
+    var 代理:SourceTableViewControllerDelegate?
     var 已经载入:Bool = false
     
     // MARK: - 初始化

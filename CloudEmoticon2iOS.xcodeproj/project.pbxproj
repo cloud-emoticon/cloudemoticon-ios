@@ -24,7 +24,7 @@
 		5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D93419931C9200CEFA4B /* SwitchCoder.swift */; };
 		5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */; };
 		5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBC1990C21C00D70CA4 /* FileManager.swift */; };
-		53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* ScoreTableViewController.swift */; };
+		53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* SourceTableViewController.swift */; };
 		5357733C199B1584003FF9D3 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5357733B199B1584003FF9D3 /* default.plist */; };
 		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
@@ -235,7 +235,7 @@
 		5346D9391993393000CEFA4B /* CE2NCWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CE2NCWidget.entitlements; sourceTree = "<group>"; };
 		5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDownload.swift; sourceTree = "<group>"; };
 		5355FCBC1990C21C00D70CA4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
-		53577338199B085D003FF9D3 /* ScoreTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreTableViewController.swift; sourceTree = "<group>"; };
+		53577338199B085D003FF9D3 /* SourceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewController.swift; sourceTree = "<group>"; };
 		5357733B199B1584003FF9D3 /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
 		53818FE21ABDAAA700D62C5F /* cewidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewidget.entitlements; sourceTree = "<group>"; };
 		53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cekeyboard.entitlements; sourceTree = "<group>"; };
@@ -407,7 +407,7 @@
 			isa = PBXGroup;
 			children = (
 				5357733B199B1584003FF9D3 /* default.plist */,
-				53577338199B085D003FF9D3 /* ScoreTableViewController.swift */,
+				53577338199B085D003FF9D3 /* SourceTableViewController.swift */,
 			);
 			name = "源管理";
 			sourceTree = "<group>";
@@ -1072,7 +1072,7 @@
 				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
-				53577339199B085D003FF9D3 /* ScoreTableViewController.swift in Sources */,
+				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
 				53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,

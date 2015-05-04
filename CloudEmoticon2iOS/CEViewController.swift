@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, ScoreTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, SourceTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
 
     
     @IBOutlet weak var sortBtn: UIBarButtonItem!
@@ -32,7 +32,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 下拉刷新动作中:Bool = false
     var 菜单滑动中:Bool = false
     var 当前分类:Int = 0
-    var 源管理页面:ScoreTableViewController? = nil
+    var 源管理页面:SourceTableViewController? = nil
     var 调整搜索栏位置:Bool = true
     var 当前源:NSString = NSString()
     var 当前源文字框:UILabel = UILabel()
@@ -331,7 +331,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             源管理页面?.navigationController?.popViewControllerAnimated(false)
             源管理页面 = nil
         }
-        源管理页面 = ScoreTableViewController(style: UITableViewStyle.Plain)
+        源管理页面 = SourceTableViewController(style: UITableViewStyle.Plain)
         源管理页面?.代理 = self
         源管理页面?.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(源管理页面!, animated: true)
