@@ -16,16 +16,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-TY-ZQg">
-                                <rect key="frame" x="196" y="4" width="56" height="32"/>
-                                <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                            <button opaque="NO" alpha="0.39999999999999963" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4f-TY-ZQg">
+                                <rect key="frame" x="198" y="4" width="56" height="32"/>
+                                <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="56" id="7Ah-z0-IAM"/>
                                     <constraint firstAttribute="height" constant="32" id="ALV-Ng-TVz"/>
                                 </constraints>
-                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="添加">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -33,24 +32,23 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剪贴板空" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4hl-ni-jGE">
-                                <rect key="frame" x="0.0" y="4" width="188" height="32"/>
+                                <rect key="frame" x="0.0" y="4" width="192" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="loW-dR-xy4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <color key="textColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
+                            <button opaque="NO" alpha="0.39999999999999963" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffL-2i-yin">
                                 <rect key="frame" x="260" y="4" width="56" height="32"/>
-                                <color key="backgroundColor" red="0.43529411764705883" green="0.44313725490196076" blue="0.47450980392156861" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="V2R-My-AAj"/>
                                     <constraint firstAttribute="width" constant="56" id="qoH-As-6bq"/>
                                 </constraints>
-                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="启动">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="RunFamApp:" destination="M4Y-Lb-cyx" eventType="touchUpInside" id="3t0-zT-14j"/>
@@ -59,8 +57,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ffL-2i-yin" secondAttribute="trailing" constant="4" id="DNg-4i-55H"/>
-                            <constraint firstItem="ffL-2i-yin" firstAttribute="leading" secondItem="M4f-TY-ZQg" secondAttribute="trailing" constant="8" id="Jsd-ap-WcZ"/>
-                            <constraint firstItem="M4f-TY-ZQg" firstAttribute="leading" secondItem="4hl-ni-jGE" secondAttribute="trailing" constant="8" id="XMp-zS-xfH"/>
+                            <constraint firstItem="ffL-2i-yin" firstAttribute="leading" secondItem="M4f-TY-ZQg" secondAttribute="trailing" constant="6" id="Jsd-ap-WcZ"/>
+                            <constraint firstItem="M4f-TY-ZQg" firstAttribute="leading" secondItem="4hl-ni-jGE" secondAttribute="trailing" constant="6" id="XMp-zS-xfH"/>
                             <constraint firstItem="4hl-ni-jGE" firstAttribute="leading" secondItem="S3S-Oj-5AN" secondAttribute="leading" id="bPQ-q9-ksM"/>
                             <constraint firstItem="4hl-ni-jGE" firstAttribute="top" secondItem="To8-uj-vIa" secondAttribute="bottom" constant="4" id="l9R-XF-7sd"/>
                             <constraint firstItem="M4f-TY-ZQg" firstAttribute="top" secondItem="To8-uj-vIa" secondAttribute="bottom" constant="4" id="sYg-Df-wAm"/>
