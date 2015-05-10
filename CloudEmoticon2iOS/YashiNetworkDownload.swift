@@ -166,8 +166,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         网络连接对象.cancel()
         //下载的数据 = NSMutableData()
         文件流!.close()
-        文件流 = NSOutputStream()
-        
+        文件流 = nil
     }
     
     //============

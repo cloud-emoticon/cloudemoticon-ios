@@ -66,8 +66,16 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             if (安装提示框?.message != 内容字符串) {
                 安装提示框?.message = 内容字符串
             }
+            if (按钮字符串 != nil) {
+                安装提示框?.dismissWithClickedButtonIndex(0, animated: false)
+                安装提示框 = nil
+                安装提示框 = UIAlertView(title: 标题字符串, message: 内容字符串, delegate: nil, cancelButtonTitle: 按钮字符串)
+                安装提示框?.show()
+                UIApplication.sharedApplication().keyWindow?.endEditing(true)
+                
+            }
         } else {
-            安装提示框?.removeFromSuperview()
+            安装提示框?.dismissWithClickedButtonIndex(0, animated: true)
             安装提示框 = nil
         }
     }
@@ -96,6 +104,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         if (buttonIndex == 1) {
             //添加
             皮肤安装器.代理 = self
+            提示框输入框.userInteractionEnabled = false
             皮肤安装器.启动安装任务(提示框输入框.text)
         } else if (buttonIndex == 2) {
             //源商店
