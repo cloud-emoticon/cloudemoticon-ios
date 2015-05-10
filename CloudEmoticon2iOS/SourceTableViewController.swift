@@ -328,7 +328,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
         if (单元格 == nil) {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.None
+            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
             单元格!.accessoryType = UITableViewCellAccessoryType.None
         }
         let 当前颜文字库:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as! NSArray
@@ -425,6 +425,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true) //闪一下
         选择源(tableView,didSelectRowAtIndexPath: indexPath)
     }
     func 保存源列表(o_url:NSString)

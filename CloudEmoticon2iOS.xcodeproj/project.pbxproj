@@ -39,6 +39,8 @@
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
+		539BD9C11AFF5575000D835C /* skinnoimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 539BD9C01AFF5575000D835C /* skinnoimg.png */; };
+		539BD9C71AFF5F2C000D835C /* skindefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 539BD9C61AFF5F2C000D835C /* skindefault.png */; };
 		53A796F01AE2787400755592 /* themedemo.ini in Resources */ = {isa = PBXBuildFile; fileRef = 53A796EF1AE2787400755592 /* themedemo.ini */; };
 		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
@@ -257,6 +259,8 @@
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
 		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		539BD9C01AFF5575000D835C /* skinnoimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skinnoimg.png; sourceTree = "<group>"; };
+		539BD9C61AFF5F2C000D835C /* skindefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skindefault.png; sourceTree = "<group>"; };
 		53A796EF1AE2787400755592 /* themedemo.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = themedemo.ini; sourceTree = "<group>"; };
 		53AB49751AE239A90090D955 /* AppGroupIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupIO.swift; sourceTree = "<group>"; };
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
@@ -638,6 +642,8 @@
 		8B98EE9A196D2DC0000D255E /* images */ = {
 			isa = PBXGroup;
 			children = (
+				539BD9C61AFF5F2C000D835C /* skindefault.png */,
+				539BD9C01AFF5575000D835C /* skinnoimg.png */,
 				53B6EEF01AF66FA000ACAA6A /* cestart.png */,
 				8B5251511A15A6360081CAA3 /* noti29.png */,
 				8B5251521A15A6360081CAA3 /* input70.png */,
@@ -972,9 +978,11 @@
 				53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */,
 				8B5251531A15A6360081CAA3 /* noti29.png in Resources */,
 				8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */,
+				539BD9C71AFF5F2C000D835C /* skindefault.png in Resources */,
 				8BE31F5E196D3EF3006C3B26 /* globe-vector@2x.png in Resources */,
 				8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */,
 				8B26E81F196E685900355F3B /* idea-vector.png in Resources */,
+				539BD9C11AFF5575000D835C /* skinnoimg.png in Resources */,
 				8B98EEA2196D3258000D255E /* shared-vector@2x.png in Resources */,
 				8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */,
 				5310750A19C19E9D0003866F /* Main.storyboard in Resources */,

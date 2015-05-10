@@ -16,6 +16,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     var 左上按钮: UIBarButtonItem!
     var 右上按钮: UIBarButtonItem!
     var 安装提示框:UIAlertView?
+    let 无图片:UIImage = UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource("skinnoimg", ofType: "png")!)!
     
     required init(coder aDecoder: NSCoder)  {
         super.init(coder: aDecoder)
@@ -36,6 +37,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         self.navigationItem.leftBarButtonItem = 左上按钮
         右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
         self.navigationItem.rightBarButtonItem = 右上按钮
+        //[主标题,副标题,主题图片路径,主题本地文件夹路径]
+        皮肤ID列表.addObject([lang.uage("默认主题"),lang.uage("内置主题"),NSBundle.mainBundle().pathForResource("skindefault", ofType: "png")!,"<ceskin:default>"])
+        皮肤ID列表.addObject([lang.uage("自定义主题"),lang.uage("内置主题"),"","<ceskin:custom>"])
     }
 
     override func didReceiveMemoryWarning() {
@@ -70,12 +74,13 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     // MARK: - 返回按钮
     func 右上按钮(sender: UIBarButtonItem) {
         if (self.tableView.editing) {
+//            self.tableView.setEditing(false, animated: true)
             var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
             var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
-            alertImport.text = "http://192.168.1.123/skin/skin.zip"
+            alertImport.text = "http://127.0.0.1/skin/skin.zip"
             alert.show()
         } else {
             self.navigationController?.popViewControllerAnimated(true)
@@ -126,18 +131,29 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
         if (单元格 == nil) {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.None
+            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
             单元格!.accessoryType = UITableViewCellAccessoryType.None
             单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
         }
-        
+        //[主标题,副标题,主题图片路径,主题本地文件夹路径]
+        let 当前皮肤ID:NSArray = 皮肤ID列表.objectAtIndex(indexPath.row) as! NSArray
+        单元格?.textLabel?.text = 当前皮肤ID.objectAtIndex(0) as? String
+        单元格?.detailTextLabel?.text = 当前皮肤ID.objectAtIndex(1) as? String
+        let 当前皮肤图片:UIImage? = UIImage(contentsOfFile:  当前皮肤ID.objectAtIndex(2) as! String)
+        if (当前皮肤图片 == nil) {
+            单元格?.imageView?.image = 无图片
+        } else {
+            单元格?.imageView?.image = 当前皮肤图片!
+        }
         return 单元格!
     }
     // MARK: - 表格更改
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
     {
         if editingStyle == .Delete {
-            
+            if (indexPath.row < 2) {
+                UIAlertView(title: lang.uage("无法删除这个主题"), message: lang.uage("内置主题不能被删除"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
+            }
         } else if editingStyle == .Insert {
             
         }
@@ -160,17 +176,20 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     // MARK: - 点击表格中的项目
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        for i in 0...(皮肤ID列表.count - 1)
-        {
-            var 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-            var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!
-            当前单元格.accessoryType = UITableViewCellAccessoryType.None
-        }
-        var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-        当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
+        tableView.deselectRowAtIndexPath(indexPath, animated: true) //闪一下
+        //<#此处应用皮肤#>
+        
+//        for i in 0...(皮肤ID列表.count - 1)
+//        {
+//            var 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+//            var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!
+//            当前单元格.accessoryType = UITableViewCellAccessoryType.None
+//        }
+//        var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+//        当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
     }
     // MARK: - 表格高度
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 100
+        return 128
     }
 }

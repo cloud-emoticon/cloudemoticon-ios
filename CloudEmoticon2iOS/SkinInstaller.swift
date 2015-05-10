@@ -17,7 +17,8 @@ class SkinInstaller: NSObject {
     
     func 启动安装任务(下载文件路径:NSString) {
         if (预先校验下载路径(下载文件路径)) {
-            
+            //安装文件夹
+            //<#此处开始下载#>
         } else {
             self.代理?.显示安装提示框(true, 标题: lang.uage("主题安装失败"), 内容: lang.uage("下载路径不正确"), 按钮: lang.uage("取消"))
         }
