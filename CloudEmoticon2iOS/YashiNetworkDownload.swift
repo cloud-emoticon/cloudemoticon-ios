@@ -40,7 +40,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     var 下载的数据:NSMutableData = NSMutableData()
     var 临时文件路径:String = String()
     var 配置文件地址:NSString = NSString() //（未制作）
-    var 文件流:NSOutputStream = NSOutputStream()
+    var 文件流:NSOutputStream?
     var 网络连接对象:NSURLConnection = NSURLConnection()
     var 总文件大小:Int64 = 0
     var 当前文件大小:Int64 = 0
@@ -99,10 +99,11 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
                 }
             }
             文件流 = NSOutputStream(toFileAtPath: 临时文件路径, append: true)!
-            文件流.open()
+            文件流!.open()
         } else {
             下载的数据 = NSMutableData()
         }
+        NSLog("[NetWork Class]初始化。")
     }
     
     //步骤2：执行此方法启动
@@ -164,8 +165,9 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     func 中止连接() {
         网络连接对象.cancel()
         //下载的数据 = NSMutableData()
-        文件流.close()
+        文件流!.close()
         文件流 = NSOutputStream()
+        
     }
     
     //============
@@ -244,7 +246,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
                 var 字节写入 = 0
                 var 字节差异 = range.length
                 while 字节差异 > 0 {
-                    字节写入 = self.文件流.write(当前字节, maxLength: 字节差异)
+                    字节写入 = self.文件流!.write(当前字节, maxLength: 字节差异)
                     if 字节写入 < 0 {
                         stop.initialize(true)
                         全部数据字节 = -1
@@ -295,5 +297,9 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         } else {
             return "POST";
         }
+    }
+    
+    deinit {
+        NSLog("[NetWork Class]释放内存。")
     }
 }

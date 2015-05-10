@@ -16,9 +16,9 @@ var bgimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResour
 let defaultimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
 
 let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-let documentDirectoryAddress:NSString = documentDirectory[0] as! NSString
+let 全局_文档文件夹:NSString = documentDirectory[0] as! NSString
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
-let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",documentDirectoryAddress, userbgimgname)
+let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",全局_文档文件夹, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
 let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
 

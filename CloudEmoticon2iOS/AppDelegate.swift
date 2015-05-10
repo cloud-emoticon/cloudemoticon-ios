@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
             return true
         } else if (url.scheme == "cloudemoticonskin") {
-            
+            //<#此处接入主题外部下载#>
         }
         return false
     }
@@ -44,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         initSetting()
-        NSLog("[核心]云颜文字启动，启动文件夹：%@", documentDirectoryAddress)
+        NSLog("[核心]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
         
         //MARK - 主题
         

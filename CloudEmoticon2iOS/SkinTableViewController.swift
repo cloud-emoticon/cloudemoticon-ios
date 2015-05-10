@@ -11,6 +11,7 @@ import UIKit
 class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinInstallerDelegate {
     
     var 文件管理器:FileManager = FileManager()
+    let 皮肤安装器:SkinInstaller = SkinInstaller()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var 皮肤ID列表:NSMutableArray = NSMutableArray()
     var 左上按钮: UIBarButtonItem!
@@ -94,7 +95,6 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (buttonIndex == 1) {
             //添加
-            let 皮肤安装器:SkinInstaller = SkinInstaller()
             皮肤安装器.代理 = self
             皮肤安装器.启动安装任务(提示框输入框.text)
         } else if (buttonIndex == 2) {

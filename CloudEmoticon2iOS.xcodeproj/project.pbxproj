@@ -65,6 +65,7 @@
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
+		53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F157201AFFAE6B0027D578 /* SkinManager.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
@@ -284,6 +285,7 @@
 		53E9DF8219C1844C00C61121 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		53E9DF8319C189E600C61121 /* WaitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitView.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		53F157201AFFAE6B0027D578 /* SkinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinManager.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
@@ -507,6 +509,7 @@
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
 				53117E611AE36D920076CC08 /* SkinDownload.swift */,
+				53F157201AFFAE6B0027D578 /* SkinManager.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
@@ -1067,6 +1070,7 @@
 				53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
 				533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */,
+				53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
