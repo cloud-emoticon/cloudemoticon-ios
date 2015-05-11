@@ -137,7 +137,7 @@ successfully to your favorites</string>
 	<key>取消</key>
 	<string>Cancel</string>
 	<key>添加颜文字</key>
-	<string>Add a emoticon</string>
+	<string>Add an emoticon</string>
 	<key>添加</key>
 	<string>Add</string>
 	<key>完成</key>
@@ -169,6 +169,12 @@ successfully to your favorites</string>
 	<key>当前源</key>
 	<string>Source</string>
 	<key>本地内置源</key>
-	<string>default</string>
+	<string>Default</string>
+    <key>默认主题</key>
+    <string>Default theme</string>
+    <key>内置主题</key>
+    <string>Build-in theme</string>
+    <key>自定义主题</key>
+    <string>Custom theme</string>
 </dict>
 </plist>

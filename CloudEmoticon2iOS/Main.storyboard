@@ -483,7 +483,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="xb6-W1-o2m" secondAttribute="trailing" id="Toe-ds-dTe"/>
-                            <constraint firstItem="R6E-0i-93l" firstAttribute="top" secondItem="xb6-W1-o2m" secondAttribute="bottom" id="ij2-f3-0aQ"/>
+                            <constraint firstItem="R6E-0i-93l" firstAttribute="bottom" secondItem="xb6-W1-o2m" secondAttribute="bottom" id="ij2-f3-0aQ"/>
                             <constraint firstAttribute="centerY" secondItem="3Ao-TJ-40q" secondAttribute="centerY" id="mlY-nS-paz"/>
                             <constraint firstItem="xb6-W1-o2m" firstAttribute="top" secondItem="UPp-5i-87U" secondAttribute="top" id="o6g-T6-cXR"/>
                             <constraint firstItem="xb6-W1-o2m" firstAttribute="leading" secondItem="UPp-5i-87U" secondAttribute="leading" id="t4d-mA-4nI"/>

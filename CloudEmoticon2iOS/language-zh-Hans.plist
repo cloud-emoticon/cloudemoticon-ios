@@ -168,5 +168,11 @@
 	<string>当前源</string>
 	<key>本地内置源</key>
 	<string>本地内置源</string>
+	<key>默认主题</key>
+	<string>默认主题</string>
+	<key>内置主题</key>
+	<string>内置主题</string>
+	<key>自定义主题</key>
+	<string>自定义主题</string>
 </dict>
 </plist>
