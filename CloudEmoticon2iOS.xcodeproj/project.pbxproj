@@ -56,6 +56,9 @@
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
 		53DF2906196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */; };
+		53E07ACC1B06AAE200CBF989 /* ZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 53E07AC71B06AAE200CBF989 /* ZipArchive.m */; };
+		53E07ACE1B06AB2700CBF989 /* ZipManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E07ACD1B06AB2700CBF989 /* ZipManager.swift */; };
+		53E07AD31B06AE4700CBF989 /* Unzip4iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E07AD21B06AE4700CBF989 /* Unzip4iOS.framework */; };
 		53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E0E4B01994854C00C9D9FC /* PubFunc.swift */; };
 		53E0E4B51994A8DD00C9D9FC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B41994A8DD00C9D9FC /* Settings.bundle */; };
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
@@ -274,6 +277,10 @@
 		53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CloudEmoticon2iOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF2904196B9CF40058AA42 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53DF2905196B9CF40058AA42 /* CloudEmoticon2iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudEmoticon2iOSTests.swift; sourceTree = "<group>"; };
+		53E07AC61B06AAE200CBF989 /* ZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZipArchive.h; sourceTree = "<group>"; };
+		53E07AC71B06AAE200CBF989 /* ZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZipArchive.m; sourceTree = "<group>"; };
+		53E07ACD1B06AB2700CBF989 /* ZipManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipManager.swift; sourceTree = "<group>"; };
+		53E07AD21B06AE4700CBF989 /* Unzip4iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Unzip4iOS.framework; sourceTree = "<group>"; };
 		53E0E4B01994854C00C9D9FC /* PubFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PubFunc.swift; path = CloudEmoticon2iOS/PubFunc.swift; sourceTree = "<group>"; };
 		53E0E4B41994A8DD00C9D9FC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
@@ -345,6 +352,7 @@
 			files = (
 				8B7AFAB01AF3545E0077C644 /* CoreImage.framework in Frameworks */,
 				5343EEDC1AC82CB200FE1301 /* CoreMedia.framework in Frameworks */,
+				53E07AD31B06AE4700CBF989 /* Unzip4iOS.framework in Frameworks */,
 				8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */,
 				53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */,
 			);
@@ -506,10 +514,13 @@
 		53AB49831AE260660090D955 /* 主题管理 */ = {
 			isa = PBXGroup;
 			children = (
+				53E07AD21B06AE4700CBF989 /* Unzip4iOS.framework */,
+				53E07ABB1B06AAE200CBF989 /* ZipArchive */,
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
 				53117E611AE36D920076CC08 /* SkinDownload.swift */,
 				53F157201AFFAE6B0027D578 /* SkinManager.swift */,
+				53E07ACD1B06AB2700CBF989 /* ZipManager.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
@@ -615,6 +626,15 @@
 				53DF2904196B9CF40058AA42 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53E07ABB1B06AAE200CBF989 /* ZipArchive */ = {
+			isa = PBXGroup;
+			children = (
+				53E07AC61B06AAE200CBF989 /* ZipArchive.h */,
+				53E07AC71B06AAE200CBF989 /* ZipArchive.m */,
+			);
+			path = ZipArchive;
 			sourceTree = "<group>";
 		};
 		53E0E4B61994A95200C9D9FC /* 设置管理 */ = {
@@ -1062,6 +1082,7 @@
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
 				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
 				53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */,
+				53E07ACE1B06AB2700CBF989 /* ZipManager.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
@@ -1089,6 +1110,7 @@
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
+				53E07ACC1B06AAE200CBF989 /* ZipArchive.m in Sources */,
 				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
 			);
@@ -1391,6 +1413,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CloudEmoticon2iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
@@ -1416,6 +1442,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CloudEmoticon2iOS",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Applications/Xcode6-Beta3.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include",
