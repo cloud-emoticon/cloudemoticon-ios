@@ -4,4 +4,3 @@
 
 #import "XMLDictionary.h"
 #import <CommonCrypto/CommonDigest.h>
-#import "Unzip4iOS.framework/Headers/ZipArchive.h"
