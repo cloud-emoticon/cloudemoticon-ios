@@ -39,6 +39,7 @@
 		535E97131B10587F00266163 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 535E97041B10587F00266163 /* zip.c */; };
 		535E97141B10587F00266163 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 535E97071B10587F00266163 /* SSZipArchive.m */; };
 		535E97161B1059FB00266163 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 535E97151B1059FB00266163 /* libz.dylib */; };
+		535E971A1B10622600266163 /* YashiZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E97191B10622600266163 /* YashiZip.swift */; };
 		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
 		53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53918E951AB7065C00CE7A68 /* InterfaceController.swift */; };
@@ -272,6 +273,7 @@
 		535E97061B10587F00266163 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
 		535E97071B10587F00266163 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		535E97151B1059FB00266163 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		535E97191B10622600266163 /* YashiZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiZip.swift; sourceTree = "<group>"; };
 		53818FE21ABDAAA700D62C5F /* cewidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewidget.entitlements; sourceTree = "<group>"; };
 		53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cekeyboard.entitlements; sourceTree = "<group>"; };
 		53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchex.entitlements; sourceTree = "<group>"; };
@@ -464,6 +466,7 @@
 				535E96FC1B10587F00266163 /* minizip */,
 				535E97061B10587F00266163 /* SSZipArchive.h */,
 				535E97071B10587F00266163 /* SSZipArchive.m */,
+				535E97191B10622600266163 /* YashiZip.swift */,
 			);
 			path = zip;
 			sourceTree = "<group>";
@@ -1150,6 +1153,7 @@
 				535E970C1B10587F00266163 /* FileList.swift in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
+				535E971A1B10622600266163 /* YashiZip.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
