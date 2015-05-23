@@ -57,8 +57,8 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
     func 网络下载数据接收完毕(网络下载器对象:YashiNetworkDownload) {
         全局_网络繁忙 = false
         NSLog("[皮肤安装器]下载完毕。%@",网络下载器对象.临时文件路径)
-        //显示安装提示框(true,标题: lang.uage("正在下载"),内容: 网络下载器对象.信息字符串,按钮: nil)
-        显示安装提示框(true,标题: lang.uage("已下载到临时文件"),内容: 网络下载器对象.临时文件路径,按钮: lang.uage("确定"))
+        显示安装提示框(true,标题: lang.uage("正在下载"),内容: 网络下载器对象.信息字符串,按钮: nil)
+//        显示安装提示框(true,标题: lang.uage("已下载到临时文件"),内容: 网络下载器对象.临时文件路径,按钮: lang.uage("确定"))
     }
     func 网络下载遇到错误(网络下载器对象:YashiNetworkDownload) {
         全局_网络繁忙 = false

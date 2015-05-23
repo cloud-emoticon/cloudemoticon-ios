@@ -3,4 +3,5 @@
 //
 
 #import "XMLDictionary.h"
+#import "SSZipArchive.h"
 #import <CommonCrypto/CommonDigest.h>

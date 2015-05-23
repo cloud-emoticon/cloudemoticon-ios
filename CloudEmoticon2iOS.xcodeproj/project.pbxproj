@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5310750A19C19E9D0003866F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5310750919C19E9D0003866F /* Main.storyboard */; };
 		53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */; };
-		53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E611AE36D920076CC08 /* SkinDownload.swift */; };
 		53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E651AE370890076CC08 /* YashiNetworkDownload.swift */; };
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -26,6 +25,20 @@
 		5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBC1990C21C00D70CA4 /* FileManager.swift */; };
 		53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* SourceTableViewController.swift */; };
 		5357733C199B1584003FF9D3 /* default.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5357733B199B1584003FF9D3 /* default.plist */; };
+		535E97081B10587F00266163 /* EPUBContainerParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F41B10587F00266163 /* EPUBContainerParser.swift */; };
+		535E97091B10587F00266163 /* FileDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F51B10587F00266163 /* FileDelete.swift */; };
+		535E970A1B10587F00266163 /* FileDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F61B10587F00266163 /* FileDirectory.swift */; };
+		535E970B1B10587F00266163 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F71B10587F00266163 /* FileHelper.swift */; };
+		535E970C1B10587F00266163 /* FileList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F81B10587F00266163 /* FileList.swift */; };
+		535E970D1B10587F00266163 /* FileLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96F91B10587F00266163 /* FileLoad.swift */; };
+		535E970E1B10587F00266163 /* FileSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96FA1B10587F00266163 /* FileSave.swift */; };
+		535E970F1B10587F00266163 /* FileZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E96FB1B10587F00266163 /* FileZip.swift */; };
+		535E97101B10587F00266163 /* ioapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 535E96FE1B10587F00266163 /* ioapi.c */; };
+		535E97111B10587F00266163 /* mztools.c in Sources */ = {isa = PBXBuildFile; fileRef = 535E97001B10587F00266163 /* mztools.c */; };
+		535E97121B10587F00266163 /* unzip.c in Sources */ = {isa = PBXBuildFile; fileRef = 535E97021B10587F00266163 /* unzip.c */; };
+		535E97131B10587F00266163 /* zip.c in Sources */ = {isa = PBXBuildFile; fileRef = 535E97041B10587F00266163 /* zip.c */; };
+		535E97141B10587F00266163 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 535E97071B10587F00266163 /* SSZipArchive.m */; };
+		535E97161B1059FB00266163 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 535E97151B1059FB00266163 /* libz.dylib */; };
 		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
 		53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53918E951AB7065C00CE7A68 /* InterfaceController.swift */; };
@@ -217,7 +230,6 @@
 /* Begin PBXFileReference section */
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
-		53117E611AE36D920076CC08 /* SkinDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinDownload.swift; sourceTree = "<group>"; };
 		53117E651AE370890076CC08 /* YashiNetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YashiNetworkDownload.swift; path = CloudEmoticon2iOS/YashiNetworkDownload.swift; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -240,6 +252,26 @@
 		5355FCBC1990C21C00D70CA4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		53577338199B085D003FF9D3 /* SourceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewController.swift; sourceTree = "<group>"; };
 		5357733B199B1584003FF9D3 /* default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = default.plist; sourceTree = "<group>"; };
+		535E96F41B10587F00266163 /* EPUBContainerParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EPUBContainerParser.swift; sourceTree = "<group>"; };
+		535E96F51B10587F00266163 /* FileDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDelete.swift; sourceTree = "<group>"; };
+		535E96F61B10587F00266163 /* FileDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDirectory.swift; sourceTree = "<group>"; };
+		535E96F71B10587F00266163 /* FileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
+		535E96F81B10587F00266163 /* FileList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileList.swift; sourceTree = "<group>"; };
+		535E96F91B10587F00266163 /* FileLoad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileLoad.swift; sourceTree = "<group>"; };
+		535E96FA1B10587F00266163 /* FileSave.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSave.swift; sourceTree = "<group>"; };
+		535E96FB1B10587F00266163 /* FileZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileZip.swift; sourceTree = "<group>"; };
+		535E96FD1B10587F00266163 /* crypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = crypt.h; sourceTree = "<group>"; };
+		535E96FE1B10587F00266163 /* ioapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ioapi.c; sourceTree = "<group>"; };
+		535E96FF1B10587F00266163 /* ioapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ioapi.h; sourceTree = "<group>"; };
+		535E97001B10587F00266163 /* mztools.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mztools.c; sourceTree = "<group>"; };
+		535E97011B10587F00266163 /* mztools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mztools.h; sourceTree = "<group>"; };
+		535E97021B10587F00266163 /* unzip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = unzip.c; sourceTree = "<group>"; };
+		535E97031B10587F00266163 /* unzip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unzip.h; sourceTree = "<group>"; };
+		535E97041B10587F00266163 /* zip.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = zip.c; sourceTree = "<group>"; };
+		535E97051B10587F00266163 /* zip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = zip.h; sourceTree = "<group>"; };
+		535E97061B10587F00266163 /* SSZipArchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSZipArchive.h; sourceTree = "<group>"; };
+		535E97071B10587F00266163 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
+		535E97151B1059FB00266163 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		53818FE21ABDAAA700D62C5F /* cewidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewidget.entitlements; sourceTree = "<group>"; };
 		53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cekeyboard.entitlements; sourceTree = "<group>"; };
 		53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchex.entitlements; sourceTree = "<group>"; };
@@ -258,7 +290,7 @@
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
 		53995A501991C434008B12E0 /* CustomStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStatusBar.swift; sourceTree = "<group>"; };
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
-		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CloudEmoticon2iOS-Bridging-Header.h"; path = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h"; sourceTree = "<group>"; };
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		539BD9C01AFF5575000D835C /* skinnoimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skinnoimg.png; sourceTree = "<group>"; };
 		539BD9C61AFF5F2C000D835C /* skindefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skindefault.png; sourceTree = "<group>"; };
@@ -343,6 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				535E97161B1059FB00266163 /* libz.dylib in Frameworks */,
 				8B7AFAB01AF3545E0077C644 /* CoreImage.framework in Frameworks */,
 				5343EEDC1AC82CB200FE1301 /* CoreMedia.framework in Frameworks */,
 				8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */,
@@ -404,7 +437,6 @@
 				5346D92E1993181C00CEFA4B /* XMLDictionary.h */,
 				5346D92F1993181C00CEFA4B /* XMLDictionary.m */,
 				5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */,
-				53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */,
 			);
 			name = "数据载入";
 			sourceTree = "<group>";
@@ -416,6 +448,40 @@
 				53577338199B085D003FF9D3 /* SourceTableViewController.swift */,
 			);
 			name = "源管理";
+			sourceTree = "<group>";
+		};
+		535E96F31B10587F00266163 /* zip */ = {
+			isa = PBXGroup;
+			children = (
+				535E96F41B10587F00266163 /* EPUBContainerParser.swift */,
+				535E96F51B10587F00266163 /* FileDelete.swift */,
+				535E96F61B10587F00266163 /* FileDirectory.swift */,
+				535E96F71B10587F00266163 /* FileHelper.swift */,
+				535E96F81B10587F00266163 /* FileList.swift */,
+				535E96F91B10587F00266163 /* FileLoad.swift */,
+				535E96FA1B10587F00266163 /* FileSave.swift */,
+				535E96FB1B10587F00266163 /* FileZip.swift */,
+				535E96FC1B10587F00266163 /* minizip */,
+				535E97061B10587F00266163 /* SSZipArchive.h */,
+				535E97071B10587F00266163 /* SSZipArchive.m */,
+			);
+			path = zip;
+			sourceTree = "<group>";
+		};
+		535E96FC1B10587F00266163 /* minizip */ = {
+			isa = PBXGroup;
+			children = (
+				535E96FD1B10587F00266163 /* crypt.h */,
+				535E96FE1B10587F00266163 /* ioapi.c */,
+				535E96FF1B10587F00266163 /* ioapi.h */,
+				535E97001B10587F00266163 /* mztools.c */,
+				535E97011B10587F00266163 /* mztools.h */,
+				535E97021B10587F00266163 /* unzip.c */,
+				535E97031B10587F00266163 /* unzip.h */,
+				535E97041B10587F00266163 /* zip.c */,
+				535E97051B10587F00266163 /* zip.h */,
+			);
+			path = minizip;
 			sourceTree = "<group>";
 		};
 		53906A981999CA7E000020D1 /* 云颜文字 */ = {
@@ -499,6 +565,7 @@
 				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
 				53AB49761AE239A90090D955 /* ArrayString.swift */,
 				53E0E4B01994854C00C9D9FC /* PubFunc.swift */,
+				53995A581992063B008B12E0 /* CloudEmoticon2iOS-Bridging-Header.h */,
 			);
 			name = "共享代码";
 			sourceTree = "<group>";
@@ -506,9 +573,9 @@
 		53AB49831AE260660090D955 /* 主题管理 */ = {
 			isa = PBXGroup;
 			children = (
+				535E96F31B10587F00266163 /* zip */,
 				624A111B19BB108D00B4C48E /* SkinTableViewController.swift */,
 				53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */,
-				53117E611AE36D920076CC08 /* SkinDownload.swift */,
 				53F157201AFFAE6B0027D578 /* SkinManager.swift */,
 			);
 			name = "主题管理";
@@ -699,6 +766,7 @@
 		8BF8ACF3199335D7001207FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				535E97151B1059FB00266163 /* libz.dylib */,
 				8B7AFAAE1AF353220077C644 /* Accelerate.framework */,
 				8B7AFAAA1AF350500077C644 /* CoreImage.framework */,
 				5343EED81AC82AB600FE1301 /* CoreMedia.framework */,
@@ -1059,8 +1127,10 @@
 				53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */,
 				53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
+				535E970A1B10587F00266163 /* FileDirectory.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
 				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
+				535E97131B10587F00266163 /* zip.c in Sources */,
 				53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
@@ -1068,28 +1138,38 @@
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
 				53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */,
+				535E97081B10587F00266163 /* EPUBContainerParser.swift in Sources */,
+				535E97091B10587F00266163 /* FileDelete.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
 				533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */,
+				535E970B1B10587F00266163 /* FileHelper.swift in Sources */,
 				53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */,
+				535E97141B10587F00266163 /* SSZipArchive.m in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
+				535E970C1B10587F00266163 /* FileList.swift in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
+				535E970D1B10587F00266163 /* FileLoad.swift in Sources */,
 				8B1418091AF49A1000C278B9 /* MD5.swift in Sources */,
+				535E97111B10587F00266163 /* mztools.c in Sources */,
 				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
+				535E97101B10587F00266163 /* ioapi.c in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
-				53117E621AE36D920076CC08 /* SkinDownload.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
+				535E970F1B10587F00266163 /* FileZip.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
 				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
+				535E970E1B10587F00266163 /* FileSave.swift in Sources */,
+				535E97121B10587F00266163 /* unzip.c in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
