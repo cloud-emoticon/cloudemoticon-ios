@@ -75,19 +75,55 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
         let 目标文件夹路径:String = NSString(format: "%@/%@", skin文件夹!,目标文件夹特征码) as String
         NSLog("[皮肤安装器]解压缩... %@ -> %@",临时文件路径,目标文件夹路径)
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
-        if (文件管理器.isExecutableFileAtPath(目标文件夹路径)) {
+        if (文件管理器.fileExistsAtPath(目标文件夹路径)) {
             文件管理器.removeItemAtPath(目标文件夹路径, error: nil)
         }
         let 压缩文件处理:YashiZip = YashiZip()
-        var 错误信息:NSErrorPointer = NSErrorPointer()
-        let 解压缩成功:Bool = 压缩文件处理.解压缩文件(临时文件路径, 解压缩目标文件夹: 目标文件夹路径, 覆盖目标文件: true, 解压缩密码: "ce", 错误回馈变量指针: 错误信息)
-        if (解压缩成功 && 错误信息 == nil) {
+        var 解压缩错误信息:String? = nil
+        for i in 0...1 { //如果失败则重试一次
+            var 错误信息:NSErrorPointer = NSErrorPointer()
+            let 本次解压缩成功:Bool = 压缩文件处理.解压缩文件(临时文件路径, 解压缩目标文件夹: 目标文件夹路径, 覆盖目标文件: true, 解压缩密码: "ce", 错误回馈变量指针: 错误信息)
+            if (本次解压缩成功 && 错误信息 == nil) {
+                let INI文件路径:String = String(format: "%@/index.ini", 目标文件夹路径)
+                let INI读取器:INIReader = INIReader()
+                let INI读取状态码:Int = INI读取器.载入INI文件(INI文件路径)
+                switch INI读取状态码 {
+                case 0:
+                    let INI字典:NSMutableDictionary = INI读取器.INI文件内容字典!
+                    INI字典.setObject(目标文件夹特征码, forKey: "md5")
+                    NSLog("INI字典 = %@",INI字典)
+                    break
+                case 1:
+                    解压缩错误信息 = lang.uage("找不到文件")
+                    break
+                case 2:
+                    解压缩错误信息 = lang.uage("密码或编码不正确")
+                    break
+                case 3:
+                    解压缩错误信息 = lang.uage("解析失败")
+                    break
+                case 4:
+                    解压缩错误信息 = lang.uage("皮肤包版本错误或配置缺失")
+                    break
+                default:
+                    break
+                }
+                文件管理器.removeItemAtPath(临时文件路径, error: nil)
+                if (INI读取状态码 > 0) {
+                    文件管理器.removeItemAtPath(目标文件夹路径, error: nil)
+                }
+                break
+            } else {
+                解压缩错误信息 = String(format: "%@", 错误信息)
+            }
+        }
+        if (解压缩错误信息 == nil) {
             文件管理器.removeItemAtPath(临时文件路径, error: nil)
-            
-            NSLog("[皮肤安装器]解压缩成功。《《此处是否成功判断还没有写完")
-            显示安装提示框(false,标题: lang.uage("安装完毕"),内容: "",按钮: lang.uage("确定"))
+            显示安装提示框(true,标题: lang.uage("安装完毕"),内容: "",按钮: lang.uage("确定"))
+            NSLog("[皮肤安装器]安装成功。")
         } else {
-            NSLog("[皮肤安装器]解压缩失败：%@",错误信息)
+            显示安装提示框(true,标题: lang.uage("安装失败"),内容: 解压缩错误信息!,按钮: lang.uage("取消"))
+            NSLog("[皮肤安装器]安装失败。")
         }
     }
     
