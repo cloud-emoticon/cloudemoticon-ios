@@ -21,7 +21,7 @@ let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png"
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",全局_文档文件夹, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
 let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
-
+var 全局_皮肤设置:NSDictionary = NSDictionary()
 
 
 enum NetDownloadTo:Int

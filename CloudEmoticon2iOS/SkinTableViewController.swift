@@ -41,6 +41,8 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         //[主标题,副标题,主题图片路径,主题本地文件夹路径]
         皮肤ID列表.addObject([lang.uage("默认主题"),lang.uage("内置主题"),NSBundle.mainBundle().pathForResource("skindefault", ofType: "png")!,"<ceskin:default>"])
         皮肤ID列表.addObject([lang.uage("自定义主题"),lang.uage("内置主题"),"","<ceskin:custom>"])
+        let 皮肤管理器:SkinManager = SkinManager()
+        皮肤管理器.读取皮肤列表()
     }
 
     override func didReceiveMemoryWarning() {

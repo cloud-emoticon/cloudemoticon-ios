@@ -11,6 +11,7 @@ import UIKit
 class INIReader: NSObject {
     
     var INI文件内容字典:NSMutableDictionary?
+    var INI文件内容字符串:String?
    
     func 载入INI文件(INI文件路径:String) -> Int {
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
@@ -24,6 +25,7 @@ class INIReader: NSObject {
                 if (INI字典 != nil) {
                     if (检查数据条目(INI字典!)) {
                         INI文件内容字典 = INI字典
+                        INI文件内容字符串 = INI文件内容
                         return 0
                     } else {
                         return 4
@@ -36,6 +38,36 @@ class INIReader: NSObject {
         } else {
             NSLog("[INIReader]找不到配置文件")
             return 1
+        }
+    }
+    
+    func 快速查询头信息(INI文件路径:String) -> NSMutableDictionary { //不进行任何有效性检查
+        let 文件管理器:NSFileManager = NSFileManager.defaultManager()
+        let INI文件内容:String = String(contentsOfFile: INI文件路径, encoding: NSUTF8StringEncoding, error: nil)!
+        let INI字典:NSMutableDictionary = 解析INI文件(INI文件内容)!
+        var 头信息字典:NSMutableDictionary = NSMutableDictionary()
+        头信息字典.setObject(INI字典.objectForKey("theme_author")!, forKey: "theme_author")
+        头信息字典.setObject(INI字典.objectForKey("theme_name")!, forKey: "theme_name")
+        头信息字典.setObject(INI字典.objectForKey("theme_picture")!, forKey: "theme_picture")
+        return 头信息字典
+    }
+    
+    func INI文件存入内存() {
+        全局_皮肤设置 = NSDictionary(dictionary: INI文件内容字典!)
+    }
+    
+    func INI文件存入AppGroup() {
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
+        if (数据数组 != nil) {
+            let 全部收藏数组:NSArray = 数据数组!.objectAtIndex(0) as! NSArray
+            let 全部自定数组:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
+            let 全部历史数组:NSArray = 数据数组!.objectAtIndex(2) as! NSArray
+            let 全部皮肤数组:NSArray = [INI文件内容字典!]
+            let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组,全部皮肤数组]
+            组数据读写.写入设置UD模式(要保存的数据)
+        } else {
+            NSLog("[INIReader]AppGroup没有数据：\(数据数组)。")
         }
     }
     
