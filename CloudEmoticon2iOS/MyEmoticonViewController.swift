@@ -57,7 +57,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
-        自动遮罩()
     }
     
     func 生成无颜文字遮罩(){
