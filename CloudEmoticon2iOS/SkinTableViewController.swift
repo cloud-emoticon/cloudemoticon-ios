@@ -169,19 +169,42 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
         if (单元格 == nil) {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
             单元格!.accessoryType = UITableViewCellAccessoryType.None
+            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
             单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
         }
         //[主标题,副标题,预览图路径,文件夹路径]
-        let 当前皮肤ID:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
-        单元格?.textLabel?.text = 当前皮肤ID.objectAtIndex(0) as? String
-        单元格?.detailTextLabel?.text = 当前皮肤ID.objectAtIndex(1) as? String
-        let 当前皮肤图片:UIImage? = UIImage(contentsOfFile:  当前皮肤ID.objectAtIndex(2) as! String)
+        let 当前皮肤数据:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
+        单元格?.textLabel?.text = 当前皮肤数据.objectAtIndex(0) as? String
+        单元格?.detailTextLabel?.text = 当前皮肤数据.objectAtIndex(1) as? String
+        let 当前皮肤图片:UIImage? = UIImage(contentsOfFile:  当前皮肤数据.objectAtIndex(2) as! String)
         if (当前皮肤图片 == nil) {
             单元格?.imageView?.image = 无图片
         } else {
             单元格?.imageView?.image = 当前皮肤图片!
+        }
+        //判断是否为当前选中
+        if (全局_皮肤设置.count == 0) {
+            if (indexPath.row == 0) {
+                单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                单元格!.accessoryType = UITableViewCellAccessoryType.None
+            }
+        } else {
+            let 当前应用的皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
+            if (当前应用的皮肤MD5对象 != nil) {
+                let 当前应用的皮肤MD5:String = 当前应用的皮肤MD5对象 as! String
+                let 当前皮肤文件夹路径:NSString = 当前皮肤数据.objectAtIndex(3) as! String
+                let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
+                let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
+                if (当前应用的皮肤MD5 == 当前皮肤md5) {
+                    单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
+                } else {
+                    单元格!.accessoryType = UITableViewCellAccessoryType.None
+                }
+            } else {
+                NSLog("[SkinTableViewController]意外错误：当前应用的皮肤的MD5找不到。")
+            }
         }
         return 单元格!
     }
@@ -215,6 +238,20 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true) //闪一下
+        if (indexPath.row == 1) {
+            var alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "功能尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            alert.show()
+        } else {
+            for (var i:Int = 0; i < 皮肤列表数据.count; i++) {
+                let 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+                let 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!
+                if (i == indexPath.row) {
+                    当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
+                } else {
+                    当前单元格.accessoryType = UITableViewCellAccessoryType.None
+                }
+            }
+        }
         //<#此处应用皮肤#>
         
 //        for i in 0...(皮肤ID列表.count - 1)

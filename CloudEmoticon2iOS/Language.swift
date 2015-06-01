@@ -45,23 +45,23 @@ class Language: NSObject {
                 if (文件路径 != nil) {
                     翻译缓存 = NSMutableDictionary(contentsOfFile: 文件路径! as String)!
                     当前设置的语言 = 载入语言
-                    println("[语言管理器]语言读取成功")
+                    NSLog("[Language]语言读取成功")
                     break
                 } else {
                     if (i == 0) {
-                        println("[语言管理器]当前语言的文件不存在，尝试 en ...")
+                        NSLog("[Language]当前语言的文件不存在，尝试 en ...")
                         载入语言 = "en"
                     } else if (i == 1) {
-                        println("[语言管理器]当前语言的文件不存在，尝试 zh-Hans ...")
+                        NSLog("[Language]当前语言的文件不存在，尝试 zh-Hans ...")
                         载入语言 = "zh-Hans"
                     } else if (i == 2) {
-                        println("[语言管理器]当前语言的文件不存在！")
+                        NSLog("[Language]当前语言的文件不存在！")
                     }
                 }
             }
             
         } else {
-            println("[语言管理器]当前语言不受系统支持")
+            NSLog("[Language]当前语言不受系统支持")
         }
     }
     
@@ -81,7 +81,7 @@ class Language: NSObject {
             let 翻译后的字符串:NSString = 翻译缓存.objectForKey(要翻译的文字) as! NSString
             翻译后的文字 = 翻译后的字符串 as String
         } else {
-            println("[语言管理器]无法翻译这个条目：“\(要翻译的文字)”")
+            NSLog("[Language]无法翻译这个条目：“\(要翻译的文字)”")
         }
         return 翻译后的文字
     }

@@ -73,7 +73,6 @@ class INIReader: NSObject {
     
     func 解析INI文件(INI文件内容:String) -> NSMutableDictionary? {
         let INI文件内容已转换换行符 = INI文件内容.stringByReplacingOccurrencesOfString("\r\n", withString: "\n", options: NSStringCompareOptions.allZeros, range: nil)
-        NSLog("INI = %@", INI文件内容已转换换行符)
         let 行数组:NSArray = INI文件内容已转换换行符.componentsSeparatedByString("\n")
         var INI字典:NSMutableDictionary = NSMutableDictionary()
         for (var i = 0; i < 行数组.count; i++) {

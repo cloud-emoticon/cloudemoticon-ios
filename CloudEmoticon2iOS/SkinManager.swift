@@ -38,8 +38,7 @@ class SkinManager: NSObject {
                 let 当前预览图名称:String = 头信息字典.objectForKey("theme_picture") as! String
                 let 当前预览图路径:String = String(format: "%@/%@", 当前文件夹路径, 当前预览图名称)
                 头信息字典.setObject(当前预览图路径, forKey: "theme_picture")
-                //添加文件夹完整路径
-                头信息字典.setObject(当前文件夹路径, forKey: "dir")
+                头信息字典.setObject(当前文件夹路径, forKey: "dir") //添加文件夹完整路径
                 主题信息列表.addObject(头信息字典)
             }
             return 主题信息列表
@@ -59,6 +58,29 @@ class SkinManager: NSObject {
             NSLog("[SkinManager]获得正在使用皮肤失败。")
             return nil
         }
+    }
+    
+    func 获得正在使用皮肤内容() -> NSDictionary? {
+        let 当前正在使用皮肤MD5:String? = 获得正在使用皮肤()
+        if (当前正在使用皮肤MD5 == nil) {
+            NSLog("[SkinManager]没有设置皮肤，使用默认皮肤。")
+            return nil
+        }
+        let skin文件夹路径:String = 取skin文件夹路径()
+        let 当前INI文件:String = String(format: "%@/%@/index.ini", skin文件夹路径, 当前正在使用皮肤MD5!)
+        let INI读取器:INIReader = INIReader()
+        let INI读取结果:Int = INI读取器.载入INI文件(当前INI文件)
+        if (INI读取结果 != 0) {
+            NSLog("[SkinManager]意外错误：载入INI文件失败。")
+            return nil
+        }
+        let 正在使用皮肤内容:NSMutableDictionary? = INI读取器.INI文件内容字典
+        if (正在使用皮肤内容 == nil) {
+            NSLog("[SkinManager]意外错误：载入INI信息失败。")
+            return nil
+        }
+        正在使用皮肤内容?.setObject(当前正在使用皮肤MD5!, forKey: "md5")
+        return NSDictionary(dictionary: 正在使用皮肤内容!)
     }
     
     func 设置正在使用皮肤() {

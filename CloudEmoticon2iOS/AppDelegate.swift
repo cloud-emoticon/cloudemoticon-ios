@@ -44,22 +44,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Override point for customization after application launch.
         initSetting()
-        NSLog("[核心]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
+        NSLog("[AppDelegate]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
         
         //MARK - 主题
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent //通知栏文字颜色
+        //载入皮肤
+        let 皮肤管理器:SkinManager = SkinManager()
+        let 正在使用皮肤内容:NSDictionary? = 皮肤管理器.获得正在使用皮肤内容()
+        if (正在使用皮肤内容 != nil) {
+            NSLog("[AppDelegate]主题：载入皮肤设置。")
+            全局_皮肤设置 = 正在使用皮肤内容!
+        } else {
+            NSLog("[AppDelegate]主题：使用默认皮肤。")
+            全局_皮肤设置 = NSDictionary()
+        }
         
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
         
-        
         lang.载入语言(lang.当前系统语言())
 //        println(lang.系统支持的所有语言())
-        println(lang.uage("语言包名称"))
-        println(lang.uage("语言包作者"))
+        let 当前语言包名称:String = lang.uage("语言包名称")
+        let 当前语言包作者:String = lang.uage("语言包作者")
+        NSLog("[AppDelegate]当前语言包名称：%@",当前语言包名称)
+        NSLog("[AppDelegate]当前语言包作者：%@",当前语言包作者)
+        
         return true
     }
     

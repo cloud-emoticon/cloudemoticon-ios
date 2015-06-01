@@ -54,7 +54,7 @@ class AppGroupIO: NSObject {
         var 设置值:NSString? = NSString(contentsOfURL: 组设置URL(), encoding: NSUTF8StringEncoding, error: nil)
         if(设置有效性校验(设置值)) {
             let 设置数组:NSArray = ArrayString().JSON字符串转数组(设置值!)
-            NSLog("Group-URL读取操作")
+            NSLog("[AppGroupIO]Group-URL读取操作")
             return 设置数组
         }
         return nil
@@ -64,7 +64,7 @@ class AppGroupIO: NSObject {
     func 写入设置URL模式(设置数组:NSArray) {
         let 设置值:NSString = ArrayString().数组转JSON字符串(设置数组)
         设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        NSLog("Group-URL写入操作")
+        NSLog("[AppGroupIO]Group-URL写入操作")
     }
     
     //检查URL调用方式得到的内容是否有效
@@ -80,7 +80,7 @@ class AppGroupIO: NSObject {
     func 清除设置URL模式() {
         let 设置值:NSString = NSString()
         设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-        NSLog("Group-URL清除操作")
+        NSLog("[AppGroupIO]Group-URL清除操作")
     }
     
     //使用NSUserDefaults提取保存的字符串数组
@@ -90,11 +90,11 @@ class AppGroupIO: NSObject {
             var 设置值:NSString? = 设置存储?.stringForKey(程序组设置名称)
             if(设置有效性校验(设置值)) {
                 let 设置数组:NSArray = ArrayString().JSON字符串转数组(设置值!)
-                NSLog("Group-UD读取操作")
+                NSLog("[AppGroupIO]Group-UD读取操作")
                 return 设置数组
             }
         } else {
-            NSLog("Group-UD读取UD初始化失败")
+            NSLog("[AppGroupIO]Group-UD读取UD初始化失败")
         }
         return nil
     }
@@ -105,10 +105,10 @@ class AppGroupIO: NSObject {
         if (设置存储 != nil) {
             let 设置值:NSString = ArrayString().数组转JSON字符串(设置数组)
             设置存储?.setObject(设置值, forKey: 程序组设置名称)
-            NSLog("Group-UD写入操作")
+            NSLog("[AppGroupIO]Group-UD写入操作")
             设置存储?.synchronize()
         } else {
-            NSLog("Group-UD写入UD初始化失败")
+            NSLog("[AppGroupIO]Group-UD写入UD初始化失败")
         }
     }
     
@@ -138,10 +138,10 @@ class AppGroupIO: NSObject {
                 let 当前设置项字符串:String = 当前设置项 as! String
                 设置存储?.removeObjectForKey(当前设置项字符串)
             }
-            NSLog("Group-UD清除操作")
+            NSLog("[AppGroupIO]Group-UD清除操作")
             设置存储?.synchronize()
         } else {
-            NSLog("Group-UD清除UD初始化失败")
+            NSLog("[AppGroupIO]Group-UD清除UD初始化失败")
         }
     }
     
@@ -152,11 +152,11 @@ class AppGroupIO: NSObject {
             let 对象:AnyObject? = 设置存储?.objectForKey(程序组对象名称)
             if (对象 != nil && 对象 is NSArray) {
                 let 对象数组:NSArray = 对象 as! NSArray
-                NSLog("Group-UD对象数组读取操作")
+                NSLog("[AppGroupIO]Group-UD对象数组读取操作")
                 return 对象数组
             }
         } else {
-            NSLog("Group-UD对象数组读取UD初始化失败")
+            NSLog("[AppGroupIO]Group-UD对象数组读取UD初始化失败")
         }
         return nil
     }
@@ -166,7 +166,7 @@ class AppGroupIO: NSObject {
         let 设置存储:NSUserDefaults? = 组设置存储()
         if (设置存储 != nil) {
             设置存储?.setObject(对象数组, forKey: 程序组对象名称)
-            NSLog("Group-UD对象数组写入操作")
+            NSLog("[AppGroupIO]Group-UD对象数组写入操作")
             设置存储?.synchronize()
         } else {
             NSLog("Group-UD对象数组写入UD初始化失败")
@@ -196,10 +196,10 @@ class AppGroupIO: NSObject {
             if (初始设置数组 != nil) {
                 return 初始设置数组!
             } else {
-                NSLog("plist读取失败。")
+                NSLog("[AppGroupIO]plist读取失败。")
             }
         } else {
-            NSLog("找不到plist文件。")
+            NSLog("[AppGroupIO]找不到plist文件。")
         }
         return nil
     }
@@ -217,7 +217,7 @@ class AppGroupIO: NSObject {
             let 当前设置项字符串:String = 当前设置项 as! String
             设置存储.removeObjectForKey(当前设置项字符串)
         }
-        NSLog("Group-UD清除操作")
+        NSLog("[AppGroupIO]Group-UD清除操作")
         设置存储.synchronize()
     }
 }
