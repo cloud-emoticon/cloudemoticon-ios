@@ -214,11 +214,38 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         if editingStyle == .Delete {
             if (indexPath.row < 2) {
                 UIAlertView(title: lang.uage("无法删除这个主题"), message: lang.uage("内置主题不能被删除"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
+            } else {
+                //检查是否处于选中状态
+                let 当前应用的皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
+                if (当前应用的皮肤MD5对象 != nil) {
+                    let 当前应用的皮肤MD5:String = 当前应用的皮肤MD5对象 as! String
+                    let 当前皮肤数据:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
+                    let 当前皮肤文件夹路径:String = 当前皮肤数据.objectAtIndex(3) as! String
+                    let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
+                    let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
+                    if (当前应用的皮肤MD5 == 当前皮肤md5) {
+                        var alert:UIAlertView = UIAlertView(title: lang.uage("无法删除这个主题"), message: lang.uage("这个主题当前正在被使用"), delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+                        alert.show()
+                    } else {
+                        //删除文件
+                        let 皮肤管理器:SkinManager = SkinManager()
+                        皮肤管理器.删除皮肤文件(当前皮肤文件夹路径)
+                        更新数据()
+                    }
+                } else {
+                    //删除文件
+                    let 当前皮肤数据:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
+                    let 当前皮肤文件夹路径:String = 当前皮肤数据.objectAtIndex(3) as! String
+                    let 皮肤管理器:SkinManager = SkinManager()
+                    皮肤管理器.删除皮肤文件(当前皮肤文件夹路径)
+                    更新数据()
+                }
             }
         } else if editingStyle == .Insert {
             
         }
     }
+    
     // MARK: - 表格编辑范围
     override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
     {
@@ -243,7 +270,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             let 皮肤管理器:SkinManager = SkinManager()
             皮肤管理器.设置正在使用皮肤()
         } else if (indexPath.row == 1) {
-            var alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "功能尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            var alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "这是一个在以后版本中准备添加的功能，尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
         } else {
             //应用皮肤，提取信息并写入到内存和Group

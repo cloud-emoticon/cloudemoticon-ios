@@ -108,4 +108,8 @@ class SkinManager: NSObject {
             组数据读写.写入设置UD模式([NSArray(),NSArray(),NSArray(),[全局_皮肤设置]])
         }
     }
+    
+    func 删除皮肤文件(当前皮肤文件夹路径:String) {
+        文件管理器.removeItemAtPath(当前皮肤文件夹路径, error: nil)
+    }
 }
