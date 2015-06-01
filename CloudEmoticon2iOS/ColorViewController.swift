@@ -130,6 +130,12 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     {
         设置背景不透明度.value = defaults.floatForKey("bgopacity")
         启用修改背景 = defaults.boolForKey("diybg")
+        if (启用修改背景 == true && list.count == 1) {
+            list.addObject(lang.uage("修改背景图片"))
+            list.addObject(lang.uage("背景不透明度"))
+            list.addObject("")
+            list.addObject("")
+        }
     }
     func saveSetting()
     {
@@ -162,6 +168,8 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             list.removeLastObject()
             list.removeLastObject()
            }
+           defaults.setBool(启用修改背景, forKey: "diybg")
+           defaults.synchronize()
            tableView.reloadData()
             break
         case 1:
