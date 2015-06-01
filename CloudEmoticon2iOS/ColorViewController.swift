@@ -14,6 +14,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     var list:NSMutableArray = NSMutableArray()
     var bgimageviewer: UIImageView = UIImageView()
     var 设置背景不透明度:UISlider = UISlider()
+    var 启用修改背景:Bool = false
     
     var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
     var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as! Float?
@@ -22,10 +23,9 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         super.viewDidLoad()
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
-        
-        list.addObject(lang.uage("修改背景图片"))
-        list.addObject(lang.uage("还原背景"))
-        list.addObject(lang.uage("背景不透明度"))
+        list.addObject(lang.uage("替换主题中的背景图片"))
+//        list.addObject(lang.uage("修改背景图片"))
+//        list.addObject(lang.uage("背景不透明度"))
 
         背景管理.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
         背景管理.delegate = self
@@ -80,7 +80,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 4
+        return list.count
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -96,6 +96,15 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         var cell:UITableViewCell? = 背景管理.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
+        }
+        if (indexPath.row == 0) {
+            if (启用修改背景) {
+                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+            } else {
+                cell?.accessoryType = UITableViewCellAccessoryType.None
+            }
+        } else {
+            cell?.accessoryType = UITableViewCellAccessoryType.None
         }
         if(indexPath.row <= 1) {
         cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
@@ -120,6 +129,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     func loadSetting()
     {
         设置背景不透明度.value = defaults.floatForKey("bgopacity")
+        启用修改背景 = defaults.boolForKey("diybg")
     }
     func saveSetting()
     {
@@ -140,10 +150,22 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         switch indexPath.row {
         case 0:
-           selectimage()
+           启用修改背景 = !启用修改背景
+           if (启用修改背景 == true && list.count == 1) {
+            list.addObject(lang.uage("修改背景图片"))
+            list.addObject(lang.uage("背景不透明度"))
+            list.addObject("")
+            list.addObject("")
+           } else if (启用修改背景 == false && list.count > 1) {
+            list.removeLastObject()
+            list.removeLastObject()
+            list.removeLastObject()
+            list.removeLastObject()
+           }
+           tableView.reloadData()
             break
         case 1:
-           deletebgimage()
+           selectimage() //deletebgimage()
             break
         default:
             break
