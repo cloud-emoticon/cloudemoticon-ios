@@ -238,21 +238,48 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         tableView.deselectRowAtIndexPath(indexPath, animated: true) //闪一下
-        if (indexPath.row == 1) {
+        if (indexPath.row == 0) {
+            全局_皮肤设置 = NSDictionary()
+            let 皮肤管理器:SkinManager = SkinManager()
+            皮肤管理器.设置正在使用皮肤()
+        } else if (indexPath.row == 1) {
             var alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "功能尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
         } else {
-            for (var i:Int = 0; i < 皮肤列表数据.count; i++) {
-                let 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-                let 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!
-                if (i == indexPath.row) {
-                    当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
-                } else {
-                    当前单元格.accessoryType = UITableViewCellAccessoryType.None
-                }
+            //应用皮肤，提取信息并写入到内存和Group
+            let 当前皮肤数据:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
+//            if (当前应用的皮肤MD5对象 != nil) {
+            let 当前皮肤文件夹路径:NSString = 当前皮肤数据.objectAtIndex(3) as! String
+            let 当前INI文件:String = String(format: "%@/index.ini", 当前皮肤文件夹路径)
+            let INI读取器:INIReader = INIReader()
+            let INI读取结果:Int = INI读取器.载入INI文件(当前INI文件)
+            if (INI读取结果 != 0) {
+                NSLog("[SkinTableViewController]意外错误：载入INI文件失败。")
+            } else {
+                var 要应用的皮肤内容:NSMutableDictionary? = INI读取器.INI文件内容字典
+                let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
+                let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
+                要应用的皮肤内容?.setObject(当前皮肤md5, forKey: "md5")
+                全局_皮肤设置 = 要应用的皮肤内容!
             }
+//            } else {
+//                NSLog("[SkinTableViewController]意外错误：当前应用的皮肤的MD5找不到。")
+//            }
+            let 皮肤管理器:SkinManager = SkinManager()
+            皮肤管理器.设置正在使用皮肤()
+            
+//            //改变表格当前打钩条目
+//            for (var i:Int = 0; i < 皮肤列表数据.count; i++) {
+//                let 要操作的单元格位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+//                let 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(要操作的单元格位置)!
+//                if (i == indexPath.row) {
+//                    当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
+//                } else {
+//                    当前单元格.accessoryType = UITableViewCellAccessoryType.None
+//                }
+//            }
         }
-        //<#此处应用皮肤#>
+        更新数据()
         
 //        for i in 0...(皮肤ID列表.count - 1)
 //        {

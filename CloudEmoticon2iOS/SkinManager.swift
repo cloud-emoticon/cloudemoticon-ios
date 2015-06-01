@@ -84,14 +84,28 @@ class SkinManager: NSObject {
     }
     
     func 设置正在使用皮肤() {
-        let 当前使用皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
-        if (当前使用皮肤MD5对象 != nil) {
-            let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
-            var 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-            本地用户设置.setObject(当前使用皮肤MD5, forKey: "nowskinmd5")
-            本地用户设置.synchronize()
+        var 当前使用皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
+        if (当前使用皮肤MD5对象 == nil) {
+            当前使用皮肤MD5对象 = ""
+        }
+        let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
+        var 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        本地用户设置.setObject(当前使用皮肤MD5, forKey: "nowskinmd5")
+        本地用户设置.synchronize()
+        //Group
+        let 组数据读写:AppGroupIO = AppGroupIO()
+        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
+        if (数据数组 != nil) {
+            let 全部收藏数组:NSArray = 数据数组!.objectAtIndex(0) as! NSArray
+            let 全部自定数组:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
+            let 全部历史数组:NSArray = 数据数组!.objectAtIndex(2) as! NSArray
+            let 全部皮肤数组:NSArray = [全局_皮肤设置]
+            let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组,全部皮肤数组]
+            组数据读写.写入设置UD模式(要保存的数据)
+            NSLog("[SkinManager]写入皮肤设置。")
         } else {
-            NSLog("[SkinManager]设置正在使用皮肤失败。")
+            NSLog("[SkinManager]没找到Group，已新建空白模型写入皮肤设置。")
+            组数据读写.写入设置UD模式([NSArray(),NSArray(),NSArray(),[全局_皮肤设置]])
         }
     }
 }
