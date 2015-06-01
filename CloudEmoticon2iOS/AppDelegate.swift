@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
         
+        
         lang.载入语言(lang.当前系统语言())
 //        println(lang.系统支持的所有语言())
         println(lang.uage("语言包名称"))
@@ -152,16 +153,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        NSNotificationCenter.defaultCenter().postNotificationName("UIApplicationWillEnterForegroundNotification", object: nil)
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the
 
+    }
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
 
 }
-

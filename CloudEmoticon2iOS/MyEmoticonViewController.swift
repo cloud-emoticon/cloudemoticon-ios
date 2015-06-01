@@ -25,6 +25,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"appWillResignActive", name:"UIApplicationWillEnterForegroundNotification", object: nil)
 
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
@@ -59,6 +61,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
     }
     
+    func appWillResignActive(){
+        if(内容选择菜单.selectedSegmentIndex == 1){
+            载入历史记录数据()
+        }
+    }
+    
     func 生成无颜文字遮罩(){
         
         背景.backgroundColor = UIColor.whiteColor()
@@ -84,20 +92,20 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 显示文字()
     {
+    switch (内容选择菜单.selectedSegmentIndex) {
+        case 0:
+            无颜文字文字.text = lang.uage("还没有收藏的颜文字喵")
+            break
+        case 1:
+            无颜文字文字.text = lang.uage("还没有历史记录呢喵")
+            break
+        case 2:
+            无颜文字文字.text = lang.uage("还没有添加自定义颜文字呢喵")
+            break
+        default:
+            break
+        }
         
-                        switch (内容选择菜单.selectedSegmentIndex) {
-                case 0:
-                    无颜文字文字.text = lang.uage("还没有收藏的颜文字喵")
-                    break
-                case 1:
-                    无颜文字文字.text = lang.uage("还没有历史记录呢喵")
-                    break
-                case 2:
-                    无颜文字文字.text = lang.uage("还没有添加自定义颜文字呢喵")
-                    break
-                default:
-                    break
-                }
         let 背景透明度:CGFloat = 1 - loadopc()
         
         if(背景透明度 < 0.35){
