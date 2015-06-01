@@ -13,7 +13,8 @@ class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AddtoCustom.setTitleColor(UIColor.darkGrayColor(), forState: UIControlState.Disabled)
+        AddtoCustom.setTitleColor(UIColor.clearColor(), forState: UIControlState.Disabled)
+        AddtoCustom.setTitle("", forState: UIControlState.Disabled)
         AddtoCustom.layer.cornerRadius = 4
         RunFamApp.layer.cornerRadius = 4
         emoEx.frame = CGRectMake(0, 0, self.view.frame.width, 36)
@@ -26,10 +27,10 @@ class TodayViewController: UIViewController {
         emoText.text = UIPasteboard.generalPasteboard().string
         if(UIPasteboard.generalPasteboard().string == nil)
         {
-            AddtoCustom.enabled = false
+            AddtoCustom.hidden = true
             emoText.text = "剪贴板空"
         } else {
-            AddtoCustom.enabled = true
+            AddtoCustom.hidden = false
         }
     }
     

@@ -26,7 +26,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"appWillResignActive", name:"UIApplicationWillEnterForegroundNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"appWillResignActive", name:"WillEnterForeground", object: nil)
 
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
