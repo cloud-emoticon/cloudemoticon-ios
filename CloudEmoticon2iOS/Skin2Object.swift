@@ -29,10 +29,11 @@ class Skin2Object: NSObject {
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    func image(value:String,md5:String) -> UIImage? {
+    func image(value:String) -> UIImage? {
         let 主题管理器:SkinManager = SkinManager()
         let skin文件夹 = 主题管理器.取skin文件夹路径()
-        let 目标文件夹路径:String = NSString(format: "%@/%@/%@", skin文件夹, md5, value) as String
+        let 皮肤md5:String = 全局_皮肤设置.objectForKey("md5") as! String
+        let 目标文件夹路径:String = NSString(format: "%@/%@/%@", skin文件夹, 皮肤md5, value) as String
         return UIImage(contentsOfFile: 目标文件夹路径)
     }
     

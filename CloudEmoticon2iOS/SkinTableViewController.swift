@@ -307,6 +307,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
 //            }
         }
         更新数据()
+        NSNotificationCenter.defaultCenter().postNotificationName("切换主题通知", object: nil)
         
 //        for i in 0...(皮肤ID列表.count - 1)
 //        {
