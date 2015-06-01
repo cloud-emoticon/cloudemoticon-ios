@@ -380,9 +380,11 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     {
         let CellIdentifier:NSString = "Cell"
         var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+        cell?.textLabel?.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        cell?.textLabel?.numberOfLines = 0
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
-            cell!.textLabel?.textAlignment = NSTextAlignment.Center
+            cell!.textLabel?.textAlignment = NSTextAlignment.Left
             cell!.selectionStyle = UITableViewCellSelectionStyle.Default
             cell!.accessoryType = UITableViewCellAccessoryType.None
         }
@@ -394,7 +396,32 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         return cell!
     }
     
+    func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
+    {
+        var 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
+        高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
+        高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
+        高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping
+        高度测试虚拟标签.numberOfLines = 0
+        var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSizeMake(单元格宽度,CGFloat.max))
+        计算后尺寸.height = ceil(计算后尺寸.height)
+        return 计算后尺寸.height
+    }
+
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (当前数据数组.count > 0) {
+            var 文字高度:CGFloat = 44
+            let 主文字内容 = 当前数据数组.objectAtIndex(indexPath.row) as! NSString
+            let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 字体大小: 17, 单元格宽度: tableView.frame.width - 20) + 8
+            文字高度 = 主文字框高度 + 15
+            
+            if (文字高度 < 44) {
+                return 44
+            } else {
+                return 文字高度
+            }
+        }
         return 44
     }
     

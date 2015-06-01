@@ -326,7 +326,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
         if(输入法中的数据 != nil) {
             let 输入法中的历史记录数据:NSArray = 输入法中的数据?.objectAtIndex(2) as! NSArray
-            if ((输入法中的历史记录数据.count != 文件中的数据?.count) && (输入法中的历史记录数据.count != 0)) {
+            if (输入法中的历史记录数据.count != 0) {
                 NSLog("历史记录：输入法中的数据")
                 将数据载入表格(输入法中的历史记录数据)
                 文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.HISTORY)
