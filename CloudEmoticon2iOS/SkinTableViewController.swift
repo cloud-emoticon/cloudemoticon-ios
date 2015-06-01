@@ -13,7 +13,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     var 文件管理器:FileManager = FileManager()
     let 皮肤安装器:SkinInstaller = SkinInstaller()
     var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var 皮肤ID列表:NSMutableArray = NSMutableArray()
+    var 皮肤列表数据:NSMutableArray = NSMutableArray()
     var 左上按钮: UIBarButtonItem!
     var 右上按钮: UIBarButtonItem!
     var 安装提示框:UIAlertView?
@@ -38,16 +38,43 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         self.navigationItem.leftBarButtonItem = 左上按钮
         右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
         self.navigationItem.rightBarButtonItem = 右上按钮
-        //[主标题,副标题,主题图片路径,主题本地文件夹路径]
-        皮肤ID列表.addObject([lang.uage("默认主题"),lang.uage("内置主题"),NSBundle.mainBundle().pathForResource("skindefault", ofType: "png")!,"<ceskin:default>"])
-        皮肤ID列表.addObject([lang.uage("自定义主题"),lang.uage("内置主题"),"","<ceskin:custom>"])
-        let 皮肤管理器:SkinManager = SkinManager()
-        皮肤管理器.读取皮肤列表()
+        //[主标题,副标题,预览图路径,文件夹路径]
+        皮肤列表数据.addObject([lang.uage("默认主题"),lang.uage("内置主题"),NSBundle.mainBundle().pathForResource("skindefault", ofType: "png")!,"<ceskin:default>"])
+        皮肤列表数据.addObject([lang.uage("自定义主题"),lang.uage("内置主题"),"","<ceskin:custom>"])
+        更新数据()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func 清空皮肤列表数据() {
+        for (var i:Int = 2; i < 皮肤列表数据.count; i++) {
+            皮肤列表数据.removeObjectAtIndex(2)
+        }
+    }
+    
+    func 更新数据() {
+        let 皮肤管理器:SkinManager = SkinManager()
+        let 皮肤列表:NSArray? = 皮肤管理器.读取皮肤列表()
+        清空皮肤列表数据()
+        if (皮肤列表 != nil) {
+            for (var i:Int = 0; i < 皮肤列表?.count; i++) {
+                let 当前头信息字典:NSDictionary = 皮肤列表?.objectAtIndex(i) as! NSDictionary
+                let 主标题:String = 当前头信息字典.objectForKey("theme_name") as! String
+                let 副标题:String = 当前头信息字典.objectForKey("theme_author") as! String
+                let 预览图路径:String = 当前头信息字典.objectForKey("theme_picture") as! String
+                let 文件夹路径:String = 当前头信息字典.objectForKey("dir") as! String
+                皮肤列表数据.addObject([主标题,副标题,预览图路径,文件夹路径])
+            }
+        }
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - SkinInstallerDelegate
+    func 主题安装完成() {
+        更新数据()
     }
     
     func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?) {
@@ -132,7 +159,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     }
     // MARK: - 表格行数
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 皮肤ID列表.count
+        return 皮肤列表数据.count
     }
     
     // MARK: - 表格内容
@@ -146,8 +173,8 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             单元格!.accessoryType = UITableViewCellAccessoryType.None
             单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
         }
-        //[主标题,副标题,主题图片路径,主题本地文件夹路径]
-        let 当前皮肤ID:NSArray = 皮肤ID列表.objectAtIndex(indexPath.row) as! NSArray
+        //[主标题,副标题,预览图路径,文件夹路径]
+        let 当前皮肤ID:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
         单元格?.textLabel?.text = 当前皮肤ID.objectAtIndex(0) as? String
         单元格?.detailTextLabel?.text = 当前皮肤ID.objectAtIndex(1) as? String
         let 当前皮肤图片:UIImage? = UIImage(contentsOfFile:  当前皮肤ID.objectAtIndex(2) as! String)

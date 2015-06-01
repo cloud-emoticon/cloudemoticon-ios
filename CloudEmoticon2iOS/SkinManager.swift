@@ -19,7 +19,7 @@ class SkinManager: NSObject {
         return skin文件夹路径
     }
     
-    func 读取皮肤列表() -> NSArray {
+    func 读取皮肤列表() -> NSArray? {
         let skin文件夹路径:String = 取skin文件夹路径()
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
         let skin文件夹列表:NSArray? = 文件管理器.contentsOfDirectoryAtPath(skin文件夹路径, error: nil)
@@ -46,6 +46,30 @@ class SkinManager: NSObject {
         } else {
             NSLog("[SkinManager]列skin文件夹列表失败。")
         }
-        return NSArray()
+        return nil
+    }
+    
+    func 获得正在使用皮肤() -> String? {
+        var 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let 当前使用皮肤MD5对象:AnyObject? = 本地用户设置.valueForKey("nowskinmd5")
+        if (当前使用皮肤MD5对象 != nil) {
+            let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
+            return 当前使用皮肤MD5
+        } else {
+            NSLog("[SkinManager]获得正在使用皮肤失败。")
+            return nil
+        }
+    }
+    
+    func 设置正在使用皮肤() {
+        let 当前使用皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
+        if (当前使用皮肤MD5对象 != nil) {
+            let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
+            var 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+            本地用户设置.setObject(当前使用皮肤MD5, forKey: "nowskinmd5")
+            本地用户设置.synchronize()
+        } else {
+            NSLog("[SkinManager]设置正在使用皮肤失败。")
+        }
     }
 }

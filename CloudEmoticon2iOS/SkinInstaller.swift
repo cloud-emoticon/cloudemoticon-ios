@@ -10,6 +10,7 @@ import UIKit
 
 protocol SkinInstallerDelegate{
     func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?)
+    func 主题安装完成()
 }
 
 class SkinInstaller: NSObject, YashiDownloadDelegate {
@@ -121,6 +122,7 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
             文件管理器.removeItemAtPath(临时文件路径, error: nil)
             显示安装提示框(true,标题: lang.uage("安装完毕"),内容: "",按钮: lang.uage("确定"))
             NSLog("[皮肤安装器]安装成功。")
+            代理!.主题安装完成()
         } else {
             显示安装提示框(true,标题: lang.uage("安装失败"),内容: 解压缩错误信息!,按钮: lang.uage("取消"))
             NSLog("[皮肤安装器]安装失败。")
