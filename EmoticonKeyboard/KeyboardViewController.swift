@@ -362,6 +362,12 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
             }
         }
         保存数据到主程序()
+        
+        当前数据数组.removeAllObjects()
+        for 颜文字数组 in 全部历史数组 {
+            当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+        }
+        表格视图.reloadData()
     }
     
     func 保存数据到主程序()
