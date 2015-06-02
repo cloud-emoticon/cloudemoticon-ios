@@ -20,6 +20,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
     var 全部皮肤数组:NSMutableArray = NSMutableArray()
     var 功能按钮数组:NSMutableArray = NSMutableArray()
     let 模板按钮:UIButton = UIButton.buttonWithType(.System) as! UIButton
+    var 按钮tag:Int = 0
 //    var 初始化提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
 
     override func updateViewConstraints() {
@@ -218,6 +219,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 当前按钮.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             } else {
                 当前按钮.setTitleColor(UIColor.redColor() , forState: UIControlState.Normal)
+                按钮tag = 当前按钮Tag
             }
         }
     }
@@ -363,11 +365,13 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         }
         保存数据到主程序()
         
-        当前数据数组.removeAllObjects()
-        for 颜文字数组 in 全部历史数组 {
-            当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+        if(按钮tag == 101){
+            当前数据数组.removeAllObjects()
+            for 颜文字数组 in 全部历史数组 {
+                当前数据数组.addObject(颜文字数组.objectAtIndex(0))
+            }
+            表格视图.reloadData()
         }
-        表格视图.reloadData()
     }
     
     func 保存数据到主程序()
