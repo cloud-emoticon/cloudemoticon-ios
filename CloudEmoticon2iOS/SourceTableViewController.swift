@@ -195,17 +195,15 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                     self.tableView.deleteRowsAtIndexPaths([要删除的行], withRowAnimation: UITableViewRowAnimation.Automatic)
                 }
             }
+            
             文件管理器.saveSources(源列表)
         }
-//        else {
-//           NO
-//        }
         println("选择源")
         println(源列表)
         if (源列表.count == 2) {
-        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
             选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         }
+        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
     }
     
     func 网络失败时(notification:NSNotification)
