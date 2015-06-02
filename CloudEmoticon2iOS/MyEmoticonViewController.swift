@@ -196,7 +196,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let 组数据读写:AppGroupIO = AppGroupIO()
                 var 组数据:NSArray? = 组数据读写.读取设置UD模式()
                 if (组数据 != nil) {
-                    var 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray()]
+                    var 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray(),组数据!.objectAtIndex(3)]
                     组数据读写.写入设置UD模式(新建数据模型)
                 }
             }
