@@ -70,7 +70,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     
     override func viewWillAppear(animated: Bool) {
-        loaddata()
+        载入数据(NetDownloadTo.CLOUDEMOTICON)
         loadbgi()
         let 背景透明度:CGFloat = loadopc()
         分类表格.alpha = 背景透明度
@@ -156,7 +156,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         当前源文字框.text = 当前源 as String
         当前源文字框.font = UIFont.systemFontOfSize(13)
         当前源文字框.textColor = UIColor.grayColor()
-        NSLog("当前文字框内容为[%@]", 当前源文字框.text!)
+//        NSLog("当前文字框内容为[%@]", 当前源文字框.text!)
         
         userview.addSubview(username)
 //        userview.addSubview(当前源文字框)
@@ -203,6 +203,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
             y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
+        
         搜索结果.removeAllObjects()
         搜索结果的名称.removeAllObjects()
         for g_emoobj in y_emoarr
@@ -274,6 +275,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
             p_emodata = NSArray(contentsOfFile: 内置源路径 as String)!
             载入本地数据()
+            loaddata()
         }
     }
     
