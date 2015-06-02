@@ -65,6 +65,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if(内容选择菜单.selectedSegmentIndex == 1){
             载入历史记录数据()
         }
+        if(内容选择菜单.selectedSegmentIndex == 2){
+            载入自定义数据()
+        }
     }
     
     func 生成无颜文字遮罩(){
@@ -326,9 +329,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         var 输入法中的数据:NSArray? = nil
         if (appgroup && 组数据读写.检查设置UD模式()) {
-//            var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
-//            containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
-//            value = NSString(contentsOfURL: containerURL, encoding: NSUTF8StringEncoding, error: nil)
             输入法中的数据 = 组数据读写.读取设置UD模式()
         }
         if(输入法中的数据 != nil) {
@@ -348,8 +348,26 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     func 载入自定义数据()
     {
+        let 组数据读写:AppGroupIO = AppGroupIO()
         var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
-        将数据载入表格(文件中的数据)
+        var 输入法中的数据:NSArray? = nil
+        if (appgroup && 组数据读写.检查设置UD模式()) {
+            输入法中的数据 = 组数据读写.读取设置UD模式()
+        }
+        if(输入法中的数据 != nil) {
+            let 输入法中的自定义数据:NSArray = 输入法中的数据?.objectAtIndex(1) as! NSArray
+            if (输入法中的自定义数据.count != 0) {
+                NSLog("自定义：输入法中的数据")
+                将数据载入表格(输入法中的自定义数据)
+                文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.CUSTOM)
+            } else {
+                NSLog("自定义：载入文件中的数据")
+                将数据载入表格(文件中的数据)
+            }
+        } else {
+            NSLog("自定义：输入法中没有数据，载入文件中的数据")
+            将数据载入表格(文件中的数据)
+        }
         
     }
     func 将数据载入表格(文件中的数据:NSArray?)
