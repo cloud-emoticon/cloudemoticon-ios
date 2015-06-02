@@ -59,6 +59,27 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
+        
+        if(表格.editing){
+            if(内容选择菜单.selectedSegmentIndex == 0){
+                左上按钮.title = ""
+                右上按钮.title = lang.uage("完成")
+            }
+            if(内容选择菜单.selectedSegmentIndex == 2){
+                左上按钮.title = lang.uage("完成")
+                右上按钮.title = ""
+            }
+        } else {
+            if(内容选择菜单.selectedSegmentIndex == 0){
+                左上按钮.title = ""
+                右上按钮.title = lang.uage("编辑")
+            }
+            if(内容选择菜单.selectedSegmentIndex == 2){
+                左上按钮.title = lang.uage("编辑")
+                右上按钮.title = lang.uage("添加")
+            }
+        }
+        
     }
     
     func appWillResignActive(){
