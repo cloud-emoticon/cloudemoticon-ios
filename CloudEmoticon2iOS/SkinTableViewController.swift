@@ -125,6 +125,11 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         }
     }
     
+    func 安装主题(下载地址:String) {
+        皮肤安装器.代理 = self
+        皮肤安装器.启动安装任务(下载地址)
+    }
+    
     // MARK: - 提示框被点击
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
@@ -132,12 +137,11 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (buttonIndex == 1) {
             //添加
-            皮肤安装器.代理 = self
             提示框输入框.userInteractionEnabled = false
-            皮肤安装器.启动安装任务(提示框输入框.text)
+            安装主题(提示框输入框.text)
         } else if (buttonIndex == 2) {
             //源商店
-//            UIApplication.sharedApplication().openURL(NSURL.URLWithString("http://emoticon.moe/?cat=2"))
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://yoooooooooo.com/skin")!)
         }
     }
     

@@ -32,6 +32,7 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题:", name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到主题管理:", name: "切换到主题管理通知", object: nil)
         self.language()
     }
     
@@ -190,6 +191,16 @@ class MainTBViewController: UITabBarController {
         let cev:CEViewController = cea?.objectAtIndex(0) as! CEViewController
         let URL识别数组:NSArray = notification.object as! NSArray
         cev.切换到源管理页面(URL识别数组.objectAtIndex(0) as? NSString)
+    }
+    func 切换到主题管理(notification:NSNotification)
+    {
+        self.selectedIndex = 3
+        let 工具栏视图组:NSArray? = self.viewControllers as NSArray?
+        let 设置视图导航:UINavigationController = 工具栏视图组?.objectAtIndex(3) as! UINavigationController
+        let 设置视图导航视图组:NSArray = 设置视图导航.viewControllers as NSArray
+        let 设置视图:SetTableViewController = 设置视图导航视图组.objectAtIndex(0) as! SetTableViewController
+        let 要下载的文件路径:String = notification.object as! String
+        设置视图.前往主题管理(要下载的文件路径)
     }
     
     func 复制到剪贴板方法(notification:NSNotification)

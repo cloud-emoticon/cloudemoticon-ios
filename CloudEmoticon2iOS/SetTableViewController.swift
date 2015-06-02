@@ -74,11 +74,14 @@ class SetTableViewController: UITableViewController {
         return cell
     }
     
-    func 前往主题管理() {
+    func 前往主题管理(直接添加主题地址:String?) {
         let push = SkinTableViewController()
         //let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as UIViewController
         push.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(push, animated: true)
+        if (直接添加主题地址 != nil) {
+            push.安装主题(直接添加主题地址!)
+        }
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -91,7 +94,7 @@ class SetTableViewController: UITableViewController {
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
-            前往主题管理()
+            前往主题管理(nil)
             break
         case 2:
             let push = SourceTableViewController()
