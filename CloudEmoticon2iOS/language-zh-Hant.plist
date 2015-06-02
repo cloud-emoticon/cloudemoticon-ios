@@ -111,7 +111,7 @@
 	<key>松开手指刷新</key>
 	<string>ლ(╹◡╹ლ)放開手指以刷新</string>
 	<key>未登录</key>
-	<string>未登入</string>
+	<string>云颜文字2</string>
 	<key>分类</key>
 	<string>類別</string>
 	<key>源管理</key>
@@ -168,11 +168,13 @@
 	<string>目前的源</string>
 	<key>本地内置源</key>
 	<string>本地內嵌源</string>
-    <key>默认主题</key>
-    <string>默認主題</string>
-    <key>内置主题</key>
-    <string>內建主題</string>
-    <key>自定义主题</key>
-    <string>自訂主題</string>
+	<key>替换主题中的背景图片</key>
+	<string>使用自己的背景圖片</string>
+	<key>默认主题</key>
+	<string>默認主題</string>
+	<key>内置主题</key>
+	<string>內建主題</string>
+	<key>自定义主题</key>
+	<string>自訂主題</string>
 </dict>
 </plist>

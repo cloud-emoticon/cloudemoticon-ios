@@ -113,7 +113,7 @@ successfully to your favorites</string>
 	<key>松开手指刷新</key>
 	<string>ლ(╹◡╹ლ) Release to refresh</string>
 	<key>未登录</key>
-	<string>Not logged in</string>
+	<string>Cloud Emo 2</string>
 	<key>分类</key>
 	<string>Category</string>
 	<key>源管理</key>
@@ -170,11 +170,13 @@ successfully to your favorites</string>
 	<string>Source</string>
 	<key>本地内置源</key>
 	<string>Default</string>
-    <key>默认主题</key>
-    <string>Default theme</string>
-    <key>内置主题</key>
-    <string>Build-in theme</string>
-    <key>自定义主题</key>
-    <string>Custom theme</string>
+	<key>默认主题</key>
+	<string>Default theme</string>
+	<key>内置主题</key>
+	<string>Build-in theme</string>
+	<key>自定义主题</key>
+	<string>Custom theme</string>
+	<key>替换主题中的背景图片</key>
+	<string>Use my background image</string>
 </dict>
 </plist>

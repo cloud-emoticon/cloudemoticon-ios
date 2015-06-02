@@ -220,9 +220,12 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         var 要删除的文件:NSMutableArray = NSMutableArray()
         for 当前文件名对象 in 全部文件 {
             let 当前文件名:NSString = 当前文件名对象 as! NSString
-            let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
-            if (当前文件前缀.isEqualToString("cache-")) {
+            if(当前文件名.length >= 6)
+            {
+                let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
+                if (当前文件前缀.isEqualToString("cache-")) {
                 要删除的文件.addObject(当前文件名)
+                }
             }
         }
         

@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
             return true
         } else if (url.scheme == "cloudemoticonskin") {
-            //<#此处接入主题外部下载#>
+            //此处接入主题外部下载
         }
         return false
     }

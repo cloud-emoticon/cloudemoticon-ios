@@ -111,7 +111,7 @@
 	<key>松开手指刷新</key>
 	<string>ლ(╹◡╹ლ)松开手指刷新</string>
 	<key>未登录</key>
-	<string>未登录</string>
+	<string>云颜文字2</string>
 	<key>分类</key>
 	<string>分类</string>
 	<key>源管理</key>
@@ -174,5 +174,7 @@
 	<string>内置主题</string>
 	<key>自定义主题</key>
 	<string>自定义主题</string>
+	<key>替换主题中的背景图片</key>
+	<string>替换主题中的背景图片</string>
 </dict>
 </plist>

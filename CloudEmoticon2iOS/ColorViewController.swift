@@ -116,7 +116,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             设置背景不透明度.minimumValue = 0
             设置背景不透明度.maximumValue = 100
             设置背景不透明度.value = bgopacity!
-            bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 100)
+            bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
             设置背景不透明度.addTarget(self, action: "即时预览透明度:", forControlEvents: UIControlEvents.ValueChanged)
             cell?.addSubview(设置背景不透明度)
         }
@@ -128,7 +128,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func 即时预览透明度(sender:UISlider) {
-        bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 100)
+        bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
     }
     
     func loadSetting()
