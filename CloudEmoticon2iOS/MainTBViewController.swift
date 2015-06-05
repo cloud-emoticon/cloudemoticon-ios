@@ -31,7 +31,7 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题:", name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到主题管理:", name: "切换到主题管理通知", object: nil)
         self.language()
     }
@@ -57,12 +57,12 @@ class MainTBViewController: UITabBarController {
 //MARK - 主题
     func 切换主题()
     {
-        self.tabBar.tintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //TabBar颜色
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //NavBar颜色
-        self.navigationController?.navigationBar.tintColor = UIColor.blueColor() //NavBar按钮颜色
-        let titlecolor = NSDictionary(object: UIColor.blackColor(),
-            forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject] //NavBar标题颜色
+//        self.tabBar.tintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //TabBar颜色
+//        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //NavBar颜色
+//        self.navigationController?.navigationBar.tintColor = UIColor.blueColor() //NavBar按钮颜色
+//        let titlecolor = NSDictionary(object: UIColor.blackColor(),
+//            forKey:NSForegroundColorAttributeName)
+//        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject] //NavBar标题颜色
         
         let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {
@@ -81,30 +81,36 @@ class MainTBViewController: UITabBarController {
             }
         }
         
+        NSLog("[Skin]->MainTBViewController")
+//        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
+        self.tabBar
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             //图片文件名：顶端导航栏背景图片
-            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
-            if (navigation_bar_image_S != "null") {
-                let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S)
-                if (navigation_bar_image != nil) {
-                    self.navigationController?.navigationBar.backIndicatorImage = navigation_bar_image
-                }
-            }
+//            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
+//            NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
+//            if (navigation_bar_image_S != "null") {
+//                let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S)
+//                if (navigation_bar_image != nil) {
+//                    self.navigationController?.navigationBar.backIndicatorImage = navigation_bar_image
+//                }
+//            }
             //RGBA色值：顶端导航栏背景颜色
-            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
-            if (navigation_bar_bgcolor_S != "null") {
-                let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S)
-                if (navigation_bar_bgcolor != nil) {
-                    self.navigationController?.navigationBar.backgroundColor = navigation_bar_bgcolor //barTintColor
-                }
-            }
+//            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
+//            NSLog("[Skin]navigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
+//            if (navigation_bar_bgcolor_S != "null") {
+//                let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S)
+//                if (navigation_bar_bgcolor != nil) {
+//                    self.navigationController?.navigationBar.barTintColor = UIColor.redColor() //navigation_bar_bgcolor
+//                }
+//            }
             //图片文件名：底部工具栏“自定表情”按钮图标
             let items:NSArray = self.tabBar.items!
             let myemo:UITabBarItem = items.objectAtIndex(0) as! UITabBarItem
             let tool_icon_myemo_S:String = 全局_皮肤设置.objectForKey("tool_icon_myemo") as! String
+            NSLog("[Skin]tool_icon_myemo_S=%@",tool_icon_myemo_S)
             if (tool_icon_myemo_S != "null") {
-                let tool_icon_myemo:UIImage? = 主题参数转对象.image(tool_icon_myemo_S)
+                let tool_icon_myemo:UIImage? = 主题参数转对象.image(nil) //tool_icon_myemo_S
                 if (tool_icon_myemo != nil) {
                     myemo.image = tool_icon_myemo
                 }
@@ -112,8 +118,9 @@ class MainTBViewController: UITabBarController {
             //图片文件名：底部工具栏“云颜文字”按钮图标
             let cloemo:UITabBarItem = items.objectAtIndex(1) as! UITabBarItem
             let tool_icon_cloemo_S:String = 全局_皮肤设置.objectForKey("tool_icon_cloemo") as! String
+            NSLog("[Skin]tool_icon_cloemo_S=%@",tool_icon_cloemo_S)
             if (tool_icon_cloemo_S != "null") {
-                let tool_icon_cloemo:UIImage? = 主题参数转对象.image(tool_icon_cloemo_S)
+                let tool_icon_cloemo:UIImage? = 主题参数转对象.image(nil) //tool_icon_cloemo_S
                 if (tool_icon_cloemo != nil) {
                     cloemo.image = tool_icon_cloemo
                 }
@@ -121,49 +128,64 @@ class MainTBViewController: UITabBarController {
             //图片文件名：底部工具栏“附加工具”按钮图标
             let addons:UITabBarItem = items.objectAtIndex(2) as! UITabBarItem
             let tool_icon_addons_S:String = 全局_皮肤设置.objectForKey("tool_icon_addons") as! String
+            NSLog("[Skin]tool_icon_addons_S=%@",tool_icon_addons_S)
             if (tool_icon_addons_S != "null") {
-                let tool_icon_addons:UIImage? = 主题参数转对象.image(tool_icon_addons_S)
+                let tool_icon_addons:UIImage? = 主题参数转对象.image(nil) //tool_icon_addons_S
                 if (tool_icon_addons != nil) {
                     addons.image = tool_icon_addons
                 }
             }
             //图片文件名：底部工具栏“设置”按钮图标
-            let set:UITabBarItem = items.objectAtIndex(3) as! UITabBarItem
+            let tool_icon_set:UITabBarItem = items.objectAtIndex(3) as! UITabBarItem
             let tool_icon_set_S:String = 全局_皮肤设置.objectForKey("tool_icon_set") as! String
+            NSLog("[Skin]tool_icon_set_S=%@",tool_icon_set_S)
             if (tool_icon_set_S != "null") {
-                let tool_icon_set:UIImage? = 主题参数转对象.image(tool_icon_set_S)
+                let tool_icon_set:UIImage? = 主题参数转对象.image(nil) //tool_icon_set_S
                 if (tool_icon_set != nil) {
                     addons.image = tool_icon_set
                 }
             }
+            //底部工具栏自定义配置
+            var 底部工具栏着色视图:UIImageView? = self.tabBar.viewWithTag(515514) as? UIImageView
+            if (底部工具栏着色视图 == nil) {
+                底部工具栏着色视图 = UIImageView(frame: CGRectMake(0, 0, self.tabBar.frame.width, self.tabBar.frame.height))
+                底部工具栏着色视图?.tag = 515514
+                底部工具栏着色视图?.backgroundColor = UIColor.orangeColor()
+                self.tabBar.insertSubview(底部工具栏着色视图!, atIndex: 1)
+//                self.tabBar.opaque = true
+            }
             //图片文件名：底部工具栏背景图片
             let tool_backgroundimage_S:String = 全局_皮肤设置.objectForKey("tool_backgroundimage") as! String
-            if (tool_backgroundimage_S != "null") {
-                let tool_backgroundimage:UIImage? = 主题参数转对象.image(tool_backgroundimage_S)
+            NSLog("[Skin]tool_backgroundimage_S=%@",tool_backgroundimage_S)
+            if (tool_backgroundimage_S != "null---") {
+                let tool_backgroundimage:UIImage? = 主题参数转对象.image(nil) //tool_backgroundimage_S
                 if (tool_backgroundimage != nil) {
-                    self.tabBar.backgroundImage = tool_backgroundimage
+                    底部工具栏着色视图?.image = tool_backgroundimage
                 }
             }
-            //图片文件名：底部工具栏当前选中按钮的背景图片
+            //图片文件名：底部工具栏当前选中按钮的背景图片 ok
             let tool_selectionimage_S:String = 全局_皮肤设置.objectForKey("tool_selectionimage") as! String
+            NSLog("[Skin]tool_selectionimage_S=%@",tool_selectionimage_S)
             if (tool_selectionimage_S != "null") {
-                let tool_selectionimage:UIImage? = 主题参数转对象.image(tool_selectionimage_S)
+                let tool_selectionimage:UIImage? = 主题参数转对象.image(nil) //tool_selectionimage_S
                 if (tool_selectionimage != nil) {
                     self.tabBar.selectionIndicatorImage = tool_selectionimage
                 }
             }
             //RGBA色值：底部工具栏未选中按钮的颜色
             let tool_tintcolor_S:String = 全局_皮肤设置.objectForKey("tool_tintcolor") as! String
+            NSLog("[Skin]tool_tintcolor_S=%@",tool_tintcolor_S)
             if (tool_tintcolor_S != "null") {
-                let tool_tintcolor:UIColor? = 主题参数转对象.color(tool_tintcolor_S)
+                let tool_tintcolor:UIColor? = 主题参数转对象.color(nil) //tool_tintcolor_S
                 if (tool_tintcolor != nil) {
-                    self.tabBar.backgroundColor = tool_tintcolor
+                    self.tabBar.tintColor = tool_tintcolor
                 }
             }
             //RGBA色值：底部工具栏当前选中按钮的颜色
             let tool_selecttintcolor_S:String = 全局_皮肤设置.objectForKey("tool_selecttintcolor") as! String
+            NSLog("[Skin]tool_selecttintcolor_S=%@",tool_selecttintcolor_S)
             if (tool_selecttintcolor_S != "null") {
-                let tool_selecttintcolor:UIColor? = 主题参数转对象.color(tool_selecttintcolor_S)
+                let tool_selecttintcolor:UIColor? = 主题参数转对象.color(nil) //tool_selecttintcolor_S
                 if (tool_selecttintcolor != nil) {
                     self.tabBar.backgroundColor = tool_selecttintcolor
                 }

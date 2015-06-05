@@ -10,8 +10,11 @@ import UIKit
 
 class Skin2Object: NSObject {
     
-    func color(value:String) -> UIColor? {
-        let RGBA色值数组:NSArray = value.componentsSeparatedByString(",")
+    func color(value:String?) -> UIColor? {
+        if (value == nil) {
+            return UIColor.redColor()
+        }
+        let RGBA色值数组:NSArray = value!.componentsSeparatedByString(",")
         if (RGBA色值数组.count != 4) {
             return nil
         }
@@ -29,11 +32,14 @@ class Skin2Object: NSObject {
         return UIColor(red: r, green: g, blue: b, alpha: a)
     }
     
-    func image(value:String) -> UIImage? {
+    func image(value:String?) -> UIImage? {
+        if (value == nil) {
+            return UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource("test", ofType: "jpg")!)!
+        }
         let 主题管理器:SkinManager = SkinManager()
         let skin文件夹 = 主题管理器.取skin文件夹路径()
         let 皮肤md5:String = 全局_皮肤设置.objectForKey("md5") as! String
-        let 目标文件夹路径:String = NSString(format: "%@/%@/%@", skin文件夹, 皮肤md5, value) as String
+        let 目标文件夹路径:String = NSString(format: "%@/%@/%@", skin文件夹, 皮肤md5, value!) as String
         return UIImage(contentsOfFile: 目标文件夹路径)
     }
     
