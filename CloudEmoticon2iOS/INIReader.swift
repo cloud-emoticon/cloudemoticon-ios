@@ -77,6 +77,10 @@ class INIReader: NSObject {
         var INI字典:NSMutableDictionary = NSMutableDictionary()
         for (var i = 0; i < 行数组.count; i++) {
             let 当前行:NSString = 行数组.objectAtIndex(i) as! NSString
+            if (当前行 == "") {
+                continue
+            }
+            //NSLog("[INIReader]解析当前行=%@",当前行)
             let 当前行前置字符:String = 当前行.substringToIndex(1)
             let 当前行前置双字符:String = 当前行.substringToIndex(2)
             if (当前行前置字符 != "[" && 当前行前置双字符 != "//") {

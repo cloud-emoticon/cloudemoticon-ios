@@ -54,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //载入皮肤
         let 皮肤管理器:SkinManager = SkinManager()
         let 正在使用皮肤内容:NSDictionary? = 皮肤管理器.获得正在使用皮肤内容()
+        //NSLog("[Skin]正在使用皮肤内容=%@",正在使用皮肤内容!)
         if (正在使用皮肤内容 != nil) {
             NSLog("[AppDelegate]主题：载入皮肤设置。")
             全局_皮肤设置 = 正在使用皮肤内容!
