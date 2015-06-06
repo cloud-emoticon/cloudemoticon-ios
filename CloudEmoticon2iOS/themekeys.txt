@@ -17,7 +17,7 @@ tool_icon_set
 tool_backgroundimage
 tool_selectionimage
 tool_tintcolor
-tool_selecttintcolor
+tool_unselecttintcolor
 table_bgcolor
 table_textcolor
 table_selectcolor

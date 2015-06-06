@@ -226,7 +226,20 @@ class MainTBViewController: UITabBarController {
                     self.tabBar.tintColor = tool_tintcolor
                 }
             }
-            //似乎不能修改未选中的颜色？
+            
+            //RGBA色值：底部工具栏当前选中按钮的颜色 ok
+            let unselecttool_tintcolor_S:String = 全局_皮肤设置.objectForKey("tool_unselecttintcolor") as! String
+            NSLog("[Skin]tool_unselecttintcolor_S=%@",tool_tintcolor_S)
+            if (tool_tintcolor_S != "null") {
+                 //tool_unselecttintcolor_S
+                let tool_unselecttintcolor = NSDictionary(object: 主题参数转对象.color("tool_unselecttintcolor_S")!,
+                    forKey:NSForegroundColorAttributeName)
+                if (tool_unselecttintcolor != "null") {
+//                    self.tabBar.tintColor = tool_tintcolor
+                    UITabBarItem.appearance().setTitleTextAttributes(tool_unselecttintcolor as [NSObject : AnyObject], forState: UIControlState.Normal)
+                }
+            }
+            //RGBA色值：底部工具栏未选中按钮的颜色 ok
         }
     }
     
