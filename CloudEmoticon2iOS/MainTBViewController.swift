@@ -188,7 +188,7 @@ class MainTBViewController: UITabBarController {
                     底部工具栏着色视图?.image = tool_backgroundimage
                 }
             }
-            //RGBA色值：底部工具栏背景颜色 ok
+            //RGBA色值：底部工具栏背景颜色 ok?
             let tool_selecttintcolor_S:String = 全局_皮肤设置.objectForKey("tool_selecttintcolor") as! String
             NSLog("[Skin]tool_selecttintcolor_S=%@",tool_selecttintcolor_S)
             if (tool_selecttintcolor_S != "null") {
@@ -216,7 +216,7 @@ class MainTBViewController: UITabBarController {
                     self.tabBar.tintColor = tool_tintcolor
                 }
             }
-            //RGBA色值：底部工具栏未选中按钮的颜色 err
+            //RGBA色值：底部工具栏未选中按钮的颜色 NO!
             let tool_unselecttintcolor_S:String = 全局_皮肤设置.objectForKey("tool_unselecttintcolor") as! String
             NSLog("[Skin]tool_unselecttintcolor_S=%@",tool_unselecttintcolor_S)
             if (tool_unselecttintcolor_S != "null") {

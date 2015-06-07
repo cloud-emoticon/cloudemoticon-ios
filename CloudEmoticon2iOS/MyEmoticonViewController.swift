@@ -15,6 +15,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray()
+    var 列表文字颜色:UIColor = UIColor.blackColor()
+    var 列表当前选中的行背景色:UIColor = UIColor.clearColor()
+    var 列表当前选中的行背景图片:UIImage? = nil
 
     @IBOutlet weak var 背景: UIView!
     @IBOutlet weak var 无颜文字: UIImageView!
@@ -32,6 +35,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         左上按钮.title = ""
         表格.delegate = self
         表格.dataSource = self
+        表格.backgroundColor = UIColor.clearColor()
+        
         self.title = lang.uage("自定表情")
 //        self.tabBarController?.tabBar.translucent = false
 //        self.navigationController?.navigationBar.translucent = false
@@ -53,7 +58,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         NSLog("[Skin]->MyEmoticonViewController")
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
-            //图片文件名：顶端导航栏背景图片 move
+            //图片文件名：顶端导航栏背景图片 yes
             let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
             NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
             if (navigation_bar_image_S != "null") {
@@ -62,7 +67,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
                 }
             }
-            //RGBA色值：顶端导航栏背景颜色 move
+            //RGBA色值：顶端导航栏背景颜色 yes
             let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
             NSLog("[Skin]tnavigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
             if (navigation_bar_bgcolor_S != "null") {
@@ -72,7 +77,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     
                 }
             }
-            //图片文件名：顶端导航栏两侧按钮颜色 move
+            //图片文件名：顶端导航栏两侧按钮颜色 yes
             let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
             NSLog("[Skin]navigation_btn_textcolor_S=%@",navigation_btn_textcolor_S)
             if (navigation_btn_textcolor_S != "null") {
@@ -84,7 +89,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 }
             }
             
-            //RGBA色值：顶端导航栏文字颜色 move
+            //RGBA色值：顶端导航栏文字颜色 yes
             let navigation_seg_tintcolor_S:String = 全局_皮肤设置.objectForKey("navigation_seg_tintcolor") as! String
             NSLog("[Skin]navigation_seg_tintcolor_S=%@",navigation_seg_tintcolor_S)
             if (navigation_seg_tintcolor_S != "null") {
@@ -95,7 +100,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
                 }
             }
-            //RGBA色值：顶端segment色 move
+            //RGBA色值：顶端收藏历史自定义选项卡颜色 yes
             let navigation_seg_bar_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bar") as! String
             NSLog("[Skin]navigation_seg_bar_S=%@",navigation_seg_bar_S)
             if (navigation_seg_bar_S != "null") {
@@ -105,36 +110,73 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     UISegmentedControl.appearance().tintColor = navigation_seg_bar
                 }
             }
-            //RGBA色值：顶端segment未选定时文字色 move
-            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
-            NSLog("[Skin]navigation_seg_bartext_S=%@",navigation_seg_bartext_S)
-            if (navigation_seg_bartext_S != "null") {
-                let navigation_seg_bartext:UIColor? = 主题参数转对象.color(navigation_seg_bartext_S) //navigation_seg_bartext_S
-                if (navigation_seg_bartext != "null") {
-                    let navigation_seg_bartext_dic:NSDictionary = NSDictionary(object: navigation_seg_bartext!,
-                        forKey:NSForegroundColorAttributeName)
-                    UISegmentedControl.appearance().setTitleTextAttributes(navigation_seg_bartext_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
-                }
-            }
+            //RGBA色值：顶端收藏历史自定义选项卡未选定时文字颜色 NO!
+//            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
+//            NSLog("[Skin]navigation_seg_bartext_S=%@",navigation_seg_bartext_S)
+//            if (navigation_seg_bartext_S != "null") {
+//                let navigation_seg_bartext:UIColor? = 主题参数转对象.color(navigation_seg_bartext_S) //navigation_seg_bartext_S
+//                if (navigation_seg_bartext != "null") {
+//                    let navigation_seg_bartext_dic:NSDictionary = NSDictionary(object: navigation_seg_bartext!,
+//                        forKey:NSForegroundColorAttributeName)
+//                    UISegmentedControl.appearance().setTitleTextAttributes(navigation_seg_bartext_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
+//                    self.navigationController?.navigationBar.backgroundColor = navigation_seg_bartext
+//                    UISegmentedControl.appearance().backgroundColor = navigation_seg_bartext
+//                }
+//            }
             
             //TableView
+            //RGBA色值：列表的背景色 yes
+            let table_bgcolor_S:String = 全局_皮肤设置.objectForKey("table_bgcolor") as! String
+            NSLog("[Skin]table_bgcolor_S=%@",table_bgcolor_S)
+            if (table_bgcolor_S != "null") {
+                let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
+                if (table_bgcolor != nil) {
+                    表格.backgroundColor = table_bgcolor
+                }
+            }
+            //RGBA色值：列表文字颜色 yes
+            let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
+            NSLog("[Skin]table_textcolor_S=%@",table_textcolor_S)
+            if (table_textcolor_S != "null") {
+                let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
+                if (table_textcolor != nil) {
+                    列表文字颜色 = table_textcolor!
+                }
+            }
+            //RGBA色值：列表当前选中的行背景色 yes
+            let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
+            NSLog("[Skin]table_selectcolor_S=%@",table_selectcolor_S)
+            if (table_selectcolor_S != "null") {
+                let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
+                if (table_selectcolor != nil) {
+                    列表当前选中的行背景色 = table_selectcolor!
+                }
+            }
+            //图片文件名：列表当前选中的行背景图片 yes
+            let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
+            NSLog("[Skin]table_selectimage_S=%@",table_selectimage_S)
+            if (table_selectimage_S != "null") {
+                let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
+                if (table_selectimage != nil) {
+                    列表当前选中的行背景图片 = table_selectimage!
+                }
+            }
+            //背景图( ============= 未写完断点标记 by yashi ============= )
             
-            
+            //bgpview.alpha = loadopc()
+            let bg:UIImage? = loadbg()
+            if(bg != defaultimage){
+                bgpview.image = bgimage
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            } else {
+                bgpview.image = bgimage
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+            }
+            表格.reloadData()
         }
     }
     
     override func viewWillAppear(animated: Bool) {
-        let 背景透明度:CGFloat = loadopc()
-        表格.alpha = 背景透明度
-        
-        let bg:UIImage? = loadbg()
-        if(bg != defaultimage){
-            bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-        } else {
-            bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-        }
         
         if(表格.editing){
             if(内容选择菜单.selectedSegmentIndex == 0){
@@ -533,8 +575,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
+            cell?.backgroundColor = UIColor.clearColor()
+            let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
+            选中行背景视图.backgroundColor = UIColor.orangeColor()
+            cell?.selectedBackgroundView = 选中行背景视图
         }
         if (表格数据.count > 0) {
+            let 选中行背景视图:UIImageView = cell?.selectedBackgroundView as! UIImageView
+            选中行背景视图.backgroundColor = 列表当前选中的行背景色
+            选中行背景视图.image = 列表当前选中的行背景图片
+            cell?.textLabel?.textColor = 列表文字颜色
+            
             let 当前单元格数据:NSArray = 表格数据.objectAtIndex(indexPath.row) as! NSArray
             if (当前单元格数据.count < 1) {
                 cell?.textLabel?.text = "<错误数据>"
