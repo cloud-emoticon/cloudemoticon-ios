@@ -62,7 +62,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("[AppDelegate]主题：使用默认皮肤。")
             全局_皮肤设置 = NSDictionary()
         }
-        
         var statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)

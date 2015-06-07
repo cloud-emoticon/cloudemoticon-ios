@@ -32,8 +32,15 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到主题管理:", name: "切换到主题管理通知", object: nil)
         self.language()
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
+        
+    }
+    
+    func 延迟切换主题() {
+        切换主题()
     }
     
     func initSetting()
@@ -83,27 +90,9 @@ class MainTBViewController: UITabBarController {
         
         NSLog("[Skin]->MainTBViewController")
 //        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-        self.tabBar
+//        self.tabBar
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
-            //图片文件名：顶端导航栏背景图片
-//            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
-//            NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
-//            if (navigation_bar_image_S != "null") {
-//                let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S)
-//                if (navigation_bar_image != nil) {
-//                    self.navigationController?.navigationBar.backIndicatorImage = navigation_bar_image
-//                }
-//            }
-            //RGBA色值：顶端导航栏背景颜色
-//            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
-//            NSLog("[Skin]navigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
-//            if (navigation_bar_bgcolor_S != "null") {
-//                let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S)
-//                if (navigation_bar_bgcolor != nil) {
-//                    self.navigationController?.navigationBar.barTintColor = UIColor.redColor() //navigation_bar_bgcolor
-//                }
-//            }
             //图片文件名：底部工具栏“自定表情”按钮图标 ok
             let items:NSArray = self.tabBar.items!
             let myemo:UITabBarItem = items.objectAtIndex(0) as! UITabBarItem
@@ -206,6 +195,7 @@ class MainTBViewController: UITabBarController {
                 let tool_selecttintcolor:UIColor? = 主题参数转对象.color(tool_selecttintcolor_S) //tool_selecttintcolor_S
                 if (tool_selecttintcolor != nil) {
                     self.tabBar.barTintColor = tool_selecttintcolor
+                    self.tabBar.backgroundColor = UIColor.clearColor()
                 }
             }
             //图片文件名：底部工具栏当前选中按钮的背景图片 ok
@@ -226,81 +216,28 @@ class MainTBViewController: UITabBarController {
                     self.tabBar.tintColor = tool_tintcolor
                 }
             }
-            
-            //RGBA色值：底部工具栏未选中按钮的颜色 ok
+            //RGBA色值：底部工具栏未选中按钮的颜色 err
             let tool_unselecttintcolor_S:String = 全局_皮肤设置.objectForKey("tool_unselecttintcolor") as! String
             NSLog("[Skin]tool_unselecttintcolor_S=%@",tool_unselecttintcolor_S)
             if (tool_unselecttintcolor_S != "null") {
-                let tool_unselecttintcolor:UIColor? = 主题参数转对象.color(tool_unselecttintcolor_S)
+                let tool_unselecttintcolor:UIColor? = UIColor.redColor()//主题参数转对象.color(tool_unselecttintcolor_S)
                 if (tool_unselecttintcolor != "null") {
-                    let tool_unselecttintcolor_dic = NSDictionary(object: 主题参数转对象.color(tool_unselecttintcolor_S)!,
-                        forKey:NSForegroundColorAttributeName)
+                    let tool_unselecttintcolor_dic = NSDictionary(object: tool_unselecttintcolor!,
+                        forKey:NSBackgroundColorAttributeName)
                     UITabBarItem.appearance().setTitleTextAttributes(tool_unselecttintcolor_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
             }
-            
-            // MARK: - 顶端导航栏的主题应用操作之后会移交给各VC
-            //图片文件名：顶端导航栏背景图片 move
-            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
-            NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
-            if (tool_backgroundimage_S != "null") {
-                let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
-                if (navigation_bar_image != nil) {
-                    UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
-                }
-            }
-            //RGBA色值：顶端导航栏背景颜色 move
-            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
-            NSLog("[Skin]tnavigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
-            if (tool_selecttintcolor_S != "null") {
-                let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
-                if (navigation_bar_bgcolor != nil) {
-                    self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
-
-                }
-            }
-            //图片文件名：顶端导航栏按钮颜色 move
-            let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
-            NSLog("[Skin]navigation_btn_textcolor_S=%@",navigation_btn_textcolor_S)
-            if (navigation_btn_textcolor_S != "null") {
-                let navigation_btn_textcolor:UIColor? = 主题参数转对象.color(navigation_btn_textcolor_S) //navigation_btn_textcolor_S
-                if (navigation_btn_textcolor != nil) {
-                    self.navigationController?.navigationBar.tintColor = navigation_btn_textcolor
-                }
-            }
-            
-            //RGBA色值：顶端导航栏文字颜色 move
-            let navigation_seg_tintcolor_S:String = 全局_皮肤设置.objectForKey("navigation_seg_tintcolor") as! String
-            NSLog("[Skin]navigation_seg_tintcolor_S=%@",navigation_seg_tintcolor_S)
-            if (navigation_seg_tintcolor_S != "null") {
-                let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S)
-                if (navigation_seg_tintcolor != "null") {
-                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: 主题参数转对象.color(navigation_seg_tintcolor_S)!,
+            //RGBA色值：底部工具栏按钮文字的颜色 ok
+            let tool_titletextattributes_S:String = 全局_皮肤设置.objectForKey("tool_titletextattributes") as! String
+            NSLog("[Skin]tool_titletextattributes_S=%@",tool_titletextattributes_S)
+            if (tool_titletextattributes_S != "null") {
+                let tool_titletextattributes:UIColor? = 主题参数转对象.color(tool_titletextattributes_S)
+                if (tool_titletextattributes != "null") {
+                    let tool_titletextattributes_dic = NSDictionary(object: tool_titletextattributes!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
             }
-            //RGBA色值：顶端segment色 move
-            let navigation_seg_bar_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bar") as! String
-            NSLog("[Skin]navigation_seg_bar_S=%@",navigation_seg_bar_S)
-            if (navigation_seg_bar_S != "null") {
-                let navigation_seg_bar:UIColor? = 主题参数转对象.color(navigation_seg_bar_S)
-                if (navigation_seg_bar != "null") {
-                    UISegmentedControl.appearance().tintColor = navigation_seg_bar
-                }
-            }
-            //RGBA色值：顶端segment未选定时文字色 move
-            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
-            NSLog("[Skin]navigation_seg_bartext_S=%@",navigation_seg_bartext_S)
-            if (navigation_seg_bartext_S != "null") {
-                let navigation_seg_bartext:UIColor? = 主题参数转对象.color(navigation_seg_bartext_S)
-                if (navigation_seg_bartext != "null") {
-                    let navigation_seg_bartext_dic:NSDictionary = NSDictionary(object: 主题参数转对象.color(navigation_seg_bartext_S)!,
-                        forKey:NSForegroundColorAttributeName)
-                    UISegmentedControl.appearance().setTitleTextAttributes(navigation_seg_bartext_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
-                }
-            }
-            
         }
     }
     
