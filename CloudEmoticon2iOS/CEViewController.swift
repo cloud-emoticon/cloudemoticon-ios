@@ -21,7 +21,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     let 文件管理器 = FileManager()
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
-    var 颜文字表格背景:UIImageView = UIImageView()
+//    var 颜文字表格背景:UIImageView = UIImageView()
     var 搜索颜文字:UISearchBar = UISearchBar()
     var 搜索结果:NSMutableArray = NSMutableArray()
     var 搜索结果的名称:NSMutableArray = NSMutableArray()
@@ -64,8 +64,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
-        颜文字表格背景.image = bgimage
-        颜文字表格背景.contentMode = bgpview.contentMode
+//        颜文字表格背景.image = bgimage
+//        颜文字表格背景.contentMode = bgpview.contentMode
+        
     }
     
     
@@ -105,8 +106,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //Load Data
         分类表格.delegate = self
         分类表格.dataSource = self
+        分类表格.backgroundColor = UIColor.clearColor()
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
+        颜文字表格.backgroundColor = UIColor.clearColor()
         载入数据(NetDownloadTo.CLOUDEMOTICON)
         
         self.language()
@@ -116,7 +119,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转:", name: "屏幕旋转通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "load:", name: "loaddataok", object: nil)
         
@@ -140,10 +143,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
         }
         
-        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
-        颜文字表格背景.backgroundColor = UIColor.whiteColor()
-        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
-        颜文字表格背景.layer.masksToBounds = true
+//        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
+//        颜文字表格背景.backgroundColor = UIColor.whiteColor()
+//        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+//        颜文字表格背景.layer.masksToBounds = true
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
@@ -186,7 +189,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.setContentOffset(CGPointMake(0, -20), animated: true)
         
         self.view.addSubview(分类表格)
-        self.view.addSubview(颜文字表格背景)
+//        self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
     }
 
@@ -354,7 +357,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.25, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+//                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
             })
         }
     }
@@ -388,7 +391,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+//                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }, completion: {
                     (Bool completion) in
                     if completion {
@@ -410,7 +413,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
                     self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+//                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }
             }
         }
@@ -459,6 +462,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
+                cell?.backgroundColor = UIColor.clearColor()
             }
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as! NSString
             cell!.textLabel?.text  = groupname as String
@@ -560,7 +564,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return 44
     }
 
-    func transition(notification:NSNotification)
+    func 屏幕旋转(notification:NSNotification)
     {
 //        println("收到屏幕旋转")
         let newScreenSizeArr:NSArray = notification.object as! NSArray
@@ -571,11 +575,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
             sortBtn.title = lang.uage("分类")
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
-            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+//            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
         } else {
             sortBtn.title = ""
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
-            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
+//            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
         }
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
