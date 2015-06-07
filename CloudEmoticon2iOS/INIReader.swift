@@ -102,6 +102,7 @@ class INIReader: NSObject {
     }
     
     func 检查数据条目(INI字典:NSMutableDictionary) -> Bool {
+        return true // MARK: - INI检查器开关，此处不注释则跳过检查器
         let 键模板文件路径:String = NSBundle.mainBundle().pathForResource("themekeys", ofType: "txt")!
         let 模板文件内容:String = String(contentsOfFile: 键模板文件路径, encoding: NSUTF8StringEncoding, error: nil)!
         let 模板行数组:NSArray = 模板文件内容.componentsSeparatedByString("\n")
