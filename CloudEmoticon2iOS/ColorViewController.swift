@@ -22,7 +22,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "屏幕旋转通知", object: nil)
         list.addObject(lang.uage("替换主题中的背景图片"))
 //        list.addObject(lang.uage("修改背景图片"))
 //        list.addObject(lang.uage("背景不透明度"))

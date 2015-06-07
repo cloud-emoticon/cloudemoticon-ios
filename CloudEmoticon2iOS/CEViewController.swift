@@ -116,7 +116,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "transition", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "屏幕旋转通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "load:", name: "loaddataok", object: nil)
         

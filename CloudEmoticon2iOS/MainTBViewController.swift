@@ -220,7 +220,7 @@ class MainTBViewController: UITabBarController {
             let tool_unselecttintcolor_S:String = 全局_皮肤设置.objectForKey("tool_unselecttintcolor") as! String
             NSLog("[Skin]tool_unselecttintcolor_S=%@",tool_unselecttintcolor_S)
             if (tool_unselecttintcolor_S != "null") {
-                let tool_unselecttintcolor:UIColor? = UIColor.redColor()//主题参数转对象.color(tool_unselecttintcolor_S)
+                let tool_unselecttintcolor:UIColor? = 主题参数转对象.color(tool_unselecttintcolor_S)
                 if (tool_unselecttintcolor != "null") {
                     let tool_unselecttintcolor_dic = NSDictionary(object: tool_unselecttintcolor!,
                         forKey:NSBackgroundColorAttributeName)
@@ -388,10 +388,11 @@ class MainTBViewController: UITabBarController {
 //        return true
 //    }
     
+    // MARK: - 发出屏幕旋转通知
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
     {
         let newScreenSize:NSArray = [size.width, size.height]
-        NSNotificationCenter.defaultCenter().postNotificationName("transition", object: newScreenSize)
+        NSNotificationCenter.defaultCenter().postNotificationName("屏幕旋转通知", object: newScreenSize)
     }
     
 

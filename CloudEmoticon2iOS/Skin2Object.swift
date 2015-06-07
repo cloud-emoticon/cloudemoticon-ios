@@ -43,4 +43,20 @@ class Skin2Object: NSObject {
         return UIImage(contentsOfFile: 目标文件夹路径)
     }
     
+    func 判断应该显示的背景图() -> String {
+        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
+            if (UIDevice.currentDevice().orientation.isPortrait) {
+                return "background_image_iphone_h"
+            } else {
+                return "background_image_iphone_w"
+            }
+        } else {
+            if (UIDevice.currentDevice().orientation.isPortrait) {
+                return "background_image_ipad_h"
+            } else {
+                return "background_image_ipad_w"
+            }
+        }
+    }
+    
 }

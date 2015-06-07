@@ -51,7 +51,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         let tbitemcolor = NSDictionary(object: UIColor.blackColor(),
             forKey:NSForegroundColorAttributeName)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
         切换主题()
+    }
+    
+    func 屏幕旋转() {
+        刷新背景图()
     }
     
     func 切换主题() {
@@ -110,7 +115,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     UISegmentedControl.appearance().tintColor = navigation_seg_bar
                 }
             }
-            //RGBA色值：顶端收藏历史自定义选项卡未选定时文字颜色 NO!
+            //RGBA色值：顶端收藏历史自定义选项卡未选定时文字颜色 yes
 //            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
 //            NSLog("[Skin]navigation_seg_bartext_S=%@",navigation_seg_bartext_S)
 //            if (navigation_seg_bartext_S != "null") {
@@ -161,23 +166,41 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     列表当前选中的行背景图片 = table_selectimage!
                 }
             }
-            //背景图( ============= 未写完断点标记 by yashi ============= )
-            
-            //bgpview.alpha = loadopc()
-            let bg:UIImage? = loadbg()
-            if(bg != defaultimage){
-                bgpview.image = bgimage
-                bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-            } else {
-                bgpview.image = bgimage
-                bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-            }
+            //背景图
+            刷新背景图()
             表格.reloadData()
         }
     }
     
+    func 刷新背景图() {
+        let 启用修改背景:Bool = NSUserDefaults.standardUserDefaults().boolForKey("diybg")
+        if (启用修改背景) {
+            NSLog("[Skin]背景图被用户替换")
+            let bg:UIImage? = loadbg()
+            bgpview.image = bgimage
+            if(bg != defaultimage){
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            } else {
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+            }
+            bgpview.alpha = loadopc()
+        } else {
+            bgpview.alpha = 1
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            let 主题参数转对象:Skin2Object = Skin2Object()
+            let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
+            let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
+            NSLog("[Skin]%@_S=%@",取背景图,background_image_S)
+            if (background_image_S != "null") {
+                let background_image:UIImage? = 主题参数转对象.image(background_image_S) //table_selectimage_S
+                if (background_image != nil) {
+                    bgpview.image = background_image!
+                }
+            }
+        }
+    }
+    
     override func viewWillAppear(animated: Bool) {
-        
         if(表格.editing){
             if(内容选择菜单.selectedSegmentIndex == 0){
                 左上按钮.title = ""
