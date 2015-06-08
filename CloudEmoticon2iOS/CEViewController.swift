@@ -19,7 +19,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     let 文件管理器 = FileManager()
     var 分类表格:UITableView = UITableView()
     var 颜文字表格:UITableView = UITableView()
-//    var 颜文字表格背景:UIImageView = UIImageView()
+    var 颜文字表格背景:UIImageView = UIImageView()
     var 搜索颜文字:UISearchBar = UISearchBar()
     var 搜索结果:NSMutableArray = NSMutableArray()
     var 搜索结果的名称:NSMutableArray = NSMutableArray()
@@ -42,6 +42,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 手势中:Bool = false
     var sortData:NSMutableArray = NSMutableArray()
     var ceData:NSMutableArray = NSMutableArray()
+    //主题属性
+    var 列表文字颜色:UIColor = UIColor.blackColor()
+    var 副标题列表文字颜色:UIColor = UIColor.grayColor()
+    var 列表当前选中的行背景色:UIColor = UIColor.clearColor()
+    var 列表当前选中的行背景图片:UIImage? = nil
+    var 云颜文字左侧分类列表文字颜色:UIColor = UIColor.blackColor()
+    var 云颜文字左侧分类列表选中行背景色:UIColor = UIColor.lightGrayColor()
+    var 云颜文字左侧分类列表选中行背景图片:UIImage? = nil
+    var 下拉刷新提示文本颜色:UIColor = UIColor.grayColor()
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -62,19 +71,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgpview.image = bgimage
             bgpview.contentMode = UIViewContentMode.ScaleAspectFit
         }
-//        颜文字表格背景.image = bgimage
-//        颜文字表格背景.contentMode = bgpview.contentMode
+        颜文字表格背景.image = bgimage
+        颜文字表格背景.contentMode = bgpview.contentMode
         
     }
     
     
     override func viewWillAppear(animated: Bool) {
         载入数据(NetDownloadTo.CLOUDEMOTICON)
-        loadbgi()
-        let 背景透明度:CGFloat = loadopc()
-        分类表格.alpha = 背景透明度
-        分类表格.alpha = 背景透明度
-        颜文字表格.alpha = 背景透明度
+//        loadbgi()
+//        let 背景透明度:CGFloat = loadopc()
+//        分类表格.alpha = 背景透明度
+//        分类表格.alpha = 背景透明度
+//        颜文字表格.alpha = 背景透明度
         
         var y_emoarr:NSArray = NSArray()
         var p_emoweb:NSArray? = p_emodata
@@ -108,10 +117,240 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
         颜文字表格.backgroundColor = UIColor.clearColor()
-        载入数据(NetDownloadTo.CLOUDEMOTICON)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
+//        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
+        切换主题()
+        载入数据(NetDownloadTo.CLOUDEMOTICON)
         self.language()
+        
 }
+//    func 延迟切换主题() {
+//        切换主题()
+//    }
+    
+    func 屏幕旋转() {
+        刷新背景图()
+    }
+    
+    func 切换主题() {
+        NSLog("[Skin]->CEViewController")
+        if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
+            let 主题参数转对象:Skin2Object = Skin2Object()
+            
+            //图片文件名：顶端导航栏背景图片 yes
+            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
+            NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
+            if (navigation_bar_image_S != "null") {
+                let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
+                if (navigation_bar_image != nil) {
+                    UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
+                }
+            }
+            //RGBA色值：顶端导航栏背景颜色 yes
+            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
+            NSLog("[Skin]tnavigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
+            if (navigation_bar_bgcolor_S != "null") {
+                let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
+                if (navigation_bar_bgcolor != nil) {
+                    self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
+                    
+                }
+            }
+            //图片文件名：顶端导航栏两侧按钮颜色 yes
+            let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
+            NSLog("[Skin]navigation_btn_textcolor_S=%@",navigation_btn_textcolor_S)
+            if (navigation_btn_textcolor_S != "null") {
+                let navigation_btn_textcolor:UIColor? = 主题参数转对象.color(navigation_btn_textcolor_S) //navigation_btn_textcolor_S
+                if (navigation_btn_textcolor != nil) {
+                    //                    self.navigationController?.navigationBar.tintColor = navigation_btn_textcolor
+                    sortBtn.tintColor = navigation_btn_textcolor
+                    scoreBtn.tintColor = navigation_btn_textcolor
+                }
+            }
+            
+            //RGBA色值：顶端导航栏文字颜色 yes
+            let navigation_seg_tintcolor_S:String = 全局_皮肤设置.objectForKey("navigation_seg_tintcolor") as! String
+            NSLog("[Skin]navigation_seg_tintcolor_S=%@",navigation_seg_tintcolor_S)
+            if (navigation_seg_tintcolor_S != "null") {
+                let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S) //navigation_seg_tintcolor_S
+                if (navigation_seg_tintcolor != "null") {
+                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
+                        forKey:NSForegroundColorAttributeName)
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                }
+            }
+            //RGBA色值：列表的背景色 yes
+            let table_bgcolor_S:String = 全局_皮肤设置.objectForKey("table_bgcolor") as! String
+            NSLog("[Skin]table_bgcolor_S=%@",table_bgcolor_S)
+            if (table_bgcolor_S != "null") {
+                let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
+                if (table_bgcolor != nil) {
+                    颜文字表格.backgroundColor = table_bgcolor
+                }
+            }
+            //RGBA色值：列表文字颜色 yes
+            let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
+            NSLog("[Skin]table_textcolor_S=%@",table_textcolor_S)
+            if (table_textcolor_S != "null") {
+                let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
+                if (table_textcolor != nil) {
+                    列表文字颜色 = table_textcolor!
+                }
+            }
+            //RGBA色值：副标题列表文字颜色 yes
+            let table_textcolor_d_S:String = 全局_皮肤设置.objectForKey("table_textcolor_d") as! String
+            NSLog("[Skin]table_textcolor_d_S=%@",table_textcolor_d_S)
+            if (table_textcolor_d_S != "null") {
+                let table_textcolor_d:UIColor? = 主题参数转对象.color(table_textcolor_d_S) //table_textcolor_d_S
+                if (table_textcolor_d != nil) {
+                    副标题列表文字颜色 = table_textcolor_d!
+                }
+            }
+            //RGBA色值：列表当前选中的行背景色 yes
+            let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
+            NSLog("[Skin]table_selectcolor_S=%@",table_selectcolor_S)
+            if (table_selectcolor_S != "null") {
+                let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
+                if (table_selectcolor != nil) {
+                    列表当前选中的行背景色 = table_selectcolor!
+                }
+            }
+            //图片文件名：列表当前选中的行背景图片 yes
+            let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
+            NSLog("[Skin]table_selectimage_S=%@",table_selectimage_S)
+            if (table_selectimage_S != "null") {
+                let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
+                if (table_selectimage != nil) {
+                    列表当前选中的行背景图片 = table_selectimage!
+                }
+            }
+            //RGBA色值：云颜文字左侧分类列表背景色 yes
+            let cloudemo_typetable_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgcolor") as! String
+            NSLog("[Skin]cloudemo_typetable_bgcolor_S=%@",cloudemo_typetable_bgcolor_S)
+            if (cloudemo_typetable_bgcolor_S != "null") {
+                let cloudemo_typetable_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_bgcolor_S) //cloudemo_typetable_bgcolor_S
+                if (cloudemo_typetable_bgcolor != nil) {
+                    分类表格.backgroundColor = cloudemo_typetable_bgcolor
+                }
+            }
+            //图片文件名：云颜文字左侧分类列表背景图片
+            let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
+            NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S)
+            if (cloudemo_typetable_bgimage_S != "null") {
+                let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
+                if (cloudemo_typetable_bgimage != nil) {
+                    bgpview.image = cloudemo_typetable_bgimage
+                }
+            }
+            //RGBA色值：云颜文字左侧分类列表文字颜色
+            let cloudemo_typetable_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_textcolor") as! String
+            NSLog("[Skin]cloudemo_typetable_textcolor_S=%@",cloudemo_typetable_textcolor_S)
+            if (cloudemo_typetable_textcolor_S != "null") {
+                let cloudemo_typetable_textcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_textcolor_S) //cloudemo_typetable_textcolor_S
+                if (cloudemo_typetable_textcolor != nil) {
+                    云颜文字左侧分类列表文字颜色 = cloudemo_typetable_textcolor!
+                }
+            }
+            //RGBA色值：云颜文字左侧分类列表选中行背景色
+            let cloudemo_typetable_selectcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectcolor") as! String
+            NSLog("[Skin]cloudemo_typetable_selectcolor_S=%@",cloudemo_typetable_selectcolor_S)
+            if (cloudemo_typetable_selectcolor_S != "null") {
+                let cloudemo_typetable_selectcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_selectcolor_S) //cloudemo_typetable_selectcolor_S
+                if (cloudemo_typetable_selectcolor != nil) {
+                    云颜文字左侧分类列表选中行背景色 = cloudemo_typetable_selectcolor!
+                }
+            }
+            //图片文件名：云颜文字左侧分类列表选中行背景图片
+            let cloudemo_typetable_selectimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectimage") as! String
+            NSLog("[Skin]cloudemo_typetable_selectimage_S=%@",cloudemo_typetable_selectimage_S)
+            if (cloudemo_typetable_selectimage_S != "null") {
+                let cloudemo_typetable_selectimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_selectimage_S) //cloudemo_typetable_selectimage_S
+                if (cloudemo_typetable_selectimage != nil) {
+                    云颜文字左侧分类列表选中行背景图片 = cloudemo_typetable_selectimage
+                }
+            }
+            //RGBA色值：搜索框背景颜色
+            let cloudemo_search_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_bgcolor") as! String
+            NSLog("[Skin]cloudemo_search_bgcolor_S=%@",cloudemo_search_bgcolor_S)
+            if (cloudemo_search_bgcolor_S != "null") {
+                let cloudemo_search_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_search_bgcolor_S) //cloudemo_search_bgcolor_S
+                if (cloudemo_search_bgcolor != nil) {
+                    //搜索框背景颜色 未应用！
+                }
+            }
+            //RGBA色值：搜索框颜色
+            let cloudemo_search_tintcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_tintcolor") as! String
+            NSLog("[Skin]cloudemo_search_tintcolor_S=%@",cloudemo_search_tintcolor_S)
+            if (cloudemo_search_tintcolor_S != "null") {
+                let cloudemo_search_tintcolor:UIColor? = 主题参数转对象.color(cloudemo_search_tintcolor_S) //cloudemo_search_tintcolor_S
+                if (cloudemo_search_tintcolor != nil) {
+                    搜索颜文字.barTintColor = cloudemo_search_tintcolor
+                    搜索颜文字.tintColor = cloudemo_search_tintcolor
+                }
+            }
+            //RGBA色值：下拉刷新文字颜色
+            let cloudemo_downrefresh_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_downrefresh_textcolor") as! String
+            NSLog("[Skin]cloudemo_downrefresh_textcolor_S=%@",cloudemo_downrefresh_textcolor_S)
+            if (cloudemo_downrefresh_textcolor_S != "null") {
+                let cloudemo_downrefresh_textcolor:UIColor? = 主题参数转对象.color(cloudemo_downrefresh_textcolor_S) //cloudemo_downrefresh_textcolor_S
+                if (cloudemo_downrefresh_textcolor != nil) {
+                    下拉刷新提示文本颜色 = cloudemo_downrefresh_textcolor!
+                    if (下拉刷新提示 != nil) {
+                        下拉刷新提示?.textColor = 下拉刷新提示文本颜色
+                    }
+                }
+            }
+            //背景图
+            刷新背景图()
+            分类表格.reloadData()
+            颜文字表格.reloadData()
+        }
+    }
+    
+    func 刷新背景图() {
+        let 启用修改背景:Bool = NSUserDefaults.standardUserDefaults().boolForKey("diybg")
+        if (启用修改背景) {
+            NSLog("[Skin]背景图被用户替换")
+            let bg:UIImage? = loadbg()
+            bgpview.image = bgimage
+            颜文字表格背景.image = bgimage
+            if(bg != defaultimage){
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+                颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+            } else {
+                bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+                颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
+            }
+            bgpview.alpha = loadopc()
+            颜文字表格背景.alpha = loadopc()
+        } else {
+            bgpview.alpha = 1
+            颜文字表格背景.alpha = 1
+            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+            let 主题参数转对象:Skin2Object = Skin2Object()
+            let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
+            let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
+            NSLog("[Skin]%@_S=%@",取背景图,background_image_S)
+            if (background_image_S != "null") {
+                let background_image:UIImage? = 主题参数转对象.image(background_image_S) //background_image_S
+                if (background_image != nil) {
+                    颜文字表格背景.image = background_image!
+                }
+            }
+            //图片文件名：云颜文字左侧分类列表背景图片
+            let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
+            NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S)
+            if (cloudemo_typetable_bgimage_S != "null") {
+                let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
+                if (cloudemo_typetable_bgimage != nil) {
+                    bgpview.image = cloudemo_typetable_bgimage
+                }
+            }
+        }
+    }
     
     func 载入视图() {
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
@@ -141,10 +380,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
         }
         
-//        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
-//        颜文字表格背景.backgroundColor = UIColor.whiteColor()
-//        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
-//        颜文字表格背景.layer.masksToBounds = true
+        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
+        颜文字表格背景.backgroundColor = UIColor.whiteColor()
+        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        颜文字表格背景.layer.masksToBounds = true
         
         userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
         userimg.frame = CGRectMake(10, 20, 80, 80)
@@ -175,10 +414,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         颜文字表格.contentInset = 分类表格.contentInset
         
-        颜文字表格.layer.shadowColor = UIColor.grayColor().CGColor
-        颜文字表格.layer.shadowOffset = CGSizeMake(-5, 0)
-        颜文字表格.layer.shadowOpacity = 0.9
-        颜文字表格.layer.masksToBounds = false
+        //在真机中似乎影响性能，暂时关闭阴影功能。
+//        颜文字表格.layer.shadowColor = UIColor.grayColor().CGColor
+//        颜文字表格.layer.shadowOffset = CGSizeMake(-5, 0)
+//        颜文字表格.layer.shadowOpacity = 0.9
+//        颜文字表格.layer.masksToBounds = false
         
         搜索颜文字.delegate = self
         搜索颜文字.autocapitalizationType = UITextAutocapitalizationType.None
@@ -187,7 +427,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.setContentOffset(CGPointMake(0, -20), animated: true)
         
         self.view.addSubview(分类表格)
-//        self.view.addSubview(颜文字表格背景)
+        self.view.addSubview(颜文字表格背景)
         self.view.addSubview(颜文字表格)
     }
 
@@ -355,7 +595,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.25, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-//                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
             })
         }
     }
@@ -389,7 +629,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
             UIView.animateWithDuration(0.15, animations: {
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-//                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }, completion: {
                     (Bool completion) in
                     if completion {
@@ -411,7 +651,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
                     self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-//                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }
             }
         }
@@ -456,23 +696,40 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     {
         let CellIdentifier:NSString = "Cell"
         
-        if (tableView.tag == 100) {
+        if (tableView.tag == 100) { //左表
             var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
                 cell?.backgroundColor = UIColor.clearColor()
+                let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
+//                选中行背景视图.backgroundColor = UIColor.redColor()
+                cell?.selectedBackgroundView = 选中行背景视图
             }
+            let 选中行背景视图:UIImageView = cell?.selectedBackgroundView as! UIImageView
+            选中行背景视图.backgroundColor = 云颜文字左侧分类列表选中行背景色
+            选中行背景视图.image = 云颜文字左侧分类列表选中行背景图片
+            cell?.textLabel?.textColor = 云颜文字左侧分类列表文字颜色
             let groupname:NSString = sortData.objectAtIndex(indexPath.row) as! NSString
             cell!.textLabel?.text  = groupname as String
             return cell!
         } else {
+            
             var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? CETableViewCell
             if (cell == nil) {
                 cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
+                cell?.backgroundColor = UIColor.clearColor()
                 cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
                 cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
                 cell!.代理 = self
+                let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
+//                选中行背景视图.backgroundColor = UIColor.orangeColor()
+                cell?.selectedBackgroundView = 选中行背景视图
             }
+            let 选中行背景视图:UIImageView = cell?.selectedBackgroundView as! UIImageView
+            选中行背景视图.backgroundColor = 列表当前选中的行背景色
+            选中行背景视图.image = 列表当前选中的行背景图片
+            cell?.主文字.textColor = 列表文字颜色
+            cell?.副文字.textColor = 副标题列表文字颜色
             cell!.单元格在表格中的位置 = indexPath
             let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
             let emo:NSString = emoobj.objectAtIndex(0) as! NSString
@@ -573,11 +830,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
             sortBtn.title = lang.uage("分类")
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
-//            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
         } else {
             sortBtn.title = ""
             颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
-//            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
+            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
         }
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
@@ -612,6 +869,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (下拉刷新提示 != nil) {
             let 当前表格:UITableView = scrollView as! UITableView
             下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
+            下拉刷新提示?.textColor = 下拉刷新提示文本颜色
             if (下拉刷新动作中) {
                 if (表格竖向滚动 < -100.0) {
                     下拉刷新提示!.text = lang.uage("松开手指刷新")
@@ -727,7 +985,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 单元格代理：是否可以接收手势() -> Bool
     {
         if (isCanAutoHideSortView()) {
-
             if (颜文字表格.frame.origin.x == 0 && 菜单滑动中 == false) {
                 return true
             } else {

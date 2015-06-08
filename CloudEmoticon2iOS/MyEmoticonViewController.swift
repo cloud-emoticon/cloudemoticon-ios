@@ -600,7 +600,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
             cell?.backgroundColor = UIColor.clearColor()
             let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
-            选中行背景视图.backgroundColor = UIColor.orangeColor()
+//            选中行背景视图.backgroundColor = UIColor.orangeColor()
             cell?.selectedBackgroundView = 选中行背景视图
         }
         if (表格数据.count > 0) {
