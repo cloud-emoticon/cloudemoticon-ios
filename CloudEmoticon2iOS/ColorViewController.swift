@@ -53,6 +53,11 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     override func viewDidDisappear(animated: Bool) {
         saveSetting()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().postNotificationName("切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: lang.uage("正在切换主题..."))
+    }
 
     func transition(notification:NSNotification)
     {

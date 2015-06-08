@@ -591,6 +591,7 @@
 				5389C6D61B1A1232002811DC /* Skin2Object.swift */,
 				5389C6CE1B19A52A002811DC /* INIReader.swift */,
 				5389C6D41B1A0B89002811DC /* themekeys.txt */,
+				8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */,
 			);
 			name = "主题管理";
 			sourceTree = "<group>";
@@ -759,7 +760,6 @@
 			isa = PBXGroup;
 			children = (
 				533E537C19B861FE00DFD2CB /* SetTableViewController.swift */,
-				8BA6683D19ACCD2B0080C47F /* ColorViewController.swift */,
 				8BA6683F19ACCD390080C47F /* AboutViewController.swift */,
 				8BA6684819ACDCB30080C47F /* SettingViewController.swift */,
 				5389F5941AEB85FF009A1552 /* ResetSetting.swift */,

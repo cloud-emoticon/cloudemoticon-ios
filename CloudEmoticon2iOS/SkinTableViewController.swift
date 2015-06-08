@@ -312,6 +312,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         }
         更新数据()
         NSNotificationCenter.defaultCenter().postNotificationName("切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: lang.uage("正在切换主题..."))
         
 //        for i in 0...(皮肤ID列表.count - 1)
 //        {

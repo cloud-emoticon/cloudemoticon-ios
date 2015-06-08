@@ -15,8 +15,6 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     @IBOutlet weak var sortBtn: UIBarButtonItem!
     @IBOutlet weak var scoreBtn: UIBarButtonItem!
     
-    
-
     let className = "[云颜文字]"
     let 文件管理器 = FileManager()
     var 分类表格:UITableView = UITableView()
