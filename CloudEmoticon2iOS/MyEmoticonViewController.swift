@@ -61,6 +61,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 切换主题() {
         NSLog("[Skin]->MyEmoticonViewController")
+        列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             //图片文件名：顶端导航栏背景图片 yes

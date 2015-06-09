@@ -136,6 +136,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 切换主题() {
         NSLog("[Skin]->CEViewController")
+        列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+        云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             
