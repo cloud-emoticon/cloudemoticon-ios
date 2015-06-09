@@ -295,12 +295,12 @@ class MainTBViewController: UITabBarController {
                         forKey:NSForegroundColorAttributeName)
                     UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 } else {
-                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1),
+                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255.0, green: 150/255.0, blue: 243/255.0, alpha: 1),
                         forKey:NSForegroundColorAttributeName)
                     UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
             } else {
-                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1),
+                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255.0, green: 150/255.0, blue: 243/255.0, alpha: 1),
                         forKey:NSForegroundColorAttributeName)
                     UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
             }

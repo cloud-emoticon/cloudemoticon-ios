@@ -70,8 +70,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
                 if (navigation_bar_image != nil) {
                     UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
+                } else {
+                     UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
                 }
+            }  else {
+                UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
             }
+
             //RGBA色值：顶端导航栏背景颜色 yes
             let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
             NSLog("[Skin]tnavigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
@@ -79,7 +84,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
                 if (navigation_bar_bgcolor != nil) {
                     self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
-                    
+                } else {
+                    self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
                 }
             }
             //图片文件名：顶端导航栏两侧按钮颜色 yes
@@ -91,7 +97,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                    self.navigationController?.navigationBar.tintColor = navigation_btn_textcolor
                     左上按钮.tintColor = navigation_btn_textcolor
                     右上按钮.tintColor = navigation_btn_textcolor
+                } else {
+                    左上按钮.tintColor = UIColor.whiteColor()
+                    右上按钮.tintColor = UIColor.whiteColor()
                 }
+            } else {
+                左上按钮.tintColor = UIColor.whiteColor()
+                右上按钮.tintColor = UIColor.whiteColor()
             }
             
             //RGBA色值：顶端导航栏文字颜色 yes
@@ -103,8 +115,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
                     self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                } else {
+                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
+                        forKey:NSForegroundColorAttributeName)
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
                 }
+            } else {
+                let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
+                    forKey:NSForegroundColorAttributeName)
+                self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
             }
+            
             //RGBA色值：顶端收藏历史自定义选项卡颜色 yes
             let navigation_seg_bar_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bar") as! String
             NSLog("[Skin]navigation_seg_bar_S=%@",navigation_seg_bar_S)
@@ -113,7 +134,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (navigation_seg_bar != "null") {
                     self.navigationController?.navigationBar.tintColor = navigation_seg_bar
                     UISegmentedControl.appearance().tintColor = navigation_seg_bar
+                } else {
+                    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+                    UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
                 }
+            } else {
+                self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+                UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
             }
             //RGBA色值：顶端收藏历史自定义选项卡未选定时文字颜色 yes
 //            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
@@ -153,6 +180,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 } else {
                     列表文字颜色 = UIColor.blackColor()
                 }
+            } else {
+                列表文字颜色 = UIColor.blackColor()
             }
             //RGBA色值：列表当前选中的行背景色 yes
             let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
