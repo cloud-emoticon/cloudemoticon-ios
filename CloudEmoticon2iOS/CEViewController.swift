@@ -101,7 +101,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         //MARK - 主题
         
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         let titlecolor = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
@@ -146,7 +146,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
                 if (navigation_bar_image != nil) {
                     UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
+                } else {
+                    UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
                 }
+            } else {
+                    UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
             }
             //RGBA色值：顶端导航栏背景颜色 yes
             let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
@@ -155,19 +159,28 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
                 if (navigation_bar_bgcolor != nil) {
                     self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
-                    
+                } else {
+                    self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
                 }
+            } else {
+                    self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
             }
+
             //图片文件名：顶端导航栏两侧按钮颜色 yes
             let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
             NSLog("[Skin]navigation_btn_textcolor_S=%@",navigation_btn_textcolor_S)
             if (navigation_btn_textcolor_S != "null") {
                 let navigation_btn_textcolor:UIColor? = 主题参数转对象.color(navigation_btn_textcolor_S) //navigation_btn_textcolor_S
                 if (navigation_btn_textcolor != nil) {
-                    //                    self.navigationController?.navigationBar.tintColor = navigation_btn_textcolor
                     sortBtn.tintColor = navigation_btn_textcolor
                     scoreBtn.tintColor = navigation_btn_textcolor
+                } else {
+                    sortBtn.tintColor = UIColor.whiteColor()
+                    scoreBtn.tintColor = UIColor.whiteColor()
                 }
+            } else {
+                    sortBtn.tintColor = UIColor.whiteColor()
+                    scoreBtn.tintColor = UIColor.whiteColor()
             }
             
             //RGBA色值：顶端导航栏文字颜色 yes
@@ -179,8 +192,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
                     self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                } else {
+                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
+                        forKey:NSForegroundColorAttributeName)
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
                 }
+            } else {
+                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
+                        forKey:NSForegroundColorAttributeName)
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
             }
+
             //RGBA色值：列表的背景色 yes
             let table_bgcolor_S:String = 全局_皮肤设置.objectForKey("table_bgcolor") as! String
             NSLog("[Skin]table_bgcolor_S=%@",table_bgcolor_S)
@@ -188,7 +210,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
                 if (table_bgcolor != nil) {
                     颜文字表格.backgroundColor = table_bgcolor
+                } else {
+                    颜文字表格.backgroundColor = UIColor.whiteColor()
                 }
+            } else {
+                颜文字表格.backgroundColor = UIColor.whiteColor()
             }
             //RGBA色值：列表文字颜色 yes
             let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
@@ -197,7 +223,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
                 if (table_textcolor != nil) {
                     列表文字颜色 = table_textcolor!
+                } else {
+                    列表文字颜色 = UIColor.blackColor()
                 }
+            } else {
+                列表文字颜色 = UIColor.blackColor()
             }
             //RGBA色值：副标题列表文字颜色 yes
             let table_textcolor_d_S:String = 全局_皮肤设置.objectForKey("table_textcolor_d") as! String
@@ -206,7 +236,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let table_textcolor_d:UIColor? = 主题参数转对象.color(table_textcolor_d_S) //table_textcolor_d_S
                 if (table_textcolor_d != nil) {
                     副标题列表文字颜色 = table_textcolor_d!
+                } else {
+                    副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
                 }
+            } else {
+                副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
             }
             //RGBA色值：列表当前选中的行背景色 yes
             let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
@@ -215,7 +249,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
                 if (table_selectcolor != nil) {
                     列表当前选中的行背景色 = table_selectcolor!
+                } else {
+                    列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
                 }
+            } else {
+                列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
             }
             //图片文件名：列表当前选中的行背景图片 yes
             let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
@@ -224,7 +262,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
                 if (table_selectimage != nil) {
                     列表当前选中的行背景图片 = table_selectimage!
+                } else {
+                    列表当前选中的行背景图片 = nil
                 }
+            } else {
+                列表当前选中的行背景图片 = nil
             }
             //RGBA色值：云颜文字左侧分类列表背景色 yes
             let cloudemo_typetable_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgcolor") as! String
@@ -233,7 +275,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_bgcolor_S) //cloudemo_typetable_bgcolor_S
                 if (cloudemo_typetable_bgcolor != nil) {
                     分类表格.backgroundColor = cloudemo_typetable_bgcolor
+                } else {
+                    分类表格.backgroundColor = UIColor.clearColor()
                 }
+            } else {
+                分类表格.backgroundColor = UIColor.clearColor()
             }
             //图片文件名：云颜文字左侧分类列表背景图片
             let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
@@ -242,7 +288,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
                 if (cloudemo_typetable_bgimage != nil) {
                     bgpview.image = cloudemo_typetable_bgimage
+                } else {
+                    bgpview.image = nil
                 }
+            } else {
+                bgpview.image = nil
             }
             //RGBA色值：云颜文字左侧分类列表文字颜色
             let cloudemo_typetable_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_textcolor") as! String
@@ -251,7 +301,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_textcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_textcolor_S) //cloudemo_typetable_textcolor_S
                 if (cloudemo_typetable_textcolor != nil) {
                     云颜文字左侧分类列表文字颜色 = cloudemo_typetable_textcolor!
+                } else {
+                    云颜文字左侧分类列表文字颜色 = UIColor.blackColor()
                 }
+            }  else {
+                云颜文字左侧分类列表文字颜色 = UIColor.blackColor()
             }
             //RGBA色值：云颜文字左侧分类列表选中行背景色
             let cloudemo_typetable_selectcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectcolor") as! String
@@ -260,7 +314,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_selectcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_selectcolor_S) //cloudemo_typetable_selectcolor_S
                 if (cloudemo_typetable_selectcolor != nil) {
                     云颜文字左侧分类列表选中行背景色 = cloudemo_typetable_selectcolor!
+                } else {
+                    云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
                 }
+            }  else {
+                云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
             }
             //图片文件名：云颜文字左侧分类列表选中行背景图片
             let cloudemo_typetable_selectimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectimage") as! String
@@ -269,8 +327,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_selectimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_selectimage_S) //cloudemo_typetable_selectimage_S
                 if (cloudemo_typetable_selectimage != nil) {
                     云颜文字左侧分类列表选中行背景图片 = cloudemo_typetable_selectimage
+                } else {
+                    云颜文字左侧分类列表选中行背景图片 = nil
                 }
+            } else {
+                云颜文字左侧分类列表选中行背景图片 = nil
             }
+            
             //RGBA色值：搜索框背景颜色
             let cloudemo_search_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_bgcolor") as! String
             NSLog("[Skin]cloudemo_search_bgcolor_S=%@",cloudemo_search_bgcolor_S)
@@ -288,7 +351,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (cloudemo_search_tintcolor != nil) {
                     搜索颜文字.barTintColor = cloudemo_search_tintcolor
                     搜索颜文字.tintColor = cloudemo_search_tintcolor
+                } else {
+                    搜索颜文字.barTintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
+                    搜索颜文字.tintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
                 }
+            } else {
+                搜索颜文字.barTintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
+                搜索颜文字.tintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
             }
             //RGBA色值：下拉刷新文字颜色
             let cloudemo_downrefresh_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_downrefresh_textcolor") as! String
@@ -299,7 +368,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                     下拉刷新提示文本颜色 = cloudemo_downrefresh_textcolor!
                     if (下拉刷新提示 != nil) {
                         下拉刷新提示?.textColor = 下拉刷新提示文本颜色
+                    } else {
+                        下拉刷新提示?.textColor = UIColor.blackColor()
                     }
+                } else {
+                    下拉刷新提示?.textColor = UIColor.blackColor()
                 }
             }
             //背景图
@@ -338,8 +411,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let background_image:UIImage? = 主题参数转对象.image(background_image_S) //background_image_S
                 if (background_image != nil) {
                     颜文字表格背景.image = background_image!
+                } else {
+                    颜文字表格背景.image = nil
                 }
+            } else {
+                颜文字表格背景.image = nil
             }
+
             //图片文件名：云颜文字左侧分类列表背景图片
             let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
             NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S)
@@ -347,7 +425,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
                 if (cloudemo_typetable_bgimage != nil) {
                     bgpview.image = cloudemo_typetable_bgimage
+                } else {
+                    bgpview.image = nil
                 }
+            } else {
+                bgpview.image = nil
             }
         }
     }

@@ -44,10 +44,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
          //MARK - 主题
 
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         
-        self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue:243/255, alpha: 1)//tabbar选中文字颜色
+        self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)//tabbar选中文字颜色
         let tbitemcolor = NSDictionary(object: UIColor.blackColor(),
             forKey:NSForegroundColorAttributeName)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
@@ -137,7 +137,11 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
                 if (table_bgcolor != nil) {
                     表格.backgroundColor = table_bgcolor
+                } else {
+                    表格.backgroundColor = nil
                 }
+            }  else {
+                表格.backgroundColor = nil
             }
             //RGBA色值：列表文字颜色 yes
             let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
@@ -146,6 +150,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
                 if (table_textcolor != nil) {
                     列表文字颜色 = table_textcolor!
+                } else {
+                    列表文字颜色 = UIColor.blackColor()
                 }
             }
             //RGBA色值：列表当前选中的行背景色 yes
@@ -155,7 +161,11 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
                 if (table_selectcolor != nil) {
                     列表当前选中的行背景色 = table_selectcolor!
+                } else {
+                    列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
                 }
+            } else {
+                列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
             }
             //图片文件名：列表当前选中的行背景图片 yes
             let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
@@ -164,8 +174,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
                 if (table_selectimage != nil) {
                     列表当前选中的行背景图片 = table_selectimage!
+                } else {
+                    列表当前选中的行背景图片 = nil
                 }
+            }else {
+                列表当前选中的行背景图片 = nil
             }
+            
             //背景图
             刷新背景图()
             表格.reloadData()
