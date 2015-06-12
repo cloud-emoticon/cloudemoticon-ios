@@ -169,20 +169,6 @@
 			remoteGlobalIDString = 53918E9A1AB7065C00CE7A68;
 			remoteInfo = cewatchapp;
 		};
-		8B5DBD841A08B26D00C5C2BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B5DBD5A1A08B26C00C5C2BC;
-			remoteInfo = com.yukarimeow.Comtest;
-		};
-		8B5DBD861A08B26D00C5C2BC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B5DBD6F1A08B26C00C5C2BC;
-			remoteInfo = com.yukarimeow.ComtestTests;
-		};
 		8BEA2DEF199663470029715E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
@@ -335,7 +321,6 @@
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		8B5251511A15A6360081CAA3 /* noti29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noti29.png; sourceTree = "<group>"; };
 		8B5251521A15A6360081CAA3 /* input70.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = input70.png; sourceTree = "<group>"; };
-		8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = com.yukarimeow.Comtest.xcodeproj; path = com.yukarimeow.Comtest/com.yukarimeow.Comtest.xcodeproj; sourceTree = "<group>"; };
 		8B5ED96719B8CCD8004A1800 /* EmokbViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmokbViewController.swift; sourceTree = "<group>"; };
 		8B7AFAAA1AF350500077C644 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		8B7AFAAE1AF353220077C644 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -625,7 +610,6 @@
 				53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */,
 				53818FE21ABDAAA700D62C5F /* cewidget.entitlements */,
 				53A796EE1AE2784C00755592 /* 不参与编译 */,
-				8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
 				5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */,
@@ -713,15 +697,6 @@
 				53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */,
 			);
 			name = "自定表情";
-			sourceTree = "<group>";
-		};
-		8B5DBD801A08B26C00C5C2BC /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				8B5DBD851A08B26D00C5C2BC /* com.yukarimeow.Comtest.app */,
-				8B5DBD871A08B26D00C5C2BC /* com.yukarimeow.ComtestTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		8B98EE9A196D2DC0000D255E /* images */ = {
@@ -995,12 +970,6 @@
 			mainGroup = 53DF28E4196B9CF40058AA42;
 			productRefGroup = 53DF28EE196B9CF40058AA42 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 8B5DBD801A08B26C00C5C2BC /* Products */;
-					ProjectRef = 8B5DBD7F1A08B26C00C5C2BC /* com.yukarimeow.Comtest.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */,
@@ -1012,23 +981,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		8B5DBD851A08B26D00C5C2BC /* com.yukarimeow.Comtest.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = com.yukarimeow.Comtest.app;
-			remoteRef = 8B5DBD841A08B26D00C5C2BC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		8B5DBD871A08B26D00C5C2BC /* com.yukarimeow.ComtestTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = com.yukarimeow.ComtestTests.xctest;
-			remoteRef = 8B5DBD861A08B26D00C5C2BC /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		5328C7A719B70D0D00C425A8 /* Resources */ = {
