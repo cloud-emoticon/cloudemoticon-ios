@@ -16,7 +16,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     let 文件管理器:FileManager = FileManager()
     var 表格数据:NSMutableArray = NSMutableArray()
     var 列表文字颜色:UIColor = UIColor.blackColor()
-    var 列表当前选中的行背景色:UIColor = UIColor.clearColor()
+    var 列表当前选中的行背景色:UIColor = UIColor.lightGrayColor()
     var 列表当前选中的行背景图片:UIImage? = nil
 
     @IBOutlet weak var 背景: UIView!
@@ -61,7 +61,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 切换主题() {
         NSLog("[Skin]->MyEmoticonViewController")
-        列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+        列表当前选中的行背景色 = 全局_默认当前选中行颜色
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             //图片文件名：顶端导航栏背景图片 yes
@@ -192,10 +192,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (table_selectcolor != nil) {
                     列表当前选中的行背景色 = table_selectcolor!
                 } else {
-                    列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                    列表当前选中的行背景色 = 全局_默认当前选中行颜色
                 }
             } else {
-                列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                列表当前选中的行背景色 = 全局_默认当前选中行颜色
             }
             //图片文件名：列表当前选中的行背景图片 yes
             let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String

@@ -45,7 +45,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     //主题属性
     var 列表文字颜色:UIColor = UIColor.blackColor()
     var 副标题列表文字颜色:UIColor = UIColor.grayColor()
-    var 列表当前选中的行背景色:UIColor = UIColor.clearColor()
+    var 列表当前选中的行背景色:UIColor = UIColor.lightGrayColor()
     var 列表当前选中的行背景图片:UIImage? = nil
     var 云颜文字左侧分类列表文字颜色:UIColor = UIColor.blackColor()
     var 云颜文字左侧分类列表选中行背景色:UIColor = UIColor.lightGrayColor()
@@ -136,8 +136,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 切换主题() {
         NSLog("[Skin]->CEViewController")
-        列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
-        云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+        列表当前选中的行背景色 = 全局_默认当前选中行颜色
+        云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
 
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -253,10 +253,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (table_selectcolor != nil) {
                     列表当前选中的行背景色 = table_selectcolor!
                 } else {
-                    列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                    列表当前选中的行背景色 = 全局_默认当前选中行颜色
                 }
             } else {
-                列表当前选中的行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                列表当前选中的行背景色 = 全局_默认当前选中行颜色
             }
             //图片文件名：列表当前选中的行背景图片 yes
             let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
@@ -318,10 +318,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (cloudemo_typetable_selectcolor != nil) {
                     云颜文字左侧分类列表选中行背景色 = cloudemo_typetable_selectcolor!
                 } else {
-                    云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                    云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
                 }
             }  else {
-                云颜文字左侧分类列表选中行背景色 = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
+                云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
             }
             //图片文件名：云颜文字左侧分类列表选中行背景图片
             let cloudemo_typetable_selectimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectimage") as! String
