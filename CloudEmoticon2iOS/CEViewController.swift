@@ -23,7 +23,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 搜索颜文字:UISearchBar = UISearchBar()
     var 搜索结果:NSMutableArray = NSMutableArray()
     var 搜索结果的名称:NSMutableArray = NSMutableArray()
-    var userview:UIView = UIView()
+    var 用户登录视图:UserTableHeaderView = UserTableHeaderView()
     var username:UILabel = UILabel()
     var 下拉刷新提示:UILabel? = nil
     var 表格初始滚动位置:CGFloat = 0
@@ -35,7 +35,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 当前源:NSString = NSString()
     var 当前源文字框:UILabel = UILabel()
     
-    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nowuserimg", ofType: "jpg")!))
+//    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nowuserimg", ofType: "jpg")!))
     
     var 滑动最大X坐标:CGFloat = 0
     var 手势起始位置X坐标:CGFloat = 0
@@ -121,6 +121,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
 //        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
+        用户登录视图.载入内容()
         切换主题()
         载入数据(NetDownloadTo.CLOUDEMOTICON)
         self.language()
@@ -470,23 +471,23 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
         颜文字表格背景.layer.masksToBounds = true
         
-        userview.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 120)
-        userimg.frame = CGRectMake(10, 20, 80, 80)
+        用户登录视图.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 80)
+//        userimg.frame = CGRectMake(10, 20, 80, 80)
         当前源文字框.frame = CGRectMake(10, 100, 分类表格.frame.size.width - 10, 20)
         
-        userview.addSubview(userimg)
-        username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, userview.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
-        username.text = lang.uage("未登录")
-        username.font = UIFont.systemFontOfSize(13)
+//        用户登录视图.addSubview(userimg)
+//        username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, 用户登录视图.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
+//        username.text = lang.uage("未登录")
+//        username.font = UIFont.systemFontOfSize(13)
         当前源文字框.text = 当前源 as String
         当前源文字框.font = UIFont.systemFontOfSize(13)
         当前源文字框.textColor = UIColor.grayColor()
 //        NSLog("当前文字框内容为[%@]", 当前源文字框.text!)
         
-        userview.addSubview(username)
-//        userview.addSubview(当前源文字框)
+//        用户登录视图.addSubview(username)
+//        用户登录视图.addSubview(当前源文字框)
         
-        分类表格.tableHeaderView = userview
+        分类表格.tableHeaderView = 用户登录视图
         
         //        self.edgesForExtendedLayout = UIRectEdge.None
         

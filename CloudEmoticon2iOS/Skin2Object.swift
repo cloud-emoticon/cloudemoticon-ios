@@ -40,7 +40,11 @@ class Skin2Object: NSObject {
         let skin文件夹 = 主题管理器.取skin文件夹路径()
         let 皮肤md5:String = 全局_皮肤设置.objectForKey("md5") as! String
         let 目标文件夹路径:String = NSString(format: "%@/%@/%@", skin文件夹, 皮肤md5, value!) as String
-        return UIImage(contentsOfFile: 目标文件夹路径)
+        let 返回图片:UIImage? = UIImage(contentsOfFile: 目标文件夹路径)
+        if (返回图片 == nil) {
+            NSLog("[Skin2Object]无法加载图片文件%@", 目标文件夹路径)
+        }
+        return 返回图片
     }
     
     func 判断应该显示的背景图() -> String {

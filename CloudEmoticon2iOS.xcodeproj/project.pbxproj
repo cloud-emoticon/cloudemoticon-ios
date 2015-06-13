@@ -70,6 +70,7 @@
 		53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6EEEA1AF6338400ACAA6A /* EnterView.swift */; };
 		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
+		53C5159B1B2BFB3100FFDD11 /* UserTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */; };
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
@@ -295,6 +296,7 @@
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53B6EEEA1AF6338400ACAA6A /* EnterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 		53B6EEF01AF66FA000ACAA6A /* cestart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cestart.png; sourceTree = "<group>"; };
+		53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableHeaderView.swift; sourceTree = "<group>"; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -589,6 +591,14 @@
 			name = "进入动画";
 			sourceTree = "<group>";
 		};
+		53C515991B2BF91400FFDD11 /* 用户登录 */ = {
+			isa = PBXGroup;
+			children = (
+				53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */,
+			);
+			name = "用户登录";
+			sourceTree = "<group>";
+		};
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
 			isa = PBXGroup;
 			children = (
@@ -643,6 +653,7 @@
 				53E1EB1B19A4976F002EB6A3 /* 自定表情 */,
 				53906A991999CAD0000020D1 /* 核心 */,
 				53906A981999CA7E000020D1 /* 云颜文字 */,
+				53C515991B2BF91400FFDD11 /* 用户登录 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
 				5346D93319931C6100CEFA4B /* 数据模型 */,
 				8B98EE9A196D2DC0000D255E /* images */,
@@ -1093,6 +1104,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53C5159B1B2BFB3100FFDD11 /* UserTableHeaderView.swift in Sources */,
 				53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */,
 				53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
