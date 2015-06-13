@@ -86,8 +86,10 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (navigation_bar_bgcolor != nil) {
                     self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
                 } else {
-                    self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
+                    self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
                 }
+            } else {
+                self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
             }
             //图片文件名：顶端导航栏两侧按钮颜色 yes
             let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String

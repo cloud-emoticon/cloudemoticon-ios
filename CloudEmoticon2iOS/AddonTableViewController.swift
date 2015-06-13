@@ -25,6 +25,9 @@ class AddonTableViewController: UITableViewController {
         list.addObject(lang.uage("摇一摇"))
         list.addObject(lang.uage("扩展功能"))
         list.addObject(lang.uage("输入法"))
+        list.addObject(lang.uage("云预览"))
+        list.addObject(lang.uage("云连接"))
+        list.addObject(lang.uage("源创建器"))
         self.title = lang.uage("附加工具")
         
 //MARK - 主题
@@ -91,10 +94,10 @@ class AddonTableViewController: UITableViewController {
                 if (navigation_bar_bgcolor != nil) {
                     self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
                 } else {
-                    self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
+                    self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
                 }
             } else {
-                self.navigationController?.navigationBar.barTintColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1)
+                self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
             }
             //RGBA色值：顶端导航栏文字颜色 yes
             let navigation_seg_tintcolor_S:String = 全局_皮肤设置.objectForKey("navigation_seg_tintcolor") as! String
@@ -285,6 +288,21 @@ class AddonTableViewController: UITableViewController {
             let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Input") as! UIViewController
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
+            break
+        case 3:
+            var alert:UIAlertView = UIAlertView(title: "云预览", message: "这是一个在以后版本中准备添加的功能，你可以使用此功能预览在其他操作系统中的颜文字显示状况。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            alert.show()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            break
+        case 4:
+            var alert:UIAlertView = UIAlertView(title: "云连接", message: "这是一个在以后版本中准备添加的功能，此功能用于加速访问在国外网盘中的云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            alert.show()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            break
+        case 5:
+            var alert:UIAlertView = UIAlertView(title: "源创建器", message: "这是一个在以后版本中准备添加的功能，此功能可以将你的自定义或历史列表转换为XML云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            alert.show()
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
             break
         default:
             break
