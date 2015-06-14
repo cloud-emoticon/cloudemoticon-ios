@@ -54,21 +54,20 @@ class UserTableHeaderView: UIView {
     
     func 切换主题() {
         NSLog("[Skin]->UserTableHeaderView")
+        //初始设置
+        self.backgroundColor = 全局_默认当前选中行颜色
+        背景图片.image = nil
+        let 头像图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("shared-vector@2x", ofType: "png")!)!
+        头像图标.setImage(头像图标图片, forState: UIControlState.Normal)
+        let 设置图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("settings-vector", ofType: "png")!)!
+        设置图标.setImage(设置图标图片, forState: UIControlState.Normal)
+        设置图标.tintColor = 默认前景色
+        头像图标.tintColor = 默认前景色
+        主标题.textColor = 默认前景色
+        副标题.textColor = 默认前景色
         
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
-            
-            //初始设置
-            self.backgroundColor = 全局_默认当前选中行颜色
-            背景图片.image = nil
-            let 头像图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("shared-vector@2x", ofType: "png")!)!
-            头像图标.setImage(头像图标图片, forState: UIControlState.Normal)
-            let 设置图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("settings-vector", ofType: "png")!)!
-            设置图标.setImage(设置图标图片, forState: UIControlState.Normal)
-            设置图标.tintColor = 默认前景色
-            头像图标.tintColor = 默认前景色
-            主标题.textColor = 默认前景色
-            副标题.textColor = 默认前景色
             
             //RGBA色值：用户登录状态框底色
             let loginstat_bgcolor_S:String = 全局_皮肤设置.objectForKey("loginstat_bgcolor") as! String

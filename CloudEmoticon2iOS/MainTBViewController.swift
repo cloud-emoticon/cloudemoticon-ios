@@ -379,6 +379,7 @@ class MainTBViewController: UITabBarController {
         保存数据到输入法()
         var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的颜文字 as String
+        NSLog(要复制的颜文字 as String)
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {
             let window:UIWindow? = UIApplication.sharedApplication().delegate?.window!
             UIView.setAnimationCurve(UIViewAnimationCurve.EaseOut)

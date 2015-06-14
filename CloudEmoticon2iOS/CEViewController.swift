@@ -126,6 +126,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         载入数据(NetDownloadTo.CLOUDEMOTICON)
         self.language()
         
+        颜文字表格.contentOffset = CGPointMake(0, 颜文字表格.contentOffset.y-搜索颜文字.frame.size.height)
 }
 //    func 延迟切换主题() {
 //        切换主题()
