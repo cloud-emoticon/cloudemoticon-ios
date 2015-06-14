@@ -49,6 +49,7 @@ class UserTableHeaderView: UIView {
         self.addSubview(副标题)
         设置图标.frame = CGRectMake(self.frame.size.width - 边界距离 - 设置按钮大小, 边界距离, 设置按钮大小, 设置按钮大小)
         self.addSubview(设置图标)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
         切换主题()
     }
     

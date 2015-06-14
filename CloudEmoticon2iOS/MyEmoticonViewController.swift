@@ -61,7 +61,25 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 切换主题() {
         NSLog("[Skin]->MyEmoticonViewController")
+        //默认设置
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
+        UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
+        左上按钮.tintColor = UIColor.whiteColor()
+        右上按钮.tintColor = UIColor.whiteColor()
+        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
+        表格.backgroundColor = nil
+        列表文字颜色 = UIColor.blackColor()
+        列表当前选中的行背景色 = 全局_默认当前选中行颜色
+        列表当前选中的行背景图片 = nil
+        //背景图默认设置
+        bgpview.image = nil
+        bgpview.alpha = 1
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+        
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             //图片文件名：顶端导航栏背景图片 yes
@@ -71,11 +89,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
                 if (navigation_bar_image != nil) {
                     UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
-                } else {
-                     UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
                 }
-            }  else {
-                UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
             }
 
             //RGBA色值：顶端导航栏背景颜色 yes
@@ -85,11 +99,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
                 if (navigation_bar_bgcolor != nil) {
                     self.navigationController?.navigationBar.barTintColor = navigation_bar_bgcolor
-                } else {
-                    self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
                 }
-            } else {
-                self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
             }
             //图片文件名：顶端导航栏两侧按钮颜色 yes
             let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
@@ -100,13 +110,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                    self.navigationController?.navigationBar.tintColor = navigation_btn_textcolor
                     左上按钮.tintColor = navigation_btn_textcolor
                     右上按钮.tintColor = navigation_btn_textcolor
-                } else {
-                    左上按钮.tintColor = UIColor.whiteColor()
-                    右上按钮.tintColor = UIColor.whiteColor()
                 }
-            } else {
-                左上按钮.tintColor = UIColor.whiteColor()
-                右上按钮.tintColor = UIColor.whiteColor()
             }
             
             //RGBA色值：顶端导航栏文字颜色 yes
@@ -118,15 +122,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
                     self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
-                } else {
-                    let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
-                        forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
                 }
-            } else {
-                let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
-                    forKey:NSForegroundColorAttributeName)
-                self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
             }
             
             //RGBA色值：顶端收藏历史自定义选项卡颜色 yes
@@ -137,13 +133,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (navigation_seg_bar != "null") {
                     self.navigationController?.navigationBar.tintColor = navigation_seg_bar
                     UISegmentedControl.appearance().tintColor = navigation_seg_bar
-                } else {
-                    self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-                    UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
                 }
-            } else {
-                self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-                UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
             }
             //RGBA色值：顶端收藏历史自定义选项卡未选定时文字颜色 yes
 //            let navigation_seg_bartext_S:String = 全局_皮肤设置.objectForKey("navigation_seg_bartext") as! String
@@ -167,11 +157,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
                 if (table_bgcolor != nil) {
                     表格.backgroundColor = table_bgcolor
-                } else {
-                    表格.backgroundColor = nil
                 }
-            }  else {
-                表格.backgroundColor = nil
             }
             //RGBA色值：列表文字颜色 yes
             let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
@@ -180,11 +166,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
                 if (table_textcolor != nil) {
                     列表文字颜色 = table_textcolor!
-                } else {
-                    列表文字颜色 = UIColor.blackColor()
                 }
-            } else {
-                列表文字颜色 = UIColor.blackColor()
             }
             //RGBA色值：列表当前选中的行背景色 yes
             let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
@@ -193,11 +175,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
                 if (table_selectcolor != nil) {
                     列表当前选中的行背景色 = table_selectcolor!
-                } else {
-                    列表当前选中的行背景色 = 全局_默认当前选中行颜色
                 }
-            } else {
-                列表当前选中的行背景色 = 全局_默认当前选中行颜色
             }
             //图片文件名：列表当前选中的行背景图片 yes
             let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
@@ -206,11 +184,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
                 if (table_selectimage != nil) {
                     列表当前选中的行背景图片 = table_selectimage!
-                } else {
-                    列表当前选中的行背景图片 = nil
                 }
-            }else {
-                列表当前选中的行背景图片 = nil
             }
             
             //背景图
@@ -232,8 +206,6 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             }
             bgpview.alpha = loadopc()
         } else {
-            bgpview.alpha = 1
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
             let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
@@ -282,23 +254,22 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 生成无颜文字遮罩(){
         
         背景.backgroundColor = UIColor.whiteColor()
-        
-        let bg:CIImage? = CIImage(image: loadbg())
-        let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
-        模糊过滤器.setValue(35, forKey: "InputRadius")
-        模糊过滤器.setValue(bg, forKey: "InputImage")
-     
-        let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式，报错为Bug无视
-        let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent())
-        ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent(), fromRect: bg!.extent())
-        let 模糊图像 = UIImage(CGImage: cgImage)
-        
-        let 背景透明度:CGFloat = (1 - loadopc()) * 0.7 + 0.3
-        无颜文字.alpha = 背景透明度
-        
-        无颜文字.image = 模糊图像
+        if (bgpview.image == nil) {
+            无颜文字.image = nil
+        } else {
+            let bg:CIImage? = CIImage(image: bgpview.image)
+            let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
+            模糊过滤器.setValue(20, forKey: "InputRadius")
+            模糊过滤器.setValue(bg, forKey: "InputImage")
+            let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式，报错为Bug无视
+            let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent())
+            ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent(), fromRect: bg!.extent())
+            let 模糊图像 = UIImage(CGImage: cgImage)
+            //        let 背景透明度:CGFloat = (1 - loadopc()) * 0.7 + 0.3
+            //        无颜文字.alpha = 背景透明度
+            无颜文字.image = 模糊图像
+        }
         无颜文字.contentMode = bgpview.contentMode
-        
         显示文字()
     }
     

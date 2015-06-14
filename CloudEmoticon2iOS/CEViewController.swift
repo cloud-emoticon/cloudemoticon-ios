@@ -163,6 +163,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索输入框.textColor = UIColor.blackColor()
         下拉刷新提示文本颜色 = UIColor.blackColor()
         下拉刷新提示?.textColor = 下拉刷新提示文本颜色
+        //背景图默认设置
+        bgpview.alpha = 1
+        颜文字表格背景.alpha = 1
+        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        颜文字表格背景.image = nil
+        bgpview.image = nil
 
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -358,17 +365,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgpview.alpha = loadopc()
             颜文字表格背景.alpha = loadopc()
         } else {
-            bgpview.alpha = 1
-            颜文字表格背景.alpha = 1
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-            颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
             let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
-            //默认值
-            颜文字表格背景.image = nil
-            bgpview.image = nil
-            
             NSLog("[Skin]%@_S=%@",取背景图,background_image_S)
             if (background_image_S != "null") {
                 let background_image:UIImage? = 主题参数转对象.image(background_image_S) //background_image_S
