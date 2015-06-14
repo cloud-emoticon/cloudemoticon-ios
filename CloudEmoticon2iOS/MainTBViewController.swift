@@ -69,6 +69,7 @@ class MainTBViewController: UITabBarController {
 //            forKey:NSForegroundColorAttributeName)
 //        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject] //NavBar标题颜色
         
+        //默认设置
         let items:NSArray = self.tabBar.items!
         for i in 0...items.count - 1 {
             let nowVC:UITabBarItem = items.objectAtIndex(i) as! UITabBarItem
@@ -84,11 +85,23 @@ class MainTBViewController: UITabBarController {
             if(i == 3){
                 nowVC.image = UIImage(named: "settings-vector.png") //设置
             }
+            nowVC.selectedImage = nil
         }
         
         NSLog("[Skin]->MainTBViewController")
 //        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
-//        self.tabBar
+        //默认设置
+        var 底部工具栏着色视图:UIImageView? = self.tabBar.viewWithTag(515514) as? UIImageView
+        if (底部工具栏着色视图 != nil) {
+            底部工具栏着色视图?.image = nil
+        }
+        self.tabBar.barTintColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        self.tabBar.backgroundColor = UIColor.clearColor()
+        self.tabBar.selectionIndicatorImage = nil
+        self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
+        let tool_titletextattributes_dic = NSDictionary(object: UIColor.blackColor(), forKey:NSForegroundColorAttributeName)
+        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
+        
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             
@@ -101,11 +114,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_myemo:UIImage? = 主题参数转对象.image(tool_icon_myemo_S) //tool_icon_myemo_S
                 if (tool_icon_myemo != nil) {
                     myemo.image = tool_icon_myemo
-                } else {
-                    myemo.image = UIImage(named: "edit-vector.png")
                 }
-            } else {
-                myemo.image = UIImage(named: "edit-vector.png")
             }
             
             let myemo_select:UITabBarItem = items.objectAtIndex(0) as! UITabBarItem
@@ -115,11 +124,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_myemo_select:UIImage? = 主题参数转对象.image(tool_icon_myemo_select_S) //tool_icon_myemo_select_S
                 if (tool_icon_myemo_select != nil) {
                     myemo.selectedImage = tool_icon_myemo_select
-                } else {
-                    myemo.selectedImage = nil
                 }
-            } else {
-                myemo.selectedImage = nil
             }
 
             //图片文件名：底部工具栏“云颜文字”按钮图标 ok
@@ -130,11 +135,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_cloemo:UIImage? = 主题参数转对象.image(tool_icon_cloemo_S) //tool_icon_cloemo_S
                 if (tool_icon_cloemo != nil) {
                     cloemo.image = tool_icon_cloemo
-                }  else {
-                    cloemo.image = UIImage(named: "shared-vector.png")
                 }
-            } else {
-                    cloemo.image = UIImage(named: "shared-vector.png")
             }
 
             let cloemo_select:UITabBarItem = items.objectAtIndex(1) as! UITabBarItem
@@ -144,11 +145,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_cloemo_select:UIImage? = 主题参数转对象.image(tool_icon_cloemo_select_S) //tool_icon_cloemo_select_S
                 if (tool_icon_cloemo_select != nil) {
                     cloemo.selectedImage = tool_icon_cloemo_select
-                } else {
-                    cloemo.selectedImage = nil
                 }
-            } else {
-                    cloemo.selectedImage = nil
             }
             //图片文件名：底部工具栏“附加工具”按钮图标 ok
             let addons:UITabBarItem = items.objectAtIndex(2) as! UITabBarItem
@@ -158,11 +155,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_addons:UIImage? = 主题参数转对象.image(tool_icon_addons_S) //tool_icon_addons_S
                 if (tool_icon_addons != nil) {
                     addons.image = tool_icon_addons
-                } else {
-                    addons.image = UIImage(named: "idea-vector.png")
                 }
-            } else {
-                    addons.image = UIImage(named: "idea-vector.png")
             }
 
             let addons_select:UITabBarItem = items.objectAtIndex(2) as! UITabBarItem
@@ -172,11 +165,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_addons_select:UIImage? = 主题参数转对象.image(tool_icon_addons_select_S) //tool_icon_addons_select_S
                 if (tool_icon_addons_select != nil) {
                     addons.selectedImage = tool_icon_addons_select
-                } else {
-                    addons.selectedImage = nil
                 }
-            } else {
-                    addons.selectedImage = nil
             }
             //图片文件名：底部工具栏“设置”按钮图标 ok
             let set:UITabBarItem = items.objectAtIndex(3) as! UITabBarItem
@@ -186,11 +175,7 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_set:UIImage? = 主题参数转对象.image(tool_icon_set_S) //tool_icon_set_S
                 if (tool_icon_set != nil) {
                     set.image = tool_icon_set
-                } else {
-                    set.image = UIImage(named: "settings-vector.png")
                 }
-            } else {
-                    set.image = UIImage(named: "settings-vector.png")
             }
             let set_select:UITabBarItem = items.objectAtIndex(3) as! UITabBarItem
             let tool_icon_set_select_S:String = 全局_皮肤设置.objectForKey("tool_icon_set_select") as! String
@@ -199,12 +184,8 @@ class MainTBViewController: UITabBarController {
                 let tool_icon_set_select:UIImage? = 主题参数转对象.image(tool_icon_set_select_S) //tool_icon_set_select_S
                 if (tool_icon_set_select != nil) {
                     set.selectedImage = tool_icon_set_select
-                } else {
-                    set.selectedImage = nil
                 }
-            } else {
-                    set.selectedImage = nil
-                }
+            }
             //底部工具栏自定义配置 ok
             var 底部工具栏着色视图:UIImageView? = self.tabBar.viewWithTag(515514) as? UIImageView
             if (底部工具栏着色视图 == nil) {
@@ -222,11 +203,7 @@ class MainTBViewController: UITabBarController {
                 let tool_backgroundimage:UIImage? = 主题参数转对象.image(tool_backgroundimage_S) //tool_backgroundimage_S
                 if (tool_backgroundimage != nil) {
                     底部工具栏着色视图?.image = tool_backgroundimage
-                } else {
-                    底部工具栏着色视图?.image = nil
                 }
-            } else {
-                    底部工具栏着色视图?.image = nil
             }
 
             //RGBA色值：底部工具栏背景颜色 ok?
@@ -237,13 +214,7 @@ class MainTBViewController: UITabBarController {
                 if (tool_selecttintcolor != nil) {
                     self.tabBar.barTintColor = tool_selecttintcolor
                     self.tabBar.backgroundColor = UIColor.clearColor()
-                } else {
-                    self.tabBar.barTintColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-                    self.tabBar.backgroundColor = UIColor.clearColor()
                 }
-            } else {
-                    self.tabBar.barTintColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-                    self.tabBar.backgroundColor = UIColor.clearColor()
             }
 
             //图片文件名：底部工具栏当前选中按钮的背景图片 ok
@@ -253,11 +224,7 @@ class MainTBViewController: UITabBarController {
                 let tool_selectionimage:UIImage? = 主题参数转对象.image(tool_selectionimage_S) //tool_selectionimage_S
                 if (tool_selectionimage != nil) {
                     self.tabBar.selectionIndicatorImage = tool_selectionimage
-                } else {
-                    self.tabBar.selectionIndicatorImage = nil
                 }
-            } else {
-                    self.tabBar.selectionIndicatorImage = nil
             }
             //RGBA色值：底部工具栏当前选中按钮的颜色 ok
             let tool_tintcolor_S:String = 全局_皮肤设置.objectForKey("tool_tintcolor") as! String
@@ -266,11 +233,7 @@ class MainTBViewController: UITabBarController {
                 let tool_tintcolor:UIColor? = 主题参数转对象.color(tool_tintcolor_S) //tool_tintcolor_S
                 if (tool_tintcolor != nil) {
                     self.tabBar.tintColor = tool_tintcolor
-                } else {
-                    self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
                 }
-            } else {
-                    self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
             }
 
             //RGBA色值：底部工具栏未选中按钮的颜色 NO!
@@ -294,15 +257,7 @@ class MainTBViewController: UITabBarController {
                     let tool_titletextattributes_dic = NSDictionary(object: tool_titletextattributes!,
                         forKey:NSForegroundColorAttributeName)
                     UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
-                } else {
-                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255.0, green: 150/255.0, blue: 243/255.0, alpha: 1),
-                        forKey:NSForegroundColorAttributeName)
-                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
-            } else {
-                    let tool_titletextattributes_dic = NSDictionary(object: UIColor(red: 33/255.0, green: 150/255.0, blue: 243/255.0, alpha: 1),
-                        forKey:NSForegroundColorAttributeName)
-                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
             }
         }
     }

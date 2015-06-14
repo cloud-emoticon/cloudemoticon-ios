@@ -259,7 +259,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         } else {
             let bg:CIImage? = CIImage(image: bgpview.image)
             let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
-            模糊过滤器.setValue(20, forKey: "InputRadius")
+            模糊过滤器.setValue(25, forKey: "InputRadius")
             模糊过滤器.setValue(bg, forKey: "InputImage")
             let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式，报错为Bug无视
             let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent())
