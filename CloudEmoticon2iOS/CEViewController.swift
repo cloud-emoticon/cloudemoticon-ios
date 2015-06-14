@@ -117,6 +117,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
         颜文字表格.backgroundColor = UIColor.clearColor()
+        搜索颜文字.searchBarStyle = UISearchBarStyle.Minimal
+        搜索颜文字.placeholder = lang.uage("搜索颜文字")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
@@ -340,29 +342,31 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             
             //RGBA色值：搜索框背景颜色
-            let cloudemo_search_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_bgcolor") as! String
-            NSLog("[Skin]cloudemo_search_bgcolor_S=%@",cloudemo_search_bgcolor_S)
-            if (cloudemo_search_bgcolor_S != "null") {
-                let cloudemo_search_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_search_bgcolor_S) //cloudemo_search_bgcolor_S
-                if (cloudemo_search_bgcolor != nil) {
-                    //搜索框背景颜色 未应用！
-                }
-            }
-            //RGBA色值：搜索框颜色
+//            let cloudemo_search_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_bgcolor") as! String
+//            NSLog("[Skin]cloudemo_search_bgcolor_S=%@",cloudemo_search_bgcolor_S)
+//            if (cloudemo_search_bgcolor_S != "null") {
+//                let cloudemo_search_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_search_bgcolor_S) //cloudemo_search_bgcolor_S
+//                if (cloudemo_search_bgcolor != nil) {
+//                    搜索输入框.backgroundColor = cloudemo_search_bgcolor
+//                }
+//            }
+            //RGBA色值：搜索框文字颜色
             let cloudemo_search_tintcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_tintcolor") as! String
             NSLog("[Skin]cloudemo_search_tintcolor_S=%@",cloudemo_search_tintcolor_S)
+            let 搜索输入框:UITextField = 搜索颜文字.valueForKey("searchField") as! UITextField
             if (cloudemo_search_tintcolor_S != "null") {
                 let cloudemo_search_tintcolor:UIColor? = 主题参数转对象.color(cloudemo_search_tintcolor_S) //cloudemo_search_tintcolor_S
                 if (cloudemo_search_tintcolor != nil) {
-                    搜索颜文字.barTintColor = cloudemo_search_tintcolor
+//                    搜索颜文字.barTintColor = cloudemo_search_tintcolor
                     搜索颜文字.tintColor = cloudemo_search_tintcolor
+                    搜索输入框.textColor = cloudemo_search_tintcolor
                 } else {
-                    搜索颜文字.barTintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
                     搜索颜文字.tintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
+                    搜索输入框.textColor = UIColor.blackColor()
                 }
             } else {
-                搜索颜文字.barTintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
                 搜索颜文字.tintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
+                搜索输入框.textColor = UIColor.blackColor()
             }
             //RGBA色值：下拉刷新文字颜色
             let cloudemo_downrefresh_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_downrefresh_textcolor") as! String
