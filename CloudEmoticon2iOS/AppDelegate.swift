@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -44,6 +46,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
 
+        // [Optional] Power your app with Local Datastore. For more info, go to
+        // https://parse.com/docs/ios_guide#localdatastore/iOS
+        Parse.enableLocalDatastore()
+        
+        // Initialize Parse.
+        Parse.setApplicationId("lQjcr4q8ofs3z7xSMKgfQbTLTosYbfJxzEtzakuS",
+            clientKey: "hztsJd4lcEnBPSc3BBT2niVe6RKup6GHNmccYiLP")
+        
+        // [Optional] Track statistics around application opens.
+        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        
+        
         // Override point for customization after application launch.
         initSetting()
         NSLog("[AppDelegate]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
