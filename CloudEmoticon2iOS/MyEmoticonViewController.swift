@@ -208,9 +208,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         } else {
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
-            let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
-            NSLog("[Skin]%@_S=%@",取背景图,background_image_S)
-            if (background_image_S != "null") {
+            let background_image_S:String? = 全局_皮肤设置.objectForKey(取背景图) as? String
+            if (background_image_S != nil && background_image_S != "null") {
+                NSLog("[Skin]%@_S=%@",取背景图,background_image_S!)
                 let background_image:UIImage? = 主题参数转对象.image(background_image_S) //table_selectimage_S
                 if (background_image != nil) {
                     bgpview.image = background_image!

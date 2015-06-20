@@ -92,7 +92,7 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
                 case 0:
                     let INI字典:NSMutableDictionary = INI读取器.INI文件内容字典!
                     INI字典.setObject(目标文件夹特征码, forKey: "md5")
-                    NSLog("INI字典 = %@",INI字典)
+//                    NSLog("INI字典 = %@",INI字典)
                     break
                 case 1:
                     解压缩错误信息 = lang.uage("找不到文件")

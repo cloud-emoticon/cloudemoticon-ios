@@ -367,9 +367,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         } else {
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
-            let background_image_S:String = 全局_皮肤设置.objectForKey(取背景图) as! String
-            NSLog("[Skin]%@_S=%@",取背景图,background_image_S)
-            if (background_image_S != "null") {
+            let background_image_S:String? = 全局_皮肤设置.objectForKey(取背景图) as? String
+            if (background_image_S != nil && background_image_S != "null") {
+                NSLog("[Skin]%@_S=%@",取背景图,background_image_S!)
                 let background_image:UIImage? = 主题参数转对象.image(background_image_S) //background_image_S
                 if (background_image != nil) {
                     颜文字表格背景.image = background_image!
@@ -377,9 +377,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
 
             //图片文件名：云颜文字左侧分类列表背景图片
-            let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
-            NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S)
-            if (cloudemo_typetable_bgimage_S != "null") {
+            let cloudemo_typetable_bgimage_S:String? = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as? String
+            if (cloudemo_typetable_bgimage_S != nil && cloudemo_typetable_bgimage_S != "null") {
+                NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S!)
                 let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
                 if (cloudemo_typetable_bgimage != nil) {
                     bgpview.image = cloudemo_typetable_bgimage
