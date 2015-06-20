@@ -46,7 +46,7 @@ class SetTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转:", name: "屏幕旋转通知", object: nil)
         切换主题()
     }
     
@@ -54,7 +54,12 @@ class SetTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func 屏幕旋转() {
+    func 屏幕旋转(通知:NSNotification) {
+        let 新坐标:NSArray = 通知.object as! NSArray
+        let 宽:CGFloat = 新坐标.objectAtIndex(0) as! CGFloat
+        let 高:CGFloat = 新坐标.objectAtIndex(1) as! CGFloat
+        let backgroundView2:UIView = self.tableView.backgroundView?.subviews[0] as! UIView
+        backgroundView2.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, 宽, 高)
         刷新背景图()
     }
     
