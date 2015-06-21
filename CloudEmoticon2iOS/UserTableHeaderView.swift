@@ -24,6 +24,7 @@ class UserTableHeaderView: UIView {
     let 副标题:UILabel = UILabel()
     let 背景图片:UIImageView = UIImageView()
     var 默认前景色:UIColor? = nil
+    let 按钮:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
     
     func 载入内容() {
         let 头像大小:CGFloat = 32
@@ -50,6 +51,9 @@ class UserTableHeaderView: UIView {
         设置图标.frame = CGRectMake(self.frame.size.width - 边界距离 - 设置按钮大小, 边界距离, 设置按钮大小, 设置按钮大小)
         self.addSubview(设置图标)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
+        按钮.frame = 背景图片.frame
+        按钮.addTarget(self, action: "点击", forControlEvents: UIControlEvents.TouchUpInside)
+        self.addSubview(按钮)
         切换主题()
     }
     
@@ -127,4 +131,13 @@ class UserTableHeaderView: UIView {
         }
     }
     
+    func 点击() {
+        let 用户已登录:Bool = false //此处还没写
+        if (用户已登录) {
+            let 用户登录菜单:UIAlertView = UIAlertView(title: "<用户名>", message: "", delegate: nil, cancelButtonTitle: "取消", otherButtonTitles: lang.uage("立即同步"),lang.uage("上传覆盖网络"),lang.uage("下载覆盖本地"),lang.uage("修改密码"),lang.uage("切换用户/登出")) //此处功能未确定暂不翻译
+            用户登录菜单.show()
+        } else {
+            NSNotificationCenter.defaultCenter().postNotificationName("重新启动通知", object: nil)
+        }
+    }
 }

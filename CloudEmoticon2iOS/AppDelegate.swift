@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var statBar: CustomStatusBar!
     var netto:NetDownloadTo = NetDownloadTo.NONE
     let filemgr:FileManager = FileManager()
+    var 应用运行参数:[NSObject : AnyObject]? = nil
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         if (url.scheme == "emostart") {
@@ -44,8 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-
+    func 应用初始化(launchOptions: [NSObject : AnyObject]?) {
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()
@@ -82,13 +82,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
         
         lang.载入语言(lang.当前系统语言())
-//        println(lang.系统支持的所有语言())
+        //        println(lang.系统支持的所有语言())
         let 当前语言包名称:String = lang.uage("语言包名称")
         let 当前语言包作者:String = lang.uage("语言包作者")
         NSLog("[AppDelegate]当前语言包名称：%@",当前语言包名称)
         NSLog("[AppDelegate]当前语言包作者：%@",当前语言包作者)
+    }
+    
+    func 界面初始化() {
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let IB:UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        self.window?.rootViewController = IB.instantiateInitialViewController() as? UIViewController
+    }
+    
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+        
+        应用运行参数 = launchOptions
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "重新启动", name: "重新启动通知", object: nil)
+        界面初始化()
+        应用初始化(应用运行参数)
+        self.window?.makeKeyAndVisible()
         
         return true
+    }
+    
+    func 重新启动() {
+        self.window?.removeFromSuperview()
+        self.window = nil
+        界面初始化()
+//        应用初始化(应用运行参数)
+        self.window?.makeKeyAndVisible()
     }
     
     func initSetting()
