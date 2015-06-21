@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, SourceTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate {
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, SourceTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, QRViewDelegate {
 
     
     @IBOutlet weak var sortBtn: UIBarButtonItem!
@@ -34,6 +34,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var 调整搜索栏位置:Bool = true
     var 当前源:NSString = NSString()
     var 当前源文字框:UILabel = UILabel()
+    var 二维码缓存:UIImage = UIImage()
     
 //    var userimg:UIImageView = UIImageView(image:UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("nowuserimg", ofType: "jpg")!))
     
@@ -1013,9 +1014,26 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)
         } else { //分享 颜文字
-            let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: nil)
+            var 二维码分享按钮入:[AnyObject]? = nil
+            if (颜文字.length <= 64) {
+                let 二维码分享按钮:QRActivity = QRActivity()
+                二维码分享按钮.代理 = self
+                二维码缓存 = QRCodeGenerator.qrImageForString(颜文字 as String, imageSize: 200.0)
+                二维码分享按钮.设置二维码图片(二维码缓存)
+                二维码分享按钮入 = [二维码分享按钮]
+            }
+            let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: 二维码分享按钮入)
+            分享视图.modalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            分享视图.excludedActivityTypes = [UIActivityTypeCopyToPasteboard];
             self.presentViewController(分享视图, animated: true, completion: nil)
         }
+    }
+    
+    func 显示二维码() {
+        //QRViewDelegate
+        let 二维码视图:QRView = QRView()
+        二维码视图.显示二维码(二维码缓存)
+        self.view.addSubview(二维码视图)
     }
     
     func 单元格代理：是否可以接收手势() -> Bool

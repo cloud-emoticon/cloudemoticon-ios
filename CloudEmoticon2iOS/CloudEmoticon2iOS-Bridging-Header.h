@@ -5,3 +5,6 @@
 #import "XMLDictionary.h"
 #import "SSZipArchive.h"
 #import <CommonCrypto/CommonDigest.h>
+#import "QRCodeGenerator.h"
+#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
