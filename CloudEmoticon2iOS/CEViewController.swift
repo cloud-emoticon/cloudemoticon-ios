@@ -9,7 +9,7 @@
 import UIKit
 
 
-class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, SourceTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, QRViewDelegate {
+class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableViewDelegate, UIScrollViewDelegate, SourceTableViewControllerDelegate, CETableViewCellDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate, QRViewDelegate, UserTableHeaderViewDelegate {
 
     
     @IBOutlet weak var sortBtn: UIBarButtonItem!
@@ -439,7 +439,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        用户登录视图.addSubview(当前源文字框)
         
         分类表格.tableHeaderView = 用户登录视图
-        
+        用户登录视图.代理 = self
         //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
@@ -1048,6 +1048,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return true
     }
     
-    
+    func 显示用户登录框() {
+        let 登录画面:LoginViewController = storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        登录画面.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(登录画面, animated: true)
+    }
 
 }

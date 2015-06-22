@@ -8,8 +8,12 @@
 
 import UIKit
 
-class UserTableHeaderView: UIView {
+protocol UserTableHeaderViewDelegate{
+    func 显示用户登录框()
+}
 
+class UserTableHeaderView: UIView {
+    var 代理:UserTableHeaderViewDelegate?
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -137,7 +141,8 @@ class UserTableHeaderView: UIView {
             let 用户登录菜单:UIAlertView = UIAlertView(title: "<用户名>", message: "", delegate: nil, cancelButtonTitle: "取消", otherButtonTitles: lang.uage("立即同步"),lang.uage("上传覆盖网络"),lang.uage("下载覆盖本地"),lang.uage("修改密码"),lang.uage("切换用户/登出")) //此处功能未确定暂不翻译
             用户登录菜单.show()
         } else {
-            NSNotificationCenter.defaultCenter().postNotificationName("重新启动通知", object: nil)
+//            
+            代理!.显示用户登录框()
         }
     }
 }

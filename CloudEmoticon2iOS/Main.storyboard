@@ -486,7 +486,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2O7-B5-9H8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2068" y="2386"/>
+            <point key="canvasLocation" x="1240" y="2394"/>
         </scene>
         <!--关于-->
         <scene sceneID="W5W-Z2-hgb">
@@ -531,7 +531,32 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bcr-Zb-MZC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2847" y="2387"/>
+            <point key="canvasLocation" x="2019" y="2395"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="ED8-ia-xpF">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DCL-va-XiJ" customClass="LoginViewController" customModule="CloudEmoticon2iOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RW4-4N-bVm"/>
+                        <viewControllerLayoutGuide type="bottom" id="YQk-jy-ZpX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RZt-r1-n7U">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" image="cestart.png" translatesAutoresizingMaskIntoConstraints="NO" id="nSR-vJ-vaL">
+                                <rect key="frame" x="200" y="0.0" width="200" height="200"/>
+                                <animations/>
+                            </imageView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="utF-eN-yco" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3471" y="2394"/>
         </scene>
         <!--设置-->
         <scene sceneID="Sim-Gm-hZS">
@@ -551,7 +576,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qJl-rP-RQf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3567" y="2387"/>
+            <point key="canvasLocation" x="2739" y="2395"/>
         </scene>
         <!--设置-->
         <scene sceneID="2u7-iq-fwV">
@@ -602,6 +627,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cestart.png" width="2048" height="2048"/>
         <image name="edit-vector.png" width="30" height="30"/>
         <image name="idea-vector.png" width="30" height="30"/>
         <image name="input70.png" width="1088" height="1930"/>

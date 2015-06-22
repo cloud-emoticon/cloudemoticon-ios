@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         // Override point for customization after application launch.
-        //友盟统计（SDK尚未引入）
+        //友盟统计（SDK尚未引入,但AppKey已导入）
         //MobClick(闭源设置.mobclick_o!,reportPolicy: BATCH,channelId: "Web")
     }
     
