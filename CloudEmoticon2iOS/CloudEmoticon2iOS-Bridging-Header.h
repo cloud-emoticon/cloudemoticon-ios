@@ -8,3 +8,4 @@
 #import "QRCodeGenerator.h"
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "ce2cs.h"

@@ -45,25 +45,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
     
-    func 应用初始化(launchOptions: [NSObject : AnyObject]?) {
+    func 第三方SDK初始化(launchOptions: [NSObject : AnyObject]?) {
+        //因为涉及第三方SDK的APPKEY，非此项目开发人员请勿使用这些APPKey。
+        let 加密设置:CE2CSReader = CE2CSReader()
+        加密设置.载入设置()
+        
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
         Parse.enableLocalDatastore()
-        
         // Initialize Parse.
-        Parse.setApplicationId("lQjcr4q8ofs3z7xSMKgfQbTLTosYbfJxzEtzakuS",
-            clientKey: "hztsJd4lcEnBPSc3BBT2niVe6RKup6GHNmccYiLP")
-        
+        Parse.setApplicationId(加密设置.parse_applicationid_o!,
+            clientKey: 加密设置.parse_clientkey_o!)
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        
-        
         // Override point for customization after application launch.
-        initSetting()
+        //友盟统计（SDK尚未引入）
+        //MobClick(闭源设置.mobclick_o!,reportPolicy: BATCH,channelId: "Web")
+    }
+    
+    func 应用初始化() {
         NSLog("[AppDelegate]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
         
         //MARK - 主题
-        
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent //通知栏文字颜色
         //载入皮肤
         let 皮肤管理器:SkinManager = SkinManager()
@@ -100,21 +103,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         应用运行参数 = launchOptions
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "重新启动", name: "重新启动通知", object: nil)
         界面初始化()
-        应用初始化(应用运行参数)
+        第三方SDK初始化(应用运行参数)
+        设置初始化()
+        应用初始化()
         self.window?.makeKeyAndVisible()
         
         return true
     }
     
     func 重新启动() {
-        self.window?.removeFromSuperview()
-        self.window = nil
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.window?.rootViewController?.view.alpha = 0
+            }) { (isok:Bool) -> Void in
+                self.window?.removeFromSuperview()
+                self.window = nil
+                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "重新加载", userInfo: nil, repeats: false)
+        }
+    }
+    
+    func 重新加载() {
         界面初始化()
-//        应用初始化(应用运行参数)
+        self.window?.rootViewController?.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
+        UIView.animateWithDuration(0.5, animations: { () -> Void in
+            self.window?.rootViewController?.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        })
+        //第三方SDK初始化(应用运行参数) //不需要
+        设置初始化()
+        应用初始化()
         self.window?.makeKeyAndVisible()
     }
     
-    func initSetting()
+    func 设置初始化()
     {
         var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
