@@ -19,7 +19,6 @@
 		533E537A19B861E700DFD2CB /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537719B861E700DFD2CB /* language-zh-Hant.plist */; };
 		533E537B19B861E700DFD2CB /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537819B861E700DFD2CB /* Language.swift */; };
 		533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533E537C19B861FE00DFD2CB /* SetTableViewController.swift */; };
-		534363E61B383B1B0064EE97 /* libCloudEmoticon2iOSCS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 534363E51B383B1B0064EE97 /* libCloudEmoticon2iOSCS.a */; };
 		5343EEDC1AC82CB200FE1301 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5343EED81AC82AB600FE1301 /* CoreMedia.framework */; };
 		5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5346D92F1993181C00CEFA4B /* XMLDictionary.m */; };
 		5346D9321993186500CEFA4B /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D9311993186500CEFA4B /* XMLReader.swift */; };
@@ -100,6 +99,7 @@
 		53F3F8BB1B36CD3900C5C111 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B21B36CD3900C5C111 /* rscode.c */; };
 		53F3F8BC1B36CD3900C5C111 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B41B36CD3900C5C111 /* split.c */; };
 		53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8BD1B36D0E200C5C111 /* QRView.swift */; };
+		53F7D5F61B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
@@ -264,7 +264,6 @@
 		533E537719B861E700DFD2CB /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hant.plist"; path = "CloudEmoticon2iOS/language-zh-Hant.plist"; sourceTree = "<group>"; };
 		533E537819B861E700DFD2CB /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = CloudEmoticon2iOS/Language.swift; sourceTree = "<group>"; };
 		533E537C19B861FE00DFD2CB /* SetTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTableViewController.swift; sourceTree = "<group>"; };
-		534363E51B383B1B0064EE97 /* libCloudEmoticon2iOSCS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudEmoticon2iOSCS.a; sourceTree = "<group>"; };
 		5343EED81AC82AB600FE1301 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		5346D92E1993181C00CEFA4B /* XMLDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLDictionary.h; sourceTree = "<group>"; };
 		5346D92F1993181C00CEFA4B /* XMLDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLDictionary.m; sourceTree = "<group>"; };
@@ -368,6 +367,7 @@
 		53F3F8B41B36CD3900C5C111 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		53F3F8B51B36CD3900C5C111 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		53F3F8BD1B36D0E200C5C111 /* QRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRView.swift; path = CloudEmoticon2iOS/QRView.swift; sourceTree = "<group>"; };
+		53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudEmoticon2iOSCS.a; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
@@ -438,7 +438,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				534363E61B383B1B0064EE97 /* libCloudEmoticon2iOSCS.a in Frameworks */,
+				53F7D5F61B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a in Frameworks */,
 				53F3F89A1B36C52F00C5C111 /* Foundation.framework in Frameworks */,
 				53F3F8981B36C43100C5C111 /* UIKit.framework in Frameworks */,
 				53F3F8961B36C41E00C5C111 /* CoreGraphics.framework in Frameworks */,
@@ -625,7 +625,7 @@
 		5396DAA21B37F3CB0006B154 /* AppKey加密内容 */ = {
 			isa = PBXGroup;
 			children = (
-				534363E51B383B1B0064EE97 /* libCloudEmoticon2iOSCS.a */,
+				53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */,
 				530B6C291B38197700D06F14 /* CE2CSReader.swift */,
 				530B6C151B3808B700D06F14 /* ce2cs.h */,
 			);
