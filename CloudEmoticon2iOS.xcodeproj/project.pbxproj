@@ -23,6 +23,7 @@
 		5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 5346D92F1993181C00CEFA4B /* XMLDictionary.m */; };
 		5346D9321993186500CEFA4B /* XMLReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D9311993186500CEFA4B /* XMLReader.swift */; };
 		5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5346D93419931C9200CEFA4B /* SwitchCoder.swift */; };
+		5348B5461B398BC20022CA17 /* ce2cs.c in Sources */ = {isa = PBXBuildFile; fileRef = 5348B5441B398BC20022CA17 /* ce2cs.c */; };
 		5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */; };
 		5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5355FCBC1990C21C00D70CA4 /* FileManager.swift */; };
 		53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53577338199B085D003FF9D3 /* SourceTableViewController.swift */; };
@@ -100,7 +101,6 @@
 		53F3F8BB1B36CD3900C5C111 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B21B36CD3900C5C111 /* rscode.c */; };
 		53F3F8BC1B36CD3900C5C111 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B41B36CD3900C5C111 /* split.c */; };
 		53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8BD1B36D0E200C5C111 /* QRView.swift */; };
-		53F7D5F61B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
@@ -249,7 +249,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		530B6C151B3808B700D06F14 /* ce2cs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ce2cs.h; sourceTree = "<group>"; };
 		530B6C291B38197700D06F14 /* CE2CSReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE2CSReader.swift; sourceTree = "<group>"; };
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
@@ -272,6 +271,8 @@
 		5346D93419931C9200CEFA4B /* SwitchCoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchCoder.swift; sourceTree = "<group>"; };
 		5346D9361993389600CEFA4B /* CloudEmoticon2iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CloudEmoticon2iOS.entitlements; sourceTree = "<group>"; };
 		5346D9391993393000CEFA4B /* CE2NCWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CE2NCWidget.entitlements; sourceTree = "<group>"; };
+		5348B5441B398BC20022CA17 /* ce2cs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ce2cs.c; sourceTree = "<group>"; };
+		5348B5451B398BC20022CA17 /* ce2cs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ce2cs.h; sourceTree = "<group>"; };
 		5355FCBA1990C20700D70CA4 /* NetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDownload.swift; sourceTree = "<group>"; };
 		5355FCBC1990C21C00D70CA4 /* FileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
 		53577338199B085D003FF9D3 /* SourceTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceTableViewController.swift; sourceTree = "<group>"; };
@@ -369,7 +370,6 @@
 		53F3F8B41B36CD3900C5C111 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		53F3F8B51B36CD3900C5C111 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		53F3F8BD1B36D0E200C5C111 /* QRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRView.swift; path = CloudEmoticon2iOS/QRView.swift; sourceTree = "<group>"; };
-		53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libCloudEmoticon2iOSCS.a; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
@@ -440,7 +440,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53F7D5F61B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a in Frameworks */,
 				53F3F89A1B36C52F00C5C111 /* Foundation.framework in Frameworks */,
 				53F3F8981B36C43100C5C111 /* UIKit.framework in Frameworks */,
 				53F3F8961B36C41E00C5C111 /* CoreGraphics.framework in Frameworks */,
@@ -624,14 +623,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5396DAA21B37F3CB0006B154 /* AppKey加密内容 */ = {
+		5396DAA21B37F3CB0006B154 /* AppKey */ = {
 			isa = PBXGroup;
 			children = (
-				53F7D5F51B3842FD001A6E5C /* libCloudEmoticon2iOSCS.a */,
+				5348B5441B398BC20022CA17 /* ce2cs.c */,
+				5348B5451B398BC20022CA17 /* ce2cs.h */,
 				530B6C291B38197700D06F14 /* CE2CSReader.swift */,
-				530B6C151B3808B700D06F14 /* ce2cs.h */,
 			);
-			name = "AppKey加密内容";
+			name = AppKey;
 			sourceTree = "<group>";
 		};
 		53995A531991C447008B12E0 /* 自定义状态栏 */ = {
@@ -755,7 +754,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
-				5396DAA21B37F3CB0006B154 /* AppKey加密内容 */,
+				5396DAA21B37F3CB0006B154 /* AppKey */,
 				53B6EEE31AF6331500ACAA6A /* 进入动画 */,
 				53AB49831AE260660090D955 /* 主题管理 */,
 				53DA36A219B5AF1900FD8D78 /* 多语言 */,
@@ -1293,6 +1292,7 @@
 				535E971A1B10622600266163 /* YashiZip.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
+				5348B5461B398BC20022CA17 /* ce2cs.c in Sources */,
 				5389C6D71B1A1232002811DC /* Skin2Object.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
 				535E970D1B10587F00266163 /* FileLoad.swift in Sources */,
