@@ -21,6 +21,7 @@ class UserTableHeaderView: UIView {
         // Drawing code
     }
     */
+
     
     let 头像图标:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
     let 设置图标:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton

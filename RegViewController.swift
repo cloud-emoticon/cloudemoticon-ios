@@ -1,24 +1,39 @@
 //
-//  LoginViewController.swift
+//  RegViewController.swift
 //  
 //
-//  Created by 神楽坂雅詩 on 15/6/22.
+//  Created by 神楽坂紫 on 15/6/23.
 //
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class RegViewController: UIViewController {
 
+    @IBOutlet weak var mail: UITextField!
+    @IBOutlet weak var username: UITextField!
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var passconfirm: UITextField!
+    @IBOutlet weak var reset: UIButton!
+    @IBOutlet weak var reg: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "登陆"  //lang.uage("登陆")
+
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func 重置按钮(sender: AnyObject) {
+        mail.text = ""
+        username.text = ""
+        password.text = ""
+        passconfirm.text = ""
+        mail.becomeFirstResponder()
     }
     
 

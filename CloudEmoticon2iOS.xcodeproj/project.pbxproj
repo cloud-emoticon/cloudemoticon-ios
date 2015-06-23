@@ -116,6 +116,7 @@
 		8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA4196D3390000D255E /* star-vector@2x.png */; };
 		8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAB196D36A2000D255E /* edit-vector.png */; };
 		8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAC196D36A2000D255E /* edit-vector@2x.png */; };
+		8B9DD22F1B39A8D0007F1457 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */; };
 		8B9F60301B33E712008DA1BD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F602E1B33E712008DA1BD /* Bolts.framework */; };
 		8B9F60311B33E712008DA1BD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F602F1B33E712008DA1BD /* Parse.framework */; };
 		8B9F603F1B33E7B8008DA1BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60341B33E7B8008DA1BD /* Accounts.framework */; };
@@ -386,6 +387,7 @@
 		8B98EEA4196D3390000D255E /* star-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-vector@2x.png"; sourceTree = "<group>"; };
 		8B98EEAB196D36A2000D255E /* edit-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector.png"; sourceTree = "<group>"; };
 		8B98EEAC196D36A2000D255E /* edit-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector@2x.png"; sourceTree = "<group>"; };
+		8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegViewController.swift; path = CloudEmoticon2iOS.xcodeproj/../RegViewController.swift; sourceTree = SOURCE_ROOT; };
 		8B9F602E1B33E712008DA1BD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8B9F602F1B33E712008DA1BD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8B9F60321B33E751008DA1BD /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -698,13 +700,14 @@
 			name = "进入动画";
 			sourceTree = "<group>";
 		};
-		53C515991B2BF91400FFDD11 /* 用户登录 */ = {
+		53C515991B2BF91400FFDD11 /* 用户注册登录 */ = {
 			isa = PBXGroup;
 			children = (
+				8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */,
 				53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */,
 				53C437C91B3848FD00CB21D3 /* LoginViewController.swift */,
 			);
-			name = "用户登录";
+			name = "用户注册登录";
 			sourceTree = "<group>";
 		};
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
@@ -763,7 +766,7 @@
 				53906A991999CAD0000020D1 /* 核心 */,
 				53A1A3D71B36AF770076CDD9 /* 分享和二维码 */,
 				53906A981999CA7E000020D1 /* 云颜文字 */,
-				53C515991B2BF91400FFDD11 /* 用户登录 */,
+				53C515991B2BF91400FFDD11 /* 用户注册登录 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
 				5346D93319931C6100CEFA4B /* 数据模型 */,
 				8B98EE9A196D2DC0000D255E /* images */,
@@ -1289,6 +1292,7 @@
 				5389C6CF1B19A52A002811DC /* INIReader.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				53F3F89D1B36C71100C5C111 /* QRCodeGenerator.m in Sources */,
+				8B9DD22F1B39A8D0007F1457 /* RegViewController.swift in Sources */,
 				535E971A1B10622600266163 /* YashiZip.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
