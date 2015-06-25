@@ -16,12 +16,18 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var 确认密码输入框: UITextField!
     @IBOutlet weak var reset: UIButton!
     @IBOutlet weak var reg: UIButton!
+    var 处理中提示框:UIAlertView? = nil
+    var 右上按钮: UIBarButtonItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = lang.uage("注册")
+        reset.setTitle(lang.uage("重置"), forState: UIControlState.Normal)
+        reg.setTitle(lang.uage("注册"), forState: UIControlState.Normal)
         let 背景色:UIColor = UIColor(red: 1, green: 0.79215, blue: 0.86274, alpha: 1)
         self.navigationController?.view.backgroundColor = 背景色
         self.view.backgroundColor = 背景色
+        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: "关闭软键盘")
         邮箱输入框.delegate = self
         邮箱输入框.keyboardType = UIKeyboardType.EmailAddress
         用户名输入框.delegate = self
@@ -32,7 +38,39 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func 注册按钮点击(sender: UIButton) {
-        
+        let 输入的用户名:NSString = 用户名输入框.text
+        if (输入的用户名.length >= 3) {
+            if (检查是否为邮箱(邮箱输入框.text)) {
+                let 输入的密码:NSString = 密码输入框.text
+                if (输入的密码.length >= 6) {
+                    if (输入的密码.isEqualToString(确认密码输入框.text)) {
+                        处理中提示框 = UIAlertView(title: lang.uage("处理中"), message: lang.uage("正在提交您的注册信息"), delegate: nil, cancelButtonTitle: "此处是调试用的临时取消按钮")
+                        处理中提示框?.show()
+                        //继续
+                    } else {
+                        let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("两次输入的密码不一致"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+                        提示框.show()
+                    }
+                } else {
+                    let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("密码至少要6位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+                    提示框.show()
+                }
+            } else {
+                let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("不是有效的电子邮件地址"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+                提示框.show()
+            }
+        } else {
+            let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("用户名不能少于3位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+            提示框.show()
+        }
+    }
+    
+    func 键盘收起按钮开关(开关:Bool) {
+        if (开关 == true && self.view.frame.size.height < 1024) {
+            self.navigationItem.rightBarButtonItem = 右上按钮
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -45,11 +83,18 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         用户名输入框.text = ""
         密码输入框.text = ""
         确认密码输入框.text = ""
-//        邮箱输入框.becomeFirstResponder()
+    }
+    
+    func 关闭软键盘() {
+        邮箱输入框.resignFirstResponder()
+        用户名输入框.resignFirstResponder()
+        密码输入框.resignFirstResponder()
+        确认密码输入框.resignFirstResponder()
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
         if (self.view.frame.origin.y == 0 && self.view.frame.size.height < 1024) {
+            键盘收起按钮开关(true)
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.view.frame.origin.y = 0 - textField.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 25
                 //self.view.frame.origin.y = 0 - self.view.frame.size.height * 0.25
@@ -71,10 +116,18 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
+        键盘收起按钮开关(false)
         if (self.view.frame.origin.y < 0 && self.view.frame.size.height < 1024) {
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.view.frame.origin.y = 0
             })
         }
+    }
+    
+    func 检查是否为邮箱(邮件地址:String) -> Bool {
+        let 格式表达式:String = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+        let 格式校验器:NSPredicate = NSPredicate(format: "SELF MATCHES%@",格式表达式)
+        let 判断结果:Bool = 格式校验器.evaluateWithObject(邮件地址)
+        return 判断结果
     }
 }

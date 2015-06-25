@@ -14,25 +14,57 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var 密码输入框: UITextField!
     @IBOutlet weak var 注册按钮: UIButton!
     @IBOutlet weak var 登录按钮: UIButton!
-    
+    var 处理中提示框:UIAlertView? = nil
+    var 右上按钮: UIBarButtonItem? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "登陆"  //lang.uage("登陆")
+        self.title = lang.uage("登录")
+        注册按钮.setTitle(lang.uage("注册"), forState: UIControlState.Normal)
+        登录按钮.setTitle(lang.uage("登录"), forState: UIControlState.Normal)
         let 背景色:UIColor = UIColor(red: 1, green: 0.79215, blue: 0.86274, alpha: 1)
         self.navigationController?.view.backgroundColor = 背景色
         self.view.backgroundColor = 背景色
+        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: "关闭软键盘")
         账号输入框.delegate = self
         账号输入框.keyboardType = UIKeyboardType.NamePhonePad
         密码输入框.delegate = self
     }
     
+    func 关闭软键盘() {
+        账号输入框.resignFirstResponder()
+        密码输入框.resignFirstResponder()
+    }
+    
     @IBAction func 登录按钮点击(sender: UIButton) {
-        
+        let 输入的用户名:NSString = 账号输入框.text
+        if (输入的用户名.length >= 3) {
+            let 输入的密码:NSString = 密码输入框.text
+            if (输入的密码.length >= 6) {
+                处理中提示框 = UIAlertView(title: lang.uage("处理中"), message: lang.uage("正在验证您的登录信息"), delegate: nil, cancelButtonTitle: "此处是调试用的临时取消按钮")
+                处理中提示框?.show()
+                //继续
+            } else {
+                let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("密码至少要6位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+                提示框.show()
+            }
+        } else {
+            let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("用户名不能少于3位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
+            提示框.show()
+        }
+    }
+    
+    func 键盘收起按钮开关(开关:Bool) {
+        if (开关 == true && self.view.frame.size.height < 1024) {
+            self.navigationItem.rightBarButtonItem = 右上按钮
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
     }
     
     func textFieldDidBeginEditing(textField: UITextField) {
         if (self.view.frame.origin.y == 0 && self.view.frame.size.height < 1024) {
+            键盘收起按钮开关(true)
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.view.frame.origin.y = 0 - textField.frame.origin.y + self.navigationController!.navigationBar.frame.size.height + 25
                 //self.view.frame.origin.y = 0 - self.view.frame.size.height * 0.25
@@ -50,6 +82,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
+        键盘收起按钮开关(false)
         if (self.view.frame.origin.y < 0 && self.view.frame.size.height < 1024) {
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 self.view.frame.origin.y = 0
