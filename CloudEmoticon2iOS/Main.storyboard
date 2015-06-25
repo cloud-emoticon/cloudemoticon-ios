@@ -617,7 +617,7 @@
                                 </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8w8-WB-Dw1">
-                                <rect key="frame" x="30" y="207" width="56" height="20.5"/>
+                                <rect key="frame" x="30" y="207" width="56" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="SVE-Vd-qDd"/>
@@ -660,6 +660,9 @@
                                         <include reference="vaR-is-vAi"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="登录按钮点击:" destination="Qe1-kl-PqP" eventType="touchUpInside" id="USm-G8-JDS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cyJ-OJ-hA7">
                                 <rect key="frame" x="226" y="285" width="48" height="30"/>
@@ -689,7 +692,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MUU-cM-7fQ">
-                                <rect key="frame" x="30" y="249" width="56" height="20.5"/>
+                                <rect key="frame" x="30" y="249" width="56" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="NHT-Es-arc"/>
@@ -754,10 +757,10 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="Chy-0m-rjQ"/>
-                                <exclude reference="TYM-KF-pmH"/>
                                 <exclude reference="LvR-Jc-Uvo"/>
                                 <exclude reference="TAF-gN-xEO"/>
                                 <exclude reference="UNH-Yh-5ne"/>
+                                <exclude reference="TYM-KF-pmH"/>
                                 <exclude reference="3tg-Lw-RjA"/>
                                 <exclude reference="Pp1-dg-XuE"/>
                                 <exclude reference="jts-BC-zhu"/>
@@ -770,9 +773,6 @@
                                 <include reference="Chy-0m-rjQ"/>
                                 <exclude reference="Wb2-Gh-BHl"/>
                                 <exclude reference="xzt-r5-8Yl"/>
-                                <exclude reference="43R-iC-IQw"/>
-                                <exclude reference="6vc-31-0Nq"/>
-                                <include reference="TYM-KF-pmH"/>
                                 <exclude reference="4rh-9P-kZ2"/>
                                 <exclude reference="90T-cP-m8D"/>
                                 <include reference="LvR-Jc-Uvo"/>
@@ -781,6 +781,9 @@
                                 <exclude reference="S26-Gh-8cj"/>
                                 <include reference="TAF-gN-xEO"/>
                                 <include reference="UNH-Yh-5ne"/>
+                                <exclude reference="43R-iC-IQw"/>
+                                <exclude reference="6vc-31-0Nq"/>
+                                <include reference="TYM-KF-pmH"/>
                                 <include reference="3tg-Lw-RjA"/>
                                 <include reference="Pp1-dg-XuE"/>
                                 <exclude reference="U8J-G8-NBj"/>
@@ -797,6 +800,12 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="密码输入框" destination="tXC-RR-bQW" id="aMy-TZ-Toj"/>
+                        <outlet property="注册按钮" destination="cyJ-OJ-hA7" id="fFk-wA-7y3"/>
+                        <outlet property="登录按钮" destination="2BF-r4-jYQ" id="tRq-mT-P1f"/>
+                        <outlet property="账号输入框" destination="k4G-cZ-VEY" id="wa0-Rf-n1N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2u-kU-LnJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -945,7 +954,7 @@
                                 </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="邮箱" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3g-kh-cXg">
-                                <rect key="frame" x="46" y="203" width="40" height="20.5"/>
+                                <rect key="frame" x="46" y="203" width="40" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="jp7-a4-dcX"/>
@@ -954,8 +963,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzu-9s-dnw">
-                                <rect key="frame" x="46" y="240" width="40" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="账号" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zzu-9s-dnw">
+                                <rect key="frame" x="46" y="240" width="40" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="u9a-4T-vGe"/>
@@ -964,8 +973,8 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-4a-tBF">
-                                <rect key="frame" x="46" y="279" width="40" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaR-4a-tBF">
+                                <rect key="frame" x="46" y="279" width="40" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="esM-Et-pIT"/>
@@ -1000,6 +1009,9 @@
                                 <state key="normal" title="注册">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="注册按钮点击:" destination="DCL-va-XiJ" eventType="touchUpInside" id="Ikf-Ei-S7O"/>
+                                </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="cestart.png" translatesAutoresizingMaskIntoConstraints="NO" id="nSR-vJ-vaL">
                                 <rect key="frame" x="236" y="64" width="127" height="127"/>
@@ -1022,8 +1034,8 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-bg-2wN">
-                                <rect key="frame" x="32" y="317" width="68" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="确认密码" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5F9-bg-2wN">
+                                <rect key="frame" x="32" y="317" width="68" height="21"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="68" id="Kwj-0i-Zlu"/>
@@ -1113,7 +1125,6 @@
                                 <include reference="VSu-sX-85r"/>
                                 <exclude reference="maP-cT-uQN"/>
                                 <exclude reference="q0X-8e-xse"/>
-                                <exclude reference="CTj-Qe-Cdo"/>
                                 <exclude reference="2lS-9D-j3T"/>
                                 <include reference="Ca9-I7-NWI"/>
                                 <exclude reference="EIF-zC-NMS"/>
@@ -1122,7 +1133,7 @@
                                 <exclude reference="ZrU-2s-KqD"/>
                                 <exclude reference="cPW-mf-1lX"/>
                                 <include reference="xyr-nd-a8N"/>
-                                <exclude reference="Tot-2U-3aK"/>
+                                <exclude reference="CTj-Qe-Cdo"/>
                                 <exclude reference="5SR-7d-DAL"/>
                                 <exclude reference="5aT-zt-K15"/>
                                 <include reference="7ri-IM-n2X"/>
@@ -1131,13 +1142,14 @@
                                 <include reference="V94-Mp-alV"/>
                                 <include reference="mtL-VN-f4F"/>
                                 <exclude reference="nac-tk-q0v"/>
-                                <exclude reference="nnl-Hg-NMS"/>
+                                <exclude reference="Tot-2U-3aK"/>
                                 <exclude reference="Dxh-8B-2vN"/>
                                 <include reference="FmU-3r-7JF"/>
                                 <include reference="Tkd-r3-dWf"/>
                                 <exclude reference="Z6g-N2-FlY"/>
                                 <exclude reference="dWr-g0-i4d"/>
                                 <include reference="smp-mW-JII"/>
+                                <exclude reference="nnl-Hg-NMS"/>
                                 <include reference="54o-Bf-AyC"/>
                                 <exclude reference="5i1-n9-vxC"/>
                                 <exclude reference="JqT-EP-BEF"/>
@@ -1154,12 +1166,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="注册" id="aRn-Sa-N9h"/>
                     <connections>
-                        <outlet property="mail" destination="VWk-8H-H72" id="1O6-cm-vmd"/>
-                        <outlet property="passconfirm" destination="e9g-iF-7qr" id="8ZB-hr-zsm"/>
-                        <outlet property="password" destination="2v2-c2-I6L" id="JCZ-Dg-epQ"/>
                         <outlet property="reg" destination="4S4-4i-kzA" id="FGq-9J-v8X"/>
                         <outlet property="reset" destination="w2p-rA-54Z" id="8d9-7V-OIM"/>
-                        <outlet property="username" destination="aIt-Ny-gJ2" id="1YD-Td-6ZB"/>
+                        <outlet property="密码输入框" destination="2v2-c2-I6L" id="FhV-Ew-R9O"/>
+                        <outlet property="用户名输入框" destination="aIt-Ny-gJ2" id="t9E-d3-Tmx"/>
+                        <outlet property="确认密码输入框" destination="e9g-iF-7qr" id="5ag-5k-ARN"/>
+                        <outlet property="邮箱输入框" destination="VWk-8H-H72" id="SaT-6W-T0h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="utF-eN-yco" userLabel="First Responder" sceneMemberID="firstResponder"/>
