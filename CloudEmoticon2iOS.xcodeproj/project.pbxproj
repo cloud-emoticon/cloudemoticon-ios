@@ -504,14 +504,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		53357E961B3E41BA00DA6BD7 /* Parse */ = {
-			isa = PBXGroup;
-			children = (
-				53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */,
-			);
-			name = Parse;
-			sourceTree = "<group>";
-		};
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
 			isa = PBXGroup;
 			children = (
@@ -710,14 +702,15 @@
 			name = "进入动画";
 			sourceTree = "<group>";
 		};
-		53C515991B2BF91400FFDD11 /* 用户注册登录 */ = {
+		53C515991B2BF91400FFDD11 /* 注册，登录，同步，推送，分享，统计 */ = {
 			isa = PBXGroup;
 			children = (
+				53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */,
 				8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */,
 				53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */,
 				53C437C91B3848FD00CB21D3 /* LoginViewController.swift */,
 			);
-			name = "用户注册登录";
+			name = "注册，登录，同步，推送，分享，统计";
 			sourceTree = "<group>";
 		};
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
@@ -767,7 +760,6 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
-				53357E961B3E41BA00DA6BD7 /* Parse */,
 				5396DAA21B37F3CB0006B154 /* AppKey */,
 				53B6EEE31AF6331500ACAA6A /* 进入动画 */,
 				53AB49831AE260660090D955 /* 主题管理 */,
@@ -777,7 +769,7 @@
 				53906A991999CAD0000020D1 /* 核心 */,
 				53A1A3D71B36AF770076CDD9 /* 分享和二维码 */,
 				53906A981999CA7E000020D1 /* 云颜文字 */,
-				53C515991B2BF91400FFDD11 /* 用户注册登录 */,
+				53C515991B2BF91400FFDD11 /* 注册，登录，同步，推送，分享，统计 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
 				5346D93319931C6100CEFA4B /* 数据模型 */,
 				8B98EE9A196D2DC0000D255E /* images */,
