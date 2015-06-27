@@ -86,6 +86,7 @@
 		53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
+		53E9E3321B3E41F600BD5FB6 /* ParseLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */; };
 		53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ED64C419A48A74008CE9BD /* NotificationView.swift */; };
 		53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F157201AFFAE6B0027D578 /* SkinManager.swift */; };
 		53F3F8801B36B46500C5C111 /* QRActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F87F1B36B46500C5C111 /* QRActivity.swift */; };
@@ -348,6 +349,7 @@
 		53E9DF8119C1844B00C61121 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		53E9DF8219C1844C00C61121 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		53E9DF8319C189E600C61121 /* WaitView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitView.swift; sourceTree = "<group>"; };
+		53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseLink.swift; sourceTree = "<group>"; };
 		53ED64C419A48A74008CE9BD /* NotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		53F157201AFFAE6B0027D578 /* SkinManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinManager.swift; sourceTree = "<group>"; };
 		53F3F87F1B36B46500C5C111 /* QRActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRActivity.swift; path = CloudEmoticon2iOS/QRActivity.swift; sourceTree = "<group>"; };
@@ -500,6 +502,14 @@
 				5328C7AC19B70D0D00C425A8 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		53357E961B3E41BA00DA6BD7 /* Parse */ = {
+			isa = PBXGroup;
+			children = (
+				53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */,
+			);
+			name = Parse;
 			sourceTree = "<group>";
 		};
 		5346D93319931C6100CEFA4B /* 数据模型 */ = {
@@ -757,6 +767,7 @@
 		53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXGroup;
 			children = (
+				53357E961B3E41BA00DA6BD7 /* Parse */,
 				5396DAA21B37F3CB0006B154 /* AppKey */,
 				53B6EEE31AF6331500ACAA6A /* 进入动画 */,
 				53AB49831AE260660090D955 /* 主题管理 */,
@@ -1264,6 +1275,7 @@
 				535E970A1B10587F00266163 /* FileDirectory.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
 				530B6C2A1B38197700D06F14 /* CE2CSReader.swift in Sources */,
+				53E9E3321B3E41F600BD5FB6 /* ParseLink.swift in Sources */,
 				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
 				53F3F8B61B36CD3900C5C111 /* bitstream.c in Sources */,
 				535E97131B10587F00266163 /* zip.c in Sources */,

@@ -24,7 +24,7 @@ let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
 var 全局_皮肤设置:NSDictionary = NSDictionary()
 let 全局_默认当前选中行颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
 let 全局_默认导航栏背景颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1.0)
-
+let 全局_Parse读写:ParseLink = ParseLink()
 
 enum NetDownloadTo:Int
 {

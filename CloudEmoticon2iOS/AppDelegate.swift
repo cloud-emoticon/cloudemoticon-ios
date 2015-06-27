@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Parse
 import Bolts
 
 @UIApplicationMain
@@ -49,15 +48,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //因为涉及第三方SDK的APPKEY，非此项目开发人员请勿使用这些APPKey。
         let 加密设置:CE2CSReader = CE2CSReader()
         加密设置.载入设置()
-        
         // [Optional] Power your app with Local Datastore. For more info, go to
         // https://parse.com/docs/ios_guide#localdatastore/iOS
-        Parse.enableLocalDatastore()
+        全局_Parse读写.启用本地数据存储()
         // Initialize Parse.
-        Parse.setApplicationId(加密设置.parse_applicationid_o!,
-            clientKey: 加密设置.parse_clientkey_o!)
+        全局_Parse读写.设置应用程序编号(加密设置.parse_applicationid_o!,
+            应用程序秘钥: 加密设置.parse_clientkey_o!)
         // [Optional] Track statistics around application opens.
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
+        全局_Parse读写.跟踪应用程序启动设置(launchOptions)
         // Override point for customization after application launch.
         //友盟统计（SDK尚未引入,但AppKey已导入）
         //MobClick(闭源设置.mobclick_o!,reportPolicy: BATCH,channelId: "Web")

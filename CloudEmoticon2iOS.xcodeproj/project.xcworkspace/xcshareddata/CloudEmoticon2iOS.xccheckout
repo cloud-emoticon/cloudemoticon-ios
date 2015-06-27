@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>270F49D8-2546-471C-BECA-AC0F8289B12A</string>
 	<key>IDESourceControlProjectName</key>
-	<string>CloudEmoticon2iOS</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>B286D462F13F08B6F79FE367145C9A00DF281073</key>
 		<string>https://github.com/cxchope/CloudEmoticon2iOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>CloudEmoticon2iOS.xcodeproj</string>
+	<string>CloudEmoticon2iOS.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B286D462F13F08B6F79FE367145C9A00DF281073</key>
