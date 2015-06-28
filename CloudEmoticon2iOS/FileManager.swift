@@ -78,13 +78,13 @@ class FileManager: NSObject {
             }
             return NSString.localizedStringWithFormat("cache-%@.plist",md5vol)
         case saveMode.HISTORY:
-            return NSString.localizedStringWithFormat("%@-history.plist",p_nowUserName)
+            return NSString.localizedStringWithFormat("%@-history.plist",全局_当前用户名)
         case saveMode.FAVORITE:
-            return NSString.localizedStringWithFormat("%@-favorite.plist",p_nowUserName)
+            return NSString.localizedStringWithFormat("%@-favorite.plist",全局_当前用户名)
         case saveMode.CUSTOM:
-            return NSString.localizedStringWithFormat("%@-custom.plist",p_nowUserName)
+            return NSString.localizedStringWithFormat("%@-custom.plist",全局_当前用户名)
         case saveMode.SKIN:
-            return NSString.localizedStringWithFormat("%@-skin.plist",p_nowUserName)
+            return NSString.localizedStringWithFormat("%@-skin.plist",全局_当前用户名)
         default:
             return NSString()
         }

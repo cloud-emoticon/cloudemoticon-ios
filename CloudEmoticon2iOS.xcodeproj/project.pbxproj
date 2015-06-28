@@ -83,6 +83,7 @@
 		53E0E4BA1994B2F800C9D9FC /* settings-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B81994B2F800C9D9FC /* settings-vector.png */; };
 		53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */; };
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
+		53E668DF1B3E94150010EF34 /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E668DE1B3E94150010EF34 /* UserSync.swift */; };
 		53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
@@ -344,6 +345,7 @@
 		53E0E4B81994B2F800C9D9FC /* settings-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector.png"; sourceTree = "<group>"; };
 		53E0E4B91994B2F800C9D9FC /* settings-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-vector@2x.png"; sourceTree = "<group>"; };
 		53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyEmoticonViewController.swift; sourceTree = "<group>"; };
+		53E668DE1B3E94150010EF34 /* UserSync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSync.swift; sourceTree = "<group>"; };
 		53E9DF7519C183C600C61121 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53E9DF7F19C1843E00C61121 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		53E9DF8119C1844B00C61121 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
@@ -706,6 +708,7 @@
 			isa = PBXGroup;
 			children = (
 				53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */,
+				53E668DE1B3E94150010EF34 /* UserSync.swift */,
 				8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */,
 				53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */,
 				53C437C91B3848FD00CB21D3 /* LoginViewController.swift */,
@@ -1287,6 +1290,7 @@
 				535E970B1B10587F00266163 /* FileHelper.swift in Sources */,
 				53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */,
 				535E97141B10587F00266163 /* SSZipArchive.m in Sources */,
+				53E668DF1B3E94150010EF34 /* UserSync.swift in Sources */,
 				53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */,
 				53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,

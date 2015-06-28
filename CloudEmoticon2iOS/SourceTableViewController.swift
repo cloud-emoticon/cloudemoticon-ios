@@ -362,7 +362,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             for 当前权限用户名对象 in 当前源对象权限
             {
                 let 当前权限用户名:NSString = 当前权限用户名对象 as! NSString
-                if (当前权限用户名.isEqualToString("user") || 当前权限用户名.isEqualToString(p_nowUserName as String)) {
+                if (当前权限用户名.isEqualToString("user") || 当前权限用户名.isEqualToString(全局_当前用户名 as String)) {
                     当前源对象是否可删除 = true
                     break
                 }

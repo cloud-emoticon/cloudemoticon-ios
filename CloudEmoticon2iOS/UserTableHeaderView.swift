@@ -12,7 +12,7 @@ protocol UserTableHeaderViewDelegate{
     func 显示用户登录框()
 }
 
-class UserTableHeaderView: UIView {
+class UserTableHeaderView: UIView, UIAlertViewDelegate {
     var 代理:UserTableHeaderViewDelegate?
     /*
     // Only override drawRect: if you perform custom drawing.
@@ -46,20 +46,35 @@ class UserTableHeaderView: UIView {
         头像图标.backgroundColor = UIColor.clearColor()
         self.addSubview(头像图标)
         主标题.frame = CGRectMake(边界距离 * 2 + 头像大小, 头像图标.frame.origin.y, self.frame.size.width - 边界距离 * 3 - 头像大小, 20)
-        主标题.text = "神楽坂雅詩"
         主标题.font = UIFont.systemFontOfSize(12)
         self.addSubview(主标题)
         副标题.frame = CGRectMake(边界距离 * 2 + 头像大小, 主标题.frame.origin.y + 主标题.frame.size.height, self.frame.size.width - 边界距离 * 3 - 头像大小, 12)
-        副标题.text = "cxchope@163.com"
         副标题.font = UIFont.systemFontOfSize(9)
         self.addSubview(副标题)
         设置图标.frame = CGRectMake(self.frame.size.width - 边界距离 - 设置按钮大小, 边界距离, 设置按钮大小, 设置按钮大小)
         self.addSubview(设置图标)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换用户", name: "切换用户通知", object: nil)
         按钮.frame = 背景图片.frame
         按钮.addTarget(self, action: "点击", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(按钮)
+        默认文字()
         切换主题()
+        切换用户()
+    }
+    
+    func 默认文字() {
+        主标题.text = lang.uage("尚未登录")
+        副标题.text = lang.uage("登录以同步您的数据")
+    }
+    
+    func 切换用户() {
+        if (全局_当前用户名 != "") {
+            主标题.text = 全局_当前用户名
+        }
+        if (全局_当前用户邮箱 != "") {
+            副标题.text = 全局_当前用户邮箱
+        }
     }
     
     func 切换主题() {
@@ -137,13 +152,22 @@ class UserTableHeaderView: UIView {
     }
     
     func 点击() {
-        let 用户已登录:Bool = false //此处还没写
-        if (用户已登录) {
-            let 用户登录菜单:UIAlertView = UIAlertView(title: "<用户名>", message: "", delegate: nil, cancelButtonTitle: "取消", otherButtonTitles: lang.uage("立即同步"),lang.uage("上传覆盖网络"),lang.uage("下载覆盖本地"),lang.uage("修改密码"),lang.uage("切换用户/登出")) //此处功能未确定暂不翻译
+        if (全局_当前用户名 != "") {
+            let 用户登录菜单:UIAlertView = UIAlertView(title: 全局_当前用户名, message: "", delegate: nil, cancelButtonTitle: "取消", otherButtonTitles: lang.uage("立即同步"),lang.uage("上传覆盖网络"),lang.uage("下载覆盖本地"),lang.uage("修改密码"),lang.uage("切换用户/登出")) //此处功能未确定暂不翻译
+            用户登录菜单.delegate = self
             用户登录菜单.show()
         } else {
-//            
             代理!.显示用户登录框()
+        }
+    }
+    
+    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+        if (buttonIndex == 5) {
+            全局_Parse读写.注销用户()
+            全局_当前用户名 = ""
+            全局_当前用户邮箱 = ""
+            默认文字()
+            检查用户登录()
         }
     }
 }

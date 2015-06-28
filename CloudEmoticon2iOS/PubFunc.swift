@@ -8,7 +8,8 @@
 import UIKit
 
 var p_nowurl:NSString = "localhost"
-var p_nowUserName:NSString = ""
+var 全局_当前用户名:String = ""
+var 全局_当前用户邮箱:String = ""
 var p_emodata:NSArray = NSArray()
 var p_storeIsOpen:Bool = false
 var 全局_网络繁忙:Bool = false
@@ -17,7 +18,7 @@ let defaultimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForR
 
 let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
 let 全局_文档文件夹:NSString = documentDirectory[0] as! NSString
-let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", p_nowUserName)
+let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", 全局_当前用户名)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",全局_文档文件夹, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
 let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
@@ -104,6 +105,15 @@ func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, �
     var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSizeMake(单元格宽度,CGFloat.max))
     计算后尺寸.height = ceil(计算后尺寸.height)
     return 计算后尺寸.height
+}
+
+func 检查用户登录() {
+    let 当前用户信息:NSDictionary? = 全局_Parse读写.当前用户()
+    if (当前用户信息 != nil) {
+        全局_当前用户名 = 当前用户信息?.objectForKey("已登录用户名") as! String
+        全局_当前用户邮箱 = 当前用户信息?.objectForKey("已登录邮箱") as! String
+    }
+    NSNotificationCenter.defaultCenter().postNotificationName("切换用户通知", object: nil)
 }
 
 /* 隐藏设置：

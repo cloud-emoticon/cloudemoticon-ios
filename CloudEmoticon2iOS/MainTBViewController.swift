@@ -20,6 +20,7 @@ class MainTBViewController: UITabBarController {
         
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
+        检查用户登录()
         let 进入视图:EnterView = EnterView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
         self.view.addSubview(进入视图)
         initSetting()

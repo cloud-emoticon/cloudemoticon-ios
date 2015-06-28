@@ -218,7 +218,7 @@ class ParseLink: NSObject {
         //其他资料
         //用户.setObject("10086", forKey: "phone")
         用户.signUpInBackgroundWithBlock { (是否成功: Bool, 错误信息: NSError?) -> Void in
-            if (错误信息 != nil || 是否成功 == true) {
+            if (错误信息 != nil || 是否成功 != true) {
                 NSLog("[ParseLink]未能注册用户“%@”，因为：%@。",用户名,错误信息!.localizedDescription)
                 self.通知中心.postNotificationName("P用户:注册失败", object: 错误信息!.localizedDescription)
             } else {
@@ -238,7 +238,7 @@ class ParseLink: NSObject {
     func 用户登录(用户名:String, 密码:String) {
         //当然，您让用户注册后，需要让他们以后登录到他们的帐户。要如此，您可以使用类方法 logInWithUsernameInBackground:password:。
         PFUser.logInWithUsernameInBackground(用户名, password: 密码) { (登录的用户:PFUser?, 错误信息:NSError?) -> Void in
-            if (错误信息 != nil || 登录的用户 != nil) {
+            if (错误信息 != nil || 登录的用户 == nil) {
                 NSLog("[ParseLink]未能登录用户“%@”，因为：%@。",用户名,错误信息!.localizedDescription)
                 self.通知中心.postNotificationName("P用户:登录失败", object: 错误信息!.localizedDescription)
             } else {

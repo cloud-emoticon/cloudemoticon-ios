@@ -28,4 +28,4 @@ com.yukariyashi.cloudemoticon2.cewatchapp
 主题安装失败
 下载路径不正确
 
-return NSString.localizedStringWithFormat("%@-history.plist",p_nowUserName)
+return NSString.localizedStringWithFormat("%@-history.plist",全局_当前用户名)
