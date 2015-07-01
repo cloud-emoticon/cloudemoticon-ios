@@ -26,7 +26,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.backgroundColor = 背景色
         右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: "关闭软键盘")
         账号输入框.delegate = self
-        账号输入框.keyboardType = UIKeyboardType.NamePhonePad
         密码输入框.delegate = self
         //  <测试用>
         账号输入框.text = "yashitest"
