@@ -43,6 +43,14 @@
 		535E97141B10587F00266163 /* SSZipArchive.m in Sources */ = {isa = PBXBuildFile; fileRef = 535E97071B10587F00266163 /* SSZipArchive.m */; };
 		535E97161B1059FB00266163 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 535E97151B1059FB00266163 /* libz.dylib */; };
 		535E971A1B10622600266163 /* YashiZip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535E97191B10622600266163 /* YashiZip.swift */; };
+		53796B3F1B47C2F000A07C09 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B311B47C2F000A07C09 /* bitstream.c */; };
+		53796B401B47C2F000A07C09 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B331B47C2F000A07C09 /* mask.c */; };
+		53796B411B47C2F000A07C09 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B351B47C2F000A07C09 /* qrencode.c */; };
+		53796B421B47C2F000A07C09 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B371B47C2F000A07C09 /* qrinput.c */; };
+		53796B431B47C2F000A07C09 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B391B47C2F000A07C09 /* qrspec.c */; };
+		53796B441B47C2F000A07C09 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B3B1B47C2F000A07C09 /* rscode.c */; };
+		53796B451B47C2F000A07C09 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 53796B3D1B47C2F000A07C09 /* split.c */; };
+		53796B471B47C33A00A07C09 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53796B461B47C33A00A07C09 /* RegViewController.swift */; };
 		5389C6CF1B19A52A002811DC /* INIReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389C6CE1B19A52A002811DC /* INIReader.swift */; };
 		5389C6D51B1A0B89002811DC /* themekeys.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5389C6D41B1A0B89002811DC /* themekeys.txt */; };
 		5389C6D71B1A1232002811DC /* Skin2Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389C6D61B1A1232002811DC /* Skin2Object.swift */; };
@@ -95,13 +103,6 @@
 		53F3F8981B36C43100C5C111 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F3F8971B36C43100C5C111 /* UIKit.framework */; };
 		53F3F89A1B36C52F00C5C111 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F3F8991B36C52F00C5C111 /* Foundation.framework */; };
 		53F3F89D1B36C71100C5C111 /* QRCodeGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F89C1B36C71100C5C111 /* QRCodeGenerator.m */; };
-		53F3F8B61B36CD3900C5C111 /* bitstream.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8A81B36CD3900C5C111 /* bitstream.c */; };
-		53F3F8B71B36CD3900C5C111 /* mask.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8AA1B36CD3900C5C111 /* mask.c */; };
-		53F3F8B81B36CD3900C5C111 /* qrencode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8AC1B36CD3900C5C111 /* qrencode.c */; };
-		53F3F8B91B36CD3900C5C111 /* qrinput.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8AE1B36CD3900C5C111 /* qrinput.c */; };
-		53F3F8BA1B36CD3900C5C111 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B01B36CD3900C5C111 /* qrspec.c */; };
-		53F3F8BB1B36CD3900C5C111 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B21B36CD3900C5C111 /* rscode.c */; };
-		53F3F8BC1B36CD3900C5C111 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8B41B36CD3900C5C111 /* split.c */; };
 		53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8BD1B36D0E200C5C111 /* QRView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
@@ -118,7 +119,6 @@
 		8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEA4196D3390000D255E /* star-vector@2x.png */; };
 		8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAB196D36A2000D255E /* edit-vector.png */; };
 		8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAC196D36A2000D255E /* edit-vector@2x.png */; };
-		8B9DD22F1B39A8D0007F1457 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */; };
 		8B9F60301B33E712008DA1BD /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F602E1B33E712008DA1BD /* Bolts.framework */; };
 		8B9F60311B33E712008DA1BD /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F602F1B33E712008DA1BD /* Parse.framework */; };
 		8B9F603F1B33E7B8008DA1BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60341B33E7B8008DA1BD /* Accounts.framework */; };
@@ -301,6 +301,21 @@
 		535E97071B10587F00266163 /* SSZipArchive.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSZipArchive.m; sourceTree = "<group>"; };
 		535E97151B1059FB00266163 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		535E97191B10622600266163 /* YashiZip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiZip.swift; sourceTree = "<group>"; };
+		53796B311B47C2F000A07C09 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = bitstream.c; path = CloudEmoticon2iOS/bitstream.c; sourceTree = "<group>"; };
+		53796B321B47C2F000A07C09 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bitstream.h; path = CloudEmoticon2iOS/bitstream.h; sourceTree = "<group>"; };
+		53796B331B47C2F000A07C09 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mask.c; path = CloudEmoticon2iOS/mask.c; sourceTree = "<group>"; };
+		53796B341B47C2F000A07C09 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mask.h; path = CloudEmoticon2iOS/mask.h; sourceTree = "<group>"; };
+		53796B351B47C2F000A07C09 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrencode.c; path = CloudEmoticon2iOS/qrencode.c; sourceTree = "<group>"; };
+		53796B361B47C2F000A07C09 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrencode.h; path = CloudEmoticon2iOS/qrencode.h; sourceTree = "<group>"; };
+		53796B371B47C2F000A07C09 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrinput.c; path = CloudEmoticon2iOS/qrinput.c; sourceTree = "<group>"; };
+		53796B381B47C2F000A07C09 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrinput.h; path = CloudEmoticon2iOS/qrinput.h; sourceTree = "<group>"; };
+		53796B391B47C2F000A07C09 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = qrspec.c; path = CloudEmoticon2iOS/qrspec.c; sourceTree = "<group>"; };
+		53796B3A1B47C2F000A07C09 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = qrspec.h; path = CloudEmoticon2iOS/qrspec.h; sourceTree = "<group>"; };
+		53796B3B1B47C2F000A07C09 /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = rscode.c; path = CloudEmoticon2iOS/rscode.c; sourceTree = "<group>"; };
+		53796B3C1B47C2F000A07C09 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = rscode.h; path = CloudEmoticon2iOS/rscode.h; sourceTree = "<group>"; };
+		53796B3D1B47C2F000A07C09 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = split.c; path = CloudEmoticon2iOS/split.c; sourceTree = "<group>"; };
+		53796B3E1B47C2F000A07C09 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = split.h; path = CloudEmoticon2iOS/split.h; sourceTree = "<group>"; };
+		53796B461B47C33A00A07C09 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		53818FE21ABDAAA700D62C5F /* cewidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewidget.entitlements; sourceTree = "<group>"; };
 		53818FE31ABDAAAC00D62C5F /* cekeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cekeyboard.entitlements; sourceTree = "<group>"; };
 		53818FE41ABDAAB000D62C5F /* cewatchex.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchex.entitlements; sourceTree = "<group>"; };
@@ -360,20 +375,6 @@
 		53F3F8991B36C52F00C5C111 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53F3F89B1B36C71100C5C111 /* QRCodeGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QRCodeGenerator.h; path = CloudEmoticon2iOS/QRCodeGenerator.h; sourceTree = "<group>"; };
 		53F3F89C1B36C71100C5C111 /* QRCodeGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QRCodeGenerator.m; path = CloudEmoticon2iOS/QRCodeGenerator.m; sourceTree = "<group>"; };
-		53F3F8A81B36CD3900C5C111 /* bitstream.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bitstream.c; sourceTree = "<group>"; };
-		53F3F8A91B36CD3900C5C111 /* bitstream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = bitstream.h; sourceTree = "<group>"; };
-		53F3F8AA1B36CD3900C5C111 /* mask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mask.c; sourceTree = "<group>"; };
-		53F3F8AB1B36CD3900C5C111 /* mask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mask.h; sourceTree = "<group>"; };
-		53F3F8AC1B36CD3900C5C111 /* qrencode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrencode.c; sourceTree = "<group>"; };
-		53F3F8AD1B36CD3900C5C111 /* qrencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrencode.h; sourceTree = "<group>"; };
-		53F3F8AE1B36CD3900C5C111 /* qrinput.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrinput.c; sourceTree = "<group>"; };
-		53F3F8AF1B36CD3900C5C111 /* qrinput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrinput.h; sourceTree = "<group>"; };
-		53F3F8B01B36CD3900C5C111 /* qrspec.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = qrspec.c; sourceTree = "<group>"; };
-		53F3F8B11B36CD3900C5C111 /* qrspec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = qrspec.h; sourceTree = "<group>"; };
-		53F3F8B21B36CD3900C5C111 /* rscode.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rscode.c; sourceTree = "<group>"; };
-		53F3F8B31B36CD3900C5C111 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
-		53F3F8B41B36CD3900C5C111 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
-		53F3F8B51B36CD3900C5C111 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
 		53F3F8BD1B36D0E200C5C111 /* QRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRView.swift; path = CloudEmoticon2iOS/QRView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
@@ -391,7 +392,6 @@
 		8B98EEA4196D3390000D255E /* star-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-vector@2x.png"; sourceTree = "<group>"; };
 		8B98EEAB196D36A2000D255E /* edit-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector.png"; sourceTree = "<group>"; };
 		8B98EEAC196D36A2000D255E /* edit-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector@2x.png"; sourceTree = "<group>"; };
-		8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegViewController.swift; path = CloudEmoticon2iOS.xcodeproj/../RegViewController.swift; sourceTree = SOURCE_ROOT; };
 		8B9F602E1B33E712008DA1BD /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8B9F602F1B33E712008DA1BD /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		8B9F60321B33E751008DA1BD /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
@@ -572,6 +572,27 @@
 			path = minizip;
 			sourceTree = "<group>";
 		};
+		53796B1B1B47C28E00A07C09 /* libqrencode */ = {
+			isa = PBXGroup;
+			children = (
+				53796B311B47C2F000A07C09 /* bitstream.c */,
+				53796B321B47C2F000A07C09 /* bitstream.h */,
+				53796B331B47C2F000A07C09 /* mask.c */,
+				53796B341B47C2F000A07C09 /* mask.h */,
+				53796B351B47C2F000A07C09 /* qrencode.c */,
+				53796B361B47C2F000A07C09 /* qrencode.h */,
+				53796B371B47C2F000A07C09 /* qrinput.c */,
+				53796B381B47C2F000A07C09 /* qrinput.h */,
+				53796B391B47C2F000A07C09 /* qrspec.c */,
+				53796B3A1B47C2F000A07C09 /* qrspec.h */,
+				53796B3B1B47C2F000A07C09 /* rscode.c */,
+				53796B3C1B47C2F000A07C09 /* rscode.h */,
+				53796B3D1B47C2F000A07C09 /* split.c */,
+				53796B3E1B47C2F000A07C09 /* split.h */,
+			);
+			name = libqrencode;
+			sourceTree = "<group>";
+		};
 		53906A981999CA7E000020D1 /* 云颜文字 */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,7 +671,7 @@
 		53A1A3D71B36AF770076CDD9 /* 分享和二维码 */ = {
 			isa = PBXGroup;
 			children = (
-				53F3F8A71B36CD2D00C5C111 /* libqrencode */,
+				53796B1B1B47C28E00A07C09 /* libqrencode */,
 				53F3F89B1B36C71100C5C111 /* QRCodeGenerator.h */,
 				53F3F89C1B36C71100C5C111 /* QRCodeGenerator.m */,
 				53F3F87F1B36B46500C5C111 /* QRActivity.swift */,
@@ -709,9 +730,9 @@
 			children = (
 				53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */,
 				53E668DE1B3E94150010EF34 /* UserSync.swift */,
-				8B9DD22E1B39A8D0007F1457 /* RegViewController.swift */,
 				53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */,
 				53C437C91B3848FD00CB21D3 /* LoginViewController.swift */,
+				53796B461B47C33A00A07C09 /* RegViewController.swift */,
 			);
 			name = "注册，登录，同步，推送，分享，统计";
 			sourceTree = "<group>";
@@ -827,27 +848,6 @@
 				53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */,
 			);
 			name = "自定表情";
-			sourceTree = "<group>";
-		};
-		53F3F8A71B36CD2D00C5C111 /* libqrencode */ = {
-			isa = PBXGroup;
-			children = (
-				53F3F8A81B36CD3900C5C111 /* bitstream.c */,
-				53F3F8A91B36CD3900C5C111 /* bitstream.h */,
-				53F3F8AA1B36CD3900C5C111 /* mask.c */,
-				53F3F8AB1B36CD3900C5C111 /* mask.h */,
-				53F3F8AC1B36CD3900C5C111 /* qrencode.c */,
-				53F3F8AD1B36CD3900C5C111 /* qrencode.h */,
-				53F3F8AE1B36CD3900C5C111 /* qrinput.c */,
-				53F3F8AF1B36CD3900C5C111 /* qrinput.h */,
-				53F3F8B01B36CD3900C5C111 /* qrspec.c */,
-				53F3F8B11B36CD3900C5C111 /* qrspec.h */,
-				53F3F8B21B36CD3900C5C111 /* rscode.c */,
-				53F3F8B31B36CD3900C5C111 /* rscode.h */,
-				53F3F8B41B36CD3900C5C111 /* split.c */,
-				53F3F8B51B36CD3900C5C111 /* split.h */,
-			);
-			name = libqrencode;
 			sourceTree = "<group>";
 		};
 		8B98EE9A196D2DC0000D255E /* images */ = {
@@ -1266,26 +1266,28 @@
 				53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */,
 				53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
-				53F3F8B81B36CD3900C5C111 /* qrencode.c in Sources */,
 				535E970A1B10587F00266163 /* FileDirectory.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
 				530B6C2A1B38197700D06F14 /* CE2CSReader.swift in Sources */,
+				53796B471B47C33A00A07C09 /* RegViewController.swift in Sources */,
 				53E9E3321B3E41F600BD5FB6 /* ParseLink.swift in Sources */,
 				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
-				53F3F8B61B36CD3900C5C111 /* bitstream.c in Sources */,
 				535E97131B10587F00266163 /* zip.c in Sources */,
 				53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */,
-				53F3F8B71B36CD3900C5C111 /* mask.c in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
+				53796B401B47C2F000A07C09 /* mask.c in Sources */,
+				53796B3F1B47C2F000A07C09 /* bitstream.c in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				53F3F8801B36B46500C5C111 /* QRActivity.swift in Sources */,
 				5355FCBD1990C21C00D70CA4 /* FileManager.swift in Sources */,
+				53796B411B47C2F000A07C09 /* qrencode.c in Sources */,
 				8BA6684219ACD3F80080C47F /* AddonTableViewController.swift in Sources */,
 				8BA6683E19ACCD2B0080C47F /* ColorViewController.swift in Sources */,
 				53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */,
 				535E97081B10587F00266163 /* EPUBContainerParser.swift in Sources */,
 				535E97091B10587F00266163 /* FileDelete.swift in Sources */,
 				8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */,
+				53796B441B47C2F000A07C09 /* rscode.c in Sources */,
 				533E537D19B861FE00DFD2CB /* SetTableViewController.swift in Sources */,
 				535E970B1B10587F00266163 /* FileHelper.swift in Sources */,
 				53F157211AFFAE6B0027D578 /* SkinManager.swift in Sources */,
@@ -1295,18 +1297,19 @@
 				53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */,
 				5355FCBB1990C20700D70CA4 /* NetworkDownload.swift in Sources */,
 				535E970C1B10587F00266163 /* FileList.swift in Sources */,
-				53F3F8BA1B36CD3900C5C111 /* qrspec.c in Sources */,
 				53E9DF8419C189E600C61121 /* WaitView.swift in Sources */,
 				5389C6CF1B19A52A002811DC /* INIReader.swift in Sources */,
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				53F3F89D1B36C71100C5C111 /* QRCodeGenerator.m in Sources */,
-				8B9DD22F1B39A8D0007F1457 /* RegViewController.swift in Sources */,
 				535E971A1B10622600266163 /* YashiZip.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				5348B5461B398BC20022CA17 /* ce2cs.c in Sources */,
+				53796B451B47C2F000A07C09 /* split.c in Sources */,
+				53796B431B47C2F000A07C09 /* qrspec.c in Sources */,
 				5389C6D71B1A1232002811DC /* Skin2Object.swift in Sources */,
 				53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */,
+				53796B421B47C2F000A07C09 /* qrinput.c in Sources */,
 				535E970D1B10587F00266163 /* FileLoad.swift in Sources */,
 				8B1418091AF49A1000C278B9 /* MD5.swift in Sources */,
 				535E97111B10587F00266163 /* mztools.c in Sources */,
@@ -1316,17 +1319,14 @@
 				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
-				53F3F8BC1B36CD3900C5C111 /* split.c in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				535E970F1B10587F00266163 /* FileZip.swift in Sources */,
-				53F3F8B91B36CD3900C5C111 /* qrinput.c in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
 				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
 				535E970E1B10587F00266163 /* FileSave.swift in Sources */,
 				535E97121B10587F00266163 /* unzip.c in Sources */,
-				53F3F8BB1B36CD3900C5C111 /* rscode.c in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
