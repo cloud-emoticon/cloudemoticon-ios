@@ -97,7 +97,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        
+        NSLog("[AppDelegate]云颜文字正在启动...")
         应用运行参数 = launchOptions
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "重新启动", name: "重新启动通知", object: nil)
         界面初始化()

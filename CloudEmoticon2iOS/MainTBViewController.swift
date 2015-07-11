@@ -40,6 +40,9 @@ class MainTBViewController: UITabBarController {
     
     func 延迟切换主题() {
         切换主题()
+        let Kag:Kagurazaka = Kagurazaka()
+        Kag.KagurazakaArray("　", b: "喵")
+        NSLog("[MainTBViewController]云颜文字启动完毕。")
     }
     
     func initSetting()
