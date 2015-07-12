@@ -114,6 +114,9 @@ func 检查用户登录() {
         全局_当前用户邮箱 = 当前用户信息?.objectForKey("已登录邮箱") as! String
     }
     NSNotificationCenter.defaultCenter().postNotificationName("切换用户通知", object: nil)
+    
+    let 资料同步:UserSync = UserSync()
+    资料同步.下载当前用户同步对象("SyncInfo")
 }
 
 /* 隐藏设置：

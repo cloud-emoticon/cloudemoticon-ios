@@ -268,7 +268,8 @@ class ParseLink: NSObject {
             NSLog("[ParseLink]自动登录用户“%@”。",已登录用户!.username!)
             let 已登录用户名:String = 已登录用户!.username!
             let 已登录邮箱:String = 已登录用户!.email!
-            let 返回信息:NSDictionary = NSDictionary(objectsAndKeys: 已登录用户名,"已登录用户名",已登录邮箱,"已登录邮箱")
+            let 已登录用户ID:String = 已登录用户!.objectId!
+            let 返回信息:NSDictionary = NSDictionary(objectsAndKeys: 已登录用户名,"已登录用户名",已登录邮箱,"已登录邮箱",已登录用户ID,"已登录用户ID")
             return 返回信息
         }
         return nil

@@ -11,7 +11,7 @@ import Parse
 
 //数据模型：同步用颜文字模型
 class M_SyncEmo: NSObject {
-    var emoticon:String = "Unkown" //颜文字本体
+    var emoticon:String = "unknown" //颜文字本体
     var descriptions:String = "" //描述
     var shortcut:String = "" //输入法快捷输入
     var owner:PFUser = PFUser() //指向拥有这个颜文字的用户

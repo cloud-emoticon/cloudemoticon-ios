@@ -68,6 +68,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func 登录成功(返回信息:NSNotification) {
         结束工作中提示()
         检查用户登录()
+//        let 同步测试:UserSync = UserSync()
+//        同步测试.下载同步信息数据()
         self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
