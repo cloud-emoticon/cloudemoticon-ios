@@ -61,8 +61,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //MobClick(闭源设置.mobclick_o!,reportPolicy: BATCH,channelId: "Web")
     }
     
+    func 获取设备信息() {
+        NSLog("[AppDelegate]启动文件夹：%@", 全局_文档文件夹)
+        NSLog("[AppDelegate]Executable=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleExecutableKey as String) as! String)
+        NSLog("[AppDelegate]Identifier=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleIdentifierKey as String) as! String)
+        NSLog("[AppDelegate]InfoDictionaryVersion=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleInfoDictionaryVersionKey as String) as! String)
+//        NSLog("Localizations=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleLocalizationsKey as String) as! String)
+        NSLog("[AppDelegate]Name=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) as! String)
+        NSLog("[AppDelegate]Version=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String)
+        let device = UIDevice.currentDevice()
+        NSLog("[AppDelegate]device=%@", device.name)
+        NSLog("[AppDelegate]systemName=%@", device.systemName)
+        NSLog("[AppDelegate]systemVersion=%@", device.systemVersion)
+        NSLog("[AppDelegate]model=%@", device.model)
+        NSLog("[AppDelegate]localizedModel=%@", device.localizedModel)
+    }
+    
     func 应用初始化() {
-        NSLog("[AppDelegate]云颜文字启动，启动文件夹：%@", 全局_文档文件夹)
+        获取设备信息()
         
         //MARK - 主题
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent //通知栏文字颜色

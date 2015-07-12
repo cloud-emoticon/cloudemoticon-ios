@@ -47,7 +47,7 @@ class Kagurazaka: NSObject {
                 str.appendString(nstr)
             }
         }
-        NSLog("%@", str)
+        NSLog(" %@", str)
     }
     
     func centerStr(s:String,w:Int) -> String {
@@ -66,9 +66,9 @@ class Kagurazaka: NSObject {
     func KagurazakaArray(a:String,b:String) {
         let ww:Int = 34
         var harr:NSMutableArray = initArr(w: ww, h: 10, a: a)
-        let title:String = centerStr("Kagurazaka\n", w: ww)
-        let foot:String = centerStr("神楽坂雅詩(KagurazakaYashi) x 神楽坂紫(KagurazakaYukari)\n", w: ww*2-8)
-        let t:NSArray = [1,7,17,26,-1,2,7,12,22,26,-2,7,13,15,19,21,26,30,-3,3,5,7,10,-4,2,7,15,19,26,29,34,-5,5,7,10,26,34,-6,0,5,7,10,17,26,29,31,33,-7,2,7,29,31,33,-8,2,7,15,17,19,28,32,-9,2,7,14,17,20,23,27,31,33,-10,2,7,17,26,34]
+        let title:String = centerStr("Kagurazaka\n", w: ww*2-8)
+        let foot:String = centerStr("神楽坂雅詩(KagurazakaYashi) x 神楽坂紫(KagurazakaYukari)\n", w: ww*2-14)
+        let t:NSArray = [1,7,17,26,-1,2,7,12,22,26,-2,7,13,15,19,21,26,30,-3,3,5,7,10,-4,2,7,15,19,26,29,34,-5,5,7,10,26,34,-6,0,5,7,10,17,26,29,31,33,-7,2,7,29,31,33,-8,2,7,15,17,19,28,32,-9,2,7,14,17,20,27,31,33,-10,2,7,17,26,34]
         rArr(harr, tArr: t, b: b)
         
         var w:NSMutableArray = harr.objectAtIndex(0) as! NSMutableArray
@@ -155,7 +155,7 @@ class Kagurazaka: NSObject {
         for i in 29...30 {
             w.replaceObjectAtIndex(i, withObject: b)
         }
-        harr.insertObject([title], atIndex: 0)
+        harr.insertObject(["\n",title], atIndex: 0)
         harr.addObject([foot])
         tostr(harr)
     }

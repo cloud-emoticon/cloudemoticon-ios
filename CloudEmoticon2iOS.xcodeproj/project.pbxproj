@@ -82,6 +82,11 @@
 		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
 		53C437CA1B3848FD00CB21D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C437C91B3848FD00CB21D3 /* LoginViewController.swift */; };
 		53C5159B1B2BFB3100FFDD11 /* UserTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */; };
+		53D05F811B523A4100101B79 /* M_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F801B523A4100101B79 /* M_User.swift */; };
+		53D05F831B523AB000101B79 /* M_SyncEmo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F821B523AB000101B79 /* M_SyncEmo.swift */; };
+		53D05F851B523FF800101B79 /* M_SyncInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F841B523FF800101B79 /* M_SyncInfo.swift */; };
+		53D05F871B524BE000101B79 /* M_AppGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F861B524BE000101B79 /* M_AppGroup.swift */; };
+		53D05F891B524C4600101B79 /* M_Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F881B524C4600101B79 /* M_Emoticon.swift */; };
 		53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53DA36A019B5AE9900FD8D78 /* language-en.plist */; };
 		53DF28F3196B9CF40058AA42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53DF28F2196B9CF40058AA42 /* AppDelegate.swift */; };
 		53DF28FA196B9CF40058AA42 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53DF28F9196B9CF40058AA42 /* Images.xcassets */; };
@@ -349,6 +354,11 @@
 		53B6EEF01AF66FA000ACAA6A /* cestart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cestart.png; sourceTree = "<group>"; };
 		53C437C91B3848FD00CB21D3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableHeaderView.swift; sourceTree = "<group>"; };
+		53D05F801B523A4100101B79 /* M_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_User.swift; sourceTree = "<group>"; };
+		53D05F821B523AB000101B79 /* M_SyncEmo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SyncEmo.swift; sourceTree = "<group>"; };
+		53D05F841B523FF800101B79 /* M_SyncInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_SyncInfo.swift; sourceTree = "<group>"; };
+		53D05F861B524BE000101B79 /* M_AppGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_AppGroup.swift; sourceTree = "<group>"; };
+		53D05F881B524C4600101B79 /* M_Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_Emoticon.swift; sourceTree = "<group>"; };
 		53DA36A019B5AE9900FD8D78 /* language-en.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-en.plist"; path = "CloudEmoticon2iOS/language-en.plist"; sourceTree = "<group>"; };
 		53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloudEmoticon2iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		53DF28F2196B9CF40058AA42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -508,7 +518,7 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		5346D93319931C6100CEFA4B /* 数据模型 */ = {
+		5346D93319931C6100CEFA4B /* 数据处理 */ = {
 			isa = PBXGroup;
 			children = (
 				53995A561991E8B1008B12E0 /* JSONReader.swift */,
@@ -517,7 +527,7 @@
 				5355FCBC1990C21C00D70CA4 /* FileManager.swift */,
 				8B1418081AF49A1000C278B9 /* MD5.swift */,
 			);
-			name = "数据模型";
+			name = "数据处理";
 			sourceTree = "<group>";
 		};
 		5355FCB91990C1D300D70CA4 /* 数据载入 */ = {
@@ -740,6 +750,18 @@
 			name = "注册，登录，同步，推送，分享，统计";
 			sourceTree = "<group>";
 		};
+		53D05F7F1B5238DA00101B79 /* 数据模型 */ = {
+			isa = PBXGroup;
+			children = (
+				53D05F801B523A4100101B79 /* M_User.swift */,
+				53D05F821B523AB000101B79 /* M_SyncEmo.swift */,
+				53D05F841B523FF800101B79 /* M_SyncInfo.swift */,
+				53D05F861B524BE000101B79 /* M_AppGroup.swift */,
+				53D05F881B524C4600101B79 /* M_Emoticon.swift */,
+			);
+			name = "数据模型";
+			sourceTree = "<group>";
+		};
 		53DA36A219B5AF1900FD8D78 /* 多语言 */ = {
 			isa = PBXGroup;
 			children = (
@@ -798,11 +820,12 @@
 				53906A981999CA7E000020D1 /* 云颜文字 */,
 				53C515991B2BF91400FFDD11 /* 注册，登录，同步，推送，分享，统计 */,
 				5357733A199B0864003FF9D3 /* 源管理 */,
-				5346D93319931C6100CEFA4B /* 数据模型 */,
+				5355FCB91990C1D300D70CA4 /* 数据载入 */,
+				5346D93319931C6100CEFA4B /* 数据处理 */,
+				53D05F7F1B5238DA00101B79 /* 数据模型 */,
 				8B98EE9A196D2DC0000D255E /* images */,
 				53DF28F9196B9CF40058AA42 /* Images.xcassets */,
 				53DF28F0196B9CF40058AA42 /* Supporting Files */,
-				5355FCB91990C1D300D70CA4 /* 数据载入 */,
 				53995A531991C447008B12E0 /* 自定义状态栏 */,
 				53E0E4B61994A95200C9D9FC /* 设置管理 */,
 				8BA6683A19ACC3930080C47F /* 设置导航 */,
@@ -1271,10 +1294,12 @@
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
 				535E970A1B10587F00266163 /* FileDirectory.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,
+				53D05F891B524C4600101B79 /* M_Emoticon.swift in Sources */,
 				530B6C2A1B38197700D06F14 /* CE2CSReader.swift in Sources */,
 				53796B4A1B47E27B00A07C09 /* SSZipArchive.m in Sources */,
 				53796B471B47C33A00A07C09 /* RegViewController.swift in Sources */,
 				53E9E3321B3E41F600BD5FB6 /* ParseLink.swift in Sources */,
+				53D05F811B523A4100101B79 /* M_User.swift in Sources */,
 				5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */,
 				535E97131B10587F00266163 /* zip.c in Sources */,
 				53E40A0C1B517B7E000A4742 /* Kagurazaka.swift in Sources */,
@@ -1306,6 +1331,7 @@
 				53ED64C519A48A74008CE9BD /* NotificationView.swift in Sources */,
 				53F3F89D1B36C71100C5C111 /* QRCodeGenerator.m in Sources */,
 				535E971A1B10622600266163 /* YashiZip.swift in Sources */,
+				53D05F851B523FF800101B79 /* M_SyncInfo.swift in Sources */,
 				5346D9321993186500CEFA4B /* XMLReader.swift in Sources */,
 				533E537B19B861E700DFD2CB /* Language.swift in Sources */,
 				5348B5461B398BC20022CA17 /* ce2cs.c in Sources */,
@@ -1321,6 +1347,7 @@
 				535E97101B10587F00266163 /* ioapi.c in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
 				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
+				53D05F831B523AB000101B79 /* M_SyncEmo.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
@@ -1330,6 +1357,7 @@
 				53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */,
 				53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */,
 				535E970E1B10587F00266163 /* FileSave.swift in Sources */,
+				53D05F871B524BE000101B79 /* M_AppGroup.swift in Sources */,
 				535E97121B10587F00266163 /* unzip.c in Sources */,
 				5346D9301993181C00CEFA4B /* XMLDictionary.m in Sources */,
 			);
