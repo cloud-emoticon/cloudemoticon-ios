@@ -36,6 +36,13 @@ class MainTBViewController: UITabBarController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到主题管理:", name: "切换到主题管理通知", object: nil)
         self.language()
         NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
+        
+        //执行测试用代码()
+    }
+    
+    func 执行测试用代码() {
+        let 同步数据格式转换测试:UserSync = UserSync()
+        同步数据格式转换测试.转换为同步用数据格式()
     }
     
     func 延迟切换主题() {
