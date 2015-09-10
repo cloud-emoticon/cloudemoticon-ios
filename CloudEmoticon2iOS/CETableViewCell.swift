@@ -125,7 +125,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
     
     func 手势执行(recognizer:UIPanGestureRecognizer)
     {
-        var 手指当前坐标:CGPoint = recognizer.locationInView(self)
+        let 手指当前坐标:CGPoint = recognizer.locationInView(self)
         let 滑动最大X坐标:CGFloat = 0 - (按钮宽度 * 2)
         if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
             手势起始位置X坐标 = 0
@@ -158,8 +158,8 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             }
     
         } else if (代理 != nil) {
-            var 手指当前X坐标:CGFloat = 手指当前坐标.x
-            var 手指当前Y坐标:CGFloat = 手指当前坐标.y
+            let 手指当前X坐标:CGFloat = 手指当前坐标.x
+            let 手指当前Y坐标:CGFloat = 手指当前坐标.y
             let 手指移动X距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
             let 手指移动Y距离:CGFloat = 手势起始位置Y坐标 - 手指当前Y坐标
             if (abs(手指移动Y距离) > abs(手指移动X距离) && abs(手指移动Y距离) > 10 && 允许手势 == true) {
@@ -189,7 +189,7 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
 //        取消单元格左滑通知
         NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: self.单元格在表格中的位置)
         手势中 = true
-        var 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self)
+        let 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self)
         手势起始位置X坐标 = 手指当前坐标.x
         return 允许手势
     }

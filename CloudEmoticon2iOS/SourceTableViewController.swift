@@ -30,7 +30,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         super.init(style: style)
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -68,7 +68,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func 载入数据()
     {
         super.viewDidLoad()
-        var set_nowurl:NSString? = 用户设置.stringForKey("nowurl")
+        let set_nowurl:NSString? = 用户设置.stringForKey("nowurl")
         if ((set_nowurl) != nil) {
             p_nowurl = 用户设置.stringForKey("nowurl")!
         } else {
@@ -79,7 +79,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "网络失败时:", name: "网络失败", object: nil)
         p_storeIsOpen = true
         源列表.removeAllObjects()
-        var 刚载入的源列表:NSArray = 文件管理器.loadSources()
+        let 刚载入的源列表:NSArray = 文件管理器.loadSources()
         
         if (刚载入的源列表.count == 0) {
             添加本地源()
@@ -178,8 +178,8 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     
     func 数据载入完毕(notification:NSNotification)
     {
-        println("数据载入完毕")
-        var 临时源列表数据:NSMutableArray = 临时数据
+        print("数据载入完毕")
+        let 临时源列表数据:NSMutableArray = 临时数据
         临时数据 = NSMutableArray()
         if (!p_tempString.isEqualToString("") && 临时源列表数据.count > 0) {
             临时源列表数据.insertObject(p_tempString, atIndex: 1)
@@ -187,8 +187,8 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             let indexPath:NSIndexPath = NSIndexPath(forRow: 源列表.count - 2, inSection: 0)
             self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
             if (源列表.count > 2) {
-                var 源列表已有数据:NSArray = 源列表.objectAtIndex(1) as! NSArray
-                var 当前网址:NSString = 源列表已有数据.objectAtIndex(2) as! NSString
+                let 源列表已有数据:NSArray = 源列表.objectAtIndex(1) as! NSArray
+                let 当前网址:NSString = 源列表已有数据.objectAtIndex(2) as! NSString
                 if (当前网址.isEqualToString("localhost")) {
                     源列表.removeObjectAtIndex(1)
                     let 要删除的行:NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
@@ -198,8 +198,8 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             
             文件管理器.saveSources(源列表)
         }
-        println("选择源")
-        println(源列表)
+        print("选择源")
+        print(源列表)
         if (源列表.count == 2) {
             选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
         }
@@ -208,14 +208,14 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     
     func 网络失败时(notification:NSNotification)
     {
-        println("网络失败")
+        print("网络失败")
     }
     
     func 文件清理()
     {
         let 文档文件夹:NSString = 文件管理器.DocumentDirectoryAddress()
-        var 全部文件:NSArray = 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹 as String, error: nil)!
-        var 要删除的文件:NSMutableArray = NSMutableArray()
+        let 全部文件:NSArray = try! 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹 as String)
+        let 要删除的文件:NSMutableArray = NSMutableArray()
         for 当前文件名对象 in 全部文件 {
             let 当前文件名:NSString = 当前文件名对象 as! NSString
             if(当前文件名.length >= 6)
@@ -245,11 +245,15 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                 for 要删除的文件名对象 in 要删除的文件 {
                     let 要删除的文件名:NSString = 要删除的文件名对象 as! NSString
                     let 要删除文件完整路径:NSString = NSString(format: "%@%@", 文档文件夹,要删除的文件名)
-                    println("[源管理]删除缓存 \(要删除文件完整路径)")
+                    print("[源管理]删除缓存 \(要删除文件完整路径)")
                     var err:NSError? = nil
-                    全局_文件管理.removeItemAtPath(要删除文件完整路径 as String, error: &err)
+                    do {
+                        try 全局_文件管理.removeItemAtPath(要删除文件完整路径 as String)
+                    } catch let error as NSError {
+                        err = error
+                    }
                     if (err != nil) {
-                        println("[源管理]删除缓存失败。")
+                        print("[源管理]删除缓存失败。")
                     }
                 }
             }
@@ -265,9 +269,9 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func 左上按钮点击(sender: UIBarButtonItem) {
 //        用户设置.synchronize()
         if (self.tableView.editing) {
-            var 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
+            let 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
             添加源对话框.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            var 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
+            let 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
             添加源对话框.tag = 200
             添加源输入框.keyboardType = UIKeyboardType.URL
             添加源输入框.text = "http://emoticon.moe/emoticon/yashi.xml"
@@ -354,7 +358,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
 //            objects.removeObjectAtIndex(indexPath.row)
 //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             // MARK: - 删除源
-            var 当前行:NSInteger = indexPath.row + 1
+            let 当前行:NSInteger = indexPath.row + 1
             let 当前源对象:NSArray = 源列表.objectAtIndex(当前行) as! NSArray
             let 当前源对象权限:NSArray = 当前源对象.objectAtIndex(3) as! NSArray
             let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
@@ -415,11 +419,11 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
             for i in 0...(源列表.count-2)
             {
-                var 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-                var 当前循环单元格:UITableViewCell = tableView.cellForRowAtIndexPath(表格中当前位置)!
+                let 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
+                let 当前循环单元格:UITableViewCell = tableView.cellForRowAtIndexPath(表格中当前位置)!
                 当前循环单元格.accessoryType = UITableViewCellAccessoryType.None
             }
-            var 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
+            let 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
             当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
             保存源列表(当前源对象网址)
         }

@@ -12,53 +12,53 @@ class JSONReader: NSObject {
     
     func 数据转换为JSON(源数据:NSData, URL识别数组:NSArray) {
         var 错误记录:NSError?
-        var JSON解析后字典:NSDictionary = NSJSONSerialization.JSONObjectWithData(源数据, options: NSJSONReadingOptions.AllowFragments, error: &错误记录) as! NSDictionary
+        let JSON解析后字典:NSDictionary = (try! NSJSONSerialization.JSONObjectWithData(源数据, options: NSJSONReadingOptions.AllowFragments)) as! NSDictionary
         if ((错误记录) != nil) {
-            var 提示框内容数组:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
+            let 提示框内容数组:NSArray = [lang.uage("源解析失败"),lang.uage("源可能有问题"),lang.uage("中止")]
             NSNotificationCenter.defaultCenter().postNotificationName("alertview", object: 提示框内容数组)
             NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
         } else {
             let 文件数据结构版本:NSString = "iOSv2" //ok
             var 颜文字库名:NSString = "" //ok
-            var 颜文字库介绍:NSMutableString = "" //ok
-            var 颜文字存储数组:NSMutableArray = NSMutableArray() //ok
+            let 颜文字库介绍:NSMutableString = "" //ok
+            let 颜文字存储数组:NSMutableArray = NSMutableArray() //ok
             
-            var 根信息:NSArray = JSON解析后字典.objectForKey("information") as! NSArray
+            let 根信息:NSArray = JSON解析后字典.objectForKey("information") as! NSArray
             for 根数据 in 根信息
             {
-                var 根字符:NSString = 根数据 as! NSString
+                let 根字符:NSString = 根数据 as! NSString
                 if (颜文字库名.isEqualToString("")) {
                     颜文字库名 = 根字符
                 } else {
                     颜文字库介绍.insertString(根字符 as String, atIndex: 颜文字库介绍.length)
                 }
             }
-            var categories:NSArray = JSON解析后字典.objectForKey("categories") as! NSArray
+            let categories:NSArray = JSON解析后字典.objectForKey("categories") as! NSArray
 
             for groupDic in categories
             {
-                var entries:NSArray = groupDic.objectForKey("entries") as! NSArray
-                var groupname:NSString = groupDic.objectForKey("name") as! NSString
+                let entries:NSArray = groupDic.objectForKey("entries") as! NSArray
+                let groupname:NSString = groupDic.objectForKey("name") as! NSString
 //                var entriesData:NSDictionary = groupDic.objectForKey("entries") as NSDictionary
 //                y_emoarr.addObject(groupname)
-                var y_emoobj:NSMutableArray = NSMutableArray()
+                let y_emoobj:NSMutableArray = NSMutableArray()
                 y_emoobj.addObject(groupname)
                 for entriesData in entries
                 {
-                    var entriesDataDic:NSDictionary = entriesData as! NSDictionary
-                    var entriesDataDicKeys:NSArray = entriesDataDic.allKeys
-                    var g_emoobj:NSMutableArray = NSMutableArray()
-                    var e_emo:NSString = entriesDataDic.objectForKey("emoticon") as! NSString
+                    let entriesDataDic:NSDictionary = entriesData as! NSDictionary
+                    let entriesDataDicKeys:NSArray = entriesDataDic.allKeys
+                    let g_emoobj:NSMutableArray = NSMutableArray()
+                    let e_emo:NSString = entriesDataDic.objectForKey("emoticon") as! NSString
                     g_emoobj.addObject(e_emo)
                     if (entriesDataDicKeys.count == 2) {
-                        var e_name:NSString = entriesDataDic.objectForKey("description") as! NSString
+                        let e_name:NSString = entriesDataDic.objectForKey("description") as! NSString
                         g_emoobj.addObject(e_name)
                     }
                     y_emoobj.addObject(g_emoobj)
                 }
                 颜文字存储数组.addObject(y_emoobj)
             }
-            var zfile:NSArray = [文件数据结构版本,颜文字库名,颜文字库介绍,颜文字存储数组]
+            let zfile:NSArray = [文件数据结构版本,颜文字库名,颜文字库介绍,颜文字存储数组]
             let 介绍文字:NSString = NSString(format: "%@\n%@", lang.uage("刷新完成"), 颜文字库介绍)
             NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 介绍文字)
             //解析完成，输出zfile:NSArray

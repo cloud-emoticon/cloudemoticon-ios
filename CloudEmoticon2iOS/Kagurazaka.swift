@@ -10,10 +10,10 @@ import UIKit
 
 class Kagurazaka: NSObject {
     
-    func initArr(#w:Int,h:Int,a:String) -> NSMutableArray {
-        var harr:NSMutableArray = NSMutableArray()
+    func initArr(w w:Int,h:Int,a:String) -> NSMutableArray {
+        let harr:NSMutableArray = NSMutableArray()
         for hi in 0...h {
-            var warr:NSMutableArray = NSMutableArray()
+            let warr:NSMutableArray = NSMutableArray()
             for wi in 0...w {
                 warr.addObject(a)
             }
@@ -39,7 +39,7 @@ class Kagurazaka: NSObject {
     }
     
     func tostr(harr:NSMutableArray) {
-        var str:NSMutableString = ""
+        let str:NSMutableString = ""
         for hi in 0...(harr.count - 1) {
             let warr:NSArray = harr.objectAtIndex(hi) as! NSArray
             for wi in 0...(warr.count - 1) {
@@ -65,7 +65,7 @@ class Kagurazaka: NSObject {
     
     func KagurazakaArray(a:String,b:String) {
         let ww:Int = 34
-        var harr:NSMutableArray = initArr(w: ww, h: 10, a: a)
+        let harr:NSMutableArray = initArr(w: ww, h: 10, a: a)
         let title:String = centerStr("Kagurazaka\n", w: ww*2-8)
         let foot:String = centerStr("神楽坂雅詩(KagurazakaYashi) x 神楽坂紫(KagurazakaYukari)\n", w: ww*2-14)
         let t:NSArray = [1,7,17,26,-1,2,7,12,22,26,-2,7,13,15,19,21,26,30,-3,3,5,7,10,-4,2,7,15,19,26,29,34,-5,5,7,10,26,34,-6,0,5,7,10,17,26,29,31,33,-7,2,7,29,31,33,-8,2,7,15,17,19,28,32,-9,2,7,14,17,20,27,31,33,-10,2,7,17,26,34]

@@ -18,11 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let filemgr:FileManager = FileManager()
     var 应用运行参数:[NSObject : AnyObject]? = nil
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if (url.scheme == "emostart") {
             return true
         } else if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
-            let urlStr:NSString = url.absoluteString!
+            let urlStr:NSString = url.absoluteString
             let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
             var schemeStr:NSString = "http:"
             if (url.scheme == "cloudemoticons") {
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
             return true
         } else if (url.scheme == "cloudemoticonskin") {
-            let 要下载的文件路径:NSString = url.absoluteString!
+            let 要下载的文件路径:NSString = url.absoluteString
             //切换到主题管理页
             NSNotificationCenter.defaultCenter().postNotificationName("切换到主题管理通知", object: 要下载的文件路径)
         }
@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("[AppDelegate]主题：使用默认皮肤。")
             全局_皮肤设置 = NSDictionary()
         }
-        var statBarFrame = UIApplication.sharedApplication().statusBarFrame
+        let statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
@@ -109,7 +109,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func 界面初始化() {
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let IB:UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        self.window?.rootViewController = IB.instantiateInitialViewController() as? UIViewController
+        self.window?.rootViewController = IB.instantiateInitialViewController()
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
@@ -149,7 +149,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func 设置初始化()
     {
-        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
         let checkbgo:Float? = defaults.floatForKey("bgopacity")
         if (!noFirstRun) {
@@ -182,7 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if(alldata == nil)
         {
-            var newdwn = NetworkDownload()
+            let newdwn = NetworkDownload()
             newdwn.开始异步连接(网址和目标位置序号数组)
         } else {
             p_emodata = alldata!

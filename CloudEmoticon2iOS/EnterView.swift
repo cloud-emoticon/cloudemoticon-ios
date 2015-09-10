@@ -16,7 +16,7 @@ class EnterView: UIView {
         let 背景渐变起始色:UIColor = UIColor(red: 1.00, green: 0.75, blue: 0.84, alpha: 1.0)
         let 背景渐变结束色:UIColor = UIColor(red: 0.99, green: 0.55, blue: 0.71, alpha: 1.0)
         self.backgroundColor = 背景渐变起始色
-        var 渐变层:CAGradientLayer = CAGradientLayer()
+        let 渐变层:CAGradientLayer = CAGradientLayer()
         let 屏幕长:CGFloat = (self.frame.width > self.frame.height) ? self.frame.width : self.frame.height
         渐变层.frame = CGRectMake(0, 0, 屏幕长, 屏幕长)
         渐变层.colors = [背景渐变起始色.CGColor,背景渐变结束色.CGColor]
@@ -77,7 +77,7 @@ class EnterView: UIView {
         }
     }
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 

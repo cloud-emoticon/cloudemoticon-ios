@@ -69,7 +69,7 @@ class AddonTableViewController: UITableViewController {
         let 新坐标:NSArray = 通知.object as! NSArray
         let 宽:CGFloat = 新坐标.objectAtIndex(0) as! CGFloat
         let 高:CGFloat = 新坐标.objectAtIndex(1) as! CGFloat
-        let backgroundView2:UIView = self.tableView.backgroundView?.subviews[0] as! UIView
+        let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, 宽, 高)
         刷新背景图()
     }
@@ -81,8 +81,8 @@ class AddonTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
-        let backgroundView2:UIView = self.tableView.backgroundView?.subviews[0] as! UIView
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+        let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.backgroundColor = UIColor.whiteColor()
         列表文字颜色 = UIColor.blackColor()
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
@@ -120,7 +120,7 @@ class AddonTableViewController: UITableViewController {
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
                 }
             }
             //RGBA色值：列表的背景色 yes
@@ -229,7 +229,7 @@ class AddonTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String)
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell?.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -253,32 +253,32 @@ class AddonTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         switch indexPath.row {
         case 0:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Shake") as! UIViewController
+            let push:UIViewController = (storyboard?.instantiateViewControllerWithIdentifier("Shake"))!
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 1:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Extension") as! UIViewController
+            let push:UIViewController = (storyboard?.instantiateViewControllerWithIdentifier("Extension"))!
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 2:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("Input") as! UIViewController
+            let push:UIViewController = (storyboard?.instantiateViewControllerWithIdentifier("Input"))!
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 3:
-            var alert:UIAlertView = UIAlertView(title: "云预览", message: "这是一个在以后版本中准备添加的功能，你可以使用此功能预览在其他操作系统中的颜文字显示状况。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            let alert:UIAlertView = UIAlertView(title: "云预览", message: "这是一个在以后版本中准备添加的功能，你可以使用此功能预览在其他操作系统中的颜文字显示状况。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             break
         case 4:
-            var alert:UIAlertView = UIAlertView(title: "云连接", message: "这是一个在以后版本中准备添加的功能，此功能用于加速访问在国外网盘中的云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            let alert:UIAlertView = UIAlertView(title: "云连接", message: "这是一个在以后版本中准备添加的功能，此功能用于加速访问在国外网盘中的云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             break
         case 5:
-            var alert:UIAlertView = UIAlertView(title: "源创建器", message: "这是一个在以后版本中准备添加的功能，此功能可以将你的自定义或历史列表转换为XML云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            let alert:UIAlertView = UIAlertView(title: "源创建器", message: "这是一个在以后版本中准备添加的功能，此功能可以将你的自定义或历史列表转换为XML云颜文字源。尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             break

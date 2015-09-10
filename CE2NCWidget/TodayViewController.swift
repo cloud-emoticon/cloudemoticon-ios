@@ -79,7 +79,7 @@ class TodayViewController: UIViewController {
             数据数组 = 组数据读写.新建设置()
         }
         var 自定义数组源:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
-        var 自定义数组:NSMutableArray = NSMutableArray(array: 自定义数组源)
+        let 自定义数组:NSMutableArray = NSMutableArray(array: 自定义数组源)
         if (自定义数组.count > 0) {
             for (var i:Int = 0; i < 自定义数组.count; i++) {
                 let 当前自定义条目对象:AnyObject = 自定义数组.objectAtIndex(i)
@@ -95,7 +95,7 @@ class TodayViewController: UIViewController {
         }
         自定义数组.insertObject(要添加的记录, atIndex: 0)
         自定义数组源 = 自定义数组 as NSArray
-        var 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数组源,数据数组!.objectAtIndex(2),数据数组!.objectAtIndex(3)]
+        let 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数组源,数据数组!.objectAtIndex(2),数据数组!.objectAtIndex(3)]
         组数据读写.写入设置UD模式(新数据数组)
         emoText.text = "添加成功"
 //        if (数据数组 != nil) {

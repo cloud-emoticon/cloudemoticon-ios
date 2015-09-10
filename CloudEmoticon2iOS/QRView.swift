@@ -23,7 +23,7 @@ class QRView: UIView {
         self.layer.shadowOpacity = 1
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 20
-        let 图片退出按钮:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let 图片退出按钮:UIButton = UIButton(type: UIButtonType.Custom)
         图片退出按钮.frame = CGRectMake(0, 0, 图片尺寸.width, 图片尺寸.height)
         图片退出按钮.setImage(二维码, forState: UIControlState.Normal)
         图片退出按钮.addTarget(self, action: "点击", forControlEvents: UIControlEvents.TouchUpInside)

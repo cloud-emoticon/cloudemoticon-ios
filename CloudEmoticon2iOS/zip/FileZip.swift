@@ -84,7 +84,7 @@ public class FileZip {
             savePath += sub
             savePath += "/"
         }
-        return EPUBContainerParser().parseXML(NSURL(fileURLWithPath: savePath)!)
+        return EPUBContainerParser().parseXML(NSURL(fileURLWithPath: savePath))
     }
     
     
@@ -126,7 +126,7 @@ public class FileZip {
         var stringWithoutSlash:String = stringWithPossibleSlash
         // If the file name contains a slash at the beginning then we remove so that we don't end up with two
         if stringWithPossibleSlash.hasPrefix("/") {
-            stringWithoutSlash = stringWithPossibleSlash.substringFromIndex(advance(stringWithoutSlash.startIndex,1))
+            stringWithoutSlash = stringWithPossibleSlash.substringFromIndex(stringWithoutSlash.startIndex.advancedBy(1))
         }
         // Return the string with no slash at the beginning
         return stringWithoutSlash

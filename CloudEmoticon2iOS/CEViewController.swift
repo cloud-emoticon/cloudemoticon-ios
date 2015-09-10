@@ -87,7 +87,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        颜文字表格.alpha = 背景透明度
         
         var y_emoarr:NSArray = NSArray()
-        var p_emoweb:NSArray? = p_emodata
+        let p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
             当前源 = NSString(format: "%@:%@",lang.uage("当前源"),p_emodata.objectAtIndex(1) as! NSString)
@@ -106,8 +106,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         let titlecolor = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as [NSObject : AnyObject]
-        
+        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as! [String : AnyObject]
         self.title = lang.uage("云颜文字") as String
         载入视图()
         
@@ -148,7 +147,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         sortBtn.tintColor = UIColor.whiteColor()
         scoreBtn.tintColor = UIColor.whiteColor()
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
         颜文字表格.backgroundColor = UIColor.whiteColor()
         列表文字颜色 = UIColor.blackColor()
         副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
@@ -213,7 +212,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
                 }
             }
 
@@ -523,7 +522,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         
-        var str:NSString = searchText
+        let str:NSString = searchText
         if (str.isEqualToString("")) {
             openSortData(当前分类)
         } else {
@@ -544,8 +543,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 载入数据(downloadTo:NetDownloadTo) {
         let 下载到位置序号:Int = downloadTo.rawValue
-        var 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        var 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
+        let 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
         if ((当前下载网址 != nil) && !当前下载网址!.isEqualToString("localhost")) {
             let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(integer: 下载到位置序号)]
             NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
@@ -560,11 +559,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 载入本地数据()
     {
         if (p_emodata.count >= 3) {
-            var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
+            let y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
             sortData.removeAllObjects()
             for emogroup_o in y_emoarr
             {
-                var emogroup:NSArray = emogroup_o as! NSArray
+                let emogroup:NSArray = emogroup_o as! NSArray
                 let groupname:NSString = emogroup.objectAtIndex(0) as! NSString
                 sortData.addObject(groupname)
             }
@@ -575,7 +574,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             
         } else {
-            println("NODATA")
+            print("NODATA")
         }
     }
     
@@ -640,7 +639,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func openSortData(row:Int)
     {
         ceData.removeAllObjects()
-        var y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
+        let y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
         let emogroup_o:NSArray = y_emoarr.objectAtIndex(row) as! NSArray
         ceData.addObjectsFromArray(emogroup_o  as [AnyObject])
         ceData.removeObjectAtIndex(0)
@@ -649,7 +648,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     
     func 手势执行(recognizer:UITapGestureRecognizer)
     {
-        var 手指当前坐标:CGPoint = recognizer.locationInView(self.view)
+        let 手指当前坐标:CGPoint = recognizer.locationInView(self.view)
         if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
             NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
             手势起始位置X坐标 = 0
@@ -674,7 +673,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                     }
             })
         } else {
-            var 手指当前X坐标:CGFloat = 手指当前坐标.x
+            let 手指当前X坐标:CGFloat = 手指当前坐标.x
             if (isCanAutoHideSortView()) {
                 let 手指移动距离:CGFloat = 手势起始位置X坐标 - 手指当前X坐标
                 var 表格的新X坐标:CGFloat = 颜文字表格.frame.origin.x - 手指移动距离
@@ -701,7 +700,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
         }
         手势中 = true
-        var 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self.view)
+        let 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self.view)
         手势起始位置X坐标 = 手指当前坐标.x
         return true
     }
@@ -734,7 +733,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let CellIdentifier:NSString = "Cell"
         
         if (tableView.tag == 100) { //左表
-            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
                 cell?.backgroundColor = UIColor.clearColor()
@@ -837,10 +836,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
                 let 主文字内容:NSString = emoobj.objectAtIndex(0) as! NSString
                 var 副文字内容:NSString = ""
-                let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 17, tableView.frame.width - 20) + 8
+                let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 字体大小: 17, 单元格宽度: tableView.frame.width - 20) + 8
                 if (emoobj.count > 1) {
                     副文字内容 = emoobj.objectAtIndex(1) as! NSString
-                    let 副文字框高度:CGFloat = 计算单元格高度(副文字内容, 12, tableView.frame.width - 20) - 13
+                    let 副文字框高度:CGFloat = 计算单元格高度(副文字内容, 字体大小: 12, 单元格宽度: tableView.frame.width - 20) - 13
                     文字高度 = 主文字框高度 + 副文字框高度 + 15
                 } else {
                     文字高度 = 主文字框高度 + 15

@@ -262,8 +262,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             模糊过滤器.setValue(25, forKey: "InputRadius")
             模糊过滤器.setValue(bg, forKey: "InputImage")
             let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式，报错为Bug无视
-            let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent())
-            ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent(), fromRect: bg!.extent())
+            let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent)
+            ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent, fromRect: bg!.extent)
             let 模糊图像 = UIImage(CGImage: cgImage)
             //        let 背景透明度:CGFloat = (1 - loadopc()) * 0.7 + 0.3
             //        无颜文字.alpha = 背景透明度
@@ -374,9 +374,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
 //                value.writeToURL(containerURL, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
 //                NSLog("Group写入操作")
                 let 组数据读写:AppGroupIO = AppGroupIO()
-                var 组数据:NSArray? = 组数据读写.读取设置UD模式()
+                let 组数据:NSArray? = 组数据读写.读取设置UD模式()
                 if (组数据 != nil) {
-                    var 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray(),组数据!.objectAtIndex(3)]
+                    let 新建数据模型:NSArray = [组数据!.objectAtIndex(0),组数据!.objectAtIndex(1),NSArray(),组数据!.objectAtIndex(3)]
                     组数据读写.写入设置UD模式(新建数据模型)
                 }
             }
@@ -386,9 +386,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             if (!表格.editing) {
                 右上按钮.title = lang.uage("添加")
                 左上按钮.title = lang.uage("编辑")
-                var alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
+                let alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
                 alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-                var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
+                let alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
                 alert.tag = 300
                 alertImport.keyboardType = UIKeyboardType.URL
                 alertImport.text = ""
@@ -407,7 +407,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
-        var alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField!
+        let alertImport:UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (alertView.tag == 300) {
             if (buttonIndex == 1) {
                 //添加
@@ -423,9 +423,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     {
         let 颜文字名称:NSString = lang.uage("自定义")
         let 要添加的颜文字数组:NSArray = [emoticonstr,""]
-        var 自定义:NSMutableArray = NSMutableArray()
-        var 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as! NSString
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+        let 自定义:NSMutableArray = NSMutableArray()
+        let 自定义颜文字:NSString = 要添加的颜文字数组.objectAtIndex(0)as! NSString
+        let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         var 自定义中已经存在这个颜文字 = false
         for 文件中的颜文字数组对象 in 文件中的数据! {
             let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as! NSArray
@@ -499,14 +499,14 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     func 载入收藏数据()
     {
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+        let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
         
         将数据载入表格(文件中的数据)
     }
     func 载入历史记录数据()
     {
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
+        let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         var 输入法中的数据:NSArray? = nil
         if (appgroup && 组数据读写.检查设置UD模式()) {
             输入法中的数据 = 组数据读写.读取设置UD模式()
@@ -529,7 +529,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func 载入自定义数据()
     {
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+        let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
         var 输入法中的数据:NSArray? = nil
         if (appgroup && 组数据读写.检查设置UD模式()) {
             输入法中的数据 = 组数据读写.读取设置UD模式()
@@ -705,9 +705,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     // MARK: - 表格项目被移动
     func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
     {
-        var fromRow:NSInteger = sourceIndexPath.row
-        var toRow:NSInteger = destinationIndexPath.row
-        var object: AnyObject = 表格数据.objectAtIndex(fromRow)
+        let fromRow:NSInteger = sourceIndexPath.row
+        let toRow:NSInteger = destinationIndexPath.row
+        let object: AnyObject = 表格数据.objectAtIndex(fromRow)
         表格数据.removeObjectAtIndex(fromRow)
         表格数据.insertObject(object, atIndex: toRow)
         switch(内容选择菜单.selectedSegmentIndex) {
@@ -729,8 +729,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if editingStyle == .Delete {
             switch (内容选择菜单.selectedSegmentIndex) {
             case 0:
-                var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
-                var nowrow:NSInteger = indexPath.row
+                let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+                let nowrow:NSInteger = indexPath.row
                 let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
                 表格数据.removeObjectAtIndex(nowrow)
@@ -745,8 +745,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 }
                 break
             case 1:
-                var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
-                var nowrow:NSInteger = indexPath.row
+                let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
+                let nowrow:NSInteger = indexPath.row
                 let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
                 表格数据.removeObjectAtIndex(nowrow)
@@ -761,8 +761,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 }
                 break
             case 2:
-                var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
-                var nowrow:NSInteger = indexPath.row
+                let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+                let nowrow:NSInteger = indexPath.row
                 let nowrowArr:NSArray = 文件中的数据!.objectAtIndex(nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.objectAtIndex(0) as! NSString
                 表格数据.removeObjectAtIndex(nowrow)
@@ -814,7 +814,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
     {
-        var 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
+        let 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
         高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
         高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
         高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping

@@ -77,13 +77,23 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
         NSLog("[皮肤安装器]解压缩... %@ -> %@",临时文件路径,目标文件夹路径)
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
         if (文件管理器.fileExistsAtPath(目标文件夹路径)) {
-            文件管理器.removeItemAtPath(目标文件夹路径, error: nil)
+            do {
+                try 文件管理器.removeItemAtPath(目标文件夹路径)
+            } catch _ {
+            }
         }
         let 压缩文件处理:YashiZip = YashiZip()
         var 解压缩错误信息:String? = nil
         for i in 0...1 { //如果失败则重试一次
-            var 错误信息:NSErrorPointer = NSErrorPointer()
-            let 本次解压缩成功:Bool = 压缩文件处理.解压缩文件(临时文件路径, 解压缩目标文件夹: 目标文件夹路径, 覆盖目标文件: true, 解压缩密码: "ce", 错误回馈变量指针: 错误信息)
+            let 错误信息:NSErrorPointer = NSErrorPointer()
+            let 本次解压缩成功:Bool
+            do {
+                try 压缩文件处理.解压缩文件(临时文件路径, 解压缩目标文件夹: 目标文件夹路径, 覆盖目标文件: true, 解压缩密码: "ce")
+                本次解压缩成功 = true
+            } catch let error as NSError {
+                错误信息.memory = error
+                本次解压缩成功 = false
+            }
             if (本次解压缩成功 && 错误信息 == nil) {
                 let INI文件路径:String = String(format: "%@/index.ini", 目标文件夹路径)
                 let INI读取器:INIReader = INIReader()
@@ -109,9 +119,15 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
                 default:
                     break
                 }
-                文件管理器.removeItemAtPath(临时文件路径, error: nil)
+                do {
+                    try 文件管理器.removeItemAtPath(临时文件路径)
+                } catch _ {
+                }
                 if (INI读取状态码 > 0) {
-                    文件管理器.removeItemAtPath(目标文件夹路径, error: nil)
+                    do {
+                        try 文件管理器.removeItemAtPath(目标文件夹路径)
+                    } catch _ {
+                    }
                 }
                 break
             } else {
@@ -119,7 +135,10 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
             }
         }
         if (解压缩错误信息 == nil) {
-            文件管理器.removeItemAtPath(临时文件路径, error: nil)
+            do {
+                try 文件管理器.removeItemAtPath(临时文件路径)
+            } catch _ {
+            }
             显示安装提示框(true,标题: lang.uage("安装完毕"),内容: "",按钮: lang.uage("确定"))
             NSLog("[皮肤安装器]安装成功。")
             代理!.主题安装完成()

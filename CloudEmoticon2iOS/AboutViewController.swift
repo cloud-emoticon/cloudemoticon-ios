@@ -29,7 +29,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     func 开始异步连接()
     {
-        var 当前请求网址:NSURL = NSURL(string: "http://yoooooooooo.com/api/CloudEmoticon/CloudEmoticon2-Copyright.txt")!
+        let 当前请求网址:NSURL = NSURL(string: "http://yoooooooooo.com/api/CloudEmoticon/CloudEmoticon2-Copyright.txt")!
         var URL请求: NSURLRequest
         URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         //        request.URL = urla
@@ -54,7 +54,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     func connectionDidFinishLoading(connection: NSURLConnection!)
     {
         if (self.接收到的数据 != nil) {
-            var 数据:NSString? = NSString(data: self.接收到的数据!, encoding: NSUTF8StringEncoding)
+            let 数据:NSString? = NSString(data: self.接收到的数据!, encoding: NSUTF8StringEncoding)
             if (数据 != nil) {
                 内容.text = 数据 as? String
             } else {

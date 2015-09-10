@@ -16,7 +16,7 @@ class INIReader: NSObject {
     func 载入INI文件(INI文件路径:String) -> Int {
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
         if (文件管理器.fileExistsAtPath(INI文件路径)) {
-            let INI文件内容:String? = String(contentsOfFile: INI文件路径, encoding: NSUTF8StringEncoding, error: nil)
+            let INI文件内容:String? = try? String(contentsOfFile: INI文件路径, encoding: NSUTF8StringEncoding)
             if (INI文件内容 == nil || INI文件内容! == "") {
                 NSLog("[INIReader]密码或编码不正确")
                 return 2
@@ -43,9 +43,9 @@ class INIReader: NSObject {
     
     func 快速查询头信息(INI文件路径:String) -> NSMutableDictionary { //不进行任何有效性检查
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
-        let INI文件内容:String = String(contentsOfFile: INI文件路径, encoding: NSUTF8StringEncoding, error: nil)!
+        let INI文件内容:String = try! String(contentsOfFile: INI文件路径, encoding: NSUTF8StringEncoding)
         let INI字典:NSMutableDictionary = 解析INI文件(INI文件内容)!
-        var 头信息字典:NSMutableDictionary = NSMutableDictionary()
+        let 头信息字典:NSMutableDictionary = NSMutableDictionary()
         头信息字典.setObject(INI字典.objectForKey("theme_author")!, forKey: "theme_author")
         头信息字典.setObject(INI字典.objectForKey("theme_name")!, forKey: "theme_name")
         头信息字典.setObject(INI字典.objectForKey("theme_picture")!, forKey: "theme_picture")
@@ -58,7 +58,7 @@ class INIReader: NSObject {
     
     func INI文件存入AppGroup() {
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
+        let 数据数组:NSArray? = 组数据读写.读取设置UD模式()
         if (数据数组 != nil) {
             let 全部收藏数组:NSArray = 数据数组!.objectAtIndex(0) as! NSArray
             let 全部自定数组:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
@@ -72,9 +72,9 @@ class INIReader: NSObject {
     }
     
     func 解析INI文件(INI文件内容:String) -> NSMutableDictionary? {
-        let INI文件内容已转换换行符 = INI文件内容.stringByReplacingOccurrencesOfString("\r\n", withString: "\n", options: NSStringCompareOptions.allZeros, range: nil)
+        let INI文件内容已转换换行符 = INI文件内容.stringByReplacingOccurrencesOfString("\r\n", withString: "\n", options: NSStringCompareOptions(), range: nil)
         let 行数组:NSArray = INI文件内容已转换换行符.componentsSeparatedByString("\n")
-        var INI字典:NSMutableDictionary = NSMutableDictionary()
+        let INI字典:NSMutableDictionary = NSMutableDictionary()
         for (var i = 0; i < 行数组.count; i++) {
             let 当前行:NSString = 行数组.objectAtIndex(i) as! NSString
             if (当前行 == "") {
@@ -104,7 +104,7 @@ class INIReader: NSObject {
     func 检查数据条目(INI字典:NSMutableDictionary) -> Bool {
         return true // MARK: - INI检查器开关，此处不注释则跳过检查器
         let 键模板文件路径:String = NSBundle.mainBundle().pathForResource("themekeys", ofType: "txt")!
-        let 模板文件内容:String = String(contentsOfFile: 键模板文件路径, encoding: NSUTF8StringEncoding, error: nil)!
+        let 模板文件内容:String = try! String(contentsOfFile: 键模板文件路径, encoding: NSUTF8StringEncoding)
         let 模板行数组:NSArray = 模板文件内容.componentsSeparatedByString("\n")
         let INI字典键:NSArray = INI字典.allKeys
         for 当前模板键对象 in 模板行数组 {

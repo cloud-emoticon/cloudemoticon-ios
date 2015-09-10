@@ -57,7 +57,7 @@ func 保存数据到输入法()
 //        主题文件中的数据 = NSArray()
 //    }
     let 组数据读写:AppGroupIO = AppGroupIO()
-    var 当前主题数据:NSArray = NSArray()
+    let 当前主题数据:NSArray = NSArray()
     var 组数据:NSArray?
     if (组数据读写.检查设置UD模式()) {
         组数据 = 组数据读写.读取设置UD模式()!
@@ -90,14 +90,14 @@ func loadbg() -> UIImage {
 
 func loadopc() -> CGFloat
 {
-    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
+    let bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
     return NSNumber(float: ((100 - bgopacity! / 2) / 100)) as CGFloat
 
 }
 
 func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
 {
-    var 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
+    let 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
     高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
     高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
     高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping

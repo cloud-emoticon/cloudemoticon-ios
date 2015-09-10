@@ -54,7 +54,7 @@ class MainTBViewController: UITabBarController {
     
     func initSetting()
     {
-        var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+        let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
         let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
         if (!noFirstRun) {
             defaults.setBool(true, forKey: "noFirstRun")
@@ -102,7 +102,7 @@ class MainTBViewController: UITabBarController {
         NSLog("[Skin]->MainTBViewController")
 //        self.navigationController?.navigationBar.barStyle = UIBarStyle.Black
         //默认设置
-        var 底部工具栏着色视图:UIImageView? = self.tabBar.viewWithTag(515514) as? UIImageView
+        let 底部工具栏着色视图:UIImageView? = self.tabBar.viewWithTag(515514) as? UIImageView
         if (底部工具栏着色视图 != nil) {
             底部工具栏着色视图?.image = nil
         }
@@ -111,7 +111,7 @@ class MainTBViewController: UITabBarController {
         self.tabBar.selectionIndicatorImage = nil
         self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
         let tool_titletextattributes_dic = NSDictionary(object: UIColor.blackColor(), forKey:NSForegroundColorAttributeName)
-        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as! [String : AnyObject], forState: UIControlState.Normal)
         
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -311,8 +311,8 @@ class MainTBViewController: UITabBarController {
         
         显示自动关闭的提示框(NSString(format: "“ %@ ” %@", 要复制的颜文字, lang.uage("已复制到剪贴板")))
         
-        var 历史记录:NSMutableArray = NSMutableArray()
-        var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
+        let 历史记录:NSMutableArray = NSMutableArray()
+        let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.HISTORY)
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
@@ -343,7 +343,7 @@ class MainTBViewController: UITabBarController {
         }
         文件管理器.SaveArrayToFile(历史记录, smode: FileManager.saveMode.HISTORY)
         保存数据到输入法()
-        var 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
+        let 剪贴板:UIPasteboard = UIPasteboard.generalPasteboard()
         剪贴板.string = 要复制的颜文字 as String
         NSLog(要复制的颜文字 as String)
         if (NSUserDefaults.standardUserDefaults().boolForKey("exitaftercopy")) {

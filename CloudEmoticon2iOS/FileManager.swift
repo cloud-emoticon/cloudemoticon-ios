@@ -32,7 +32,10 @@ class FileManager: NSObject {
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
-            fileMgr.removeItemAtPath(fulladd as String, error: nil)
+            do {
+                try fileMgr.removeItemAtPath(fulladd as String)
+            } catch _ {
+            }
         }
 
         arr.writeToFile(fulladd as String, atomically: false)
@@ -63,7 +66,10 @@ class FileManager: NSObject {
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
-            fileMgr.removeItemAtPath(fulladd as String, error: nil)
+            do {
+                try fileMgr.removeItemAtPath(fulladd as String)
+            } catch _ {
+            }
         }
     }
     
@@ -92,7 +98,7 @@ class FileManager: NSObject {
     
     func ChkDupFile(filename:NSString) -> Bool
     {
-        let filelist:NSArray = fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress() as String, error: nil)!
+        let filelist:NSArray = try! fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress() as String)
         for nowfilenameObj in filelist
         {
             let nowfilename:NSString = nowfilenameObj as! NSString

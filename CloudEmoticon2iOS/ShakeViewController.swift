@@ -44,7 +44,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         super.viewDidDisappear(true)
     }
     
-    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
+    override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent?) {
         if(motion == UIEventSubtype.MotionShake){
         shake()
         }
@@ -100,7 +100,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     {
         let emocount:Float = Float(emolist.count)
         let emonum:Int = Int((Float(arc4random_uniform(100)) * emocount) * 0.01)
-        var alert:NSArray = [lang.uage("发现了颜文字"),emolist.objectAtIndex(emonum),lang.uage("添加到剪切板"),lang.uage("取消"),emoNamelist.objectAtIndex(emonum)]
+        let alert:NSArray = [lang.uage("发现了颜文字"),emolist.objectAtIndex(emonum),lang.uage("添加到剪切板"),lang.uage("取消"),emoNamelist.objectAtIndex(emonum)]
         self.alertviewShake(alert)
     }
     
@@ -126,7 +126,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     
     func 摇一摇复制到剪贴板方法(要复制的颜文字:NSString, 颜文字名称 要复制的颜文字名称:NSString)
     {
-        var 颜文字数组:NSMutableArray = [要复制的颜文字]
+        let 颜文字数组:NSMutableArray = [要复制的颜文字]
         if (!要复制的颜文字名称.isEqualToString("")) {
             颜文字数组.addObject(要复制的颜文字名称)
         }

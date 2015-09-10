@@ -23,13 +23,13 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
     */
 
     
-    let 头像图标:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
-    let 设置图标:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+    let 头像图标:UIButton = UIButton(type: UIButtonType.System)
+    let 设置图标:UIButton = UIButton(type: UIButtonType.System)
     let 主标题:UILabel = UILabel()
     let 副标题:UILabel = UILabel()
     let 背景图片:UIImageView = UIImageView()
     var 默认前景色:UIColor? = nil
-    let 按钮:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+    let 按钮:UIButton = UIButton(type: UIButtonType.Custom)
     
     func 载入内容() {
         let 头像大小:CGFloat = 32

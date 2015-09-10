@@ -22,10 +22,10 @@ class Skin2Object: NSObject {
         let gg:NSString = RGBA色值数组.objectAtIndex(1) as! NSString
         let bb:NSString = RGBA色值数组.objectAtIndex(2) as! NSString
         let aa:NSString = RGBA色值数组.objectAtIndex(3) as! NSString
-        var r:CGFloat = CGFloat(rr.floatValue) / 255.0
-        var g:CGFloat = CGFloat(gg.floatValue) / 255.0
-        var b:CGFloat = CGFloat(bb.floatValue) / 255.0
-        var a:CGFloat = CGFloat(aa.floatValue) / 255.0
+        let r:CGFloat = CGFloat(rr.floatValue) / 255.0
+        let g:CGFloat = CGFloat(gg.floatValue) / 255.0
+        let b:CGFloat = CGFloat(bb.floatValue) / 255.0
+        let a:CGFloat = CGFloat(aa.floatValue) / 255.0
         if (r > 1 || g > 1 || b > 1 || a > 1 || r < 0 || g < 0 || b < 0 || a < 0) {
             return nil
         }

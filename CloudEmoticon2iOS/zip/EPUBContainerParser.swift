@@ -41,8 +41,8 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
                 
         }
         }
-        let urlArray = map(spineArray, {NSURL(fileURLWithPath: self.manifestDictionary[$0]!)!})
-        let returnArray = filter(urlArray, {$0 != nil})
+        let urlArray = spineArray.map({NSURL(fileURLWithPath: self.manifestDictionary[$0]!)!})
+        let returnArray = urlArray.filter({$0 != nil})
         // TODO: build an array of incorrect URLs for missing items
         return returnArray
     }
@@ -51,10 +51,10 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         
     }
     
-    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [NSObject : AnyObject]) {
+    public func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         
         if elementName == "rootfile" {
-            let content = contentPath + (attributeDict["full-path"] as! String)
+            let content = contentPath + (attributeDict["full-path"])!
             contentPaths.append(content)
             let parent = contentPath.stringByDeletingLastPathComponent + "/"
             parentFolders.append(parent)
@@ -67,14 +67,14 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         else if isManifest == true && elementName == "item" {
             
             // array of everything, if any NSURLs return nil when constructed then item is missing
-            manifestDictionary[attributeDict["id"] as! String] = parentFolder + (attributeDict["href"] as! String)
+            manifestDictionary[attributeDict["id"]!] = parentFolder + (attributeDict["href"])!
             
-            if attributeDict["media-type"] as! String == "application/vnd.ms-opentype" {
-                fontArray.append(attributeDict["href"] as! String)
+            if attributeDict["media-type"] == "application/vnd.ms-opentype" {
+                fontArray.append(attributeDict["href"]!)
             }
             
-            else if attributeDict["media-type"] as! String == "image/png"  || attributeDict["media-type"] as! String == "image/jpeg" || attributeDict["media-type"] as! String == "image/jpg" {
-                imageArray.append(attributeDict["href"] as! String)
+            else if attributeDict["media-type"] == "image/png"  || attributeDict["media-type"] == "image/jpeg" || attributeDict["media-type"] == "image/jpg" {
+                imageArray.append(attributeDict["href"]!)
             }
         }
         else if elementName == "spine" {
@@ -82,7 +82,7 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         }
         else if isSpine == true && elementName == "itemref" {
             
-            spineArray.append(attributeDict["idref"] as! String)
+            spineArray.append(attributeDict["idref"]!)
         }
     }
     

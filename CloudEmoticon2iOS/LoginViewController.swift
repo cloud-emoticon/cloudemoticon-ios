@@ -39,15 +39,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func 登录按钮点击(sender: UIButton) {
-        let 输入的用户名:NSString = 账号输入框.text
+        let 输入的用户名:NSString = 账号输入框.text!
         if (输入的用户名.length >= 3) {
-            let 输入的密码:NSString = 密码输入框.text
+            let 输入的密码:NSString = 密码输入框.text!
             if (输入的密码.length >= 6) {
                 //继续
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "登录失败:", name: "P用户:登录失败", object: nil)
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: "登录成功:", name: "P用户:登录成功", object: nil)
                 NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
-                全局_Parse读写.用户登录(账号输入框.text, 密码: 密码输入框.text)
+                全局_Parse读写.用户登录(账号输入框.text!, 密码: 密码输入框.text!)
             } else {
                 let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("密码至少要6位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
                 提示框.show()

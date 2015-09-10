@@ -17,7 +17,7 @@ class UserSync: NSObject {
     func 下载当前用户同步对象(类名:String) { // PFObject Array
         NSLog("[UserSync]下载“%@”同步信息...",类名)
         let 查询:PFQuery = PFQuery(className: 类名)
-        var 当前用户:NSDictionary? = 全局_Parse读写.当前用户()
+        let 当前用户:NSDictionary? = 全局_Parse读写.当前用户()
         if (当前用户 != nil) {
             查询.whereKey("owner", equalTo: PFUser.currentUser()!)
             查询.findObjectsInBackgroundWithBlock({ (返回对象数组对象:[AnyObject]?, 错误信息:NSError?) -> Void in
@@ -27,16 +27,16 @@ class UserSync: NSObject {
 //                    for (var i:Int = 0; i < 返回对象数组.count; i++) {
 //                        let 对象:PFObject = 返回对象数组.objectAtIndex(i) as! PFObject
 //                    }
-                    self.对象数组下载完毕(数据: 返回对象数组,类名: 类名)
+                    self.对象数组下载完毕(返回对象数组,类名: 类名)
                 } else {
                     NSLog("[UserSync]下载“%@”同步信息数据失败！(%@)", 类名, 错误信息!)
-                    self.对象数组下载完毕(数据: nil,类名: 类名)
+                    self.对象数组下载完毕(nil,类名: 类名)
                 }
             })
         }
     }
     
-    func 对象数组下载完毕(#数据:NSArray?,类名:String) {
+    func 对象数组下载完毕(数据:NSArray?,类名:String) {
         if (数据 != nil) {
             if (类名 == "SyncInfo") {
                 let SyncInfoDic:PFObject = 数据?.objectAtIndex(0) as! PFObject
@@ -57,7 +57,7 @@ class UserSync: NSObject {
     
     func 转换为同步用数据格式() -> NSArray? {
         let 组数据读写:AppGroupIO = AppGroupIO()
-        var 数据数组:NSArray? = 组数据读写.读取设置UD模式()
+        let 数据数组:NSArray? = 组数据读写.读取设置UD模式()
 //        let 全部收藏数组:NSArray = 数据数组!.objectAtIndex(0) as! NSArray
 //        let 全部自定数组:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
 //        let 全部历史数组:NSArray = 数据数组!.objectAtIndex(2) as! NSArray

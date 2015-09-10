@@ -44,9 +44,15 @@ public struct FileLoad {
         let loadPath = buildPath(path, inDirectory: directory, subdirectory: subdirectory)
         
         var error:NSError?
-        println(loadPath)
+        print(loadPath)
         // Save the file and see if it was successful
-        let text:String? = String(contentsOfFile:loadPath, encoding:enc, error: &error)
+        let text:String?
+        do {
+            text = try String(contentsOfFile:loadPath, encoding:enc)
+        } catch let error1 as NSError {
+            error = error1
+            text = nil
+        }
         
         
         return text
@@ -59,9 +65,15 @@ public struct FileLoad {
         let loadPath = buildPathToTemporaryDirectory(path, subdirectory: subdirectory)
         
         var error:NSError?
-        println(loadPath)
+        print(loadPath)
         // Save the file and see if it was successful
-        var text:String? = String(contentsOfFile:loadPath, encoding:enc, error: &error)
+        var text:String?
+        do {
+            text = try String(contentsOfFile:loadPath, encoding:enc)
+        } catch let error1 as NSError {
+            error = error1
+            text = nil
+        }
         
         
         return text

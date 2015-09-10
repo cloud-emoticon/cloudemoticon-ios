@@ -103,7 +103,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         设置复制后退出应用.on = copyexit!
 
         let CellIdentifier:NSString = "SettingCell"
-        var cell:UITableViewCell? = SetTable.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+        var cell:UITableViewCell? = SetTable.dequeueReusableCellWithIdentifier(CellIdentifier as String)
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
         }
@@ -113,7 +113,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         if (cell!.contentView.subviews.count > 1) {
-            println("cell!.contentView.subviews.count > 1")
+            print("cell!.contentView.subviews.count > 1")
         }
         
         if(indexPath.section == 1) {
@@ -167,13 +167,13 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func updateSwitchAtIndesPath(sender:UISwitch){
-        var switchview:UISwitch = sender
+        let switchview:UISwitch = sender
               defaults.setBool(switchview.on, forKey: "exitaftercopy")
         defaults.synchronize()
     }
     
     func updateSliderAtIndesPath(sender:UISlider){
-        var sliderview:UISlider = sender
+        let sliderview:UISlider = sender
         defaults.setObject(sliderview.value, forKey: "adfrequent")
         defaults.synchronize()
     }

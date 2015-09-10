@@ -58,7 +58,7 @@ class SetTableViewController: UITableViewController {
         let 新坐标:NSArray = 通知.object as! NSArray
         let 宽:CGFloat = 新坐标.objectAtIndex(0) as! CGFloat
         let 高:CGFloat = 新坐标.objectAtIndex(1) as! CGFloat
-        let backgroundView2:UIView = self.tableView.backgroundView?.subviews[0] as! UIView
+        let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, 宽, 高)
         刷新背景图()
     }
@@ -70,8 +70,8 @@ class SetTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
-        let backgroundView2:UIView = self.tableView.backgroundView?.subviews[0] as! UIView
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+        let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.backgroundColor = UIColor.whiteColor()
         列表文字颜色 = UIColor.blackColor()
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
@@ -109,7 +109,7 @@ class SetTableViewController: UITableViewController {
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
                 }
             }
             //RGBA色值：列表的背景色 yes
@@ -219,7 +219,7 @@ class SetTableViewController: UITableViewController {
   
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String)
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell?.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -255,9 +255,9 @@ class SetTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0:
-            let push = storyboard?.instantiateViewControllerWithIdentifier("Color") as! UIViewController
-            push.hidesBottomBarWhenPushed = true
-            self.navigationController?.pushViewController(push, animated: true)
+            let push = storyboard?.instantiateViewControllerWithIdentifier("Color")
+            push!.hidesBottomBarWhenPushed = true
+            self.navigationController?.pushViewController(push!, animated: true)
             break
         case 1:
             前往主题管理(nil)
@@ -273,7 +273,7 @@ class SetTableViewController: UITableViewController {
             self.navigationController?.pushViewController(push, animated: true)
             break
         case 4:
-            let push:UIViewController = storyboard?.instantiateViewControllerWithIdentifier("About") as! UIViewController
+            let push:UIViewController = (storyboard?.instantiateViewControllerWithIdentifier("About"))!
             push.hidesBottomBarWhenPushed = true
             self.navigationController?.pushViewController(push, animated: true)
             break

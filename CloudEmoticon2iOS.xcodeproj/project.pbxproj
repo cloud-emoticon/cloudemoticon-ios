@@ -1102,6 +1102,8 @@
 		53DF28E5196B9CF40058AA42 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "神楽坂雅詩 & 神楽坂紫喵";
 				TargetAttributes = {

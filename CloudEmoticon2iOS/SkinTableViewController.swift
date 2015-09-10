@@ -27,7 +27,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         super.init(style: .Plain)
     }
     
-    override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -113,9 +113,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     func 右上按钮(sender: UIBarButtonItem) {
         if (self.tableView.editing) {
 //            self.tableView.setEditing(false, animated: true)
-            var alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
+            let alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
             alert.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            var alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
+            let alertImport:UITextField = alert.textFieldAtIndex(0) as UITextField!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
             alertImport.text = "http://127.0.0.1/skin/skin.zip"
@@ -133,7 +133,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     // MARK: - 提示框被点击
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
-        var 提示框输入框:
+        let 提示框输入框:
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (buttonIndex == 1) {
             //添加
@@ -228,7 +228,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
                     let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
                     let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
                     if (当前应用的皮肤MD5 == 当前皮肤md5) {
-                        var alert:UIAlertView = UIAlertView(title: lang.uage("无法删除这个主题"), message: lang.uage("这个主题当前正在被使用"), delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+                        let alert:UIAlertView = UIAlertView(title: lang.uage("无法删除这个主题"), message: lang.uage("这个主题当前正在被使用"), delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
                         alert.show()
                     } else {
                         //删除文件
@@ -274,7 +274,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             let 皮肤管理器:SkinManager = SkinManager()
             皮肤管理器.设置正在使用皮肤()
         } else if (indexPath.row == 1) {
-            var alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "这是一个在以后版本中准备添加的功能，尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
+            let alert:UIAlertView = UIAlertView(title: "自定义皮肤编辑器", message: "这是一个在以后版本中准备添加的功能，尚未推出，敬请期待。", delegate: nil, cancelButtonTitle: "返回") //这段临时代码不用翻译
             alert.show()
         } else {
             //应用皮肤，提取信息并写入到内存和Group
@@ -287,7 +287,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
             if (INI读取结果 != 0) {
                 NSLog("[SkinTableViewController]意外错误：载入INI文件失败。")
             } else {
-                var 要应用的皮肤内容:NSMutableDictionary? = INI读取器.INI文件内容字典
+                let 要应用的皮肤内容:NSMutableDictionary? = INI读取器.INI文件内容字典
                 let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
                 let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
                 要应用的皮肤内容?.setObject(当前皮肤md5, forKey: "md5")

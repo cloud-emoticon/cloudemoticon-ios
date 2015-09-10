@@ -54,7 +54,7 @@ class ParseLink: NSObject {
         假如您想要将上述 GameScore 保存到 Parse 云中。保存接口与 NSMutableDictionary 类似，多了 saveInBackground 方法：
         */
         let 参数:[NSObject : AnyObject] = 参数字典 as [NSObject : AnyObject]
-        var 要上传的对象:PFObject = PFObject(className: 对象名称, dictionary: 参数)
+        let 要上传的对象:PFObject = PFObject(className: 对象名称, dictionary: 参数)
         要上传的对象.saveInBackgroundWithBlock { (是否成功: Bool, 错误信息: NSError?) -> Void in
             if (错误信息 != nil || 是否成功 == true) {
                 NSLog("[ParseLink]未能存储数据“%@”，因为：%@。",对象名称,错误信息!.localizedDescription)
@@ -99,20 +99,20 @@ class ParseLink: NSObject {
     
     func 获取返回对象的属性(信息对象:PFObject) -> NSDictionary {
         //有三个特殊的属性值：
-        var 返回属性字典:NSMutableDictionary = NSMutableDictionary()
-        var 对象ID:String? = 信息对象.objectId
+        let 返回属性字典:NSMutableDictionary = NSMutableDictionary()
+        let 对象ID:String? = 信息对象.objectId
         if (对象ID == nil) {
             NSLog("[ParseLink]找不到对象ID。")
         } else {
             返回属性字典.setObject(对象ID!, forKey: "对象ID")
         }
-        var 更新时间:NSDate? = 信息对象.updatedAt
+        let 更新时间:NSDate? = 信息对象.updatedAt
         if (更新时间 == nil) {
             NSLog("[ParseLink]找不到对象更新日期。")
         } else {
             返回属性字典.setObject(更新时间!, forKey: "更新时间")
         }
-        var 创建时间:NSDate? = 信息对象.createdAt
+        let 创建时间:NSDate? = 信息对象.createdAt
         if (创建时间 == nil) {
             NSLog("[ParseLink]找不到对象更新日期。")
         } else {
@@ -129,7 +129,7 @@ class ParseLink: NSObject {
     func 离线保存对象(对象名称:String, 参数字典:NSDictionary) {
         //大多数保存函数会立即执行，并在完成保存后通知您的应用。如果您不需要知道何时保存结束，您可以使用 saveEventually 代替。其优势在于如果用户当前没有网络连接，saveEventually 会将更新保存在设备上，直到重新建立网络连接。如果您的应用在连接恢复之前关闭，Parse 将在下次应用打开时重试。对 saveEventually（以及 deleteEventually）的所有调用均按调用顺序执行，因此针对一个对象调用多次 saveEventually 是安全的。
         let 参数:[NSObject : AnyObject] = 参数字典 as [NSObject : AnyObject]
-        var 要上传的对象:PFObject = PFObject(className: 对象名称, dictionary: 参数)
+        let 要上传的对象:PFObject = PFObject(className: 对象名称, dictionary: 参数)
         要上传的对象.saveEventually()
     }
     

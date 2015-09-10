@@ -94,7 +94,10 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
                 }
             } else {
                 if (文件管理器.fileExistsAtPath(临时文件路径)) {
-                    文件管理器.removeItemAtPath(临时文件路径, error: nil)
+                    do {
+                        try 文件管理器.removeItemAtPath(临时文件路径)
+                    } catch _ {
+                    }
                     开始时已下载文件大小 = 0
                 }
             }
@@ -146,18 +149,27 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     func 删除一个缓存文件(源网址:String) {
         let 要删除的文件路径:String = 从网址生成临时文件路径和名称(源网址, 文件扩展名: 临时文件扩展名) as String
         if (文件管理器.fileExistsAtPath(要删除的文件路径)) {
-            文件管理器.removeItemAtPath(要删除的文件路径, error: nil)
+            do {
+                try 文件管理器.removeItemAtPath(要删除的文件路径)
+            } catch _ {
+            }
         }
     }
     func 删除当前缓存文件() {
         if (文件管理器.fileExistsAtPath(临时文件路径)) {
-            文件管理器.removeItemAtPath(临时文件路径, error: nil)
+            do {
+                try 文件管理器.removeItemAtPath(临时文件路径)
+            } catch _ {
+            }
         }
     }
     func 清除所有缓存文件() {
         let 缓存文件夹路径:String = 获得缓存文件夹路径() as String
         if (文件管理器.fileExistsAtPath(缓存文件夹路径)) {
-            文件管理器.removeItemAtPath(缓存文件夹路径, error: nil)
+            do {
+                try 文件管理器.removeItemAtPath(缓存文件夹路径)
+            } catch _ {
+            }
         }
     }
     
@@ -178,7 +190,13 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         NSLog("[NetWork Class]准备下载: \(网络请求)");
         var 网络响应:NSURLResponse? = nil
         var 网络错误:NSError? = nil
-        var 收到数据 = NSURLConnection.sendSynchronousRequest(网络请求, returningResponse: &网络响应, error: &网络错误)
+        var 收到数据: NSData?
+        do {
+            收到数据 = try NSURLConnection.sendSynchronousRequest(网络请求, returningResponse: &网络响应)
+        } catch let error as NSError {
+            网络错误 = error
+            收到数据 = nil
+        }
         if (网络错误 != nil) {
             //[self connection:nil didFailWithError:error];
         } else {
@@ -271,7 +289,10 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         let 缓存文件夹路径:String = "\(文档文件夹路径)/\(缓存文件夹名称)"
         let 缓存文件夹是否存在:Bool = 文件管理器.fileExistsAtPath(缓存文件夹路径)
         if (缓存文件夹是否存在 == false) {
-            文件管理器.createDirectoryAtPath(缓存文件夹路径, withIntermediateDirectories: false, attributes: nil, error: nil)
+            do {
+                try 文件管理器.createDirectoryAtPath(缓存文件夹路径, withIntermediateDirectories: false, attributes: nil)
+            } catch _ {
+            }
         }
         return 缓存文件夹路径
     }
@@ -283,7 +304,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     
     func 计算文件大小(文件路径:String) -> Int64 {
         if (文件管理器.fileExistsAtPath(文件路径)) {
-            let 文件信息:NSDictionary = 文件管理器.attributesOfItemAtPath(文件路径, error: nil)!
+            let 文件信息:NSDictionary = try! 文件管理器.attributesOfItemAtPath(文件路径)
             let 文件大小:NSNumber = 文件信息.objectForKey("NSFileSize") as! NSNumber
             return 文件大小.longLongValue
         }

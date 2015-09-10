@@ -34,9 +34,16 @@ public struct FileSave {
         let savePath = buildPath(path, inDirectory: directory, subdirectory: subdirectory)
         var error:NSError?
         // Save the file and see if it was successful
-        let ok:Bool = fileString.writeToFile(savePath, atomically:false, encoding:NSUTF8StringEncoding, error:&error)
+        let ok:Bool
+        do {
+            try fileString.writeToFile(savePath, atomically:false, encoding:NSUTF8StringEncoding)
+            ok = true
+        } catch let error1 as NSError {
+            error = error1
+            ok = false
+        }
         
-        if (error != nil) {println(error)}
+        if (error != nil) {print(error)}
         
         // Return status of file save
         return ok
@@ -48,10 +55,17 @@ public struct FileSave {
         
         var error:NSError?
         // Save the file and see if it was successful
-        var ok:Bool = fileString.writeToFile(savePath, atomically:false, encoding:NSUTF8StringEncoding, error:&error)
+        var ok:Bool
+        do {
+            try fileString.writeToFile(savePath, atomically:false, encoding:NSUTF8StringEncoding)
+            ok = true
+        } catch let error1 as NSError {
+            error = error1
+            ok = false
+        }
         
         if (error != nil) {
-            println(error)
+            print(error)
         }
         
         // Return status of file save

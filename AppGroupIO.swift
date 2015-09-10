@@ -51,7 +51,7 @@ class AppGroupIO: NSObject {
     
     //使用URL调用方式提取保存的字符串数组
     func 读取设置URL模式() -> NSArray? {
-        var 设置值:NSString? = NSString(contentsOfURL: 组设置URL(), encoding: NSUTF8StringEncoding, error: nil)
+        let 设置值:NSString? = try? NSString(contentsOfURL: 组设置URL(), encoding: NSUTF8StringEncoding)
         if(设置有效性校验(设置值)) {
             let 设置数组:NSArray = ArrayString().JSON字符串转数组(设置值!)
             NSLog("[AppGroupIO]Group-URL读取操作")
@@ -63,13 +63,16 @@ class AppGroupIO: NSObject {
     //使用URL调用方式写入字符串数组
     func 写入设置URL模式(设置数组:NSArray) {
         let 设置值:NSString = ArrayString().数组转JSON字符串(设置数组)
-        设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        do {
+            try 设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding)
+        } catch _ {
+        }
         NSLog("[AppGroupIO]Group-URL写入操作")
     }
     
     //检查URL调用方式得到的内容是否有效
     func 检查设置URL模式() -> Bool {
-        var 设置值:NSString? = NSString(contentsOfURL: 组设置URL(), encoding: NSUTF8StringEncoding, error: nil)
+        let 设置值:NSString? = try? NSString(contentsOfURL: 组设置URL(), encoding: NSUTF8StringEncoding)
         if(设置有效性校验(设置值)) {
             return true
         }
@@ -79,7 +82,10 @@ class AppGroupIO: NSObject {
     //清除URL调用方式保存的全部内容
     func 清除设置URL模式() {
         let 设置值:NSString = NSString()
-        设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+        do {
+            try 设置值.writeToURL(组设置URL(), atomically: true, encoding: NSUTF8StringEncoding)
+        } catch _ {
+        }
         NSLog("[AppGroupIO]Group-URL清除操作")
     }
     
@@ -87,7 +93,7 @@ class AppGroupIO: NSObject {
     func 读取设置UD模式() -> NSArray? {
         let 设置存储:NSUserDefaults? = 组设置存储()
         if (设置存储 != nil) {
-            var 设置值:NSString? = 设置存储?.stringForKey(程序组设置名称)
+            let 设置值:NSString? = 设置存储?.stringForKey(程序组设置名称)
             if(设置有效性校验(设置值)) {
                 let 设置数组:NSArray = ArrayString().JSON字符串转数组(设置值!)
                 NSLog("[AppGroupIO]Group-UD读取操作")
@@ -116,7 +122,7 @@ class AppGroupIO: NSObject {
     func 检查设置UD模式() -> Bool {
         let 设置存储:NSUserDefaults? = 组设置存储()
         if (设置存储 != nil) {
-            var 设置值:NSString? = 设置存储?.stringForKey(程序组设置名称)
+            let 设置值:NSString? = 设置存储?.stringForKey(程序组设置名称)
             if(设置有效性校验(设置值)) {
                 return true
             }

@@ -17,17 +17,17 @@ public class FileList {
             let url = NSURL(fileURLWithPath: loadPath)
             var error:NSError?
             
-            var properties = [NSURLLocalizedNameKey,
+            let properties = [NSURLLocalizedNameKey,
                 NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey]
-            if let url = url,
-                array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles, error: &error) as? [NSURL] {
-                    return array
+            if url.isEqual(url){
+                let array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
+                return array
             }
         }
         return nil
     }
     
-    public static func allFilesAndFoldersInTemporaryDirectory(subdirectory:String?) -> [NSURL]? {
+    public static func allFilesAndFoldersInTemporaryDirectory(subdirectory:String?) throws -> [NSURL]? {
         
         // Create load path
         let loadPath = buildPathToTemporaryDirectory(subdirectory)
@@ -37,10 +37,9 @@ public class FileList {
         
         var properties = [NSURLLocalizedNameKey,
             NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey]
-        if let url = url,
-            array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles, error: &error) as? [NSURL] {
+        if url.isEqual(url){
+            let array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
                 return array
-                
         }
         return nil
     }
