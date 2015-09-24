@@ -1,8 +1,8 @@
 //
 //  YashiNetworkDownload.swift
-//  雅诗独立类库：网络下载工具 v2.1 Swift中文版 (Xcode6.3) | beta
+//  雅诗独立类库：网络下载工具 v2.2 Swift中文版 (Xcode6.3/Swift1) | beta
 //
-//  使用官方库实现网络交互，实时显示进度和数据量，断点续传，异步下载，大文件下载，自定义超时和缓存。
+//  使用官方库实现网络交互，实时显示进度和数据量，请求参数，断点续传，异步下载，大文件下载，自定义超时和缓存。
 //
 //  Created by 神楽坂雅詩 on 2012/8/8.
 //  Created by 神楽坂雅詩 on 2015/4/19.
@@ -34,6 +34,7 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     var 信息数组:NSMutableArray = NSMutableArray() //同上
     var 网络错误描述:NSString = NSString() //失败后从该属性获得错误描述
     var 下载地址:String = String()
+    var 请求参数:NSData? = nil
     var 超时时间:NSTimeInterval = 10.0
     var 系统缓存模式:NSURLRequestCachePolicy = NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData
     var 代理:YashiDownloadDelegate?
@@ -59,17 +60,17 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     //文件缓存：文件会下载到存储器而不是内存，适用于大文件。（需要异步）
     //断点续传：如果文件下载到一半中止，尝试继续下载。（如果服务器支持，需要文件缓存）
     //系统缓存模式：参考NSURLRequestCachePolicy，输入nil则默认为ReloadIgnoringLocalCacheData
-    init(输入下载地址:String,输入网络请求模式:NetworkHTTPMethod,是否要用文件缓存:Bool,是否要异步:Bool,是否要断点续传:Bool,输入超时时间:NSTimeInterval,输入系统缓存模式:NSURLRequestCachePolicy?,输入代理:YashiDownloadDelegate?) {
+    init(输入下载地址:String,输入网络请求模式:NetworkHTTPMethod,输入请求参数:NSDictionary?,是否要用文件缓存:Bool,是否要异步:Bool,是否要断点续传:Bool,输入超时时间:NSTimeInterval,输入系统缓存模式:NSURLRequestCachePolicy?,输入代理:YashiDownloadDelegate?) {
         super.init()
         处于下载中 = false
         if (是否要异步 == false && 是否要用文件缓存 == true) {
-            NSLog("[NetWork Class]设置有冲突: 异步:OFF & 用文件缓存:ON");
+            NSLog("[NetWork Class]设置有冲突: 异步:OFF & 用文件缓存:ON")
             要用文件缓存 = false
         } else {
             要用文件缓存 = 是否要用文件缓存
         }
         if (是否要异步 == false && 是否要断点续传 == true) {
-            NSLog("[NetWork Class]设置有冲突: 异步:OFF & 断点续传:ON");
+            NSLog("[NetWork Class]设置有冲突: 异步:OFF & 断点续传:ON")
             要断点续传 = false
         } else {
             要断点续传 = 是否要断点续传
@@ -82,8 +83,23 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         要异步 = 是否要异步
         超时时间 = 输入超时时间
         代理 = 输入代理
+        请求参数 = nil
+        if (输入请求参数 != nil) {
+            let 请求参数Key列表:NSArray = 输入请求参数!.allKeys
+            let 请求体:NSMutableString = NSMutableString()
+            for (var i = 0; i < 请求参数Key列表.count; i++) {
+                let 当前参数key:String = 请求参数Key列表.objectAtIndex(i) as! String
+                let 当前参数值:String = 输入请求参数?.objectForKey(当前参数key) as! String
+                if (i == 0) {
+                    请求体.appendString("&")
+                }
+                let 当前参数字符串:String = String(format: "%@=%@", 当前参数key,当前参数值)
+                请求体.appendString(当前参数字符串)
+            }
+            请求参数 = 请求体.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)
+        }
         临时文件路径 = 从网址生成临时文件路径和名称(输入下载地址, 文件扩展名: 临时文件扩展名) as String
-        NSLog("[NetWork Class]缓存文件路径: \(临时文件路径)");
+        NSLog("[NetWork Class]缓存文件路径: \(临时文件路径)")
         if (要用文件缓存) {
             if (要断点续传) {
                 if (文件管理器.fileExistsAtPath(临时文件路径)) {
@@ -186,6 +202,9 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     func 启动同步连接() {
         let 网址:NSURL = NSURL(string: 下载地址)!
         let 网络请求:NSMutableURLRequest = NSMutableURLRequest(URL: 网址, cachePolicy: 系统缓存模式, timeoutInterval: 超时时间)
+        if (请求参数 != nil) {
+            网络请求.HTTPBody = 请求参数
+        }
         网络请求.HTTPMethod = 网络请求描述(网络请求模式)
         NSLog("[NetWork Class]准备下载: \(网络请求)");
         var 网络响应:NSURLResponse? = nil
@@ -207,6 +226,9 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
     func 启动异步连接() {
         let 网址:NSURL = NSURL(string: 下载地址)!
         let 网络请求:NSMutableURLRequest = NSMutableURLRequest(URL: 网址, cachePolicy: 系统缓存模式, timeoutInterval: 超时时间)
+        if (请求参数 != nil) {
+            网络请求.HTTPBody = 请求参数
+        }
         if (要断点续传 && 开始时已下载文件大小 > 0) {
             NSLog("[NetWork Class]从该字节开始断点续传: \(开始时已下载文件大小)");
             let 断点续传网络参数:String = "bytes=\(开始时已下载文件大小)-"
