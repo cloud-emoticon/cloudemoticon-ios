@@ -36,6 +36,12 @@ enum 请求模式为:Int16 {
     //POST - 向指定的资源提交要被处理的数据。
 }
 
+protocol YashiNetworkKitDelegate {
+    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Float);
+    func YashiNetworkKit回传结束(当前下载类:YashiNetworkKit, 发生错误:NSError?);
+    //func YashiNetworkKit开始断点续传(已下载字节数:Int64, 总计字节数:Int64);
+}
+
 class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
     //可以修改的属性
     var 会话模式:会话模式为 = 会话模式为.默认
@@ -46,6 +52,7 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
     var 下载到文件:String = "" //下载到本地文件的绝对路径
     var 缓存策略:NSURLRequestCachePolicy = NSURLRequestCachePolicy.UseProtocolCachePolicy
     var 超时时间:NSTimeInterval = 60
+    var 要提交的参数:NSDictionary? //.php?key=value&key=value
     //外部只读的属性
     var 网络会话:NSURLSession? = nil
     var 网络会话任务加载数据:NSURLSessionDataTask? = nil
@@ -56,7 +63,16 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
     func 开始请求() {
         //菊花.startAnimating()
         let 网址串:NSURL = NSURL(string: 网址)!
-        let 网络请求:NSURLRequest = NSURLRequest(URL: 网址串, cachePolicy: 缓存策略, timeoutInterval: 超时时间)
+        let 网络请求:NSMutableURLRequest = NSMutableURLRequest(URL: 网址串, cachePolicy: 缓存策略, timeoutInterval: 超时时间)
+        if (要提交的参数 != nil) {
+            let 要提交的字符串:String = 参数字典转换为字符串()
+            网络请求.HTTPBody = 要提交的字符串.dataUsingEncoding(NSUTF8StringEncoding)
+        }
+        if (请求模式 == 请求模式为.显式) {
+            网络请求.HTTPMethod = "GET";
+        } else {
+            网络请求.HTTPMethod = "POST";
+        }
         if (传输模式 == 传输模式为.加载数据) {
             网络会话 = NSURLSession.sharedSession()
             网络会话任务加载数据 = 网络会话!.dataTaskWithRequest(网络请求) { (返回的数据:NSData?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
@@ -123,12 +139,24 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
         }
         else if (传输模式 == 传输模式为.后台下载文件) {
             网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求)
-            
         }
+    }
+    
+    func 参数字典转换为字符串() -> String {
+        let 参数字符串:NSMutableString = NSMutableString()
+        let 所有的键:NSArray = (要提交的参数?.allKeys)!
+        for (var 当前第几个键:Int = 0; 当前第几个键 < 所有的键.count; 当前第几个键++) {
+            let 当前键:NSString = 所有的键.objectAtIndex(当前第几个键) as! NSString
+            let 当前值:NSString = (要提交的参数?.objectForKey(当前键))! as! NSString
+            let 要添加的字符串:NSString = NSString(format: "%@=%@&", 当前键,当前值)
+            参数字符串.appendString(要添加的字符串 as String)
+        }
+        return 参数字符串.substringToIndex(参数字符串.length-1)
     }
     
     func 创建网络会话() {
         let 会话配置:NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
+        //会话配置.HTTPAdditionalHeaders = ["key":"val"] //HTTP头
         网络会话 = NSURLSession(configuration: 会话配置, delegate: self, delegateQueue: nil)
         网络会话!.sessionDescription = "Current Session"
     }
@@ -155,9 +183,9 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
             }
         }
     }
-    //发送下载任务时已完成下载。代表应复制或移动该文件在给定位置到一个新的位置，因为它将删除委托消息返回时。urlsession：任务：didcompletewitherror：将仍被称为。
+    //发送下载任务时已完成下载。代表应复制或移动该文件在给定位置到一个新的位置，因为它将删除委托消息返回时。
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        
+        NSLog("[YashiNetworkKit]下载:%@", location)
     }
     //定期发送通知的代表下载进度。
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
