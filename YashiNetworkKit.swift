@@ -12,6 +12,7 @@
 //  输出：代理方法调用
 //
 
+//import Cocoa
 import UIKit
 
 enum 会话模式为:Int16 {
@@ -37,12 +38,14 @@ enum 请求模式为:Int16 {
 }
 
 protocol YashiNetworkKitDelegate {
-    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Float);
-    func YashiNetworkKit回传结束(当前下载类:YashiNetworkKit, 发生错误:NSError?);
-    //func YashiNetworkKit开始断点续传(已下载字节数:Int64, 总计字节数:Int64);
+    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Double);
+    func YashiNetworkKit下载结束(当前下载类:YashiNetworkKit);
+    func YashiNetworkKit网络操作结束(当前下载类:YashiNetworkKit, 发生错误:NSError?);
+//    func YashiNetworkKit开始断点续传(已下载字节数:Int64, 总计字节数:Int64);
+    func YashiNetworkKit请求结果(下载器:YashiNetworkKit, 返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?)
 }
 
-class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
+class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDelegate {
     //可以修改的属性
     var 会话模式:会话模式为 = 会话模式为.默认
     var 请求模式:请求模式为 = 请求模式为.显式
@@ -59,13 +62,14 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
     var 网络会话任务上载数据:NSURLSessionUploadTask? = nil
     var 网络会话任务下载数据:NSURLSessionDownloadTask? = nil
     var 续传数据:NSData? = nil
+    var 代理:YashiNetworkKitDelegate? = nil
     //方法
     func 开始请求() {
         //菊花.startAnimating()
         let 网址串:NSURL = NSURL(string: 网址)!
         let 网络请求:NSMutableURLRequest = NSMutableURLRequest(URL: 网址串, cachePolicy: 缓存策略, timeoutInterval: 超时时间)
         if (要提交的参数 != nil) {
-            let 要提交的字符串:String = 参数字典转换为字符串()
+            let 要提交的字符串:String = 参数字典转换为字符串(要提交的参数!)
             网络请求.HTTPBody = 要提交的字符串.dataUsingEncoding(NSUTF8StringEncoding)
         }
         if (请求模式 == 请求模式为.显式) {
@@ -74,20 +78,26 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
             网络请求.HTTPMethod = "POST";
         }
         if (传输模式 == 传输模式为.加载数据) {
-            网络会话 = NSURLSession.sharedSession()
-            网络会话任务加载数据 = 网络会话!.dataTaskWithRequest(网络请求) { (返回的数据:NSData?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
-                self.请求结果(返回的数据, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+            创建网络会话()
+            网络会话任务加载数据 = 网络会话!.dataTaskWithRequest(网络请求)
+            { (返回的数据:NSData?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
+                self.请求结果(nil, 返回的数据: 返回的数据, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
             }
             网络会话任务加载数据!.resume() //启动
         }
         else if (传输模式 == 传输模式为.上载文件) {
-            网络会话 = NSURLSession.sharedSession()
+            创建网络会话()
+            if (数据 == nil) {
+                NSLog("[YashiNetworkKit]错误：没有要上传的数据。")
+            }
             网络会话任务上载数据 = 网络会话!.uploadTaskWithRequest(网络请求, fromData: 数据, completionHandler: { (返回的数据:NSData?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
-                self.请求结果(返回的数据, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+                self.请求结果(nil, 返回的数据: 返回的数据, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
             })
+            //网络会话任务上载数据 = 网络会话!.uploadTaskWithRequest(网络请求, fromData: 数据!)
             网络会话任务上载数据!.resume() //启动
         }
-        else if (false) { //传输模式 == 传输模式为.下载文件 //此处代码暂无用
+            /*
+        else if (传输模式 == 传输模式为.下载文件) { //此处代码暂无用
             网络会话 = NSURLSession.sharedSession()
             网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求, completionHandler: { (临时文件URL:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
                 if (临时文件URL != nil) {
@@ -112,6 +122,7 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
             })
             网络会话任务下载数据!.resume() //启动
         }
+*/
         else if (传输模式 == 传输模式为.下载文件) {
             if (网络会话任务下载数据 != nil) {
                 网络会话任务下载数据 = nil
@@ -120,7 +131,9 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
                 网络会话 = nil
             }
             创建网络会话()
-            网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求)
+            网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求, completionHandler: { (返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
+                self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+            })
             网络会话任务下载数据!.resume()
         }
         else if (传输模式 == 传输模式为.断点续传下载文件) {
@@ -133,21 +146,29 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
             if (数据 != nil) { //继续下载
                 网络会话任务下载数据 = 网络会话!.downloadTaskWithResumeData(数据!)
             } else { //新建下载
-                网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求)
+                网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求, completionHandler: { (返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
+                    self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+                })
             }
             网络会话任务下载数据!.resume()
         }
         else if (传输模式 == 传输模式为.后台下载文件) {
-            网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求)
+            网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求, completionHandler: { (返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
+                self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: nil, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+            })
+            网络会话任务下载数据!.resume()
         }
     }
     
-    func 参数字典转换为字符串() -> String {
+    func 参数字典转换为字符串(提交的参数:NSDictionary) -> String {
+        if (提交的参数.count <= 0) {
+            return ""
+        }
         let 参数字符串:NSMutableString = NSMutableString()
-        let 所有的键:NSArray = (要提交的参数?.allKeys)!
+        let 所有的键:NSArray = (提交的参数.allKeys)
         for (var 当前第几个键:Int = 0; 当前第几个键 < 所有的键.count; 当前第几个键++) {
             let 当前键:NSString = 所有的键.objectAtIndex(当前第几个键) as! NSString
-            let 当前值:NSString = (要提交的参数?.objectForKey(当前键))! as! NSString
+            let 当前值:NSString = (提交的参数.objectForKey(当前键))! as! NSString
             let 要添加的字符串:NSString = NSString(format: "%@=%@&", 当前键,当前值)
             参数字符串.appendString(要添加的字符串 as String)
         }
@@ -186,36 +207,50 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate {
     //发送下载任务时已完成下载。代表应复制或移动该文件在给定位置到一个新的位置，因为它将删除委托消息返回时。
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
         NSLog("[YashiNetworkKit]下载:%@", location)
+        if (代理 != nil) {
+            代理?.YashiNetworkKit下载结束(self)
+        }
     }
     //定期发送通知的代表下载进度。
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         let 下载进度值:Double = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
         NSLog("[YashiNetworkKit]已下载%d/%d(%f%%)...", totalBytesWritten,totalBytesExpectedToWrite,下载进度值*100)
+        if (代理 != nil) {
+            代理?.YashiNetworkKit实时汇报进度(totalBytesWritten, 总计字节数: totalBytesExpectedToWrite, 当前进度百分比: 下载进度值*100)
+        }
     }
     //发送时已恢复下载。如果下载失败错误，错误的用户信息的字典包含一个nsurlsessiondownloadtaskresumedata关键，其价值是简历数据。
     func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
-        NSLog("[YashiNetworkKit]开始从%lld字节续传...", fileOffset)
+        NSLog("[YashiNetworkKit]开始从%lld/%lld字节续传...", fileOffset,expectedTotalBytes)
+//        if (代理 != nil) {
+//            代理?.YashiNetworkKit开始断点续传(fileOffset, 总计字节数: expectedTotalBytes)
+//        }
     }
     //无论成败都调用
     func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
-        if (error == nil) {
-            
+        if (error != nil) {
+            NSLog("[YashiNetworkKit]网络操作失败，%@",error!.localizedDescription)
+        } else {
+            NSLog("[YashiNetworkKit]网络操作成功");
+        }
+        if (代理 != nil) {
+            代理?.YashiNetworkKit网络操作结束(self, 发生错误: error)
         }
     }
     
-    func 请求结果(返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
+    func 请求结果(返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
         if (返回的状态码 != nil) {
             let 状态对象:NSHTTPURLResponse = 返回的状态码! as! NSHTTPURLResponse
             let 状态码:Int = 状态对象.statusCode
-            NSLog("%d", 状态码)
+            NSLog("[YashiNetworkKit]返回状态(%d):", 状态码, NSHTTPURLResponse.localizedStringForStatusCode(状态码))
         }
-        if (返回的数据 != nil) {
-            //let 在浏览器中打开示例:UIWebView = UIWebView()
-            //在浏览器中打开示例.loadData(返回的数据!, MIMEType: "text/html", textEncodingName: "utf-8", baseURL: NSURL())
-        }
-        if (返回的文件 != nil) {
-            
-        }
-        //菊花.startAnimating()
+//        if (返回的数据 != nil) {
+//            //let b:UIWebView = UIWebView()
+//            //b.loadData(返回的数据!, MIMEType: "text/html", textEncodingName: "utf-8", baseURL: NSURL())
+//        }
+//        if (返回的文件 != nil) {
+//            
+//        }
+        self.代理?.YashiNetworkKit请求结果(self, 返回的网址:返回的网址, 返回的数据: 返回的数据, 返回的文件: 返回的文件, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
     }
 }
