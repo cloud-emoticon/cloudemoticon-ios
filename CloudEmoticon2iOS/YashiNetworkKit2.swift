@@ -1,6 +1,6 @@
 //
 //  YashiNetworkDownload.swift
-//  雅诗独立类库：网络下载工具 v2.2 Swift中文版 (Xcode6.3/Swift1) | beta
+//  雅诗独立类库：网络下载工具 v2.2 Swift中文版 (Xcode6.3/Swift1) | 正式版
 //
 //  使用官方库实现网络交互，实时显示进度和数据量，请求参数，断点续传，异步下载，大文件下载，自定义超时和缓存。
 //

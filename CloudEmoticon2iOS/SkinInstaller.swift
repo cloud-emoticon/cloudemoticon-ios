@@ -27,7 +27,8 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
             skin文件夹 = 主题管理器.取skin文件夹路径()
             网络下载器 = YashiNetworkKit()
             网络下载器!.传输模式 = 传输模式为.下载文件
-            网络下载器!.下载到文件 = 下载文件网址
+            网络下载器!.网址 = 下载文件网址
+            网络下载器!.下载到文件 = nil
             
             //网络下载器 = YashiNetworkDownload(输入下载地址: 下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self)
             全局_网络繁忙 = true
@@ -37,8 +38,10 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
         }
     }
     
-    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Double) {
-        
+    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Int64) {
+        let 信息字符串:NSString = NSString(format: "%d%@/%d%@，%f",已下载字节数,lang.uage("字节"),总计字节数,lang.uage("字节"),当前进度百分比)
+        NSLog("[皮肤安装器]正在下载%@。",信息字符串)
+        显示安装提示框(true,标题: lang.uage("正在下载"),内容: 信息字符串,按钮: nil)
     }
     func YashiNetworkKit下载结束(当前下载类:YashiNetworkKit) {
         
@@ -46,8 +49,18 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
     func YashiNetworkKit网络操作结束(当前下载类:YashiNetworkKit, 发生错误:NSError?) {
         
     }
-    func YashiNetworkKit请求结果(下载器:YashiNetworkKit, 返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
-        
+    func YashiNetworkKit请求结果(当前下载类:YashiNetworkKit, 返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
+        全局_网络繁忙 = false
+        if (错误信息 != nil) {
+            NSLog("[皮肤安装器]下载失败。%@",错误信息!.localizedDescription)
+            显示安装提示框(true,标题: lang.uage("下载失败"),内容: lang.uage("请检查网络后重试"),按钮: lang.uage("取消"))
+        } else {
+            let 下载的临时文件路径:String = 当前下载类.临时文件!
+            NSLog("[皮肤安装器]下载到%@完毕，开始解压缩。",下载的临时文件路径)
+            //显示安装提示框(true,标题: lang.uage("正在下载"),内容: 网络下载器对象.信息字符串,按钮: nil)
+            //显示安装提示框(true,标题: lang.uage("已下载到临时文件"),内容: 网络下载器对象.临时文件路径,按钮: lang.uage("确定"))
+            解压缩临时文件(下载的临时文件路径)
+        }
     }
     
     func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?) {
@@ -68,27 +81,8 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
         }
         return false
     }
-    
-    func 网络下载收到数据(网络下载器对象:YashiNetworkDownload) {
-        let 信息字符串:NSString = 网络下载器对象.信息字符串
-        NSLog("[皮肤安装器]正在下载%@。",信息字符串)
-        显示安装提示框(true,标题: lang.uage("正在下载"),内容: 信息字符串,按钮: nil)
-    }
-    func 网络下载数据接收完毕(网络下载器对象:YashiNetworkDownload) {
-        全局_网络繁忙 = false
-        let 下载的临时文件路径:String = 网络下载器对象.临时文件路径
-        NSLog("[皮肤安装器]下载完毕。%@",下载的临时文件路径)
-//        显示安装提示框(true,标题: lang.uage("正在下载"),内容: 网络下载器对象.信息字符串,按钮: nil)
-//        显示安装提示框(true,标题: lang.uage("已下载到临时文件"),内容: 网络下载器对象.临时文件路径,按钮: lang.uage("确定"))
-        解压缩临时文件(下载的临时文件路径)
-    }
-    func 网络下载遇到错误(网络下载器对象:YashiNetworkDownload) {
-        全局_网络繁忙 = false
-        NSLog("[皮肤安装器]下载失败。%@",网络下载器对象.网络错误描述)
-        显示安装提示框(true,标题: lang.uage("下载失败"),内容: lang.uage("请检查网络后重试"),按钮: lang.uage("取消"))
-    }
     func 解压缩临时文件(临时文件路径:String) {
-        显示安装提示框(true,标题: lang.uage("正在安装"),内容: NSString(format: "%@: %ld",lang.uage("文件大小"),网络下载器!.总文件大小),按钮: nil)
+        显示安装提示框(true,标题: lang.uage("正在安装"),内容: NSString(format: "%@: %ld",lang.uage("文件大小"),网络下载器!.下载文件总大小),按钮: nil)
         let 目标文件夹特征码:String = md5(当前下载网址!)
         let 目标文件夹路径:String = NSString(format: "%@/%@", skin文件夹!,目标文件夹特征码) as String
         NSLog("[皮肤安装器]解压缩... %@ -> %@",临时文件路径,目标文件夹路径)
@@ -101,7 +95,7 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
         }
         let 压缩文件处理:YashiZip = YashiZip()
         var 解压缩错误信息:String? = nil
-        for i in 0...1 { //如果失败则重试一次
+        for _ in 0...1 { //如果失败则重试一次
             let 错误信息:NSErrorPointer = NSErrorPointer()
             let 本次解压缩成功:Bool
             do {
