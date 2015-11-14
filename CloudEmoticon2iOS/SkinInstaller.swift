@@ -13,9 +13,9 @@ protocol SkinInstallerDelegate{
     func 主题安装完成()
 }
 
-class SkinInstaller: NSObject, YashiDownloadDelegate {
+class SkinInstaller: NSObject, YashiNetworkKitDelegate {
     var 代理:SkinInstallerDelegate?
-    var 网络下载器:YashiNetworkDownload?
+    var 网络下载器:YashiNetworkKit?
     var 当前下载网址:String?
     var skin文件夹:String?
     
@@ -25,7 +25,12 @@ class SkinInstaller: NSObject, YashiDownloadDelegate {
             当前下载网址 = 下载文件网址
             //下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self
             skin文件夹 = 主题管理器.取skin文件夹路径()
-            网络下载器 = YashiNetworkDownload(输入下载地址: 下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self)
+            网络下载器 = YashiNetworkKit()
+            网络下载器!.会话模式 = 会话模式为.默认
+            网络下载器!.请求模式 = 请求模式为.显式
+            网络下载器!.传输模式 = 传输模式为.下载文件
+            
+            //网络下载器 = YashiNetworkDownload(输入下载地址: 下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self)
             全局_网络繁忙 = true
             网络下载器?.启动连接()
         } else {

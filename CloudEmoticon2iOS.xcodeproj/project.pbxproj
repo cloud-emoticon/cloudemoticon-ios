@@ -10,7 +10,7 @@
 		530B6C2A1B38197700D06F14 /* CE2CSReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 530B6C291B38197700D06F14 /* CE2CSReader.swift */; };
 		5310750A19C19E9D0003866F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5310750919C19E9D0003866F /* Main.storyboard */; };
 		53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */; };
-		53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E651AE370890076CC08 /* YashiNetworkDownload.swift */; };
+		53117E661AE370890076CC08 /* YashiNetworkKit2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E651AE370890076CC08 /* YashiNetworkKit2.swift */; };
 		5326AD4F1B21F547003731E4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5326AD4E1B21F547003731E4 /* test.jpg */; };
 		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
 		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -80,7 +80,7 @@
 		53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6EEEA1AF6338400ACAA6A /* EnterView.swift */; };
 		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
-		53C3230D1BB4158B006C09E9 /* YashiNetworkKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3230C1BB4158B006C09E9 /* YashiNetworkKit.swift */; settings = {ASSET_TAGS = (); }; };
+		53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */; };
 		53C437CA1B3848FD00CB21D3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C437C91B3848FD00CB21D3 /* LoginViewController.swift */; };
 		53C5159B1B2BFB3100FFDD11 /* UserTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */; };
 		53D05F811B523A4100101B79 /* M_User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D05F801B523A4100101B79 /* M_User.swift */; };
@@ -262,7 +262,7 @@
 		530B6C291B38197700D06F14 /* CE2CSReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CE2CSReader.swift; sourceTree = "<group>"; };
 		5310750919C19E9D0003866F /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
-		53117E651AE370890076CC08 /* YashiNetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YashiNetworkDownload.swift; path = CloudEmoticon2iOS/YashiNetworkDownload.swift; sourceTree = "<group>"; };
+		53117E651AE370890076CC08 /* YashiNetworkKit2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = YashiNetworkKit2.swift; path = CloudEmoticon2iOS/YashiNetworkKit2.swift; sourceTree = "<group>"; };
 		5326AD4E1B21F547003731E4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -353,7 +353,7 @@
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
 		53B6EEEA1AF6338400ACAA6A /* EnterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterView.swift; sourceTree = "<group>"; };
 		53B6EEF01AF66FA000ACAA6A /* cestart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cestart.png; sourceTree = "<group>"; };
-		53C3230C1BB4158B006C09E9 /* YashiNetworkKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiNetworkKit.swift; sourceTree = "<group>"; };
+		53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YashiNetworkKit3.swift; sourceTree = "<group>"; };
 		53C437C91B3848FD00CB21D3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		53C5159A1B2BFB3100FFDD11 /* UserTableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTableHeaderView.swift; sourceTree = "<group>"; };
 		53D05F801B523A4100101B79 /* M_User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M_User.swift; sourceTree = "<group>"; };
@@ -708,8 +708,8 @@
 		53AB49801AE23FF10090D955 /* 共享代码 */ = {
 			isa = PBXGroup;
 			children = (
-				53117E651AE370890076CC08 /* YashiNetworkDownload.swift */,
-				53C3230C1BB4158B006C09E9 /* YashiNetworkKit.swift */,
+				53117E651AE370890076CC08 /* YashiNetworkKit2.swift */,
+				53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */,
 				53AB49751AE239A90090D955 /* AppGroupIO.swift */,
 				53AB49761AE239A90090D955 /* ArrayString.swift */,
 				53E0E4B01994854C00C9D9FC /* PubFunc.swift */,
@@ -1351,10 +1351,10 @@
 				624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */,
 				535E97101B10587F00266163 /* ioapi.c in Sources */,
 				53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */,
-				53117E661AE370890076CC08 /* YashiNetworkDownload.swift in Sources */,
+				53117E661AE370890076CC08 /* YashiNetworkKit2.swift in Sources */,
 				53D05F831B523AB000101B79 /* M_SyncEmo.swift in Sources */,
 				539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */,
-				53C3230D1BB4158B006C09E9 /* YashiNetworkKit.swift in Sources */,
+				53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,

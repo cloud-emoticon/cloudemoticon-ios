@@ -4,8 +4,8 @@
 //
 //  使用官方库实现网络交互，实时显示进度和数据量，请求参数，断点续传，异步下载，大文件下载，自定义超时和缓存。
 //
-//  Created by 神楽坂雅詩 on 2012/8/8.
-//  Created by 神楽坂雅詩 on 2015/4/19.
+//  1.0 Created by 神楽坂雅詩 on 2012/8/8.
+//  2.0 Created by 神楽坂雅詩 on 2015/4/19.
 //  Copyright (c) 2012-2015 KagurazakaYashi/TerenceChen . All rights reserved.
 //
 //  依赖：MD5.h/MD5.m
@@ -13,6 +13,9 @@
 //  输出：代理方法调用
 //
 
+//这个类已经过时并弃用，代码仅作为纪念。
+
+/*
 import UIKit
 
 enum NetworkHTTPMethod:Int {
@@ -345,3 +348,4 @@ class YashiNetworkDownload: NSObject, NSURLConnectionDelegate {
         NSLog("[NetWork Class]释放内存。")
     }
 }
+*/
