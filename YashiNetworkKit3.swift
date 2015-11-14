@@ -38,11 +38,11 @@ enum 请求模式为:Int16 {
 }
 
 protocol YashiNetworkKitDelegate {
-    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Double);
-    func YashiNetworkKit下载结束(当前下载类:YashiNetworkKit);
-    func YashiNetworkKit网络操作结束(当前下载类:YashiNetworkKit, 发生错误:NSError?);
-//    func YashiNetworkKit开始断点续传(已下载字节数:Int64, 总计字节数:Int64);
+    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Double)
+    func YashiNetworkKit下载结束(当前下载类:YashiNetworkKit)
+    func YashiNetworkKit网络操作结束(当前下载类:YashiNetworkKit, 发生错误:NSError?)
     func YashiNetworkKit请求结果(下载器:YashiNetworkKit, 返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?)
+    //func YashiNetworkKit开始断点续传(已下载字节数:Int64, 总计字节数:Int64);
 }
 
 class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDelegate {
@@ -117,7 +117,9 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
                 创建网络会话()
             }
             if (数据 != nil) { //继续下载
-                网络会话任务下载数据 = 网络会话!.downloadTaskWithResumeData(数据!)
+                网络会话任务下载数据 = 网络会话!.downloadTaskWithResumeData(数据!, completionHandler: { (返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
+                    self.将下载的临时文件移动到目标(返回的网址, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+                })
             } else { //新建下载
                 网络会话任务下载数据 = 网络会话!.downloadTaskWithRequest(网络请求, completionHandler: { (返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) -> Void in
                     self.将下载的临时文件移动到目标(返回的网址, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
@@ -135,23 +137,28 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
     
     func 将下载的临时文件移动到目标(返回的网址:NSURL?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
         let 文件管理器:NSFileManager = NSFileManager.defaultManager()
-        if (返回的网址 == nil) {
-            return
-        }
         let 临时文件URL:NSURL = 返回的网址!
         let 下载到 = self.下载到文件
+        if (返回的网址 == nil || 错误信息 != nil) {
+            NSLog("[YashiNetworkKit]下载返回了错误。")
+            self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: 下载到, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+            return
+        }
         if (文件管理器.fileExistsAtPath(下载到)) {
             do {
                 try 文件管理器.removeItemAtPath(下载到)
-            } catch _ {
+            } catch let 捕获的错误 as NSError {
                 NSLog("[YashiNetworkKit]删除已存在的目标文件失败。")
+                self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: 下载到, 返回的状态码: 返回的状态码, 错误信息: 捕获的错误)
+                return
             }
         }
         do {
             try 文件管理器.moveItemAtPath(临时文件URL.absoluteString, toPath: 下载到)
             self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: 下载到, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
-        } catch _ {
+        } catch let 捕获的错误 as NSError {
             NSLog("[YashiNetworkKit]将临时文件夹中的文件%@移动到%@失败。",临时文件URL.absoluteString,下载到)
+            self.请求结果(返回的网址, 返回的数据: nil, 返回的文件: 下载到, 返回的状态码: 返回的状态码, 错误信息: 捕获的错误)
         }
     }
     
@@ -247,5 +254,6 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
 //            
 //        }
         self.代理?.YashiNetworkKit请求结果(self, 返回的网址:返回的网址, 返回的数据: 返回的数据, 返回的文件: 返回的文件, 返回的状态码: 返回的状态码, 错误信息: 错误信息)
+        //返回后应判断是否有错误
     }
 }

@@ -26,16 +26,28 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
             //下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self
             skin文件夹 = 主题管理器.取skin文件夹路径()
             网络下载器 = YashiNetworkKit()
-            网络下载器!.会话模式 = 会话模式为.默认
-            网络下载器!.请求模式 = 请求模式为.显式
             网络下载器!.传输模式 = 传输模式为.下载文件
+            网络下载器!.下载到文件 = 下载文件网址
             
             //网络下载器 = YashiNetworkDownload(输入下载地址: 下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self)
             全局_网络繁忙 = true
-            网络下载器?.启动连接()
+            网络下载器!.开始请求()
         } else {
             self.代理?.显示安装提示框(true, 标题: lang.uage("主题安装失败"), 内容: lang.uage("下载路径不正确"), 按钮: lang.uage("取消"))
         }
+    }
+    
+    func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Double) {
+        
+    }
+    func YashiNetworkKit下载结束(当前下载类:YashiNetworkKit) {
+        
+    }
+    func YashiNetworkKit网络操作结束(当前下载类:YashiNetworkKit, 发生错误:NSError?) {
+        
+    }
+    func YashiNetworkKit请求结果(下载器:YashiNetworkKit, 返回的网址:NSURL?, 返回的数据:NSData?, 返回的文件:String?, 返回的状态码:NSURLResponse?, 错误信息:NSError?) {
+        
     }
     
     func 显示安装提示框(显示:Bool,标题:NSString,内容:NSString,按钮:NSString?) {
