@@ -489,9 +489,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
-                    搜索结果.addObject(e_emo.objectAtIndex(0))
+                    搜索结果.addObject(e_emo.objectAtIndex!(0))
                     if (e_emo.count > 1) {
-                        搜索结果的名称.addObject(e_emo.objectAtIndex(1))
+                        搜索结果的名称.addObject(e_emo.objectAtIndex!(1))
                     } else {
                         搜索结果的名称.addObject("")
                     }

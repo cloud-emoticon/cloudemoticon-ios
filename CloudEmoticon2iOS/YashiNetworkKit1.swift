@@ -6,6 +6,10 @@
 //  Copyright (c) 2014年 神楽坂雅詩 & 神楽坂紫喵. All rights reserved.
 //
 
+//这个类已经过时并弃用，代码仅作为纪念。
+
+/*
+
 import UIKit
 import Foundation
 class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
@@ -71,3 +75,4 @@ class NetworkDownload: NSObject, NSURLConnectionDelegate, NSObjectProtocol {
         下载失败提示.show()
     }
 }
+*/

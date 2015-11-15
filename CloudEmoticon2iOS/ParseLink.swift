@@ -269,7 +269,7 @@ class ParseLink: NSObject {
             let 已登录用户名:String = 已登录用户!.username!
             let 已登录邮箱:String = 已登录用户!.email!
             let 已登录用户ID:String = 已登录用户!.objectId!
-            let 返回信息:NSDictionary = NSDictionary(objectsAndKeys: 已登录用户名,"已登录用户名",已登录邮箱,"已登录邮箱",已登录用户ID,"已登录用户ID")
+            let 返回信息:NSDictionary = NSDictionary(objects: [已登录用户名,已登录邮箱,已登录用户ID], forKeys: ["已登录用户名","已登录邮箱","已登录用户ID"])
             return 返回信息
         }
         return nil

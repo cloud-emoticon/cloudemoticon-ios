@@ -20,7 +20,7 @@ public class FileList {
             let properties = [NSURLLocalizedNameKey,
                 NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey]
             if url.isEqual(url){
-                let array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
+                let array = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
                 return array
             }
         }
@@ -38,7 +38,7 @@ public class FileList {
         var properties = [NSURLLocalizedNameKey,
             NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey]
         if url.isEqual(url){
-            let array = NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
+            let array = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)
                 return array
         }
         return nil

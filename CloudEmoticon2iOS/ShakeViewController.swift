@@ -85,9 +85,9 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
-                    emolist.addObject(e_emo.objectAtIndex(0))
+                    emolist.addObject(e_emo.objectAtIndex!(0))
                     if (e_emo.count > 1) {
-                        emoNamelist.addObject(e_emo.objectAtIndex(1))
+                        emoNamelist.addObject(e_emo.objectAtIndex!(1))
                     } else {
                         emoNamelist.addObject("")
                     }

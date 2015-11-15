@@ -247,14 +247,14 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     func saveImage(tempImage:UIImage, WithName imageName:NSString){
         let imageData:NSData = UIImagePNGRepresentation(tempImage)!
-        let fullpathttofile:NSString = 全局_文档文件夹.stringByAppendingPathComponent(imageName as String)
+        let fullpathttofile:NSString = 全局_文档文件夹.stringByAppendingString(imageName as String) //stringByAppendingPathComponent(imageName as String)
         imageData.writeToFile(fullpathttofile as String, atomically: false)
         bgimageviewer.image = tempImage
         bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
     }
     
     func deletebgimage(){
-        let fullpathtofile:String = 全局_文档文件夹.stringByAppendingPathComponent(userbgimgname as String)
+        let fullpathtofile:String = 全局_文档文件夹.stringByAppendingString(imageName as String) //噗，这啥？这个错误未修
         let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
         do {
             try NSFileManager.defaultManager().removeItemAtPath(fullpathtofile)

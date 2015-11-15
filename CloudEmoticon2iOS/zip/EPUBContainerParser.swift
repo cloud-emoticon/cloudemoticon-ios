@@ -30,9 +30,9 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         }
         // takes account of multiple rootfiles and will return every NSURL in order for multiple versions contained in the rootfile
         while contentPaths.isEmpty == false {
-        if let path = contentPaths.first,
-            url = NSURL(fileURLWithPath: path),
-            xml = NSXMLParser(contentsOfURL: url) {
+            if let path:String? = contentPaths.first,
+            url:NSURL = NSURL(fileURLWithPath: path!),
+            xml:NSXMLParser = NSXMLParser(contentsOfURL: url) {
                 parentFolder = parentFolders.first!
                 contentPaths.removeAtIndex(0)
                 parentFolders.removeAtIndex(0)
@@ -41,7 +41,7 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
                 
         }
         }
-        let urlArray = spineArray.map({NSURL(fileURLWithPath: self.manifestDictionary[$0]!)!})
+        let urlArray = spineArray.map({NSURL(fileURLWithPath: self.manifestDictionary[$0]!)})
         let returnArray = urlArray.filter({$0 != nil})
         // TODO: build an array of incorrect URLs for missing items
         return returnArray
@@ -56,8 +56,12 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         if elementName == "rootfile" {
             let content = contentPath + (attributeDict["full-path"])!
             contentPaths.append(content)
-            let parent = contentPath.stringByDeletingLastPathComponent + "/"
+            var 文件URL路径:NSURL = NSURL(string: contentPath)!
+            文件URL路径 = 文件URL路径.URLByDeletingLastPathComponent!
+            let parent = 文件URL路径.absoluteString + "/"
+            //let parent = contentPath.stringByDeletingLastPathComponent + "/"
             parentFolders.append(parent)
+            
             
         }
         
