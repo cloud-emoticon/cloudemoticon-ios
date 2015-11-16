@@ -257,13 +257,13 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (bgpview.image == nil) {
             无颜文字.image = nil
         } else {
-            let bg:CIImage? = CIImage(image: bgpview.image)
+            let bg:CIImage? = CIImage(image: bgpview.image!)
             let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
-            模糊过滤器.setValue(25, forKey: "InputRadius")
-            模糊过滤器.setValue(bg, forKey: "InputImage")
+            模糊过滤器!.setValue(25, forKey: "InputRadius")
+            模糊过滤器!.setValue(bg, forKey: "InputImage")
             let ciContext = CIContext(EAGLContext: EAGLContext(API: .OpenGLES2))  //使用GPU方式，报错为Bug无视
-            let cgImage = ciContext.createCGImage(模糊过滤器.outputImage, fromRect: bg!.extent)
-            ciContext.drawImage(模糊过滤器.outputImage, inRect: bg!.extent, fromRect: bg!.extent)
+            let cgImage = ciContext.createCGImage(模糊过滤器!.outputImage!, fromRect: bg!.extent)
+            ciContext.drawImage(模糊过滤器!.outputImage!, inRect: bg!.extent, fromRect: bg!.extent)
             let 模糊图像 = UIImage(CGImage: cgImage)
             //        let 背景透明度:CGFloat = (1 - loadopc()) * 0.7 + 0.3
             //        无颜文字.alpha = 背景透明度
@@ -612,7 +612,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? UITableViewCell
+        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)! as? UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue

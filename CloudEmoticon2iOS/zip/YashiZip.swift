@@ -28,13 +28,13 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
         return isok
     }
     
-    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String) throws {
-        let 错误回馈变量指针: NSError = NSError(domain: "Migrator", code: 0, userInfo: nil)
+    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String) throws -> Bool{
+//        var error: NSError = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = 错误回馈变量指针
+        let error:NSErrorPointer = NSErrorPointer.init()
         let isok:Bool
         do {
             try SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password)
@@ -43,10 +43,7 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
             error.memory = error1
             isok = false
         }
-        if isok {
-            return
-        }
-        throw 错误回馈变量指针
+            return isok
     }
     
     func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,代理接收类:YashiZipDelegate) -> Bool {
@@ -58,25 +55,19 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
     }
     
     func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String,代理接收类:YashiZipDelegate) throws {
-        var 错误回馈变量指针: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+//        var 错误回馈变量指针: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = 错误回馈变量指针
+        let error:NSErrorPointer = NSErrorPointer.init()
         let dele:SSZipArchiveDelegate = self
         let isok:Bool
-        do {
-            try SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password, error: <#T##NSErrorPointer#>, delegate: dele)
+        SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password, error: error, delegate: dele) //貌似有error了就不用try了
             isok = true
-        } catch var error1 as NSError {
-            error.memory = error1
-            isok = false
-        }
-        if isok {
+                if isok {
             return
         }
-        throw 错误回馈变量指针
     }
     
     // MARK: - 压缩

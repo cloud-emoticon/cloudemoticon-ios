@@ -267,7 +267,7 @@ class MainTBViewController: UITabBarController {
                 if (tool_titletextattributes != "null") {
                     let tool_titletextattributes_dic = NSDictionary(object: tool_titletextattributes!,
                         forKey:NSForegroundColorAttributeName)
-                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
+                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as [NSObject : AnyObject] as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
             }
         }
@@ -391,8 +391,8 @@ class MainTBViewController: UITabBarController {
         if (self.view.frame.size.width > self.view.frame.size.height) {
             提示信息框Y坐标 = 42
         }
-        let 单元格高度:CGFloat = 计算单元格高度(提示文字, 17, self.view.frame.size.width - 20)
-        var 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 单元格高度))
+        let 单元格高度:CGFloat = 计算单元格高度(提示文字, 字体大小:17, 单元格宽度: self.view.frame.size.width - 20)
+        let 提示信息框:NotificationView = NotificationView(frame: CGRectMake(10, 提示信息框Y坐标, self.view.frame.size.width - 20, 单元格高度))
         self.view.addSubview(提示信息框)
         提示信息框.显示提示(提示文字)
     }

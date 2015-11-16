@@ -23,7 +23,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     
     // MARK: - 初始化
     required init(coder aDecoder: NSCoder)  {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override init(style: UITableViewStyle) {
@@ -297,7 +297,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         if (alertView.tag == 200) {
             if (buttonIndex == 1) {
                 //添加
-                加入源(添加源输入框.text, 来自源商店: false)
+                加入源(添加源输入框.text!, 来自源商店: false)
             } else if (buttonIndex == 2) {
                 //源商店
                 UIApplication.sharedApplication().openURL(NSURL(string: "http://emoticon.moe/?cat=2")!)

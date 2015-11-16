@@ -20,7 +20,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     let 无图片:UIImage = UIImage(contentsOfFile: NSBundle.mainBundle().pathForResource("skinnoimg", ofType: "png")!)!
     
     required init(coder aDecoder: NSCoder)  {
-        super.init(coder: aDecoder)
+        super.init(coder: aDecoder)!
     }
     
     override init(style: UITableViewStyle) {
@@ -138,7 +138,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         if (buttonIndex == 1) {
             //添加
             提示框输入框.userInteractionEnabled = false
-            安装主题(提示框输入框.text)
+            安装主题(提示框输入框.text!)
         } else if (buttonIndex == 2) {
             //源商店
             UIApplication.sharedApplication().openURL(NSURL(string: "http://yoooooooooo.com/skin")!)
@@ -170,29 +170,29 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let 单元格标识:NSString = "Cell"
-        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
+        var 单元格:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String)! as UITableViewCell
         if (单元格 == nil) {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.accessoryType = UITableViewCellAccessoryType.None
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
-            单元格!.imageView?.backgroundColor = UIColor.lightGrayColor()
+            单元格.accessoryType = UITableViewCellAccessoryType.None
+            单元格.selectionStyle = UITableViewCellSelectionStyle.Default
+            单元格.imageView?.backgroundColor = UIColor.lightGrayColor()
         }
         //[主标题,副标题,预览图路径,文件夹路径]
         let 当前皮肤数据:NSArray = 皮肤列表数据.objectAtIndex(indexPath.row) as! NSArray
-        单元格?.textLabel?.text = 当前皮肤数据.objectAtIndex(0) as? String
-        单元格?.detailTextLabel?.text = 当前皮肤数据.objectAtIndex(1) as? String
+        单元格.textLabel?.text = 当前皮肤数据.objectAtIndex(0) as? String
+        单元格.detailTextLabel?.text = 当前皮肤数据.objectAtIndex(1) as? String
         let 当前皮肤图片:UIImage? = UIImage(contentsOfFile:  当前皮肤数据.objectAtIndex(2) as! String)
         if (当前皮肤图片 == nil) {
-            单元格?.imageView?.image = 无图片
+            单元格.imageView?.image = 无图片
         } else {
-            单元格?.imageView?.image = 当前皮肤图片!
+            单元格.imageView?.image = 当前皮肤图片!
         }
         //判断是否为当前选中
         if (全局_皮肤设置.count == 0) {
             if (indexPath.row == 0) {
-                单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
+                单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
             } else {
-                单元格!.accessoryType = UITableViewCellAccessoryType.None
+                单元格.accessoryType = UITableViewCellAccessoryType.None
             }
         } else {
             let 当前应用的皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
@@ -202,15 +202,15 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
                 let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.componentsSeparatedByString("/")
                 let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
                 if (当前应用的皮肤MD5 == 当前皮肤md5) {
-                    单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
+                    单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
                 } else {
-                    单元格!.accessoryType = UITableViewCellAccessoryType.None
+                    单元格.accessoryType = UITableViewCellAccessoryType.None
                 }
             } else {
                 NSLog("[SkinTableViewController]意外错误：当前应用的皮肤的MD5找不到。")
             }
         }
-        return 单元格!
+        return 单元格
     }
     // MARK: - 表格更改
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
