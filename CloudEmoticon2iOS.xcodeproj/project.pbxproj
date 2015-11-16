@@ -147,6 +147,7 @@
 		8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684819ACDCB30080C47F /* SettingViewController.swift */; };
 		8BC47C7A1BF9F9A000B1D6C7 /* cewatchex.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53918E911AB7065C00CE7A68 /* cewatchex.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BC47C7D1BF9F9A100B1D6C7 /* cewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
+		8BC47C831BF9FBA500B1D6C7 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC47C821BF9FBA500B1D6C7 /* View.xib */; };
 		8BE31F59196D38A7006C3B26 /* clock-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F57196D38A7006C3B26 /* clock-vector.png */; };
 		8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */; };
 		8BE31F5D196D3EF3006C3B26 /* globe-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F5B196D3EF3006C3B26 /* globe-vector.png */; };
@@ -449,6 +450,7 @@
 		8BA6684419ACDB830080C47F /* ShakeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShakeViewController.swift; sourceTree = "<group>"; };
 		8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionViewController.swift; sourceTree = "<group>"; };
 		8BA6684819ACDCB30080C47F /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		8BC47C821BF9FBA500B1D6C7 /* View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = View.xib; sourceTree = "<group>"; };
 		8BE31F57196D38A7006C3B26 /* clock-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-vector.png"; sourceTree = "<group>"; };
 		8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock-vector@2x.png"; sourceTree = "<group>"; };
 		8BE31F5B196D3EF3006C3B26 /* globe-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "globe-vector.png"; sourceTree = "<group>"; };
@@ -759,6 +761,7 @@
 			isa = PBXGroup;
 			children = (
 				53B6EEEA1AF6338400ACAA6A /* EnterView.swift */,
+				8BC47C821BF9FBA500B1D6C7 /* View.xib */,
 			);
 			name = "进入动画";
 			sourceTree = "<group>";
@@ -1249,6 +1252,7 @@
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
 				53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */,
 				53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */,
+				8BC47C831BF9FBA500B1D6C7 /* View.xib in Resources */,
 				5357733C199B1584003FF9D3 /* default.plist in Resources */,
 				8BA411AF19B0F046003AEBF2 /* shake.png in Resources */,
 				8B98EEA6196D3390000D255E /* star-vector@2x.png in Resources */,
@@ -1698,7 +1702,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1732,7 +1735,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
