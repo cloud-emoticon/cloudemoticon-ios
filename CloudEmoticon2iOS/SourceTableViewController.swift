@@ -330,7 +330,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     // MARK: - 表格内容
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let 单元格标识:NSString = "Cell"
-        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String) as? UITableViewCell
+        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String)
         if (单元格 == nil) {
             单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
             单元格!.selectionStyle = UITableViewCellSelectionStyle.Default

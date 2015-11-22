@@ -68,7 +68,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         左上按钮.tintColor = UIColor.whiteColor()
         右上按钮.tintColor = UIColor.whiteColor()
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
         表格.backgroundColor = nil
@@ -121,7 +121,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as [NSObject : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
                 }
             }
             
@@ -411,7 +411,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         if (alertView.tag == 300) {
             if (buttonIndex == 1) {
                 //添加
-                addemoticon(alertImport.text)
+                addemoticon(alertImport.text!)
                 载入自定义数据()
                 自动遮罩()
             }

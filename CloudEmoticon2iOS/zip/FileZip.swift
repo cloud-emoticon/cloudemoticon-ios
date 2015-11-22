@@ -112,7 +112,7 @@ public class FileZip {
     
     private static func applicationTemporaryDirectory() -> NSURL? {
         
-        if let tD = NSTemporaryDirectory() {
+        if let tD:String = NSTemporaryDirectory() {
             return NSURL(string:tD)
         }
         

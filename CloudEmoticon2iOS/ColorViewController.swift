@@ -254,12 +254,13 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func deletebgimage(){
-        let fullpathtofile:String = 全局_文档文件夹.stringByAppendingString(imageName as String) //噗，这啥？这个错误未修   这个是删除背景图的喵…… 感觉上应该改成开关……
-        let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
-        do {
-            try NSFileManager.defaultManager().removeItemAtPath(fullpathtofile)
-        } catch _ {
-        }
+        //于是暂时注释掉了
+//        let fullpathtofile:String = 全局_文档文件夹.stringByAppendingString(imageName as String) //噗，这啥？这个错误未修   这个是删除背景图的喵…… 感觉上应该改成开关……
+//        let isDup:Bool = FileManager().ChkDupFile(fullpathtofile)
+//        do {
+//            try NSFileManager.defaultManager().removeItemAtPath(fullpathtofile)
+//        } catch _ {
+//        }
         bgimageviewer.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
         bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFit
     }

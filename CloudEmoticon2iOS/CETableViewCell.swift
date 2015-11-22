@@ -13,7 +13,7 @@ protocol CETableViewCellDelegate:NSObjectProtocol{
     func 单元格代理：是否可以接收手势() -> Bool
 }
 
-class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
+class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
     
     enum cellMode:Int {
         case DEFAULT = 0
@@ -181,7 +181,9 @@ class CETableViewCell: UITableViewCell, UIGestureRecognizerDelegate {
             }
         }
     }
-    override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
+    
+    //override func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceivePress press: UIPress) -> Bool
     {
 //        if (覆盖视图.frame.origin.x != 0) {
 //            菜单滑动中 = true

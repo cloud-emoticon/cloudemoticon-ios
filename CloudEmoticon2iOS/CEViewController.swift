@@ -1013,7 +1013,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)
         } else { //分享 颜文字
-            var 二维码分享按钮入:[AnyObject]? = nil
+            var 二维码分享按钮入:[QRActivity]? = nil
             if (颜文字.length <= 64) {
                 let 二维码分享按钮:QRActivity = QRActivity()
                 二维码分享按钮.代理 = self

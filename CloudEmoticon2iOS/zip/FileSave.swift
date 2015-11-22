@@ -85,14 +85,20 @@ public struct FileSave {
             newSubdirectory = FileHelper.stripSlashIfNeeded(sub)
         }
         // Create generic beginning to file save path
-        var savePath = ""
+        var savePath:String = ""
         if let direct = FileDirectory.applicationDirectory(directory),
             path = direct.path {
                 savePath = path + "/"
         }
         
         if (newSubdirectory != nil) {
-            savePath.extend(newSubdirectory!)
+            //NSCharacterSet *character= [NSCharacterSet whitespaceCharacterSet];
+            //return [self stringByTrimmingCharactersInSet:character];
+            //savePath.extend(newSubdirectory!)
+            
+            //修正:去除特殊字符
+            savePath = newSubdirectory!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+            //
             FileHelper.createSubDirectory(savePath)
             savePath += "/"
         }
