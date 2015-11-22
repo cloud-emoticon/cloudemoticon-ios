@@ -67,6 +67,7 @@
 		53995A93199245BE008B12E0 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 53995A92199245BE008B12E0 /* libxml2.2.dylib */; };
 		539BD9C11AFF5575000D835C /* skinnoimg.png in Resources */ = {isa = PBXBuildFile; fileRef = 539BD9C01AFF5575000D835C /* skinnoimg.png */; };
 		539BD9C71AFF5F2C000D835C /* skindefault.png in Resources */ = {isa = PBXBuildFile; fileRef = 539BD9C61AFF5F2C000D835C /* skindefault.png */; };
+		53A0B58A1C01FD3200A47537 /* NetworkDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A0B5891C01FD3200A47537 /* NetworkDownload.swift */; };
 		53A796F01AE2787400755592 /* themedemo.ini in Resources */ = {isa = PBXBuildFile; fileRef = 53A796EF1AE2787400755592 /* themedemo.ini */; };
 		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
@@ -370,6 +371,7 @@
 		53995A92199245BE008B12E0 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		539BD9C01AFF5575000D835C /* skinnoimg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skinnoimg.png; sourceTree = "<group>"; };
 		539BD9C61AFF5F2C000D835C /* skindefault.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skindefault.png; sourceTree = "<group>"; };
+		53A0B5891C01FD3200A47537 /* NetworkDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkDownload.swift; sourceTree = "<group>"; };
 		53A796EF1AE2787400755592 /* themedemo.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = themedemo.ini; sourceTree = "<group>"; };
 		53AB49751AE239A90090D955 /* AppGroupIO.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppGroupIO.swift; sourceTree = "<group>"; };
 		53AB49761AE239A90090D955 /* ArrayString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayString.swift; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 				53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */,
 				5346D92E1993181C00CEFA4B /* XMLDictionary.h */,
 				5346D92F1993181C00CEFA4B /* XMLDictionary.m */,
+				53A0B5891C01FD3200A47537 /* NetworkDownload.swift */,
 			);
 			name = "网络和数据载入";
 			path = CloudEmoticon2iOS;
@@ -1323,6 +1326,7 @@
 				53C5159B1B2BFB3100FFDD11 /* UserTableHeaderView.swift in Sources */,
 				53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */,
 				53E0E4B11994854C00C9D9FC /* PubFunc.swift in Sources */,
+				53A0B58A1C01FD3200A47537 /* NetworkDownload.swift in Sources */,
 				8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */,
 				535E970A1B10587F00266163 /* FileDirectory.swift in Sources */,
 				53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */,

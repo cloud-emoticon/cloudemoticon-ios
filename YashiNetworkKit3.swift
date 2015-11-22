@@ -50,7 +50,7 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
     var 会话模式:会话模式为 = 会话模式为.默认
     var 请求模式:请求模式为 = 请求模式为.显式
     var 传输模式:传输模式为 = 传输模式为.加载数据
-    var 网址:String = ""
+    var 网址:AnyObject? = nil //支持 NSURL, NSString, String
     var 数据:NSData? = nil //上传操作前输入，下载操作时输出
     var 下载到文件:String? = nil //下载到本地文件的绝对路径,不填写则下载到临时文件
     var 缓存策略:NSURLRequestCachePolicy = NSURLRequestCachePolicy.UseProtocolCachePolicy
@@ -71,7 +71,14 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
     //方法
     func 开始请求() {
         //菊花.startAnimating()
-        let 网址串:NSURL = NSURL(string: 网址)!
+        var 网址串:NSURL = NSURL()
+        if ((网址 as? NSURL) != nil) {
+            网址串 = 网址 as! NSURL
+        } else if ((网址 as? NSString) != nil) {
+            网址串 = NSURL(string: 网址 as! String)!
+        } else if ((网址 as? String) != nil) {
+            网址串 = NSURL(string: 网址 as! String)!
+        }
         let 网络请求:NSMutableURLRequest = NSMutableURLRequest(URL: 网址串, cachePolicy: 缓存策略, timeoutInterval: 超时时间)
         if (要提交的参数 != nil) {
             let 要提交的字符串:String = 参数字典转换为字符串(要提交的参数!)

@@ -29,7 +29,7 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
             网络下载器!.传输模式 = 传输模式为.下载文件
             网络下载器!.网址 = 下载文件网址
             网络下载器!.下载到文件 = nil
-            
+            网络下载器!.代理 = self
             //网络下载器 = YashiNetworkDownload(输入下载地址: 下载文件网址, 输入网络请求模式: NetworkHTTPMethod.GET, 是否要用文件缓存: true, 是否要异步: true, 是否要断点续传: false, 输入超时时间: 20, 输入系统缓存模式: nil, 输入代理: self)
             全局_网络繁忙 = true
             网络下载器!.开始请求()
@@ -39,7 +39,7 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
     }
     
     func YashiNetworkKit实时汇报进度(已下载字节数:Int64, 总计字节数:Int64, 当前进度百分比:Int64) {
-        let 信息字符串:NSString = NSString(format: "%d%@/%d%@，%f",已下载字节数,lang.uage("字节"),总计字节数,lang.uage("字节"),当前进度百分比)
+        let 信息字符串:NSString = NSString(format: "%d%@/%d%@，%f%%",已下载字节数,lang.uage("字节"),总计字节数,lang.uage("字节"),当前进度百分比)
         NSLog("[皮肤安装器]正在下载%@。",信息字符串)
         显示安装提示框(true,标题: lang.uage("正在下载"),内容: 信息字符串,按钮: nil)
     }
