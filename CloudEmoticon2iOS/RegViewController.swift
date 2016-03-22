@@ -26,7 +26,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         let 背景色:UIColor = UIColor(red: 1, green: 0.79215, blue: 0.86274, alpha: 1)
         self.navigationController?.view.backgroundColor = 背景色
         self.view.backgroundColor = 背景色
-        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: "关闭软键盘")
+        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(RegViewController.关闭软键盘))
         邮箱输入框.delegate = self
         用户名输入框.delegate = self
         密码输入框.delegate = self

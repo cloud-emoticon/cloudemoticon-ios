@@ -27,15 +27,15 @@ class MainTBViewController: UITabBarController {
         载入背景()
         文件管理器.补充空白数据()
        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertview:", name: "alertview", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "复制到剪贴板方法:", name: "复制到剪贴板通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示自动关闭的提示框方法:", name: "显示自动关闭的提示框通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到源商店方法:", name: "切换到源商店通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "显示等待提示框方法:", name: "显示等待提示框通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换到主题管理:", name: "切换到主题管理通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.alertview(_:)), name: "alertview", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.复制到剪贴板方法(_:)), name: "复制到剪贴板通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.显示自动关闭的提示框方法(_:)), name: "显示自动关闭的提示框通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.切换到源商店方法(_:)), name: "切换到源商店通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.显示等待提示框方法(_:)), name: "显示等待提示框通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.切换主题), name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MainTBViewController.切换到主题管理(_:)), name: "切换到主题管理通知", object: nil)
         self.language()
-        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(MainTBViewController.延迟切换主题), userInfo: nil, repeats: false)
         
         //执行测试用代码()
     }
@@ -111,7 +111,7 @@ class MainTBViewController: UITabBarController {
         self.tabBar.selectionIndicatorImage = nil
         self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
         let tool_titletextattributes_dic = NSDictionary(object: UIColor.blackColor(), forKey:NSForegroundColorAttributeName)
-        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as! [String : AnyObject], forState: UIControlState.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as? [String : AnyObject], forState: UIControlState.Normal)
         
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -267,7 +267,7 @@ class MainTBViewController: UITabBarController {
                 if (tool_titletextattributes != "null") {
                     let tool_titletextattributes_dic = NSDictionary(object: tool_titletextattributes!,
                         forKey:NSForegroundColorAttributeName)
-                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as! [String : AnyObject], forState: UIControlState.Normal)
+                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as? [String : AnyObject], forState: UIControlState.Normal)
                 }
             }
         }
@@ -316,7 +316,7 @@ class MainTBViewController: UITabBarController {
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
-        for (var i:Int = 0; i < 历史记录.count; i++) {
+        for (var i:Int = 0; i < 历史记录.count; i += 1) {
             //            if (i >= 全部历史数组.count) {
             //                break
             //            }
@@ -328,7 +328,7 @@ class MainTBViewController: UITabBarController {
                 //NSLog("【删除】\n")
                 历史记录.removeObjectAtIndex(i)
                 if (i > 0) {
-                    i--
+                    i -= 1
                 }
             }
         }
@@ -353,7 +353,7 @@ class MainTBViewController: UITabBarController {
                 window?.alpha = 0
                 window?.frame = CGRectMake(window!.center.x, window!.center.x, 0, 0)
                 }, completion: {
-                    (Bool completion) in
+                    (completion) in
                     if completion {
                         exit(0)
                     }

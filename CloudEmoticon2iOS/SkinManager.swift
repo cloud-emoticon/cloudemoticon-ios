@@ -29,7 +29,7 @@ class SkinManager: NSObject {
         if (skin文件夹列表 != nil) {
             let INI读取器:INIReader = INIReader()
             let 主题信息列表:NSMutableArray = NSMutableArray()
-            for(var i:Int = 0; i < skin文件夹列表!.count; i++) {
+            for(var i:Int = 0; i < skin文件夹列表!.count; i += 1) {
                 let 当前md5文件夹:NSString = skin文件夹列表?.objectAtIndex(i) as! NSString
                 if (当前md5文件夹.length != 32) {
                     continue

@@ -12,9 +12,9 @@ class Kagurazaka: NSObject {
     
     func initArr(w w:Int,h:Int,a:String) -> NSMutableArray {
         let harr:NSMutableArray = NSMutableArray()
-        for hi in 0...h {
+        for _ in 0...h {
             let warr:NSMutableArray = NSMutableArray()
-            for wi in 0...w {
+            for _ in 0...w {
                 warr.addObject(a)
             }
             warr.addObject("\n")
@@ -57,7 +57,7 @@ class Kagurazaka: NSObject {
             return s
         }
         let n:Int = w/2 - sl/2
-        for i in 1...n {
+        for _ in 1...n {
             sn.insertString(" ", atIndex: 0)
         }
         return sn as String

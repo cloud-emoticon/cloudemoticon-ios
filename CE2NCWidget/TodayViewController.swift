@@ -81,15 +81,16 @@ class TodayViewController: UIViewController {
         var 自定义数组源:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
         let 自定义数组:NSMutableArray = NSMutableArray(array: 自定义数组源)
         if (自定义数组.count > 0) {
-            for (var i:Int = 0; i < 自定义数组.count; i++) {
+            for i in 0 ..< 自定义数组.count {
+//            for (var i:Int = 0; i < 自定义数组.count; i += 1) {
                 let 当前自定义条目对象:AnyObject = 自定义数组.objectAtIndex(i)
                 let 当前自定义条目数组:NSArray = 当前自定义条目对象 as! NSArray
                 let 当前自定义条目:NSString = 当前自定义条目数组.objectAtIndex(0) as! NSString
                 if (当前自定义条目.isEqualToString(emoText.text!)) {
                     自定义数组.removeObjectAtIndex(i)
-                    if (i > 0) {
-                        i--
-                    }
+//                    if (i > 0) {
+//                        i -= 1
+//                    }
                 }
             }
         }

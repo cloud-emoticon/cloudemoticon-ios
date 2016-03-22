@@ -24,7 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let 背景色:UIColor = UIColor(red: 1, green: 0.79215, blue: 0.86274, alpha: 1)
         self.navigationController?.view.backgroundColor = 背景色
         self.view.backgroundColor = 背景色
-        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: "关闭软键盘")
+        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(LoginViewController.关闭软键盘))
         账号输入框.delegate = self
         密码输入框.delegate = self
         //  <测试用>
@@ -44,8 +44,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             let 输入的密码:NSString = 密码输入框.text!
             if (输入的密码.length >= 6) {
                 //继续
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "登录失败:", name: "P用户:登录失败", object: nil)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "登录成功:", name: "P用户:登录成功", object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.登录失败(_:)), name: "P用户:登录失败", object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.登录成功(_:)), name: "P用户:登录成功", object: nil)
                 NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
                 全局_Parse读写.用户登录(账号输入框.text!, 密码: 密码输入框.text!)
             } else {

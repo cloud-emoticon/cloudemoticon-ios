@@ -22,7 +22,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "transition:", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ColorViewController.transition(_:)), name: "屏幕旋转通知", object: nil)
         list.addObject(lang.uage("替换主题中的背景图片"))
 //        list.addObject(lang.uage("修改背景图片"))
 //        list.addObject(lang.uage("背景不透明度"))
@@ -122,7 +122,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             设置背景不透明度.maximumValue = 100
             设置背景不透明度.value = bgopacity!
             bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
-            设置背景不透明度.addTarget(self, action: "即时预览透明度:", forControlEvents: UIControlEvents.ValueChanged)
+            设置背景不透明度.addTarget(self, action: #selector(ColorViewController.即时预览透明度(_:)), forControlEvents: UIControlEvents.ValueChanged)
             cell?.addSubview(设置背景不透明度)
         }
         if(indexPath.row == 3){

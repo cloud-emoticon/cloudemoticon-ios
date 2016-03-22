@@ -53,10 +53,10 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
         self.addSubview(副标题)
         设置图标.frame = CGRectMake(self.frame.size.width - 边界距离 - 设置按钮大小, 边界距离, 设置按钮大小, 设置按钮大小)
         self.addSubview(设置图标)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换用户", name: "切换用户通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserTableHeaderView.切换主题), name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserTableHeaderView.切换用户), name: "切换用户通知", object: nil)
         按钮.frame = 背景图片.frame
-        按钮.addTarget(self, action: "点击", forControlEvents: UIControlEvents.TouchUpInside)
+        按钮.addTarget(self, action: #selector(UserTableHeaderView.点击), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(按钮)
         默认文字()
         切换主题()

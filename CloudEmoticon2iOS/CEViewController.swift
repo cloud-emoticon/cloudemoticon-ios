@@ -106,7 +106,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         let titlecolor = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as! [String : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as? [String : AnyObject]
         self.title = lang.uage("云颜文字") as String
         载入视图()
         
@@ -120,8 +120,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索颜文字.searchBarStyle = UISearchBarStyle.Minimal
         搜索颜文字.placeholder = lang.uage("搜索颜文字")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.切换主题), name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.屏幕旋转 as (CEViewController) -> () -> ()), name: "屏幕旋转通知", object: nil)
 //        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
         用户登录视图.载入内容()
         切换主题()
@@ -212,7 +212,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
                 }
             }
 
@@ -667,7 +667,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
                 self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
                 }, completion: {
-                    (Bool completion) in
+                    (completion) in
                     if completion {
                         self.菜单滑动中 = false
                     }
@@ -815,7 +815,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
     }
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String!
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String?
     {
         return lang.uage("删掉喵")
     }

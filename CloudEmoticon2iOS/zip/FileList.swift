@@ -35,7 +35,7 @@ public class FileList {
         let url = NSURL(fileURLWithPath: loadPath)
         var error:NSError?
         
-        var properties = [NSURLLocalizedNameKey,
+        let properties = [NSURLLocalizedNameKey,
             NSURLCreationDateKey, NSURLLocalizedTypeDescriptionKey]
         if url.isEqual(url){
             let array = try? NSFileManager.defaultManager().contentsOfDirectoryAtURL(url, includingPropertiesForKeys: properties, options:NSDirectoryEnumerationOptions.SkipsHiddenFiles)

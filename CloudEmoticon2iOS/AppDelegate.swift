@@ -95,8 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         let statBarFrame = UIApplication.sharedApplication().statusBarFrame
         self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdatace:", name: "loadwebdata", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataokce:", name: "loaddataokce", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loadwebdatace(_:)), name: "loadwebdata", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loadwebdataokce(_:)), name: "loaddataokce", object: nil)
         
         lang.载入语言(lang.当前系统语言())
         //        println(lang.系统支持的所有语言())
@@ -115,7 +115,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         NSLog("[AppDelegate]云颜文字正在启动...")
         应用运行参数 = launchOptions
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "重新启动", name: "重新启动通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.重新启动), name: "重新启动通知", object: nil)
         界面初始化()
         第三方SDK初始化(应用运行参数)
         设置初始化()
@@ -131,7 +131,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }) { (isok:Bool) -> Void in
                 self.window?.removeFromSuperview()
                 self.window = nil
-                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "重新加载", userInfo: nil, repeats: false)
+                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AppDelegate.重新加载), userInfo: nil, repeats: false)
         }
     }
     

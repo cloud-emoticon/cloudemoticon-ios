@@ -97,7 +97,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         }
         //切换按钮选中颜色(103)
         屏幕旋转通知()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转通知", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(KeyboardViewController.屏幕旋转通知), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
     }
     
     func 修改方向(是竖屏:Bool) {
@@ -338,7 +338,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         (self.textDocumentProxy as UIKeyInput).insertText(要复制的颜文字 as String)
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         //for 当前历史条目对象 in 全部历史数组 {
-        for (var i:Int = 0; i < 全部历史数组.count; i++) {
+        for (var i:Int = 0; i < 全部历史数组.count; i += 1) {
 //            if (i >= 全部历史数组.count) {
 //                break
 //            }
@@ -350,7 +350,7 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
                 //NSLog("【删除】\n")
                 全部历史数组.removeObjectAtIndex(i)
                 if (i > 0) {
-                    i--
+                    i -= 1
                 }
             }
         }

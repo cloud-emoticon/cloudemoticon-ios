@@ -34,7 +34,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("皮肤管理")
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮:")
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SkinTableViewController.右上按钮(_:)))
         self.navigationItem.leftBarButtonItem = 左上按钮
         右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮:")
         self.navigationItem.rightBarButtonItem = 右上按钮

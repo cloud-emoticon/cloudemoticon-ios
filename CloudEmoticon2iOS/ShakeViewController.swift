@@ -19,7 +19,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("摇一摇")
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "alertviewShake:", name: "alertviewShake", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ShakeViewController.alertviewShake(_:)), name: "alertviewShake", object: nil)
         if(p_emodata.count < 3){
             NSLog("%@没有数据，加载数据",className)
             CEViewController().载入数据(NetDownloadTo.CLOUDEMOTICON)
@@ -67,21 +67,21 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray()
-        var p_emoweb:NSArray? = loadarray()
+        let p_emoweb:NSArray? = loadarray()
         if(p_emoweb != nil)
         {
             let p_emoary:NSArray = p_emoweb!
             y_emoarr = p_emoary.objectAtIndex(3) as! NSArray
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
+            let p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
             y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
         emolist.removeAllObjects()
         emoNamelist.removeAllObjects()
         for g_emoobj in y_emoarr
         {
-            var g_emoarr:NSArray = g_emoobj as! NSArray
+            let g_emoarr:NSArray = g_emoobj as! NSArray
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
@@ -112,7 +112,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
             [weak alert] action in
             alert!.dismissViewControllerAnimated(true, completion: nil)
         }
-        let okAction = UIAlertAction(title: altarr.objectAtIndex(2)as! String, style: .Default) {
+        let okAction = UIAlertAction(title: altarr.objectAtIndex(2)as? String, style: .Default) {
             [weak alert] action in
             let 要复制的颜文字:NSString = altarr.objectAtIndex(1) as! NSString
             let 要复制的颜文字名称:NSString = altarr.objectAtIndex(4) as! NSString

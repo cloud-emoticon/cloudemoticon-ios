@@ -90,13 +90,13 @@ public class EPUBContainerParser:NSObject, NSXMLParserDelegate {
         }
     }
     
-    public func parser(parser: NSXMLParser, foundCharacters string: String?) {
-        if let str = string {
+    public func parser(parser: NSXMLParser, foundCharacters string: String) {
+        let str = string
             
             
             
             
-        }
+        
     }
     
     public func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {

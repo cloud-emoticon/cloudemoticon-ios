@@ -55,8 +55,8 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
             滑出按钮B.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.9, alpha: 1.0)
             滑出按钮A.setTitle(lang.uage("收藏"), forState: UIControlState.Normal)
             滑出按钮B.setTitle(lang.uage("分享"), forState: UIControlState.Normal)
-            滑出按钮A.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
-            滑出按钮B.addTarget(self, action: "点击滑出按钮:", forControlEvents: UIControlEvents.TouchUpInside)
+            滑出按钮A.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+            滑出按钮B.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(滑出按钮A)
             self.addSubview(滑出按钮B)
             self.addSubview(覆盖视图)
@@ -67,7 +67,7 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
             副文字.font = UIFont.systemFontOfSize(12)
             覆盖视图.addSubview(主文字)
             覆盖视图.addSubview(副文字)
-            手势 = UIPanGestureRecognizer(target: self, action: "手势执行:")
+            手势 = UIPanGestureRecognizer(target: self, action: #selector(CETableViewCell.手势执行(_:)))
             手势.delegate = self
             覆盖视图.backgroundColor = UIColor.clearColor()
             覆盖视图.addGestureRecognizer(手势)
@@ -75,9 +75,9 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
             self.textLabel?.numberOfLines = 0
 //            self.textLabel.textColor = UIColor.clearColor()
 //            self.主文字.textColor = UIColor.blackColor()
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "取消单元格左滑方法:", name: "取消单元格左滑通知", object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "允许单元格接收手势方法:", name: "允许单元格接收手势通知", object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "修正单元格尺寸方法:", name: "修正单元格尺寸通知", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CETableViewCell.取消单元格左滑方法(_:)), name: "取消单元格左滑通知", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CETableViewCell.允许单元格接收手势方法(_:)), name: "允许单元格接收手势通知", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CETableViewCell.修正单元格尺寸方法(_:)), name: "修正单元格尺寸通知", object: nil)
             self.layer.masksToBounds = true
         }
     }
@@ -144,7 +144,7 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
                     self.滑出按钮A.frame = CGRectMake(self.frame.size.width - self.按钮宽度, 0, self.按钮宽度, self.frame.size.height)
                     self.滑出按钮B.frame = CGRectMake(self.frame.size.width - self.按钮宽度 * 2, 0, self.按钮宽度, self.frame.size.height)
                     }, completion: {
-                        (Bool completion) in
+                        (completion) in
                         if completion {
                             //                        self.菜单滑动中 = false
                         }

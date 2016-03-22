@@ -48,7 +48,7 @@ class CustomStatusBar: UIWindow {
             animations:{
                 self.alpha = 0.0
             }, completion: {
-                (Bool completion) in
+                (completion) in
             if completion {
                 self.messageLabel.text = ""
                 self.hidden = true

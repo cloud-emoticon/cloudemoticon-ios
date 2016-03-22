@@ -56,8 +56,8 @@ class AddonTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转:", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddonTableViewController.切换主题), name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AddonTableViewController.屏幕旋转(_:)), name: "屏幕旋转通知", object: nil)
         切换主题()
     }
     
@@ -81,7 +81,7 @@ class AddonTableViewController: UITableViewController {
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(),
             forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
         let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.backgroundColor = UIColor.whiteColor()
         列表文字颜色 = UIColor.blackColor()
@@ -120,7 +120,7 @@ class AddonTableViewController: UITableViewController {
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
                 }
             }
             //RGBA色值：列表的背景色 yes

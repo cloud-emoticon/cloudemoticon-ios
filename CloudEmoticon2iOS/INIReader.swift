@@ -75,7 +75,7 @@ class INIReader: NSObject {
         let INI文件内容已转换换行符 = INI文件内容.stringByReplacingOccurrencesOfString("\r\n", withString: "\n", options: NSStringCompareOptions(), range: nil)
         let 行数组:NSArray = INI文件内容已转换换行符.componentsSeparatedByString("\n")
         let INI字典:NSMutableDictionary = NSMutableDictionary()
-        for (var i = 0; i < 行数组.count; i++) {
+        for (var i = 0; i < 行数组.count; i += 1) {
             let 当前行:NSString = 行数组.objectAtIndex(i) as! NSString
             if (当前行 == "") {
                 continue

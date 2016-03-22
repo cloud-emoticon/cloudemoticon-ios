@@ -29,7 +29,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"appWillResignActive", name:"WillEnterForeground", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(MyEmoticonViewController.appWillResignActive), name:"WillEnterForeground", object: nil)
 
         右上按钮.title = lang.uage("编辑")
         左上按钮.title = ""
@@ -50,8 +50,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)//tabbar选中文字颜色
         let tbitemcolor = NSDictionary(object: UIColor.blackColor(),
             forKey:NSForegroundColorAttributeName)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "切换主题", name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转", name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyEmoticonViewController.切换主题), name: "切换主题通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(MyEmoticonViewController.屏幕旋转), name: "屏幕旋转通知", object: nil)
         切换主题()
     }
     
@@ -68,7 +68,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         左上按钮.tintColor = UIColor.whiteColor()
         右上按钮.tintColor = UIColor.whiteColor()
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         UISegmentedControl.appearance().tintColor = UIColor.whiteColor()
         表格.backgroundColor = nil
@@ -121,7 +121,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 if (navigation_seg_tintcolor != "null") {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
                         forKey:NSForegroundColorAttributeName)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
                 }
             }
             
@@ -612,7 +612,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)! as? UITableViewCell
+        var cell:UITableViewCell? = 表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)! as UITableViewCell
         if (cell == nil) {
             cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
             cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
@@ -783,7 +783,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         }
     }
     
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
+    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String?
     {
         return lang.uage("删掉喵")
     }

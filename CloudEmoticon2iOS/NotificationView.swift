@@ -105,9 +105,9 @@ class NotificationView: UIView {
             animations:{
                 self.alpha = 1.0
             }, completion: {
-                (Bool completion) in
+                (completion) in
                 if completion {
-                    NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: "关闭窗口:", userInfo: nil, repeats: false).fire()
+                    NSTimer.scheduledTimerWithTimeInterval(3.0, target: self, selector: #selector(NotificationView.关闭窗口(_:)), userInfo: nil, repeats: false).fire()
                 }
         })
     }
@@ -118,7 +118,7 @@ class NotificationView: UIView {
             animations:{
                 self.alpha = 0.0
             }, completion: {
-                (Bool completion) in
+                (completion) in
                 if completion {
                     self.removeFromSuperview()
                 }

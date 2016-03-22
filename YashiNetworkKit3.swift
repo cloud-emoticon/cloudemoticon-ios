@@ -185,7 +185,7 @@ class YashiNetworkKit: NSObject,NSURLSessionDownloadDelegate,NSURLSessionDataDel
         }
         let 参数字符串:NSMutableString = NSMutableString()
         let 所有的键:NSArray = (提交的参数.allKeys)
-        for (var 当前第几个键:Int = 0; 当前第几个键 < 所有的键.count; 当前第几个键++) {
+        for 当前第几个键 in 0 ..< 所有的键.count {
             let 当前键:NSString = 所有的键.objectAtIndex(当前第几个键) as! NSString
             let 当前值:NSString = (提交的参数.objectForKey(当前键))! as! NSString
             let 要添加的字符串:NSString = NSString(format: "%@=%@&", 当前键,当前值)

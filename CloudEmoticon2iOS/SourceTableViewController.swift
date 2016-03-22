@@ -51,14 +51,14 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     
     override func viewWillAppear(animated: Bool) {
         if (!self.tableView.editing) {
-            左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+            左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
             self.navigationItem.leftBarButtonItem = 左上按钮
-            右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+            右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
             self.navigationItem.rightBarButtonItem = 右上按钮
         } else {
-            左上按钮 = UIBarButtonItem(title: lang.uage("添加"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+            左上按钮 = UIBarButtonItem(title: lang.uage("添加"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
             self.navigationItem.leftBarButtonItem = 左上按钮
-            右上按钮 = UIBarButtonItem(title: lang.uage("完成"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+            右上按钮 = UIBarButtonItem(title: lang.uage("完成"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
             self.navigationItem.rightBarButtonItem = 右上按钮
         }
     }
@@ -75,8 +75,8 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             用户设置.setValue(p_nowurl, forKey: "nowurl")
             用户设置.synchronize()
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "数据载入完毕:", name: "loaddataok", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "网络失败时:", name: "网络失败", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SourceTableViewController.数据载入完毕(_:)), name: "loaddataok", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SourceTableViewController.网络失败时(_:)), name: "网络失败", object: nil)
         p_storeIsOpen = true
         源列表.removeAllObjects()
         let 刚载入的源列表:NSArray = 文件管理器.loadSources()
@@ -87,9 +87,9 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             
             源列表.addObjectsFromArray(刚载入的源列表 as [AnyObject])
         }
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: "左上按钮点击:")
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: "右上按钮点击:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
         self.navigationItem.rightBarButtonItem = 右上按钮
         self.title = lang.uage("源管理")
         self.tableView.reloadData()
@@ -234,7 +234,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             } else {
                 let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
                 let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
-                for (var i:Int = 0; i < 要删除的文件.count; i++) {
+                for (var i:Int = 0; i < 要删除的文件.count; i += 1) {
                     let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as! NSString
                     let 当前文件名:NSString = NSString(format: "cache-%@.plist", md5(当前颜文字网址 as String) as String)
                     if (要删除的文件名.isEqualToString(当前文件名 as String)) {
@@ -292,7 +292,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     // MARK: - 提示框被点击
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
     {
-        var 添加源输入框:
+        let 添加源输入框:
         UITextField = alertView.textFieldAtIndex(0) as UITextField!
         if (alertView.tag == 200) {
             if (buttonIndex == 1) {

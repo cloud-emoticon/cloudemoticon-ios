@@ -52,7 +52,7 @@ class EnterView: UIView {
         self.addSubview(剪影图片视图)
         
         //等待后面的UI渲染
-        NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
+        NSTimer.scheduledTimerWithTimeInterval(0.6, target: self, selector: #selector(EnterView.开始动画(_:)), userInfo: 剪影图片视图, repeats: false)
 //        NSTimer(timeInterval: 5.0, target: self, selector: "开始动画:", userInfo: 剪影图片视图, repeats: false)
         
     }

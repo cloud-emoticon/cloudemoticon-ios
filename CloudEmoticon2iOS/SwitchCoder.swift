@@ -56,7 +56,7 @@ class SwitchCoder: NSObject {
             {
                 NSLog("%@使用XML校验数据格式失败。",类名称)
                 tmpIsOK = false
-                isOK--
+                isOK -= 1
                 break
             }
         }
@@ -74,7 +74,7 @@ class SwitchCoder: NSObject {
             {
                 NSLog("%@使用JSON校验数据格式失败。",类名称)
                 tmpIsOK = false
-                isOK--
+                isOK -= 1
                 break
             }
         }

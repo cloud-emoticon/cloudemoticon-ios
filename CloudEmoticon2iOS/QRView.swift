@@ -26,7 +26,7 @@ class QRView: UIView {
         let 图片退出按钮:UIButton = UIButton(type: UIButtonType.Custom)
         图片退出按钮.frame = CGRectMake(0, 0, 图片尺寸.width, 图片尺寸.height)
         图片退出按钮.setImage(二维码, forState: UIControlState.Normal)
-        图片退出按钮.addTarget(self, action: "点击", forControlEvents: UIControlEvents.TouchUpInside)
+        图片退出按钮.addTarget(self, action: #selector(QRView.点击), forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(图片退出按钮)
         self.transform = CGAffineTransformMakeScale(0.5, 0.5);
         UIView.animateWithDuration(0.2, animations: { () -> Void in
