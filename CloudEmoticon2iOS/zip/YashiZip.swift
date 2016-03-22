@@ -34,7 +34,7 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = NSErrorPointer.init()
+        let error:NSErrorPointer = nil
         let isok:Bool
         do {
             try SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password)
@@ -60,7 +60,7 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = NSErrorPointer.init()
+        let error:NSErrorPointer = nil
         let dele:SSZipArchiveDelegate = self
         let isok:Bool
         SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password, error: error, delegate: dele) //貌似有error了就不用try了

@@ -30,7 +30,8 @@ class Kagurazaka: NSObject {
             let tN:NSNumber = tArr[ti] as! NSNumber
             let t:Int = tN.integerValue
             if (t < 0) {
-                w = harr.objectAtIndex(++h) as! NSMutableArray
+                h += 1
+                w = harr.objectAtIndex(h) as! NSMutableArray
             } else {
                 w.replaceObjectAtIndex(t, withObject: b)
             }

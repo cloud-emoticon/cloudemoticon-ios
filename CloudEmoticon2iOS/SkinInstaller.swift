@@ -96,7 +96,7 @@ class SkinInstaller: NSObject, YashiNetworkKitDelegate {
         let 压缩文件处理:YashiZip = YashiZip()
         var 解压缩错误信息:String? = nil
         for _ in 0...1 { //如果失败则重试一次
-            let 错误信息:NSErrorPointer = NSErrorPointer()
+            let 错误信息:NSErrorPointer = nil
             let 本次解压缩成功:Bool
             do {
                 try 压缩文件处理.解压缩文件(临时文件路径, 解压缩目标文件夹: 目标文件夹路径, 覆盖目标文件: true, 解压缩密码: "ce")

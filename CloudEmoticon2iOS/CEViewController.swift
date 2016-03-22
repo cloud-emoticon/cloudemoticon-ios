@@ -147,7 +147,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         sortBtn.tintColor = UIColor.whiteColor()
         scoreBtn.tintColor = UIColor.whiteColor()
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as! [String : AnyObject]
+        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
         颜文字表格.backgroundColor = UIColor.whiteColor()
         列表文字颜色 = UIColor.blackColor()
         副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
@@ -392,9 +392,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "屏幕旋转:", name: "屏幕旋转通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "loadwebdataoks:", name: "loaddataoks", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "load:", name: "loaddataok", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.屏幕旋转(_:)), name: "屏幕旋转通知", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.loadwebdataoks(_:)), name: "loaddataoks", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.load(_:)), name: "loaddataok", object: nil)
         
         分类表格.tag = 100
         颜文字表格.tag = 101
@@ -402,7 +402,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         分类表格.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
         if (isCanAutoHideSortView())
         {
-            let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: "手势执行:")
+            let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CEViewController.手势执行(_:)))
             self.view.addGestureRecognizer(panRecognizer)
             panRecognizer.maximumNumberOfTouches = 1
             panRecognizer.delegate = self
@@ -470,14 +470,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func loaddata()
     {
         var y_emoarr:NSArray = NSArray()
-        var p_emoweb:NSArray? = p_emodata
+        let p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
             let p_emoary:NSArray = p_emoweb!
             y_emoarr = p_emoary.objectAtIndex(3) as! NSArray
         } else {
             let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
-            var p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
+            let p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
             y_emoarr = p_emo.objectAtIndex(3) as! NSArray
         }
         
@@ -485,7 +485,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         搜索结果的名称.removeAllObjects()
         for g_emoobj in y_emoarr
         {
-            var g_emoarr:NSArray = g_emoobj as! NSArray
+            let g_emoarr:NSArray = g_emoobj as! NSArray
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
@@ -535,7 +535,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 if(匹配.length > 0 || 匹配2.length > 0){
                 ceData.addObjectsFromArray([[搜索结果颜文字,搜索的颜文字名称]])
                 }
-                i++
+                i += 1
             }
             颜文字表格.reloadData()
         }
@@ -980,7 +980,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 颜文字名称:NSString? = 当前单元格.副文字.text
         if (点击按钮的ID == 1) { //收藏
             let 文件管理器:FileManager = FileManager()
-            var 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+            let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
             var 收藏中已经存在这个颜文字:Bool = false
             if (文件中的数据 != nil) {
                 for 文件中的颜文字数组对象 in 文件中的数据! {
@@ -993,11 +993,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             var 提示文字:NSString?
             if (收藏中已经存在这个颜文字 == false) {
-                var 颜文字数组:NSMutableArray = [颜文字]
+                let 颜文字数组:NSMutableArray = [颜文字]
                 if (颜文字名称 != nil) {
                     颜文字数组.addObject(颜文字名称!)
                 }
-                var 收藏:NSMutableArray = NSMutableArray()
+                let 收藏:NSMutableArray = NSMutableArray()
                 收藏.addObject(颜文字数组)
                 if (文件中的数据 != nil) {
                     收藏.addObjectsFromArray(文件中的数据! as [AnyObject])
