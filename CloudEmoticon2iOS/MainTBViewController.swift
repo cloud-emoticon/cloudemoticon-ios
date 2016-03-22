@@ -316,7 +316,8 @@ class MainTBViewController: UITabBarController {
         if (文件中的数据 != nil) {
             历史记录.addObjectsFromArray(文件中的数据! as [AnyObject])
         }
-        for (var i:Int = 0; i < 历史记录.count; i += 1) {
+        for i in 0 ..< 历史记录.count {
+//        for (var i:Int = 0; i < 历史记录.count; i += 1) {
             //            if (i >= 全部历史数组.count) {
             //                break
             //            }
@@ -327,9 +328,9 @@ class MainTBViewController: UITabBarController {
             if (当前历史条目.isEqualToString(要复制的颜文字 as String)) {
                 //NSLog("【删除】\n")
                 历史记录.removeObjectAtIndex(i)
-                if (i > 0) {
-                    i -= 1
-                }
+//                if (i > 0) {
+//                    i -= 1
+//                }
             }
         }
         历史记录.insertObject(要复制的颜文字数组, atIndex: 0)

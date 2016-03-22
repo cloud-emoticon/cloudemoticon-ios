@@ -64,10 +64,12 @@ class UserSync: NSObject {
 //        let 全部皮肤数组:NSArray = 数据数组!.objectAtIndex(3) as! NSArray
         if (数据数组 != nil && 数据数组?.count >= 3 && PFUser.currentUser() != nil) {
             let 主同步数组:NSMutableArray = NSMutableArray()
-            for (var 类别循环:Int = 0; 类别循环 < 数据数组?.count; 类别循环 += 1) {
+            for 类别循环 in 0 ..< 数据数组?.count {
+//            for (var 类别循环:Int = 0; 类别循环 < 数据数组?.count; 类别循环 += 1) {
                 let 当前类别数组:NSArray = 数据数组!.objectAtIndex(类别循环) as! NSArray
                 let 当前类别返回数组:NSMutableArray = NSMutableArray()
-                for (var 颜文字循环:Int = 0; 颜文字循环 < 当前类别数组.count; 颜文字循环 += 1) {
+                for 颜文字循环 in 0 ..< 当前类别数组.count {
+//                for (var 颜文字循环:Int = 0; 颜文字循环 < 当前类别数组.count; 颜文字循环 += 1) {
                     let 当前颜文字数组:NSArray = 当前类别数组.objectAtIndex(颜文字循环) as! NSArray
                     let 新建颜文字数据模型:M_SyncEmo = M_SyncEmo()
                     新建颜文字数据模型.emoticon = 当前颜文字数组.objectAtIndex(0) as! String
