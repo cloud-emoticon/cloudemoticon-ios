@@ -56,12 +56,7 @@
 		5389C6D71B1A1232002811DC /* Skin2Object.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389C6D61B1A1232002811DC /* Skin2Object.swift */; };
 		5389F5951AEB85FF009A1552 /* ResetSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5389F5941AEB85FF009A1552 /* ResetSetting.swift */; };
 		53906A9F1999D5E2000020D1 /* CEViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53906A9E1999D5E2000020D1 /* CEViewController.swift */; };
-		53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53918E951AB7065C00CE7A68 /* InterfaceController.swift */; };
-		53918E981AB7065C00CE7A68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53918E971AB7065C00CE7A68 /* Images.xcassets */; };
-		53918EA41AB7065C00CE7A68 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53918EA21AB7065C00CE7A68 /* Interface.storyboard */; };
-		53918EA61AB7065C00CE7A68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53918EA51AB7065C00CE7A68 /* Images.xcassets */; };
 		539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539405D319A58F3000CE90F2 /* CETableViewCell.swift */; };
-		5396A26C1D02CE19003C429C /* cewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */; };
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
@@ -73,11 +68,9 @@
 		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
-		53AB497A1AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53AB497C1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
-		53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6EEEA1AF6338400ACAA6A /* EnterView.swift */; };
 		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
 		53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */; };
@@ -99,7 +92,6 @@
 		53E1EB1A19A49769002EB6A3 /* MyEmoticonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1EB1919A49769002EB6A3 /* MyEmoticonViewController.swift */; };
 		53E40A0C1B517B7E000A4742 /* Kagurazaka.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E40A0B1B517B7E000A4742 /* Kagurazaka.swift */; };
 		53E668DF1B3E94150010EF34 /* UserSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E668DE1B3E94150010EF34 /* UserSync.swift */; };
-		53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53E9DF7E19C1843E00C61121 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53E9DF8019C1843E00C61121 /* InfoPlist.strings */; };
 		53E9DF8419C189E600C61121 /* WaitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9DF8319C189E600C61121 /* WaitView.swift */; };
 		53E9E3321B3E41F600BD5FB6 /* ParseLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E9E3311B3E41F600BD5FB6 /* ParseLink.swift */; };
@@ -147,7 +139,6 @@
 		8BA6684519ACDB830080C47F /* ShakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684419ACDB830080C47F /* ShakeViewController.swift */; };
 		8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */; };
 		8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684819ACDCB30080C47F /* SettingViewController.swift */; };
-		8BC47C7A1BF9F9A000B1D6C7 /* cewatchex.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53918E911AB7065C00CE7A68 /* cewatchex.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8BC47C831BF9FBA500B1D6C7 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC47C821BF9FBA500B1D6C7 /* View.xib */; };
 		8BE31F59196D38A7006C3B26 /* clock-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F57196D38A7006C3B26 /* clock-vector.png */; };
 		8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */; };
@@ -183,40 +174,12 @@
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
 		};
-		5396A2691D02CE0E003C429C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53918E901AB7065C00CE7A68;
-			remoteInfo = cewatchex;
-		};
 		53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
-		};
-		53E9CD731AE144400043A9FD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53918E9A1AB7065C00CE7A68;
-			remoteInfo = cewatchapp;
-		};
-		8BC47C781BF9F9A000B1D6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53918E901AB7065C00CE7A68;
-			remoteInfo = cewatchex;
-		};
-		8BC47C7B1BF9F9A100B1D6C7 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 53918E9A1AB7065C00CE7A68;
-			remoteInfo = cewatchapp;
 		};
 		8BEA2DEF199663470029715E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -242,24 +205,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8BC47C7E1BF9F9A100B1D6C7 /* Embed App Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				8BC47C7A1BF9F9A000B1D6C7 /* cewatchex.appex in Embed App Extensions */,
-			);
-			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		8BC47C7F1BF9F9A100B1D6C7 /* Embed Watch Content */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				5396A26C1D02CE19003C429C /* cewatchapp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,14 +313,6 @@
 		5389F5941AEB85FF009A1552 /* ResetSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetSetting.swift; sourceTree = "<group>"; };
 		538D3E9B19946E6E00F5692F /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 		53906A9E1999D5E2000020D1 /* CEViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CEViewController.swift; sourceTree = "<group>"; };
-		53918E911AB7065C00CE7A68 /* cewatchex.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cewatchex.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		53918E941AB7065C00CE7A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53918E951AB7065C00CE7A68 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
-		53918E971AB7065C00CE7A68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		53918E9B1AB7065C00CE7A68 /* cewatchapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cewatchapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		53918EA11AB7065C00CE7A68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		53918EA31AB7065C00CE7A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		53918EA51AB7065C00CE7A68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		539405D319A58F3000CE90F2 /* CETableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CETableViewCell.swift; sourceTree = "<group>"; };
 		5396A2671D02CDE6003C429C /* cewatchapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchapp.entitlements; sourceTree = "<group>"; };
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
@@ -476,13 +419,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		5328C7A619B70D0D00C425A8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53918E8E1AB7065C00CE7A68 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -666,42 +602,6 @@
 			name = "核心";
 			sourceTree = "<group>";
 		};
-		53918E921AB7065C00CE7A68 /* CloudEmoticon2iOS WatchKit Extension */ = {
-			isa = PBXGroup;
-			children = (
-				53918E951AB7065C00CE7A68 /* InterfaceController.swift */,
-				53918E971AB7065C00CE7A68 /* Images.xcassets */,
-				53918E931AB7065C00CE7A68 /* Supporting Files */,
-			);
-			path = "CloudEmoticon2iOS WatchKit Extension";
-			sourceTree = "<group>";
-		};
-		53918E931AB7065C00CE7A68 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				53918E941AB7065C00CE7A68 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		53918E9F1AB7065C00CE7A68 /* CloudEmoticon2iOS WatchKit App */ = {
-			isa = PBXGroup;
-			children = (
-				53918EA21AB7065C00CE7A68 /* Interface.storyboard */,
-				53918EA51AB7065C00CE7A68 /* Images.xcassets */,
-				53918EA01AB7065C00CE7A68 /* Supporting Files */,
-			);
-			path = "CloudEmoticon2iOS WatchKit App";
-			sourceTree = "<group>";
-		};
-		53918EA01AB7065C00CE7A68 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				53918EA11AB7065C00CE7A68 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		5396DAA21B37F3CB0006B154 /* AppKey */ = {
 			isa = PBXGroup;
 			children = (
@@ -827,8 +727,6 @@
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
 				5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */,
-				53918E921AB7065C00CE7A68 /* CloudEmoticon2iOS WatchKit Extension */,
-				53918E9F1AB7065C00CE7A68 /* CloudEmoticon2iOS WatchKit App */,
 				8BF8ACF3199335D7001207FC /* Frameworks */,
 				53DF28EE196B9CF40058AA42 /* Products */,
 			);
@@ -841,8 +739,6 @@
 				53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */,
 				8BF8ACF2199335D7001207FC /* cewidget.appex */,
 				5328C7A919B70D0D00C425A8 /* cekeyboard.appex */,
-				53918E911AB7065C00CE7A68 /* cewatchex.appex */,
-				53918E9B1AB7065C00CE7A68 /* cewatchapp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1041,40 +937,6 @@
 			productReference = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
-		53918E901AB7065C00CE7A68 /* cewatchex */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 53918EB11AB7065C00CE7A68 /* Build configuration list for PBXNativeTarget "cewatchex" */;
-			buildPhases = (
-				53918E8D1AB7065C00CE7A68 /* Sources */,
-				53918E8E1AB7065C00CE7A68 /* Frameworks */,
-				53918E8F1AB7065C00CE7A68 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = cewatchex;
-			productName = "CloudEmoticon2iOS WatchKit Extension";
-			productReference = 53918E911AB7065C00CE7A68 /* cewatchex.appex */;
-			productType = "com.apple.product-type.watchkit2-extension";
-		};
-		53918E9A1AB7065C00CE7A68 /* cewatchapp */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 53918EB01AB7065C00CE7A68 /* Build configuration list for PBXNativeTarget "cewatchapp" */;
-			buildPhases = (
-				53918E991AB7065C00CE7A68 /* Resources */,
-				8BC47C7E1BF9F9A100B1D6C7 /* Embed App Extensions */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8BC47C791BF9F9A000B1D6C7 /* PBXTargetDependency */,
-			);
-			name = cewatchapp;
-			productName = "CloudEmoticon2iOS WatchKit App";
-			productReference = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */;
-			productType = "com.apple.product-type.application.watchapp2";
-		};
 		53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53DF2909196B9CF40058AA42 /* Build configuration list for PBXNativeTarget "CloudEmoticon2iOS" */;
@@ -1093,9 +955,6 @@
 				8BF8AD01199335D7001207FC /* PBXTargetDependency */,
 				5328C7B019B70D0D00C425A8 /* PBXTargetDependency */,
 				5328C7B319B70D0D00C425A8 /* PBXTargetDependency */,
-				53E9CD741AE144400043A9FD /* PBXTargetDependency */,
-				8BC47C7C1BF9F9A100B1D6C7 /* PBXTargetDependency */,
-				5396A26A1D02CE0E003C429C /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -1159,24 +1018,6 @@
 							};
 						};
 					};
-					53918E901AB7065C00CE7A68 = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = ZNVDEVDRX3;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
-					53918E9A1AB7065C00CE7A68 = {
-						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = ZNVDEVDRX3;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
@@ -1220,8 +1061,6 @@
 				53DF28FE196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF1199335D7001207FC /* cewidget */,
 				5328C7A819B70D0D00C425A8 /* cekeyboard */,
-				53918E901AB7065C00CE7A68 /* cewatchex */,
-				53918E9A1AB7065C00CE7A68 /* cewatchapp */,
 			);
 		};
 /* End PBXProject section */
@@ -1231,23 +1070,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53918E8F1AB7065C00CE7A68 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				53918E981AB7065C00CE7A68 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53918E991AB7065C00CE7A68 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				53918EA41AB7065C00CE7A68 /* Interface.storyboard in Resources */,
-				53918EA61AB7065C00CE7A68 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1269,7 +1091,6 @@
 				5310750A19C19E9D0003866F /* Main.storyboard in Resources */,
 				53E0E4BB1994B2F800C9D9FC /* settings-vector@2x.png in Resources */,
 				53DA36A119B5AE9900FD8D78 /* language-en.plist in Resources */,
-				53E9CD771AE144550043A9FD /* cewatchapp.app in Resources */,
 				8BC47C831BF9FBA500B1D6C7 /* View.xib in Resources */,
 				5357733C199B1584003FF9D3 /* default.plist in Resources */,
 				8BA411AF19B0F046003AEBF2 /* shake.png in Resources */,
@@ -1320,16 +1141,6 @@
 				5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */,
 				53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		53918E8D1AB7065C00CE7A68 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				53918E961AB7065C00CE7A68 /* InterfaceController.swift in Sources */,
-				53AB497E1AE239A90090D955 /* ArrayString.swift in Sources */,
-				53AB497A1AE239A90090D955 /* AppGroupIO.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1451,30 +1262,10 @@
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 5346D9371993392C00CEFA4B /* PBXContainerItemProxy */;
 		};
-		5396A26A1D02CE0E003C429C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53918E901AB7065C00CE7A68 /* cewatchex */;
-			targetProxy = 5396A2691D02CE0E003C429C /* PBXContainerItemProxy */;
-		};
 		53DF2901196B9CF40058AA42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */;
-		};
-		53E9CD741AE144400043A9FD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53918E9A1AB7065C00CE7A68 /* cewatchapp */;
-			targetProxy = 53E9CD731AE144400043A9FD /* PBXContainerItemProxy */;
-		};
-		8BC47C791BF9F9A000B1D6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53918E901AB7065C00CE7A68 /* cewatchex */;
-			targetProxy = 8BC47C781BF9F9A000B1D6C7 /* PBXContainerItemProxy */;
-		};
-		8BC47C7C1BF9F9A100B1D6C7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 53918E9A1AB7065C00CE7A68 /* cewatchapp */;
-			targetProxy = 8BC47C7B1BF9F9A100B1D6C7 /* PBXContainerItemProxy */;
 		};
 		8BEA2DF0199663470029715E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1494,14 +1285,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		53918EA21AB7065C00CE7A68 /* Interface.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				53918EA31AB7065C00CE7A68 /* Base */,
-			);
-			name = Interface.storyboard;
-			sourceTree = "<group>";
-		};
 		53E9DF8019C1843E00C61121 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1550,97 +1333,6 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		53918EAA1AB7065C00CE7A68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = cewatchex.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch.ex;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		53918EAB1AB7065C00CE7A68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = cewatchex.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit Extension/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch.ex;
-				PRODUCT_NAME = "${TARGET_NAME}";
-				PROVISIONING_PROFILE = "";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Release;
-		};
-		53918EAC1AB7065C00CE7A68 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cewatchapp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
-				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
-			};
-			name = Debug;
-		};
-		53918EAD1AB7065C00CE7A68 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cewatchapp.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
-				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
-				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
 		};
@@ -1734,6 +1426,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1767,6 +1460,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1878,24 +1572,6 @@
 			buildConfigurations = (
 				5328C7B519B70D0D00C425A8 /* Debug */,
 				5328C7B619B70D0D00C425A8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		53918EB01AB7065C00CE7A68 /* Build configuration list for PBXNativeTarget "cewatchapp" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				53918EAC1AB7065C00CE7A68 /* Debug */,
-				53918EAD1AB7065C00CE7A68 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		53918EB11AB7065C00CE7A68 /* Build configuration list for PBXNativeTarget "cewatchex" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				53918EAA1AB7065C00CE7A68 /* Debug */,
-				53918EAB1AB7065C00CE7A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
