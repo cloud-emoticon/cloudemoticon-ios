@@ -163,7 +163,7 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
     
     func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
         if (buttonIndex == 5) {
-            全局_Parse读写.注销用户()
+            //全局_Parse读写.注销用户()
             全局_当前用户名 = ""
             全局_当前用户邮箱 = ""
             默认文字()

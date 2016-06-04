@@ -47,7 +47,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.登录失败(_:)), name: "P用户:登录失败", object: nil)
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.登录成功(_:)), name: "P用户:登录成功", object: nil)
                 NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
-                全局_Parse读写.用户登录(账号输入框.text!, 密码: 密码输入框.text!)
+                //全局_Parse读写.用户登录(账号输入框.text!, 密码: 密码输入框.text!)
             } else {
                 let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("密码至少要6位"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
                 提示框.show()

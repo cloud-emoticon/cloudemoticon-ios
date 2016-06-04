@@ -41,8 +41,8 @@ class MainTBViewController: UITabBarController {
     }
     
     func 执行测试用代码() {
-        let 同步数据格式转换测试:UserSync = UserSync()
-        同步数据格式转换测试.转换为同步用数据格式()
+//        let 同步数据格式转换测试:UserSync = UserSync()
+//        同步数据格式转换测试.转换为同步用数据格式()
     }
     
     func 延迟切换主题() {

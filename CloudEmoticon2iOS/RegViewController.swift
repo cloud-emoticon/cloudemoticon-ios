@@ -51,7 +51,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
                         NSNotificationCenter.defaultCenter().addObserver(self, selector: "注册失败:", name: "P用户:注册失败", object: nil)
                         NSNotificationCenter.defaultCenter().addObserver(self, selector: "注册成功:", name: "P用户:注册成功", object: nil)
                         NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
-                        全局_Parse读写.用户注册(用户名输入框.text!, 密码: 密码输入框.text!, 邮箱: 邮箱输入框.text!)
+                        //全局_Parse读写.用户注册(用户名输入框.text!, 密码: 密码输入框.text!, 邮箱: 邮箱输入框.text!)
                     } else {
                         let 提示框:UIAlertView = UIAlertView(title: lang.uage("输入错误"), message: lang.uage("两次输入的密码不一致"), delegate: nil, cancelButtonTitle: lang.uage("取消"))
                         提示框.show()

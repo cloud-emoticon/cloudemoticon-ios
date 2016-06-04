@@ -25,7 +25,7 @@ let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
 var 全局_皮肤设置:NSDictionary = NSDictionary()
 let 全局_默认当前选中行颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
 let 全局_默认导航栏背景颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1.0)
-let 全局_Parse读写:ParseLink = ParseLink()
+//let 全局_Parse读写:ParseLink = ParseLink()
 
 enum NetDownloadTo:Int
 {
@@ -108,15 +108,15 @@ func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, �
 }
 
 func 检查用户登录() {
-    let 当前用户信息:NSDictionary? = 全局_Parse读写.当前用户()
+    let 当前用户信息:NSDictionary? = nil;//全局_Parse读写.当前用户()
     if (当前用户信息 != nil) {
         全局_当前用户名 = 当前用户信息?.objectForKey("已登录用户名") as! String
         全局_当前用户邮箱 = 当前用户信息?.objectForKey("已登录邮箱") as! String
     }
     NSNotificationCenter.defaultCenter().postNotificationName("切换用户通知", object: nil)
     
-    let 资料同步:UserSync = UserSync()
-    资料同步.下载当前用户同步对象("SyncInfo")
+//    let 资料同步:UserSync = UserSync()
+//    资料同步.下载当前用户同步对象("SyncInfo")
 }
 
 /* 隐藏设置：
