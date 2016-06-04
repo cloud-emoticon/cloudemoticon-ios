@@ -61,7 +61,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         let 皮肤列表:NSArray? = 皮肤管理器.读取皮肤列表()
         清空皮肤列表数据()
         if (皮肤列表 != nil) {
-            for i in 0 ..< 皮肤列表?.count {
+            for i in 0 ..< 皮肤列表!.count {
  //           for (var i:Int = 0; i < 皮肤列表?.count; i++) {
                 let 当前头信息字典:NSDictionary = 皮肤列表?.objectAtIndex(i) as! NSDictionary
                 let 主标题:String = 当前头信息字典.objectForKey("theme_name") as! String

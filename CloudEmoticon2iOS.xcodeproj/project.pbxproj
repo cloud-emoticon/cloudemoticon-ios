@@ -61,6 +61,7 @@
 		53918EA41AB7065C00CE7A68 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53918EA21AB7065C00CE7A68 /* Interface.storyboard */; };
 		53918EA61AB7065C00CE7A68 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53918EA51AB7065C00CE7A68 /* Images.xcassets */; };
 		539405D419A58F3000CE90F2 /* CETableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539405D319A58F3000CE90F2 /* CETableViewCell.swift */; };
+		5396A26C1D02CE19003C429C /* cewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		53995A4F1991C2A4008B12E0 /* MainTBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */; };
 		53995A511991C434008B12E0 /* CustomStatusBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A501991C434008B12E0 /* CustomStatusBar.swift */; };
 		53995A571991E8B1008B12E0 /* JSONReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53995A561991E8B1008B12E0 /* JSONReader.swift */; };
@@ -147,7 +148,6 @@
 		8BA6684719ACDBC70080C47F /* ExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684619ACDBC70080C47F /* ExtensionViewController.swift */; };
 		8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA6684819ACDCB30080C47F /* SettingViewController.swift */; };
 		8BC47C7A1BF9F9A000B1D6C7 /* cewatchex.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 53918E911AB7065C00CE7A68 /* cewatchex.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		8BC47C7D1BF9F9A100B1D6C7 /* cewatchapp.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 53918E9B1AB7065C00CE7A68 /* cewatchapp.app */; };
 		8BC47C831BF9FBA500B1D6C7 /* View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BC47C821BF9FBA500B1D6C7 /* View.xib */; };
 		8BE31F59196D38A7006C3B26 /* clock-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F57196D38A7006C3B26 /* clock-vector.png */; };
 		8BE31F5A196D38A7006C3B26 /* clock-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE31F58196D38A7006C3B26 /* clock-vector@2x.png */; };
@@ -182,6 +182,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 53DF28EC196B9CF40058AA42;
 			remoteInfo = CloudEmoticon2iOS;
+		};
+		5396A2691D02CE0E003C429C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 53918E901AB7065C00CE7A68;
+			remoteInfo = cewatchex;
 		};
 		53DF2900196B9CF40058AA42 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -252,7 +259,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				8BC47C7D1BF9F9A100B1D6C7 /* cewatchapp.app in Embed Watch Content */,
+				5396A26C1D02CE19003C429C /* cewatchapp.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,6 +371,7 @@
 		53918EA31AB7065C00CE7A68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		53918EA51AB7065C00CE7A68 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		539405D319A58F3000CE90F2 /* CETableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CETableViewCell.swift; sourceTree = "<group>"; };
+		5396A2671D02CDE6003C429C /* cewatchapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = cewatchapp.entitlements; sourceTree = "<group>"; };
 		53995A4E1991C2A4008B12E0 /* MainTBViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTBViewController.swift; sourceTree = "<group>"; };
 		53995A501991C434008B12E0 /* CustomStatusBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomStatusBar.swift; sourceTree = "<group>"; };
 		53995A561991E8B1008B12E0 /* JSONReader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONReader.swift; sourceTree = "<group>"; };
@@ -808,6 +816,7 @@
 		53DF28E4196B9CF40058AA42 = {
 			isa = PBXGroup;
 			children = (
+				5396A2671D02CDE6003C429C /* cewatchapp.entitlements */,
 				53DF2902196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				5355FCB91990C1D300D70CA4 /* 网络和数据载入 */,
 				53AB49801AE23FF10090D955 /* 共享代码 */,
@@ -1086,6 +1095,7 @@
 				5328C7B319B70D0D00C425A8 /* PBXTargetDependency */,
 				53E9CD741AE144400043A9FD /* PBXTargetDependency */,
 				8BC47C7C1BF9F9A100B1D6C7 /* PBXTargetDependency */,
+				5396A26A1D02CE0E003C429C /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -1161,6 +1171,11 @@
 					53918E9A1AB7065C00CE7A68 = {
 						CreatedOnToolsVersion = 6.2;
 						DevelopmentTeam = ZNVDEVDRX3;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
@@ -1436,6 +1451,11 @@
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
 			targetProxy = 5346D9371993392C00CEFA4B /* PBXContainerItemProxy */;
 		};
+		5396A26A1D02CE0E003C429C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 53918E901AB7065C00CE7A68 /* cewatchex */;
+			targetProxy = 5396A2691D02CE0E003C429C /* PBXContainerItemProxy */;
+		};
 		53DF2901196B9CF40058AA42 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
@@ -1508,7 +1528,7 @@
 				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1525,7 +1545,7 @@
 				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.keyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1546,7 +1566,7 @@
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2.cewatchapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch.ex;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -1566,7 +1586,7 @@
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit Extension/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2.cewatchapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch.ex;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
@@ -1581,6 +1601,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cewatchapp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
@@ -1591,7 +1612,7 @@
 				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2.cewatchapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1606,6 +1627,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cewatchapp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1613,7 +1635,7 @@
 				IBSC_MODULE = CloudEmoticon2iOS_WatchKit_Extension;
 				INFOPLIST_FILE = "CloudEmoticon2iOS WatchKit App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2.cewatchapp;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1728,7 +1750,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudEmoticon2iOS",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
@@ -1761,7 +1783,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/CloudEmoticon2iOS",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yukariyashi.cloudemoticon2;
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
@@ -1821,7 +1843,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
@@ -1841,7 +1863,7 @@
 					"$(inherited)",
 					"$(SDKROOT)/usr/lib/system",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
