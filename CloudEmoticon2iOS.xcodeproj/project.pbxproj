@@ -105,6 +105,8 @@
 		53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8BD1B36D0E200C5C111 /* QRView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
+		8B1814011D0AA3A30044AAEC /* EmoSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */; };
+		8B1814031D0AA3CC0044AAEC /* EmoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
@@ -365,6 +367,8 @@
 		53F3F8BD1B36D0E200C5C111 /* QRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRView.swift; path = CloudEmoticon2iOS/QRView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
+		8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoSortViewController.swift; sourceTree = "<group>"; };
+		8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoViewController.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -579,6 +583,8 @@
 			children = (
 				53906A9E1999D5E2000020D1 /* CEViewController.swift */,
 				539405D319A58F3000CE90F2 /* CETableViewCell.swift */,
+				8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */,
+				8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */,
 			);
 			name = "云颜文字";
 			sourceTree = "<group>";
@@ -1160,6 +1166,7 @@
 				53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				53796B401B47C2F000A07C09 /* mask.c in Sources */,
+				8B1814031D0AA3CC0044AAEC /* EmoViewController.swift in Sources */,
 				53796B3F1B47C2F000A07C09 /* bitstream.c in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				53F3F8801B36B46500C5C111 /* QRActivity.swift in Sources */,
@@ -1206,6 +1213,7 @@
 				53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
+				8B1814011D0AA3A30044AAEC /* EmoSortViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				535E970F1B10587F00266163 /* FileZip.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,

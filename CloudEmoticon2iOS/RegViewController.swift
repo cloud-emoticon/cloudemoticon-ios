@@ -48,8 +48,8 @@ class RegViewController: UIViewController, UITextFieldDelegate {
                 if (输入的密码.length >= 6) {
                     if (输入的密码.isEqualToString(确认密码输入框.text!)) {
                         //继续
-                        NSNotificationCenter.defaultCenter().addObserver(self, selector: "注册失败:", name: "P用户:注册失败", object: nil)
-                        NSNotificationCenter.defaultCenter().addObserver(self, selector: "注册成功:", name: "P用户:注册成功", object: nil)
+                        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RegViewController.注册失败(_:)), name: "P用户:注册失败", object: nil)
+                        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RegViewController.注册成功(_:)), name: "P用户:注册成功", object: nil)
                         NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
                         //全局_Parse读写.用户注册(用户名输入框.text!, 密码: 密码输入框.text!, 邮箱: 邮箱输入框.text!)
                     } else {
