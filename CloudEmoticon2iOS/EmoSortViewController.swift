@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmoSortViewController: UITableViewController, SourceTableViewControllerDelegate {
+class EmoSortViewController: UITableViewController, SourceTableViewControllerDelegate, UIViewControllerPreviewingDelegate {
 
     let className = "[云颜文字N]"
     let 文件管理器 = FileManager()
@@ -19,6 +19,7 @@ class EmoSortViewController: UITableViewController, SourceTableViewControllerDel
     var ceData:NSMutableArray = NSMutableArray()
     var 源管理页面:SourceTableViewController? = nil
     var 当前分类:Int = 0
+    var isCan3DTouch = true
 
     @IBAction func 切换到源管理(sender: AnyObject) {
         切换到源管理页面(nil)
@@ -55,7 +56,7 @@ class EmoSortViewController: UITableViewController, SourceTableViewControllerDel
         //        分类表格.alpha = 背景透明度
         //        颜文字表格.alpha = 背景透明度
         
-        var y_emoarr:NSArray = NSArray()
+//        var y_emoarr:NSArray = NSArray()
         let p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
@@ -71,11 +72,29 @@ class EmoSortViewController: UITableViewController, SourceTableViewControllerDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if traitCollection.forceTouchCapability == UIForceTouchCapability.Available {
+            
+            self.isCan3DTouch = true
+        }
+        else {
+            self.isCan3DTouch = false
+        }
+        
         分类表格.delegate = self
         分类表格.dataSource = self
         分类表格.backgroundColor = UIColor.clearColor()
         // Do any additional setup after loading the view.
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        let indexPath = self.tableView?.indexPathForCell(previewingContext.sourceView.superview as! UITableViewCell)
+        let dic = sortData[(indexPath?.row)!]
+        let peekVC = EmoViewController()
+        return peekVC
+    }
+    
+    func previewingContext(previewingContext: UIViewControllerPreviewing, commitViewController viewControllerToCommit: UIViewController) {
     }
 
     override func didReceiveMemoryWarning() {
@@ -135,12 +154,24 @@ class EmoSortViewController: UITableViewController, SourceTableViewControllerDel
     {
         return 1
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+//        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+        openSortData(indexPath.row)
+        当前分类 = indexPath.row
+    }
+
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
-        
+
             var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)
+        if self.isCan3DTouch {
+            //注册3D Touch
+            registerForPreviewingWithDelegate(self, sourceView: (cell?.contentView)!)
+        }
             if (cell == nil) {
                 cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
                 cell?.backgroundColor = UIColor.clearColor()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EmoViewController: UIViewController, UITableViewDelegate {
+class EmoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, QRViewDelegate {
 
     @IBOutlet weak var 搜索栏: UISearchBar!
     @IBOutlet weak var 颜文字表格: UITableView!
@@ -19,10 +19,12 @@ class EmoViewController: UIViewController, UITableViewDelegate {
     var 搜索结果的名称:NSMutableArray = NSMutableArray()
     var ceData:NSMutableArray = NSMutableArray()
     var 单元格在表格中的位置:NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+    var 二维码缓存:UIImage = UIImage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        颜文字表格.delegate = self
+        颜文字表格.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -104,13 +106,111 @@ class EmoViewController: UIViewController, UITableViewDelegate {
             颜文字表格.reloadData()
         }
     }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        // 1
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+            return ceData.count
+    }
+
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        搜索栏.resignFirstResponder()
+//        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+            let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
+            //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
+            //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
+            NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    }
+    
+    
+    func 显示二维码() {
+        //QRViewDelegate
+        let 二维码视图:QRView = QRView()
+        二维码视图.显示二维码(二维码缓存)
+        self.view.addSubview(二维码视图)
+    }
+
+    func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+        // 1
+        let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as! CETableViewCell
+        let 颜文字:NSString = 当前单元格.主文字.text!
+        let 颜文字名称:NSString? = 当前单元格.副文字.text
+        
+        var shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "分享" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // 2
+            var 二维码分享按钮入:[QRActivity]? = nil
+            if (颜文字.length <= 64) {
+                let 二维码分享按钮:QRActivity = QRActivity()
+                二维码分享按钮.代理 = self
+                self.二维码缓存 = QRCodeGenerator.qrImageForString(颜文字 as String, imageSize: 200.0)
+                二维码分享按钮.设置二维码图片(self.二维码缓存)
+                二维码分享按钮入 = [二维码分享按钮]
+                
+            }
+            let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: 二维码分享按钮入)
+            分享视图.modalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            分享视图.excludedActivityTypes = [UIActivityTypeCopyToPasteboard];
+            self.presentViewController(分享视图, animated: true, completion: nil)
 
 
+        })
+            shareAction.backgroundColor = UIColor.cyanColor()
+        // 3
+        var favAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "收藏" , handler: { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+            // 4
+            let 文件管理器:FileManager = FileManager()
+            let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+            var 收藏中已经存在这个颜文字:Bool = false
+            if (文件中的数据 != nil) {
+                for 文件中的颜文字数组对象 in 文件中的数据! {
+                    let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as! NSArray
+                    let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as! NSString
+                    if (颜文字.isEqualToString(文件中的颜文字 as String)) {
+                        收藏中已经存在这个颜文字 = true
+                    }
+                }
+            }
+            var 提示文字:NSString?
+            if (收藏中已经存在这个颜文字 == false) {
+                let 颜文字数组:NSMutableArray = [颜文字]
+                if (颜文字名称 != nil) {
+                    颜文字数组.addObject(颜文字名称!)
+                }
+                let 收藏:NSMutableArray = NSMutableArray()
+                收藏.addObject(颜文字数组)
+                if (文件中的数据 != nil) {
+                    收藏.addObjectsFromArray(文件中的数据! as [AnyObject])
+                }
+                //            if (收藏.count > 100) {
+                //                收藏.removeLastObject()
+                //            }
+                文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.FAVORITE)
+                保存数据到输入法()
+                提示文字 = NSString(format: "“ %@ ” %@", 颜文字, lang.uage("添加到收藏夹成功"))
+            } else {
+                提示文字 = NSString(format: "%@ “ %@ ”",lang.uage("你已经收藏了") ,颜文字)
+            }
+            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)        })
+        favAction.backgroundColor = UIColor.orangeColor()
+        // 5
+        return [shareAction,favAction]
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let CellIdentifier:NSString = "Cell"
         
-        var cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier(CellIdentifier as String)!
+        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
         
                 cell.backgroundColor = UIColor.clearColor()
                 cell.selectionStyle = UITableViewCellSelectionStyle.Blue
