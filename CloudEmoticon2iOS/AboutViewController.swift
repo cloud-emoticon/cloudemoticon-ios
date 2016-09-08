@@ -29,32 +29,32 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
     
     func 开始异步连接()
     {
-        let 当前请求网址:NSURL = NSURL(string: "http://yoooooooooo.com/api/CloudEmoticon/CloudEmoticon2-Copyright.txt")!
-        var URL请求: NSURLRequest
-        URL请求 = NSURLRequest(URL: 当前请求网址, cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
+        let 当前请求网址:URL = URL(string: "http://yoooooooooo.com/api/CloudEmoticon/CloudEmoticon2-Copyright.txt")!
+        var URL请求: URLRequest
+        URL请求 = URLRequest(url: 当前请求网址, cachePolicy: NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10)
         //        request.URL = urla
         //        request.HTTPMethod = "POST"
         NSURLConnection(request: URL请求, delegate: self)
     }
     //服务器响应
-    func connection(connection: NSURLConnection!, didReceiveResponse response: NSURLResponse!)
+    func connection(_ connection: NSURLConnection!, didReceiveResponse response: URLResponse!)
     {
         
     }
     //接收数据
-    func connection(connection: NSURLConnection!, didReceiveData data: NSData!)
+    func connection(_ connection: NSURLConnection!, didReceiveData data: Data!)
     {
         if (self.接收到的数据 == nil)
         {
             self.接收到的数据 = NSMutableData()
         }
-        self.接收到的数据?.appendData(data)
+        self.接收到的数据?.append(data)
     }
     //成功接收
-    func connectionDidFinishLoading(connection: NSURLConnection!)
+    func connectionDidFinishLoading(_ connection: NSURLConnection!)
     {
         if (self.接收到的数据 != nil) {
-            let 数据:NSString? = NSString(data: self.接收到的数据!, encoding: NSUTF8StringEncoding)
+            let 数据:NSString? = NSString(data: self.接收到的数据! as Data, encoding: String.Encoding.utf8.rawValue)
             if (数据 != nil) {
                 内容.text = 数据 as? String
             } else {
@@ -66,7 +66,7 @@ class AboutViewController: UIViewController,NSURLConnectionDelegate {
         载入等待.stopAnimating()
     }
     //接受失败
-    func connection(connection: NSURLConnection, didFailWithError error: NSError)
+    func connection(_ connection: NSURLConnection, didFailWithError error: Error)
     {
         接收失败()
     }

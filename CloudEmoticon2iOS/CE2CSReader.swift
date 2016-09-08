@@ -24,7 +24,7 @@ class CE2CSReader: NSObject {
         
         let parse_clientkey_p:UnsafeMutablePointer<Int8> = parse_clientkey()
         let parse_clientkey_s:NSMutableString = NSMutableString(format: "%s", parse_clientkey_p)
-        parse_clientkey_s.replaceCharactersInRange(NSMakeRange(10, 1), withString: "n")
+        parse_clientkey_s.replaceCharacters(in: NSMakeRange(10, 1), with: "n")
 //        if (parse_clientkey_s.isEqualToString("")) {
 //            NSLog("ok2")
 //        }

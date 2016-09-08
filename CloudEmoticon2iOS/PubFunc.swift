@@ -13,15 +13,15 @@ var 全局_当前用户邮箱:String = ""
 var p_emodata:NSArray = NSArray()
 var p_storeIsOpen:Bool = false
 var 全局_网络繁忙:Bool = false
-var bgimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
-let defaultimage:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
+var bgimage:UIImage = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)!
+let defaultimage:UIImage = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)!
 
-let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
 let 全局_文档文件夹:String = documentDirectory[0] as! String
 let userbgimgname:NSString = NSString.localizedStringWithFormat("%@-bgimage.png", 全局_当前用户名)
 let userbgimgfullpath:NSString = NSString.localizedStringWithFormat("%@/%@",全局_文档文件夹, userbgimgname)
 let appgroup:Bool = true //App-group总开关（未安装证书的情况下请关闭）
-let 全局_文件管理:NSFileManager = NSFileManager.defaultManager()
+let 全局_文件管理:Foundation.FileManager = Foundation.FileManager.default
 var 全局_皮肤设置:NSDictionary = NSDictionary()
 let 全局_默认当前选中行颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 0.3)
 let 全局_默认导航栏背景颜色:UIColor = UIColor(red: 66/255.0, green: 165/255.0, blue: 244/255.0, alpha: 1.0)
@@ -29,10 +29,10 @@ let 全局_默认导航栏背景颜色:UIColor = UIColor(red: 66/255.0, green: 1
 
 enum NetDownloadTo:Int
 {
-    case NONE = 0
-    case CLOUDEMOTICON = 1
-    case SOURCEMANAGER = 2
-    case CLOUDEMOTICONREFRESH = 3
+    case none = 0
+    case cloudemoticon = 1
+    case sourcemanager = 2
+    case cloudemoticonrefresh = 3
 }
 var p_tempString:NSString = ""
 
@@ -40,15 +40,15 @@ var lang:Language = Language()
 
 func 保存数据到输入法()
 {
-    var 收藏文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+    var 收藏文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.favorite)
     if (收藏文件中的数据 == nil) {
         收藏文件中的数据 = NSArray()
     }
-    var 自定文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.CUSTOM)
+    var 自定文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.custom)
     if (自定文件中的数据 == nil) {
         自定文件中的数据 = NSArray()
     }
-    var 历史文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.HISTORY)
+    var 历史文件中的数据:NSArray? = FileManager().LoadArrayFromFile(FileManager.saveMode.history)
     if (历史文件中的数据 == nil) {
         历史文件中的数据 = NSArray()
     }
@@ -64,7 +64,7 @@ func 保存数据到输入法()
         if (组数据?.count != 4) {
             NSLog("[致命错误]数据模型被损坏，崩崩崩！")
         }
-        var 当前主题数据:NSArray = 组数据!.objectAtIndex(3) as! NSArray
+        var 当前主题数据:NSArray = 组数据!.object(at: 3) as! NSArray
     }
     let 要保存的数据:NSArray = [收藏文件中的数据!,自定文件中的数据!,历史文件中的数据!,当前主题数据]
 //    let 要保存的数据文本:NSString = ArrayString().array2json(要保存的数据)
@@ -90,19 +90,19 @@ func loadbg() -> UIImage {
 
 func loadopc() -> CGFloat
 {
-    let bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as? Float
-    return NSNumber(float: ((100 - bgopacity! / 2) / 100)) as CGFloat
+    let bgopacity:Float? = UserDefaults.standard.value(forKey: "bgopacity") as? Float
+    return NSNumber(value: ((100 - bgopacity! / 2) / 100) as Float) as CGFloat
 
 }
 
-func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
+func 计算单元格高度(_ 要显示的文字:NSString, 字体大小:CGFloat, 单元格宽度:CGFloat) -> CGFloat
 {
-    let 高度测试虚拟标签:UILabel = UILabel(frame: CGRectMake(0, 0, 单元格宽度, 0))
-    高度测试虚拟标签.font = UIFont.systemFontOfSize(字体大小)
+    let 高度测试虚拟标签:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 单元格宽度, height: 0))
+    高度测试虚拟标签.font = UIFont.systemFont(ofSize: 字体大小)
     高度测试虚拟标签.text = NSString(string: 要显示的文字) as String
-    高度测试虚拟标签.lineBreakMode = NSLineBreakMode.ByCharWrapping
+    高度测试虚拟标签.lineBreakMode = NSLineBreakMode.byCharWrapping
     高度测试虚拟标签.numberOfLines = 0
-    var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSizeMake(单元格宽度,CGFloat.max))
+    var 计算后尺寸:CGSize = 高度测试虚拟标签.sizeThatFits(CGSize(width: 单元格宽度,height: CGFloat.greatestFiniteMagnitude))
     计算后尺寸.height = ceil(计算后尺寸.height)
     return 计算后尺寸.height
 }
@@ -110,10 +110,10 @@ func 计算单元格高度(要显示的文字:NSString, 字体大小:CGFloat, �
 func 检查用户登录() {
     let 当前用户信息:NSDictionary? = nil;//全局_Parse读写.当前用户()
     if (当前用户信息 != nil) {
-        全局_当前用户名 = 当前用户信息?.objectForKey("已登录用户名") as! String
-        全局_当前用户邮箱 = 当前用户信息?.objectForKey("已登录邮箱") as! String
+        全局_当前用户名 = 当前用户信息?.object(forKey: "已登录用户名") as! String
+        全局_当前用户邮箱 = 当前用户信息?.object(forKey: "已登录邮箱") as! String
     }
-    NSNotificationCenter.defaultCenter().postNotificationName("切换用户通知", object: nil)
+    NotificationCenter.default.post(name: Notification.Name(rawValue: "切换用户通知"), object: nil)
     
 //    let 资料同步:UserSync = UserSync()
 //    资料同步.下载当前用户同步对象("SyncInfo")

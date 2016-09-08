@@ -15,17 +15,17 @@ class CustomStatusBar: UIWindow {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.messageLabel = UILabel()
-        self.messageLabel.textAlignment = NSTextAlignment.Right
-        self.messageLabel.backgroundColor = UIColor.clearColor()
+        self.messageLabel.textAlignment = NSTextAlignment.right
+        self.messageLabel.backgroundColor = UIColor.clear
        
 //MARK - 主题
         
-        self.messageLabel.textColor = UIColor.whiteColor()
+        self.messageLabel.textColor = UIColor.white
         
-        self.messageLabel.frame = CGRectMake(0, 0, self.frame.width, self.frame.height)
-        self.messageLabel.font = UIFont.systemFontOfSize(13.0)
+        self.messageLabel.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        self.messageLabel.font = UIFont.systemFont(ofSize: 13.0)
         self.windowLevel = UIWindowLevelStatusBar + 1.0
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.addSubview(self.messageLabel)
     }
 
@@ -33,10 +33,10 @@ class CustomStatusBar: UIWindow {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func showMsg(message: NSString)
+    func showMsg(_ message: NSString)
     {
 //        if (self.messageLabel == nil) { }
-        self.hidden = false
+        self.isHidden = false
         self.alpha = 1.0
         messageLabel.text = message as String
     }
@@ -44,14 +44,14 @@ class CustomStatusBar: UIWindow {
     func hideMsg()
     {
         self.alpha = 1.0
-        UIView.animateWithDuration(0.5,
+        UIView.animate(withDuration: 0.5,
             animations:{
                 self.alpha = 0.0
             }, completion: {
                 (completion) in
             if completion {
                 self.messageLabel.text = ""
-                self.hidden = true
+                self.isHidden = true
             }
         })
         

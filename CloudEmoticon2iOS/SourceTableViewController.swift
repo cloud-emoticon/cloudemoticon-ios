@@ -16,7 +16,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     
     var 文件管理器:FileManager = FileManager()
     var 源列表:NSMutableArray = NSMutableArray()
-    var 用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
+    var 用户设置:UserDefaults = UserDefaults.standard
     var 临时数据:NSMutableArray = NSMutableArray()
     var 代理:SourceTableViewControllerDelegate?
     var 已经载入:Bool = false
@@ -30,7 +30,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         super.init(style: style)
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
@@ -49,16 +49,16 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        if (!self.tableView.editing) {
-            左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
+    override func viewWillAppear(_ animated: Bool) {
+        if (!self.tableView.isEditing) {
+            左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
             self.navigationItem.leftBarButtonItem = 左上按钮
-            右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
+            右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
             self.navigationItem.rightBarButtonItem = 右上按钮
         } else {
-            左上按钮 = UIBarButtonItem(title: lang.uage("添加"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
+            左上按钮 = UIBarButtonItem(title: lang.uage("添加"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
             self.navigationItem.leftBarButtonItem = 左上按钮
-            右上按钮 = UIBarButtonItem(title: lang.uage("完成"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
+            右上按钮 = UIBarButtonItem(title: lang.uage("完成"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
             self.navigationItem.rightBarButtonItem = 右上按钮
         }
     }
@@ -68,15 +68,15 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func 载入数据()
     {
         super.viewDidLoad()
-        let set_nowurl:NSString? = 用户设置.stringForKey("nowurl")
+        let set_nowurl:NSString? = 用户设置.string(forKey: "nowurl") as NSString?
         if ((set_nowurl) != nil) {
-            p_nowurl = 用户设置.stringForKey("nowurl")!
+            p_nowurl = 用户设置.string(forKey: "nowurl")! as NSString
         } else {
             用户设置.setValue(p_nowurl, forKey: "nowurl")
             用户设置.synchronize()
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SourceTableViewController.数据载入完毕(_:)), name: "loaddataok", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SourceTableViewController.网络失败时(_:)), name: "网络失败", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SourceTableViewController.数据载入完毕(_:)), name: NSNotification.Name(rawValue: "loaddataok"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SourceTableViewController.网络失败时(_:)), name: NSNotification.Name(rawValue: "网络失败"), object: nil)
         p_storeIsOpen = true
         源列表.removeAllObjects()
         let 刚载入的源列表:NSArray = 文件管理器.loadSources()
@@ -85,11 +85,11 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
             添加本地源()
         } else {
             
-            源列表.addObjectsFromArray(刚载入的源列表 as [AnyObject])
+            源列表.addObjects(from: 刚载入的源列表 as [AnyObject])
         }
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.左上按钮点击(_:)))
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SourceTableViewController.右上按钮点击(_:)))
         self.navigationItem.rightBarButtonItem = 右上按钮
         self.title = lang.uage("源管理")
         self.tableView.reloadData()
@@ -99,13 +99,13 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func 添加本地源()
     {
         let 当前颜文字库记录名称:NSString = ""
-        let 当前颜文字库原始名称:NSString = lang.uage("本地默认源")
+        let 当前颜文字库原始名称:NSString = lang.uage("本地默认源") as NSString
         let 当前颜文字库请求网址:NSString = "localhost"
         let 当前颜文字库删除权限:NSArray = ["default","system"]
         let 当前颜文字库:NSArray = [当前颜文字库记录名称,当前颜文字库原始名称,当前颜文字库请求网址,当前颜文字库删除权限]
         源列表.removeAllObjects()
-        源列表.addObject("iOSv2")
-        源列表.addObject(当前颜文字库)
+        源列表.add("iOSv2")
+        源列表.add(当前颜文字库)
         
     }
     
@@ -138,14 +138,14 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
 //        }
 //    }
     
-    func 加入源(网址:NSString, 来自源商店:Bool)
+    func 加入源(_ 网址:NSString, 来自源商店:Bool)
     {
-        let 网络传输给:Int = NetDownloadTo.SOURCEMANAGER.rawValue
+        let 网络传输给:Int = NetDownloadTo.sourcemanager.rawValue
         let 下载网址:NSString = 网址
-        let 网络请求数组:NSMutableArray = [下载网址,NSNumber(integer: 网络传输给)]
+        let 网络请求数组:NSMutableArray = [下载网址,NSNumber(value: 网络传输给 as Int)]
 //        if (!isStore) {
-        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: true))
-        NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网络请求数组)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "显示等待提示框通知"), object: NSNumber(value: true as Bool))
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "loadwebdata"), object: 网络请求数组)
 //        }
         //插入数据
         if (源列表.count > 0) {
@@ -159,8 +159,8 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                     第一遍循环 = false
                 } else {
                     let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
-                    let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
-                    if (当前颜文字网址.isEqualToString(当前颜文字库网址 as String)) {
+                    let 当前颜文字网址:NSString = 当前颜文字数组.object(at: 2) as! NSString
+                    if (当前颜文字网址.isEqual(to: 当前颜文字库网址 as String)) {
                         重复 = true
                     }
                 }
@@ -169,30 +169,30 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                 let 删除权限:NSArray = ["user"]
                 临时数据 = [当前颜文字库记录名称,当前颜文字库网址,删除权限]
             } else {
-                NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "显示等待提示框通知"), object: NSNumber(value: false as Bool))
                 let 源已在列表中提示框:UIAlertView = UIAlertView(title: lang.uage("你已经添加过这个源了"), message: "", delegate: nil, cancelButtonTitle: lang.uage("确定"))
                 源已在列表中提示框.show()
             }
         }
     }
     
-    func 数据载入完毕(notification:NSNotification)
+    func 数据载入完毕(_ notification:Notification)
     {
         print("数据载入完毕")
         let 临时源列表数据:NSMutableArray = 临时数据
         临时数据 = NSMutableArray()
-        if (!p_tempString.isEqualToString("") && 临时源列表数据.count > 0) {
-            临时源列表数据.insertObject(p_tempString, atIndex: 1)
-            源列表.addObject(临时源列表数据)
-            let indexPath:NSIndexPath = NSIndexPath(forRow: 源列表.count - 2, inSection: 0)
-            self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        if (!p_tempString.isEqual(to: "") && 临时源列表数据.count > 0) {
+            临时源列表数据.insert(p_tempString, at: 1)
+            源列表.add(临时源列表数据)
+            let indexPath:IndexPath = IndexPath(row: 源列表.count - 2, section: 0)
+            self.tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             if (源列表.count > 2) {
-                let 源列表已有数据:NSArray = 源列表.objectAtIndex(1) as! NSArray
-                let 当前网址:NSString = 源列表已有数据.objectAtIndex(2) as! NSString
-                if (当前网址.isEqualToString("localhost")) {
-                    源列表.removeObjectAtIndex(1)
-                    let 要删除的行:NSIndexPath = NSIndexPath(forRow: 0, inSection: 0)
-                    self.tableView.deleteRowsAtIndexPaths([要删除的行], withRowAnimation: UITableViewRowAnimation.Automatic)
+                let 源列表已有数据:NSArray = 源列表.object(at: 1) as! NSArray
+                let 当前网址:NSString = 源列表已有数据.object(at: 2) as! NSString
+                if (当前网址.isEqual(to: "localhost")) {
+                    源列表.removeObject(at: 1)
+                    let 要删除的行:IndexPath = IndexPath(row: 0, section: 0)
+                    self.tableView.deleteRows(at: [要删除的行], with: UITableViewRowAnimation.automatic)
                 }
             }
             
@@ -201,12 +201,12 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         print("选择源")
         print(源列表)
         if (源列表.count == 2) {
-            选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+            选择源(tableView,didSelectRowAtIndexPath: IndexPath(row: 0, section: 0))
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("显示等待提示框通知", object: NSNumber(bool: false))
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "显示等待提示框通知"), object: NSNumber(value: false as Bool))
     }
     
-    func 网络失败时(notification:NSNotification)
+    func 网络失败时(_ notification:Notification)
     {
         print("网络失败")
     }
@@ -214,15 +214,15 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func 文件清理()
     {
         let 文档文件夹:NSString = 文件管理器.DocumentDirectoryAddress()
-        let 全部文件:NSArray = try! 全局_文件管理.contentsOfDirectoryAtPath(文档文件夹 as String)
+        let 全部文件:NSArray = try! 全局_文件管理.contentsOfDirectory(atPath: 文档文件夹 as String) as NSArray
         let 要删除的文件:NSMutableArray = NSMutableArray()
         for 当前文件名对象 in 全部文件 {
             let 当前文件名:NSString = 当前文件名对象 as! NSString
             if(当前文件名.length >= 6)
             {
-                let 当前文件前缀:NSString = 当前文件名.substringToIndex(6)
-                if (当前文件前缀.isEqualToString("cache-")) {
-                要删除的文件.addObject(当前文件名)
+                let 当前文件前缀:NSString = 当前文件名.substring(to: 6) as NSString
+                if (当前文件前缀.isEqual(to: "cache-")) {
+                要删除的文件.add(当前文件名)
                 }
             }
         }
@@ -233,13 +233,13 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                 第一遍循环 = false
             } else {
                 let 当前颜文字数组:NSArray = 当前颜文字对象 as! NSArray
-                let 当前颜文字网址:NSString = 当前颜文字数组.objectAtIndex(2) as! NSString
+                let 当前颜文字网址:NSString = 当前颜文字数组.object(at: 2) as! NSString
                 for i in 0 ..< 要删除的文件.count {
 //                for (var i:Int = 0; i < 要删除的文件.count; i += 1) {
-                    let 要删除的文件名:NSString = 要删除的文件.objectAtIndex(i) as! NSString
+                    let 要删除的文件名:NSString = 要删除的文件.object(at: i) as! NSString
                     let 当前文件名:NSString = NSString(format: "cache-%@.plist", md5(当前颜文字网址 as String) as String)
-                    if (要删除的文件名.isEqualToString(当前文件名 as String)) {
-                        要删除的文件.removeObjectAtIndex(i)
+                    if (要删除的文件名.isEqual(to: 当前文件名 as String)) {
+                        要删除的文件.removeObject(at: i)
                         break;
                     }
                 }
@@ -249,7 +249,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
                     print("[源管理]删除缓存 \(要删除文件完整路径)")
                     var err:NSError? = nil
                     do {
-                        try 全局_文件管理.removeItemAtPath(要删除文件完整路径 as String)
+                        try 全局_文件管理.removeItem(atPath: 要删除文件完整路径 as String)
                     } catch let error as NSError {
                         err = error
                     }
@@ -267,12 +267,12 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         // Dispose of any resources that can be recreated.
     }
 
-    func 左上按钮点击(sender: UIBarButtonItem) {
+    func 左上按钮点击(_ sender: UIBarButtonItem) {
 //        用户设置.synchronize()
-        if (self.tableView.editing) {
+        if (self.tableView.isEditing) {
             let 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
-            添加源对话框.alertViewStyle = UIAlertViewStyle.PlainTextInput
-            let 添加源输入框:UITextField = 添加源对话框.textFieldAtIndex(0) as UITextField!
+            添加源对话框.alertViewStyle = UIAlertViewStyle.plainTextInput
+            let 添加源输入框:UITextField = 添加源对话框.textField(at: 0) as UITextField!
             添加源对话框.tag = 200
             添加源输入框.keyboardType = UIKeyboardType.URL
             添加源输入框.text = "http://emoticon.moe/emoticon/yashi.xml"
@@ -287,28 +287,28 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         if (代理 != nil) {
             代理?.源管理页面代理：退出源管理页面时()
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - 提示框被点击
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int)
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
     {
         let 添加源输入框:
-        UITextField = alertView.textFieldAtIndex(0) as UITextField!
+        UITextField = alertView.textField(at: 0) as UITextField!
         if (alertView.tag == 200) {
             if (buttonIndex == 1) {
                 //添加
-                加入源(添加源输入框.text!, 来自源商店: false)
+                加入源(添加源输入框.text! as NSString, 来自源商店: false)
             } else if (buttonIndex == 2) {
                 //源商店
-                UIApplication.sharedApplication().openURL(NSURL(string: "http://emoticon.moe/?cat=2")!)
+                UIApplication.shared.openURL(URL(string: "http://emoticon.moe/?cat=2")!)
             }
         }
     }
     
-    func 右上按钮点击(sender: UIBarButtonItem) {
-        self.tableView.setEditing(!self.tableView.editing, animated: true)
-        if (self.tableView.editing) {
+    func 右上按钮点击(_ sender: UIBarButtonItem) {
+        self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+        if (self.tableView.isEditing) {
             self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
             self.navigationItem.leftBarButtonItem?.title = lang.uage("添加")
         } else {
@@ -319,130 +319,130 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     }
     
     // MARK: - 表格分组数
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
     // MARK: - 表格行数
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 源列表.count - 1
     }
     
     // MARK: - 表格内容
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let 单元格标识:NSString = "Cell"
-        var 单元格:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(单元格标识 as String)
+        var 单元格:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: 单元格标识 as String)
         if (单元格 == nil) {
-            单元格 = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.Default
-            单元格!.accessoryType = UITableViewCellAccessoryType.None
+            单元格 = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: 单元格标识 as String)
+            单元格!.selectionStyle = UITableViewCellSelectionStyle.default
+            单元格!.accessoryType = UITableViewCellAccessoryType.none
         }
-        let 当前颜文字库:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as! NSArray
-        let 当前颜文字库记录名称:NSString = 当前颜文字库.objectAtIndex(0) as! NSString
-        let 当前颜文字库原始名称:NSString = 当前颜文字库.objectAtIndex(1) as! NSString
-        let 当前颜文字库来源网址:NSString = 当前颜文字库.objectAtIndex(2) as! NSString
-        if (当前颜文字库记录名称.isEqualToString("")) {
+        let 当前颜文字库:NSArray = 源列表.object(at: (indexPath as NSIndexPath).row + 1) as! NSArray
+        let 当前颜文字库记录名称:NSString = 当前颜文字库.object(at: 0) as! NSString
+        let 当前颜文字库原始名称:NSString = 当前颜文字库.object(at: 1) as! NSString
+        let 当前颜文字库来源网址:NSString = 当前颜文字库.object(at: 2) as! NSString
+        if (当前颜文字库记录名称.isEqual(to: "")) {
             单元格!.textLabel?.text = 当前颜文字库原始名称 as String
         } else {
             单元格!.textLabel?.text = NSString(format: "%@(%@)", 当前颜文字库记录名称 as String, 当前颜文字库原始名称 as String) as String
         }
-        if (当前颜文字库来源网址.isEqualToString(p_nowurl as String)) {
-            单元格!.accessoryType = UITableViewCellAccessoryType.Checkmark
+        if (当前颜文字库来源网址.isEqual(to: p_nowurl as String)) {
+            单元格!.accessoryType = UITableViewCellAccessoryType.checkmark
         }
         单元格!.detailTextLabel?.text = 当前颜文字库来源网址 as String
         return 单元格!
     }
     
     // MARK: - 表格更改
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
 //            objects.removeObjectAtIndex(indexPath.row)
 //            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             // MARK: - 删除源
-            let 当前行:NSInteger = indexPath.row + 1
-            let 当前源对象:NSArray = 源列表.objectAtIndex(当前行) as! NSArray
-            let 当前源对象权限:NSArray = 当前源对象.objectAtIndex(3) as! NSArray
-            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
+            let 当前行:NSInteger = (indexPath as NSIndexPath).row + 1
+            let 当前源对象:NSArray = 源列表.object(at: 当前行) as! NSArray
+            let 当前源对象权限:NSArray = 当前源对象.object(at: 3) as! NSArray
+            let 当前源对象网址:NSString = 当前源对象.object(at: 2) as! NSString
             var 当前源对象是否可删除:Bool = false
             for 当前权限用户名对象 in 当前源对象权限
             {
                 let 当前权限用户名:NSString = 当前权限用户名对象 as! NSString
-                if (当前权限用户名.isEqualToString("user") || 当前权限用户名.isEqualToString(全局_当前用户名 as String)) {
+                if (当前权限用户名.isEqual(to: "user") || 当前权限用户名.isEqual(to: 全局_当前用户名 as String)) {
                     当前源对象是否可删除 = true
                     break
                 }
             }
             if (当前源对象是否可删除) {
-                源列表.removeObjectAtIndex(当前行)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                源列表.removeObject(at: 当前行)
+                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
                 if (源列表.count == 1) {
                     添加本地源()
                     tableView.reloadData()
                 }
-                文件管理器.deleteFile(当前源对象网址, smode: FileManager.saveMode.NETWORK)
+                文件管理器.deleteFile(当前源对象网址, smode: FileManager.saveMode.network)
                 文件管理器.saveSources(源列表)
-                选择源(tableView,didSelectRowAtIndexPath: NSIndexPath(forRow: 0, inSection: 0))
+                选择源(tableView,didSelectRowAtIndexPath: IndexPath(row: 0, section: 0))
             } else {
                 UIAlertView(title: lang.uage("无法删除这个源"), message: lang.uage("不具备删除这个源的权限"), delegate: nil, cancelButtonTitle: lang.uage("取消")).show()
             }
             
-        } else if editingStyle == .Insert {
+        } else if editingStyle == .insert {
         }
     }
     
     // MARK: - 表格编辑范围
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
     {
-        return UITableViewCellEditingStyle.Delete
+        return UITableViewCellEditingStyle.delete
     }
     // MARK: - 表格是否可以移动项目
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
     {
         return false
     }
     // MARK: - 表格是否可以编辑
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return true
     }
     // MARK: - 表格项目被移动
-    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath)
     {
-        var 从:NSInteger = sourceIndexPath.row
-        var 至:NSInteger = destinationIndexPath.row
+        var 从:NSInteger = (sourceIndexPath as NSIndexPath).row
+        var 至:NSInteger = (destinationIndexPath as NSIndexPath).row
         
     }
     // MARK: - 点击表格中的项目
-    func 选择源(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func 选择源(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath)
     {
         if (源列表.count > 0) {
-            let 当前源对象:NSArray = 源列表.objectAtIndex(indexPath.row + 1) as! NSArray
-            let 当前源对象网址:NSString = 当前源对象.objectAtIndex(2) as! NSString
+            let 当前源对象:NSArray = 源列表.object(at: (indexPath as NSIndexPath).row + 1) as! NSArray
+            let 当前源对象网址:NSString = 当前源对象.object(at: 2) as! NSString
             for i in 0...(源列表.count-2)
             {
-                let 表格中当前位置:NSIndexPath = NSIndexPath(forRow: i, inSection: 0)
-                let 当前循环单元格:UITableViewCell = tableView.cellForRowAtIndexPath(表格中当前位置)!
-                当前循环单元格.accessoryType = UITableViewCellAccessoryType.None
+                let 表格中当前位置:IndexPath = IndexPath(row: i, section: 0)
+                let 当前循环单元格:UITableViewCell = tableView.cellForRow(at: 表格中当前位置)!
+                当前循环单元格.accessoryType = UITableViewCellAccessoryType.none
             }
-            let 当前单元格:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath)!
-            当前单元格.accessoryType = UITableViewCellAccessoryType.Checkmark
+            let 当前单元格:UITableViewCell = tableView.cellForRow(at: indexPath)!
+            当前单元格.accessoryType = UITableViewCellAccessoryType.checkmark
             保存源列表(当前源对象网址)
         }
     }
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        tableView.deselectRowAtIndexPath(indexPath, animated: true) //闪一下
+        tableView.deselectRow(at: indexPath, animated: true) //闪一下
         选择源(tableView,didSelectRowAtIndexPath: indexPath)
     }
-    func 保存源列表(o_url:NSString)
+    func 保存源列表(_ o_url:NSString)
     {
-        if (!o_url.isEqualToString(p_nowurl as String)) {
+        if (!o_url.isEqual(to: p_nowurl as String)) {
             p_nowurl = o_url
             用户设置.setValue(p_nowurl, forKey: "nowurl")
             用户设置.synchronize()
         }
     }
-        override func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String
+        override func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String
         {
             return lang.uage("删掉喵")
         }

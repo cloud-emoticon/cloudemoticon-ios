@@ -11,13 +11,13 @@ import UIKit
 class ResetSetting: NSObject {
     
     func 清除Document文件夹() {
-        let 文件管理器:NSFileManager = NSFileManager.defaultManager()
-        let 沙盒文件夹字典:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let 文件管理器:Foundation.FileManager = Foundation.FileManager.default
+        let 沙盒文件夹字典:NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let 文档文件夹路径:String = 沙盒文件夹字典[0] as! String
         var error:NSError? = nil
         let 文件列表对象:AnyObject?
         do {
-            文件列表对象 = try 文件管理器.subpathsOfDirectoryAtPath(文档文件夹路径)
+            文件列表对象 = try 文件管理器.subpathsOfDirectory(atPath: 文档文件夹路径) as AnyObject?
         } catch let error1 as NSError {
             error = error1
             文件列表对象 = nil
@@ -28,7 +28,7 @@ class ResetSetting: NSObject {
                 let 文件名:String = 文件名对象 as! String
                 let 要删除文件的完整路径:String = "\(文档文件夹路径)/\(文件名)"
                 do {
-                    try 文件管理器.removeItemAtPath(要删除文件的完整路径)
+                    try 文件管理器.removeItem(atPath: 要删除文件的完整路径)
                 } catch let error1 as NSError {
                     error = error1
                 }

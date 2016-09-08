@@ -10,24 +10,24 @@ import UIKit
 
 class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
-    var 背景管理: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
+    var 背景管理: UITableView = UITableView(frame: CGRect.zero, style: .grouped)
     var list:NSMutableArray = NSMutableArray()
     var bgimageviewer: UIImageView = UIImageView()
     var 设置背景不透明度:UISlider = UISlider()
     var 启用修改背景:Bool = false
     
-    var defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-    var bgopacity:Float? = NSUserDefaults.standardUserDefaults().valueForKey("bgopacity") as! Float?
+    var defaults:UserDefaults = UserDefaults.standard
+    var bgopacity:Float? = UserDefaults.standard.value(forKey: "bgopacity") as! Float?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ColorViewController.transition(_:)), name: "屏幕旋转通知", object: nil)
-        list.addObject(lang.uage("替换主题中的背景图片"))
+        NotificationCenter.default.addObserver(self, selector: #selector(ColorViewController.transition(_:)), name: NSNotification.Name(rawValue: "屏幕旋转通知"), object: nil)
+        list.add(lang.uage("替换主题中的背景图片"))
 //        list.addObject(lang.uage("修改背景图片"))
 //        list.addObject(lang.uage("背景不透明度"))
 
-        背景管理.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        背景管理.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         背景管理.delegate = self
         背景管理.dataSource = self
         
@@ -36,37 +36,37 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
         if(bg != nil) {
             bgimageviewer.image = bg
-            bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
+            bgimageviewer.contentMode = UIViewContentMode.scaleAspectFill
         } else {
-            bgimage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)!
+            bgimage = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)!
             bgimageviewer.image = bgimage
-            bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFit
+            bgimageviewer.contentMode = UIViewContentMode.scaleAspectFit
         }
         
         bgimageviewer.layer.masksToBounds = true
-        bgimageviewer.frame = CGRectMake(self.view.frame.width / 4, 10, self.view.frame.width / 2, self.view.frame.height / 2)
+        bgimageviewer.frame = CGRect(x: self.view.frame.width / 4, y: 10, width: self.view.frame.width / 2, height: self.view.frame.height / 2)
 
         self.view.addSubview(背景管理)
         loadSetting()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         saveSetting()
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        NSNotificationCenter.defaultCenter().postNotificationName("切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: lang.uage("正在切换主题..."))
+    override func viewWillDisappear(_ animated: Bool) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "切换主题通知"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "显示自动关闭的提示框通知"), object: lang.uage("正在切换主题..."))
     }
 
-    func transition(notification:NSNotification)
+    func transition(_ notification:Notification)
     {
         let newScreenSizeArr:NSArray = notification.object as! NSArray
-        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as! CGFloat, newScreenSizeArr.objectAtIndex(1) as! CGFloat)
+        let newScreenSize:CGSize = CGSize(width: newScreenSizeArr.object(at: 0) as! CGFloat, height: newScreenSizeArr.object(at: 1) as! CGFloat)
         
-        背景管理.frame = CGRectMake(0, 0, newScreenSize.width, newScreenSize.height)
+        背景管理.frame = CGRect(x: 0, y: 0, width: newScreenSize.width, height: newScreenSize.height)
         
-        bgimageviewer.frame = CGRectMake(newScreenSize.width / 4, 10, newScreenSize.width / 2, newScreenSize.height / 2)
+        bgimageviewer.frame = CGRect(x: newScreenSize.width / 4, y: 10, width: newScreenSize.width / 2, height: newScreenSize.height / 2)
         背景管理.reloadData()
         bgimageviewer.reloadInputViews()
     }
@@ -76,109 +76,109 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
         return list.count
     }
     
-    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
         return lang.uage("背景")
         }
         return ""
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let CellIdentifier:NSString = "Cell"
-        var cell:UITableViewCell? = 背景管理.dequeueReusableCellWithIdentifier(CellIdentifier as String)
+        var cell:UITableViewCell? = 背景管理.dequeueReusableCell(withIdentifier: CellIdentifier as String)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: CellIdentifier as String)
+            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifier as String)
         }
-        if (indexPath.row == 0) {
+        if ((indexPath as NSIndexPath).row == 0) {
             if (启用修改背景) {
-                cell?.accessoryType = UITableViewCellAccessoryType.Checkmark
+                cell?.accessoryType = UITableViewCellAccessoryType.checkmark
             } else {
-                cell?.accessoryType = UITableViewCellAccessoryType.None
+                cell?.accessoryType = UITableViewCellAccessoryType.none
             }
         } else {
-            cell?.accessoryType = UITableViewCellAccessoryType.None
+            cell?.accessoryType = UITableViewCellAccessoryType.none
         }
-        if(indexPath.row <= 1) {
-        cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
+        if((indexPath as NSIndexPath).row <= 1) {
+        cell?.textLabel?.text = list.object(at: (indexPath as NSIndexPath).row) as? String
         }
-        if(indexPath.row == 2){
-            cell?.textLabel?.text = list.objectAtIndex(indexPath.row) as? String
-            cell?.selectionStyle = .None
-            设置背景不透明度.frame = CGRectMake(90, 13, self.view.frame.size.width - 100, 20)
+        if((indexPath as NSIndexPath).row == 2){
+            cell?.textLabel?.text = list.object(at: (indexPath as NSIndexPath).row) as? String
+            cell?.selectionStyle = .none
+            设置背景不透明度.frame = CGRect(x: 90, y: 13, width: self.view.frame.size.width - 100, height: 20)
             设置背景不透明度.minimumValue = 0
             设置背景不透明度.maximumValue = 100
             设置背景不透明度.value = bgopacity!
             bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
-            设置背景不透明度.addTarget(self, action: #selector(ColorViewController.即时预览透明度(_:)), forControlEvents: UIControlEvents.ValueChanged)
+            设置背景不透明度.addTarget(self, action: #selector(ColorViewController.即时预览透明度(_:)), for: UIControlEvents.valueChanged)
             cell?.addSubview(设置背景不透明度)
         }
-        if(indexPath.row == 3){
+        if((indexPath as NSIndexPath).row == 3){
             cell?.addSubview(bgimageviewer)
-            cell?.selectionStyle = .None
+            cell?.selectionStyle = .none
         }
         return cell!
     }
     
-    func 即时预览透明度(sender:UISlider) {
+    func 即时预览透明度(_ sender:UISlider) {
         bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
     }
     
     func loadSetting()
     {
-        设置背景不透明度.value = defaults.floatForKey("bgopacity")
-        启用修改背景 = defaults.boolForKey("diybg")
+        设置背景不透明度.value = defaults.float(forKey: "bgopacity")
+        启用修改背景 = defaults.bool(forKey: "diybg")
         if (启用修改背景 == true && list.count == 1) {
-            list.addObject(lang.uage("修改背景图片"))
-            list.addObject(lang.uage("背景不透明度"))
-            list.addObject("")
-            list.addObject("")
+            list.add(lang.uage("修改背景图片"))
+            list.add(lang.uage("背景不透明度"))
+            list.add("")
+            list.add("")
         }
     }
     func saveSetting()
     {
-        defaults.setFloat(设置背景不透明度.value, forKey: "bgopacity")
+        defaults.set(设置背景不透明度.value, forKey: "bgopacity")
         defaults.synchronize()
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
-        if(indexPath.row == 3){
+        if((indexPath as NSIndexPath).row == 3){
             return (bgimageviewer.frame.height + 20)
         }
         return 44
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = self.storyboard
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        switch indexPath.row {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch (indexPath as NSIndexPath).row {
         case 0:
            启用修改背景 = !启用修改背景
            if (启用修改背景 == true && list.count == 1) {
-            list.addObject(lang.uage("修改背景图片"))
-            list.addObject(lang.uage("背景不透明度"))
-            list.addObject("")
-            list.addObject("")
+            list.add(lang.uage("修改背景图片"))
+            list.add(lang.uage("背景不透明度"))
+            list.add("")
+            list.add("")
            } else if (启用修改背景 == false && list.count > 1) {
             list.removeLastObject()
             list.removeLastObject()
             list.removeLastObject()
             list.removeLastObject()
            }
-           defaults.setBool(启用修改背景, forKey: "diybg")
+           defaults.set(启用修改背景, forKey: "diybg")
            defaults.synchronize()
            tableView.reloadData()
             break
@@ -192,11 +192,11 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     func selectimage() {
         let actionsheet:UIActionSheet = UIActionSheet(title: lang.uage("选择背景图片加载位置"), delegate: self, cancelButtonTitle: lang.uage("取消"), destructiveButtonTitle: nil, otherButtonTitles:lang.uage("拍照"),lang.uage("相册"),lang.uage("图片库"))
-        actionsheet.actionSheetStyle = UIActionSheetStyle.Default
-        actionsheet.showInView(self.view)
+        actionsheet.actionSheetStyle = UIActionSheetStyle.default
+        actionsheet.show(in: self.view)
     }
     
-    func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
         let picker:UIImagePickerController = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = false
@@ -204,53 +204,53 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         switch(buttonIndex)
         {
         case 0:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.Camera
+                picker.sourceType = UIImagePickerControllerSourceType.camera
             } else {
                 return
             }
             break
         case 1:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.PhotoLibrary))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
             }
             break
         case 2:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.SavedPhotosAlbum))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.SavedPhotosAlbum
+                picker.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
             }
             break
         default:
             break
         }
         
-        picker.modalPresentationStyle = .Popover
+        picker.modalPresentationStyle = .popover
         let popover = picker.popoverPresentationController
-        popover?.sourceRect = CGRectMake(0, 100, 0, 0)
-        popover?.permittedArrowDirections = .Any
-        presentViewController(picker, animated: true, completion: nil)
+        popover?.sourceRect = CGRect(x: 0, y: 100, width: 0, height: 0)
+        popover?.permittedArrowDirections = .any
+        present(picker, animated: true, completion: nil)
     }
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
 //        let image:UIImage = (editingInfo.indexForKey(UIImagePickerControllerEditedImage) as? UIImage)!
-        if(picker.sourceType == UIImagePickerControllerSourceType.Camera){
+        if(picker.sourceType == UIImagePickerControllerSourceType.camera){
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
 
         }
         saveImage(image, WithName: userbgimgname)
-        picker.dismissViewControllerAnimated(true, completion: nil)
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
+        picker.dismiss(animated: true, completion: nil)
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
     }
     
-    func saveImage(tempImage:UIImage, WithName imageName:NSString){
-        let imageData:NSData = UIImagePNGRepresentation(tempImage)!
-        let fullpathttofile:NSString = 全局_文档文件夹.stringByAppendingString(imageName as String) //stringByAppendingPathComponent(imageName as String)
-        imageData.writeToFile(fullpathttofile as String, atomically: false)
+    func saveImage(_ tempImage:UIImage, WithName imageName:NSString){
+        let imageData:Data = UIImagePNGRepresentation(tempImage)!
+        let fullpathttofile = 全局_文档文件夹 + (imageName as String) //stringByAppendingPathComponent(imageName as String)
+        try? imageData.write(to: URL(fileURLWithPath: fullpathttofile as String), options: [])
         bgimageviewer.image = tempImage
-        bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFill
+        bgimageviewer.contentMode = UIViewContentMode.scaleAspectFill
     }
     
     func deletebgimage(){
@@ -261,8 +261,8 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
 //            try NSFileManager.defaultManager().removeItemAtPath(fullpathtofile)
 //        } catch _ {
 //        }
-        bgimageviewer.image = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("basicbg", ofType: "png")!)
-        bgimageviewer.contentMode = UIViewContentMode.ScaleAspectFit
+        bgimageviewer.image = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)
+        bgimageviewer.contentMode = UIViewContentMode.scaleAspectFit
     }
     
     /*

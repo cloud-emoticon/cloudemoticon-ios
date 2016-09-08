@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class FileZip {
+open class FileZip {
     
-    public static func unzipFile(path:String, toDirectory directory:NSSearchPathDirectory, subdirectory:String?) {
+    open static func unzipFile(_ path:String, toDirectory directory:Foundation.FileManager.SearchPathDirectory, subdirectory:String?) {
         // Remove unnecessary slash if need
         let newPath = stripSlashIfNeeded(path)
         var subDir:String?
@@ -21,10 +21,10 @@ public class FileZip {
         // Create generic beginning to file save path
         var savePath = ""
         
-        if let direct = applicationDirectory(directory),
-            savingPath = direct.path {
-                savePath = savingPath + "/"
-        }
+        let direct = applicationDirectory(directory),
+            savingPath = direct?.path
+                savePath = savingPath! + "/"
+        
         
         if let sub = subDir {
             savePath += sub
@@ -33,9 +33,9 @@ public class FileZip {
         
         // Add requested save path
 
-        SSZipArchive.unzipFileAtPath(path, toDestination: savePath)
+        SSZipArchive.unzipFile(atPath: path, toDestination: savePath)
     }
-    public static func unzipFileToTemporaryDirectory(path:String, subdirectory:String?) {
+    open static func unzipFileToTemporaryDirectory(_ path:String, subdirectory:String?) {
         // Remove unnecessary slash if need
         // Remove unnecessary slash if need
         let newPath = stripSlashIfNeeded(path)
@@ -47,10 +47,10 @@ public class FileZip {
         // Create generic beginning to file save path
         var savePath = ""
         
-        if let direct = applicationTemporaryDirectory(),
-            savingPath = direct.path {
-                savePath = savingPath + "/"
-        }
+        let direct = applicationTemporaryDirectory(),
+            savingPath = direct?.path
+                savePath = savingPath! + "/"
+        
         
         if let sub = subDir {
             savePath += sub
@@ -58,10 +58,10 @@ public class FileZip {
         }
         
 
-        SSZipArchive.unzipFileAtPath(path, toDestination: savePath)
+        SSZipArchive.unzipFile(atPath: path, toDestination: savePath)
     }
     
-    public static func unzipEPUB(path:String, subdirectory:String?) -> [NSURL] {
+    open static func unzipEPUB(_ path:String, subdirectory:String?) -> [URL] {
         
         let subD = subdirectory ?? ""
         // TODO: this works but don't force unwrap here!
@@ -75,16 +75,15 @@ public class FileZip {
 
         var savePath = ""
         
-        if let direct = applicationTemporaryDirectory(),
-            savingPath = direct.path {
-                savePath = savingPath + "/EPUB/"
-        }
+        let direct = applicationTemporaryDirectory(),
+            savingPath = direct?.path
+                savePath = savingPath! + "/EPUB/"
         
         if let sub = subDir {
             savePath += sub
             savePath += "/"
         }
-        return EPUBContainerParser().parseXML(NSURL(fileURLWithPath: savePath))
+        return EPUBContainerParser().parseXML(URL(fileURLWithPath: savePath))
     }
     
     
@@ -92,17 +91,17 @@ public class FileZip {
     // private methods
     
     //directories
-    private static func applicationDirectory(directory:NSSearchPathDirectory) -> NSURL? {
+    fileprivate static func applicationDirectory(_ directory:Foundation.FileManager.SearchPathDirectory) -> URL? {
         
         var appDirectory:String?
-        var paths:[AnyObject] = NSSearchPathForDirectoriesInDomains(directory, NSSearchPathDomainMask.UserDomainMask, true);
+        var paths:[AnyObject] = NSSearchPathForDirectoriesInDomains(directory, Foundation.FileManager.SearchPathDomainMask.userDomainMask, true) as [AnyObject];
         if paths.count > 0 {
             if let pathString = paths[0] as? String {
                 appDirectory = pathString
             }
         }
         if let dD = appDirectory {
-            return NSURL(string:dD)
+            return URL(string:dD)
         }
         return nil
     }
@@ -110,10 +109,10 @@ public class FileZip {
     
     
     
-    private static func applicationTemporaryDirectory() -> NSURL? {
+    fileprivate static func applicationTemporaryDirectory() -> URL? {
         
         if let tD:String = NSTemporaryDirectory() {
-            return NSURL(string:tD)
+            return URL(string:tD)
         }
         
         return nil
@@ -122,11 +121,11 @@ public class FileZip {
     
     //pragma mark - strip slashes
     
-    private static func stripSlashIfNeeded(stringWithPossibleSlash:String) -> String {
+    fileprivate static func stripSlashIfNeeded(_ stringWithPossibleSlash:String) -> String {
         var stringWithoutSlash:String = stringWithPossibleSlash
         // If the file name contains a slash at the beginning then we remove so that we don't end up with two
         if stringWithPossibleSlash.hasPrefix("/") {
-            stringWithoutSlash = stringWithPossibleSlash.substringFromIndex(stringWithoutSlash.startIndex.advancedBy(1))
+            stringWithoutSlash = stringWithPossibleSlash.substring(from: stringWithoutSlash.characters.index(stringWithoutSlash.startIndex, offsetBy: 1))
         }
         // Return the string with no slash at the beginning
         return stringWithoutSlash

@@ -10,13 +10,13 @@ import UIKit
 
 class ArrayString: NSObject {
    
-    func 数组转JSON字符串(inArray:NSArray) -> NSString
+    func 数组转JSON字符串(_ inArray:NSArray) -> NSString
     {
-        return NSString(data: try! NSJSONSerialization.dataWithJSONObject(inArray, options: NSJSONWritingOptions()), encoding: NSUTF8StringEncoding)!
+        return NSString(data: try! JSONSerialization.data(withJSONObject: inArray, options: JSONSerialization.WritingOptions()), encoding: String.Encoding.utf8.rawValue)!
     }
     
-    func JSON字符串转数组(inString:NSString) -> NSArray
+    func JSON字符串转数组(_ inString:NSString) -> NSArray
     {
-        return (try! NSJSONSerialization.JSONObjectWithData(inString.dataUsingEncoding(NSUTF8StringEncoding)!, options: NSJSONReadingOptions())) as! NSArray
+        return (try! JSONSerialization.jsonObject(with: inString.data(using: String.Encoding.utf8.rawValue)!, options: JSONSerialization.ReadingOptions())) as! NSArray
     }
 }

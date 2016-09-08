@@ -14,37 +14,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             
     var window: UIWindow?
     var statBar: CustomStatusBar!
-    var netto:NetDownloadTo = NetDownloadTo.NONE
+    var netto:NetDownloadTo = NetDownloadTo.none
     let filemgr:FileManager = FileManager()
-    var 应用运行参数:[NSObject : AnyObject]? = nil
+    var 应用运行参数:[AnyHashable: Any]? = nil
 
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         if (url.scheme == "emostart") {
             return true
         } else if (url.scheme == "cloudemoticon" || url.scheme == "cloudemoticons") {
-            let urlStr:NSString = url.absoluteString
-            let urlarr:NSArray = urlStr.componentsSeparatedByString(":")
+            let urlStr:NSString = url.absoluteString as NSString
+            let urlarr = urlStr.components(separatedBy: ":") as NSArray
             var schemeStr:NSString = "http:"
             if (url.scheme == "cloudemoticons") {
                 schemeStr = "https:"
             }
-            let address:NSString = urlarr.objectAtIndex(1) as! NSString
+            let address:NSString = urlarr.object(at:1) as! NSString
             let downloadURL:NSString = NSString(format: "%@%@", schemeStr, address)
-            let nettoInt:Int = NetDownloadTo.SOURCEMANAGER.rawValue
+            let nettoInt:Int = NetDownloadTo.sourcemanager.rawValue
             
-            let downloadArr:NSMutableArray = [downloadURL,NSNumber(integer: nettoInt)]
+            let downloadArr:NSMutableArray = [downloadURL,NSNumber(value: nettoInt as Int)]
 //            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: downloadArr)
-            NSNotificationCenter.defaultCenter().postNotificationName("切换到源商店通知", object: downloadArr)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "切换到源商店通知"), object: downloadArr)
             return true
         } else if (url.scheme == "cloudemoticonskin") {
-            let 要下载的文件路径:NSString = url.absoluteString
+            let 要下载的文件路径:NSString = url.absoluteString as NSString
             //切换到主题管理页
-            NSNotificationCenter.defaultCenter().postNotificationName("切换到主题管理通知", object: 要下载的文件路径)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "切换到主题管理通知"), object: 要下载的文件路径)
         }
         return false
     }
     
-    func 第三方SDK初始化(launchOptions: [NSObject : AnyObject]?) {
+    func 第三方SDK初始化(_ launchOptions: [AnyHashable: Any]?) {
         //因为涉及第三方SDK的APPKEY，非此项目开发人员请勿使用这些APPKey。
         let 加密设置:CE2CSReader = CE2CSReader()
         加密设置.载入设置()
@@ -62,13 +62,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func 获取设备信息() {
         NSLog("[AppDelegate]启动文件夹：%@", 全局_文档文件夹)
-        NSLog("[AppDelegate]Executable=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleExecutableKey as String) as! String)
-        NSLog("[AppDelegate]Identifier=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleIdentifierKey as String) as! String)
-        NSLog("[AppDelegate]InfoDictionaryVersion=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleInfoDictionaryVersionKey as String) as! String)
+        NSLog("[AppDelegate]Executable=%@", Bundle.main.object(forInfoDictionaryKey: kCFBundleExecutableKey as String) as! String)
+        NSLog("[AppDelegate]Identifier=%@", Bundle.main.object(forInfoDictionaryKey: kCFBundleIdentifierKey as String) as! String)
+        NSLog("[AppDelegate]InfoDictionaryVersion=%@", Bundle.main.object(forInfoDictionaryKey: kCFBundleInfoDictionaryVersionKey as String) as! String)
 //        NSLog("Localizations=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleLocalizationsKey as String) as! String)
-        NSLog("[AppDelegate]Name=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleNameKey as String) as! String)
-        NSLog("[AppDelegate]Version=%@", NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String)
-        let device = UIDevice.currentDevice()
+        NSLog("[AppDelegate]Name=%@", Bundle.main.object(forInfoDictionaryKey: kCFBundleNameKey as String) as! String)
+        NSLog("[AppDelegate]Version=%@", Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String)
+        let device = UIDevice.current
         NSLog("[AppDelegate]device=%@", device.name)
         NSLog("[AppDelegate]systemName=%@", device.systemName)
         NSLog("[AppDelegate]systemVersion=%@", device.systemVersion)
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         获取设备信息()
         
         //MARK - 主题
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent //通知栏文字颜色
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent //通知栏文字颜色
         //载入皮肤
         let 皮肤管理器:SkinManager = SkinManager()
         let 正在使用皮肤内容:NSDictionary? = 皮肤管理器.获得正在使用皮肤内容()
@@ -92,10 +92,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSLog("[AppDelegate]主题：使用默认皮肤。")
             全局_皮肤设置 = NSDictionary()
         }
-        let statBarFrame = UIApplication.sharedApplication().statusBarFrame
-        self.statBar = CustomStatusBar(frame: CGRectMake(statBarFrame.width * 0.6, 0, statBarFrame.width * 0.4, statBarFrame.height))
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loadwebdatace(_:)), name: "loadwebdata", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.loadwebdataokce(_:)), name: "loaddataokce", object: nil)
+        let statBarFrame = UIApplication.shared.statusBarFrame
+        self.statBar = CustomStatusBar(frame: CGRect(x: statBarFrame.width * 0.6, y: 0, width: statBarFrame.width * 0.4, height: statBarFrame.height))
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loadwebdatace(_:)), name: NSNotification.Name(rawValue: "loadwebdata"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.loadwebdataokce(_:)), name: NSNotification.Name(rawValue: "loaddataokce"), object: nil)
         
         lang.载入语言(lang.当前系统语言())
         //        println(lang.系统支持的所有语言())
@@ -106,15 +106,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func 界面初始化() {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let IB:UIStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let IB:UIStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         self.window?.rootViewController = IB.instantiateInitialViewController()
     }
     
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         NSLog("[AppDelegate]云颜文字正在启动...")
         应用运行参数 = launchOptions
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(AppDelegate.重新启动), name: "重新启动通知", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.重新启动), name: NSNotification.Name(rawValue: "重新启动通知"), object: nil)
         界面初始化()
         第三方SDK初始化(应用运行参数)
         设置初始化()
@@ -125,20 +125,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func 重新启动() {
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.window?.rootViewController?.view.alpha = 0
-            }) { (isok:Bool) -> Void in
+            }, completion: { (isok:Bool) -> Void in
                 self.window?.removeFromSuperview()
                 self.window = nil
-                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(AppDelegate.重新加载), userInfo: nil, repeats: false)
-        }
+                Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(AppDelegate.重新加载), userInfo: nil, repeats: false)
+        }) 
     }
     
     func 重新加载() {
         界面初始化()
-        self.window?.rootViewController?.view.transform = CGAffineTransformMakeScale(0.1, 0.1);
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
-            self.window?.rootViewController?.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        self.window?.rootViewController?.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1);
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
+            self.window?.rootViewController?.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0);
         })
         //第三方SDK初始化(应用运行参数) //不需要
         设置初始化()
@@ -148,36 +148,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func 设置初始化()
     {
-        let defaults:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let noFirstRun:Bool = defaults.boolForKey("noFirstRun")
-        let checkbgo:Float? = defaults.floatForKey("bgopacity")
+        let defaults:UserDefaults = UserDefaults.standard
+        let noFirstRun:Bool = defaults.bool(forKey: "noFirstRun")
+        let checkbgo:Float? = defaults.float(forKey: "bgopacity")
         if (!noFirstRun) {
-            defaults.setBool(false, forKey: "exitaftercopy")
-            defaults.setFloat(100, forKey: "adfrequent")
-            defaults.setFloat(40, forKey: "bgopacity")
+            defaults.set(false, forKey: "exitaftercopy")
+            defaults.set(100, forKey: "adfrequent")
+            defaults.set(40, forKey: "bgopacity")
 //            defaults.setBool(true, forKey: "noFirstRun")
             defaults.synchronize()
         }
         if(noFirstRun && checkbgo == 0.0)
         {
-            defaults.setFloat(0.0, forKey: "bgopacity")
+            defaults.set(0.0, forKey: "bgopacity")
             defaults.synchronize()
         }
     }
     
-    func loadwebdatace(notification:NSNotification)
+    func loadwebdatace(_ notification:Notification)
     {
-        statBar.showMsg(lang.uage("正在加载源"))
+        statBar.showMsg(lang.uage("正在加载源") as NSString)
         let 网址和目标位置序号数组:NSArray = notification.object as! NSArray
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         全局_网络繁忙 = true
         filemgr.nowURLarr = 网址和目标位置序号数组
-        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as! NSNumber
-        let 目标位置序号:Int = 目标位置序号对象.integerValue
+        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.object(at: 1) as! NSNumber
+        let 目标位置序号:Int = 目标位置序号对象.intValue
         let 当前下载模式:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
         var alldata:NSArray? = nil
-        if (当前下载模式 != NetDownloadTo.CLOUDEMOTICONREFRESH) {
-            alldata = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        if (当前下载模式 != NetDownloadTo.cloudemoticonrefresh) {
+            alldata = filemgr.LoadArrayFromFile(FileManager.saveMode.network)
         }
         if(alldata == nil)
         {
@@ -186,28 +186,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             p_emodata = alldata!
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("loaddataoks", object: 网址和目标位置序号数组)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "loaddataoks"), object: 网址和目标位置序号数组)
         statBar.hideMsg()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         全局_网络繁忙 = false
     }
     
-    func loadwebdataokce(notification:NSNotification)
+    func loadwebdataokce(_ notification:Notification)
     {
         let 网址和目标位置序号数组:NSArray = notification.object as! NSArray
-        let 网址:NSString = 网址和目标位置序号数组.objectAtIndex(0) as! NSString
-        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.objectAtIndex(1) as! NSNumber
-        let 目标位置序号:Int = 目标位置序号对象.integerValue
+        let 网址:NSString = 网址和目标位置序号数组.object(at: 0) as! NSString
+        let 目标位置序号对象:NSNumber = 网址和目标位置序号数组.object(at: 1) as! NSNumber
+        let 目标位置序号:Int = 目标位置序号对象.intValue
         let 当前下载目标位置:NetDownloadTo = NetDownloadTo(rawValue: 目标位置序号)!
-        let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.NETWORK)
+        let 请求的数据数组:NSArray? = filemgr.LoadArrayFromFile(FileManager.saveMode.network)
         if (请求的数据数组 != nil) {
-            if (当前下载目标位置 == NetDownloadTo.CLOUDEMOTICON || 当前下载目标位置 == NetDownloadTo.CLOUDEMOTICONREFRESH) {
+            if (当前下载目标位置 == NetDownloadTo.cloudemoticon || 当前下载目标位置 == NetDownloadTo.cloudemoticonrefresh) {
                 p_emodata = 请求的数据数组!
             }
         }
         
         statBar.hideMsg()
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         全局_网络繁忙 = false
         
 //        var err:NSError = NSError()
@@ -223,28 +223,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
 
-    func applicationWillResignActive(application: UIApplication) {
+    func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
-    func applicationDidEnterBackground(application: UIApplication) {
+    func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         //p_emodata
     }
 
-    func applicationWillEnterForeground(application: UIApplication) {
+    func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-        NSNotificationCenter.defaultCenter().postNotificationName("WillEnterForeground", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "WillEnterForeground"), object: nil)
     }
 
-    func applicationDidBecomeActive(application: UIApplication) {
+    func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the
 
     }
     
-    func applicationWillTerminate(application: UIApplication) {
+    func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 

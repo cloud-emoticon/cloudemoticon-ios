@@ -9,10 +9,10 @@
 import UIKit
 
 protocol YashiZipDelegate{
-    func 正在准备解压缩文件路径(压缩文件路径:String,压缩文件信息:unz_global_info)
-    func 正在解压缩文件路径(压缩文件路径:String,压缩文件信息:unz_global_info,解压后文件路径:String)
-    func 正在准备解压缩文件(当前文件:Int,总计文件:Int,压缩文件路径:String,文件信息:unz_file_info)
-    func 正在解压缩文件(当前文件:Int,总计文件:Int,压缩文件路径:String,文件信息:unz_file_info)
+    func 正在准备解压缩文件路径(_ 压缩文件路径:String,压缩文件信息:unz_global_info)
+    func 正在解压缩文件路径(_ 压缩文件路径:String,压缩文件信息:unz_global_info,解压后文件路径:String)
+    func 正在准备解压缩文件(_ 当前文件:Int,总计文件:Int,压缩文件路径:String,文件信息:unz_file_info)
+    func 正在解压缩文件(_ 当前文件:Int,总计文件:Int,压缩文件路径:String,文件信息:unz_file_info)
 }
 
 class YashiZip: NSObject, SSZipArchiveDelegate {
@@ -21,49 +21,49 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
     
     // MARK: - 解压缩
     
-    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String) -> Bool {
+    func 解压缩文件(_ 压缩文件路径:String,解压缩目标文件夹:String) -> Bool {
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
-        let isok:Bool = SSZipArchive.unzipFileAtPath(path, toDestination: destination)
+        let isok:Bool = SSZipArchive.unzipFile(atPath: path, toDestination: destination)
         return isok
     }
     
-    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String) throws -> Bool{
+    func 解压缩文件(_ 压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String) throws -> Bool{
 //        var error: NSError = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = nil
+        let error:NSErrorPointer? = nil
         let isok:Bool
         do {
-            try SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password)
+            try SSZipArchive.unzipFile(atPath: path, toDestination: destination, overwrite: overwrite, password: password)
             isok = true
         } catch let error1 as NSError {
-            error.memory = error1
+            error??.pointee = error1
             isok = false
         }
             return isok
     }
     
-    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,代理接收类:YashiZipDelegate) -> Bool {
+    func 解压缩文件(_ 压缩文件路径:String,解压缩目标文件夹:String,代理接收类:YashiZipDelegate) -> Bool {
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
         let dele:SSZipArchiveDelegate = self
-        let isok:Bool = SSZipArchive.unzipFileAtPath(path, toDestination: destination, delegate: dele)
+        let isok:Bool = SSZipArchive.unzipFile(atPath: path, toDestination: destination, delegate: dele)
         return isok
     }
     
-    func 解压缩文件(压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String,代理接收类:YashiZipDelegate) throws {
+    func 解压缩文件(_ 压缩文件路径:String,解压缩目标文件夹:String,覆盖目标文件:Bool,解压缩密码:String,代理接收类:YashiZipDelegate) throws {
 //        var 错误回馈变量指针: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
         let path:String = 压缩文件路径
         let destination:String = 解压缩目标文件夹
         let overwrite:Bool = 覆盖目标文件
         let password:String = 解压缩密码
-        let error:NSErrorPointer = nil
+        let error:NSErrorPointer? = nil
         let dele:SSZipArchiveDelegate = self
         let isok:Bool
-        SSZipArchive.unzipFileAtPath(path, toDestination: destination, overwrite: overwrite, password: password, error: error, delegate: dele) //貌似有error了就不用try了
+        SSZipArchive.unzipFile(atPath: path, toDestination: destination, overwrite: overwrite, password: password, error: error!, delegate: dele) //貌似有error了就不用try了
             isok = true
                 if isok {
             return
@@ -72,14 +72,14 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
     
     // MARK: - 压缩
     
-    func 创建压缩文件(压缩文件路径:String,来源文件路径数组:NSArray) -> Bool {
+    func 创建压缩文件(_ 压缩文件路径:String,来源文件路径数组:NSArray) -> Bool {
         let zippath:String = 压缩文件路径
         let paths:[AnyObject] = 来源文件路径数组 as [AnyObject]
-        let isok:Bool = SSZipArchive.createZipFileAtPath(zippath, withFilesAtPaths: paths)
+        let isok:Bool = SSZipArchive.createZipFile(atPath: zippath, withFilesAtPaths: paths)
         return isok
     }
     
-    func 初始化压缩文件(压缩文件路径:String) {
+    func 初始化压缩文件(_ 压缩文件路径:String) {
         let zippath:String = 压缩文件路径
         解压缩程序 = SSZipArchive(path: zippath)
     }
@@ -92,7 +92,7 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
         return isok
     }
     
-    func 写入文件(要写入的文件路径:String) -> Bool {
+    func 写入文件(_ 要写入的文件路径:String) -> Bool {
         var isok:Bool = false
         if (解压缩程序 != nil) {
             let filepath:String = 要写入的文件路径
@@ -101,12 +101,12 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
         return isok
     }
     
-    func 写入数据(要写入的数据:NSData,文件名:String) -> Bool {
+    func 写入数据(_ 要写入的数据:Data,文件名:String) -> Bool {
         var isok:Bool = false
         if (解压缩程序 != nil) {
-            let data:NSData = 要写入的数据
+            let data:Data = 要写入的数据
             let filename:String = 文件名
-            isok = 解压缩程序!.writeData(data, filename: filename)
+            isok = 解压缩程序!.write(data, filename: filename)
         }
         return isok
     }
@@ -128,19 +128,19 @@ class YashiZip: NSObject, SSZipArchiveDelegate {
     
     // MARK: - 代理方法
     
-    func zipArchiveWillUnzipArchiveAtPath(path: String!, zipInfo: unz_global_info) {
+    func zipArchiveWillUnzipArchive(atPath path: String!, zipInfo: unz_global_info) {
         代理?.正在准备解压缩文件路径(path, 压缩文件信息: zipInfo)
     }
     
-    func zipArchiveDidUnzipArchiveAtPath(path: String!, zipInfo: unz_global_info, unzippedPath: String!) {
+    func zipArchiveDidUnzipArchive(atPath path: String!, zipInfo: unz_global_info, unzippedPath: String!) {
         代理?.正在解压缩文件路径(path, 压缩文件信息: zipInfo, 解压后文件路径: unzippedPath)
     }
     
-    func zipArchiveWillUnzipFileAtIndex(fileIndex: Int, totalFiles: Int, archivePath: String!, fileInfo: unz_file_info) {
+    func zipArchiveWillUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String!, fileInfo: unz_file_info) {
         代理?.正在准备解压缩文件(fileIndex, 总计文件: totalFiles, 压缩文件路径: archivePath, 文件信息: fileInfo)
     }
     
-    func zipArchiveDidUnzipFileAtIndex(fileIndex: Int, totalFiles: Int, archivePath: String!, fileInfo: unz_file_info) {
+    func zipArchiveDidUnzipFile(at fileIndex: Int, totalFiles: Int, archivePath: String!, fileInfo: unz_file_info) {
         代理?.正在解压缩文件(fileIndex, 总计文件: totalFiles, 压缩文件路径: archivePath, 文件信息: fileInfo)
     }
     

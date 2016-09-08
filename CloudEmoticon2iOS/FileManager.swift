@@ -10,41 +10,41 @@ import UIKit
 
 class FileManager: NSObject {
     
-    let fileMgr:NSFileManager = NSFileManager.defaultManager()
+    let fileMgr:Foundation.FileManager = Foundation.FileManager.default
     let className:NSString = "[文件管理器]"
     var nowURLarr:NSArray = [""]
     
     enum saveMode:Int
     {
-        case NETWORK = 0
-        case HISTORY
-        case FAVORITE
-        case CUSTOM
-        case ONLINE
-        case SKIN
+        case network = 0
+        case history
+        case favorite
+        case custom
+        case online
+        case skin
     }
     
    
     //本地文件操作
-    func SaveArrayToFile(arr:NSArray, smode:saveMode)
+    func SaveArrayToFile(_ arr:NSArray, smode:saveMode)
     {
         let fileName:NSString = FileName(smode)
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
             do {
-                try fileMgr.removeItemAtPath(fulladd as String)
+                try fileMgr.removeItem(atPath: fulladd as String)
             } catch _ {
             }
         }
 
-        arr.writeToFile(fulladd as String, atomically: false)
-        if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataok", object: nowURLarr)
+        arr.write(toFile: fulladd as String, atomically: false)
+        if (smode == saveMode.network || smode == saveMode.online) {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "loaddataok"), object: nowURLarr)
         }
     }
     
-    func LoadArrayFromFile(smode:saveMode) -> NSArray?
+    func LoadArrayFromFile(_ smode:saveMode) -> NSArray?
     {
         let fileName:NSString = FileName(smode)
         let fulladd:NSString = FileNameToFullAddress(fileName)
@@ -54,55 +54,55 @@ class FileManager: NSObject {
             let arr:NSArray = NSArray(contentsOfFile: fulladd  as String)!
             return arr
         }
-        if (smode == saveMode.NETWORK || smode == saveMode.ONLINE) {
-            NSNotificationCenter.defaultCenter().postNotificationName("loaddataoks", object: nowURLarr)
+        if (smode == saveMode.network || smode == saveMode.online) {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "loaddataoks"), object: nowURLarr)
         }
         return nil
     }
     
-    func deleteFile(urlStr:NSString, smode:saveMode)
+    func deleteFile(_ urlStr:NSString, smode:saveMode)
     {
         let fileName:NSString = NSString(format: "cache-%@.plist", md5(urlStr as String))
         let fulladd:NSString = FileNameToFullAddress(fileName)
         let isDop:Bool = ChkDupFile(fileName)
         if (isDop) {
             do {
-                try fileMgr.removeItemAtPath(fulladd as String)
+                try fileMgr.removeItem(atPath: fulladd as String)
             } catch _ {
             }
         }
     }
     
-    func FileName(smode:saveMode) -> NSString
+    func FileName(_ smode:saveMode) -> NSString
     {
         switch (smode) {
-        case saveMode.NETWORK:
-            var md5vol:NSString = md5(p_nowurl as String)
-            let nowURLstr:NSString = nowURLarr.objectAtIndex(0) as! NSString
-            if (!nowURLstr.isEqualToString("")) {
-                md5vol = md5(nowURLstr as String)
+        case saveMode.network:
+            var md5vol:NSString = md5(p_nowurl as String) as NSString
+            let nowURLstr:NSString = nowURLarr.object(at: 0) as! NSString
+            if (!nowURLstr.isEqual(to: "")) {
+                md5vol = md5(nowURLstr as String) as NSString
             }
             return NSString.localizedStringWithFormat("cache-%@.plist",md5vol)
-        case saveMode.HISTORY:
+        case saveMode.history:
             return NSString.localizedStringWithFormat("%@-history.plist",全局_当前用户名)
-        case saveMode.FAVORITE:
+        case saveMode.favorite:
             return NSString.localizedStringWithFormat("%@-favorite.plist",全局_当前用户名)
-        case saveMode.CUSTOM:
+        case saveMode.custom:
             return NSString.localizedStringWithFormat("%@-custom.plist",全局_当前用户名)
-        case saveMode.SKIN:
+        case saveMode.skin:
             return NSString.localizedStringWithFormat("%@-skin.plist",全局_当前用户名)
         default:
             return NSString()
         }
     }
     
-    func ChkDupFile(filename:NSString) -> Bool
+    func ChkDupFile(_ filename:NSString) -> Bool
     {
-        let filelist:NSArray = try! fileMgr.contentsOfDirectoryAtPath(DocumentDirectoryAddress() as String)
+        let filelist:NSArray = try! fileMgr.contentsOfDirectory(atPath: DocumentDirectoryAddress() as String) as NSArray
         for nowfilenameObj in filelist
         {
             let nowfilename:NSString = nowfilenameObj as! NSString
-            if (filename.isEqualToString(nowfilename as String))
+            if (filename.isEqual(to: nowfilename as String))
             {
                 return true
             }
@@ -112,12 +112,12 @@ class FileManager: NSObject {
     
     func DocumentDirectoryAddress() -> NSString
     {
-        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentDirectory:NSArray = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true) as NSArray
         let documentDirectoryAddress:NSString = documentDirectory[0] as! NSString
         return NSString.localizedStringWithFormat("%@/",documentDirectoryAddress)
     }
     
-    func FileNameToFullAddress(filename:NSString) -> NSString
+    func FileNameToFullAddress(_ filename:NSString) -> NSString
     {
         return NSString.localizedStringWithFormat("%@%@",DocumentDirectoryAddress(),filename)
     }
@@ -134,9 +134,9 @@ class FileManager: NSObject {
         let sarr:NSArray = NSArray(contentsOfFile: fulladd as String)!
         return sarr
     }
-    func saveSources(sarr:NSArray)
+    func saveSources(_ sarr:NSArray)
     {
-        sarr.writeToFile(FileNameToFullAddress("SourcesList.plist") as String, atomically: false)
+        sarr.write(toFile: FileNameToFullAddress("SourcesList.plist") as String, atomically: false)
     }
     
     func 补充空白数据()

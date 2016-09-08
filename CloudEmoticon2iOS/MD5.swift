@@ -8,12 +8,12 @@
 
 import Foundation
 
-func md5(md5:String) -> String {
+func md5(_ md5:String) -> String {
     
-        let str = md5.cStringUsingEncoding(NSUTF8StringEncoding)
-        let strLen = CC_LONG(md5.lengthOfBytesUsingEncoding(NSUTF8StringEncoding))
+        let str = md5.cString(using: String.Encoding.utf8)
+        let strLen = CC_LONG(md5.lengthOfBytes(using: String.Encoding.utf8))
         let digestLen = Int(CC_MD5_DIGEST_LENGTH)
-        let result = UnsafeMutablePointer<CUnsignedChar>.alloc(digestLen)
+        let result = UnsafeMutablePointer<CUnsignedChar>.allocate(capacity: digestLen)
         
         CC_MD5(str!, strLen, result)
         
@@ -22,7 +22,7 @@ func md5(md5:String) -> String {
             hash.appendFormat("%02x", result[i])
         }
         
-        result.destroy()
+        result.deinitialize()
     
         NSLog("md5")
         return String(format: hash as String)

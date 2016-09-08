@@ -44,14 +44,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     var sortData:NSMutableArray = NSMutableArray()
     var ceData:NSMutableArray = NSMutableArray()
     //主题属性
-    var 列表文字颜色:UIColor = UIColor.blackColor()
-    var 副标题列表文字颜色:UIColor = UIColor.grayColor()
-    var 列表当前选中的行背景色:UIColor = UIColor.lightGrayColor()
+    var 列表文字颜色:UIColor = UIColor.black
+    var 副标题列表文字颜色:UIColor = UIColor.gray
+    var 列表当前选中的行背景色:UIColor = UIColor.lightGray
     var 列表当前选中的行背景图片:UIImage? = nil
-    var 云颜文字左侧分类列表文字颜色:UIColor = UIColor.blackColor()
-    var 云颜文字左侧分类列表选中行背景色:UIColor = UIColor.lightGrayColor()
+    var 云颜文字左侧分类列表文字颜色:UIColor = UIColor.black
+    var 云颜文字左侧分类列表选中行背景色:UIColor = UIColor.lightGray
     var 云颜文字左侧分类列表选中行背景图片:UIImage? = nil
-    var 下拉刷新提示文本颜色:UIColor = UIColor.grayColor()
+    var 下拉刷新提示文本颜色:UIColor = UIColor.gray
     
     @IBOutlet weak var bgpview: UIImageView!
     
@@ -67,10 +67,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let bg:UIImage? = loadbg()
         if(bg != defaultimage){
             bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFill
+            bgpview.contentMode = UIViewContentMode.scaleAspectFill
         } else {
             bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.ScaleAspectFit
+            bgpview.contentMode = UIViewContentMode.scaleAspectFit
         }
         颜文字表格背景.image = bgimage
         颜文字表格背景.contentMode = bgpview.contentMode
@@ -78,8 +78,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     
-    override func viewWillAppear(animated: Bool) {
-        载入数据(NetDownloadTo.CLOUDEMOTICON)
+    override func viewWillAppear(_ animated: Bool) {
+        载入数据(NetDownloadTo.cloudemoticon)
 //        loadbgi()
 //        let 背景透明度:CGFloat = loadopc()
 //        分类表格.alpha = 背景透明度
@@ -90,7 +90,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let p_emoweb:NSArray? = p_emodata
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
-            当前源 = NSString(format: "%@:%@",lang.uage("当前源"),p_emodata.objectAtIndex(1) as! NSString)
+            当前源 = NSString(format: "%@:%@",lang.uage("当前源"),p_emodata.object(at: 1) as! NSString)
             NSLog("%@",当前源)
         } else {
             当前源 = NSString(format: "%@:%@",lang.uage("当前源"),lang.uage("本地内置源"))
@@ -103,9 +103,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //MARK - 主题
         
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        let titlecolor = NSDictionary(object: UIColor.whiteColor(),
-            forKey:NSForegroundColorAttributeName)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        let titlecolor = NSDictionary(object: UIColor.white,
+            forKey:NSForegroundColorAttributeName as NSCopying)
         self.navigationController?.navigationBar.titleTextAttributes = titlecolor as? [String : AnyObject]
         self.title = lang.uage("云颜文字") as String
         载入视图()
@@ -113,22 +113,22 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //Load Data
         分类表格.delegate = self
         分类表格.dataSource = self
-        分类表格.backgroundColor = UIColor.clearColor()
+        分类表格.backgroundColor = UIColor.clear
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
-        颜文字表格.backgroundColor = UIColor.clearColor()
-        搜索颜文字.searchBarStyle = UISearchBarStyle.Minimal
+        颜文字表格.backgroundColor = UIColor.clear
+        搜索颜文字.searchBarStyle = UISearchBarStyle.minimal
         搜索颜文字.placeholder = lang.uage("搜索颜文字")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.切换主题), name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.屏幕旋转 as (CEViewController) -> () -> ()), name: "屏幕旋转通知", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.切换主题), name: NSNotification.Name(rawValue: "切换主题通知"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.屏幕旋转 as (CEViewController) -> () -> ()), name: NSNotification.Name(rawValue: "屏幕旋转通知"), object: nil)
 //        NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: "延迟切换主题", userInfo: nil, repeats: false)
         用户登录视图.载入内容()
         切换主题()
-        载入数据(NetDownloadTo.CLOUDEMOTICON)
+        载入数据(NetDownloadTo.cloudemoticon)
         self.language()
         
-        颜文字表格.contentOffset = CGPointMake(0, 颜文字表格.contentOffset.y-搜索颜文字.frame.size.height)
+        颜文字表格.contentOffset = CGPoint(x: 0, y: 颜文字表格.contentOffset.y-搜索颜文字.frame.size.height)
 }
 //    func 延迟切换主题() {
 //        切换主题()
@@ -142,49 +142,49 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         NSLog("[Skin]->CEViewController")
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
         云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
-        UINavigationBar.appearance().setBackgroundImage(nil, forBarMetrics: UIBarMetrics.Default)
+        UINavigationBar.appearance().setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
-        sortBtn.tintColor = UIColor.whiteColor()
-        scoreBtn.tintColor = UIColor.whiteColor()
-        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.whiteColor(), forKey:NSForegroundColorAttributeName)
+        sortBtn.tintColor = UIColor.white
+        scoreBtn.tintColor = UIColor.white
+        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white, forKey:NSForegroundColorAttributeName as NSCopying)
         self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
-        颜文字表格.backgroundColor = UIColor.whiteColor()
-        列表文字颜色 = UIColor.blackColor()
+        颜文字表格.backgroundColor = UIColor.white
+        列表文字颜色 = UIColor.black
         副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
         列表当前选中的行背景图片 = nil
-        分类表格.backgroundColor = UIColor.clearColor()
+        分类表格.backgroundColor = UIColor.clear
         bgpview.image = nil
-        云颜文字左侧分类列表文字颜色 = UIColor.blackColor()
+        云颜文字左侧分类列表文字颜色 = UIColor.black
         云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
         云颜文字左侧分类列表选中行背景图片 = nil
         搜索颜文字.tintColor = UIColor(red: 201/255.0, green: 201/255.0, blue: 206/255.0, alpha: 1)
-        let 搜索输入框:UITextField = 搜索颜文字.valueForKey("searchField") as! UITextField
-        搜索输入框.textColor = UIColor.blackColor()
-        下拉刷新提示文本颜色 = UIColor.blackColor()
+        let 搜索输入框:UITextField = 搜索颜文字.value(forKey: "searchField") as! UITextField
+        搜索输入框.textColor = UIColor.black
+        下拉刷新提示文本颜色 = UIColor.black
         下拉刷新提示?.textColor = 下拉刷新提示文本颜色
         //背景图默认设置
         bgpview.alpha = 1
         颜文字表格背景.alpha = 1
-        bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        bgpview.contentMode = UIViewContentMode.scaleAspectFill
+        颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
         颜文字表格背景.image = nil
         bgpview.image = nil
 
-        if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
+        if (全局_皮肤设置.count > 0 && 全局_皮肤设置.object(forKey: "md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             
             //图片文件名：顶端导航栏背景图片 yes
-            let navigation_bar_image_S:String = 全局_皮肤设置.objectForKey("navigation_bar_image") as! String
+            let navigation_bar_image_S:String = 全局_皮肤设置.object(forKey: "navigation_bar_image") as! String
             NSLog("[Skin]navigation_bar_image_S=%@",navigation_bar_image_S)
             if (navigation_bar_image_S != "null") {
                 let navigation_bar_image:UIImage? = 主题参数转对象.image(navigation_bar_image_S) //tool_backgroundimage_S
                 if (navigation_bar_image != nil) {
-                    UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, forBarMetrics: UIBarMetrics.Default)
+                    UINavigationBar.appearance().setBackgroundImage(navigation_bar_image, for: UIBarMetrics.default)
                 }
             }
             //RGBA色值：顶端导航栏背景颜色 yes
-            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.objectForKey("navigation_bar_bgcolor") as! String
+            let navigation_bar_bgcolor_S:String = 全局_皮肤设置.object(forKey: "navigation_bar_bgcolor") as! String
             NSLog("[Skin]tnavigation_bar_bgcolor_S=%@",navigation_bar_bgcolor_S)
             if (navigation_bar_bgcolor_S != "null") {
                 let navigation_bar_bgcolor:UIColor? = 主题参数转对象.color(navigation_bar_bgcolor_S) //navigation_bar_bgcolor_S
@@ -194,7 +194,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
 
             //图片文件名：顶端导航栏两侧按钮颜色 yes
-            let navigation_btn_textcolor_S:String = 全局_皮肤设置.objectForKey("navigation_btn_textcolor") as! String
+            let navigation_btn_textcolor_S:String = 全局_皮肤设置.object(forKey: "navigation_btn_textcolor") as! String
             NSLog("[Skin]navigation_btn_textcolor_S=%@",navigation_btn_textcolor_S)
             if (navigation_btn_textcolor_S != "null") {
                 let navigation_btn_textcolor:UIColor? = 主题参数转对象.color(navigation_btn_textcolor_S) //navigation_btn_textcolor_S
@@ -205,19 +205,19 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             
             //RGBA色值：顶端导航栏文字颜色 yes
-            let navigation_seg_tintcolor_S:String = 全局_皮肤设置.objectForKey("navigation_seg_tintcolor") as! String
+            let navigation_seg_tintcolor_S:String = 全局_皮肤设置.object(forKey: "navigation_seg_tintcolor") as! String
             NSLog("[Skin]navigation_seg_tintcolor_S=%@",navigation_seg_tintcolor_S)
             if (navigation_seg_tintcolor_S != "null") {
                 let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S) //navigation_seg_tintcolor_S
-                if (navigation_seg_tintcolor != "null") {
+                if (navigation_seg_tintcolor != nil) {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
-                        forKey:NSForegroundColorAttributeName)
+                        forKey:NSForegroundColorAttributeName as NSCopying)
                     self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
                 }
             }
 
             //RGBA色值：列表的背景色 yes
-            let table_bgcolor_S:String = 全局_皮肤设置.objectForKey("table_bgcolor") as! String
+            let table_bgcolor_S:String = 全局_皮肤设置.object(forKey: "table_bgcolor") as! String
             NSLog("[Skin]table_bgcolor_S=%@",table_bgcolor_S)
             if (table_bgcolor_S != "null") {
                 let table_bgcolor:UIColor? = 主题参数转对象.color(table_bgcolor_S) //table_bgcolor_S
@@ -226,7 +226,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：列表文字颜色 yes
-            let table_textcolor_S:String = 全局_皮肤设置.objectForKey("table_textcolor") as! String
+            let table_textcolor_S:String = 全局_皮肤设置.object(forKey: "table_textcolor") as! String
             NSLog("[Skin]table_textcolor_S=%@",table_textcolor_S)
             if (table_textcolor_S != "null") {
                 let table_textcolor:UIColor? = 主题参数转对象.color(table_textcolor_S) //table_textcolor_S
@@ -235,7 +235,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：副标题列表文字颜色 yes
-            let table_textcolor_d_S:String = 全局_皮肤设置.objectForKey("table_textcolor_d") as! String
+            let table_textcolor_d_S:String = 全局_皮肤设置.object(forKey: "table_textcolor_d") as! String
             NSLog("[Skin]table_textcolor_d_S=%@",table_textcolor_d_S)
             if (table_textcolor_d_S != "null") {
                 let table_textcolor_d:UIColor? = 主题参数转对象.color(table_textcolor_d_S) //table_textcolor_d_S
@@ -244,7 +244,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：列表当前选中的行背景色 yes
-            let table_selectcolor_S:String = 全局_皮肤设置.objectForKey("table_selectcolor") as! String
+            let table_selectcolor_S:String = 全局_皮肤设置.object(forKey: "table_selectcolor") as! String
             NSLog("[Skin]table_selectcolor_S=%@",table_selectcolor_S)
             if (table_selectcolor_S != "null") {
                 let table_selectcolor:UIColor? = 主题参数转对象.color(table_selectcolor_S) //table_selectcolor_S
@@ -253,7 +253,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //图片文件名：列表当前选中的行背景图片 yes
-            let table_selectimage_S:String = 全局_皮肤设置.objectForKey("table_selectimage") as! String
+            let table_selectimage_S:String = 全局_皮肤设置.object(forKey: "table_selectimage") as! String
             NSLog("[Skin]table_selectimage_S=%@",table_selectimage_S)
             if (table_selectimage_S != "null") {
                 let table_selectimage:UIImage? = 主题参数转对象.image(table_selectimage_S) //table_selectimage_S
@@ -262,7 +262,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：云颜文字左侧分类列表背景色 yes
-            let cloudemo_typetable_bgcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgcolor") as! String
+            let cloudemo_typetable_bgcolor_S:String = 全局_皮肤设置.object(forKey: "cloudemo_typetable_bgcolor") as! String
             NSLog("[Skin]cloudemo_typetable_bgcolor_S=%@",cloudemo_typetable_bgcolor_S)
             if (cloudemo_typetable_bgcolor_S != "null") {
                 let cloudemo_typetable_bgcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_bgcolor_S) //cloudemo_typetable_bgcolor_S
@@ -271,7 +271,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //图片文件名：云颜文字左侧分类列表背景图片
-            let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as! String
+            let cloudemo_typetable_bgimage_S:String = 全局_皮肤设置.object(forKey: "cloudemo_typetable_bgimage") as! String
             NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S)
             if (cloudemo_typetable_bgimage_S != "null") {
                 let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
@@ -280,7 +280,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：云颜文字左侧分类列表文字颜色
-            let cloudemo_typetable_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_textcolor") as! String
+            let cloudemo_typetable_textcolor_S:String = 全局_皮肤设置.object(forKey: "cloudemo_typetable_textcolor") as! String
             NSLog("[Skin]cloudemo_typetable_textcolor_S=%@",cloudemo_typetable_textcolor_S)
             if (cloudemo_typetable_textcolor_S != "null") {
                 let cloudemo_typetable_textcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_textcolor_S) //cloudemo_typetable_textcolor_S
@@ -289,7 +289,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //RGBA色值：云颜文字左侧分类列表选中行背景色
-            let cloudemo_typetable_selectcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectcolor") as! String
+            let cloudemo_typetable_selectcolor_S:String = 全局_皮肤设置.object(forKey: "cloudemo_typetable_selectcolor") as! String
             NSLog("[Skin]cloudemo_typetable_selectcolor_S=%@",cloudemo_typetable_selectcolor_S)
             if (cloudemo_typetable_selectcolor_S != "null") {
                 let cloudemo_typetable_selectcolor:UIColor? = 主题参数转对象.color(cloudemo_typetable_selectcolor_S) //cloudemo_typetable_selectcolor_S
@@ -298,7 +298,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
             }
             //图片文件名：云颜文字左侧分类列表选中行背景图片
-            let cloudemo_typetable_selectimage_S:String = 全局_皮肤设置.objectForKey("cloudemo_typetable_selectimage") as! String
+            let cloudemo_typetable_selectimage_S:String = 全局_皮肤设置.object(forKey: "cloudemo_typetable_selectimage") as! String
             NSLog("[Skin]cloudemo_typetable_selectimage_S=%@",cloudemo_typetable_selectimage_S)
             if (cloudemo_typetable_selectimage_S != "null") {
                 let cloudemo_typetable_selectimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_selectimage_S) //cloudemo_typetable_selectimage_S
@@ -317,20 +317,20 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //                }
 //            }
             //RGBA色值：搜索框文字颜色
-            let cloudemo_search_tintcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_search_tintcolor") as! String
+            let cloudemo_search_tintcolor_S:String = 全局_皮肤设置.object(forKey: "cloudemo_search_tintcolor") as! String
             NSLog("[Skin]cloudemo_search_tintcolor_S=%@",cloudemo_search_tintcolor_S)
             
             if (cloudemo_search_tintcolor_S != "null") {
                 let cloudemo_search_tintcolor:UIColor? = 主题参数转对象.color(cloudemo_search_tintcolor_S) //cloudemo_search_tintcolor_S
                 if (cloudemo_search_tintcolor != nil) {
-                    let 搜索输入框:UITextField = 搜索颜文字.valueForKey("searchField") as! UITextField
+                    let 搜索输入框:UITextField = 搜索颜文字.value(forKey: "searchField") as! UITextField
 //                    搜索颜文字.barTintColor = cloudemo_search_tintcolor
                     搜索颜文字.tintColor = cloudemo_search_tintcolor
                     搜索输入框.textColor = cloudemo_search_tintcolor
                 }
             }
             //RGBA色值：下拉刷新文字颜色
-            let cloudemo_downrefresh_textcolor_S:String = 全局_皮肤设置.objectForKey("cloudemo_downrefresh_textcolor") as! String
+            let cloudemo_downrefresh_textcolor_S:String = 全局_皮肤设置.object(forKey: "cloudemo_downrefresh_textcolor") as! String
             NSLog("[Skin]cloudemo_downrefresh_textcolor_S=%@",cloudemo_downrefresh_textcolor_S)
             if (cloudemo_downrefresh_textcolor_S != "null") {
                 let cloudemo_downrefresh_textcolor:UIColor? = 主题参数转对象.color(cloudemo_downrefresh_textcolor_S) //cloudemo_downrefresh_textcolor_S
@@ -349,25 +349,25 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func 刷新背景图() {
-        let 启用修改背景:Bool = NSUserDefaults.standardUserDefaults().boolForKey("diybg")
+        let 启用修改背景:Bool = UserDefaults.standard.bool(forKey: "diybg")
         if (启用修改背景) {
             NSLog("[Skin]背景图被用户替换")
             let bg:UIImage? = loadbg()
             bgpview.image = bgimage
             颜文字表格背景.image = bgimage
             if(bg != defaultimage){
-                bgpview.contentMode = UIViewContentMode.ScaleAspectFill
-                颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+                bgpview.contentMode = UIViewContentMode.scaleAspectFill
+                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
             } else {
-                bgpview.contentMode = UIViewContentMode.ScaleAspectFit
-                颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFit
+                bgpview.contentMode = UIViewContentMode.scaleAspectFit
+                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFit
             }
             bgpview.alpha = loadopc()
             颜文字表格背景.alpha = loadopc()
         } else {
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
-            let background_image_S:String? = 全局_皮肤设置.objectForKey(取背景图) as? String
+            let background_image_S:String? = 全局_皮肤设置.object(forKey: 取背景图) as? String
             if (background_image_S != nil && background_image_S != "null") {
                 NSLog("[Skin]%@_S=%@",取背景图,background_image_S!)
                 let background_image:UIImage? = 主题参数转对象.image(background_image_S) //background_image_S
@@ -377,7 +377,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
 
             //图片文件名：云颜文字左侧分类列表背景图片
-            let cloudemo_typetable_bgimage_S:String? = 全局_皮肤设置.objectForKey("cloudemo_typetable_bgimage") as? String
+            let cloudemo_typetable_bgimage_S:String? = 全局_皮肤设置.object(forKey: "cloudemo_typetable_bgimage") as? String
             if (cloudemo_typetable_bgimage_S != nil && cloudemo_typetable_bgimage_S != "null") {
                 NSLog("[Skin]cloudemo_typetable_bgimage_S=%@",cloudemo_typetable_bgimage_S!)
                 let cloudemo_typetable_bgimage:UIImage? = 主题参数转对象.image(cloudemo_typetable_bgimage_S) //cloudemo_typetable_bgimage_S
@@ -392,14 +392,14 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: "widget2.png"), forBarMetrics: UIBarMetrics.Default)
         sortBtn.title = lang.uage("分类")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.屏幕旋转(_:)), name: "屏幕旋转通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.loadwebdataoks(_:)), name: "loaddataoks", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(CEViewController.load(_:)), name: "loaddataok", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.屏幕旋转(_:)), name: NSNotification.Name(rawValue: "屏幕旋转通知"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.loadwebdataoks(_:)), name: NSNotification.Name(rawValue: "loaddataoks"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.load(_:)), name: NSNotification.Name(rawValue: "loaddataok"), object: nil)
         
         分类表格.tag = 100
         颜文字表格.tag = 101
         
-        分类表格.frame = CGRectMake(0, 0, self.view.frame.size.width * 0.3, self.view.frame.size.height)
+        分类表格.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.3, height: self.view.frame.size.height)
         if (isCanAutoHideSortView())
         {
             let panRecognizer:UIPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(CEViewController.手势执行(_:)))
@@ -407,31 +407,31 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             panRecognizer.maximumNumberOfTouches = 1
             panRecognizer.delegate = self
             滑动最大X坐标 = self.view.frame.width * 0.6
-            分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
-            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width, self.view.frame.height)
+            分类表格.frame = CGRect(x: 0, y: 0, width: 滑动最大X坐标, height: self.view.frame.size.height)
+            颜文字表格.frame = CGRect(x: 分类表格.frame.size.width, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         } else {
             sortBtn.title = ""
             滑动最大X坐标 = self.view.frame.width * 0.3
-            分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, self.view.frame.size.height)
-            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, self.view.frame.width - 分类表格.frame.size.width, self.view.frame.height)
+            分类表格.frame = CGRect(x: 0, y: 0, width: 滑动最大X坐标, height: self.view.frame.size.height)
+            颜文字表格.frame = CGRect(x: 分类表格.frame.size.width, y: 0, width: self.view.frame.width - 分类表格.frame.size.width, height: self.view.frame.height)
         }
         
-        颜文字表格背景.frame = CGRectMake(颜文字表格.frame.origin.x, 颜文字表格.frame.origin.y + 64, 颜文字表格.frame.width, 颜文字表格.frame.height - 113)
-        颜文字表格背景.backgroundColor = UIColor.whiteColor()
-        颜文字表格背景.contentMode = UIViewContentMode.ScaleAspectFill
+        颜文字表格背景.frame = CGRect(x: 颜文字表格.frame.origin.x, y: 颜文字表格.frame.origin.y + 64, width: 颜文字表格.frame.width, height: 颜文字表格.frame.height - 113)
+        颜文字表格背景.backgroundColor = UIColor.white
+        颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
         颜文字表格背景.layer.masksToBounds = true
         
-        用户登录视图.frame = CGRectMake(0, 0, 分类表格.frame.size.width, 80)
+        用户登录视图.frame = CGRect(x: 0, y: 0, width: 分类表格.frame.size.width, height: 80)
 //        userimg.frame = CGRectMake(10, 20, 80, 80)
-        当前源文字框.frame = CGRectMake(10, 100, 分类表格.frame.size.width - 10, 20)
+        当前源文字框.frame = CGRect(x: 10, y: 100, width: 分类表格.frame.size.width - 10, height: 20)
         
 //        用户登录视图.addSubview(userimg)
 //        username.frame = CGRectMake(userimg.frame.origin.x + userimg.frame.size.width + 5, userimg.frame.origin.y, 用户登录视图.frame.size.width - userimg.frame.origin.x - userimg.frame.size.width - 5, userimg.frame.size.height)
 //        username.text = lang.uage("未登录")
 //        username.font = UIFont.systemFontOfSize(13)
         当前源文字框.text = 当前源 as String
-        当前源文字框.font = UIFont.systemFontOfSize(13)
-        当前源文字框.textColor = UIColor.grayColor()
+        当前源文字框.font = UIFont.systemFont(ofSize: 13)
+        当前源文字框.textColor = UIColor.gray
 //        NSLog("当前文字框内容为[%@]", 当前源文字框.text!)
         
 //        用户登录视图.addSubview(username)
@@ -442,7 +442,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //        self.edgesForExtendedLayout = UIRectEdge.None
         
         self.automaticallyAdjustsScrollViewInsets = false
-        if (self.view.frame.height > self.view.frame.width || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+        if (self.view.frame.height > self.view.frame.width || UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
@@ -457,10 +457,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        颜文字表格.layer.masksToBounds = false
         
         搜索颜文字.delegate = self
-        搜索颜文字.autocapitalizationType = UITextAutocapitalizationType.None
+        搜索颜文字.autocapitalizationType = UITextAutocapitalizationType.none
         搜索颜文字.sizeToFit()
         颜文字表格.tableHeaderView = 搜索颜文字
-        颜文字表格.setContentOffset(CGPointMake(0, -20), animated: true)
+        颜文字表格.setContentOffset(CGPoint(x: 0, y: -20), animated: true)
         
         self.view.addSubview(分类表格)
         self.view.addSubview(颜文字表格背景)
@@ -474,11 +474,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if(p_emoweb != nil && p_emodata.count >= 3)
         {
             let p_emoary:NSArray = p_emoweb!
-            y_emoarr = p_emoary.objectAtIndex(3) as! NSArray
+            y_emoarr = p_emoary.object(at: 3) as! NSArray
         } else {
-            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
+            let 内置源路径:NSString = Bundle.main.path(forResource: "default", ofType: "plist")! as NSString
             let p_emo:NSArray! = NSArray(contentsOfFile: 内置源路径 as String)
-            y_emoarr = p_emo.objectAtIndex(3) as! NSArray
+            y_emoarr = p_emo.object(at: 3) as! NSArray
         }
         
         搜索结果.removeAllObjects()
@@ -489,18 +489,18 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             for e_emo  in g_emoarr
             {
                 if ((e_emo as? NSArray) != nil){
-                    搜索结果.addObject(e_emo.objectAtIndex!(0))
-                    if (e_emo.count > 1) {
-                        搜索结果的名称.addObject(e_emo.objectAtIndex!(1))
+                    搜索结果.add((e_emo as AnyObject).object!(at: 0))
+                    if ((e_emo as AnyObject).count > 1) {
+                        搜索结果的名称.add((e_emo as AnyObject).object!(at: 1))
                     } else {
-                        搜索结果的名称.addObject("")
+                        搜索结果的名称.add("")
                     }
                 }
             }
         }
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         if (颜文字表格.frame.origin.x >= self.view.frame.size.width * 0.3){
             return false
         } else {
@@ -508,32 +508,32 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
         搜索颜文字.resignFirstResponder()
     }
     
-    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         搜索颜文字.resignFirstResponder()
     }
     
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         loaddata()
     }
     
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
-        let str:NSString = searchText
-        if (str.isEqualToString("")) {
+        let str:NSString = searchText as NSString
+        if (str.isEqual(to: "")) {
             openSortData(当前分类)
         } else {
             var i = 0
             ceData.removeAllObjects()
             for 搜索结果颜文字 in 搜索结果 {
-                let 匹配:NSRange = 搜索结果颜文字.rangeOfString(str as String, options: NSStringCompareOptions.CaseInsensitiveSearch)
-                let 搜索的颜文字名称 = 搜索结果的名称.objectAtIndex(i) as! NSString
-                let 匹配2:NSRange = 搜索的颜文字名称.rangeOfString(str as String, options: NSStringCompareOptions.CaseInsensitiveSearch)
+                let 匹配:NSRange = (搜索结果颜文字 as AnyObject).range(of: str as String, options: NSString.CompareOptions.caseInsensitive)
+                let 搜索的颜文字名称 = 搜索结果的名称.object(at: i) as! NSString
+                let 匹配2:NSRange = 搜索的颜文字名称.range(of: str as String, options: NSString.CompareOptions.caseInsensitive)
                 if(匹配.length > 0 || 匹配2.length > 0){
-                ceData.addObjectsFromArray([[搜索结果颜文字,搜索的颜文字名称]])
+                ceData.addObjects(from: [[搜索结果颜文字,搜索的颜文字名称]])
                 }
                 i += 1
             }
@@ -541,15 +541,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func 载入数据(downloadTo:NetDownloadTo) {
+    func 载入数据(_ downloadTo:NetDownloadTo) {
         let 下载到位置序号:Int = downloadTo.rawValue
-        let 设置存储:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let 当前下载网址:NSString? = 设置存储.stringForKey("nowurl")
-        if ((当前下载网址 != nil) && !当前下载网址!.isEqualToString("localhost")) {
-            let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(integer: 下载到位置序号)]
-            NSNotificationCenter.defaultCenter().postNotificationName("loadwebdata", object: 网址和目标位置序号数组) //开始下载
+        let 设置存储:UserDefaults = UserDefaults.standard
+        let 当前下载网址:NSString? = 设置存储.string(forKey: "nowurl") as NSString?
+        if ((当前下载网址 != nil) && !当前下载网址!.isEqual(to: "localhost")) {
+            let 网址和目标位置序号数组:NSMutableArray = [当前下载网址!,NSNumber(value: 下载到位置序号 as Int)]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "loadwebdata"), object: 网址和目标位置序号数组) //开始下载
         } else {
-            let 内置源路径:NSString = NSBundle.mainBundle().pathForResource("default", ofType: "plist")!
+            let 内置源路径:NSString = Bundle.main.path(forResource: "default", ofType: "plist")! as NSString
             p_emodata = NSArray(contentsOfFile: 内置源路径 as String)!
             载入本地数据()
             loaddata()
@@ -559,17 +559,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     func 载入本地数据()
     {
         if (p_emodata.count >= 3) {
-            let y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
+            let y_emoarr:NSArray = p_emodata.object(at: 3) as! NSArray
             sortData.removeAllObjects()
             for emogroup_o in y_emoarr
             {
                 let emogroup:NSArray = emogroup_o as! NSArray
-                let groupname:NSString = emogroup.objectAtIndex(0) as! NSString
-                sortData.addObject(groupname)
+                let groupname:NSString = emogroup.object(at: 0) as! NSString
+                sortData.add(groupname)
             }
             分类表格.reloadData()
             if (sortData.count > 0) {
-                分类表格.selectRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), animated: true, scrollPosition: UITableViewScrollPosition.None)
+                分类表格.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.none)
                 openSortData(0)
             }
             
@@ -578,39 +578,39 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func load(notification:NSNotification)
+    func load(_ notification:Notification)
     {
         载入本地数据()
     }
     
-    func loadwebdataoks(notification:NSNotification)
+    func loadwebdataoks(_ notification:Notification)
     {
         let urlArr:NSArray = notification.object as! NSArray
-        let urlStr:NSString = urlArr.objectAtIndex(0) as! NSString
-        let downloadModeIntNB:NSNumber = urlArr.objectAtIndex(1) as! NSNumber
-        let downloadModeInt:Int = downloadModeIntNB.integerValue
+        let urlStr:NSString = urlArr.object(at: 0) as! NSString
+        let downloadModeIntNB:NSNumber = urlArr.object(at: 1) as! NSNumber
+        let downloadModeInt:Int = downloadModeIntNB.intValue
         let nowDownloadMode:NetDownloadTo = NetDownloadTo(rawValue: downloadModeInt)!
-        if (nowDownloadMode == NetDownloadTo.CLOUDEMOTICON || nowDownloadMode == NetDownloadTo.CLOUDEMOTICONREFRESH) {
+        if (nowDownloadMode == NetDownloadTo.cloudemoticon || nowDownloadMode == NetDownloadTo.cloudemoticonrefresh) {
             载入本地数据()
-        } else if (nowDownloadMode == NetDownloadTo.SOURCEMANAGER) {
+        } else if (nowDownloadMode == NetDownloadTo.sourcemanager) {
             if (p_storeIsOpen == false) {
                 切换到源管理页面(urlStr)
             }
         }
     }
     
-    @IBAction func scoreBtn(sender: UIBarButtonItem) {
+    @IBAction func scoreBtn(_ sender: UIBarButtonItem) {
         切换到源管理页面(nil)
     }
     
-    func 切换到源管理页面(要添加的新源网址:NSString?) {
+    func 切换到源管理页面(_ 要添加的新源网址:NSString?) {
         if (源管理页面 != nil) {
             p_storeIsOpen = false
             源管理页面?.代理 = nil
-            源管理页面?.navigationController?.popViewControllerAnimated(false)
+            源管理页面?.navigationController?.popViewController(animated: false)
             源管理页面 = nil
         }
-        源管理页面 = SourceTableViewController(style: UITableViewStyle.Plain)
+        源管理页面 = SourceTableViewController(style: UITableViewStyle.plain)
         源管理页面?.代理 = self
         源管理页面?.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(源管理页面!, animated: true)
@@ -620,52 +620,52 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    @IBAction func sortBtn(sender: UIBarButtonItem) {
+    @IBAction func sortBtn(_ sender: UIBarButtonItem) {
         if (isCanAutoHideSortView()) {
             var x:CGFloat = 0
             if (颜文字表格.frame.origin.x < 滑动最大X坐标 * 0.5) {
                 x = 滑动最大X坐标
-                NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "取消单元格左滑通知"), object: nil)
             }
             self.view.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
-            UIView.animateWithDuration(0.25, animations: {
-                self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+            UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
+            UIView.animate(withDuration: 0.25, animations: {
+                self.颜文字表格.frame = CGRect(x: x, y: self.颜文字表格.frame.origin.y, width: self.颜文字表格.frame.size.width, height: self.颜文字表格.frame.size.height)
+                self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
             })
         }
     }
     
-    func openSortData(row:Int)
+    func openSortData(_ row:Int)
     {
         ceData.removeAllObjects()
-        let y_emoarr:NSArray = p_emodata.objectAtIndex(3) as! NSArray
-        let emogroup_o:NSArray = y_emoarr.objectAtIndex(row) as! NSArray
-        ceData.addObjectsFromArray(emogroup_o  as [AnyObject])
-        ceData.removeObjectAtIndex(0)
+        let y_emoarr:NSArray = p_emodata.object(at: 3) as! NSArray
+        let emogroup_o:NSArray = y_emoarr.object(at: row) as! NSArray
+        ceData.addObjects(from: emogroup_o  as [AnyObject])
+        ceData.removeObject(at: 0)
         颜文字表格.reloadData()
     }
     
-    func 手势执行(recognizer:UITapGestureRecognizer)
+    func 手势执行(_ recognizer:UITapGestureRecognizer)
     {
-        let 手指当前坐标:CGPoint = recognizer.locationInView(self.view)
-        if (recognizer.state == UIGestureRecognizerState.Ended || recognizer.state == UIGestureRecognizerState.Cancelled || recognizer.state == UIGestureRecognizerState.Failed) {
-            NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
+        let 手指当前坐标:CGPoint = recognizer.location(in: self.view)
+        if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled || recognizer.state == UIGestureRecognizerState.failed) {
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "允许单元格接收手势通知"), object: nil)
             手势起始位置X坐标 = 0
             var x:CGFloat = 0
             if (颜文字表格.frame.origin.x > 滑动最大X坐标 * 0.5) {
                 x = 滑动最大X坐标
                 if (isCanAutoHideSortView()) {
-                    NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "取消单元格左滑通知"), object: nil)
                     搜索颜文字.resignFirstResponder()
                 }
             }
             手势中 = false
             self.view.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.EaseInOut)
-            UIView.animateWithDuration(0.15, animations: {
-                self.颜文字表格.frame = CGRectMake(x, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+            UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
+            UIView.animate(withDuration: 0.15, animations: {
+                self.颜文字表格.frame = CGRect(x: x, y: self.颜文字表格.frame.origin.y, width: self.颜文字表格.frame.size.width, height: self.颜文字表格.frame.size.height)
+                self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
                 }, completion: {
                     (completion) in
                     if completion {
@@ -686,13 +686,13 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 }
                 手势起始位置X坐标 = 手指当前坐标.x
                 if (self.手势中 == true) {
-                    self.颜文字表格.frame = CGRectMake(表格的新X坐标, self.颜文字表格.frame.origin.y, self.颜文字表格.frame.size.width, self.颜文字表格.frame.size.height)
-                    self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+                    self.颜文字表格.frame = CGRect(x: 表格的新X坐标, y: self.颜文字表格.frame.origin.y, width: self.颜文字表格.frame.size.width, height: self.颜文字表格.frame.size.height)
+                    self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
                 }
             }
         }
     }
-    func gestureRecognizerShouldBegin(gestureRecognizer: UIGestureRecognizer) -> Bool
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool
     {
         if (isCanAutoHideSortView()) {
             if (颜文字表格.frame.origin.x != 0) {
@@ -700,26 +700,26 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
         }
         手势中 = true
-        let 手指当前坐标:CGPoint = gestureRecognizer.locationInView(self.view)
+        let 手指当前坐标:CGPoint = gestureRecognizer.location(in: self.view)
         手势起始位置X坐标 = 手指当前坐标.x
         return true
     }
     
     func isCanAutoHideSortView() -> Bool
     {
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && self.view.frame.width < self.view.frame.height ) {
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && self.view.frame.width < self.view.frame.height ) {
             return true
         }
         return false
     }
     
     //表格数据
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         if (tableView.tag == 100) {
             return sortData.count
@@ -728,15 +728,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let CellIdentifier:NSString = "Cell"
         
         if (tableView.tag == 100) { //左表
-            var cell:UITableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String)
+            var cell:UITableViewCell? = 分类表格.dequeueReusableCell(withIdentifier: CellIdentifier as String)
             if (cell == nil) {
-                cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
-                cell?.backgroundColor = UIColor.clearColor()
+                cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+                cell?.backgroundColor = UIColor.clear
                 let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
 //                选中行背景视图.backgroundColor = UIColor.redColor()
                 cell?.selectedBackgroundView = 选中行背景视图
@@ -745,17 +745,17 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             选中行背景视图.backgroundColor = 云颜文字左侧分类列表选中行背景色
             选中行背景视图.image = 云颜文字左侧分类列表选中行背景图片
             cell?.textLabel?.textColor = 云颜文字左侧分类列表文字颜色
-            let groupname:NSString = sortData.objectAtIndex(indexPath.row) as! NSString
+            let groupname:NSString = sortData.object(at: (indexPath as NSIndexPath).row) as! NSString
             cell!.textLabel?.text  = groupname as String
             return cell!
         } else {
             
-            var cell:CETableViewCell? = 分类表格.dequeueReusableCellWithIdentifier(CellIdentifier as String) as? CETableViewCell
+            var cell:CETableViewCell? = 分类表格.dequeueReusableCell(withIdentifier: CellIdentifier as String) as? CETableViewCell
             if (cell == nil) {
-                cell = CETableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier: CellIdentifier as String)
-                cell?.backgroundColor = UIColor.clearColor()
-                cell!.selectionStyle = UITableViewCellSelectionStyle.Blue
-                cell!.初始化单元格样式(CETableViewCell.cellMode.CEVIEWCONTROLLER)
+                cell = CETableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+                cell?.backgroundColor = UIColor.clear
+                cell!.selectionStyle = UITableViewCellSelectionStyle.blue
+                cell!.初始化单元格样式(CETableViewCell.cellMode.ceviewcontroller)
                 cell!.代理 = self
                 let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
 //                选中行背景视图.backgroundColor = UIColor.orangeColor()
@@ -767,12 +767,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             cell?.主文字.textColor = 列表文字颜色
             cell?.副文字.textColor = 副标题列表文字颜色
             cell!.单元格在表格中的位置 = indexPath
-            let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
-            let emo:NSString = emoobj.objectAtIndex(0) as! NSString
+            let emoobj:NSArray = ceData.object(at: (indexPath as NSIndexPath).row) as! NSArray
+            let emo:NSString = emoobj.object(at: 0) as! NSString
             cell!.主文字.text = emo as String
 //            cell!.textLabel.text = emo
             if (emoobj.count > 1) {
-                let name:NSString = emoobj.objectAtIndex(1) as! NSString
+                let name:NSString = emoobj.object(at: 1) as! NSString
                 cell!.副文字.text = name as String
             } else {
                 cell!.副文字.text = ""
@@ -780,7 +780,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             
 //            cell?.textLabel.lineBreakMode = NSLineBreakMode.ByCharWrapping
 //            cell?.textLabel.numberOfLines = 0
-            cell?.主文字.lineBreakMode = NSLineBreakMode.ByCharWrapping
+            cell?.主文字.lineBreakMode = NSLineBreakMode.byCharWrapping
             cell?.主文字.numberOfLines = 0
             
 //            let 主文字框高度:CGFloat = heightForString(cell!.主文字.text!, FontSize: 17, andWidth: cell!.frame.size.width) + 8
@@ -798,24 +798,24 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         搜索颜文字.resignFirstResponder()
-        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "取消单元格左滑通知"), object: nil)
         if (tableView.tag == 100) {
             搜索颜文字.text = ""
-            openSortData(indexPath.row)
-            当前分类 = indexPath.row
+            openSortData((indexPath as NSIndexPath).row)
+            当前分类 = (indexPath as NSIndexPath).row
             sortBtn(sortBtn)
         } else {
-            let 颜文字数组:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
+            let 颜文字数组:NSArray = ceData.object(at: (indexPath as NSIndexPath).row) as! NSArray
 //            let 颜文字:NSString = emoobj.objectAtIndex(0) as NSString
 //            let 颜文字名称:NSString = emoobj.objectAtIndex(1) as NSString
-            NSNotificationCenter.defaultCenter().postNotificationName("复制到剪贴板通知", object: 颜文字数组, userInfo: nil)
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "复制到剪贴板通知"), object: 颜文字数组, userInfo: nil)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    func tableView(tableView: UITableView, titleForDeleteConfirmationButtonForRowAtIndexPath indexPath: NSIndexPath) -> String?
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String?
     {
         return lang.uage("删掉喵")
     }
@@ -823,22 +823,22 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //    {
 //        return UITableViewCellEditingStyle.Delete
 //    }
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
     {
         return false
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
     {
         if (tableView.tag == 101) {
             if (ceData.count > 0) {
                 var 文字高度:CGFloat = 44
-                let emoobj:NSArray = ceData.objectAtIndex(indexPath.row) as! NSArray
-                let 主文字内容:NSString = emoobj.objectAtIndex(0) as! NSString
+                let emoobj:NSArray = ceData.object(at: (indexPath as NSIndexPath).row) as! NSArray
+                let 主文字内容:NSString = emoobj.object(at: 0) as! NSString
                 var 副文字内容:NSString = ""
                 let 主文字框高度:CGFloat = 计算单元格高度(主文字内容, 字体大小: 17, 单元格宽度: tableView.frame.width - 20) + 8
                 if (emoobj.count > 1) {
-                    副文字内容 = emoobj.objectAtIndex(1) as! NSString
+                    副文字内容 = emoobj.object(at: 1) as! NSString
                     let 副文字框高度:CGFloat = 计算单元格高度(副文字内容, 字体大小: 12, 单元格宽度: tableView.frame.width - 20) - 13
                     文字高度 = 主文字框高度 + 副文字框高度 + 15
                 } else {
@@ -855,48 +855,48 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return 44
     }
 
-    func 屏幕旋转(notification:NSNotification)
+    func 屏幕旋转(_ notification:Notification)
     {
 //        println("收到屏幕旋转")
         let newScreenSizeArr:NSArray = notification.object as! NSArray
-        let newScreenSize:CGSize = CGSizeMake(newScreenSizeArr.objectAtIndex(0) as! CGFloat, newScreenSizeArr.objectAtIndex(1) as! CGFloat)
+        let newScreenSize:CGSize = CGSize(width: newScreenSizeArr.object(at: 0) as! CGFloat, height: newScreenSizeArr.object(at: 1) as! CGFloat)
     
-        分类表格.frame = CGRectMake(0, 0, 滑动最大X坐标, newScreenSize.height)
+        分类表格.frame = CGRect(x: 0, y: 0, width: 滑动最大X坐标, height: newScreenSize.height)
         
-        if (UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone && newScreenSize.width < newScreenSize.height) {
+        if (UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone && newScreenSize.width < newScreenSize.height) {
             sortBtn.title = lang.uage("分类")
-            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width, newScreenSize.height)
-            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 64, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 113)
+            颜文字表格.frame = CGRect(x: 分类表格.frame.size.width, y: 0, width: newScreenSize.width, height: newScreenSize.height)
+            self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
         } else {
             sortBtn.title = ""
-            颜文字表格.frame = CGRectMake(分类表格.frame.size.width, 0, newScreenSize.width - 分类表格.frame.size.width, newScreenSize.height)
-            self.颜文字表格背景.frame = CGRectMake(self.颜文字表格.frame.origin.x, self.颜文字表格.frame.origin.y + 32, self.颜文字表格.frame.width, self.颜文字表格.frame.height - 81)
+            颜文字表格.frame = CGRect(x: 分类表格.frame.size.width, y: 0, width: newScreenSize.width - 分类表格.frame.size.width, height: newScreenSize.height)
+            self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 32, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 81)
         }
         
-        if (newScreenSize.width < newScreenSize.height || UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+        if (newScreenSize.width < newScreenSize.height || UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
             if(调整搜索栏位置){
-            颜文字表格.setContentOffset(CGPointMake(0, -20), animated: false)
+            颜文字表格.setContentOffset(CGPoint(x: 0, y: -20), animated: false)
             }
         } else {
             分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
             if(调整搜索栏位置){
-            颜文字表格.setContentOffset(CGPointMake(0, 12), animated: false)
+            颜文字表格.setContentOffset(CGPoint(x: 0, y: 12), animated: false)
             }
         }
         颜文字表格.contentInset = 分类表格.contentInset
         let 新的宽度:CGFloat = 颜文字表格.frame.size.width
-        NSNotificationCenter.defaultCenter().postNotificationName("修正单元格尺寸通知", object: 新的宽度)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "修正单元格尺寸通知"), object: 新的宽度)
         颜文字表格.reloadData()
     }
     
     func 源管理页面代理：退出源管理页面时()
     {
-        载入数据(NetDownloadTo.CLOUDEMOTICON)
+        载入数据(NetDownloadTo.cloudemoticon)
         loaddata()
     }
     
-    func scrollViewDidScroll(scrollView: UIScrollView)
+    func scrollViewDidScroll(_ scrollView: UIScrollView)
     {
         搜索颜文字.resignFirstResponder()
         let 表格滚动位置:CGPoint = scrollView.contentOffset
@@ -904,7 +904,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let 表格滚动距离:CGFloat = 0 - 表格滚动位置.y - 表格初始滚动位置
         if (下拉刷新提示 != nil) {
             let 当前表格:UITableView = scrollView as! UITableView
-            下拉刷新提示!.frame = CGRectMake(当前表格.frame.origin.x, 表格初始滚动位置, 当前表格.frame.size.width, 表格滚动距离)
+            下拉刷新提示!.frame = CGRect(x: 当前表格.frame.origin.x, y: 表格初始滚动位置, width: 当前表格.frame.size.width, height: 表格滚动距离)
             下拉刷新提示?.textColor = 下拉刷新提示文本颜色
             if (下拉刷新动作中) {
                 if (表格竖向滚动 < -100.0) {
@@ -921,7 +921,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        }
         if(表格竖向滚动 > -20 && self.view.frame.width < self.view.frame.height){
             调整搜索栏位置 = false
-        } else if(表格竖向滚动 > 12 && self.view.frame.width > self.view.frame.height && UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
+        } else if(表格竖向滚动 > 12 && self.view.frame.width > self.view.frame.height && UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
             调整搜索栏位置 = false
         } else {
             调整搜索栏位置 = true
@@ -929,7 +929,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
     }
     
-    func scrollViewWillBeginDragging(scrollView: UIScrollView)
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
     {
         下拉刷新动作中 = true
         if (self.view.frame.size.width < self.view.frame.size.height) {
@@ -943,50 +943,50 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             下拉刷新提示 = nil
         }
         if (scrollView.frame.size.width == self.view.frame.size.width) {
-            下拉刷新提示 = UILabel(frame: CGRectMake(颜文字表格.frame.origin.x, 表格初始滚动位置, 颜文字表格.frame.size.width, 0))
+            下拉刷新提示 = UILabel(frame: CGRect(x: 颜文字表格.frame.origin.x, y: 表格初始滚动位置, width: 颜文字表格.frame.size.width, height: 0))
         } else {
-            下拉刷新提示 = UILabel(frame: CGRectMake(分类表格.frame.origin.x, 表格初始滚动位置, 分类表格.frame.size.width, 0))
+            下拉刷新提示 = UILabel(frame: CGRect(x: 分类表格.frame.origin.x, y: 表格初始滚动位置, width: 分类表格.frame.size.width, height: 0))
         }
 //        下拉刷新提示!.backgroundColor = UIColor.blueColor()
         下拉刷新提示!.layer.masksToBounds = true
-        下拉刷新提示!.textAlignment = NSTextAlignment.Center
-        下拉刷新提示!.textColor = UIColor.grayColor()
+        下拉刷新提示!.textAlignment = NSTextAlignment.center
+        下拉刷新提示!.textColor = UIColor.gray
         self.view.addSubview(下拉刷新提示!)
     }
     
-    func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         下拉刷新动作中 = false
         let 表格滚动位置:CGPoint = scrollView.contentOffset
         let 表格竖向滚动:CGFloat = 表格滚动位置.y
         if (表格竖向滚动 < -100.0) {
             下拉刷新提示?.text = lang.uage("正在刷新")
             if (全局_网络繁忙 == false) {
-                载入数据(NetDownloadTo.CLOUDEMOTICONREFRESH)
+                载入数据(NetDownloadTo.cloudemoticonrefresh)
                 loaddata()
             }
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("允许单元格接收手势通知", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "允许单元格接收手势通知"), object: nil)
     }
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         下拉刷新提示?.removeFromSuperview()
         下拉刷新提示 = nil
     }
     
-    func 单元格代理：点击滑出的按钮时(点击按钮的ID:Int, 单元格在表格中的位置:NSIndexPath)
+    func 单元格代理：点击滑出的按钮时(_ 点击按钮的ID:Int, 单元格在表格中的位置:IndexPath)
     {
-        NSNotificationCenter.defaultCenter().postNotificationName("取消单元格左滑通知", object: nil)
-        let 当前单元格:CETableViewCell = 颜文字表格.cellForRowAtIndexPath(单元格在表格中的位置) as! CETableViewCell
-        let 颜文字:NSString = 当前单元格.主文字.text!
-        let 颜文字名称:NSString? = 当前单元格.副文字.text
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "取消单元格左滑通知"), object: nil)
+        let 当前单元格:CETableViewCell = 颜文字表格.cellForRow(at: 单元格在表格中的位置) as! CETableViewCell
+        let 颜文字:NSString = 当前单元格.主文字.text! as NSString
+        let 颜文字名称:NSString? = 当前单元格.副文字.text as NSString?
         if (点击按钮的ID == 1) { //收藏
             let 文件管理器:FileManager = FileManager()
-            let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.FAVORITE)
+            let 文件中的数据:NSArray? = 文件管理器.LoadArrayFromFile(FileManager.saveMode.favorite)
             var 收藏中已经存在这个颜文字:Bool = false
             if (文件中的数据 != nil) {
                 for 文件中的颜文字数组对象 in 文件中的数据! {
                     let 文件中的颜文字数组:NSArray = 文件中的颜文字数组对象 as! NSArray
-                    let 文件中的颜文字:NSString = 文件中的颜文字数组.objectAtIndex(0) as! NSString
-                    if (颜文字.isEqualToString(文件中的颜文字 as String)) {
+                    let 文件中的颜文字:NSString = 文件中的颜文字数组.object(at: 0) as! NSString
+                    if (颜文字.isEqual(to: 文件中的颜文字 as String)) {
                         收藏中已经存在这个颜文字 = true
                     }
                 }
@@ -995,36 +995,36 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             if (收藏中已经存在这个颜文字 == false) {
                 let 颜文字数组:NSMutableArray = [颜文字]
                 if (颜文字名称 != nil) {
-                    颜文字数组.addObject(颜文字名称!)
+                    颜文字数组.add(颜文字名称!)
                 }
                 let 收藏:NSMutableArray = NSMutableArray()
-                收藏.addObject(颜文字数组)
+                收藏.add(颜文字数组)
                 if (文件中的数据 != nil) {
-                    收藏.addObjectsFromArray(文件中的数据! as [AnyObject])
+                    收藏.addObjects(from: 文件中的数据! as [AnyObject])
                 }
                 //            if (收藏.count > 100) {
                 //                收藏.removeLastObject()
                 //            }
-                文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.FAVORITE)
+                文件管理器.SaveArrayToFile(收藏, smode: FileManager.saveMode.favorite)
                 保存数据到输入法()
                 提示文字 = NSString(format: "“ %@ ” %@", 颜文字, lang.uage("添加到收藏夹成功"))
             } else {
                 提示文字 = NSString(format: "%@ “ %@ ”",lang.uage("你已经收藏了") ,颜文字)
             }
-            NSNotificationCenter.defaultCenter().postNotificationName("显示自动关闭的提示框通知", object: 提示文字!)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "显示自动关闭的提示框通知"), object: 提示文字!)
         } else { //分享 颜文字
             var 二维码分享按钮入:[QRActivity]? = nil
             if (颜文字.length <= 64) {
                 let 二维码分享按钮:QRActivity = QRActivity()
                 二维码分享按钮.代理 = self
-                二维码缓存 = QRCodeGenerator.qrImageForString(颜文字 as String, imageSize: 200.0)
+                二维码缓存 = QRCodeGenerator.qrImage(for: 颜文字 as String, imageSize: 200.0)
                 二维码分享按钮.设置二维码图片(二维码缓存)
                 二维码分享按钮入 = [二维码分享按钮]
             }
             let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: 二维码分享按钮入)
-            分享视图.modalTransitionStyle = UIModalTransitionStyle.CoverVertical;
-            分享视图.excludedActivityTypes = [UIActivityTypeCopyToPasteboard];
-            self.presentViewController(分享视图, animated: true, completion: nil)
+            分享视图.modalTransitionStyle = UIModalTransitionStyle.coverVertical;
+            分享视图.excludedActivityTypes = [UIActivityType.copyToPasteboard];
+            self.present(分享视图, animated: true, completion: nil)
         }
     }
     
@@ -1048,7 +1048,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
     }
     
     func 显示用户登录框() {
-        let 登录画面:LoginViewController = storyboard?.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
+        let 登录画面:LoginViewController = storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         登录画面.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(登录画面, animated: true)
     }

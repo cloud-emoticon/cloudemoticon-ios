@@ -12,8 +12,6 @@
 		53117E601AE3579B0076CC08 /* SkinInstaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */; };
 		53117E661AE370890076CC08 /* YashiNetworkKit2-Disable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53117E651AE370890076CC08 /* YashiNetworkKit2-Disable.swift */; };
 		5326AD4F1B21F547003731E4 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5326AD4E1B21F547003731E4 /* test.jpg */; };
-		5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */; };
-		5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5332F843199A2354006F76CA /* nowuserimg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5332F842199A2354006F76CA /* nowuserimg.jpg */; };
 		533E537919B861E700DFD2CB /* language-zh-Hans.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537619B861E700DFD2CB /* language-zh-Hans.plist */; };
 		533E537A19B861E700DFD2CB /* language-zh-Hant.plist in Resources */ = {isa = PBXBuildFile; fileRef = 533E537719B861E700DFD2CB /* language-zh-Hant.plist */; };
@@ -67,10 +65,8 @@
 		53A796F01AE2787400755592 /* themedemo.ini in Resources */ = {isa = PBXBuildFile; fileRef = 53A796EF1AE2787400755592 /* themedemo.ini */; };
 		53AB49771AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB49781AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
-		53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49751AE239A90090D955 /* AppGroupIO.swift */; };
 		53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53AB497C1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
-		53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53AB49761AE239A90090D955 /* ArrayString.swift */; };
 		53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53B6EEEA1AF6338400ACAA6A /* EnterView.swift */; };
 		53B6EEF11AF66FA000ACAA6A /* cestart.png in Resources */ = {isa = PBXBuildFile; fileRef = 53B6EEF01AF66FA000ACAA6A /* cestart.png */; };
 		53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C3230C1BB4158B006C09E9 /* YashiNetworkKit3.swift */; };
@@ -105,8 +101,6 @@
 		53F3F8BE1B36D0E200C5C111 /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F3F8BD1B36D0E200C5C111 /* QRView.swift */; };
 		624A111C19BB108D00B4C48E /* SkinTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624A111B19BB108D00B4C48E /* SkinTableViewController.swift */; };
 		8B1418091AF49A1000C278B9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1418081AF49A1000C278B9 /* MD5.swift */; };
-		8B1814011D0AA3A30044AAEC /* EmoSortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */; };
-		8B1814031D0AA3CC0044AAEC /* EmoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */; };
 		8B26E81F196E685900355F3B /* idea-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81D196E685900355F3B /* idea-vector.png */; };
 		8B26E820196E685900355F3B /* idea-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B26E81E196E685900355F3B /* idea-vector@2x.png */; };
 		8B32C00619AF743F00F9AC50 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B32C00519AF743F00F9AC50 /* CoreMotion.framework */; };
@@ -121,15 +115,9 @@
 		8B98EEAD196D36A2000D255E /* edit-vector.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAB196D36A2000D255E /* edit-vector.png */; };
 		8B98EEAE196D36A2000D255E /* edit-vector@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B98EEAC196D36A2000D255E /* edit-vector@2x.png */; };
 		8B9F603F1B33E7B8008DA1BD /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60341B33E7B8008DA1BD /* Accounts.framework */; };
-		8B9F60401B33E7B8008DA1BD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60351B33E7B8008DA1BD /* AudioToolbox.framework */; };
 		8B9F60411B33E7B8008DA1BD /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60361B33E7B8008DA1BD /* CFNetwork.framework */; };
-		8B9F60421B33E7B8008DA1BD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60371B33E7B8008DA1BD /* CoreLocation.framework */; };
 		8B9F60431B33E7B8008DA1BD /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60381B33E7B8008DA1BD /* libsqlite3.dylib */; };
-		8B9F60441B33E7B8008DA1BD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F60391B33E7B8008DA1BD /* MobileCoreServices.framework */; };
 		8B9F60451B33E7B8008DA1BD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F603A1B33E7B8008DA1BD /* QuartzCore.framework */; };
-		8B9F60461B33E7B8008DA1BD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F603B1B33E7B8008DA1BD /* Security.framework */; };
-		8B9F60471B33E7B8008DA1BD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F603C1B33E7B8008DA1BD /* Social.framework */; };
-		8B9F60481B33E7B8008DA1BD /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F603D1B33E7B8008DA1BD /* StoreKit.framework */; };
 		8B9F60491B33E7B8008DA1BD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B9F603E1B33E7B8008DA1BD /* SystemConfiguration.framework */; };
 		8BA411AD19B0E1E1003AEBF2 /* basicbg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA411AC19B0E1E1003AEBF2 /* basicbg.png */; };
 		8BA411AF19B0F046003AEBF2 /* shake.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BA411AE19B0F046003AEBF2 /* shake.png */; };
@@ -153,20 +141,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5328C7AF19B70D0D00C425A8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5328C7A819B70D0D00C425A8;
-			remoteInfo = EmoticonKeyboard;
-		};
-		5328C7B219B70D0D00C425A8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5328C7A819B70D0D00C425A8;
-			remoteInfo = EmoticonKeyboard;
-		};
 		5346D9371993392C00CEFA4B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 53DF28E5196B9CF40058AA42 /* Project object */;
@@ -232,7 +206,6 @@
 			dstSubfolderSpec = 13;
 			files = (
 				8BF8ACFF199335D7001207FC /* cewidget.appex in Embed App Extensions */,
-				5328C7B119B70D0D00C425A8 /* cekeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,12 +218,8 @@
 		53117E5F1AE3579B0076CC08 /* SkinInstaller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinInstaller.swift; sourceTree = "<group>"; };
 		53117E651AE370890076CC08 /* YashiNetworkKit2-Disable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "YashiNetworkKit2-Disable.swift"; sourceTree = "<group>"; };
 		5326AD4E1B21F547003731E4 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
-		5328C7A919B70D0D00C425A8 /* cekeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = cekeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		5328C7AC19B70D0D00C425A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5330ED5F1ABD81AB0026C4B7 /* notepad.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = notepad.txt; sourceTree = "<group>"; };
 		5332F842199A2354006F76CA /* nowuserimg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nowuserimg.jpg; sourceTree = "<group>"; };
-		533E537319B851F700DFD2CB /* EmoticonKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = EmoticonKeyboard.entitlements; sourceTree = "<group>"; };
 		533E537619B861E700DFD2CB /* language-zh-Hans.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hans.plist"; path = "CloudEmoticon2iOS/language-zh-Hans.plist"; sourceTree = "<group>"; };
 		533E537719B861E700DFD2CB /* language-zh-Hant.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "language-zh-Hant.plist"; path = "CloudEmoticon2iOS/language-zh-Hant.plist"; sourceTree = "<group>"; };
 		533E537819B861E700DFD2CB /* Language.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Language.swift; path = CloudEmoticon2iOS/Language.swift; sourceTree = "<group>"; };
@@ -367,8 +336,6 @@
 		53F3F8BD1B36D0E200C5C111 /* QRView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QRView.swift; path = CloudEmoticon2iOS/QRView.swift; sourceTree = "<group>"; };
 		624A111B19BB108D00B4C48E /* SkinTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SkinTableViewController.swift; sourceTree = "<group>"; };
 		8B1418081AF49A1000C278B9 /* MD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MD5.swift; sourceTree = "<group>"; };
-		8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoSortViewController.swift; sourceTree = "<group>"; };
-		8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoViewController.swift; sourceTree = "<group>"; };
 		8B26E81D196E685900355F3B /* idea-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector.png"; sourceTree = "<group>"; };
 		8B26E81E196E685900355F3B /* idea-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "idea-vector@2x.png"; sourceTree = "<group>"; };
 		8B32C00519AF743F00F9AC50 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -383,17 +350,10 @@
 		8B98EEA4196D3390000D255E /* star-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-vector@2x.png"; sourceTree = "<group>"; };
 		8B98EEAB196D36A2000D255E /* edit-vector.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector.png"; sourceTree = "<group>"; };
 		8B98EEAC196D36A2000D255E /* edit-vector@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit-vector@2x.png"; sourceTree = "<group>"; };
-		8B9F60321B33E751008DA1BD /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		8B9F60341B33E7B8008DA1BD /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
-		8B9F60351B33E7B8008DA1BD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		8B9F60361B33E7B8008DA1BD /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		8B9F60371B33E7B8008DA1BD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8B9F60381B33E7B8008DA1BD /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		8B9F60391B33E7B8008DA1BD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		8B9F603A1B33E7B8008DA1BD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		8B9F603B1B33E7B8008DA1BD /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		8B9F603C1B33E7B8008DA1BD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		8B9F603D1B33E7B8008DA1BD /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		8B9F603E1B33E7B8008DA1BD /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		8BA411AC19B0E1E1003AEBF2 /* basicbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = basicbg.png; sourceTree = "<group>"; };
 		8BA411AE19B0F046003AEBF2 /* shake.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shake.png; sourceTree = "<group>"; };
@@ -418,13 +378,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5328C7A619B70D0D00C425A8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		53DF28EA196B9CF40058AA42 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -433,15 +386,9 @@
 				53F3F8981B36C43100C5C111 /* UIKit.framework in Frameworks */,
 				53F3F8961B36C41E00C5C111 /* CoreGraphics.framework in Frameworks */,
 				8B9F603F1B33E7B8008DA1BD /* Accounts.framework in Frameworks */,
-				8B9F60401B33E7B8008DA1BD /* AudioToolbox.framework in Frameworks */,
 				8B9F60411B33E7B8008DA1BD /* CFNetwork.framework in Frameworks */,
-				8B9F60421B33E7B8008DA1BD /* CoreLocation.framework in Frameworks */,
 				8B9F60431B33E7B8008DA1BD /* libsqlite3.dylib in Frameworks */,
-				8B9F60441B33E7B8008DA1BD /* MobileCoreServices.framework in Frameworks */,
 				8B9F60451B33E7B8008DA1BD /* QuartzCore.framework in Frameworks */,
-				8B9F60461B33E7B8008DA1BD /* Security.framework in Frameworks */,
-				8B9F60471B33E7B8008DA1BD /* Social.framework in Frameworks */,
-				8B9F60481B33E7B8008DA1BD /* StoreKit.framework in Frameworks */,
 				8B9F60491B33E7B8008DA1BD /* SystemConfiguration.framework in Frameworks */,
 				535E97161B1059FB00266163 /* libz.dylib in Frameworks */,
 				8B7AFAB01AF3545E0077C644 /* CoreImage.framework in Frameworks */,
@@ -469,24 +416,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */ = {
-			isa = PBXGroup;
-			children = (
-				533E537319B851F700DFD2CB /* EmoticonKeyboard.entitlements */,
-				5328C7AD19B70D0D00C425A8 /* KeyboardViewController.swift */,
-				5328C7AB19B70D0D00C425A8 /* Supporting Files */,
-			);
-			path = EmoticonKeyboard;
-			sourceTree = "<group>";
-		};
-		5328C7AB19B70D0D00C425A8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				5328C7AC19B70D0D00C425A8 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		5346D93319931C6100CEFA4B /* 数据处理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -583,8 +512,6 @@
 			children = (
 				53906A9E1999D5E2000020D1 /* CEViewController.swift */,
 				539405D319A58F3000CE90F2 /* CETableViewCell.swift */,
-				8B1814001D0AA3A30044AAEC /* EmoSortViewController.swift */,
-				8B1814021D0AA3CC0044AAEC /* EmoViewController.swift */,
 			);
 			name = "云颜文字";
 			sourceTree = "<group>";
@@ -726,7 +653,6 @@
 				53A796EE1AE2784C00755592 /* 不参与编译 */,
 				53DF28EF196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				8BF8ACF6199335D7001207FC /* CE2NCWidget */,
-				5328C7AA19B70D0D00C425A8 /* EmoticonKeyboard */,
 				8BF8ACF3199335D7001207FC /* Frameworks */,
 				53DF28EE196B9CF40058AA42 /* Products */,
 			);
@@ -738,7 +664,6 @@
 				53DF28ED196B9CF40058AA42 /* CloudEmoticon2iOS.app */,
 				53DF28FF196B9CF40058AA42 /* CloudEmoticon2iOSTests.xctest */,
 				8BF8ACF2199335D7001207FC /* cewidget.appex */,
-				5328C7A919B70D0D00C425A8 /* cekeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -873,17 +798,10 @@
 				53F3F8971B36C43100C5C111 /* UIKit.framework */,
 				53F3F8951B36C41E00C5C111 /* CoreGraphics.framework */,
 				8B9F60341B33E7B8008DA1BD /* Accounts.framework */,
-				8B9F60351B33E7B8008DA1BD /* AudioToolbox.framework */,
 				8B9F60361B33E7B8008DA1BD /* CFNetwork.framework */,
-				8B9F60371B33E7B8008DA1BD /* CoreLocation.framework */,
 				8B9F60381B33E7B8008DA1BD /* libsqlite3.dylib */,
-				8B9F60391B33E7B8008DA1BD /* MobileCoreServices.framework */,
 				8B9F603A1B33E7B8008DA1BD /* QuartzCore.framework */,
-				8B9F603B1B33E7B8008DA1BD /* Security.framework */,
-				8B9F603C1B33E7B8008DA1BD /* Social.framework */,
-				8B9F603D1B33E7B8008DA1BD /* StoreKit.framework */,
 				8B9F603E1B33E7B8008DA1BD /* SystemConfiguration.framework */,
-				8B9F60321B33E751008DA1BD /* AddressBookUI.framework */,
 				535E97151B1059FB00266163 /* libz.dylib */,
 				8B7AFAAE1AF353220077C644 /* Accelerate.framework */,
 				8B7AFAAA1AF350500077C644 /* CoreImage.framework */,
@@ -918,23 +836,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5328C7A819B70D0D00C425A8 /* cekeyboard */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5328C7B419B70D0D00C425A8 /* Build configuration list for PBXNativeTarget "cekeyboard" */;
-			buildPhases = (
-				5328C7A519B70D0D00C425A8 /* Sources */,
-				5328C7A619B70D0D00C425A8 /* Frameworks */,
-				5328C7A719B70D0D00C425A8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = cekeyboard;
-			productName = EmoticonKeyboard;
-			productReference = 5328C7A919B70D0D00C425A8 /* cekeyboard.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 53DF2909196B9CF40058AA42 /* Build configuration list for PBXNativeTarget "CloudEmoticon2iOS" */;
@@ -951,8 +852,6 @@
 			dependencies = (
 				8BF8ACFE199335D7001207FC /* PBXTargetDependency */,
 				8BF8AD01199335D7001207FC /* PBXTargetDependency */,
-				5328C7B019B70D0D00C425A8 /* PBXTargetDependency */,
-				5328C7B319B70D0D00C425A8 /* PBXTargetDependency */,
 			);
 			name = CloudEmoticon2iOS;
 			productName = CloudEmoticon2iOS;
@@ -1004,21 +903,13 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "神楽坂雅詩 & 神楽坂紫喵";
 				TargetAttributes = {
-					5328C7A819B70D0D00C425A8 = {
-						CreatedOnToolsVersion = 6.0;
-						DevelopmentTeam = ZNVDEVDRX3;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1027,11 +918,13 @@
 					};
 					53DF28FE196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 53DF28EC196B9CF40058AA42;
 					};
 					8BF8ACF1199335D7001207FC = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1058,19 +951,11 @@
 				53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */,
 				53DF28FE196B9CF40058AA42 /* CloudEmoticon2iOSTests */,
 				8BF8ACF1199335D7001207FC /* cewidget */,
-				5328C7A819B70D0D00C425A8 /* cekeyboard */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5328C7A719B70D0D00C425A8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		53DF28EB196B9CF40058AA42 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1132,16 +1017,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5328C7A519B70D0D00C425A8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5328C7AE19B70D0D00C425A8 /* KeyboardViewController.swift in Sources */,
-				53AB497D1AE239A90090D955 /* ArrayString.swift in Sources */,
-				53AB49791AE239A90090D955 /* AppGroupIO.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		53DF28E9196B9CF40058AA42 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1166,7 +1041,6 @@
 				53B6EEEB1AF6338400ACAA6A /* EnterView.swift in Sources */,
 				8BA6684919ACDCB40080C47F /* SettingViewController.swift in Sources */,
 				53796B401B47C2F000A07C09 /* mask.c in Sources */,
-				8B1814031D0AA3CC0044AAEC /* EmoViewController.swift in Sources */,
 				53796B3F1B47C2F000A07C09 /* bitstream.c in Sources */,
 				8BA6684019ACCD390080C47F /* AboutViewController.swift in Sources */,
 				53F3F8801B36B46500C5C111 /* QRActivity.swift in Sources */,
@@ -1213,7 +1087,6 @@
 				53C3230D1BB4158B006C09E9 /* YashiNetworkKit3.swift in Sources */,
 				53AB497B1AE239A90090D955 /* ArrayString.swift in Sources */,
 				53577339199B085D003FF9D3 /* SourceTableViewController.swift in Sources */,
-				8B1814011D0AA3A30044AAEC /* EmoSortViewController.swift in Sources */,
 				5346D93519931C9200CEFA4B /* SwitchCoder.swift in Sources */,
 				535E970F1B10587F00266163 /* FileZip.swift in Sources */,
 				8B5ED96819B8CCD8004A1800 /* EmokbViewController.swift in Sources */,
@@ -1247,16 +1120,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5328C7B019B70D0D00C425A8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5328C7A819B70D0D00C425A8 /* cekeyboard */;
-			targetProxy = 5328C7AF19B70D0D00C425A8 /* PBXContainerItemProxy */;
-		};
-		5328C7B319B70D0D00C425A8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5328C7A819B70D0D00C425A8 /* cekeyboard */;
-			targetProxy = 5328C7B219B70D0D00C425A8 /* PBXContainerItemProxy */;
-		};
 		5346D9381993392C00CEFA4B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 53DF28EC196B9CF40058AA42 /* CloudEmoticon2iOS */;
@@ -1298,48 +1161,11 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		5328C7B519B70D0D00C425A8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = cekeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.keyboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		5328C7B619B70D0D00C425A8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = cekeyboard.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = EmoticonKeyboard/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = org.kagurazaka.ce2.keyboard;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		53DF2907196B9CF40058AA42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1349,8 +1175,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1359,6 +1187,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1371,7 +1200,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1384,6 +1213,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -1393,8 +1223,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1402,6 +1234,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = fast;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -1409,9 +1242,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1420,12 +1254,12 @@
 		53DF290A196B9CF40058AA42 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1437,7 +1271,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = CloudEmoticon2iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1448,18 +1282,19 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		53DF290B196B9CF40058AA42 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = CloudEmoticon2iOS/CloudEmoticon2iOS.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1471,7 +1306,7 @@
 					/usr/include/libxml2,
 				);
 				INFOPLIST_FILE = CloudEmoticon2iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1481,6 +1316,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1500,6 +1336,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1516,6 +1353,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -1531,7 +1369,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = CE2NCWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1541,6 +1379,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1551,7 +1390,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = CE2NCWidget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1561,21 +1400,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5328C7B419B70D0D00C425A8 /* Build configuration list for PBXNativeTarget "cekeyboard" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5328C7B519B70D0D00C425A8 /* Debug */,
-				5328C7B619B70D0D00C425A8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		53DF28E8196B9CF40058AA42 /* Build configuration list for PBXProject "CloudEmoticon2iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

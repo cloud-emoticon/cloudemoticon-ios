@@ -13,24 +13,24 @@ class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AddtoCustom.setTitleColor(UIColor.clearColor(), forState: UIControlState.Disabled)
-        AddtoCustom.setTitle("", forState: UIControlState.Disabled)
+        AddtoCustom.setTitleColor(UIColor.clear, for: UIControlState.disabled)
+        AddtoCustom.setTitle("", for: UIControlState.disabled)
         AddtoCustom.layer.cornerRadius = 4
         RunFamApp.layer.cornerRadius = 4
-        emoEx.frame = CGRectMake(0, 0, self.view.frame.width, 36)
-        self.view.frame = CGRectMake(0, 0, self.view.frame.width, 36)
+        emoEx.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 36)
+        self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 36)
 //        NSLog("%fx%f", self.view.frame.width,self.view.frame.height)
     }
     
     @IBOutlet var emoEx: UIView!
-    override func viewDidAppear(animated: Bool) {
-        emoText.text = UIPasteboard.generalPasteboard().string
-        if(UIPasteboard.generalPasteboard().string == nil)
+    override func viewDidAppear(_ animated: Bool) {
+        emoText.text = UIPasteboard.general.string
+        if(UIPasteboard.general.string == nil)
         {
-            AddtoCustom.hidden = true
+            AddtoCustom.isHidden = true
             emoText.text = "剪贴板空"
         } else {
-            AddtoCustom.hidden = false
+            AddtoCustom.isHidden = false
         }
     }
     
@@ -39,20 +39,20 @@ class TodayViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func widgetPerformUpdateWithCompletionHandler(completionHandler: ((NCUpdateResult) -> Void)!) {
+    func widgetPerformUpdateWithCompletionHandler(_ completionHandler: ((NCUpdateResult) -> Void)!) {
         // Perform any setup necessary in order to update the view.
 
         // If an error is encoutered, use NCUpdateResult.Failed
         // If there's no update required, use NCUpdateResult.NoData
         // If there's an update, use NCUpdateResult.NewData
 
-        completionHandler(NCUpdateResult.NewData)
+        completionHandler(NCUpdateResult.newData)
     }
 
     @IBOutlet weak var AddtoCustom: UIButton!
     @IBOutlet weak var emoText: UILabel!
     
-    @IBAction func AddtoCustom(sender: AnyObject) {
+    @IBAction func AddtoCustom(_ sender: AnyObject) {
 //        var containerURL:NSURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.CloudEmoticon")!
 //        var value:NSString
 //        containerURL = containerURL.URLByAppendingPathComponent("Library/caches/CE2")
@@ -78,25 +78,25 @@ class TodayViewController: UIViewController {
         if (数据数组 == nil) {
             数据数组 = 组数据读写.新建设置()
         }
-        var 自定义数组源:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
+        var 自定义数组源:NSArray = 数据数组!.object(at: 1) as! NSArray
         let 自定义数组:NSMutableArray = NSMutableArray(array: 自定义数组源)
         if (自定义数组.count > 0) {
             for i in 0 ..< 自定义数组.count {
 //            for (var i:Int = 0; i < 自定义数组.count; i += 1) {
-                let 当前自定义条目对象:AnyObject = 自定义数组.objectAtIndex(i)
+                let 当前自定义条目对象:AnyObject = 自定义数组.object(at: i) as AnyObject
                 let 当前自定义条目数组:NSArray = 当前自定义条目对象 as! NSArray
-                let 当前自定义条目:NSString = 当前自定义条目数组.objectAtIndex(0) as! NSString
-                if (当前自定义条目.isEqualToString(emoText.text!)) {
-                    自定义数组.removeObjectAtIndex(i)
+                let 当前自定义条目:NSString = 当前自定义条目数组.object(at: 0) as! NSString
+                if (当前自定义条目.isEqual(to: emoText.text!)) {
+                    自定义数组.removeObject(at: i)
 //                    if (i > 0) {
 //                        i -= 1
 //                    }
                 }
             }
         }
-        自定义数组.insertObject(要添加的记录, atIndex: 0)
+        自定义数组.insert(要添加的记录, at: 0)
         自定义数组源 = 自定义数组 as NSArray
-        let 新数据数组:NSArray = [数据数组!.objectAtIndex(0),自定义数组源,数据数组!.objectAtIndex(2),数据数组!.objectAtIndex(3)]
+        let 新数据数组:NSArray = [数据数组!.object(at: 0),自定义数组源,数据数组!.object(at: 2),数据数组!.object(at: 3)]
         组数据读写.写入设置UD模式(新数据数组)
         emoText.text = "添加成功"
 //        if (数据数组 != nil) {
@@ -114,12 +114,12 @@ class TodayViewController: UIViewController {
 
     @IBOutlet weak var RunFamApp: UIButton!
 
-    @IBAction func RunFamApp(sender: UIButton) {
+    @IBAction func RunFamApp(_ sender: UIButton) {
         emostart(sender)
     }
     
-    func emostart(sender: UIButton!) {
-        extensionContext?.openURL(NSURL(string: "emostart://")!, completionHandler: nil)
+    func emostart(_ sender: UIButton!) {
+        extensionContext?.open(URL(string: "emostart://")!, completionHandler: nil)
     }
     
 

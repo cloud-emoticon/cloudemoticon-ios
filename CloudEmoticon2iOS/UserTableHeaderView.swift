@@ -23,13 +23,13 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
     */
 
     
-    let 头像图标:UIButton = UIButton(type: UIButtonType.System)
-    let 设置图标:UIButton = UIButton(type: UIButtonType.System)
+    let 头像图标:UIButton = UIButton(type: UIButtonType.system)
+    let 设置图标:UIButton = UIButton(type: UIButtonType.system)
     let 主标题:UILabel = UILabel()
     let 副标题:UILabel = UILabel()
     let 背景图片:UIImageView = UIImageView()
     var 默认前景色:UIColor? = nil
-    let 按钮:UIButton = UIButton(type: UIButtonType.Custom)
+    let 按钮:UIButton = UIButton(type: UIButtonType.custom)
     
     func 载入内容() {
         let 头像大小:CGFloat = 32
@@ -37,26 +37,26 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
         let 边界距离:CGFloat = 5
         self.backgroundColor = 全局_默认当前选中行颜色
         默认前景色 = 头像图标.tintColor
-        背景图片.backgroundColor = UIColor.clearColor()
-        背景图片.contentMode = UIViewContentMode.ScaleAspectFill
+        背景图片.backgroundColor = UIColor.clear
+        背景图片.contentMode = UIViewContentMode.scaleAspectFill
         背景图片.clipsToBounds = true
-        背景图片.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        背景图片.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         self.addSubview(背景图片)
-        头像图标.frame = CGRectMake(边界距离, self.frame.size.height - 头像大小 - 边界距离, 头像大小, 头像大小)
-        头像图标.backgroundColor = UIColor.clearColor()
+        头像图标.frame = CGRect(x: 边界距离, y: self.frame.size.height - 头像大小 - 边界距离, width: 头像大小, height: 头像大小)
+        头像图标.backgroundColor = UIColor.clear
         self.addSubview(头像图标)
-        主标题.frame = CGRectMake(边界距离 * 2 + 头像大小, 头像图标.frame.origin.y, self.frame.size.width - 边界距离 * 3 - 头像大小, 20)
-        主标题.font = UIFont.systemFontOfSize(12)
+        主标题.frame = CGRect(x: 边界距离 * 2 + 头像大小, y: 头像图标.frame.origin.y, width: self.frame.size.width - 边界距离 * 3 - 头像大小, height: 20)
+        主标题.font = UIFont.systemFont(ofSize: 12)
         self.addSubview(主标题)
-        副标题.frame = CGRectMake(边界距离 * 2 + 头像大小, 主标题.frame.origin.y + 主标题.frame.size.height, self.frame.size.width - 边界距离 * 3 - 头像大小, 12)
-        副标题.font = UIFont.systemFontOfSize(9)
+        副标题.frame = CGRect(x: 边界距离 * 2 + 头像大小, y: 主标题.frame.origin.y + 主标题.frame.size.height, width: self.frame.size.width - 边界距离 * 3 - 头像大小, height: 12)
+        副标题.font = UIFont.systemFont(ofSize: 9)
         self.addSubview(副标题)
-        设置图标.frame = CGRectMake(self.frame.size.width - 边界距离 - 设置按钮大小, 边界距离, 设置按钮大小, 设置按钮大小)
+        设置图标.frame = CGRect(x: self.frame.size.width - 边界距离 - 设置按钮大小, y: 边界距离, width: 设置按钮大小, height: 设置按钮大小)
         self.addSubview(设置图标)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserTableHeaderView.切换主题), name: "切换主题通知", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UserTableHeaderView.切换用户), name: "切换用户通知", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UserTableHeaderView.切换主题), name: NSNotification.Name(rawValue: "切换主题通知"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(UserTableHeaderView.切换用户), name: NSNotification.Name(rawValue: "切换用户通知"), object: nil)
         按钮.frame = 背景图片.frame
-        按钮.addTarget(self, action: #selector(UserTableHeaderView.点击), forControlEvents: UIControlEvents.TouchUpInside)
+        按钮.addTarget(self, action: #selector(UserTableHeaderView.点击), for: UIControlEvents.touchUpInside)
         self.addSubview(按钮)
         默认文字()
         切换主题()
@@ -82,20 +82,20 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
         //初始设置
         self.backgroundColor = 全局_默认当前选中行颜色
         背景图片.image = nil
-        let 头像图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("shared-vector@2x", ofType: "png")!)!
-        头像图标.setImage(头像图标图片, forState: UIControlState.Normal)
-        let 设置图标图片:UIImage = UIImage(contentsOfFile:NSBundle.mainBundle().pathForResource("settings-vector", ofType: "png")!)!
-        设置图标.setImage(设置图标图片, forState: UIControlState.Normal)
+        let 头像图标图片:UIImage = UIImage(contentsOfFile:Bundle.main.path(forResource: "shared-vector@2x", ofType: "png")!)!
+        头像图标.setImage(头像图标图片, for: UIControlState())
+        let 设置图标图片:UIImage = UIImage(contentsOfFile:Bundle.main.path(forResource: "settings-vector", ofType: "png")!)!
+        设置图标.setImage(设置图标图片, for: UIControlState())
         设置图标.tintColor = 默认前景色
         头像图标.tintColor = 默认前景色
         主标题.textColor = 默认前景色
         副标题.textColor = 默认前景色
         
-        if (全局_皮肤设置.count > 0 && 全局_皮肤设置.objectForKey("md5") != nil) {
+        if (全局_皮肤设置.count > 0 && 全局_皮肤设置.object(forKey: "md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
             
             //RGBA色值：用户登录状态框底色
-            let loginstat_bgcolor_S:String = 全局_皮肤设置.objectForKey("loginstat_bgcolor") as! String
+            let loginstat_bgcolor_S:String = 全局_皮肤设置.object(forKey: "loginstat_bgcolor") as! String
             NSLog("[Skin]loginstat_bgcolor_S=%@",loginstat_bgcolor_S)
             if (loginstat_bgcolor_S != "null") {
                 let loginstat_bgcolor:UIColor? = 主题参数转对象.color(loginstat_bgcolor_S) //loginstat_bgcolor_S
@@ -105,7 +105,7 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
             }
             
             //图片文件名：用户登录状态框背景图片
-            let loginstat_bgimage_S:String = 全局_皮肤设置.objectForKey("loginstat_bgimage") as! String
+            let loginstat_bgimage_S:String = 全局_皮肤设置.object(forKey: "loginstat_bgimage") as! String
             NSLog("[Skin]loginstat_bgimage_S=%@",loginstat_bgimage_S)
             if (loginstat_bgimage_S != "null") {
                 let loginstat_bgimage:UIImage? = 主题参数转对象.image(loginstat_bgimage_S) //loginstat_bgimage_S
@@ -115,27 +115,27 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
             }
             
             //图片文件名：默认头像图片
-            let loginstat_faceimg_S:String = 全局_皮肤设置.objectForKey("loginstat_faceimg") as! String
+            let loginstat_faceimg_S:String = 全局_皮肤设置.object(forKey: "loginstat_faceimg") as! String
             NSLog("[Skin]loginstat_faceimg_S=%@",loginstat_faceimg_S)
             if (loginstat_faceimg_S != "null") {
                 let loginstat_faceimg:UIImage? = 主题参数转对象.image(loginstat_faceimg_S) //loginstat_faceimg_S
                 if (loginstat_faceimg != nil) {
-                    头像图标.setImage(loginstat_faceimg, forState: UIControlState.Normal)
+                    头像图标.setImage(loginstat_faceimg, for: UIControlState())
                 }
             }
             
             //图片文件名：默认设置按钮图片
-            let loginstat_settbtn_S:String = 全局_皮肤设置.objectForKey("loginstat_settbtn") as! String
+            let loginstat_settbtn_S:String = 全局_皮肤设置.object(forKey: "loginstat_settbtn") as! String
             NSLog("[Skin]loginstat_settbtn_S=%@",loginstat_settbtn_S)
             if (loginstat_faceimg_S != "null") {
                 let loginstat_settbtn:UIImage? = 主题参数转对象.image(loginstat_settbtn_S) //loginstat_settbtn_S
                 if (loginstat_settbtn != nil) {
-                    设置图标.setImage(loginstat_settbtn, forState: UIControlState.Normal)
+                    设置图标.setImage(loginstat_settbtn, for: UIControlState())
                 }
             }
             
             //RGBA色值：前景色
-            let loginstat_tintColor_S:String = 全局_皮肤设置.objectForKey("loginstat_tintColor") as! String
+            let loginstat_tintColor_S:String = 全局_皮肤设置.object(forKey: "loginstat_tintColor") as! String
             NSLog("[Skin]loginstat_tintColor_S=%@",loginstat_tintColor_S)
             if (loginstat_tintColor_S != "null") {
                 let loginstat_tintColor:UIColor? = 主题参数转对象.color(loginstat_tintColor_S) //loginstat_tintColor_S
@@ -161,7 +161,7 @@ class UserTableHeaderView: UIView, UIAlertViewDelegate {
         }
     }
     
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if (buttonIndex == 5) {
             //全局_Parse读写.注销用户()
             全局_当前用户名 = ""

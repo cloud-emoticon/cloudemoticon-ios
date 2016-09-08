@@ -9,13 +9,13 @@
 import UIKit
 
 class SkinManager: NSObject {
-    let 文件管理器:NSFileManager = NSFileManager.defaultManager()
+    let 文件管理器:Foundation.FileManager = Foundation.FileManager.default
     
     func 取skin文件夹路径() -> String { //不存在则创建
         let skin文件夹路径:String = "\(全局_文档文件夹)/skin"
-        if (文件管理器.fileExistsAtPath(skin文件夹路径) == false) {
+        if (文件管理器.fileExists(atPath: skin文件夹路径) == false) {
             do {
-                try 文件管理器.createDirectoryAtPath(skin文件夹路径, withIntermediateDirectories: false, attributes: nil)
+                try 文件管理器.createDirectory(atPath: skin文件夹路径, withIntermediateDirectories: false, attributes: nil)
             } catch _ {
             }
         }
@@ -24,13 +24,13 @@ class SkinManager: NSObject {
     
     func 读取皮肤列表() -> NSArray? {
         let skin文件夹路径:String = 取skin文件夹路径()
-        let 文件管理器:NSFileManager = NSFileManager.defaultManager()
-        let skin文件夹列表:NSArray? = try? 文件管理器.contentsOfDirectoryAtPath(skin文件夹路径)
+        let 文件管理器:Foundation.FileManager = Foundation.FileManager.default
+        let skin文件夹列表:NSArray? = try! 文件管理器.contentsOfDirectory(atPath: skin文件夹路径) as NSArray?
         if (skin文件夹列表 != nil) {
             let INI读取器:INIReader = INIReader()
             let 主题信息列表:NSMutableArray = NSMutableArray()
             for i in 0 ..< skin文件夹列表!.count {
-                let 当前md5文件夹:NSString = skin文件夹列表?.objectAtIndex(i) as! NSString
+                let 当前md5文件夹:NSString = skin文件夹列表?.object(at: i) as! NSString
                 if (当前md5文件夹.length != 32) {
                     continue
                 }
@@ -38,11 +38,11 @@ class SkinManager: NSObject {
                 let 当前INI文件:String = String(format: "%@/index.ini", 当前文件夹路径)
                 let 头信息字典:NSMutableDictionary = INI读取器.快速查询头信息(当前INI文件)
                 //转换图片路径为完整路径
-                let 当前预览图名称:String = 头信息字典.objectForKey("theme_picture") as! String
+                let 当前预览图名称:String = 头信息字典.object(forKey: "theme_picture") as! String
                 let 当前预览图路径:String = String(format: "%@/%@", 当前文件夹路径, 当前预览图名称)
-                头信息字典.setObject(当前预览图路径, forKey: "theme_picture")
-                头信息字典.setObject(当前文件夹路径, forKey: "dir") //添加文件夹完整路径
-                主题信息列表.addObject(头信息字典)
+                头信息字典.setObject(当前预览图路径, forKey: "theme_picture" as NSCopying)
+                头信息字典.setObject(当前文件夹路径, forKey: "dir" as NSCopying) //添加文件夹完整路径
+                主题信息列表.add(头信息字典)
             }
             return 主题信息列表
         } else {
@@ -52,8 +52,8 @@ class SkinManager: NSObject {
     }
     
     func 获得正在使用皮肤() -> String? {
-        let 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        let 当前使用皮肤MD5对象:AnyObject? = 本地用户设置.valueForKey("nowskinmd5")
+        let 本地用户设置:UserDefaults = UserDefaults.standard
+        let 当前使用皮肤MD5对象:AnyObject? = 本地用户设置.value(forKey: "nowskinmd5") as AnyObject?
         if (当前使用皮肤MD5对象 != nil) {
             let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
             return 当前使用皮肤MD5
@@ -82,26 +82,26 @@ class SkinManager: NSObject {
             NSLog("[SkinManager]意外错误：载入INI信息失败。")
             return nil
         }
-        正在使用皮肤内容?.setObject(当前正在使用皮肤MD5!, forKey: "md5")
+        正在使用皮肤内容?.setObject(当前正在使用皮肤MD5!, forKey: "md5" as NSCopying)
         return NSDictionary(dictionary: 正在使用皮肤内容!)
     }
     
     func 设置正在使用皮肤() {
-        var 当前使用皮肤MD5对象:AnyObject? = 全局_皮肤设置.objectForKey("md5")
+        var 当前使用皮肤MD5对象:AnyObject? = 全局_皮肤设置.object(forKey: "md5") as AnyObject?
         if (当前使用皮肤MD5对象 == nil) {
-            当前使用皮肤MD5对象 = ""
+            当前使用皮肤MD5对象 = "" as AnyObject?
         }
         let 当前使用皮肤MD5:String = 当前使用皮肤MD5对象 as! String
-        let 本地用户设置:NSUserDefaults = NSUserDefaults.standardUserDefaults()
-        本地用户设置.setObject(当前使用皮肤MD5, forKey: "nowskinmd5")
+        let 本地用户设置:UserDefaults = UserDefaults.standard
+        本地用户设置.set(当前使用皮肤MD5, forKey: "nowskinmd5")
         本地用户设置.synchronize()
         //Group
         let 组数据读写:AppGroupIO = AppGroupIO()
         let 数据数组:NSArray? = 组数据读写.读取设置UD模式()
         if (数据数组 != nil) {
-            let 全部收藏数组:NSArray = 数据数组!.objectAtIndex(0) as! NSArray
-            let 全部自定数组:NSArray = 数据数组!.objectAtIndex(1) as! NSArray
-            let 全部历史数组:NSArray = 数据数组!.objectAtIndex(2) as! NSArray
+            let 全部收藏数组:NSArray = 数据数组!.object(at: 0) as! NSArray
+            let 全部自定数组:NSArray = 数据数组!.object(at: 1) as! NSArray
+            let 全部历史数组:NSArray = 数据数组!.object(at: 2) as! NSArray
             let 全部皮肤数组:NSArray = [全局_皮肤设置]
             let 要保存的数据:NSArray = [全部收藏数组,全部自定数组,全部历史数组,全部皮肤数组]
             组数据读写.写入设置UD模式(要保存的数据)
@@ -112,9 +112,9 @@ class SkinManager: NSObject {
         }
     }
     
-    func 删除皮肤文件(当前皮肤文件夹路径:String) {
+    func 删除皮肤文件(_ 当前皮肤文件夹路径:String) {
         do {
-            try 文件管理器.removeItemAtPath(当前皮肤文件夹路径)
+            try 文件管理器.removeItem(atPath: 当前皮肤文件夹路径)
         } catch _ {
         }
     }
