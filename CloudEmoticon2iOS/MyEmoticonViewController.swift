@@ -49,17 +49,17 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
         self.tabBarController?.tabBar.tintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)//tabbar选中文字颜色
         let tbitemcolor = NSDictionary(object: UIColor.black,
-            forKey:NSForegroundColorAttributeName as NSCopying)
+            forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
         NotificationCenter.default.addObserver(self, selector: #selector(MyEmoticonViewController.切换主题), name: NSNotification.Name(rawValue: "切换主题通知"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(MyEmoticonViewController.屏幕旋转), name: NSNotification.Name(rawValue: "屏幕旋转通知"), object: nil)
         切换主题()
     }
     
-    func 屏幕旋转() {
+    @objc func 屏幕旋转() {
         刷新背景图()
     }
     
-    func 切换主题() {
+    @objc func 切换主题() {
         NSLog("[Skin]->MyEmoticonViewController")
         //默认设置
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
@@ -67,8 +67,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         左上按钮.tintColor = UIColor.white
         右上按钮.tintColor = UIColor.white
-        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white, forKey:NSForegroundColorAttributeName as NSCopying)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white, forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+        self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
         self.navigationController?.navigationBar.tintColor = UIColor.white
         UISegmentedControl.appearance().tintColor = UIColor.white
         表格.backgroundColor = nil
@@ -78,7 +78,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         //背景图默认设置
         bgpview.image = nil
         bgpview.alpha = 1
-        bgpview.contentMode = UIViewContentMode.scaleAspectFill
+        bgpview.contentMode = UIView.ContentMode.scaleAspectFill
         
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.object(forKey: "md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -120,8 +120,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S) //navigation_seg_tintcolor_S
                 if (navigation_seg_tintcolor != nil) {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
-                        forKey:NSForegroundColorAttributeName as NSCopying)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+                        forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+                    self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
                 }
             }
             
@@ -200,9 +200,9 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             let bg:UIImage? = loadbg()
             bgpview.image = bgimage
             if(bg != defaultimage){
-                bgpview.contentMode = UIViewContentMode.scaleAspectFill
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFill
             } else {
-                bgpview.contentMode = UIViewContentMode.scaleAspectFit
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFit
             }
             bgpview.alpha = loadopc()
         } else {
@@ -242,7 +242,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         
     }
     
-    func appWillResignActive(){
+    @objc func appWillResignActive(){
         if(内容选择菜单.selectedSegmentIndex == 1){
             载入历史记录数据()
         }
@@ -261,7 +261,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             let 模糊过滤器 = CIFilter(name: "CIGaussianBlur")
             模糊过滤器!.setValue(25, forKey: "InputRadius")
             模糊过滤器!.setValue(bg, forKey: "InputImage")
-            let ciContext = CIContext(eaglContext: EAGLContext(api: .openGLES2))  //使用GPU方式，报错为Bug无视
+            let ciContext = CIContext(eaglContext: EAGLContext(api: .openGLES2)!)  //使用GPU方式，报错为Bug无视
             let cgImage = ciContext.createCGImage(模糊过滤器!.outputImage!, from: bg!.extent)
             ciContext.draw(模糊过滤器!.outputImage!, in: bg!.extent, from: bg!.extent)
             let 模糊图像 = UIImage(cgImage: cgImage!)
@@ -614,8 +614,8 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         let CellIdentifier:NSString = "Cell"
         var cell:UITableViewCell? = 表格.dequeueReusableCell(withIdentifier: CellIdentifier as String)! as UITableViewCell
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
-            cell!.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+            cell!.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell?.backgroundColor = UIColor.clear
             let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
 //            选中行背景视图.backgroundColor = UIColor.orangeColor()
@@ -684,12 +684,12 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     }
     
     // MARK: - 表格编辑范围
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {
 //        if (内容选择菜单.selectedSegmentIndex == 1) {
 //            return UITableViewCellEditingStyle.None
 //        }
-        return UITableViewCellEditingStyle.delete
+        return UITableViewCell.EditingStyle.delete
     }
     // MARK: - 表格是否可以移动项目
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool
@@ -724,7 +724,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
             break
         }
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
             switch (内容选择菜单.selectedSegmentIndex) {
@@ -734,7 +734,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let nowrowArr:NSArray = 文件中的数据!.object(at: nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.object(at: 0) as! NSString
                 表格数据.removeObject(at: nowrow)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                 if(文件中的数据 != nil){
                     
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.favorite)
@@ -750,7 +750,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let nowrowArr:NSArray = 文件中的数据!.object(at: nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.object(at: 0) as! NSString
                 表格数据.removeObject(at: nowrow)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                 if(文件中的数据 != nil){
                     
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.history)
@@ -766,7 +766,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 let nowrowArr:NSArray = 文件中的数据!.object(at: nowrow) as! NSArray
                 let nowemo:NSString = nowrowArr.object(at: 0) as! NSString
                 表格数据.removeObject(at: nowrow)
-                tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
                 if(文件中的数据 != nil){
                     
                     文件管理器.SaveArrayToFile(表格数据, smode: FileManager.saveMode.custom)
@@ -823,4 +823,15 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
         计算后尺寸.height = ceil(计算后尺寸.height)
         return 计算后尺寸.height
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

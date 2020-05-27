@@ -109,7 +109,7 @@ class INIReader: NSObject {
         let 模板行数组 = 模板文件内容.components(separatedBy: "\n")
         let INI字典键:NSArray = INI字典.allKeys as NSArray
         for 当前模板键对象 in 模板行数组 {
-            let 当前模板键:String = 当前模板键对象 as! String
+            let 当前模板键:String = 当前模板键对象 
             var 有相同值:Bool = false
             for 当前INI键对象 in INI字典键 {
                 let 当前INI键:String = 当前INI键对象 as! String

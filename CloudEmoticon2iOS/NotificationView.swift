@@ -112,7 +112,7 @@ class NotificationView: UIView {
         })
     }
     
-    func 关闭窗口(_ sender:Timer)
+    @objc func 关闭窗口(_ sender:Timer)
     {
         UIView.animate(withDuration: 动画速度,
             animations:{

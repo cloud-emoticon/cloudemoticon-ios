@@ -13,10 +13,10 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
     var adflist:NSMutableArray = NSMutableArray()
     var actlist:NSMutableArray = NSMutableArray()
     
-    var SetTable:UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width), style: UITableViewStyle.grouped)
+    var SetTable:UITableView = UITableView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width), style: UITableView.Style.grouped)
     
-    var 设置广告显示频率:UISlider = UISlider()
-    var 设置复制后退出应用:UISwitch = UISwitch()
+    @objc var 设置广告显示频率:UISlider = UISlider()
+    @objc var 设置复制后退出应用:UISwitch = UISwitch()
 
     var defaults:UserDefaults = UserDefaults.standard
     var adf:Float? = UserDefaults.standard.value(forKey: "adfrequent") as? Float
@@ -105,7 +105,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
         let CellIdentifier:NSString = "SettingCell"
         var cell:UITableViewCell? = SetTable.dequeueReusableCell(withIdentifier: CellIdentifier as String)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifier as String)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: CellIdentifier as String)
         }
         
         if((indexPath as NSIndexPath).section == 0) {
@@ -136,7 +136,7 @@ class SettingViewController: UIViewController, UITableViewDelegate, UITableViewD
             cell!.textLabel?.textColor = UIColor.red
         }
         
-        cell!.selectionStyle = UITableViewCellSelectionStyle.none
+        cell!.selectionStyle = UITableViewCell.SelectionStyle.none
         return cell!
     }
     

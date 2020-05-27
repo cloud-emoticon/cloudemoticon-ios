@@ -24,7 +24,7 @@ class CustomStatusBar: UIWindow {
         
         self.messageLabel.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         self.messageLabel.font = UIFont.systemFont(ofSize: 13.0)
-        self.windowLevel = UIWindowLevelStatusBar + 1.0
+        self.windowLevel = UIWindow.Level.statusBar + 1.0
         self.backgroundColor = UIColor.clear
         self.addSubview(self.messageLabel)
     }

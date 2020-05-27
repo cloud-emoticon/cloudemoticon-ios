@@ -45,7 +45,7 @@ class MainTBViewController: UITabBarController {
 //        同步数据格式转换测试.转换为同步用数据格式()
     }
     
-    func 延迟切换主题() {
+    @objc func 延迟切换主题() {
         切换主题()
         let Kag:Kagurazaka = Kagurazaka()
         Kag.KagurazakaArray("　", b: "喵")
@@ -71,7 +71,7 @@ class MainTBViewController: UITabBarController {
     }
     
 //MARK - 主题
-    func 切换主题()
+    @objc func 切换主题()
     {
 //        self.tabBar.tintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //TabBar颜色
 //        self.navigationController?.navigationBar.barTintColor = UIColor(red: 240, green: 240, blue: 240, alpha: 255) //NavBar颜色
@@ -110,8 +110,8 @@ class MainTBViewController: UITabBarController {
         self.tabBar.backgroundColor = UIColor.clear
         self.tabBar.selectionIndicatorImage = nil
         self.tabBar.tintColor = UIColor(red: 33/255, green: 150/255, blue: 243/255, alpha: 1)
-        let tool_titletextattributes_dic = NSDictionary(object: UIColor.black, forKey:NSForegroundColorAttributeName as NSCopying)
-        UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as? [String : AnyObject], for: UIControlState())
+        let tool_titletextattributes_dic = NSDictionary(object: UIColor.black, forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+        UITabBarItem.appearance().setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(tool_titletextattributes_dic as? [String : AnyObject]), for: UIControl.State())
         
         if (全局_皮肤设置.count > 0 && 全局_皮肤设置.object(forKey: "md5") != nil) {
             let 主题参数转对象:Skin2Object = Skin2Object()
@@ -255,7 +255,7 @@ class MainTBViewController: UITabBarController {
                 let tool_unselecttintcolor:UIColor? = 主题参数转对象.color(tool_unselecttintcolor_S)
                 if (tool_unselecttintcolor != nil) {
                     let tool_unselecttintcolor_dic = NSDictionary(object: tool_unselecttintcolor!,
-                        forKey:NSBackgroundColorAttributeName as NSCopying)
+                        forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.backgroundColor) as NSCopying)
 //                    UITabBarItem.appearance().setTitleTextAttributes(tool_unselecttintcolor_dic as [NSObject : AnyObject], forState: UIControlState.Normal)
                 }
             }
@@ -266,8 +266,8 @@ class MainTBViewController: UITabBarController {
                 let tool_titletextattributes:UIColor? = 主题参数转对象.color(tool_titletextattributes_S)
                 if (tool_titletextattributes != nil) {
                     let tool_titletextattributes_dic = NSDictionary(object: tool_titletextattributes!,
-                        forKey:NSForegroundColorAttributeName as NSCopying)
-                    UITabBarItem.appearance().setTitleTextAttributes(tool_titletextattributes_dic as? [String : AnyObject], for: UIControlState())
+                        forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+                    UITabBarItem.appearance().setTitleTextAttributes(convertToOptionalNSAttributedStringKeyDictionary(tool_titletextattributes_dic as? [String : AnyObject]), for: UIControl.State())
                 }
             }
         }
@@ -283,7 +283,7 @@ class MainTBViewController: UITabBarController {
         }
     }
     
-    func 切换到源商店方法(_ notification:Notification)
+    @objc func 切换到源商店方法(_ notification:Notification)
     {
         self.selectedIndex = 1
         let vcs:NSArray? = self.viewControllers as NSArray?
@@ -293,7 +293,7 @@ class MainTBViewController: UITabBarController {
         let URL识别数组:NSArray = notification.object as! NSArray
         cev.切换到源管理页面(URL识别数组.object(at: 0) as? NSString)
     }
-    func 切换到主题管理(_ notification:Notification)
+    @objc func 切换到主题管理(_ notification:Notification)
     {
         self.selectedIndex = 3
         let 工具栏视图组:NSArray? = self.viewControllers as NSArray?
@@ -304,7 +304,7 @@ class MainTBViewController: UITabBarController {
         设置视图.前往主题管理(要下载的文件路径)
     }
     
-    func 复制到剪贴板方法(_ notification:Notification)
+    @objc func 复制到剪贴板方法(_ notification:Notification)
     {
         let 要复制的颜文字数组:NSArray = notification.object as! NSArray
         let 要复制的颜文字:NSString = 要复制的颜文字数组.object(at: 0)as! NSString
@@ -349,7 +349,7 @@ class MainTBViewController: UITabBarController {
         NSLog(要复制的颜文字 as String)
         if (UserDefaults.standard.bool(forKey: "exitaftercopy")) {
             let window:UIWindow? = UIApplication.shared.delegate?.window!
-            UIView.setAnimationCurve(UIViewAnimationCurve.easeOut)
+            UIView.setAnimationCurve(UIView.AnimationCurve.easeOut)
             UIView.animate(withDuration: 0.3, animations: {
                 window?.alpha = 0
                 window?.frame = CGRect(x: window!.center.x, y: window!.center.x, width: 0, height: 0)
@@ -362,13 +362,13 @@ class MainTBViewController: UITabBarController {
         }
     }
     
-    func 显示自动关闭的提示框方法(_ notification:Notification)
+    @objc func 显示自动关闭的提示框方法(_ notification:Notification)
     {
         let 提示文字:NSString = notification.object as! NSString
         显示自动关闭的提示框(提示文字)
     }
     
-    func 显示等待提示框方法(_ notification:Notification)
+    @objc func 显示等待提示框方法(_ notification:Notification)
     {
         let 参数:NSNumber = notification.object as! NSNumber
         let 开关:Bool = 参数.boolValue
@@ -398,7 +398,7 @@ class MainTBViewController: UITabBarController {
         提示信息框.显示提示(提示文字)
     }
     
-    func alertview(_ notification:Notification)
+    @objc func alertview(_ notification:Notification)
     {
         let altarr:NSArray = notification.object as! NSArray
         //数组：title，message，btn title
@@ -440,4 +440,15 @@ class MainTBViewController: UITabBarController {
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

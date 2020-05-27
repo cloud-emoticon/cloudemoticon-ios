@@ -64,8 +64,8 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         super.viewDidDisappear(true)
     }
     
-    override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
-        if(motion == UIEventSubtype.motionShake){
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if(motion == UIEvent.EventSubtype.motionShake){
         shake()
         }
     }
@@ -124,7 +124,7 @@ class ShakeViewController: UIViewController, UIAlertViewDelegate {
         self.alertviewShake(alert)
     }
     
-    func alertviewShake(_ altarr:NSArray)
+    @objc func alertviewShake(_ altarr:NSArray)
     {
 //        let altarr:NSArray = notification.object as NSArray
         let alert = UIAlertController(title: altarr.object(at: 0) as? String, message: altarr.object(at: 1) as? String, preferredStyle: .alert)

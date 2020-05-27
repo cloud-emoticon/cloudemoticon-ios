@@ -21,12 +21,12 @@ class RegViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("注册")
-        reset.setTitle(lang.uage("重置"), for: UIControlState())
-        reg.setTitle(lang.uage("注册"), for: UIControlState())
+        reset.setTitle(lang.uage("重置"), for: UIControl.State())
+        reg.setTitle(lang.uage("注册"), for: UIControl.State())
         let 背景色:UIColor = UIColor(red: 1, green: 0.79215, blue: 0.86274, alpha: 1)
         self.navigationController?.view.backgroundColor = 背景色
         self.view.backgroundColor = 背景色
-        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(RegViewController.关闭软键盘))
+        右上按钮 = UIBarButtonItem(title: lang.uage("关闭键盘"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(RegViewController.关闭软键盘))
         邮箱输入框.delegate = self
         用户名输入框.delegate = self
         密码输入框.delegate = self
@@ -70,14 +70,14 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func 注册失败(_ 返回信息:Notification) {
+    @objc func 注册失败(_ 返回信息:Notification) {
         结束工作中提示()
         let 错误信息:String = 返回信息.object as! String
         let 提示框:UIAlertView = UIAlertView(title: lang.uage("注册新用户失败"), message: 错误信息, delegate: nil, cancelButtonTitle: lang.uage("取消"))
         提示框.show()
     }
     
-    func 注册成功(_ 返回信息:Notification) {
+    @objc func 注册成功(_ 返回信息:Notification) {
         结束工作中提示()
         检查用户登录()
         self.navigationController?.popToRootViewController(animated: true)
@@ -108,7 +108,7 @@ class RegViewController: UIViewController, UITextFieldDelegate {
         确认密码输入框.text = ""
     }
     
-    func 关闭软键盘() {
+    @objc func 关闭软键盘() {
         邮箱输入框.resignFirstResponder()
         用户名输入框.resignFirstResponder()
         密码输入框.resignFirstResponder()

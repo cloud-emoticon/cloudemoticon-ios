@@ -67,10 +67,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         let bg:UIImage? = loadbg()
         if(bg != defaultimage){
             bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.scaleAspectFill
+            bgpview.contentMode = UIView.ContentMode.scaleAspectFill
         } else {
             bgpview.image = bgimage
-            bgpview.contentMode = UIViewContentMode.scaleAspectFit
+            bgpview.contentMode = UIView.ContentMode.scaleAspectFit
         }
         颜文字表格背景.image = bgimage
         颜文字表格背景.contentMode = bgpview.contentMode
@@ -105,8 +105,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 33/255.0, green: 150/255.0, blue:243/255.0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = UIColor.white
         let titlecolor = NSDictionary(object: UIColor.white,
-            forKey:NSForegroundColorAttributeName as NSCopying)
-        self.navigationController?.navigationBar.titleTextAttributes = titlecolor as? [String : AnyObject]
+            forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+        self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(titlecolor as? [String : AnyObject])
         self.title = lang.uage("云颜文字") as String
         载入视图()
         
@@ -117,7 +117,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.delegate = self
         颜文字表格.dataSource = self
         颜文字表格.backgroundColor = UIColor.clear
-        搜索颜文字.searchBarStyle = UISearchBarStyle.minimal
+        搜索颜文字.searchBarStyle = UISearchBar.Style.minimal
         搜索颜文字.placeholder = lang.uage("搜索颜文字")
         
         NotificationCenter.default.addObserver(self, selector: #selector(CEViewController.切换主题), name: NSNotification.Name(rawValue: "切换主题通知"), object: nil)
@@ -134,11 +134,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
 //        切换主题()
 //    }
     
-    func 屏幕旋转() {
+    @objc func 屏幕旋转() {
         刷新背景图()
     }
     
-    func 切换主题() {
+    @objc func 切换主题() {
         NSLog("[Skin]->CEViewController")
         列表当前选中的行背景色 = 全局_默认当前选中行颜色
         云颜文字左侧分类列表选中行背景色 = 全局_默认当前选中行颜色
@@ -146,8 +146,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         sortBtn.tintColor = UIColor.white
         scoreBtn.tintColor = UIColor.white
-        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white, forKey:NSForegroundColorAttributeName as NSCopying)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+        let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white, forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+        self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
         颜文字表格.backgroundColor = UIColor.white
         列表文字颜色 = UIColor.black
         副标题列表文字颜色 = UIColor(red: 130/255.0, green: 130/255.0, blue: 130/255.0, alpha: 1)
@@ -166,8 +166,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         //背景图默认设置
         bgpview.alpha = 1
         颜文字表格背景.alpha = 1
-        bgpview.contentMode = UIViewContentMode.scaleAspectFill
-        颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
+        bgpview.contentMode = UIView.ContentMode.scaleAspectFill
+        颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFill
         颜文字表格背景.image = nil
         bgpview.image = nil
 
@@ -211,8 +211,8 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S) //navigation_seg_tintcolor_S
                 if (navigation_seg_tintcolor != nil) {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
-                        forKey:NSForegroundColorAttributeName as NSCopying)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+                        forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+                    self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
                 }
             }
 
@@ -356,11 +356,11 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             bgpview.image = bgimage
             颜文字表格背景.image = bgimage
             if(bg != defaultimage){
-                bgpview.contentMode = UIViewContentMode.scaleAspectFill
-                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFill
+                颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFill
             } else {
-                bgpview.contentMode = UIViewContentMode.scaleAspectFit
-                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFit
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFit
+                颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFit
             }
             bgpview.alpha = loadopc()
             颜文字表格背景.alpha = loadopc()
@@ -418,7 +418,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         颜文字表格背景.frame = CGRect(x: 颜文字表格.frame.origin.x, y: 颜文字表格.frame.origin.y + 64, width: 颜文字表格.frame.width, height: 颜文字表格.frame.height - 113)
         颜文字表格背景.backgroundColor = UIColor.white
-        颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
+        颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFill
         颜文字表格背景.layer.masksToBounds = true
         
         用户登录视图.frame = CGRect(x: 0, y: 0, width: 分类表格.frame.size.width, height: 80)
@@ -443,9 +443,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         
         self.automaticallyAdjustsScrollViewInsets = false
         if (self.view.frame.height > self.view.frame.width || UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
-            分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsets.init(top: 64, left: 0, bottom: 48, right: 0)
         } else {
-            分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsets.init(top: 32, left: 0, bottom: 48, right: 0)
         }
         
         颜文字表格.contentInset = 分类表格.contentInset
@@ -569,7 +569,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             分类表格.reloadData()
             if (sortData.count > 0) {
-                分类表格.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: UITableViewScrollPosition.none)
+                分类表格.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: UITableView.ScrollPosition.none)
                 openSortData(0)
             }
             
@@ -578,12 +578,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
     }
     
-    func load(_ notification:Notification)
+    @objc func load(_ notification:Notification)
     {
         载入本地数据()
     }
     
-    func loadwebdataoks(_ notification:Notification)
+    @objc func loadwebdataoks(_ notification:Notification)
     {
         let urlArr:NSArray = notification.object as! NSArray
         let urlStr:NSString = urlArr.object(at: 0) as! NSString
@@ -610,7 +610,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             源管理页面?.navigationController?.popViewController(animated: false)
             源管理页面 = nil
         }
-        源管理页面 = SourceTableViewController(style: UITableViewStyle.plain)
+        源管理页面 = SourceTableViewController(style: UITableView.Style.plain)
         源管理页面?.代理 = self
         源管理页面?.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(源管理页面!, animated: true)
@@ -628,7 +628,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "取消单元格左滑通知"), object: nil)
             }
             self.view.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
+            UIView.setAnimationCurve(UIView.AnimationCurve.easeInOut)
             UIView.animate(withDuration: 0.25, animations: {
                 self.颜文字表格.frame = CGRect(x: x, y: self.颜文字表格.frame.origin.y, width: self.颜文字表格.frame.size.width, height: self.颜文字表格.frame.size.height)
                 self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
@@ -646,10 +646,10 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         颜文字表格.reloadData()
     }
     
-    func 手势执行(_ recognizer:UITapGestureRecognizer)
+    @objc func 手势执行(_ recognizer:UITapGestureRecognizer)
     {
         let 手指当前坐标:CGPoint = recognizer.location(in: self.view)
-        if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled || recognizer.state == UIGestureRecognizerState.failed) {
+        if (recognizer.state == UIGestureRecognizer.State.ended || recognizer.state == UIGestureRecognizer.State.cancelled || recognizer.state == UIGestureRecognizer.State.failed) {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "允许单元格接收手势通知"), object: nil)
             手势起始位置X坐标 = 0
             var x:CGFloat = 0
@@ -662,7 +662,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             手势中 = false
             self.view.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
+            UIView.setAnimationCurve(UIView.AnimationCurve.easeInOut)
             UIView.animate(withDuration: 0.15, animations: {
                 self.颜文字表格.frame = CGRect(x: x, y: self.颜文字表格.frame.origin.y, width: self.颜文字表格.frame.size.width, height: self.颜文字表格.frame.size.height)
                 self.颜文字表格背景.frame = CGRect(x: self.颜文字表格.frame.origin.x, y: self.颜文字表格.frame.origin.y + 64, width: self.颜文字表格.frame.width, height: self.颜文字表格.frame.height - 113)
@@ -735,7 +735,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         if (tableView.tag == 100) { //左表
             var cell:UITableViewCell? = 分类表格.dequeueReusableCell(withIdentifier: CellIdentifier as String)
             if (cell == nil) {
-                cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+                cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
                 cell?.backgroundColor = UIColor.clear
                 let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
 //                选中行背景视图.backgroundColor = UIColor.redColor()
@@ -752,9 +752,9 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             
             var cell:CETableViewCell? = 分类表格.dequeueReusableCell(withIdentifier: CellIdentifier as String) as? CETableViewCell
             if (cell == nil) {
-                cell = CETableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+                cell = CETableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
                 cell?.backgroundColor = UIColor.clear
-                cell!.selectionStyle = UITableViewCellSelectionStyle.blue
+                cell!.selectionStyle = UITableViewCell.SelectionStyle.blue
                 cell!.初始化单元格样式(CETableViewCell.cellMode.ceviewcontroller)
                 cell!.代理 = self
                 let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
@@ -855,7 +855,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         return 44
     }
 
-    func 屏幕旋转(_ notification:Notification)
+    @objc func 屏幕旋转(_ notification:Notification)
     {
 //        println("收到屏幕旋转")
         let newScreenSizeArr:NSArray = notification.object as! NSArray
@@ -874,12 +874,12 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         }
         
         if (newScreenSize.width < newScreenSize.height || UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.pad) {
-            分类表格.contentInset = UIEdgeInsetsMake(64, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsets.init(top: 64, left: 0, bottom: 48, right: 0)
             if(调整搜索栏位置){
             颜文字表格.setContentOffset(CGPoint(x: 0, y: -20), animated: false)
             }
         } else {
-            分类表格.contentInset = UIEdgeInsetsMake(32, 0, 48, 0)
+            分类表格.contentInset = UIEdgeInsets.init(top: 32, left: 0, bottom: 48, right: 0)
             if(调整搜索栏位置){
             颜文字表格.setContentOffset(CGPoint(x: 0, y: 12), animated: false)
             }
@@ -1023,7 +1023,7 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
             }
             let 分享视图:UIActivityViewController = UIActivityViewController(activityItems: [颜文字], applicationActivities: 二维码分享按钮入)
             分享视图.modalTransitionStyle = UIModalTransitionStyle.coverVertical;
-            分享视图.excludedActivityTypes = [UIActivityType.copyToPasteboard];
+            分享视图.excludedActivityTypes = [UIActivity.ActivityType.copyToPasteboard];
             self.present(分享视图, animated: true, completion: nil)
         }
     }
@@ -1053,4 +1053,15 @@ class CEViewController: UIViewController, UIGestureRecognizerDelegate, UITableVi
         self.navigationController?.pushViewController(登录画面, animated: true)
     }
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
 }

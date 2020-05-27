@@ -53,10 +53,10 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
             滑出按钮B.tag = 102
             滑出按钮A.backgroundColor = UIColor.orange
             滑出按钮B.backgroundColor = UIColor(red: 1.0, green: 0.4, blue: 0.9, alpha: 1.0)
-            滑出按钮A.setTitle(lang.uage("收藏"), for: UIControlState())
-            滑出按钮B.setTitle(lang.uage("分享"), for: UIControlState())
-            滑出按钮A.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), for: UIControlEvents.touchUpInside)
-            滑出按钮B.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), for: UIControlEvents.touchUpInside)
+            滑出按钮A.setTitle(lang.uage("收藏"), for: UIControl.State())
+            滑出按钮B.setTitle(lang.uage("分享"), for: UIControl.State())
+            滑出按钮A.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), for: UIControl.Event.touchUpInside)
+            滑出按钮B.addTarget(self, action: #selector(CETableViewCell.点击滑出按钮(_:)), for: UIControl.Event.touchUpInside)
             self.addSubview(滑出按钮A)
             self.addSubview(滑出按钮B)
             self.addSubview(覆盖视图)
@@ -82,7 +82,7 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
         }
     }
     
-    func 修正单元格尺寸方法(_ notification:Notification)
+    @objc func 修正单元格尺寸方法(_ notification:Notification)
     {
         let 新的宽度:CGFloat = notification.object as! CGFloat
 //        let 新的尺寸数组:NSArray = notification.object as NSArray
@@ -90,7 +90,7 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
         修正元素位置(新的宽度)
     }
     
-    func 取消单元格左滑方法(_ notification:Notification) {
+    @objc func 取消单元格左滑方法(_ notification:Notification) {
         let 通知传值对象:AnyObject? = notification.object as AnyObject?
         if (通知传值对象 == nil) {
             UIView.animate(withDuration: 0.15, animations: {
@@ -112,22 +112,22 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
         }
     }
     
-    func 允许单元格接收手势方法(_ notification:Notification)
+    @objc func 允许单元格接收手势方法(_ notification:Notification)
     {
         允许手势 = true
     }
     
-    func 点击滑出按钮(_ sender:UIButton)
+    @objc func 点击滑出按钮(_ sender:UIButton)
     {
         let 点击按钮的ID:Int = sender.tag - 100
         代理?.单元格代理：点击滑出的按钮时(点击按钮的ID, 单元格在表格中的位置: 单元格在表格中的位置)
     }
     
-    func 手势执行(_ recognizer:UIPanGestureRecognizer)
+    @objc func 手势执行(_ recognizer:UIPanGestureRecognizer)
     {
         let 手指当前坐标:CGPoint = recognizer.location(in: self)
         let 滑动最大X坐标:CGFloat = 0 - (按钮宽度 * 2)
-        if (recognizer.state == UIGestureRecognizerState.ended || recognizer.state == UIGestureRecognizerState.cancelled || recognizer.state == UIGestureRecognizerState.failed) {
+        if (recognizer.state == UIGestureRecognizer.State.ended || recognizer.state == UIGestureRecognizer.State.cancelled || recognizer.state == UIGestureRecognizer.State.failed) {
             手势起始位置X坐标 = 0
             手势起始位置Y坐标 = 0
             var x:CGFloat = 0
@@ -137,7 +137,7 @@ class CETableViewCell: UITableViewCell { //UIGestureRecognizerDelegate
             }
             手势中 = false
             self.layer.removeAllAnimations()
-            UIView.setAnimationCurve(UIViewAnimationCurve.easeInOut)
+            UIView.setAnimationCurve(UIView.AnimationCurve.easeInOut)
             if (self.覆盖视图.frame.origin.x < 0 - 按钮宽度) {
                 UIView.animate(withDuration: 0.15, animations: {
                     self.覆盖视图.frame = CGRect(x: x, y: 0, width: self.frame.size.width, height: self.frame.size.height)

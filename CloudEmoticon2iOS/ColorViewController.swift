@@ -36,11 +36,11 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         let bg:UIImage? = UIImage(contentsOfFile: userbgimgfullpath as String)
         if(bg != nil) {
             bgimageviewer.image = bg
-            bgimageviewer.contentMode = UIViewContentMode.scaleAspectFill
+            bgimageviewer.contentMode = UIView.ContentMode.scaleAspectFill
         } else {
             bgimage = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)!
             bgimageviewer.image = bgimage
-            bgimageviewer.contentMode = UIViewContentMode.scaleAspectFit
+            bgimageviewer.contentMode = UIView.ContentMode.scaleAspectFit
         }
         
         bgimageviewer.layer.masksToBounds = true
@@ -59,7 +59,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         NotificationCenter.default.post(name: Notification.Name(rawValue: "显示自动关闭的提示框通知"), object: lang.uage("正在切换主题..."))
     }
 
-    func transition(_ notification:Notification)
+    @objc func transition(_ notification:Notification)
     {
         let newScreenSizeArr:NSArray = notification.object as! NSArray
         let newScreenSize:CGSize = CGSize(width: newScreenSizeArr.object(at: 0) as! CGFloat, height: newScreenSizeArr.object(at: 1) as! CGFloat)
@@ -100,16 +100,16 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         let CellIdentifier:NSString = "Cell"
         var cell:UITableViewCell? = 背景管理.dequeueReusableCell(withIdentifier: CellIdentifier as String)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: CellIdentifier as String)
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: CellIdentifier as String)
         }
         if ((indexPath as NSIndexPath).row == 0) {
             if (启用修改背景) {
-                cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+                cell?.accessoryType = UITableViewCell.AccessoryType.checkmark
             } else {
-                cell?.accessoryType = UITableViewCellAccessoryType.none
+                cell?.accessoryType = UITableViewCell.AccessoryType.none
             }
         } else {
-            cell?.accessoryType = UITableViewCellAccessoryType.none
+            cell?.accessoryType = UITableViewCell.AccessoryType.none
         }
         if((indexPath as NSIndexPath).row <= 1) {
         cell?.textLabel?.text = list.object(at: (indexPath as NSIndexPath).row) as? String
@@ -122,7 +122,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
             设置背景不透明度.maximumValue = 100
             设置背景不透明度.value = bgopacity!
             bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
-            设置背景不透明度.addTarget(self, action: #selector(ColorViewController.即时预览透明度(_:)), for: UIControlEvents.valueChanged)
+            设置背景不透明度.addTarget(self, action: #selector(ColorViewController.即时预览透明度(_:)), for: UIControl.Event.valueChanged)
             cell?.addSubview(设置背景不透明度)
         }
         if((indexPath as NSIndexPath).row == 3){
@@ -132,7 +132,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         return cell!
     }
     
-    func 即时预览透明度(_ sender:UISlider) {
+    @objc func 即时预览透明度(_ sender:UISlider) {
         bgimageviewer.alpha = CGFloat(设置背景不透明度.value / 200)
     }
     
@@ -204,23 +204,23 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
         switch(buttonIndex)
         {
         case 0:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.camera
+                picker.sourceType = UIImagePickerController.SourceType.camera
             } else {
                 return
             }
             break
         case 1:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.photoLibrary))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                picker.sourceType = UIImagePickerController.SourceType.photoLibrary
             }
             break
         case 2:
-            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.savedPhotosAlbum))
+            if(UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.savedPhotosAlbum))
             {
-                picker.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+                picker.sourceType = UIImagePickerController.SourceType.savedPhotosAlbum
             }
             break
         default:
@@ -236,7 +236,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
 //        let image:UIImage = (editingInfo.indexForKey(UIImagePickerControllerEditedImage) as? UIImage)!
-        if(picker.sourceType == UIImagePickerControllerSourceType.camera){
+        if(picker.sourceType == UIImagePickerController.SourceType.camera){
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
 
         }
@@ -246,11 +246,11 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
     }
     
     func saveImage(_ tempImage:UIImage, WithName imageName:NSString){
-        let imageData:Data = UIImagePNGRepresentation(tempImage)!
+        let imageData:Data = tempImage.pngData()!
         let fullpathttofile = 全局_文档文件夹 + (imageName as String) //stringByAppendingPathComponent(imageName as String)
         try? imageData.write(to: URL(fileURLWithPath: fullpathttofile as String), options: [])
         bgimageviewer.image = tempImage
-        bgimageviewer.contentMode = UIViewContentMode.scaleAspectFill
+        bgimageviewer.contentMode = UIView.ContentMode.scaleAspectFill
     }
     
     func deletebgimage(){
@@ -262,7 +262,7 @@ class ColorViewController: UIViewController, UIActionSheetDelegate, UIImagePicke
 //        } catch _ {
 //        }
         bgimageviewer.image = UIImage(contentsOfFile:Bundle.main.path(forResource: "basicbg", ofType: "png")!)
-        bgimageviewer.contentMode = UIViewContentMode.scaleAspectFit
+        bgimageviewer.contentMode = UIView.ContentMode.scaleAspectFit
     }
     
     /*

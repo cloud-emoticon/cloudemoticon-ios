@@ -26,7 +26,7 @@ class WaitView: UIView {
         提示文字.font = UIFont(name: "STHeitiSC-Medium", size: 18)
         提示文字.text = lang.uage("加载中")
         提示框窗口.addSubview(提示文字)
-        let 等待提示:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        let 等待提示:UIActivityIndicatorView = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.gray)
         等待提示.center = CGPoint(x: 提示框窗口.bounds.size.width/2.0, y: 提示框窗口.bounds.size.height/2.0+20);
         提示框窗口.addSubview(等待提示)
         等待提示.startAnimating()

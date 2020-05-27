@@ -57,7 +57,7 @@ class EnterView: UIView {
         
     }
     
-    func 开始动画(_ sender:Timer) {
+    @objc func 开始动画(_ sender:Timer) {
         self.frame = UIScreen.main.bounds
         let 剪影图片视图:UIImageView = sender.userInfo as! UIImageView
         let 屏幕短:CGFloat = (self.frame.width < self.frame.height) ? self.frame.width : self.frame.height

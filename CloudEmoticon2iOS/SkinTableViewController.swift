@@ -23,7 +23,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         super.init(coder: aDecoder)!
     }
     
-    override init(style: UITableViewStyle) {
+    override init(style: UITableView.Style) {
         super.init(style: .plain)
     }
     
@@ -34,9 +34,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = lang.uage("皮肤管理")
-        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(SkinTableViewController.右上按钮(_:)))
+        左上按钮 = UIBarButtonItem(title: lang.uage("返回"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(SkinTableViewController.右上按钮(_:)))
         self.navigationItem.leftBarButtonItem = 左上按钮
-        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItemStyle.plain, target: self, action: "左上按钮:")
+        右上按钮 = UIBarButtonItem(title: lang.uage("编辑"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(SkinTableViewController.左上按钮(_:)))
         self.navigationItem.rightBarButtonItem = 右上按钮
         //[主标题,副标题,预览图路径,文件夹路径]
         皮肤列表数据.add([lang.uage("默认主题"),lang.uage("内置主题"),Bundle.main.path(forResource: "skindefault", ofType: "png")!,"<ceskin:default>"])
@@ -112,7 +112,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     }
     
     // MARK: - 返回按钮
-    func 右上按钮(_ sender: UIBarButtonItem) {
+    @objc func 右上按钮(_ sender: UIBarButtonItem) {
         if (self.tableView.isEditing) {
 //            self.tableView.setEditing(false, animated: true)
             let alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
@@ -148,7 +148,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     }
     
     // MARK: - 编辑按钮
-    func 左上按钮(_ sender: UIBarButtonItem) {
+    @objc func 左上按钮(_ sender: UIBarButtonItem) {
         self.tableView.setEditing(!self.tableView.isEditing, animated: true)
         if (self.tableView.isEditing) {
             self.navigationItem.rightBarButtonItem?.title = lang.uage("完成")
@@ -174,9 +174,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         let 单元格标识:NSString = "Cell"
         var 单元格:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: 单元格标识 as String)
         if (单元格 == nil) {
-            单元格 = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: 单元格标识 as String)
-            单元格!.accessoryType = UITableViewCellAccessoryType.none
-            单元格!.selectionStyle = UITableViewCellSelectionStyle.default
+            单元格 = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: 单元格标识 as String)
+            单元格!.accessoryType = UITableViewCell.AccessoryType.none
+            单元格!.selectionStyle = UITableViewCell.SelectionStyle.default
             单元格!.imageView?.backgroundColor = UIColor.lightGray
         }
         //[主标题,副标题,预览图路径,文件夹路径]
@@ -192,9 +192,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         //判断是否为当前选中
         if (全局_皮肤设置.count == 0) {
             if ((indexPath as NSIndexPath).row == 0) {
-                单元格!.accessoryType = UITableViewCellAccessoryType.checkmark
+                单元格!.accessoryType = UITableViewCell.AccessoryType.checkmark
             } else {
-                单元格!.accessoryType = UITableViewCellAccessoryType.none
+                单元格!.accessoryType = UITableViewCell.AccessoryType.none
             }
         } else {
             let 当前应用的皮肤MD5对象:AnyObject? = 全局_皮肤设置.object(forKey: "md5") as AnyObject?
@@ -204,9 +204,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
                 let 当前皮肤文件夹路径层:NSArray = 当前皮肤文件夹路径.components(separatedBy: "/") as NSArray
                 let 当前皮肤md5:String = 当前皮肤文件夹路径层.lastObject as! String
                 if (当前应用的皮肤MD5 == 当前皮肤md5) {
-                    单元格!.accessoryType = UITableViewCellAccessoryType.checkmark
+                    单元格!.accessoryType = UITableViewCell.AccessoryType.checkmark
                 } else {
-                    单元格!.accessoryType = UITableViewCellAccessoryType.none
+                    单元格!.accessoryType = UITableViewCell.AccessoryType.none
                 }
             } else {
                 NSLog("[SkinTableViewController]意外错误：当前应用的皮肤的MD5找不到。")
@@ -215,7 +215,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
         return 单元格!
     }
     // MARK: - 表格更改
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == .delete {
             if ((indexPath as NSIndexPath).row < 2) {
@@ -253,9 +253,9 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     }
     
     // MARK: - 表格编辑范围
-    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
     {
-        return UITableViewCellEditingStyle.delete
+        return UITableViewCell.EditingStyle.delete
     }
     // MARK: - 表格是否可以移动项目
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool

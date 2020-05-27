@@ -23,10 +23,10 @@ class QRView: UIView {
         self.layer.shadowOpacity = 1
         self.layer.masksToBounds = false
         self.layer.cornerRadius = 20
-        let 图片退出按钮:UIButton = UIButton(type: UIButtonType.custom)
+        let 图片退出按钮:UIButton = UIButton(type: UIButton.ButtonType.custom)
         图片退出按钮.frame = CGRect(x: 0, y: 0, width: 图片尺寸.width, height: 图片尺寸.height)
-        图片退出按钮.setImage(二维码, for: UIControlState())
-        图片退出按钮.addTarget(self, action: #selector(QRView.点击), for: UIControlEvents.touchUpInside)
+        图片退出按钮.setImage(二维码, for: UIControl.State())
+        图片退出按钮.addTarget(self, action: #selector(QRView.点击), for: UIControl.Event.touchUpInside)
         self.addSubview(图片退出按钮)
         self.transform = CGAffineTransform(scaleX: 0.5, y: 0.5);
         UIView.animate(withDuration: 0.2, animations: { () -> Void in
@@ -38,7 +38,7 @@ class QRView: UIView {
         }) 
     }
     
-    func 点击() {
+    @objc func 点击() {
         UIView.animate(withDuration: 0.2, animations: { () -> Void in
             self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1);
             }, completion: { (isok:Bool) -> Void in

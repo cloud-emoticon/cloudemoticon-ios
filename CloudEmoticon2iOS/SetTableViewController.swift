@@ -54,7 +54,7 @@ class SetTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
     
-    func 屏幕旋转(_ 通知:Notification) {
+    @objc func 屏幕旋转(_ 通知:Notification) {
         let 新坐标:NSArray = 通知.object as! NSArray
         let 宽:CGFloat = 新坐标.object(at: 0) as! CGFloat
         let 高:CGFloat = 新坐标.object(at: 1) as! CGFloat
@@ -63,14 +63,14 @@ class SetTableViewController: UITableViewController {
         刷新背景图()
     }
     
-    func 切换主题() {
+    @objc func 切换主题() {
         NSLog("[Skin]->SetTableViewController")
         //默认设置
         UINavigationBar.appearance().setBackgroundImage(nil, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.barTintColor = 全局_默认导航栏背景颜色
         let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: UIColor.white,
-            forKey:NSForegroundColorAttributeName as NSCopying)
-        self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+            forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+        self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
         let backgroundView2:UIView = (self.tableView.backgroundView?.subviews[0])!
         backgroundView2.backgroundColor = UIColor.white
         列表文字颜色 = UIColor.black
@@ -108,8 +108,8 @@ class SetTableViewController: UITableViewController {
                 let navigation_seg_tintcolor:UIColor? = 主题参数转对象.color(navigation_seg_tintcolor_S) //navigation_seg_tintcolor_S
                 if (navigation_seg_tintcolor != nil) {
                     let navigation_seg_tintcolor_dic:NSDictionary = NSDictionary(object: navigation_seg_tintcolor!,
-                        forKey:NSForegroundColorAttributeName as NSCopying)
-                    self.navigationController?.navigationBar.titleTextAttributes = navigation_seg_tintcolor_dic as? [String : AnyObject]
+                        forKey:convertFromNSAttributedStringKey(NSAttributedString.Key.foregroundColor) as NSCopying)
+                    self.navigationController?.navigationBar.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary(navigation_seg_tintcolor_dic as? [String : AnyObject])
                 }
             }
             //RGBA色值：列表的背景色 yes
@@ -160,19 +160,19 @@ class SetTableViewController: UITableViewController {
             bgpview.image = bgimage
             颜文字表格背景.image = bgimage
             if(bg != defaultimage){
-                bgpview.contentMode = UIViewContentMode.scaleAspectFill
-                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFill
+                颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFill
             } else {
-                bgpview.contentMode = UIViewContentMode.scaleAspectFit
-                颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFit
+                bgpview.contentMode = UIView.ContentMode.scaleAspectFit
+                颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFit
             }
             bgpview.alpha = loadopc()
             颜文字表格背景.alpha = loadopc()
         } else {
             bgpview.alpha = 1
             颜文字表格背景.alpha = 1
-            bgpview.contentMode = UIViewContentMode.scaleAspectFill
-            颜文字表格背景.contentMode = UIViewContentMode.scaleAspectFill
+            bgpview.contentMode = UIView.ContentMode.scaleAspectFill
+            颜文字表格背景.contentMode = UIView.ContentMode.scaleAspectFill
             let 主题参数转对象:Skin2Object = Skin2Object()
             let 取背景图:String = 主题参数转对象.判断应该显示的背景图()
             let background_image_S:String? = 全局_皮肤设置.object(forKey: 取背景图) as? String
@@ -221,10 +221,10 @@ class SetTableViewController: UITableViewController {
         let CellIdentifier:NSString = "Cell"
         var cell:UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: CellIdentifier as String)
         if (cell == nil) {
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
-            cell?.selectionStyle = UITableViewCellSelectionStyle.blue
+            cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: CellIdentifier as String)
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.blue
             cell?.backgroundColor = UIColor.clear
-            cell?.accessoryType = UITableViewCellAccessoryType.disclosureIndicator
+            cell?.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
             let 选中行背景视图:UIImageView = UIImageView(frame: cell!.frame)
             cell?.selectedBackgroundView = 选中行背景视图
         }
@@ -331,3 +331,14 @@ class SetTableViewController: UITableViewController {
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromNSAttributedStringKey(_ input: NSAttributedString.Key) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+	guard let input = input else { return nil }
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value)})
+}

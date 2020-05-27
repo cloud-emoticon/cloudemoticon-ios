@@ -111,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = IB.instantiateInitialViewController()
     }
     
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         NSLog("[AppDelegate]云颜文字正在启动...")
         应用运行参数 = launchOptions
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.重新启动), name: NSNotification.Name(rawValue: "重新启动通知"), object: nil)
@@ -124,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    func 重新启动() {
+    @objc func 重新启动() {
         UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.window?.rootViewController?.view.alpha = 0
             }, completion: { (isok:Bool) -> Void in
@@ -134,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }) 
     }
     
-    func 重新加载() {
+    @objc func 重新加载() {
         界面初始化()
         self.window?.rootViewController?.view.transform = CGAffineTransform(scaleX: 0.1, y: 0.1);
         UIView.animate(withDuration: 0.5, animations: { () -> Void in
@@ -165,7 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func loadwebdatace(_ notification:Notification)
+    @objc func loadwebdatace(_ notification:Notification)
     {
         statBar.showMsg(lang.uage("正在加载源") as NSString)
         let 网址和目标位置序号数组:NSArray = notification.object as! NSArray
@@ -192,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         全局_网络繁忙 = false
     }
     
-    func loadwebdataokce(_ notification:Notification)
+    @objc func loadwebdataokce(_ notification:Notification)
     {
         let 网址和目标位置序号数组:NSArray = notification.object as! NSArray
         let 网址:NSString = 网址和目标位置序号数组.object(at: 0) as! NSString

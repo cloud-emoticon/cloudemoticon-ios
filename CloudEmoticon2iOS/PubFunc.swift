@@ -91,7 +91,7 @@ func loadbg() -> UIImage {
 func loadopc() -> CGFloat
 {
     let bgopacity:Float? = UserDefaults.standard.value(forKey: "bgopacity") as? Float
-    return NSNumber(value: ((100 - bgopacity! / 2) / 100) as Float) as CGFloat
+    return NSNumber(value: ((100 - bgopacity! / 2) / 100) as Float) as! CGFloat
 
 }
 

@@ -13,8 +13,8 @@ class TodayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AddtoCustom.setTitleColor(UIColor.clear, for: UIControlState.disabled)
-        AddtoCustom.setTitle("", for: UIControlState.disabled)
+        AddtoCustom.setTitleColor(UIColor.clear, for: UIControl.State.disabled)
+        AddtoCustom.setTitle("", for: UIControl.State.disabled)
         AddtoCustom.layer.cornerRadius = 4
         RunFamApp.layer.cornerRadius = 4
         emoEx.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 36)
