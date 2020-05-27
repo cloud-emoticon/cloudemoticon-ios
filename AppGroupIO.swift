@@ -138,7 +138,7 @@ class AppGroupIO: NSObject {
             if (应用ID != nil) {
                 设置存储?.removePersistentDomain(forName: 应用ID! as String)
             }
-            let 设置字典:NSDictionary = 设置存储?.dictionaryRepresentation() as NSDictionary!
+            let 设置字典:NSDictionary = (设置存储?.dictionaryRepresentation() as NSDictionary?)!
             let 设置字典设置项:NSArray = 设置字典.allKeys as NSArray
             for 当前设置项 in 设置字典设置项 {
                 let 当前设置项字符串:String = 当前设置项 as! String
@@ -217,7 +217,7 @@ class AppGroupIO: NSObject {
         if (应用ID != nil) {
             设置存储.removePersistentDomain(forName: 应用ID! as String)
         }
-        let 设置字典:NSDictionary = 设置存储.dictionaryRepresentation() as NSDictionary!
+        let 设置字典:NSDictionary = (设置存储.dictionaryRepresentation() as NSDictionary?)!
         let 设置字典设置项:NSArray = 设置字典.allKeys as NSArray
         for 当前设置项 in 设置字典设置项 {
             let 当前设置项字符串:String = 当前设置项 as! String

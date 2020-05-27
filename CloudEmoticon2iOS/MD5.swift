@@ -22,7 +22,7 @@ func md5(_ md5:String) -> String {
             hash.appendFormat("%02x", result[i])
         }
         
-        result.deinitialize()
+    result.deinitialize(count: digestLen)
     
         NSLog("md5")
         return String(format: hash as String)

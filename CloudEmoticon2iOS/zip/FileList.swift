@@ -9,7 +9,7 @@
 import Foundation
 // see here for Apple's ObjC Code https://developer.apple.com/library/mac/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/AccessingFilesandDirectories/AccessingFilesandDirectories.html
 open class FileList {
-    open static func allFilesAndFolders(inDirectory directory:Foundation.FileManager.SearchPathDirectory, subdirectory:String?) -> [URL]? {
+    public static func allFilesAndFolders(inDirectory directory:Foundation.FileManager.SearchPathDirectory, subdirectory:String?) -> [URL]? {
         
         // Create load path
         if let loadPath = buildPathToDirectory(directory, subdirectory: subdirectory) {
@@ -27,7 +27,7 @@ open class FileList {
         return nil
     }
     
-    open static func allFilesAndFoldersInTemporaryDirectory(_ subdirectory:String?) throws -> [URL]? {
+    public static func allFilesAndFoldersInTemporaryDirectory(_ subdirectory:String?) throws -> [URL]? {
         
         // Create load path
         let loadPath = buildPathToTemporaryDirectory(subdirectory)
@@ -77,7 +77,7 @@ open class FileList {
         }
         return buildPath
     }
-    open static func buildPathToTemporaryDirectory(_ subdirectory:String?) -> String {
+    public static func buildPathToTemporaryDirectory(_ subdirectory:String?) -> String {
         // Remove unnecessary slash if need
         
         var subDir:String?

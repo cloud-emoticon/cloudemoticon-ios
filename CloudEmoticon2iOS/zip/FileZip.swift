@@ -10,7 +10,7 @@ import Foundation
 
 open class FileZip {
     
-    open static func unzipFile(_ path:String, toDirectory directory:Foundation.FileManager.SearchPathDirectory, subdirectory:String?) {
+    public static func unzipFile(_ path:String, toDirectory directory:Foundation.FileManager.SearchPathDirectory, subdirectory:String?) {
         // Remove unnecessary slash if need
         let newPath = stripSlashIfNeeded(path)
         var subDir:String?
@@ -35,7 +35,7 @@ open class FileZip {
 
         SSZipArchive.unzipFile(atPath: path, toDestination: savePath)
     }
-    open static func unzipFileToTemporaryDirectory(_ path:String, subdirectory:String?) {
+    public static func unzipFileToTemporaryDirectory(_ path:String, subdirectory:String?) {
         // Remove unnecessary slash if need
         // Remove unnecessary slash if need
         let newPath = stripSlashIfNeeded(path)
@@ -61,7 +61,7 @@ open class FileZip {
         SSZipArchive.unzipFile(atPath: path, toDestination: savePath)
     }
     
-    open static func unzipEPUB(_ path:String, subdirectory:String?) -> [URL] {
+    public static func unzipEPUB(_ path:String, subdirectory:String?) -> [URL] {
         
         let subD = subdirectory ?? ""
         // TODO: this works but don't force unwrap here!
@@ -125,7 +125,7 @@ open class FileZip {
         var stringWithoutSlash:String = stringWithPossibleSlash
         // If the file name contains a slash at the beginning then we remove so that we don't end up with two
         if stringWithPossibleSlash.hasPrefix("/") {
-            stringWithoutSlash = stringWithPossibleSlash.substring(from: stringWithoutSlash.characters.index(stringWithoutSlash.startIndex, offsetBy: 1))
+            stringWithoutSlash = stringWithPossibleSlash.substring(from: stringWithoutSlash.index(stringWithoutSlash.startIndex, offsetBy: 1))
         }
         // Return the string with no slash at the beginning
         return stringWithoutSlash

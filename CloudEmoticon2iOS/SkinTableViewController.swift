@@ -117,7 +117,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
 //            self.tableView.setEditing(false, animated: true)
             let alert:UIAlertView = UIAlertView(title: lang.uage("下载皮肤"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从在线皮肤库添加"))
             alert.alertViewStyle = UIAlertViewStyle.plainTextInput
-            let alertImport:UITextField = alert.textField(at: 0) as UITextField!
+            let alertImport:UITextField = (alert.textField(at: 0) as UITextField?)!
             alert.tag = 200
             alertImport.keyboardType = UIKeyboardType.URL
             alertImport.text = "http://127.0.0.1/skin/skin.zip"
@@ -136,7 +136,7 @@ class SkinTableViewController: UITableViewController, UIAlertViewDelegate, SkinI
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
     {
         let 提示框输入框:
-        UITextField = alertView.textField(at: 0) as UITextField!
+            UITextField = (alertView.textField(at: 0) as UITextField?)!
         if (buttonIndex == 1) {
             //添加
             提示框输入框.isUserInteractionEnabled = false

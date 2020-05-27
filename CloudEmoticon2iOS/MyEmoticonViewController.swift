@@ -388,7 +388,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
                 左上按钮.title = lang.uage("编辑")
                 let alert:UIAlertView = UIAlertView(title: lang.uage("添加颜文字"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"))
                 alert.alertViewStyle = UIAlertViewStyle.plainTextInput
-                let alertImport:UITextField = alert.textField(at: 0) as UITextField!
+                let alertImport:UITextField = (alert.textField(at: 0) as UITextField?)!
                 alert.tag = 300
                 alertImport.keyboardType = UIKeyboardType.URL
                 alertImport.text = ""
@@ -407,7 +407,7 @@ class MyEmoticonViewController: UIViewController, UITableViewDelegate, UIAlertVi
     
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
     {
-        let alertImport:UITextField = alertView.textField(at: 0) as UITextField!
+        let alertImport:UITextField = (alertView.textField(at: 0) as UITextField?)!
         if (alertView.tag == 300) {
             if (buttonIndex == 1) {
                 //添加

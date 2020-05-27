@@ -272,7 +272,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
         if (self.tableView.isEditing) {
             let 添加源对话框:UIAlertView = UIAlertView(title: lang.uage("添加源"), message: "", delegate: self, cancelButtonTitle: lang.uage("取消"), otherButtonTitles: lang.uage("添加"), lang.uage("从源商店添加"))
             添加源对话框.alertViewStyle = UIAlertViewStyle.plainTextInput
-            let 添加源输入框:UITextField = 添加源对话框.textField(at: 0) as UITextField!
+            let 添加源输入框:UITextField = (添加源对话框.textField(at: 0) as UITextField?)!
             添加源对话框.tag = 200
             添加源输入框.keyboardType = UIKeyboardType.URL
             添加源输入框.text = "http://emoticon.moe/emoticon/yashi.xml"
@@ -294,7 +294,7 @@ class SourceTableViewController: UITableViewController, UIAlertViewDelegate { //
     func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int)
     {
         let 添加源输入框:
-        UITextField = alertView.textField(at: 0) as UITextField!
+            UITextField = (alertView.textField(at: 0) as UITextField?)!
         if (alertView.tag == 200) {
             if (buttonIndex == 1) {
                 //添加

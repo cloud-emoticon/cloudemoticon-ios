@@ -909,7 +909,7 @@
 					53DF28EC196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1150;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -918,13 +918,13 @@
 					};
 					53DF28FE196B9CF40058AA42 = {
 						CreatedOnToolsVersion = 6.0;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1150;
 						TestTargetID = 53DF28EC196B9CF40058AA42;
 					};
 					8BF8ACF1199335D7001207FC = {
 						CreatedOnToolsVersion = 6.0;
 						DevelopmentTeam = ZNVDEVDRX3;
-						LastSwiftMigration = 1010;
+						LastSwiftMigration = 1150;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -938,6 +938,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				"zh-Hans",
 				"zh-Hant",
@@ -1283,7 +1284,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1318,7 +1319,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "CloudEmoticon2iOS/CloudEmoticon2iOS-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1339,7 +1340,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Debug;
@@ -1357,7 +1358,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.yukariyashi.cloudemoticon2.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
 			name = Release;
@@ -1384,7 +1385,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1406,7 +1407,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
